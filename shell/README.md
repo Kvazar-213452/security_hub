@@ -1,1 +1,1 @@
-gcc main.c -o basic -L. -lwebview
+gcc main.c -o compilete/shell_web -L. -lwebview
