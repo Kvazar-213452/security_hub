@@ -14,12 +14,10 @@ pub fn start_acwa() -> Result<Child, String> {
 }
 
 pub fn write_article() -> Result<(), String> {
-    let article_content = r#"
-name = Hot keys
+    let article_content = r#"name = Hot keys
 window_h = 800
 window_w = 1000
-html = <style>iframe{position: fixed;height: 100%;width: 100%;top: 0%;left: 0%;}</style><iframe src="http://127.0.0.1:54685" frameborder="0"></iframe>
-"#;
+html = <style>iframe{position: fixed;height: 100%;width: 100%;top: 0%;left: 0%;}</style><iframe src="http://127.0.0.1:54685" frameborder="0"></iframe>"#;
 
     let article_path = "start.article";
 
