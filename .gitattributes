@@ -1,3 +1,3 @@
 * text=auto
 
-core/lib/*.h linguist-documentation
+shell/*.h linguist-documentation
