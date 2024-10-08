@@ -6,7 +6,7 @@
 
 #ifdef _WIN32
 #include <windows.h>
-#include <shellscalingapi.h> // For High DPI support
+#include <shellscalingapi.h>
 
 char* read_name_from_file(const char* file_path) {
     FILE* file = fopen(file_path, "r");
@@ -17,17 +17,15 @@ char* read_name_from_file(const char* file_path) {
 
     char line[256];
     while (fgets(line, sizeof(line), file)) {
-        // Шукаємо рядок, що починається з "name ="
         if (strncmp(line, "name =", 6) == 0) {
-            // Видаляємо пробіли на початку і кінці
             char* name = strtok(line + 6, "\r\n");
             fclose(file);
-            return strdup(name); // Копіюємо значення в нову пам'ять
+            return strdup(name);
         }
     }
 
     fclose(file);
-    return NULL; // Не знайдено
+    return NULL;
 }
 
 char* read_file_html(const char* file_path) {
@@ -39,34 +37,30 @@ char* read_file_html(const char* file_path) {
 
     char line[256];
     while (fgets(line, sizeof(line), file)) {
-        // Шукаємо рядок, що починається з "html ="
         if (strncmp(line, "html =", 6) == 0) {
-            // Видаляємо пробіли на початку і кінці
             char* html = strtok(line + 6, "\r\n");
             fclose(file);
-            return strdup(html); // Копіюємо значення в нову пам'ять
+            return strdup(html);
         }
     }
 
     fclose(file);
-    return NULL; // Не знайдено
+    return NULL;
 }
 
 int read_window_height(const char* file_path) {
     FILE* file = fopen(file_path, "r");
     if (!file) {
         perror("Failed to open file");
-        return -1; // Помилка відкриття файлу
+        return -1;
     }
 
     char line[256];
     while (fgets(line, sizeof(line), file)) {
-        // Шукаємо рядок, що починається з "window_h ="
         if (strncmp(line, "window_h =", 10) == 0) {
-            // Видаляємо пробіли на початку і кінці
             char* value_str = strtok(line + 10, "\r\n");
             if (value_str) {
-                int height = atoi(value_str); // Перетворюємо рядок в ціле число
+                int height = atoi(value_str);
                 fclose(file);
                 return height;
             }
@@ -74,24 +68,22 @@ int read_window_height(const char* file_path) {
     }
 
     fclose(file);
-    return -1; // Не знайдено або помилка
+    return -1;
 }
 
 int read_window_width(const char* file_path) {
     FILE* file = fopen(file_path, "r");
     if (!file) {
         perror("Failed to open file");
-        return -1; // Помилка відкриття файлу
+        return -1;
     }
 
     char line[256];
     while (fgets(line, sizeof(line), file)) {
-        // Шукаємо рядок, що починається з "window_w ="
         if (strncmp(line, "window_w =", 10) == 0) {
-            // Видаляємо пробіли на початку і кінці
             char* value_str = strtok(line + 10, "\r\n");
             if (value_str) {
-                int width = atoi(value_str); // Перетворюємо рядок в ціле число
+                int width = atoi(value_str);
                 fclose(file);
                 return width;
             }
@@ -99,10 +91,9 @@ int read_window_width(const char* file_path) {
     }
 
     fclose(file);
-    return -1; // Не знайдено або помилка
+    return -1;
 }
 
-// Function to set the icon
 void SetWindowIcon(HWND hwnd, LPCWSTR iconPath) {
     HICON hIcon = (HICON)LoadImageW(NULL, iconPath, IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE);
     if (hIcon) {
@@ -125,7 +116,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine, int nC
     (void)lpCmdLine;
     (void)nCmdShow;
 
-    // Read the name, HTML, height, and width from the file
     char* title = read_name_from_file("start_conf.log");
     if (!title) {
         fprintf(stderr, "Failed to read name from file\n");
@@ -155,7 +145,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine, int nC
         return -1;
     }
 
-    // Initialize the webview
     webview_t w = webview_create(0, NULL);
     if (!w) {
         free(title);
@@ -165,20 +154,17 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine, int nC
 
     SetupWebview(w, title, height, width, html);
 
-    // Get the window handle and set the icon
     HWND hwnd = (HWND)webview_get_window(w);
-    SetWindowIcon(hwnd, L"icon.ico"); // Update this path to your icon file
+    SetWindowIcon(hwnd, L"icon.ico");
 
-    // Run the webview
     webview_run(w);
     webview_destroy(w);
-    free(title); // Clean up
-    free(html); // Clean up
+    free(title);
+    free(html);
     return 0;
 }
 #else
 int main(void) {
-    // Read the name, HTML, height, and width from the file
     char* title = read_name_from_file("start_conf.log");
     if (!title) {
         fprintf(stderr, "Failed to read name from file\n");
@@ -208,7 +194,6 @@ int main(void) {
         return -1;
     }
 
-    // Initialize the webview
     webview_t w = webview_create(0, NULL);
     if (!w) {
         free(title);
@@ -218,11 +203,10 @@ int main(void) {
 
     SetupWebview(w, title, height, width, html);
 
-    // Run the webview
     webview_run(w);
     webview_destroy(w);
-    free(title); // Clean up
-    free(html); // Clean up
+    free(title);
+    free(html);
     return 0;
 }
 #endif
