@@ -1,0 +1,1 @@
+pub const SHELL_WEB_CORE: &str = "./shell_web.exe";

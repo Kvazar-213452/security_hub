@@ -1,1 +1,1 @@
-gcc main.c -o compilete/shell_web -L. -lwebview
+gcc main.c -o compilete/shell_web.exe -L. -lwebview -mwindows
