@@ -4,6 +4,8 @@ use std::io::Write;
 use std::os::raw::c_int;
 use std::io;
 use libloading::{Library, Symbol};
+use std::fs::OpenOptions;
+use chrono::Local;
 
 use crate::config;
 
@@ -50,7 +52,7 @@ pub fn find_free_port_dll() -> c_int {
     port
 }
 
-pub fn write_config(port: &str) -> io::Result<()> {
+pub fn write_config_web(port: &str) -> io::Result<()> {
     let config_content = format!(r#"port = {}"#, port);
 
     fs::create_dir_all("web")?;
@@ -58,5 +60,21 @@ pub fn write_config(port: &str) -> io::Result<()> {
     let mut file = fs::File::create(config::CONFIG_WEB)?;
     file.write_all(config_content.as_bytes())?;
 
+    Ok(())
+}
+
+pub fn log_message_add(message: &str) -> io::Result<()> {
+    let current_time = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
+    
+    let log_entry = format!("{} || {}\n", message, current_time);
+    
+    let mut file = OpenOptions::new()
+        .write(true)
+        .append(true)
+        .create(true)
+        .open(config::DATA_LOG)?;
+    
+    file.write_all(log_entry.as_bytes())?;
+    
     Ok(())
 }

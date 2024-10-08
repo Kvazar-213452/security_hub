@@ -11,3 +11,7 @@ pub const CONFIG_WEB: &str = "web/config.toml";
 
 // library
 pub const LIBRARY_PORT: &str = "library/find_free_port.dll";
+
+// data
+pub const DATA_LOG: &str = "data/main.log";
+pub const DATA_CONFIG: &str = "data/main_config.json";

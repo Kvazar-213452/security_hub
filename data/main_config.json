@@ -1,4 +1,5 @@
 {
     "visualization": true,
-    "lang": "uk"
+    "lang": "uk",
+    "log": true
 }
