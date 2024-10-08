@@ -2,6 +2,7 @@ use std::fs;
 use std::process::{Command, Child};
 use std::io::Write;
 use std::os::raw::c_int;
+use std::io;
 use libloading::{Library, Symbol};
 
 use crate::config;
@@ -47,4 +48,15 @@ pub fn find_free_port_dll() -> c_int {
     };
 
     port
+}
+
+pub fn write_config(port: &str) -> io::Result<()> {
+    let config_content = format!(r#"port = {}"#, port);
+
+    fs::create_dir_all("web")?;
+
+    let mut file = fs::File::create(config::CONFIG_WEB)?;
+    file.write_all(config_content.as_bytes())?;
+
+    Ok(())
 }

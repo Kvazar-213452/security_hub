@@ -51,7 +51,7 @@
         </div>
    </body>
     <script>
-        let visualization_button = "{{ config['Visualization'] }}";
+        let visualization_button = {{ .visualization}};
     </script>
     <script src="/static/jquery.min.js"></script>
     <script src="/static/js/let.js"></script>
@@ -60,6 +60,9 @@
     <script src="/static/js/ready.js"></script>
     <script>
         button_hover("btn3");
+
+        let lang = "{{ .lang}}";
+        button_active(lang, leng_mas)
 
         if (visualization_button) {
             button_active('visualization1', visualization_mas);

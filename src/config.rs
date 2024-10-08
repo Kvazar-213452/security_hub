@@ -6,5 +6,8 @@ pub const NAME_WINDOWS_CORE: &str = "Security Hub";
 pub const SHELL_WEB_CORE: &str = "./shell_web.exe";
 pub const START_FILE_CORE: &str = "start_conf.log";
 
+// web_server
+pub const CONFIG_WEB: &str = "web/config.toml";
+
 // library
 pub const LIBRARY_PORT: &str = "library/find_free_port.dll";

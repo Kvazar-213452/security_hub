@@ -1,5 +1,4 @@
 {
-    "start": "shell",
-    "lang": "uk",
-    "translator": false
+    "visualization": true,
+    "lang": "uk"
 }

@@ -50,3 +50,4 @@ function button_active(name, mas) {
         "color": "#ff8a2a"
     });
 }
+

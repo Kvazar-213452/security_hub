@@ -8,14 +8,57 @@ import (
 func Render_index_page(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles(
 		"templates/html/menu.html",
+		"templates/html/console.html",
 		"templates/index.pug",
 	)
+
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
 	err = tmpl.ExecuteTemplate(w, "index.pug", nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func Render_about_page(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles(
+		"templates/html/menu.html",
+		"templates/html/console.html",
+		"templates/about.pug",
+	)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = tmpl.ExecuteTemplate(w, "about.pug", nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func Render_settings_page(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles(
+		"templates/html/menu.html",
+		"templates/html/console.html",
+		"templates/settings.pug",
+	)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	pageVariables := map[string]interface{}{
+		"visualization": true,
+		"lang":          "uk",
+	}
+
+	err = tmpl.ExecuteTemplate(w, "settings.pug", pageVariables)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
