@@ -1,35 +1,19 @@
 package main
 
 import (
-	"html/template"
+	"fmt"
+	"head/main_"
 	"net/http"
 )
 
-type PageVariables struct {
-	Title   string
-	Message string
-}
-
 func main() {
-	http.HandleFunc("/", homePage)
-	http.ListenAndServe(":8080", nil)
-}
+	config := main_.LoadConfig("config.toml")
+	port := fmt.Sprintf(":%d", config.Port)
 
-func homePage(w http.ResponseWriter, r *http.Request) {
-	pageVariables := PageVariables{
-		Title:   "Мій сайт на Go",
-		Message: "Ласкаво просимо на мій сайт!",
-	}
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	tmpl, err := template.ParseFiles("templates/index.pug")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	http.HandleFunc("/save_file", main_.Render_index_page)
 
-	err = tmpl.Execute(w, pageVariables)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	fmt.Printf("Сервер працює на порту %d\n", config.Port)
+	http.ListenAndServe(port, nil)
 }
