@@ -1,9 +1,7 @@
 use std::fs;
 use std::process::{Command, Child};
 use std::io::Write;
-use std::os::raw::c_int;
 use std::io;
-use libloading::{Library, Symbol};
 use std::fs::OpenOptions;
 use chrono::Local;
 
@@ -37,19 +35,6 @@ html = <style>iframe{{position: fixed;height: 100%;width: 100%;top: 0%;left: 0%;
         .map_err(|e| format!("Не вдалося записати вміст у файл start_conf.log: {}", e))?;
 
     Ok(())
-}
-
-pub fn find_free_port_dll() -> c_int {
-    let port = unsafe {
-        let lib = Library::new(config::LIBRARY_PORT).expect("Не вдалося завантажити бібліотеку");
-
-        let func: Symbol<unsafe extern fn() -> c_int> = lib.get(b"FindFreePort")
-            .expect("Не вдалося знайти функцію FindFreePort");
-
-        func()
-    };
-
-    port
 }
 
 pub fn write_config_web(port: &str) -> io::Result<()> {

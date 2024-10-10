@@ -1,0 +1,10 @@
+[package]
+name = "my_dll_project"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+sysinfo = "0.29"

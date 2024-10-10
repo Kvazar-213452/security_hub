@@ -1,5 +1,4 @@
 use warp::Filter;
-use sysinfo::{System, SystemExt, ComponentExt};
 
 mod func;
 mod config;
@@ -7,38 +6,8 @@ mod server;
 
 #[tokio::main]
 async fn main() {
-
-    let mut sys = System::new_all();
-
-    // Оновлення інформації про систему
-    sys.refresh_all();
-
-    // Отримання назви операційної системи
-    if let Some(os_name) = sys.name() {
-        println!("Операційна система: {}", os_name);
-    }
-
-    // Отримання кількості оперативної пам'яті
-    let total_memory = sys.total_memory();
-    println!("Загальна оперативна пам'ять: {} KB", total_memory);
-
-    let used_memory = sys.used_memory();
-    println!("Використана оперативна пам'ять: {} KB", used_memory);
-
-    // Отримання кількості ядер CPU
-    let cpu_cores = sys.cpus().len();
-    println!("Кількість ядер процесора: {}", cpu_cores);
-
-    // Інформація про температуру процесора
-    for component in sys.components() {
-        // Використовуємо temperature() без Option
-        let temp = component.temperature();
-        println!("Температура {}: {}°C", component.label(), temp);
-    }
-
-
-    let port = func::func_shell::find_free_port_dll();
-    let port_web = func::func_shell::find_free_port_dll();
+    let port = func::lib_loader::find_free_port_dll();
+    let port_web = func::lib_loader::find_free_port_dll();
     let _ = func::func_shell::write_config_web(&port_web.to_string());
     let _ = func::func_shell::write_article(&port.to_string());
 
