@@ -1,0 +1,128 @@
+package main_
+
+import (
+	"fmt"
+	"os/exec"
+	"strings"
+)
+
+type WifiInfo struct {
+	SSID            string `json:"ssid"`
+	Description     string `json:"description"`
+	GUID            string `json:"guid"`
+	PhysicalAddress string `json:"physical_address"`
+	State           string `json:"state"`
+	RadioType       string `json:"radio_type"`
+	Authentication  string `json:"authentication"`
+}
+
+func Get_Wifi_info() (*WifiInfo, error) {
+	cmd := exec.Command("netsh", "wlan", "show", "interfaces")
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return nil, fmt.Errorf("не вдалося виконати команду: %v", err)
+	}
+
+	lines := strings.Split(string(output), "\n")
+	wifiInfo := &WifiInfo{}
+
+	for _, line := range lines {
+		if strings.Contains(line, "SSID") && !strings.Contains(line, "BSSID") {
+			parts := strings.Split(line, ":")
+			if len(parts) > 1 {
+				wifiInfo.SSID = strings.TrimSpace(parts[1])
+			}
+		} else if strings.Contains(line, "Description") {
+			parts := strings.Split(line, ":")
+			if len(parts) > 1 {
+				wifiInfo.Description = strings.TrimSpace(parts[1])
+			}
+		} else if strings.Contains(line, "GUID") {
+			parts := strings.Split(line, ":")
+			if len(parts) > 1 {
+				wifiInfo.GUID = strings.TrimSpace(parts[1])
+			}
+		} else if strings.Contains(line, "Physical address") {
+			parts := strings.Split(line, ":")
+			if len(parts) > 1 {
+				wifiInfo.PhysicalAddress = strings.TrimSpace(parts[1])
+			}
+		} else if strings.Contains(line, "State") {
+			parts := strings.Split(line, ":")
+			if len(parts) > 1 {
+				wifiInfo.State = strings.TrimSpace(parts[1])
+			}
+		} else if strings.Contains(line, "Radio type") {
+			parts := strings.Split(line, ":")
+			if len(parts) > 1 {
+				wifiInfo.RadioType = strings.TrimSpace(parts[1])
+			}
+		} else if strings.Contains(line, "Authentication") {
+			parts := strings.Split(line, ":")
+			if len(parts) > 1 {
+				wifiInfo.Authentication = strings.TrimSpace(parts[1])
+			}
+		}
+	}
+
+	if wifiInfo.SSID == "" {
+		return nil, fmt.Errorf("інформацію про Wi-Fi не знайдено")
+	}
+
+	return wifiInfo, nil
+}
+
+type WifiNetwork struct {
+	SSID           string `json:"ssid"`
+	SignalStrength string `json:"signal_strength"`
+	NetworkType    string `json:"network_type"`
+	Authentication string `json:"authentication"`
+}
+
+func Get_available_Wifi_networks() ([]WifiNetwork, error) {
+	cmd := exec.Command("netsh", "wlan", "show", "network")
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return nil, fmt.Errorf("не вдалося виконати команду: %v", err)
+	}
+
+	lines := strings.Split(string(output), "\n")
+	var networks []WifiNetwork
+	var currentNetwork WifiNetwork
+
+	for _, line := range lines {
+		line = strings.TrimSpace(line)
+		if strings.HasPrefix(line, "SSID") {
+			parts := strings.Split(line, ":")
+			if len(parts) > 1 {
+				currentNetwork.SSID = strings.TrimSpace(parts[1])
+			}
+		} else if strings.HasPrefix(line, "Signal") {
+			parts := strings.Split(line, ":")
+			if len(parts) > 1 {
+				currentNetwork.SignalStrength = strings.TrimSpace(parts[1])
+			}
+		} else if strings.HasPrefix(line, "Network type") {
+			parts := strings.Split(line, ":")
+			if len(parts) > 1 {
+				currentNetwork.NetworkType = strings.TrimSpace(parts[1])
+			}
+		} else if strings.HasPrefix(line, "Authentication") {
+			parts := strings.Split(line, ":")
+			if len(parts) > 1 {
+				currentNetwork.Authentication = strings.TrimSpace(parts[1])
+			}
+		}
+
+		if currentNetwork.SSID != "" && currentNetwork.SignalStrength != "" {
+			networks = append(networks, currentNetwork)
+			currentNetwork = WifiNetwork{}
+		}
+	}
+
+	if len(networks) == 0 {
+		return nil, fmt.Errorf("доступні мережі не знайдені")
+	}
+
+	return networks, nil
+}
