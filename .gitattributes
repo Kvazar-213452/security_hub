@@ -2,3 +2,5 @@
 
 shell/webview.h linguist-documentation
 web/static/jquery.min.js linguist-documentation
+
+web/static/prefab/*.scss linguist-documentation

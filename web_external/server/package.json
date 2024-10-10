@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
