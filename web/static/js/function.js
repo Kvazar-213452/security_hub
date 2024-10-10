@@ -84,4 +84,12 @@ function get_data_wifi_all() {
 function data_wifi_render_now(response) {
     console.log(response)
     $('#wifi_nama_now').text(response['ssid']);
+    $('#name_wifi').text(response['ssid']);
+    $('#authentication_wifi').text(response['authentication']);
+    $('#description_wifi').text(response['description']);
+    $('#guid_wifi').text(response['guid']);
+    $('#physical_address_wifi').text(response['physical_address']);
+    $('#radio_type_wifi').text(response['radio_type']);
+    $('#signal_strength_wifi').text(response['signal_strength']);
+    $('#state_wifi').text(response['state']);
 }

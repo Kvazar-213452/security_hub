@@ -9,7 +9,7 @@ func Render_index_page(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles(
 		"templates/html/menu.html",
 		"templates/html/console.html",
-		"templates/index.pug",
+		"templates/index.html",
 	)
 
 	if err != nil {
@@ -17,7 +17,7 @@ func Render_index_page(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "index.pug", nil)
+	err = tmpl.ExecuteTemplate(w, "index.html", nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}

@@ -118,20 +118,6 @@
   background-color: #23252e; 
 }
 
-.modal_rev_button,
-.modal_rev_button_d{
-    position: relative;
-    float: right;
-    margin-left: 10px;
-    left: -20px;
-    border: none;
-    top: 5px;
-    padding: 5px;
-    background-color: #111218;
-    color: #54fea6;
-    font-size: 17px;
-}
-
 .modal_rev_button_d{
     color: #ff5c5c;
 }
@@ -142,7 +128,7 @@
 
 .main_text_wifi {
     font-size: 40px;
-    color: #ff8a2a;
+    color: #54fea6;
     text-align: center;
     position: absolute;
     top: 50%;
@@ -162,6 +148,20 @@
     width: calc(100% - 450px);
     background-color: #111218;
     height: 400px;
+}
+
+.padoge{
+    padding: 20px;
+}
+
+.info_wifi_{
+    font-size: 20px;
+    color: #ff8a2a;
+}
+
+.info_graan{
+    color: #54fea6;
+    font-size: 20px;
 }
 
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
