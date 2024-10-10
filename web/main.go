@@ -19,7 +19,8 @@ func main() {
 	http.HandleFunc("/settings", main_.Render_settings_page)
 
 	// post
-	http.HandleFunc("/endpoint", main_.Post_gagat_network)
+	http.HandleFunc("/get_wifi_now", main_.Post_gagat_network)
+	http.HandleFunc("/get_wifi", main_.Post_wifi_network)
 
 	fmt.Printf("Сервер працює на порту %d\n", config.Port)
 	http.ListenAndServe(port, nil)

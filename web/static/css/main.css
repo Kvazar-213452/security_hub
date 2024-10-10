@@ -118,13 +118,6 @@
   background-color: #23252e; 
 }
 
-.modal_main_tetx{
-    position: relative;
-    text-align: center;
-    font-size: 19px;
-    color: #ff8a2a;
-}
-
 .modal_rev_button,
 .modal_rev_button_d{
     position: relative;
@@ -143,98 +136,32 @@
     color: #ff5c5c;
 }
 
-.modal_rev_button:hover,
-.modal_rev_button_d:hover{
-    opacity: 0.5;
-    cursor: pointer;
-}
+/* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
+/* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
+/* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
 
-.center_div{
+.main_text_wifi {
+    font-size: 40px;
+    color: #ff8a2a;
+    text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-55%, -50%);
-    width: 300px;
+    transform: translate(-50%, -50%);
 }
 
-/* map page *//* map page *//* map page *//* map page *//* map page *//* map page *//* map page *//* map page */
-/* map page *//* map page *//* map page *//* map page *//* map page *//* map page *//* map page *//* map page */
-/* map page *//* map page *//* map page *//* map page *//* map page *//* map page *//* map page *//* map page */
-
-.map_div_prg{
+.img_wifi {
     position: relative;
-    margin-top: 20px;
-    top: -20px;
-    left: -20px;
-    margin-left: 20px;
-    background-color: #0f1014;
-    height: 35px;
-    width: 100%;
+    width: calc(100% - 450px);
+    background-color: #1e202a;
+    height: 400px;
 }
 
-.name_map_prg{
-    position: absolute;
-    top: 6px;
-    left: 20px;
-    font-size: 16.2px;
-}
-
-.time_map_prg{
-    position: absolute;
-    left: 250px;
-    top: 6px;
-}
-
-.phat_map_prg{
-    position: absolute;
-    left: 550px;
-    top: 6px;
-}
-
-.button_map_del{
+.div_wifi_info{
     position: relative;
-    float: right;
-    margin-left: 10px;
-    left: -20px;
-    border: none;
-    top: 5px;
-    padding: 4px;
-    background-color: #17181f;
-    color: #ff5c5c;
-    font-size: 14.5px;
-}
-
-.button_map_dwn{
-    position: relative;
-    float: right;
-    margin-left: 10px;
-    left: -20px;
-    border: none;
-    top: 5px;
-    padding: 4px;
-    background-color: #17181f;
-    color: #54fea6;
-    font-size: 14.5px;
-}
-
-.button_map_open{
-    position: relative;
-    float: right;
-    margin-left: 10px;
-    left: -20px;
-    border: none;
-    top: 5px;
-    padding: 4px;
-    background-color: #17181f;
-    color: #ff8a2a;
-    font-size: 14.5px;
-}
-
-.button_map_del:hover,
-.button_map_open:hover,
-.button_map_dwn:hover{
-    cursor: pointer;
-    opacity: 0.5;
+    width: calc(100% - 450px);
+    background-color: #111218;
+    height: 400px;
 }
 
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */

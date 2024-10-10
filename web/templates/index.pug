@@ -9,7 +9,15 @@
         {{template "menu.html" .}}
         {{template "console.html" .}}
         <div class="main">
-            <div class="main_div"></div>
+            <div class="main_div">
+                <div class="img_wifi">
+                    <p id="wifi_nama_now" class="main_text_wifi"></p>
+                </div>
+                <br>
+                <div class="div_wifi_info">
+                    
+                </div>
+            </div>
         </div>
         
         <div id="modal2"> 
@@ -29,5 +37,6 @@
     <script src="/static/js/ready.js"></script>
     <script>
         button_hover("btn1");
+        get_data_wifi_now();
     </script>
 </html> 

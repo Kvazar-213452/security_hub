@@ -50,3 +50,38 @@ function button_active(name, mas) {
         "color": "#ff8a2a"
     });
 }
+
+function get_data_wifi_now() {
+    $.ajax({
+        url: "/get_wifi_now",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function(response) {
+            data_wifi_render_now(response)
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function get_data_wifi_all() {
+    $.ajax({
+        url: "/get_wifi",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function(response) {
+            console.log("Відповідь сервера:", response);
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function data_wifi_render_now(response) {
+    console.log(response)
+    $('#wifi_nama_now').text(response['ssid']);
+}

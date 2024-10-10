@@ -14,6 +14,14 @@ type WifiInfo struct {
 	State           string `json:"state"`
 	RadioType       string `json:"radio_type"`
 	Authentication  string `json:"authentication"`
+	SignalStrength  string `json:"signal_strength"`
+}
+
+type WifiNetwork struct {
+	SSID           string `json:"ssid"`
+	SignalStrength string `json:"signal_strength"`
+	NetworkType    string `json:"network_type"`
+	Authentication string `json:"authentication"`
 }
 
 func Get_Wifi_info() (*WifiInfo, error) {
@@ -62,6 +70,11 @@ func Get_Wifi_info() (*WifiInfo, error) {
 			if len(parts) > 1 {
 				wifiInfo.Authentication = strings.TrimSpace(parts[1])
 			}
+		} else if strings.Contains(line, "Signal") {
+			parts := strings.Split(line, ":")
+			if len(parts) > 1 {
+				wifiInfo.SignalStrength = strings.TrimSpace(parts[1])
+			}
 		}
 	}
 
@@ -70,13 +83,6 @@ func Get_Wifi_info() (*WifiInfo, error) {
 	}
 
 	return wifiInfo, nil
-}
-
-type WifiNetwork struct {
-	SSID           string `json:"ssid"`
-	SignalStrength string `json:"signal_strength"`
-	NetworkType    string `json:"network_type"`
-	Authentication string `json:"authentication"`
 }
 
 func Get_available_Wifi_networks() ([]WifiNetwork, error) {

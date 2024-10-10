@@ -19,3 +19,18 @@ func Post_gagat_network(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}
 }
+
+func Post_wifi_network(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodGet {
+		networks, err := Get_available_Wifi_networks()
+		if err != nil {
+			http.Error(w, "Помилка отримання інформації про Wi-Fi мережі", http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(networks)
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
