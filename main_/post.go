@@ -2,16 +2,18 @@ package main_
 
 import (
 	"encoding/json"
+	"head/main_/func_all"
 	"net/http"
+	"strconv"
 )
 
-type ConfigRequest struct {
+type VisualizationMessage struct {
 	Message int `json:"message"`
 }
 
 func Post_gagat_network(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		wifiInfo, err := Get_Wifi_info()
+		wifiInfo, err := func_all.Get_Wifi_info()
 		if err != nil {
 			http.Error(w, "Помилка отримання інформації про Wi-Fi", http.StatusInternalServerError)
 			return
@@ -26,7 +28,7 @@ func Post_gagat_network(w http.ResponseWriter, r *http.Request) {
 
 func Post_wifi_network(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		networks, err := Get_available_Wifi_networks()
+		networks, err := func_all.Get_available_Wifi_networks()
 		if err != nil {
 			http.Error(w, "Помилка отримання інформації про Wi-Fi мережі", http.StatusInternalServerError)
 			return
@@ -41,7 +43,7 @@ func Post_wifi_network(w http.ResponseWriter, r *http.Request) {
 
 func Post_server_fet_log(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		jsonData, err := LoadLogFile()
+		jsonData, err := func_all.LoadLogFile()
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -56,7 +58,7 @@ func Post_server_fet_log(w http.ResponseWriter, r *http.Request) {
 
 func Post_network_now(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		ssid := GetConnectedSSID()
+		ssid := func_all.GetConnectedSSID()
 
 		w.Header().Set("Content-Type", "application/json")
 		if err := json.NewEncoder(w).Encode(map[string]string{"ssid": ssid}); err != nil {
@@ -69,7 +71,7 @@ func Post_network_now(w http.ResponseWriter, r *http.Request) {
 
 func Post_config_global(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		config, err := LoadConfig_()
+		config, err := func_all.LoadConfig()
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -87,10 +89,6 @@ func Post_config_global(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-type VisualizationMessage struct {
-	Message int `json:"message"`
-}
-
 func Post_config_change(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		var msg VisualizationMessage
@@ -100,7 +98,7 @@ func Post_config_change(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		UpdateVisualization(msg.Message)
+		func_all.UpdateVisualization(strconv.Itoa(msg.Message), "Visualization")
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)

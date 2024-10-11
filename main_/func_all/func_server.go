@@ -1,11 +1,18 @@
-package main_
+package func_all
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"os"
 	"os/exec"
 	"strings"
 )
+
+type LogContent struct {
+	Log string `json:"log"`
+}
 
 type WifiInfo struct {
 	ProfileName      string   `json:"profile_name"`      // Ім'я профілю
@@ -225,4 +232,37 @@ func GetConnectedSSID() string {
 	}
 
 	return ""
+}
+
+func LoadLogFile() ([]byte, error) {
+	content, err := ioutil.ReadFile("data/main.log")
+	if err != nil {
+		return nil, fmt.Errorf("не вдалося прочитати файл: %w", err)
+	}
+
+	logContent := LogContent{
+		Log: string(content),
+	}
+
+	jsonData, err := json.Marshal(logContent)
+	if err != nil {
+		return nil, fmt.Errorf("не вдалося закодувати в JSON: %w", err)
+	}
+
+	return jsonData, nil
+}
+
+func LoadConfig() (*Config_global, error) {
+	file, err := os.Open("data/main_config.json")
+	if err != nil {
+		return nil, fmt.Errorf("не вдалося відкрити файл: %w", err)
+	}
+	defer file.Close()
+
+	var config Config_global
+	if err := json.NewDecoder(file).Decode(&config); err != nil {
+		return nil, fmt.Errorf("не вдалося декодувати JSON: %w", err)
+	}
+
+	return &config, nil
 }
