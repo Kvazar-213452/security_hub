@@ -2,6 +2,7 @@ package main_
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 )
 
@@ -30,6 +31,17 @@ func Post_wifi_network(w http.ResponseWriter, r *http.Request) {
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(networks)
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_wifi_network_dwdw(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		config_main := LoadConfig_main("config.toml")
+		port_main := fmt.Sprintf(":%d", config_main.Port)
+
+		Other_server_post_get_log(w, port_main)
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

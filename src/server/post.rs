@@ -1,17 +1,37 @@
-use serde::{Deserialize};
 use serde_json::json;
 use warp::Filter;
 use warp::http::StatusCode;
 use std::fs;
 use std::collections::HashMap;
+use serde::{Deserialize, Serialize};
 
 use crate::config;
+use crate::func::func_shell;
 
 #[derive(Deserialize)]
 struct ConfigChange {
     key: String,
     value: serde_json::Value,
 }
+
+#[derive(Debug, Deserialize, Serialize)]
+struct Message {
+    massege: String,
+}
+
+pub fn log_post_message() -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
+    warp::path("log_post_message")
+        .and(warp::post())
+        .and(warp::body::json())
+        .map(|msg: Message| {
+            if let Err(e) = func_shell::log_message_add(&msg.massege) {
+                eprintln!("Не вдалося записати повідомлення в лог: {}", e);
+                return warp::reply::with_status("Не вдалося записати повідомлення", warp::http::StatusCode::INTERNAL_SERVER_ERROR);
+            }
+            warp::reply::with_status("Повідомлення записано", warp::http::StatusCode::OK)
+        })
+}
+
 
 pub fn logs_post() -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
     warp::path("get_logs")

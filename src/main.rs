@@ -8,7 +8,7 @@ mod server;
 async fn main() {
     let port = func::lib_loader::find_free_port_dll();
     let port_web = func::lib_loader::find_free_port_dll();
-    let _ = func::func_shell::write_config_web(&port_web.to_string());
+    let _ = func::func_shell::write_config_web(&port_web.to_string(), &port.to_string());
     let _ = func::func_shell::write_article(&port.to_string());
 
     let mut child = match func::func_shell::start_acwa() {
@@ -22,8 +22,9 @@ async fn main() {
     let logs_post = server::post::logs_post();
     let config_post = server::post::config_post();
     let change_config_post = server::post::change_config_post();
+    let logs_post_masege = server::post::log_post_message();
 
-    let routes = index_route.or(logs_post).or(config_post).or(change_config_post);
+    let routes = index_route.or(logs_post).or(config_post).or(change_config_post).or(logs_post_masege);
 
     tokio::spawn(async move {
         warp::serve(routes).run(([127, 0, 0, 1], port as u16)).await;

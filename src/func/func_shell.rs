@@ -37,8 +37,9 @@ html = <style>iframe{{position: fixed;height: 100%;width: 100%;top: 0%;left: 0%;
     Ok(())
 }
 
-pub fn write_config_web(port: &str) -> io::Result<()> {
-    let config_content = format!(r#"port = {}"#, port);
+pub fn write_config_web(port: &str, port_main: &str) -> io::Result<()> {
+    let config_content = format!(r#"port = {}
+port_main = {}"#, port, port_main);
 
     fs::create_dir_all("web")?;
 
@@ -58,7 +59,7 @@ pub fn log_message_add(message: &str) -> io::Result<()> {
         .append(true)
         .create(true)
         .open(config::DATA_LOG)?;
-    
+
     file.write_all(log_entry.as_bytes())?;
     
     Ok(())

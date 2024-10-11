@@ -12,9 +12,16 @@ function openModal(name) {
 }
 
 function fetchLogs() {
-    $.get('/get_logs', function(data) {
-        $('.console').html(data.join('<br>'));
+    $.post('/get_logs', function(data) {
+        const logsArray = data.logs.split('\n');
+
+        $('.console').html(logsArray.join('<br>'));
     });
+}
+
+function console_open() {
+    fetchLogs();
+    $('.console').toggle();
 }
 
 function change_shell(name, button) {
