@@ -109,14 +109,16 @@
 
 .console::-webkit-scrollbar,
 .main_div::-webkit-scrollbar,
-.about_div::-webkit-scrollbar{
+.about_div::-webkit-scrollbar,
+.div_wifi_info::-webkit-scrollbar{
   width: 11px;
   background-color: #17191f; 
 }
 
 .console::-webkit-scrollbar-thumb,
-.main_div::-webkit-scrollbar,
-.about_div::-webkit-scrollbar{
+.main_div::-webkit-scrollbar-thumb,
+.about_div::-webkit-scrollbar-thumb,
+.div_wifi_info::-webkit-scrollbar-thumb{
   background-color: #23252e; 
 }
 
@@ -149,7 +151,8 @@
     position: relative;
     width: 100%;
     background-color: $bg_color1;
-    height: 400px;
+    height: calc(100% - 440px);
+    overflow: auto;
 }
 
 .padoge{
@@ -255,6 +258,8 @@
     background-color: $bg_color1;
     width: 540px;
     left: 10px;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .div_wifi_all{
@@ -288,6 +293,10 @@
     top: 5px;
     left: -10px;
     float: right;
+}
+
+.border_active_grran{
+    border: solid 2px $grean;
 }
 
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */

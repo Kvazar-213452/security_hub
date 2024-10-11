@@ -97,13 +97,15 @@
 
 .console::-webkit-scrollbar,
 .main_div::-webkit-scrollbar,
-.about_div::-webkit-scrollbar {
+.about_div::-webkit-scrollbar,
+.div_wifi_info::-webkit-scrollbar {
   width: 11px;
   background-color: #17191f; }
 
 .console::-webkit-scrollbar-thumb,
-.main_div::-webkit-scrollbar,
-.about_div::-webkit-scrollbar {
+.main_div::-webkit-scrollbar-thumb,
+.about_div::-webkit-scrollbar-thumb,
+.div_wifi_info::-webkit-scrollbar-thumb {
   background-color: #23252e; }
 
 .modal_rev_button_d {
@@ -146,7 +148,8 @@
   position: relative;
   width: 100%;
   background-color: #111218;
-  height: 400px; }
+  height: calc(100% - 440px);
+  overflow: auto; }
 
 .padoge {
   padding: 20px; }
@@ -243,7 +246,9 @@
   float: right;
   background-color: #111218;
   width: 540px;
-  left: 10px; }
+  left: 10px;
+  height: 100%;
+  overflow-y: auto; }
 
 .div_wifi_all {
   position: relative;
@@ -273,6 +278,9 @@
   top: 5px;
   left: -10px;
   float: right; }
+
+.border_active_grran {
+  border: solid 2px #54fea6; }
 
 /* settings page */
 /* settings page */

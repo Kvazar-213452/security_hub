@@ -20,7 +20,8 @@ func main() {
 	// post
 	http.HandleFunc("/get_wifi_now", main_.Post_gagat_network)
 	http.HandleFunc("/get_wifi", main_.Post_wifi_network)
-	http.HandleFunc("/get_logs", main_.Post_wifi_network_dwdw)
+	http.HandleFunc("/get_logs", main_.Post_server_fet_log)
+	http.HandleFunc("/network_now", main_.Post_network_now)
 
 	fmt.Printf("Сервер працює на порту %d\n", config.Port)
 	http.ListenAndServe(port, nil)
