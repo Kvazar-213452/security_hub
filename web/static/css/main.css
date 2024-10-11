@@ -375,3 +375,35 @@
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
   color: #ff8a2a; }
+
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+/* system page */
+.system_div_os {
+  position: relative;
+  width: calc(100% - 500px);
+  height: 370px;
+  background-color: #1e202a; }
+
+.img_os {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 350px;
+  width: auto; }

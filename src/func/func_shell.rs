@@ -4,7 +4,6 @@ use std::io::Write;
 use std::io;
 use std::fs::OpenOptions;
 use chrono::Local;
-
 use serde::{Deserialize, Serialize};
 use serde_json::Error;
 use std::fs::File;

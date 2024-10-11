@@ -371,3 +371,23 @@
     text-underline-offset: 4px;
     color: $orange;
 }
+
+/* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
+/* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
+/* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
+
+.system_div_os{
+    position: relative;
+    width: calc(100% - 500px);
+    height: 370px;
+    background-color: $bg_color2;
+}
+
+.img_os{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    height: 350px;
+    width: auto;
+}

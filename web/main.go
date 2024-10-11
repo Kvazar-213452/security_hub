@@ -17,6 +17,7 @@ func main() {
 	http.HandleFunc("/", main_.Render_index_page)
 	http.HandleFunc("/about", main_.Render_about_page)
 	http.HandleFunc("/settings", main_.Render_settings_page)
+	http.HandleFunc("/system", main_.Render_system_page)
 
 	// post
 	http.HandleFunc("/get_wifi_now", main_.Post_gagat_network)
