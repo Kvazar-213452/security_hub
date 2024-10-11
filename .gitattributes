@@ -1,6 +1,6 @@
 * text=auto
 
-shell/webview.h linguist-documentation
-web/static/jquery.min.js linguist-documentation
+.sorse/shell/webview.h linguist-documentation
+static/jquery.min.js linguist-documentation
 
-web/static/css/*.css linguist-documentation
+static/css/*.css linguist-documentation
