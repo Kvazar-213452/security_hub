@@ -141,7 +141,7 @@
 .img_wifi {
     position: relative;
     width: 100%;
-    background-color: #1e202a;
+    background-color: $bg_color2;
     height: 340px;
 }
 
@@ -255,6 +255,39 @@
     background-color: $bg_color1;
     width: 540px;
     left: 10px;
+}
+
+.div_wifi_all{
+    position: relative;
+    top: -20px;
+    margin-top: 20px;
+    width: 100%;
+    height: 35px;
+    background-color: $bg_color2;
+    border: solid 2px $null;
+    cursor: pointer;
+}
+
+.div_wifi_all:hover{
+    border: solid 2px $orange;
+}
+
+.name_wifi_div_all{
+    position: relative;
+    font-size: 18px;
+    color: $orange;
+    top: 5px;
+    left: 10px;
+    float: left;
+}
+
+.right_left_signal{
+    position: relative;
+    font-size: 18px;
+    color: $grean;
+    top: 5px;
+    left: -10px;
+    float: right;
 }
 
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */

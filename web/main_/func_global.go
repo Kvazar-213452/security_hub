@@ -18,10 +18,8 @@ type WifiInfo struct {
 }
 
 type WifiNetwork struct {
-	SSID           string `json:"ssid"`
-	SignalStrength string `json:"signal_strength"`
-	NetworkType    string `json:"network_type"`
-	Authentication string `json:"authentication"`
+	SSID   string `json:"ssid"`
+	Signal string `json:"signal"`
 }
 
 func Get_Wifi_info() (*WifiInfo, error) {
@@ -73,7 +71,8 @@ func Get_Wifi_info() (*WifiInfo, error) {
 		} else if strings.Contains(line, "Signal") {
 			parts := strings.Split(line, ":")
 			if len(parts) > 1 {
-				wifiInfo.SignalStrength = strings.TrimSpace(parts[1])
+				signal := strings.TrimSpace(parts[1])
+				wifiInfo.SignalStrength = strings.Replace(signal, "%", "", -1)
 			}
 		}
 	}
@@ -86,7 +85,7 @@ func Get_Wifi_info() (*WifiInfo, error) {
 }
 
 func Get_available_Wifi_networks() ([]WifiNetwork, error) {
-	cmd := exec.Command("netsh", "wlan", "show", "network")
+	cmd := exec.Command("netsh", "wlan", "show", "networks", "mode=bssid")
 	output, err := cmd.CombinedOutput()
 	if err != nil {
 		return nil, fmt.Errorf("не вдалося виконати команду: %v", err)
@@ -95,35 +94,46 @@ func Get_available_Wifi_networks() ([]WifiNetwork, error) {
 	lines := strings.Split(string(output), "\n")
 	var networks []WifiNetwork
 	var currentNetwork WifiNetwork
+	var bssidCount int
 
 	for _, line := range lines {
 		line = strings.TrimSpace(line)
+
 		if strings.HasPrefix(line, "SSID") {
+			if currentNetwork.SSID != "" {
+				networks = append(networks, currentNetwork)
+				currentNetwork = WifiNetwork{}
+				bssidCount = 0
+			}
 			parts := strings.Split(line, ":")
 			if len(parts) > 1 {
 				currentNetwork.SSID = strings.TrimSpace(parts[1])
-			}
-		} else if strings.HasPrefix(line, "Signal") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				currentNetwork.SignalStrength = strings.TrimSpace(parts[1])
-			}
-		} else if strings.HasPrefix(line, "Network type") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				currentNetwork.NetworkType = strings.TrimSpace(parts[1])
-			}
-		} else if strings.HasPrefix(line, "Authentication") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				currentNetwork.Authentication = strings.TrimSpace(parts[1])
+			} else {
+				currentNetwork.SSID = ""
 			}
 		}
 
-		if currentNetwork.SSID != "" && currentNetwork.SignalStrength != "" {
-			networks = append(networks, currentNetwork)
-			currentNetwork = WifiNetwork{}
+		if strings.HasPrefix(line, "BSSID") {
+			bssidCount++
 		}
+
+		if strings.HasPrefix(line, "Signal") {
+			if bssidCount == 1 {
+				parts := strings.Split(line, ":")
+				if len(parts) > 1 {
+					currentNetwork.Signal = strings.TrimSpace(parts[1])
+				}
+			} else if bssidCount == 2 {
+				parts := strings.Split(line, ":")
+				if len(parts) > 1 {
+					currentNetwork.Signal = strings.TrimSpace(parts[1])
+				}
+			}
+		}
+	}
+
+	if currentNetwork.SSID != "" {
+		networks = append(networks, currentNetwork)
 	}
 
 	if len(networks) == 0 {

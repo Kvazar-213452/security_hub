@@ -21,7 +21,7 @@ func Post_gagat_network(w http.ResponseWriter, r *http.Request) {
 }
 
 func Post_wifi_network(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodGet {
+	if r.Method == http.MethodPost {
 		networks, err := Get_available_Wifi_networks()
 		if err != nil {
 			http.Error(w, "Помилка отримання інформації про Wi-Fi мережі", http.StatusInternalServerError)

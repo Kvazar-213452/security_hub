@@ -245,6 +245,35 @@
   width: 540px;
   left: 10px; }
 
+.div_wifi_all {
+  position: relative;
+  top: -20px;
+  margin-top: 20px;
+  width: 100%;
+  height: 35px;
+  background-color: #1e202a;
+  border: solid 2px #ffffff00;
+  cursor: pointer; }
+
+.div_wifi_all:hover {
+  border: solid 2px #ff8a2a; }
+
+.name_wifi_div_all {
+  position: relative;
+  font-size: 18px;
+  color: #ff8a2a;
+  top: 5px;
+  left: 10px;
+  float: left; }
+
+.right_left_signal {
+  position: relative;
+  font-size: 18px;
+  color: #54fea6;
+  top: 5px;
+  left: -10px;
+  float: right; }
+
 /* settings page */
 /* settings page */
 /* settings page */

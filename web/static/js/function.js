@@ -59,6 +59,7 @@ function get_data_wifi_now() {
         data: JSON.stringify(null),
         success: function(response) {
             data_wifi_render_now(response)
+            level_wifi_render(response['signal_strength'])
         },
         error: function(xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
@@ -73,7 +74,7 @@ function get_data_wifi_all() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function(response) {
-            console.log("Відповідь сервера:", response);
+            render_all_network_wifi(response);
         },
         error: function(xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
@@ -82,7 +83,6 @@ function get_data_wifi_all() {
 }
 
 function data_wifi_render_now(response) {
-    console.log(response)
     $('#name_wifi').text(response['ssid']);
     $('#authentication_wifi').text(response['authentication']);
     $('#description_wifi').text(response['description']);
@@ -92,13 +92,6 @@ function data_wifi_render_now(response) {
     $('#signal_strength_wifi').text(response['signal_strength']);
     $('#state_wifi').text(response['state']);
 }
-
-
-
-
-
-
-
 
 function max_wifi() {
     $("#signal_1").removeClass("curveOne2");
@@ -116,21 +109,21 @@ function max_wifi() {
 
 
 function level_wifi_render(level) {
-    if (level === 0) {
+    if (level > 90) {
         max_wifi();
 
-    } else if (level === 1) {
+    } else if (level > 75) {
         max_wifi();
         $("#signal_1").removeClass("curveOne1");
         $("#signal_1").addClass("curveOne2");
-    } else if (level === 2) {
+    } else if (level > 50) {
         max_wifi();
         $("#signal_1").removeClass("curveOne1");
         $("#signal_1").addClass("curveOne2");
         
         $("#signal_2").removeClass("curveTwo1");
         $("#signal_2").addClass("curveTwo2");
-    } else if (level === 3) {
+    } else if (level > 25) {
         max_wifi();
         $("#signal_1").removeClass("curveOne1");
         $("#signal_1").addClass("curveOne2");
@@ -140,7 +133,7 @@ function level_wifi_render(level) {
         
         $("#signal_3").removeClass("curveThree1");
         $("#signal_3").addClass("curveThree2");
-    } else if (level === 4) {
+    } else if (level === 0) {
         max_wifi();
         $("#signal_1").removeClass("curveOne1");
         $("#signal_1").addClass("curveOne2");
@@ -156,4 +149,13 @@ function level_wifi_render(level) {
     }
 }
 
-level_wifi_render(2)
+function render_all_network_wifi(response) {
+    console.log(response)
+    for (let i = 0; i < response.length; i++) {
+        let text = `<div class="div_wifi_all">
+        <p class="name_wifi_div_all">${response[i]['ssid']}</p>
+        <p class="right_left_signal">${response[i]['signal']}</p>
+        </div>`;
+        $('#render_all_wifi').append(text);
+    }
+}
