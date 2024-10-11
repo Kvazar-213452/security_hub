@@ -83,7 +83,6 @@ function get_data_wifi_all() {
 
 function data_wifi_render_now(response) {
     console.log(response)
-    $('#wifi_nama_now').text(response['ssid']);
     $('#name_wifi').text(response['ssid']);
     $('#authentication_wifi').text(response['authentication']);
     $('#description_wifi').text(response['description']);
@@ -93,3 +92,68 @@ function data_wifi_render_now(response) {
     $('#signal_strength_wifi').text(response['signal_strength']);
     $('#state_wifi').text(response['state']);
 }
+
+
+
+
+
+
+
+
+function max_wifi() {
+    $("#signal_1").removeClass("curveOne2");
+    $("#signal_1").addClass("curveOne1");
+
+    $("#signal_2").removeClass("curveTwo2");
+    $("#signal_2").addClass("curveTwo1");
+
+    $("#signal_3").removeClass("curveThree2");
+    $("#signal_3").addClass("curveThree1");
+
+    $("#signal_4").removeClass("curveFour2");
+    $("#signal_4").addClass("curveFour1");
+}
+
+
+function level_wifi_render(level) {
+    if (level === 0) {
+        max_wifi();
+
+    } else if (level === 1) {
+        max_wifi();
+        $("#signal_1").removeClass("curveOne1");
+        $("#signal_1").addClass("curveOne2");
+    } else if (level === 2) {
+        max_wifi();
+        $("#signal_1").removeClass("curveOne1");
+        $("#signal_1").addClass("curveOne2");
+        
+        $("#signal_2").removeClass("curveTwo1");
+        $("#signal_2").addClass("curveTwo2");
+    } else if (level === 3) {
+        max_wifi();
+        $("#signal_1").removeClass("curveOne1");
+        $("#signal_1").addClass("curveOne2");
+        
+        $("#signal_2").removeClass("curveTwo1");
+        $("#signal_2").addClass("curveTwo2");
+        
+        $("#signal_3").removeClass("curveThree1");
+        $("#signal_3").addClass("curveThree2");
+    } else if (level === 4) {
+        max_wifi();
+        $("#signal_1").removeClass("curveOne1");
+        $("#signal_1").addClass("curveOne2");
+        
+        $("#signal_2").removeClass("curveTwo1");
+        $("#signal_2").addClass("curveTwo2");
+        
+        $("#signal_3").removeClass("curveThree1");
+        $("#signal_3").addClass("curveThree2");
+
+        $("#signal_").removeClass("curveFour1");
+        $("#signal_").addClass("curveFour2");
+    }
+}
+
+level_wifi_render(2)
