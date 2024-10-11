@@ -13,7 +13,7 @@ function openModal(name) {
 
 function fetchLogs() {
     $.post('/get_logs', function(data) {
-        const logsArray = data.logs.split('\n');
+        const logsArray = data.log.split('\n');
 
         $('.console').html(logsArray.join('<br>'));
     });
@@ -119,8 +119,6 @@ function data_wifi_render_now(response) {
     $('#version_wifi').text(response['version'] || 'N/A');
 }
 
-
-
 function max_wifi() {
     $("#signal_1").removeClass("curveOne2");
     $("#signal_1").addClass("curveOne1");
@@ -134,7 +132,6 @@ function max_wifi() {
     $("#signal_4").removeClass("curveFour2");
     $("#signal_4").addClass("curveFour1");
 }
-
 
 function level_wifi_render(level) {
     if (level > 90) {
@@ -225,9 +222,14 @@ function getConfig() {
         return response.json();
     })
     .then(data => {
-        const configString = data.config;
-        const configObject = JSON.parse(configString);
-        localStorage.setItem('config', JSON.stringify(configObject));
+        console.log(data);
+        let visualization_button = data['visualization'];
+        
+        if (visualization_button === 1) {
+            button_active('visualization1', visualization_mas);
+        } else {
+            button_active('visualization2', visualization_mas);
+        }
     })
     .catch(error => {
         console.error("Помилка при запиті:", error);
@@ -244,10 +246,10 @@ function change_shell(name, button) {
         fff = 0
     }
     const dataToSend = {
-        message: fff // Переконайтеся, що name має правильне значення
+        message: fff
     };
 
-    console.log("Data to send:", dataToSend); // Додайте для перевірки даних перед відправкою
+    console.log("Data to send:", dataToSend);
 
     $.ajax({
         url: '/visualization',
@@ -259,7 +261,7 @@ function change_shell(name, button) {
         },
         error: function(xhr, status, error) {
             console.log("Error: " + error);
-            console.log("Response text:", xhr.responseText); // Виведіть текст відповіді для детальної інформації
+            console.log("Response text:", xhr.responseText);
         }
     });
 }

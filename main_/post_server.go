@@ -1,122 +1,100 @@
 package main_
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"net/http"
+	"os"
+	"time"
 )
 
-type ConfigChange struct {
-	Key   string      `json:"key"`
-	Value interface{} `json:"value"`
+type Config_global struct {
+	Visualization int    `json:"visualization"`
+	Lang          string `json:"lang"`
+	URL           string `json:"url"`
 }
 
-type LogsResponse struct {
-	Logs string `json:"logs"`
+func UpdateVisualization(newVisualization int) error {
+	file, err := os.Open("data/main_config.json")
+	if err != nil {
+		return fmt.Errorf("не вдалося відкрити файл: %w", err)
+	}
+	defer file.Close()
+
+	var config Config_global
+	if err := json.NewDecoder(file).Decode(&config); err != nil {
+		return fmt.Errorf("не вдалося декодувати JSON: %w", err)
+	}
+
+	config.Visualization = newVisualization
+
+	outputFile, err := os.Create("data/main_config.json")
+	if err != nil {
+		return fmt.Errorf("не вдалося створити файл для запису: %w", err)
+	}
+	defer outputFile.Close()
+
+	if err := json.NewEncoder(outputFile).Encode(config); err != nil {
+		return fmt.Errorf("не вдалося закодувати JSON: %w", err)
+	}
+
+	return nil
 }
 
-func Other_server_post_change_config(port string, key string, value interface{}) {
-	data := ConfigChange{
-		Key:   key,
-		Value: value,
-	}
-
-	jsonData, err := json.Marshal(data)
-	if err != nil {
-		fmt.Println("Помилка при перетворенні даних у JSON:", err)
-		return
-	}
-
-	url := "http://localhost" + port + "/change_config"
-
-	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonData))
-	if err != nil {
-		fmt.Println("Помилка при відправці запиту:", err)
-		return
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		fmt.Printf("Помилка: отримано статус %s\n", resp.Status)
-		return
-	}
-
-	fmt.Println("Запит успішно виконано!")
+type LogContent struct {
+	Log string `json:"log"`
 }
 
-func Other_server_post_get_log(w http.ResponseWriter, port string) {
-	url := "http://localhost" + port + "/get_logs"
-
-	resp, err := http.Post(url, "application/json", nil)
+func LoadLogFile() ([]byte, error) {
+	content, err := ioutil.ReadFile("data/main.log")
 	if err != nil {
-		http.Error(w, "Помилка при відправці запиту", http.StatusInternalServerError)
-		return
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		http.Error(w, "Помилка: отримано статус "+resp.Status, resp.StatusCode)
-		return
+		return nil, fmt.Errorf("не вдалося прочитати файл: %w", err)
 	}
 
-	var logsResponse LogsResponse
-	err = json.NewDecoder(resp.Body).Decode(&logsResponse)
+	logContent := LogContent{
+		Log: string(content),
+	}
+
+	jsonData, err := json.Marshal(logContent)
 	if err != nil {
-		http.Error(w, "Помилка при декодуванні відповіді", http.StatusInternalServerError)
-		return
+		return nil, fmt.Errorf("не вдалося закодувати в JSON: %w", err)
 	}
 
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(logsResponse)
+	return jsonData, nil
 }
 
 type Message struct {
 	Massege string `json:"massege"`
 }
 
-func Other_server_post_message(port string, message string) error {
-	url := "http://localhost" + port + "/log_post_message"
+func AppendToLog(message string) error {
+	currentTime := time.Now().Format("2006-01-02 15:04:05")
+	logEntry := fmt.Sprintf("%s || %s\n", message, currentTime)
 
-	data := Message{
-		Massege: message,
-	}
-
-	jsonData, err := json.Marshal(data)
+	file, err := os.OpenFile("data/main.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
-		return fmt.Errorf("помилка при перетворенні даних у JSON: %w", err)
+		return fmt.Errorf("не вдалося відкрити файл: %w", err)
 	}
+	defer file.Close()
 
-	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonData))
-	if err != nil {
-		return fmt.Errorf("помилка при відправці запиту: %w", err)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("помилка: отримано статус %s", resp.Status)
+	if _, err := file.WriteString(logEntry); err != nil {
+		return fmt.Errorf("не вдалося записати у файл: %w", err)
 	}
 
 	return nil
 }
 
-func PostServerConfigGlobal(port string) string {
-	requestBody, err := json.Marshal(nil)
+func LoadConfig_() (*Config_global, error) {
+	file, err := os.Open("data/main_config.json")
 	if err != nil {
-		return ""
+		return nil, fmt.Errorf("не вдалося відкрити файл: %w", err)
+	}
+	defer file.Close()
+
+	var config Config_global
+	if err := json.NewDecoder(file).Decode(&config); err != nil {
+		return nil, fmt.Errorf("не вдалося декодувати JSON: %w", err)
 	}
 
-	resp, err := http.Post("http://localhost"+port+"/config", "application/json", bytes.NewBuffer(requestBody))
-	if err != nil {
-		return ""
-	}
-	defer resp.Body.Close()
-
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return ""
-	}
-
-	return string(body)
+	return &config, nil
 }
