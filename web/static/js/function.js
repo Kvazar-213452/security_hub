@@ -24,26 +24,6 @@ function console_open() {
     $('.console').toggle();
 }
 
-function change_shell(name, button) {
-    button_active(button, visualization_mas);
-    const dataToSend = {
-        message: name
-    };
-
-    $.ajax({
-        url: '/visualization',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(dataToSend),
-        success: function(response) {
-            console.log("Server response: " + response);
-        },
-        error: function(error) {
-            console.log("Error: " + error);
-        }
-    });
-}
-
 function button_active(name, mas) {
     mas.forEach(function(item) {
         $("#" + item).css({
@@ -226,6 +206,60 @@ function get_network_now(callback) {
         },
         error: function(xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function getConfig() {
+    return fetch('/config_global', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(null)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const configString = data.config;
+        const configObject = JSON.parse(configString);
+        localStorage.setItem('config', JSON.stringify(configObject));
+    })
+    .catch(error => {
+        console.error("Помилка при запиті:", error);
+        throw error;
+    });
+}
+
+function change_shell(name, button) {
+    button_active(button, visualization_mas);
+    let fff = null
+    if (name === true) {
+        fff = 1
+    } else {
+        fff = 0
+    }
+    const dataToSend = {
+        message: fff // Переконайтеся, що name має правильне значення
+    };
+
+    console.log("Data to send:", dataToSend); // Додайте для перевірки даних перед відправкою
+
+    $.ajax({
+        url: '/visualization',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(dataToSend),
+        success: function(response) {
+            console.log("Server response: " + response);
+        },
+        error: function(xhr, status, error) {
+            console.log("Error: " + error);
+            console.log("Response text:", xhr.responseText); // Виведіть текст відповіді для детальної інформації
         }
     });
 }

@@ -53,12 +53,7 @@ func Render_settings_page(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	pageVariables := map[string]interface{}{
-		"visualization": true,
-		"lang":          "uk",
-	}
-
-	err = tmpl.ExecuteTemplate(w, "settings.pug", pageVariables)
+	err = tmpl.ExecuteTemplate(w, "settings.pug", nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}

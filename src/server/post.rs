@@ -48,9 +48,13 @@ pub fn config_post() -> impl Filter<Extract = impl warp::Reply, Error = warp::Re
     warp::path("config")
         .and(warp::post())
         .map(|| {
-            let config = std::fs::read_to_string(config::DATA_CONFIG)
+            let config_content = fs::read_to_string(config::DATA_CONFIG)
                 .unwrap_or_else(|_| String::from("Не вдалося прочитати файл"));
-            let response = json!({ "config": config });
+
+            let config: serde_json::Value = serde_json::from_str(&config_content)
+                .unwrap_or_else(|_| json!({}));
+
+            let response = json!([config]);
             warp::reply::with_status(warp::reply::json(&response), StatusCode::OK)
         })
 }

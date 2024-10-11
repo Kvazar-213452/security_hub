@@ -5,9 +5,14 @@ use std::io;
 use std::fs::OpenOptions;
 use chrono::Local;
 
+use serde::{Deserialize, Serialize};
+use serde_json::Error;
+use std::fs::File;
+use std::io::BufReader;
+
 use crate::config;
 
-pub fn start_acwa() -> Result<Child, String> {
+pub fn start_acwa() -> std::result::Result<Child, String> {
     let child = Command::new(config::SHELL_WEB_CORE)
         .spawn()
         .map_err(|e| format!("Не вдалося запустити ACWA.exe: {}", e))?;
@@ -16,16 +21,16 @@ pub fn start_acwa() -> Result<Child, String> {
     Ok(child)
 }
 
-pub fn write_article(port: &str) -> Result<(), String> {
+pub fn write_article(port: &str) -> std::result::Result<(), String> {
     let article_content = format!(
         r#"name = {}
 window_h = {}
 window_w = {}
 html = <style>iframe{{position: fixed;height: 100%;width: 100%;top: 0%;left: 0%;}}</style><iframe src="http://127.0.0.1:{}" frameborder="0"></iframe>"#,
-    config::NAME_WINDOWS_CORE, 
-    config::H_WINDOWS_CORE, 
-    config::W_WINDOWS_CORE, 
-    port
+        config::NAME_WINDOWS_CORE,
+        config::H_WINDOWS_CORE,
+        config::W_WINDOWS_CORE,
+        port
     );
 
     let mut file = fs::File::create(config::START_FILE_CORE)
@@ -62,5 +67,29 @@ pub fn log_message_add(message: &str) -> io::Result<()> {
 
     file.write_all(log_entry.as_bytes())?;
     
+    Ok(())
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MainConfig {
+    pub visualization: u32,
+    pub lang: String,
+    pub url: String,
+}
+
+pub fn load_config(file_path: &str) -> std::result::Result<MainConfig, Error> {
+    let file = File::open(file_path).expect("Не вдалося відкрити файл");
+    let reader = BufReader::new(file);
+    let config: MainConfig = serde_json::from_reader(reader)?;
+    Ok(config)
+}
+
+pub fn update_visualization(file_path: &str, new_value: &str) -> std::result::Result<(), Error> {
+    let mut config = load_config(file_path)?;
+
+    config.url = new_value.to_string();
+
+    let file = File::create(file_path).expect("Не вдалося створити файл");
+    serde_json::to_writer(file, &config)?;
     Ok(())
 }

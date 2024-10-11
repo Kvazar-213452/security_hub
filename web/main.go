@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+
 	config := main_.LoadConfig("config.toml")
 	port := fmt.Sprintf(":%d", config.Port)
 
@@ -22,6 +23,8 @@ func main() {
 	http.HandleFunc("/get_wifi", main_.Post_wifi_network)
 	http.HandleFunc("/get_logs", main_.Post_server_fet_log)
 	http.HandleFunc("/network_now", main_.Post_network_now)
+	http.HandleFunc("/config_global", main_.Post_config_global)
+	http.HandleFunc("/visualization", main_.Post_config_change)
 
 	fmt.Printf("Сервер працює на порту %d\n", config.Port)
 	http.ListenAndServe(port, nil)

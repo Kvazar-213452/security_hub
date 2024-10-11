@@ -25,19 +25,12 @@
                     <br>
                 </div>
                 <div class="settings_div">
-                    <p class="settings_main_tetx">Мова</p>
-                    <br>
-                    <button onclick="change_lang('uk')" id="uk" class="button_settings">Українська</button>
-                    <button onclick="change_lang('en')" id="en" class="button_settings">English</button>
-                    <br><br>
-                </div>
-                <div class="settings_div">
                     <p class="settings_main_tetx">Для розробників</p>
                     <br>
-                    <p>Щоб відкрити консоль для того шоб дивитись консоль flask натисніть на клавішу клавіатури "]"</p>
+                    <p>Щоб відкрити Логи натисніть на клавішу клавіатури "]"</p>
                     <br>
-                    <button onclick="fetchLogs()" class="button_settings_one">Загрузити логи</button>
-                    <br><br>
+                    <p>Логи перезавантажуються при натиснані на клавішу клавіатури "]"</p>
+                    <br>
                 </div>
                 <div class="settings_div">
                     <p class="settings_main_tetx">Встановити свою тему</p>
@@ -50,19 +43,20 @@
             </div>
         </div>
    </body>
-    <script>
-        let visualization_button = {{ .visualization}};
-    </script>
     <script src="/static/jquery.min.js"></script>
     <script src="/static/js/let.js"></script>
     <script src="/static/js/function.js"></script>
     <script src="/static/js/keydown.js"></script>
     <script src="/static/js/ready.js"></script>
+
+    <script>
+        getConfig();
+
+        const cachedConfig = JSON.parse(localStorage.getItem('config'));
+        let visualization_button = cachedConfig[0]['visualization'];
+    </script>
     <script>
         button_hover("btn3");
-
-        let lang = "{{ .lang}}";
-        button_active(lang, leng_mas)
 
         if (visualization_button) {
             button_active('visualization1', visualization_mas);

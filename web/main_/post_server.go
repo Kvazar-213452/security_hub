@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -98,4 +99,24 @@ func Other_server_post_message(port string, message string) error {
 	}
 
 	return nil
+}
+
+func PostServerConfigGlobal(port string) string {
+	requestBody, err := json.Marshal(nil)
+	if err != nil {
+		return ""
+	}
+
+	resp, err := http.Post("http://localhost"+port+"/config", "application/json", bytes.NewBuffer(requestBody))
+	if err != nil {
+		return ""
+	}
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return ""
+	}
+
+	return string(body)
 }
