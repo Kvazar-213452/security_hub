@@ -1,0 +1,57 @@
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+       <title>SPX</title>
+       <link rel="stylesheet" href="/static/css/main.css"/>
+       <link rel="stylesheet" href="/static/css/global.css"/>
+   </head>
+   <body>
+        {{template "menu.html" .}}
+        {{template "console.html" .}}
+        <div class="main">
+            <div class="main_div">
+                <div class="wifi_sqd">
+                    <div class="img_wifi">
+                        <div class="container">
+                            <div class="signal">
+                              <div id="signal_1" class="curveOne1"></div>
+                              <div id="signal_2" class="curveTwo1"></div>
+                              <div id="signal_3" class="curveThree1"></div>
+                              <div id="signal_4" class="curveFour1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="div_wifi_info">
+                        <div class="padoge">
+                            <div id="info_wifi_div"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wifi_all_div">
+                    <div id="render_all_wifi" class="padoge"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="modal2"> 
+            <div class="modal-content2">
+                <span class="close" onclick="clos('modal2')">&times;</span>
+                <p class="modal_main_tetx">Створення карти</p>
+                <input id="name" type="text">
+                <button onclick="create_prg_map()">ddddd</button>
+            </div>
+        </div> 
+
+   </body>
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/js/let.js"></script>
+    <script src="/static/js/function.js"></script>
+    <script src="/static/js/keydown.js"></script>
+    <script src="/static/js/ready.js"></script>
+    <script>
+        button_hover("btn1");
+        get_data_wifi_now();
+        get_data_wifi_all();
+    </script>
+</html> 
