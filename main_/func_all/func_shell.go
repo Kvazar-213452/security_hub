@@ -3,6 +3,7 @@ package func_all
 import (
 	"encoding/json"
 	"fmt"
+	config_main "head/main_/config"
 	"net"
 	"os"
 	"os/exec"
@@ -16,6 +17,7 @@ type Config_global struct {
 	Visualization int    `json:"visualization"`
 	Lang          string `json:"lang"`
 	URL           string `json:"url"`
+	Port          int    `json:"port"`
 }
 
 func LoadConfig_start(filename string) (Config_global, error) {
@@ -45,12 +47,9 @@ func FindFreePort() int {
 }
 
 func Write_config_core(port string) {
-	content := `name = Security Hub
-window_h = 800
-window_w = 1000
-html = <style>iframe{position: fixed;height: 100%;width: 100%;top: 0%;left: 0%;}</style><iframe src="http://127.0.0.1` + port + `" frameborder="0"></iframe>`
+	content := config_main.Core_web_config_content(port)
 
-	file, err := os.OpenFile("start_conf.log", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
+	file, err := os.OpenFile(config_main.Core_web_config, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
 	if err != nil {
 		fmt.Printf("Помилка відкриття файлу: %v\n", err)
 		return
@@ -65,7 +64,7 @@ html = <style>iframe{position: fixed;height: 100%;width: 100%;top: 0%;left: 0%;}
 }
 
 func StartShellWeb() *exec.Cmd {
-	cmd := exec.Command("./shell_web.exe")
+	cmd := exec.Command(config_main.Core_web)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
@@ -107,7 +106,7 @@ func AppendToLog(message string) error {
 	currentTime := time.Now().Format("2006-01-02 15:04:05")
 	logEntry := fmt.Sprintf("%s || %s\n", message, currentTime)
 
-	file, err := os.OpenFile("data/main.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	file, err := os.OpenFile(config_main.Log_file, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return fmt.Errorf("не вдалося відкрити файл: %w", err)
 	}
@@ -121,7 +120,7 @@ func AppendToLog(message string) error {
 }
 
 func UpdateVisualization(newVisualization string, key string) error {
-	file, err := os.Open("data/main_config.json")
+	file, err := os.Open(config_main.Main_config)
 	if err != nil {
 		return fmt.Errorf("не вдалося відкрити файл: %w", err)
 	}
@@ -143,7 +142,7 @@ func UpdateVisualization(newVisualization string, key string) error {
 		config.URL = newVisualization
 	}
 
-	outputFile, err := os.Create("data/main_config.json")
+	outputFile, err := os.Create(config_main.Main_config)
 	if err != nil {
 		return fmt.Errorf("не вдалося створити файл для запису: %w", err)
 	}

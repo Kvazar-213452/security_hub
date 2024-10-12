@@ -1,11 +1,15 @@
 package main_
 
 import (
+	"head/main_/func_all"
 	"html/template"
 	"net/http"
+	"os"
 )
 
 func Render_index_page(w http.ResponseWriter, r *http.Request) {
+	func_all.AppendToLog("transition to /index")
+
 	tmpl, err := template.ParseFiles(
 		"templates/html/menu.html",
 		"templates/html/console.html",
@@ -24,6 +28,8 @@ func Render_index_page(w http.ResponseWriter, r *http.Request) {
 }
 
 func Render_about_page(w http.ResponseWriter, r *http.Request) {
+	func_all.AppendToLog("transition to /about")
+
 	tmpl, err := template.ParseFiles(
 		"templates/html/menu.html",
 		"templates/html/console.html",
@@ -42,6 +48,8 @@ func Render_about_page(w http.ResponseWriter, r *http.Request) {
 }
 
 func Render_settings_page(w http.ResponseWriter, r *http.Request) {
+	func_all.AppendToLog("transition to /settings")
+
 	tmpl, err := template.ParseFiles(
 		"templates/html/menu.html",
 		"templates/html/console.html",
@@ -60,6 +68,8 @@ func Render_settings_page(w http.ResponseWriter, r *http.Request) {
 }
 
 func Render_system_page(w http.ResponseWriter, r *http.Request) {
+	func_all.AppendToLog("transition to /system")
+
 	tmpl, err := template.ParseFiles(
 		"templates/html/menu.html",
 		"templates/html/console.html",
@@ -75,4 +85,10 @@ func Render_system_page(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
+}
+
+func Post_off_app(w http.ResponseWriter, r *http.Request) {
+	func_all.AppendToLog("transition to /off_app")
+
+	os.Exit(0)
 }

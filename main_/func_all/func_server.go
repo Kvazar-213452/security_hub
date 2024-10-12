@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	config_main "head/main_/config"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -235,7 +236,7 @@ func GetConnectedSSID() string {
 }
 
 func LoadLogFile() ([]byte, error) {
-	content, err := ioutil.ReadFile("data/main.log")
+	content, err := ioutil.ReadFile(config_main.Log_file)
 	if err != nil {
 		return nil, fmt.Errorf("не вдалося прочитати файл: %w", err)
 	}
@@ -253,7 +254,7 @@ func LoadLogFile() ([]byte, error) {
 }
 
 func LoadConfig() (*Config_global, error) {
-	file, err := os.Open("data/main_config.json")
+	file, err := os.Open(config_main.Main_config)
 	if err != nil {
 		return nil, fmt.Errorf("не вдалося відкрити файл: %w", err)
 	}

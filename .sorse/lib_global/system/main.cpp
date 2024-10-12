@@ -4,7 +4,7 @@
 
 extern "C" {
     __declspec(dllexport) const char* GetSystemMemory() {
-        static std::string result;  // Статична змінна, щоб уникнути повернення тимчасового рядка
+        static std::string result;
         MEMORYSTATUSEX memInfo;
         memInfo.dwLength = sizeof(MEMORYSTATUSEX);
         GlobalMemoryStatusEx(&memInfo);

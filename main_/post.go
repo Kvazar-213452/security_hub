@@ -13,6 +13,8 @@ type VisualizationMessage struct {
 
 func Post_gagat_network(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/get_wifi_now post")
+
 		wifiInfo, err := func_all.Get_Wifi_info()
 		if err != nil {
 			http.Error(w, "Помилка отримання інформації про Wi-Fi", http.StatusInternalServerError)
@@ -28,6 +30,7 @@ func Post_gagat_network(w http.ResponseWriter, r *http.Request) {
 
 func Post_wifi_network(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/get_wifi post")
 		networks, err := func_all.Get_available_Wifi_networks()
 		if err != nil {
 			http.Error(w, "Помилка отримання інформації про Wi-Fi мережі", http.StatusInternalServerError)
@@ -43,6 +46,8 @@ func Post_wifi_network(w http.ResponseWriter, r *http.Request) {
 
 func Post_server_fet_log(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/get_logs post")
+
 		jsonData, err := func_all.LoadLogFile()
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -58,6 +63,8 @@ func Post_server_fet_log(w http.ResponseWriter, r *http.Request) {
 
 func Post_network_now(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/network_now post")
+
 		ssid := func_all.GetConnectedSSID()
 
 		w.Header().Set("Content-Type", "application/json")
@@ -71,6 +78,8 @@ func Post_network_now(w http.ResponseWriter, r *http.Request) {
 
 func Post_config_global(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/config_global post")
+
 		config, err := func_all.LoadConfig()
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -91,6 +100,8 @@ func Post_config_global(w http.ResponseWriter, r *http.Request) {
 
 func Post_config_change(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/visualization change post")
+
 		var msg VisualizationMessage
 
 		if err := json.NewDecoder(r.Body).Decode(&msg); err != nil {

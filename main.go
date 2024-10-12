@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"head/main_"
+	config_main "head/main_/config"
 	"head/main_/func_all"
 	"net/http"
 	"os/exec"
@@ -10,13 +11,19 @@ import (
 )
 
 func main() {
-	config, err := func_all.LoadConfig_start(main_.Main_config)
+	config, err := func_all.LoadConfig_start(config_main.Main_config)
 	if err != nil {
 		fmt.Printf("Не вдалося завантажити конфігурацію: %v\n", err)
 		return
 	}
 
-	port := func_all.FindFreePort()
+	var port int
+	if config.Port == 0 {
+		port = func_all.FindFreePort()
+	} else {
+		port = config.Port
+	}
+
 	portStr := ":" + strconv.Itoa(port)
 
 	var cmd *exec.Cmd
@@ -27,11 +34,12 @@ func main() {
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	// Page
+	// get
 	http.HandleFunc("/", main_.Render_index_page)
 	http.HandleFunc("/about", main_.Render_about_page)
 	http.HandleFunc("/settings", main_.Render_settings_page)
 	http.HandleFunc("/system", main_.Render_system_page)
+	http.HandleFunc("/off_app", main_.Post_off_app)
 
 	// Post
 	http.HandleFunc("/get_wifi_now", main_.Post_gagat_network)
