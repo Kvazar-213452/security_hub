@@ -10,3 +10,6 @@ if int(let) == 0:
 elif int(let) == 1:
     os.system("node-sass web/static/prefab/main.scss web/static/css/main.css")
     os.system("node-sass web/static/prefab/global.scss web/static/css/global.css")
+elif int(let) == 2:
+    os.system("go build -o main.exe main.go")
+    os.system(r"main.exe")
