@@ -15,7 +15,7 @@ import (
 
 type Config_global struct {
 	Visualization int    `json:"visualization"`
-	Lang          string `json:"lang"`
+	Log           int    `json:"log"`
 	URL           string `json:"url"`
 	Port          int    `json:"port"`
 }
@@ -103,20 +103,31 @@ func StartShellWeb() *exec.Cmd {
 }
 
 func AppendToLog(message string) error {
-	currentTime := time.Now().Format("2006-01-02 15:04:05")
-	logEntry := fmt.Sprintf("%s || %s\n", message, currentTime)
+	config, err := LoadConfig_start(config_main.Main_config)
 
-	file, err := os.OpenFile(config_main.Log_file, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
-		return fmt.Errorf("не вдалося відкрити файл: %w", err)
-	}
-	defer file.Close()
-
-	if _, err := file.WriteString(logEntry); err != nil {
-		return fmt.Errorf("не вдалося записати у файл: %w", err)
+		fmt.Printf("Не вдалося завантажити конфігурацію: %v\n", err)
+		return nil
 	}
 
-	return nil
+	if config.Log == 1 {
+		currentTime := time.Now().Format("2006-01-02 15:04:05")
+		logEntry := fmt.Sprintf("%s || %s\n", message, currentTime)
+
+		file, err := os.OpenFile(config_main.Log_file, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		if err != nil {
+			return fmt.Errorf("не вдалося відкрити файл: %w", err)
+		}
+		defer file.Close()
+
+		if _, err := file.WriteString(logEntry); err != nil {
+			return fmt.Errorf("не вдалося записати у файл: %w", err)
+		}
+
+		return nil
+	} else {
+		return nil
+	}
 }
 
 func UpdateVisualization(newVisualization string, key string) error {
