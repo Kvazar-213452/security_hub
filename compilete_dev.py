@@ -8,8 +8,8 @@ if int(let) == 0:
     os.system(f'git commit -m "{name}"')
     os.system("git push")
 elif int(let) == 1:
-    os.system("node-sass web/static/prefab/main.scss web/static/css/main.css")
-    os.system("node-sass web/static/prefab/global.scss web/static/css/global.css")
+    os.system("node-sass static/prefab/main.scss static/css/main.css")
+    os.system("node-sass static/prefab/global.scss static/css/global.css")
 elif int(let) == 2:
     os.system("go build -o main.exe main.go")
     os.system(r"main.exe")

@@ -1,25 +1,24 @@
 @import 'config';
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
     background-color: #17181f;
-    font-family: "Pixelify Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     color: $text_color;
     overflow-y: hidden;
     overflow-x: hidden;
 }
 
-a{color: $text_color;}
+a {color: $text_color;}
 
-.sin{
-    color: $null;
-}
+.sin {color: $null;}
 
-*{
+* {
     margin: 0;
     padding: 0;
-    font-family: "Pixelify Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
+
 
 .console{
     position: absolute;

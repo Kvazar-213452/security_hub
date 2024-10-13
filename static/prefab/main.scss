@@ -4,26 +4,43 @@
     position: fixed;
     width: 100%;
     height: 50px;
+    background-color: $bg_color;
 }
 
-.button{
+
+
+.button {
+    font-weight: bold;
+    transition: all .3s;
     position: relative;
     float: left;
-    top: 10px;
+    top: 12px;
     font-size: 17px;
     margin-left: 20px;
     cursor: pointer;
     height: 22px;
+    color: $text_color;
 }
 
-.button:hover{
-    color: $orange;
-    border-bottom: 2px solid $orange;
+.button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: $orange;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
+
+.button:hover::after {transform: scaleX(1); }
+
+.button:hover {color: $orange;}
 
 .main{
     position: fixed;
-    top: 50px;
+    top: 55px;
     height: 100%;
     width: 100%;
 }
@@ -145,6 +162,7 @@
     width: 100%;
     background-color: $bg_color2;
     height: 340px;
+    border-radius: 5px;
 }
 
 .div_wifi_info{
@@ -153,20 +171,21 @@
     background-color: $bg_color1;
     height: calc(100% - 440px);
     overflow: auto;
+    border-radius: 5px;
 }
 
-.padoge{
-    padding: 20px;
-}
+.padoge{padding: 20px;}
 
 .info_wifi_{
-    font-size: 20px;
+    font-weight: bold;
+    font-size: 16px;
     color: $orange;
 }
 
 .info_graan{
+    font-weight: normal;
     color: $grean;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .container{
@@ -260,9 +279,11 @@
     left: 10px;
     height: 100%;
     overflow-y: auto;
+    border-radius: 5px;
 }
 
 .div_wifi_all{
+    font-weight: bold;
     position: relative;
     top: -20px;
     margin-top: 20px;
@@ -271,6 +292,8 @@
     background-color: $bg_color2;
     border: solid 2px $null;
     cursor: pointer;
+    transition: all .3s;
+    border-radius: 5px;
 }
 
 .div_wifi_all:hover{
@@ -279,18 +302,18 @@
 
 .name_wifi_div_all{
     position: relative;
-    font-size: 18px;
+    font-size: 16px;
     color: $orange;
-    top: 5px;
+    top: 8px;
     left: 10px;
     float: left;
 }
 
 .right_left_signal{
     position: relative;
-    font-size: 18px;
+    font-size: 15px;
     color: $grean;
-    top: 5px;
+    top: 9px;
     left: -10px;
     float: right;
 }
