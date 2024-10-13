@@ -47,6 +47,7 @@ function get_data_wifi_now() {
         success: function(response) {
             data_wifi_render_now(response)
             level_wifi_render(response['signal_strength'])
+            checkUnsafeProtocols();
         },
         error: function(xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
@@ -72,32 +73,6 @@ function get_data_wifi_all() {
 }
 
 function data_wifi_render_now(response) {
-    $('#info_wifi_div').html(null);
-    
-    let text = `
-    <p class="info_wifi_">SSID: <span id="name_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Authentication: <span id="authentication_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Description: <span id="description_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">GUID: <span id="guid_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Physical Address: <span id="physical_address_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Radio Type: <span id="radio_type_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Signal Strength: <span id="signal_strength_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">State: <span id="state_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Cost: <span id="cost_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Ciphers: <span id="ciphers_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Key Content: <span id="key_content_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Profile Name: <span id="profile_name_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Cost Source: <span id="cost_source_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Approaching Limit: <span id="approaching_limit_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Congested: <span id="congested_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Over Limit: <span id="over_limit_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Roaming: <span id="roaming_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Vendor Extension: <span id="vendor_extension_wifi" class="info_graan"></span></p>
-    <p class="info_wifi_">Version: <span id="version_wifi" class="info_graan"></span></p>
-    `;
-
-    $('#info_wifi_div').append(text);
-    
     $('#name_wifi').text(response['ssid_name'] || 'N/A');
     $('#authentication_wifi').text(response['authentication'] || 'N/A');
     $('#description_wifi').text(response['description'] || 'N/A');
@@ -131,6 +106,21 @@ function max_wifi() {
 
     $("#signal_4").removeClass("curveFour2");
     $("#signal_4").addClass("curveFour1");
+}
+
+function checkUnsafeProtocols() {
+    const text = $("#ciphers_wifi").text();
+
+    if (text) {
+        for (const protocol of unsafeProtocols) {
+            if (text.includes(protocol)) {
+                $("#wifi_protection").html(`<p class="wifi_3_div_red">Незахищено</p>`);
+                break;
+            }
+        }
+    }
+
+    $("#wifi_protection").html(`<p class="wifi_3_div">Захищено</p>`);
 }
 
 function level_wifi_render(level) {

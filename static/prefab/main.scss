@@ -2,45 +2,43 @@
 
 .menu{
     position: fixed;
-    width: 100%;
-    height: 50px;
-    background-color: $bg_color;
+    width: 260px;
+    height: 100%;
+    background-color: $bg_color4;
 }
-
-
 
 .button {
-    font-weight: bold;
-    transition: all .3s;
     position: relative;
-    float: left;
-    top: 12px;
-    font-size: 17px;
-    margin-left: 20px;
+    width: calc(100% - 4px);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    left: 0%;
+    transition: all .3s;
     cursor: pointer;
     height: 22px;
-    color: $text_color;
+    border: solid 2px $null;
+    
+    p {
+        position: relative;
+        font-weight: bold;
+        left: 15px;
+        font-size: 18px;
+        color: $text_color;
+    }
 }
 
-.button::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 2px;
-    background-color: $orange;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+.button:hover {
+    background-color: #17191f;
+    border: solid 2px $orange;
+    
+    p {
+        color: $orange;
+    }
 }
-
-.button:hover::after {transform: scaleX(1); }
-
-.button:hover {color: $orange;}
 
 .main{
     position: fixed;
-    top: 55px;
+    left: 270px;
     height: 100%;
     width: 100%;
 }
@@ -147,6 +145,21 @@
 /* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
 /* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
 
+.wifi_main_content{
+    position: absolute;
+    left: 390px;
+}
+
+.wifi_3_div{color: $blue;}
+
+.wifi_3_div,
+.wifi_3_div_red{
+    color: $blue;
+    font-weight: bold;
+}
+
+.wifi_3_div_red{color: $read;}
+
 .main_text_wifi {
     font-size: 40px;
     color: $grean;
@@ -183,6 +196,8 @@
 }
 
 .info_graan{
+    position: absolute;
+    left: 230px;
     font-weight: normal;
     color: $grean;
     font-size: 16px;

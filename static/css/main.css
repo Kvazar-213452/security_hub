@@ -1,41 +1,33 @@
 .menu {
   position: fixed;
-  width: 100%;
-  height: 50px;
-  background-color: #17181f; }
+  width: 260px;
+  height: 100%;
+  background-color: #1d1e27; }
 
 .button {
-  font-weight: bold;
-  transition: all .3s;
   position: relative;
-  float: left;
-  top: 12px;
-  font-size: 17px;
-  margin-left: 20px;
+  width: calc(100% - 4px);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  left: 0%;
+  transition: all .3s;
   cursor: pointer;
   height: 22px;
-  color: #ffffffd4; }
-
-.button::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 2px;
-  background-color: #ff8a2a;
-  transform: scaleX(0);
-  transition: transform 0.3s ease; }
-
-.button:hover::after {
-  transform: scaleX(1); }
+  border: solid 2px #ffffff00; }
+  .button p {
+    position: relative;
+    font-weight: bold;
+    left: 15px;
+    font-size: 18px;
+    color: #ffffffd4; }
 
 .button:hover {
-  color: #ff8a2a; }
+  background-color: #17191f;
+  border: solid 2px #ff8a2a; }
 
 .main {
   position: fixed;
-  top: 55px;
+  left: 270px;
   height: 100%;
   width: 100%; }
 
@@ -146,6 +138,21 @@
 /* index page */
 /* index page */
 /* index page */
+.wifi_main_content {
+  position: absolute;
+  left: 390px; }
+
+.wifi_3_div {
+  color: #506aff; }
+
+.wifi_3_div,
+.wifi_3_div_red {
+  color: #506aff;
+  font-weight: bold; }
+
+.wifi_3_div_red {
+  color: #ff5c5c; }
+
 .main_text_wifi {
   font-size: 40px;
   color: #54fea6;
@@ -179,6 +186,8 @@
   color: #ff8a2a; }
 
 .info_graan {
+  position: absolute;
+  left: 230px;
   font-weight: normal;
   color: #54fea6;
   font-size: 16px; }
