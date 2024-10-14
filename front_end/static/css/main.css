@@ -14,7 +14,7 @@
   font-size: 22px;
   font-weight: bold;
   color: #506aff;
-  background-color: #17191f;
+  background-color: #121318;
   height: 45px; }
   .ddqwdqwd p {
     position: relative;
@@ -25,7 +25,7 @@
   position: relative;
   height: 45px;
   width: 45px;
-  background-color: #17191f;
+  background-color: #17181f;
   float: left;
   margin-right: 35px;
   border-radius: 10px;
@@ -55,18 +55,17 @@
   height: 50px;
   left: 0%;
   transition: all .3s;
-  cursor: pointer; }
+  cursor: pointer;
+  color: #ffffffd4; }
   .button p {
     position: relative;
     font-weight: bold;
     left: 19px;
     font-size: 18px;
-    top: 15px;
-    color: #ffffffd4; }
+    top: 15px; }
   .button:hover {
-    background-color: #17191f; }
-    .button:hover p {
-      color: #506aff; }
+    background-color: #17181f;
+    color: #506aff; }
   .button img {
     height: 27px;
     position: relative;
@@ -159,7 +158,7 @@
 .about_div::-webkit-scrollbar,
 .div_wifi_info::-webkit-scrollbar {
   width: 11px;
-  background-color: #17191f; }
+  background-color: #17181f; }
 
 .console::-webkit-scrollbar-thumb,
 .main_div::-webkit-scrollbar-thumb,
@@ -193,11 +192,11 @@
   left: 390px; }
 
 .wifi_3_div {
-  color: #ff8a2a; }
+  color: #506aff; }
 
 .wifi_3_div,
 .wifi_3_div_red {
-  color: #ff8a2a;
+  color: #506aff;
   font-weight: bold; }
 
 .wifi_3_div_red {
@@ -479,8 +478,9 @@
 /* system page */
 .system_div_os {
   position: relative;
-  width: calc(100% - 500px);
+  width: 500px;
   height: 370px;
+  border-radius: 10px;
   background-color: #1e202a; }
 
 .img_os {
@@ -494,7 +494,22 @@
 .div_system_info {
   position: relative;
   background-color: #111218;
-  width: 540px;
-  height: 100%;
+  width: 500px;
+  height: 100vh;
   overflow-y: auto;
+  border-radius: 10px;
   top: 10px; }
+
+.wddxxq {
+  position: relative;
+  float: left; }
+
+.imfowdwqdd {
+  position: relative;
+  background-color: #111218;
+  width: calc(100% - 510px);
+  height: 100%;
+  left: 10px;
+  overflow-y: auto;
+  border-radius: 10px;
+  float: right; }

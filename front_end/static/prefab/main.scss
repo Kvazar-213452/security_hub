@@ -17,8 +17,8 @@
     position: relative;
     font-size: 22px;
     font-weight: bold;
-    color: $orange; 
-    background-color: #17191f;
+    color: $blue; 
+    background-color: $bg_color5;
     height: 45px;
 
     p {
@@ -32,7 +32,7 @@
     position: relative;
     height: 45px;
     width: 45px;
-    background-color: #17191f;
+    background-color: $bg_color;
     float: left;
     margin-right: 35px;
     border-radius: 10px;
@@ -47,7 +47,7 @@
     bottom: 0px;
     height: 70px;
     width: 100%;
-    background-color: #121318;
+    background-color: $bg_color5;
 }
 
 .img_menu{
@@ -66,6 +66,7 @@
     left: 0%;
     transition: all .3s;
     cursor: pointer;
+    color: $text_color;
     
     p {
         position: relative;
@@ -73,13 +74,11 @@
         left: 19px;
         font-size: 18px;
         top: 15px;
-        color: $text_color;
     }
 
     &:hover {
-        background-color: #17191f;
-        
-        p {color: $orange;}
+        background-color: $bg_color;
+        color: $blue;
     }
 
     img {
@@ -183,7 +182,7 @@
 .about_div::-webkit-scrollbar,
 .div_wifi_info::-webkit-scrollbar{
   width: 11px;
-  background-color: #17191f; 
+  background-color: $bg_color; 
 }
 
 .console::-webkit-scrollbar-thumb,
@@ -248,7 +247,7 @@
 .info_wifi_{
     font-weight: bold;
     font-size: 16px;
-    color: $orange;
+    color: $blue;
 }
 
 .info_graan{
@@ -367,14 +366,14 @@
     border-radius: 5px;
 
     &:hover{
-        border: solid 2px $orange;
+        border: solid 2px $blue;
     }
 }
 
 .name_wifi_div_all{
     position: relative;
     font-size: 16px;
-    color: $orange;
+    color: $blue;
     top: 8px;
     left: 10px;
     float: left;
@@ -402,7 +401,7 @@
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
-    color: $orange;
+    color: $blue;
 }
 
 .settings_div{
@@ -463,7 +462,7 @@
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
-    color: $orange;
+    color: $blue;
 }
 
 /* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
@@ -472,8 +471,9 @@
 
 .system_div_os{
     position: relative;
-    width: calc(100% - 500px);
+    width: 500px;
     height: 370px;
+    border-radius: 10px;
     background-color: $bg_color2;
 }
 
@@ -489,8 +489,25 @@
 .div_system_info{
     position: relative;
     background-color: $bg_color1;
-    width: 540px;
+    width: 500px;
     height: 100%;
     overflow-y: auto;
+    border-radius: 10px;
     top: 10px;
+}
+
+.wddxxq{
+    position: relative;
+    float: left;
+}
+
+.imfowdwqdd{
+    position: relative;
+    background-color: $bg_color1;
+    width: calc(100% - 510px);
+    height: 100%;
+    left: 10px;
+    overflow-y: auto;
+    border-radius: 10px;
+    float: right;
 }

@@ -11,6 +11,7 @@ import (
 	"strconv"
 	"syscall"
 	"time"
+	"unsafe"
 )
 
 type Config_global struct {
@@ -164,4 +165,26 @@ func UpdateVisualization(newVisualization string, key string) error {
 	}
 
 	return nil
+}
+
+func CallDLLFunction(proc *syscall.LazyProc, infoType string) string {
+	ret, _, _ := proc.Call()
+	result := BytePtrToString((*byte)(unsafe.Pointer(ret)))
+
+	return result
+}
+
+func BytePtrToString(ptr *byte) string {
+	if ptr == nil {
+		return ""
+	}
+	slice := make([]byte, 0)
+	for {
+		if *ptr == 0 {
+			break
+		}
+		slice = append(slice, *ptr)
+		ptr = (*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(ptr)) + 1))
+	}
+	return string(slice)
 }

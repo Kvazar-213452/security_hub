@@ -1,6 +1,6 @@
 function button_hover(name) {
-    $("#" + name).css("border-bottom", "2px solid #ff8a2a");
-    $("#" + name).css("color", "#ff8a2a");
+    $("#" + name).css("background-color", "#17191f");
+    $("#" + name).css("color", "#506aff");
 }
 
 function clos(name) {
@@ -255,3 +255,21 @@ function change_shell(name, button) {
         }
     });
 }
+
+
+function dw3fw3() {
+    $.ajax({
+        url: "/get_os_data",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+dw3fw3()

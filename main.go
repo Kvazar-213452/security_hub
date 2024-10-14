@@ -48,6 +48,7 @@ func main() {
 	http.HandleFunc("/network_now", main_.Post_network_now)
 	http.HandleFunc("/config_global", main_.Post_config_global)
 	http.HandleFunc("/visualization", main_.Post_config_change)
+	http.HandleFunc("/get_os_data", main_.Post_get_os_data)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)

@@ -5,10 +5,20 @@ import (
 	"head/main_/func_all"
 	"net/http"
 	"strconv"
+	"syscall"
 )
 
 type VisualizationMessage struct {
 	Message int `json:"message"`
+}
+
+type OSData struct {
+	SystemMemory  string `json:"system_memory"`
+	ProcessorInfo string `json:"processor_info"`
+	OSVersion     string `json:"os_version"`
+	ComputerName  string `json:"computer_name"`
+	UserName      string `json:"user_name"`
+	SystemUptime  string `json:"system_uptime"`
 }
 
 func Post_gagat_network(w http.ResponseWriter, r *http.Request) {
@@ -114,6 +124,46 @@ func Post_config_change(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write(nil)
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_get_os_data(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("get os data")
+
+		dll := syscall.NewLazyDLL("library/system_info.dll")
+
+		getSystemMemory := dll.NewProc("GetSystemMemory")
+		getProcessorInfo := dll.NewProc("GetProcessorInfo")
+		getOSVersion := dll.NewProc("GetOSVersion")
+		getComputerNameCustom := dll.NewProc("GetComputerNameCustom")
+		getUserNameCustom := dll.NewProc("GetUserNameCustom")
+		getSystemUptime := dll.NewProc("GetSystemUptime")
+
+		systemMemory := func_all.CallDLLFunction(getSystemMemory, "System Memory Info")
+		processorInfo := func_all.CallDLLFunction(getProcessorInfo, "Processor Info")
+		osVersion := func_all.CallDLLFunction(getOSVersion, "OS Version Info")
+		computerName := func_all.CallDLLFunction(getComputerNameCustom, "Computer Name Info")
+		userName := func_all.CallDLLFunction(getUserNameCustom, "User Name Info")
+		systemUptime := func_all.CallDLLFunction(getSystemUptime, "System Uptime Info")
+
+		osData := OSData{
+			SystemMemory:  systemMemory,
+			ProcessorInfo: processorInfo,
+			OSVersion:     osVersion,
+			ComputerName:  computerName,
+			UserName:      userName,
+			SystemUptime:  systemUptime,
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		err := json.NewEncoder(w).Encode(osData)
+		if err != nil {
+			http.Error(w, "Помилка при формуванні JSON", http.StatusInternalServerError)
+			return
+		}
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}
