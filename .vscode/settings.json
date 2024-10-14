@@ -86,6 +86,8 @@
         "webview.h": "c",
         "*.rh": "cpp",
         "func_read_file.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "complex": "cpp",
+        "source_location": "cpp"
     }
 }

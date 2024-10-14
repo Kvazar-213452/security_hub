@@ -387,7 +387,8 @@
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
-  color: #506aff; }
+  color: #506aff;
+  font-weight: bold; }
 
 .settings_div {
   position: relative;
@@ -495,7 +496,7 @@
   position: relative;
   background-color: #111218;
   width: 500px;
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
   border-radius: 10px;
   top: 10px; }
