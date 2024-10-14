@@ -32,7 +32,7 @@ func main() {
 		cmd = func_all.StartShellWeb()
 	}
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("front_end/static"))))
 
 	// get
 	http.HandleFunc("/", main_.Render_index_page)

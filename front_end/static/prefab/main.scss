@@ -7,32 +7,72 @@
     background-color: $bg_color4;
 }
 
+.div_img{
+    position: relative;
+    top: 10px;
+    left: 20px;
+}
+
+.wdwdqc{
+    position: relative;
+    height: 45px;
+    width: 45px;
+    background-color: #17191f;
+    float: left;
+    margin-right: 35px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover{opacity: 0.5;}
+}
+
+.menu_bottom{
+    position: absolute;
+    bottom: 0px;
+    height: 70px;
+    width: 100%;
+    background-color: #121318;
+}
+
+.img_menu{
+    position: relative;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .button {
     position: relative;
-    width: calc(100% - 4px);
-    padding-top: 15px;
-    padding-bottom: 15px;
+    width: 100%;
+    height: 50px;
     left: 0%;
     transition: all .3s;
     cursor: pointer;
-    height: 22px;
-    border: solid 2px $null;
     
     p {
         position: relative;
         font-weight: bold;
-        left: 15px;
+        left: 19px;
         font-size: 18px;
+        top: 15px;
         color: $text_color;
     }
-}
 
-.button:hover {
-    background-color: #17191f;
-    border: solid 2px $orange;
-    
-    p {
-        color: $orange;
+    &:hover {
+        background-color: #17191f;
+        
+        p {color: $orange;}
+    }
+
+    img {
+        height: 27px;
+        position: relative;
+        float: left;
+        left: 10px;
+        top: 10px;
     }
 }
 

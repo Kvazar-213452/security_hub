@@ -11,9 +11,9 @@ func Render_index_page(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /index")
 
 	tmpl, err := template.ParseFiles(
-		"templates/html/menu.html",
-		"templates/html/console.html",
-		"templates/index.html",
+		"front_end/templates/html/menu.html",
+		"front_end/templates/html/console.html",
+		"front_end/templates/index.html",
 	)
 
 	if err != nil {
@@ -31,9 +31,9 @@ func Render_about_page(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /about")
 
 	tmpl, err := template.ParseFiles(
-		"templates/html/menu.html",
-		"templates/html/console.html",
-		"templates/about.html",
+		"front_end/templates/html/menu.html",
+		"front_end/templates/html/console.html",
+		"front_end/templates/about.html",
 	)
 
 	if err != nil {
@@ -51,9 +51,9 @@ func Render_settings_page(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /settings")
 
 	tmpl, err := template.ParseFiles(
-		"templates/html/menu.html",
-		"templates/html/console.html",
-		"templates/settings.html",
+		"front_end/templates/html/menu.html",
+		"front_end/templates/html/console.html",
+		"front_end/templates/settings.html",
 	)
 
 	if err != nil {
@@ -71,9 +71,9 @@ func Render_system_page(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /system")
 
 	tmpl, err := template.ParseFiles(
-		"templates/html/menu.html",
-		"templates/html/console.html",
-		"templates/system.html",
+		"front_end/templates/html/menu.html",
+		"front_end/templates/html/console.html",
+		"front_end/templates/system.html",
 	)
 
 	if err != nil {
