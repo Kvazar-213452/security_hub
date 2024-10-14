@@ -13,6 +13,21 @@
     left: 20px;
 }
 
+.ddqwdqwd{
+    position: relative;
+    font-size: 22px;
+    font-weight: bold;
+    color: $orange; 
+    background-color: #17191f;
+    height: 45px;
+
+    p {
+        position: relative;
+        text-align: center;
+        top: 10px;
+    }
+}
+
 .wdwdqc{
     position: relative;
     height: 45px;
@@ -79,8 +94,9 @@
 .main{
     position: fixed;
     left: 270px;
-    height: 100%;
-    width: 100%;
+    top: 10px;
+    height: calc(100% - 10px);
+    width: calc(100% - 270px);
 }
 
 .main_div{
@@ -323,14 +339,14 @@
 .wifi_sqd{
     position: relative;
     float: left;
-    width: calc(100% - 550px);
+    width: calc(100% - 450px);
 }
 
 .wifi_all_div{
     position: relative;
     float: right;
     background-color: $bg_color1;
-    width: 540px;
+    width: 440px;
     left: 10px;
     height: 100%;
     overflow-y: auto;
@@ -349,10 +365,10 @@
     cursor: pointer;
     transition: all .3s;
     border-radius: 5px;
-}
 
-.div_wifi_all:hover{
-    border: solid 2px $orange;
+    &:hover{
+        border: solid 2px $orange;
+    }
 }
 
 .name_wifi_div_all{
