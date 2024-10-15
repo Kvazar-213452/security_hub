@@ -305,3 +305,28 @@ function render_usb(response) {
         $('#sifewfewx').append(text);
     }
 }
+
+function redsgdff() {
+    console.log("dddd")
+    $.ajax({
+        url: "/resource_info",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function(response) {
+            dwqdqw2wwww(response);
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+setInterval(redsgdff, 1000);
+
+function dwqdqw2wwww(response) {
+    response = response['data'];
+
+    $('#dwqwdwfcfff44').text(response[0] || 'N/A');
+    $('#rggwiovnewcee').text(response[1] || 'N/A');
+}

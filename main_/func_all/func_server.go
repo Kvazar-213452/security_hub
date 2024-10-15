@@ -270,7 +270,9 @@ func LoadConfig() (*Config_global, error) {
 }
 
 func Usb_info() string {
-	cmd := exec.Command("cmd/start_usb_info.bat")
+	phat := Get_phat_global()
+
+	cmd := exec.Command(phat + "\\cmd\\start_usb_info.bat")
 
 	err := cmd.Run()
 	if err != nil {
@@ -286,7 +288,9 @@ func Usb_info() string {
 }
 
 func Resource_info() string {
-	cmd := exec.Command("cmd/start_resource_info.bat")
+	phat := Get_phat_global()
+
+	cmd := exec.Command(phat + "\\cmd\\start_resource_info.bat")
 
 	err := cmd.Run()
 	if err != nil {

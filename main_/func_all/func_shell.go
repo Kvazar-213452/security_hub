@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/exec"
 	"os/signal"
+	"path/filepath"
 	"strconv"
 	"syscall"
 	"time"
@@ -187,4 +188,15 @@ func BytePtrToString(ptr *byte) string {
 		ptr = (*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(ptr)) + 1))
 	}
 	return string(slice)
+}
+
+func Get_phat_global() string {
+	exePath, err := os.Executable()
+	if err != nil {
+		fmt.Println("Error getting executable path:", err)
+		return ""
+	}
+
+	exeDir := filepath.Dir(exePath)
+	return exeDir
 }

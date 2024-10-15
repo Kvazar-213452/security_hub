@@ -196,7 +196,7 @@ func Post_resource_info(w http.ResponseWriter, r *http.Request) {
 		info := func_all.Resource_info()
 		cleanedInfo := strings.ReplaceAll(info, "\r", "")
 		devices := strings.Split(cleanedInfo, "\n")
-		response := map[string][]string{"devices": devices}
+		response := map[string][]string{"data": devices}
 
 		w.Header().Set("Content-Type", "application/json")
 		if err := json.NewEncoder(w).Encode(response); err != nil {
