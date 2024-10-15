@@ -1,7 +1,8 @@
 #include "../lib/httplib.h"
-#include <iostream>
 #include "../include/config.h"
 #include "../include/html.h"
+
+#include <iostream>
 
 void start_server() {
     httplib::Server svr;
