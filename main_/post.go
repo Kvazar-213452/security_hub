@@ -5,6 +5,7 @@ import (
 	"head/main_/func_all"
 	"net/http"
 	"strconv"
+	"strings"
 	"syscall"
 )
 
@@ -162,6 +163,25 @@ func Post_get_os_data(w http.ResponseWriter, r *http.Request) {
 		err := json.NewEncoder(w).Encode(osData)
 		if err != nil {
 			http.Error(w, "Помилка при формуванні JSON", http.StatusInternalServerError)
+			return
+		}
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_usb_info(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("usb info")
+
+		info := func_all.Usb_info()
+		cleanedInfo := strings.ReplaceAll(info, "\r", "")
+		devices := strings.Split(cleanedInfo, "\n")
+		response := map[string][]string{"devices": devices}
+
+		w.Header().Set("Content-Type", "application/json")
+		if err := json.NewEncoder(w).Encode(response); err != nil {
+			http.Error(w, "Не вдалося кодувати JSON", http.StatusInternalServerError)
 			return
 		}
 	} else {

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	config_main "head/main_/config"
 	"io/ioutil"
+	"log"
 	"os"
 	"os/exec"
 	"strings"
@@ -266,4 +267,20 @@ func LoadConfig() (*Config_global, error) {
 	}
 
 	return &config, nil
+}
+
+func Usb_info() string {
+	cmd := exec.Command("cmd/start_usb_info.bat")
+
+	err := cmd.Run()
+	if err != nil {
+		log.Fatalf("Failed to run start.bat: %v", err)
+	}
+
+	content, err := ioutil.ReadFile("library/devices.log")
+	if err != nil {
+		log.Fatalf("Failed to read devices.log: %v", err)
+	}
+
+	return string(content)
 }

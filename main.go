@@ -49,6 +49,7 @@ func main() {
 	http.HandleFunc("/config_global", main_.Post_config_global)
 	http.HandleFunc("/visualization", main_.Post_config_change)
 	http.HandleFunc("/get_os_data", main_.Post_get_os_data)
+	http.HandleFunc("/usb_info", main_.Post_usb_info)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)

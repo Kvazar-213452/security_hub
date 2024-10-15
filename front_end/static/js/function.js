@@ -273,3 +273,24 @@ function dw3fw3() {
 }
 
 dw3fw3()
+
+
+
+function dw3fw31() {
+    $.ajax({
+        url: "/usb_info",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function(response) {
+            console.log(response)
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+dw3fw31()
+
+
