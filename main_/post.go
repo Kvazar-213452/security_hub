@@ -207,3 +207,15 @@ func Post_resource_info(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}
 }
+
+func Post_cleanup(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("cleanup")
+
+		func_all.Cleanup()
+
+		w.Write(nil)
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}

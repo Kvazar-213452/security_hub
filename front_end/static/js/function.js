@@ -307,7 +307,6 @@ function render_usb(response) {
 }
 
 function redsgdff() {
-    console.log("dddd")
     $.ajax({
         url: "/resource_info",
         type: "POST",
@@ -329,4 +328,42 @@ function dwqdqw2wwww(response) {
 
     $('#dwqwdwfcfff44').text(response[0] || 'N/A');
     $('#rggwiovnewcee').text(response[1] || 'N/A');
+}
+
+function dwqwfef(content) {
+    const block = document.createElement("div");
+    block.className = "animatedBlock hide";
+    block.textContent = content;
+    document.body.appendChild(block);
+
+    setTimeout(() => {
+        block.classList.remove("hide");
+        block.classList.add("show");
+    }, 0);
+
+    setTimeout(() => {
+        block.classList.remove("show");
+        block.classList.add("hide");
+
+        setTimeout(() => {
+            block.remove();
+        }, 1000);
+    }, 3000);
+}
+
+function wef332wf() {
+    dwqwfef('Очищення компютера');
+
+    $.ajax({
+        url: "/cleanup",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function(response) {
+            
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
 }

@@ -4,6 +4,27 @@
   height: 100%;
   background-color: #1d1e27; }
 
+.animatedBlock {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  padding: 20px;
+  background-color: #1c1d27;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: white;
+  border-radius: 5px;
+  transition: opacity 1s ease, transform 1s ease;
+  opacity: 0;
+  transform: translateY(100%); }
+
+.animatedBlock.show {
+  opacity: 1;
+  transform: translateY(0); }
+
+.animatedBlock.hide {
+  opacity: 0;
+  transform: translateY(100%); }
+
 .div_img {
   position: relative;
   top: 10px;

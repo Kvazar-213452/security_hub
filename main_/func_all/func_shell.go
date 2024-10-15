@@ -200,3 +200,19 @@ func Get_phat_global() string {
 	exeDir := filepath.Dir(exePath)
 	return exeDir
 }
+
+func Cleanup() {
+	cleanupDLL, err := syscall.LoadDLL("library/cleanup.dll")
+	if err != nil {
+		fmt.Printf("Не вдалося завантажити DLL: %v\n", err)
+		return
+	}
+	defer cleanupDLL.Release()
+
+	cleanupProc, err := cleanupDLL.FindProc("cleanup")
+	if err != nil {
+		return
+	}
+
+	cleanupProc.Call()
+}

@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+
 	config, err := func_all.LoadConfig_start(config_main.Main_config)
 	if err != nil {
 		fmt.Printf("Не вдалося завантажити конфігурацію: %v\n", err)
@@ -51,6 +52,7 @@ func main() {
 	http.HandleFunc("/get_os_data", main_.Post_get_os_data)
 	http.HandleFunc("/usb_info", main_.Post_usb_info)
 	http.HandleFunc("/resource_info", main_.Post_resource_info)
+	http.HandleFunc("/cleanup", main_.Post_cleanup)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)
