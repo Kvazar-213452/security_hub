@@ -256,7 +256,6 @@ function change_shell(name, button) {
     });
 }
 
-
 function dw3fw3() {
     $.ajax({
         url: "/get_os_data",
@@ -264,17 +263,13 @@ function dw3fw3() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function(response) {
-            console.log(response)
+            dwqdqdxx(response)
         },
         error: function(xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });
 }
-
-dw3fw3()
-
-
 
 function dw3fw31() {
     $.ajax({
@@ -283,7 +278,7 @@ function dw3fw31() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function(response) {
-            console.log(response)
+            render_usb(response);
         },
         error: function(xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
@@ -291,6 +286,22 @@ function dw3fw31() {
     });
 }
 
-dw3fw31()
+function dwqdqdxx(response) {
+    $('#adqwdwxxxx').text(response['computer_name'] || 'N/A');
+    $('#qwefsbsfb').text(response['os_version'] || 'N/A');
+    $('#efwfwefwegwecc').text(response['processor_info'] || 'N/A');
+    $('#fewffefevrewew').text(response['system_memory'] || 'N/A');
+    $('#gwghyjyyjy').text(response['system_uptime'] || 'N/A');
+    $('#retrevvvvde').text(response['user_name'] || 'N/A');
+}
 
+function render_usb(response) {
+    response = response['devices']
 
+    for (let i = 0; i < response.length; i++) {
+        let text = `<div class="div_wifi_all">
+        <p class="name_wifi_div_all">${response[i]}</p>
+        </div>`;
+        $('#sifewfewx').append(text);
+    }
+}

@@ -143,12 +143,12 @@ func Post_get_os_data(w http.ResponseWriter, r *http.Request) {
 		getUserNameCustom := dll.NewProc("GetUserNameCustom")
 		getSystemUptime := dll.NewProc("GetSystemUptime")
 
-		systemMemory := func_all.CallDLLFunction(getSystemMemory, "System Memory Info")
-		processorInfo := func_all.CallDLLFunction(getProcessorInfo, "Processor Info")
-		osVersion := func_all.CallDLLFunction(getOSVersion, "OS Version Info")
-		computerName := func_all.CallDLLFunction(getComputerNameCustom, "Computer Name Info")
-		userName := func_all.CallDLLFunction(getUserNameCustom, "User Name Info")
-		systemUptime := func_all.CallDLLFunction(getSystemUptime, "System Uptime Info")
+		systemMemory := func_all.RemoveNewlines(func_all.CallDLLFunction(getSystemMemory, "System Memory Info"))
+		processorInfo := func_all.RemoveNewlines(func_all.CallDLLFunction(getProcessorInfo, "Processor Info"))
+		osVersion := func_all.RemoveNewlines(func_all.CallDLLFunction(getOSVersion, "OS Version Info"))
+		computerName := func_all.RemoveNewlines(func_all.CallDLLFunction(getComputerNameCustom, "Computer Name Info"))
+		userName := func_all.RemoveNewlines(func_all.CallDLLFunction(getUserNameCustom, "User Name Info"))
+		systemUptime := func_all.RemoveNewlines(func_all.CallDLLFunction(getSystemUptime, "System Uptime Info"))
 
 		osData := OSData{
 			SystemMemory:  systemMemory,
@@ -175,6 +175,25 @@ func Post_usb_info(w http.ResponseWriter, r *http.Request) {
 		func_all.AppendToLog("usb info")
 
 		info := func_all.Usb_info()
+		cleanedInfo := strings.ReplaceAll(info, "\r", "")
+		devices := strings.Split(cleanedInfo, "\n")
+		response := map[string][]string{"devices": devices}
+
+		w.Header().Set("Content-Type", "application/json")
+		if err := json.NewEncoder(w).Encode(response); err != nil {
+			http.Error(w, "Не вдалося кодувати JSON", http.StatusInternalServerError)
+			return
+		}
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_resource_info(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("resource info")
+
+		info := func_all.Resource_info()
 		cleanedInfo := strings.ReplaceAll(info, "\r", "")
 		devices := strings.Split(cleanedInfo, "\n")
 		response := map[string][]string{"devices": devices}

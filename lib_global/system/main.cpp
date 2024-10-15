@@ -12,8 +12,8 @@ extern "C" {
         GlobalMemoryStatusEx(&memInfo);
 
         std::ostringstream oss;
-        oss << "Total RAM: " << memInfo.ullTotalPhys / (1024 * 1024) << " MB\n"
-            << "Available RAM: " << memInfo.ullAvailPhys / (1024 * 1024) << " MB\n";
+        oss << memInfo.ullTotalPhys / (1024 * 1024) << " MB\n"
+            << memInfo.ullAvailPhys / (1024 * 1024) << " MB\n";
         result = oss.str();
         return result.c_str();
     }
@@ -24,8 +24,8 @@ extern "C" {
         GetSystemInfo(&sysInfo);
 
         std::ostringstream oss;
-        oss << "Number of Processors: " << sysInfo.dwNumberOfProcessors << "\n"
-            << "Processor Architecture: " << sysInfo.wProcessorArchitecture << "\n";
+        oss << sysInfo.dwNumberOfProcessors << "\n"
+            << sysInfo.wProcessorArchitecture << "\n";
         result = oss.str();
         return result.c_str();
     }
@@ -38,8 +38,8 @@ extern "C" {
         GetVersionEx(&osvi);
 
         std::ostringstream oss;
-        oss << "OS Version: " << osvi.dwMajorVersion << "." << osvi.dwMinorVersion << "\n"
-            << "Build Number: " << osvi.dwBuildNumber << "\n";
+        oss << osvi.dwMajorVersion << "." << osvi.dwMinorVersion << "\n"
+            << osvi.dwBuildNumber << "\n";
         result = oss.str();
         return result.c_str();
     }
@@ -50,7 +50,7 @@ extern "C" {
         DWORD size = sizeof(computerName);
         GetComputerNameA(computerName, &size);
 
-        result = "Computer Name: " + std::string(computerName) + "\n";
+        result = std::string(computerName) + "\n";
         return result.c_str();
     }
 
@@ -60,7 +60,7 @@ extern "C" {
         DWORD size = sizeof(userName);
         GetUserNameA(userName, &size);
 
-        result = "User Name: " + std::string(userName) + "\n";
+        result = std::string(userName) + "\n";
         return result.c_str();
     }
 
@@ -75,7 +75,7 @@ extern "C" {
         DWORD seconds = uptime % 60;
 
         std::ostringstream oss;
-        oss << "System Uptime: " << days << " days, " << hours << " hours, " 
+        oss << days << " days, " << hours << " hours, " 
             << minutes << " minutes, " << seconds << " seconds\n";
         result = oss.str();
         return result.c_str();

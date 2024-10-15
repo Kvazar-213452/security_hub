@@ -4,9 +4,6 @@
   height: 100%;
   background-color: #1d1e27; }
 
-.dwfwefe {
-  filter: invert(60%); }
-
 .div_img {
   position: relative;
   top: 10px;
@@ -499,7 +496,7 @@
   position: relative;
   background-color: #111218;
   width: 500px;
-  height: 100%;
+  height: calc(100% - 400px);
   overflow-y: auto;
   border-radius: 10px;
   top: 10px; }
@@ -517,3 +514,16 @@
   overflow-y: auto;
   border-radius: 10px;
   float: right; }
+
+.qdwfwfecc {
+  position: relative;
+  background-color: #1e202a;
+  padding: 15px;
+  border-radius: 10px; }
+
+.dwqqttgttbb1 {
+  font-weight: bold;
+  color: #506aff;
+  position: relative;
+  float: left;
+  margin-right: 5px; }

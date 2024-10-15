@@ -284,3 +284,23 @@ func Usb_info() string {
 
 	return string(content)
 }
+
+func Resource_info() string {
+	cmd := exec.Command("cmd/start_resource_info.bat")
+
+	err := cmd.Run()
+	if err != nil {
+		log.Fatalf("Failed to run start.bat: %v", err)
+	}
+
+	content, err := ioutil.ReadFile("library/resource_info.log")
+	if err != nil {
+		log.Fatalf("Failed to read devices.log: %v", err)
+	}
+
+	return string(content)
+}
+
+func RemoveNewlines(s string) string {
+	return strings.ReplaceAll(s, "\n", "")
+}
