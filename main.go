@@ -8,9 +8,44 @@ import (
 	"net/http"
 	"os/exec"
 	"strconv"
+	"syscall"
+	"unsafe"
 )
 
 func main() {
+	dll, err := syscall.LoadDLL("library/resource_info.dll")
+	if err != nil {
+		fmt.Println("Error loading DLL:", err)
+		return
+	}
+	defer dll.Release() // Звільняємо DLL після використання
+
+	// Завантажте функцію GetResourceUsage
+	resourceFunc, err := dll.FindProc("GetResourceUsage")
+	if err != nil {
+		fmt.Println("Error finding GetResourceUsage:", err)
+		return
+	}
+
+	// Змінні для отримання значення використання ЦП і пам'яті
+	var cpuUsage float64
+	var memoryUsage float64
+
+	// Виклик GetResourceUsage
+	_, _, err = resourceFunc.Call(
+		uintptr(unsafe.Pointer(&cpuUsage)),
+		uintptr(unsafe.Pointer(&memoryUsage)),
+	)
+
+	if err != nil {
+		fmt.Println("Failed to call GetResourceUsage:", err)
+		return
+	}
+
+	// Вивід значень
+	fmt.Printf("CPU Usage: %.2f%%\n", cpuUsage)
+	fmt.Printf("Memory Usage: %.2f MB\n", memoryUsage)
+
 	config, err := func_all.LoadConfig_start(config_main.Main_config)
 	if err != nil {
 		fmt.Printf("Не вдалося завантажити конфігурацію: %v\n", err)
