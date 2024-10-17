@@ -87,8 +87,28 @@ func Render_system_page(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func Post_off_app(w http.ResponseWriter, r *http.Request) {
+func Get_off_app(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /off_app")
 
 	os.Exit(0)
+}
+
+func Render_cleaning(w http.ResponseWriter, r *http.Request) {
+	func_all.AppendToLog("transition to /cleaning")
+
+	tmpl, err := template.ParseFiles(
+		"front_end/templates/html/menu.html",
+		"front_end/templates/html/console.html",
+		"front_end/templates/cleaning.html",
+	)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = tmpl.ExecuteTemplate(w, "cleaning.html", nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }

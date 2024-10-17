@@ -75,6 +75,7 @@
     <script>
         button_hover("btn1");
         get_data_wifi_now();
-        get_data_wifi_all();
+        setInterval(get_data_wifi_all, 1000);
+        setInterval(get_data_wifi_now_level, 1000);
     </script>
 </html> 

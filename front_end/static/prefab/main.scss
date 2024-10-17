@@ -49,13 +49,13 @@
     
     p {
         position: relative;
-        left: 38px;
+        left: 35px;
         font-size: 18px;
         top: 15px;
     }
 
     &:hover {
-        background-color: #34383e;
+        background-color: #2e363f;
     }
 
     img {
@@ -65,6 +65,67 @@
         float: left;
         left: 29px;
         top: 10px;
+    }
+}
+
+.button1 {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    left: 0%;
+    transition: all .3s;
+    cursor: pointer;
+    color: #efefef;
+    font-weight: 600;
+    
+    p {
+        position: relative;
+        left: 35px;
+        font-size: 18px;
+        top: 15px;
+    }
+
+    &:hover {
+        background-color: #2e363f;
+    }
+
+    img {
+        filter: invert(85%);
+        height: 25px;
+        position: relative;
+        float: left;
+        left: 29px;
+        top: 12.5px;
+    }
+}
+
+.button2 {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    left: 0%;
+    transition: all .3s;
+    cursor: pointer;
+    color: $read;
+    font-weight: 600;
+    
+    p {
+        position: relative;
+        left: 35px;
+        font-size: 18px;
+        top: 15px;
+    }
+
+    &:hover {
+        background-color: #2e363f;
+    }
+
+    img {
+        height: 25px;
+        position: relative;
+        float: left;
+        left: 29px;
+        top: 14px;
     }
 }
 
@@ -183,11 +244,11 @@
     left: 390px;
 }
 
-.wifi_3_div{color: $blue;}
+.wifi_3_div{color: #ffffffd4;}
 
 .wifi_3_div,
 .wifi_3_div_red{
-    color: $blue;
+    color: #ffffffd4;
     font-weight: bold;
 }
 
@@ -206,7 +267,7 @@
 .img_wifi {
     position: relative;
     width: 100%;
-    background-color: $bg_color2;
+    background-color: #20252c;
     height: 340px;
     border-radius: 5px;
 }
@@ -214,7 +275,7 @@
 .div_wifi_info{
     position: relative;
     width: 100%;
-    background-color: $bg_color1;
+    background-color: #20252c;
     height: calc(100% - 440px);
     overflow: auto;
     border-radius: 5px;
@@ -225,14 +286,14 @@
 .info_wifi_{
     font-weight: bold;
     font-size: 16px;
-    color: $blue;
+    color: $grean;
 }
 
 .info_graan{
     position: absolute;
     left: 230px;
     font-weight: normal;
-    color: $grean;
+    color: #efefef;
     font-size: 16px;
 }
 
@@ -322,7 +383,7 @@
 .wifi_all_div{
     position: relative;
     float: right;
-    background-color: $bg_color1;
+    background-color: #20252c;
     width: 440px;
     left: 10px;
     height: 100%;
@@ -337,21 +398,21 @@
     margin-top: 20px;
     width: 100%;
     height: 35px;
-    background-color: $bg_color2;
+    background-color: #12171e;
     border: solid 2px $null;
     cursor: pointer;
     transition: all .3s;
     border-radius: 5px;
 
     &:hover{
-        border: solid 2px $blue;
+        border: solid 2px #e4e4e4;
     }
 }
 
 .name_wifi_div_all{
     position: relative;
     font-size: 16px;
-    color: $blue;
+    color: $text_color;
     top: 8px;
     left: 10px;
     float: left;
@@ -493,14 +554,14 @@
 
 .qdwfwfecc{
     position: relative;
-    background-color: $bg_color2;
+    background-color: #181d25;
     padding: 15px;
     border-radius: 10px;
 }
 
 .dwqqttgttbb1{
     font-weight: bold;
-    color: $blue;
+    color: $grean;
     position: relative;
     float: left;
     margin-right: 5px;
@@ -511,7 +572,8 @@
     float: left;
     font-size: 24px;
     font-weight: bold;
-    color: $orange;
+    color: $grean;
     margin-right: 100px;
 }
+
 

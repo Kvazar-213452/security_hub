@@ -36,11 +36,12 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("front_end/static"))))
 
 	// get
-	http.HandleFunc("/", main_.Render_index_page)
+	http.HandleFunc("/wifi", main_.Render_index_page)
 	http.HandleFunc("/about", main_.Render_about_page)
 	http.HandleFunc("/settings", main_.Render_settings_page)
 	http.HandleFunc("/system", main_.Render_system_page)
-	http.HandleFunc("/off_app", main_.Post_off_app)
+	http.HandleFunc("/off_app", main_.Get_off_app)
+	http.HandleFunc("/cleaning", main_.Render_cleaning)
 
 	// Post
 	http.HandleFunc("/get_wifi_now", main_.Post_gagat_network)

@@ -45,8 +45,22 @@ function get_data_wifi_now() {
         data: JSON.stringify(null),
         success: function(response) {
             data_wifi_render_now(response)
-            level_wifi_render(response['signal_strength'])
             checkUnsafeProtocols();
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function get_data_wifi_now_level() {
+    $.ajax({
+        url: "/get_wifi_now",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function(response) {
+            level_wifi_render(response['signal_strength'])
         },
         error: function(xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
@@ -164,6 +178,8 @@ function level_wifi_render(level) {
 }
 
 function render_all_network_wifi(response, ssid) {
+    $('#render_all_wifi').html(null);
+
     for (let i = 0; i < response.length; i++) {
         let text = `<div class="div_wifi_all">
         <p class="name_wifi_div_all">${response[i]['ssid']}</p>
@@ -295,6 +311,7 @@ function dwqdqdxx(response) {
 }
 
 function render_usb(response) {
+    $('#sifewfewx').html(null);
     response = response['devices']
 
     for (let i = 0; i < response.length; i++) {
@@ -319,8 +336,6 @@ function redsgdff() {
         }
     });
 }
-
-setInterval(redsgdff, 1000);
 
 function dwqdqw2wwww(response) {
     response = response['data'];
@@ -366,3 +381,9 @@ function wef332wf() {
         }
     });
 }
+
+
+
+
+
+get_data_wifi_now
