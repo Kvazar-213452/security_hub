@@ -1,6 +1,5 @@
 function button_hover(name) {
-    $("#" + name).css("background-color", "#17191f");
-    $("#" + name).css("color", "#506aff");
+    $("#" + name).css("background-color", "#2e363f");
 }
 
 function clos(name) {

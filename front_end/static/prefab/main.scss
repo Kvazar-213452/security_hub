@@ -4,7 +4,13 @@
     position: fixed;
     width: 260px;
     height: 100%;
-    background-color: $bg_color4;
+    background: linear-gradient(to bottom, #22272e, #1a1e25);
+}
+
+.ede33fff {
+    display: block;
+    margin: 0 auto;
+    height: 150px;
 }
 
 .animatedBlock {
@@ -31,58 +37,6 @@
     transform: translateY(100%);
 }
 
-.div_img{
-    position: relative;
-    top: 10px;
-    left: 20px;
-}
-
-.ddqwdqwd{
-    position: relative;
-    font-size: 22px;
-    font-weight: bold;
-    color: $blue; 
-    background-color: $bg_color5;
-    height: 45px;
-
-    p {
-        position: relative;
-        text-align: center;
-        top: 10px;
-    }
-}
-
-.wdwdqc{
-    position: relative;
-    height: 45px;
-    width: 45px;
-    background-color: $bg_color;
-    float: left;
-    margin-right: 35px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all .3s;
-
-    &:hover{opacity: 0.5;}
-}
-
-.menu_bottom{
-    position: absolute;
-    bottom: 0px;
-    height: 70px;
-    width: 100%;
-    background-color: $bg_color5;
-}
-
-.img_menu{
-    position: relative;
-    height: 30px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 .button {
     position: relative;
     width: 100%;
@@ -90,26 +44,26 @@
     left: 0%;
     transition: all .3s;
     cursor: pointer;
-    color: $text_color;
+    color: #efefef;
+    font-weight: 600;
     
     p {
         position: relative;
-        font-weight: bold;
-        left: 19px;
+        left: 38px;
         font-size: 18px;
         top: 15px;
     }
 
     &:hover {
-        background-color: $bg_color;
-        color: $blue;
+        background-color: #34383e;
     }
 
     img {
-        height: 27px;
+        filter: invert(85%);
+        height: 25px;
         position: relative;
         float: left;
-        left: 10px;
+        left: 29px;
         top: 10px;
     }
 }
