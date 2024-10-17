@@ -1,5 +1,8 @@
 function button_hover(name) {
     $("#" + name).css("background-color", "#2e363f");
+    $("#" + name).css("text-decoration", "underline");
+    $("#" + name).css("text-decoration-thickness", "2px");
+    $("#" + name).css("text-underline-offset", "4px");
 }
 
 function clos(name) {
@@ -32,8 +35,8 @@ function button_active(name, mas) {
     });
 
     $("#" + name).css({
-        "border": "2px solid #ff8a2a",
-        "color": "#ff8a2a"
+        "border": "2px solid #55c959",
+        "color": "#55c959"
     });
 }
 
@@ -254,15 +257,13 @@ function change_shell(name, button) {
         message: fff
     };
 
-    console.log("Data to send:", dataToSend);
-
     $.ajax({
         url: '/visualization',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(dataToSend),
         success: function(response) {
-            console.log("Server response: " + response);
+
         },
         error: function(xhr, status, error) {
             console.log("Error: " + error);
@@ -386,3 +387,4 @@ function wef332wf() {
 
 
 
+getConfig

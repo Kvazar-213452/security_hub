@@ -440,7 +440,7 @@
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
-    color: $blue;
+    color: $grean;
     font-weight: bold;
 }
 
@@ -458,9 +458,12 @@
     left: -10px;
     border: none;
     padding: 6px;
-    background-color: $bg_color;
+    background-color: #12171e;
     color: #ffffffd4;
     font-size: 15px;
+    border-radius: 5px;
+    transition: all .3s;
+    border: solid 2px $null;
 }
 
 .button_settings:hover,
@@ -595,6 +598,9 @@
     h1 {
         position: relative;
         text-align: center;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
     }
 
     ul {
@@ -627,3 +633,5 @@
     font-size: 19px;
     font-weight: bold;
 }
+
+

@@ -415,7 +415,7 @@
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
-  color: #506aff;
+  color: #55c959;
   font-weight: bold; }
 
 .settings_div {
@@ -431,9 +431,12 @@
   left: -10px;
   border: none;
   padding: 6px;
-  background-color: #17181f;
+  background-color: #12171e;
   color: #ffffffd4;
-  font-size: 15px; }
+  font-size: 15px;
+  border-radius: 5px;
+  transition: all .3s;
+  border: solid 2px #ffffff00; }
 
 .button_settings:hover,
 .button_settings_one:hover {
@@ -595,7 +598,10 @@
   border-radius: 10px; }
   .dqeeefc1 h1 {
     position: relative;
-    text-align: center; }
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px; }
   .dqeeefc1 ul {
     position: relative;
     left: 20px;
