@@ -386,4 +386,3 @@ function wef332wf() {
 
 
 
-get_data_wifi_now

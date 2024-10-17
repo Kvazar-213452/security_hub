@@ -576,4 +576,54 @@
     margin-right: 100px;
 }
 
+/* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page */
+/* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page */
+/* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page */
 
+.dqeeefc1{
+    position: fixed;
+    top: 50%;
+    left: 60%;
+    padding: 20px;
+    transform: translate(-60%, -50%);
+    background-color: #20252c;
+    height: 600px;
+    width: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+
+    h1 {
+        position: relative;
+        text-align: center;
+    }
+
+    ul {
+        position: relative;
+        left: 20px;
+        color: $grean;
+        font-size: 17px;
+    }
+
+    button {
+        border: none;
+        padding: 7px;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #12171e;
+        font-weight: bold;
+        font-size: 15px;
+        color: $text_color;
+        border: solid 2px $null;
+        transition: all .3s;
+    }
+
+    button:hover {
+        color: $grean;
+        border: solid 2px $grean;
+    }
+}
+
+.dwfe3ru43ff{
+    font-size: 19px;
+    font-weight: bold;
+}

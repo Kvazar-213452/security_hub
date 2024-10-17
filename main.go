@@ -42,6 +42,7 @@ func main() {
 	http.HandleFunc("/system", main_.Render_system_page)
 	http.HandleFunc("/off_app", main_.Get_off_app)
 	http.HandleFunc("/cleaning", main_.Render_cleaning)
+	http.HandleFunc("/antivirus", main_.Render_antivirus)
 
 	// Post
 	http.HandleFunc("/get_wifi_now", main_.Post_gagat_network)
