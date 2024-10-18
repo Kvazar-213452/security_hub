@@ -9,6 +9,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 )
 
@@ -331,4 +332,20 @@ func ReadFileToJSON(filePath string) []byte {
 	}
 
 	return jsonData
+}
+
+func ClearDirectory(dir string) error {
+	files, err := ioutil.ReadDir(dir)
+	if err != nil {
+		return err
+	}
+
+	for _, file := range files {
+		err := os.Remove(filepath.Join(dir, file.Name()))
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }

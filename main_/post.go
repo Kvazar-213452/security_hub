@@ -2,10 +2,14 @@ package main_
 
 import (
 	"encoding/json"
+	"fmt"
 	"head/main_/antivirus"
 	"head/main_/func_all"
+	"io"
 	"io/ioutil"
 	"net/http"
+	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"syscall"
@@ -266,6 +270,52 @@ func Post_antivirus_web(w http.ResponseWriter, r *http.Request) {
 		}
 
 		antivirus.DeleteFiles()
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		saveDir := "data/bekend"
+		err := os.MkdirAll(saveDir, os.ModePerm)
+		if err != nil {
+			http.Error(w, "Не вдалося створити директорію", http.StatusInternalServerError)
+			return
+		}
+
+		err = func_all.ClearDirectory(saveDir)
+		if err != nil {
+			http.Error(w, "Не вдалося очистити директорію", http.StatusInternalServerError)
+			return
+		}
+
+		value := r.FormValue("value")
+		fmt.Println("Отримане значення:", value)
+
+		file, fileHeader, err := r.FormFile("file")
+		if err != nil {
+			http.Error(w, "Не вдалося отримати файл", http.StatusBadRequest)
+			return
+		}
+		defer file.Close()
+
+		filePath := filepath.Join(saveDir, fileHeader.Filename)
+		destFile, err := os.Create(filePath)
+		if err != nil {
+			http.Error(w, "Не вдалося створити файл на сервері", http.StatusInternalServerError)
+			return
+		}
+		defer destFile.Close()
+
+		_, err = io.Copy(destFile, file)
+		if err != nil {
+			http.Error(w, "Не вдалося зберегти файл", http.StatusInternalServerError)
+			return
+		}
+
+		fmt.Println("Файл збережено:", filePath)
+		w.Write([]byte("Файл і значення збережено успішно"))
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

@@ -435,15 +435,101 @@ function d32e23fw3(response) {
     let i = 0;
     while (i < jsonObject1.length) {
         if (jsonObject1[i] === "window.location.href") {
-            $('#dwdw3333rffcc').append("<li>Знайдено переадресацію на другі джерела</li><br>");
+            $('#dwdw3333rffcc').append("<li>Переадресацію на другі джерела</li><br>");
         } else if (jsonObject1[i] === "window.open") {
-            $('#dwdw3333rffcc').append("<li>Знайдено використання pop-up вікон</li><br>");
+            $('#dwdw3333rffcc').append("<li>Використання pop-up вікон</li><br>");
         } else if (jsonObject1[i] === "requestFullscreen") {
-            $('#dwdw3333rffcc').append("<li>Знайдено відкриття на повний екран</li><br>");
+            $('#dwdw3333rffcc').append("<li>Відкриття на повний екран</li><br>");
         }
 
         i++;
     }
 }
 
+function di3rwufnv(type, id) {
+    $("#dwdc21e12d").css("text-decoration", "none");
+    $("#dwdc21e12d").css("text-decoration-thickness", "none");
+    $("#dwdc21e12d").css("text-underline-offset", "none");
+    $("#dwdc21e12d").css("color", "#ffffffd4");
 
+    $("#dwdc21e12d1").css("text-decoration", "none");
+    $("#dwdc21e12d1").css("text-decoration-thickness", "none");
+    $("#dwdc21e12d1").css("text-underline-offset", "none");
+    $("#dwdc21e12d1").css("color", "#ffffffd4");
+
+    button_active_antivitys(id);
+
+    if (type === 0) {
+        $('#frg45th9nd1').hide(); 
+        $('#frg45th9nd').show();
+    } else if (type === 1) {
+        $('#frg45th9nd').hide(); 
+        $('#frg45th9nd1').show();
+    }
+}
+
+const fileUpload = () => {
+    const $inputFile = $('#upload-files');
+    const $inputContainer = $('#upload-container');
+    const $filesListContainer = $('#files-list-container');
+    const $uploadButton = $('#upload-button');
+    let fileList = [];
+
+    $inputFile.on('click dragstart dragover', () => {
+        $inputContainer.addClass('active');
+    });
+
+    $inputFile.on('dragleave dragend drop change', () => {
+        $inputContainer.removeClass('active');
+        const files = Array.from($inputFile[0].files);
+
+        fileList = [];  // Очищаємо масив для одного файлу
+
+        files.forEach(file => {
+            const fileURL = URL.createObjectURL(file);
+            const fileName = file.name;
+            const uploadedFiles = {
+                name: fileName,
+                file: file // Зберігаємо сам файл для відправки
+            };
+
+            fileList.push(uploadedFiles);
+
+            $filesListContainer.html(''); // Очищаємо попередній список
+
+            const content = `
+                <div class="form__files-container">
+                    <span class="form__text">${uploadedFiles.name}</span>
+                </div>
+            `;
+            $filesListContainer.append(content);
+        });
+    });
+
+    $uploadButton.on('click', () => {
+        if (fileList.length === 0) {
+            alert("Будь ласка, виберіть файл перед відправкою.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', fileList[0].file); // Додаємо файл
+        formData.append('value', 1); // Додаємо значення 1
+
+        $.ajax({
+            url: '/antivirus_bekend',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                console.log('Файл і значення успішно відправлено');
+            },
+            error: function(error) {
+                console.error('Помилка відправки:', error);
+            }
+        });
+    });
+};
+
+fileUpload();
