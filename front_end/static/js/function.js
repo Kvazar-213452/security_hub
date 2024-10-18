@@ -390,13 +390,15 @@ function button_active_antivitys(name) {
     $("#" + name).css("color", "#55c959");
 }
 
-
 function ewffef4f() {
+    let inputValue = $('#fkwe9203f').val();
     const dataToSend = {
         url_site: [
-            "https://www.youtube.com/watch?v=G6vYAio76WM"
+            inputValue
         ]
     };
+
+    $('#dwdefw4f4').text('Перевірка.....');
 
     $.ajax({
         url: '/antivirus_web',
@@ -404,11 +406,7 @@ function ewffef4f() {
         contentType: 'application/json',
         data: JSON.stringify(dataToSend),
         success: function(response) {
-            console.log(response);
-
-            const decodedString = atob(response['data']);
-
-            console.log(decodedString);
+            d32e23fw3(response)
         },
         error: function(xhr, status, error) {
             console.log("Error: " + error);
@@ -417,4 +415,18 @@ function ewffef4f() {
     });
 }
 
-ewffef4f();
+ewffef4f()
+
+function d32e23fw3(response) {
+    $('#dwdefw4f4').text('Завершено');
+
+    if (response['found'] === false) {
+        $('#dw93244444').text('Сайт безпечний');
+    } else {
+        $('#dw93244444').text('Сайт небезпечний');
+    }
+
+    const decodedString = atob(response['data']);
+    const jsonObject = JSON.parse(decodedString);
+    console.log(jsonObject.data);
+}

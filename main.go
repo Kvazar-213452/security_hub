@@ -11,7 +11,6 @@ import (
 )
 
 func main() {
-
 	config, err := func_all.LoadConfig_start(config_main.Main_config)
 	if err != nil {
 		fmt.Printf("Не вдалося завантажити конфігурацію: %v\n", err)

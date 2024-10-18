@@ -3,7 +3,6 @@ package antivirus
 import (
 	"bufio"
 	"bytes"
-	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -22,28 +21,28 @@ func sanitizeFileName(fileName string) string {
 func FetchHTMLAndJS(url string) error {
 	resp, err := http.Get(url)
 	if err != nil {
-		return fmt.Errorf("не вдалося отримати сторінку: %v", err)
+		return err
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("помилка відповіді сервера: %s", resp.Status)
+		return err
 	}
 
 	bodyBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return fmt.Errorf("не вдалося прочитати тіло відповіді: %v", err)
+		return err
 	}
 
 	htmlFilePath := filepath.Join("data/web", "site.html")
 	err = os.WriteFile(htmlFilePath, bodyBytes, 0644)
 	if err != nil {
-		return fmt.Errorf("не вдалося створити файл HTML: %v", err)
+		return err
 	}
 
 	doc, err := html.Parse(bytes.NewReader(bodyBytes))
 	if err != nil {
-		return fmt.Errorf("помилка при парсингу HTML: %v", err)
+		return err
 	}
 
 	var jsFiles []string
@@ -80,24 +79,24 @@ func FetchHTMLAndJS(url string) error {
 func DownloadJS(jsURL string) error {
 	resp, err := http.Get(jsURL)
 	if err != nil {
-		return fmt.Errorf("не вдалося отримати JS файл: %v", err)
+		return err
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("помилка відповіді сервера: %s", resp.Status)
+		return err
 	}
 
 	jsFilePath := filepath.Join("data/web", sanitizeFileName(filepath.Base(jsURL)))
 	jsFile, err := os.Create(jsFilePath)
 	if err != nil {
-		return fmt.Errorf("не вдалося створити файл JS: %v", err)
+		return err
 	}
 	defer jsFile.Close()
 
 	_, err = io.Copy(jsFile, resp.Body)
 	if err != nil {
-		return fmt.Errorf("не вдалося записати JS у файл: %v", err)
+		return err
 	}
 
 	return nil
@@ -166,12 +165,7 @@ func DeleteFiles() {
 	}
 
 	for _, file := range files {
-		err := os.Remove(file)
-		if err != nil {
-			fmt.Printf("Не вдалося видалити файл %s: %v\n", file, err)
-		} else {
-			fmt.Printf("Файл %s видалено.\n", file)
-		}
+		os.Remove(file)
 	}
 }
 
