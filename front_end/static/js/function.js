@@ -483,19 +483,18 @@ const fileUpload = () => {
         $inputContainer.removeClass('active');
         const files = Array.from($inputFile[0].files);
 
-        fileList = [];  // Очищаємо масив для одного файлу
+        fileList = [];
 
         files.forEach(file => {
-            const fileURL = URL.createObjectURL(file);
             const fileName = file.name;
             const uploadedFiles = {
                 name: fileName,
-                file: file // Зберігаємо сам файл для відправки
+                file: file
             };
 
             fileList.push(uploadedFiles);
 
-            $filesListContainer.html(''); // Очищаємо попередній список
+            $filesListContainer.html('');
 
             const content = `
                 <div class="form__files-container">
@@ -513,8 +512,8 @@ const fileUpload = () => {
         }
 
         const formData = new FormData();
-        formData.append('file', fileList[0].file); // Додаємо файл
-        formData.append('value', 1); // Додаємо значення 1
+        formData.append('file', fileList[0].file);
+        formData.append('value', 1);
 
         $.ajax({
             url: '/antivirus_bekend',
@@ -523,7 +522,7 @@ const fileUpload = () => {
             processData: false,
             contentType: false,
             success: function(response) {
-                console.log('Файл і значення успішно відправлено');
+                console.log(response);
             },
             error: function(error) {
                 console.error('Помилка відправки:', error);

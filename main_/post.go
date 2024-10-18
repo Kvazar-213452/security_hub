@@ -314,8 +314,13 @@ func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		fmt.Println("Файл збережено:", filePath)
-		w.Write([]byte("Файл і значення збережено успішно"))
+		data := antivirus.Scan_file_virus(filePath, "data/sha1_hashes_2.txt")
+
+		if data == 0 {
+			w.Write([]byte("0"))
+		} else {
+			w.Write([]byte("1"))
+		}
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}
