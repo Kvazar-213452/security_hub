@@ -117,7 +117,6 @@ func checkJSFile(filePath string) {
 	patterns := []string{
 		"window.location.href",
 		"window.open",
-		"document.body.appendChild",
 		"requestFullscreen",
 	}
 

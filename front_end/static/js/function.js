@@ -415,9 +415,8 @@ function ewffef4f() {
     });
 }
 
-ewffef4f()
-
 function d32e23fw3(response) {
+    $('#dqdcew336g').show(); 
     $('#dwdefw4f4').text('Завершено');
 
     if (response['found'] === false) {
@@ -428,5 +427,23 @@ function d32e23fw3(response) {
 
     const decodedString = atob(response['data']);
     const jsonObject = JSON.parse(decodedString);
-    console.log(jsonObject.data);
+    
+    $('#dwdw3333rffcc').html(null);
+
+    jsonObject1 = jsonObject['data'];
+
+    let i = 0;
+    while (i < jsonObject1.length) {
+        if (jsonObject1[i] === "window.location.href") {
+            $('#dwdw3333rffcc').append("<li>Знайдено переадресацію на другі джерела</li><br>");
+        } else if (jsonObject1[i] === "window.open") {
+            $('#dwdw3333rffcc').append("<li>Знайдено використання pop-up вікон</li><br>");
+        } else if (jsonObject1[i] === "requestFullscreen") {
+            $('#dwdw3333rffcc').append("<li>Знайдено відкриття на повний екран</li><br>");
+        }
+
+        i++;
+    }
 }
+
+
