@@ -1,0 +1,4 @@
+document.body.appendChild
+requestFullscreen
+window.location.href
+window.open

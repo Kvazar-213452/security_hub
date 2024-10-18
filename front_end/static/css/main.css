@@ -103,10 +103,10 @@
 
 .main {
   position: fixed;
-  left: 270px;
+  left: 260px;
   top: 10px;
   height: calc(100% - 10px);
-  width: calc(100% - 270px); }
+  width: calc(100% - 260px); }
 
 .main_div {
   padding-left: 20px;
@@ -422,7 +422,8 @@
   position: relative;
   margin-bottom: 20px;
   background-color: #20252c;
-  padding: 10px; }
+  padding: 10px;
+  border-radius: 5px; }
 
 .button_settings {
   position: relative;
@@ -625,3 +626,71 @@
 .dwfe3ru43ff {
   font-size: 19px;
   font-weight: bold; }
+
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+/* antivirus page */
+.wedn77382bd3i2 {
+  position: relative;
+  left: 20px; }
+
+.fewfedddd {
+  position: relative;
+  width: 100%;
+  height: 25px;
+  border-bottom: solid 2px #d0d0d065; }
+
+.dwqdwcccc2 {
+  float: left;
+  position: relative;
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 19px;
+  z-index: 10000;
+  transition: all .3s;
+  cursor: pointer;
+  color: #ffffffd4; }
+  .dwqdwcccc2:hover {
+    opacity: 0.5; }
+
+.dqwdwec9923ed {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.dvwe5tgg {
+  padding: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-weight: bold;
+  color: #ffffffd4;
+  background-color: #20252c;
+  font-size: 20px;
+  border: none;
+  display: block;
+  margin: 0 auto;
+  border: solid 2px #ffffff00;
+  border-radius: 5px;
+  width: 600px; }
+  .dvwe5tgg:focus {
+    outline: none;
+    box-shadow: none;
+    border: solid 2px #55c959;
+    color: #55c959; }

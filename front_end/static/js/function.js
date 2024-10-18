@@ -383,8 +383,9 @@ function wef332wf() {
     });
 }
 
-
-
-
-
-getConfig
+function button_active_antivitys(name) {
+    $("#" + name).css("text-decoration", "underline");
+    $("#" + name).css("text-decoration-thickness", "2px");
+    $("#" + name).css("text-underline-offset", "4px");
+    $("#" + name).css("color", "#55c959");
+}
