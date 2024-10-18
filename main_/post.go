@@ -2,7 +2,6 @@ package main_
 
 import (
 	"encoding/json"
-	"fmt"
 	"head/main_/antivirus"
 	"head/main_/func_all"
 	"io"
@@ -290,9 +289,6 @@ func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		value := r.FormValue("value")
-		fmt.Println("Отримане значення:", value)
-
 		file, fileHeader, err := r.FormFile("file")
 		if err != nil {
 			http.Error(w, "Не вдалося отримати файл", http.StatusBadRequest)
@@ -314,12 +310,25 @@ func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		data := antivirus.Scan_file_virus(filePath, "data/sha1_hashes_2.txt")
+		value := r.FormValue("value")
 
-		if data == 0 {
-			w.Write([]byte("0"))
+		if value == "0" {
+			data := antivirus.Scan_file_virus(filePath, "data/sha1_hashes_2.txt")
+
+			if data == 0 {
+				w.Write([]byte("0"))
+			} else {
+				w.Write([]byte("1"))
+			}
 		} else {
-			w.Write([]byte("1"))
+			data := antivirus.Scan_file_virus(filePath, "data/sha1_hashes_1.txt")
+			data1 := antivirus.Scan_file_virus(filePath, "data/sha1_hashes_2.txt")
+
+			if data == 0 || data1 == 1 {
+				w.Write([]byte("0"))
+			} else {
+				w.Write([]byte("1"))
+			}
 		}
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)

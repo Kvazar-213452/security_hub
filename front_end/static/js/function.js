@@ -473,6 +473,7 @@ const fileUpload = () => {
     const $inputContainer = $('#upload-container');
     const $filesListContainer = $('#files-list-container');
     const $uploadButton = $('#upload-button');
+    const $uploadButton1 = $('#upload-button1');
     let fileList = [];
 
     $inputFile.on('click dragstart dragover', () => {
@@ -507,9 +508,42 @@ const fileUpload = () => {
 
     $uploadButton.on('click', () => {
         if (fileList.length === 0) {
-            alert("Будь ласка, виберіть файл перед відправкою.");
+            dwqwfef('Виберіть файл перед відправкою');
             return;
         }
+
+        $('#we332dvc').html("Обробка");
+
+        const formData = new FormData();
+        formData.append('file', fileList[0].file);
+        formData.append('value', 0);
+
+        $.ajax({
+            url: '/antivirus_bekend',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response == 0) {
+                    $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');
+                } else {
+                    $('#we332dvc').html('<span class="f343ffv">Обережно вірус</span>');
+                }
+            },
+            error: function(error) {
+                console.error('Помилка відправки:', error);
+            }
+        });
+    });
+
+    $uploadButton1.on('click', () => {
+        if (fileList.length === 0) {
+            dwqwfef('Виберіть файл перед відправкою');
+            return;
+        }
+
+        $('#we332dvc').html("Обробка");
 
         const formData = new FormData();
         formData.append('file', fileList[0].file);
@@ -522,7 +556,11 @@ const fileUpload = () => {
             processData: false,
             contentType: false,
             success: function(response) {
-                console.log(response);
+                if (response == 0) {
+                    $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');
+                } else {
+                    $('#we332dvc').html('<span class="f343ffv">Обережно вірус</span>');
+                }
             },
             error: function(error) {
                 console.error('Помилка відправки:', error);
@@ -530,3 +568,4 @@ const fileUpload = () => {
         });
     });
 };
+
