@@ -530,5 +530,3 @@ const fileUpload = () => {
         });
     });
 };
-
-fileUpload();

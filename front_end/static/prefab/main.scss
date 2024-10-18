@@ -1,4 +1,5 @@
 @import 'config';
+@import 'mixin';
 
 .menu{
     position: fixed;
@@ -19,7 +20,7 @@
     right: 15px;
     padding: 20px;
     background-color: #1c1d27;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px $null_bleck;
     color: white;
     border-radius: 5px;
     transition: opacity 1s ease, transform 1s ease;
@@ -37,97 +38,11 @@
     transform: translateY(100%);
 }
 
-.button {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    left: 0%;
-    transition: all .3s;
-    cursor: pointer;
-    color: #efefef;
-    font-weight: 600;
-    
-    p {
-        position: relative;
-        left: 35px;
-        font-size: 18px;
-        top: 15px;
-    }
+.button {@include menu_button($text_color, 10px, 85%);}
 
-    &:hover {
-        background-color: #2e363f;
-    }
+.button1 {@include menu_button($text_color, 12.5px, 85%);}
 
-    img {
-        filter: invert(85%);
-        height: 25px;
-        position: relative;
-        float: left;
-        left: 29px;
-        top: 10px;
-    }
-}
-
-.button1 {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    left: 0%;
-    transition: all .3s;
-    cursor: pointer;
-    color: #efefef;
-    font-weight: 600;
-    
-    p {
-        position: relative;
-        left: 35px;
-        font-size: 18px;
-        top: 15px;
-    }
-
-    &:hover {
-        background-color: #2e363f;
-    }
-
-    img {
-        filter: invert(85%);
-        height: 25px;
-        position: relative;
-        float: left;
-        left: 29px;
-        top: 12.5px;
-    }
-}
-
-.button2 {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    left: 0%;
-    transition: all .3s;
-    cursor: pointer;
-    color: $read;
-    font-weight: 600;
-    
-    p {
-        position: relative;
-        left: 35px;
-        font-size: 18px;
-        top: 15px;
-    }
-
-    &:hover {
-        background-color: #2e363f;
-    }
-
-    img {
-        height: 25px;
-        position: relative;
-        float: left;
-        left: 29px;
-        top: 14px;
-    }
-}
+.button2 {@include menu_button($read, 14px, 0%);}
 
 .main{
     position: fixed;
@@ -173,19 +88,6 @@
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4); 
-}
-
-.modal-content1 {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  padding: 20px;
-  transform: translate(-50%, -50%);
-  width: 30%;
-  height: 20%;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  background-color: $bg_color; 
 }
 
 .modal-content2 {
@@ -244,11 +146,11 @@
     left: 390px;
 }
 
-.wifi_3_div{color: #ffffffd4;}
+.wifi_3_div{color: $text_color;}
 
 .wifi_3_div,
 .wifi_3_div_red{
-    color: #ffffffd4;
+    color: $text_color;
     font-weight: bold;
 }
 
@@ -267,7 +169,7 @@
 .img_wifi {
     position: relative;
     width: 100%;
-    background-color: #20252c;
+    background-color: $bg_color1;
     height: 340px;
     border-radius: 5px;
 }
@@ -275,7 +177,7 @@
 .div_wifi_info{
     position: relative;
     width: 100%;
-    background-color: #20252c;
+    background-color: $bg_color1;
     height: calc(100% - 440px);
     overflow: auto;
     border-radius: 5px;
@@ -293,7 +195,7 @@
     position: absolute;
     left: 230px;
     font-weight: normal;
-    color: #efefef;
+    color: $text_color;
     font-size: 16px;
 }
 
@@ -336,39 +238,16 @@
 .curveOne2,
 .curveTwo2,
 .curveThree2,
-.curveFour2{border:13px solid #252831;}
+.curveFour2{border:13px solid $bg_color2;}
 
 .curveTwo1,
-.curveTwo2{
-    border-radius:50%;
-    position:absolute;
-    right:0%;
-    bottom:0;
-    transform:translate(50%,50%);
-    width:150%;
-    height:150%;
-}
+.curveTwo2{@include curveTwo(150%, 150%);}
 
 .curveThree1,
-.curveThree2{
-    border-radius:50%;
-    position:absolute;
-    right:0%;
-    width:100%;
-    transform:translate(50%,50%);
-    height:100%;
-}
+.curveThree2{@include curveTwo(100%, 100%);}
 
 .curveFour1,
-.curveFour2{
-    border-radius:50%;
-    position:absolute;
-    bottom:0;
-    height:50%;
-    right:0%;
-    width:50%;
-    transform:translate(50%,50%)
-}
+.curveFour2{@include curveTwo(50%, 50%);}
 
 .curveFour1{background-color: $grean;}
 
@@ -383,7 +262,7 @@
 .wifi_all_div{
     position: relative;
     float: right;
-    background-color: #20252c;
+    background-color: $bg_color1;
     width: 440px;
     left: 10px;
     height: 100%;
@@ -398,15 +277,13 @@
     margin-top: 20px;
     width: 100%;
     height: 35px;
-    background-color: #12171e;
+    background-color: $bg_color3;
     border: solid 2px $null;
     cursor: pointer;
     transition: all .3s;
     border-radius: 5px;
 
-    &:hover{
-        border: solid 2px #e4e4e4;
-    }
+    &:hover{border: solid 2px $text_color;}
 }
 
 .name_wifi_div_all{
@@ -427,9 +304,7 @@
     float: right;
 }
 
-.border_active_grran{
-    border: solid 2px $grean;
-}
+.border_active_grran{border: solid 2px $grean;}
 
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
@@ -437,9 +312,7 @@
 
 .settings_main_tetx{
     font-size: 19px;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    @include text_decoration();
     color: $grean;
     font-weight: bold;
 }
@@ -453,18 +326,11 @@
 }
 
 .button_settings{
+    @include button($text_color, $bg_color3, 15px);
     position: relative;
     float: left;
     margin-left: 10px;
     left: -10px;
-    border: none;
-    padding: 6px;
-    background-color: #12171e;
-    color: #ffffffd4;
-    font-size: 15px;
-    border-radius: 5px;
-    transition: all .3s;
-    border: solid 2px $null;
 }
 
 .button_settings:hover,
@@ -478,7 +344,7 @@
     border: none;
     padding: 6px;
     background-color: $bg_color;
-    color: #ffffffd4;
+    color: $text_color;
     font-size: 15px;
 }
 
@@ -503,9 +369,7 @@
     position: relative;
     text-align: center;
     font-size: 24px;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    @include text_decoration();
     color: $blue;
 }
 
@@ -518,7 +382,7 @@
     width: 500px;
     height: 370px;
     border-radius: 10px;
-    background-color: $bg_color2;
+    background-color: $bg_color1;
 }
 
 .img_os{
@@ -558,7 +422,7 @@
 
 .qdwfwfecc{
     position: relative;
-    background-color: #181d25;
+    background-color: $bg_color4;
     padding: 15px;
     border-radius: 10px;
 }
@@ -590,10 +454,10 @@
     left: 60%;
     padding: 20px;
     transform: translate(-60%, -50%);
-    background-color: #20252c;
+    background-color: $bg_color1;
     height: 600px;
     width: 600px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px $null_bleck;
     border-radius: 10px;
 
     h1 {
@@ -612,16 +476,8 @@
     }
 
     button {
-        border: none;
-        padding: 7px;
-        border-radius: 5px;
-        cursor: pointer;
-        background-color: #12171e;
+        @include button($text_color, $bg_color3, 15px);
         font-weight: bold;
-        font-size: 15px;
-        color: $text_color;
-        border: solid 2px $null;
-        transition: all .3s;
     }
 
     button:hover {
@@ -679,8 +535,8 @@
     padding-right: 40px;
     font-weight: bold;
     color: $text_color;
-    background-color: #181d25;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    background-color: $bg_color4;
+    box-shadow: 0 4px 20px $null_bleck;
     font-size: 20px;
     border: none;
     border: solid 2px $null;
@@ -697,17 +553,10 @@
 }
 
 .dwwccv7u3jf{
+    @include button($text_color, $bg_color1, 18px);
     display: block;
     margin: 0 auto;
-    border: none;
-    border-radius: 5px;
-    border: solid 2px $null;
     font-weight: bold;
-    color: $text_color;
-    background-color: #20252c;
-    padding: 7px;
-    cursor: pointer;
-    font-size: 18px;
     position: relative;
     left: -20px;
 }
@@ -715,7 +564,7 @@
 .dwdwffff2{
     position: relative;
     width: calc(100% - 40px);
-    background-color: #20252c;
+    background-color: $bg_color1;
     height: calc(100% - 370px);
     border-radius: 5px;
 }
@@ -725,25 +574,20 @@
 }
 
 .dd223dfwef{
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    @include text_decoration();
     color: $grean;
     font-size: 24px;
 }
 
 .weirwnofqwd_w{
-    background-color: #181d25;
+    background-color: $bg_color4;
     height: calc(100% - 190px);
     width: calc(100% - 420px);
     border-radius: 5px;
-    
 }
 
 .ew54tgtrbb{
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    @include text_decoration();
     color: $read;
 }
 
@@ -783,3 +627,9 @@
     cursor: pointer;
     opacity: 0;
 }
+
+#upload-button{
+    display: block;
+    margin: 0 auto;
+}
+
