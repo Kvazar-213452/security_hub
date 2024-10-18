@@ -308,3 +308,27 @@ func Resource_info() string {
 func RemoveNewlines(s string) string {
 	return strings.ReplaceAll(s, "\n", "")
 }
+
+func splitLines(content string) []string {
+	return strings.Split(strings.TrimSpace(content), "\n")
+}
+
+func ReadFileToJSON(filePath string) []byte {
+	content, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		return nil
+	}
+
+	lines := splitLines(string(content))
+
+	responseData := map[string]interface{}{
+		"data": lines,
+	}
+
+	jsonData, err := json.Marshal(responseData)
+	if err != nil {
+		return nil
+	}
+
+	return jsonData
+}

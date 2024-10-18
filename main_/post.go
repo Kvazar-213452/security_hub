@@ -2,7 +2,9 @@ package main_
 
 import (
 	"encoding/json"
+	"head/main_/antivirus"
 	"head/main_/func_all"
+	"io/ioutil"
 	"net/http"
 	"strconv"
 	"strings"
@@ -11,6 +13,10 @@ import (
 
 type VisualizationMessage struct {
 	Message int `json:"message"`
+}
+
+type RequestData struct {
+	URL []string `json:"url_site"`
 }
 
 type OSData struct {
@@ -215,6 +221,51 @@ func Post_cleanup(w http.ResponseWriter, r *http.Request) {
 		func_all.Cleanup()
 
 		w.Write(nil)
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_antivirus_web(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		body, err := ioutil.ReadAll(r.Body)
+		if err != nil {
+			http.Error(w, "Не вдалося прочитати тіло запиту", http.StatusBadRequest)
+			return
+		}
+		defer r.Body.Close()
+
+		var requestData RequestData
+		err = json.Unmarshal(body, &requestData)
+		if err != nil || len(requestData.URL) == 0 {
+			http.Error(w, "Некоректний формат запиту", http.StatusBadRequest)
+			return
+		}
+
+		url := requestData.URL[0]
+		antivirus.FetchHTMLAndJS(url)
+		code := antivirus.CheckUrlInFile(url)
+
+		jsonData := func_all.ReadFileToJSON("data/inter.txt")
+
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+
+		if code == 1 {
+			response := map[string]interface{}{
+				"found": true,
+				"data":  jsonData,
+			}
+			json.NewEncoder(w).Encode(response)
+		} else {
+			response := map[string]interface{}{
+				"found": false,
+				"data":  jsonData,
+			}
+			json.NewEncoder(w).Encode(response)
+		}
+
+		antivirus.DeleteFiles()
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

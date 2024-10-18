@@ -35,7 +35,8 @@ func FetchHTMLAndJS(url string) error {
 		return fmt.Errorf("не вдалося прочитати тіло відповіді: %v", err)
 	}
 
-	err = os.WriteFile("site.html", bodyBytes, 0644)
+	htmlFilePath := filepath.Join("data/web", "site.html")
+	err = os.WriteFile(htmlFilePath, bodyBytes, 0644)
 	if err != nil {
 		return fmt.Errorf("не вдалося створити файл HTML: %v", err)
 	}
@@ -87,8 +88,8 @@ func DownloadJS(jsURL string) error {
 		return fmt.Errorf("помилка відповіді сервера: %s", resp.Status)
 	}
 
-	jsFileName := sanitizeFileName(filepath.Base(jsURL))
-	jsFile, err := os.Create(jsFileName)
+	jsFilePath := filepath.Join("data/web", sanitizeFileName(filepath.Base(jsURL)))
+	jsFile, err := os.Create(jsFilePath)
 	if err != nil {
 		return fmt.Errorf("не вдалося створити файл JS: %v", err)
 	}
@@ -133,12 +134,17 @@ func checkJSFile(filePath string) {
 }
 
 func writeResultsToFile(foundPatterns map[string]bool) {
-	err := os.WriteFile("inter.txt", []byte(""), 0644)
+	err := os.MkdirAll("data", os.ModePerm)
 	if err != nil {
 		return
 	}
 
-	file, err := os.OpenFile("inter.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	err = os.WriteFile("data/inter.txt", []byte(""), 0644)
+	if err != nil {
+		return
+	}
+
+	file, err := os.OpenFile("data/inter.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return
 	}
@@ -153,8 +159,8 @@ func writeResultsToFile(foundPatterns map[string]bool) {
 }
 
 func DeleteFiles() {
-	files := []string{"site.html"}
-	jsFiles, err := filepath.Glob("*.js")
+	files := []string{filepath.Join("data/web", "site.html")}
+	jsFiles, err := filepath.Glob(filepath.Join("data/web", "*.js"))
 	if err == nil {
 		files = append(files, jsFiles...)
 	}
@@ -170,7 +176,7 @@ func DeleteFiles() {
 }
 
 func CheckUrlInFile(url string) int {
-	file, err := os.Open("site_virus.txt")
+	file, err := os.Open("data/site_virus.txt")
 	if err != nil {
 		return 0
 	}

@@ -389,3 +389,32 @@ function button_active_antivitys(name) {
     $("#" + name).css("text-underline-offset", "4px");
     $("#" + name).css("color", "#55c959");
 }
+
+
+function ewffef4f() {
+    const dataToSend = {
+        url_site: [
+            "https://www.youtube.com/watch?v=G6vYAio76WM"
+        ]
+    };
+
+    $.ajax({
+        url: '/antivirus_web',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(dataToSend),
+        success: function(response) {
+            console.log(response);
+
+            const decodedString = atob(response['data']);
+
+            console.log(decodedString);
+        },
+        error: function(xhr, status, error) {
+            console.log("Error: " + error);
+            console.log("Response text:", xhr.responseText);
+        }
+    });
+}
+
+ewffef4f();

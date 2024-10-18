@@ -1,4 +1,4 @@
-document.body.appendChild
-requestFullscreen
 window.location.href
 window.open
+document.body.appendChild
+requestFullscreen
