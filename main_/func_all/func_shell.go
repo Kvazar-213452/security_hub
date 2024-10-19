@@ -48,25 +48,17 @@ func FindFreePort() int {
 	return addr.Port
 }
 
-func Write_config_core(port string) {
-	content := config_main.Core_web_config_content(port)
+func StartShellWeb(port string) *exec.Cmd {
+	htmlContent := fmt.Sprintf(`<style>iframe{position: fixed;height: 100%%;width: 100%%;top: 0%%;left: 0%%;}</style><iframe src='http://127.0.0.1%s/about' frameborder='0'></iframe>`, port)
 
-	file, err := os.OpenFile(config_main.Core_web_config, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
-	if err != nil {
-		fmt.Printf("Помилка відкриття файлу: %v\n", err)
-		return
+	args := []string{
+		config_main.Name,
+		config_main.Window_h,
+		config_main.Window_w,
+		htmlContent,
 	}
-	defer file.Close()
 
-	_, err = file.WriteString(content)
-	if err != nil {
-		fmt.Printf("Помилка запису у файл: %v\n", err)
-		return
-	}
-}
-
-func StartShellWeb() *exec.Cmd {
-	cmd := exec.Command(config_main.Core_web)
+	cmd := exec.Command(config_main.Core_web, args...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 

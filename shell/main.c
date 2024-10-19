@@ -1,5 +1,4 @@
 #include "webview.h"
-#include "src/func_whrite.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
@@ -21,45 +20,19 @@ void SetupWebview(webview_t w, const char* title, int height, int width, const c
     webview_set_html(w, html);
 }
 
-int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine, int nCmdShow) {
-    (void)hInst;
-    (void)hPrevInst;
-    (void)lpCmdLine;
-    (void)nCmdShow;
-
-    char* title = read_name_from_file("start_conf.log");
-    if (!title) {
-        fprintf(stderr, "Failed to read name from file\n");
-        return -1;
+int main(int argc, char *argv[]) {
+    if (argc < 5) {
+        printf("use: %s <title> <height> <width> <html>\n", argv[0]);
+        return 1;
     }
 
-    char* html = read_file_html("start_conf.log");
-    if (!html) {
-        fprintf(stderr, "Failed to read HTML from file\n");
-        free(title);
-        return -1;
-    }
-
-    int height = read_window_height("start_conf.log");
-    if (height == -1) {
-        fprintf(stderr, "Failed to read height from file\n");
-        free(title);
-        free(html);
-        return -1;
-    }
-
-    int width = read_window_width("start_conf.log");
-    if (width == -1) {
-        fprintf(stderr, "Failed to read width from file\n");
-        free(title);
-        free(html);
-        return -1;
-    }
+    const char* title = argv[1];
+    int height = atoi(argv[2]); 
+    int width = atoi(argv[3]);
+    const char* html = argv[4];
 
     webview_t w = webview_create(0, NULL);
     if (!w) {
-        free(title);
-        free(html);
         return -1;
     }
 
@@ -70,7 +43,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmdLine, int nC
 
     webview_run(w);
     webview_destroy(w);
-    free(title);
-    free(html);
+
     return 0;
 }

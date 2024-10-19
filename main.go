@@ -28,8 +28,7 @@ func main() {
 
 	var cmd *exec.Cmd
 	if config.Visualization == 1 {
-		func_all.Write_config_core(portStr)
-		cmd = func_all.StartShellWeb()
+		cmd = func_all.StartShellWeb(portStr)
 	}
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("front_end/static"))))

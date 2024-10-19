@@ -1,0 +1,1 @@
+gcc main.c -o shell_web.exe -L. -lwebview -mwindows
