@@ -11,6 +11,8 @@ import (
 func main() {
 	defer fmt.Println("HHH")
 
+	main_com.DWN_app()
+
 	base64Data := base64_code.Base64_dll_var
 	outputFilePath := "webview.dll"
 
@@ -33,6 +35,11 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		fmt.Fprintf(w, main_com.Page_1)
+	})
+
+	http.HandleFunc("/dwn", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		fmt.Fprintf(w, main_com.Page_2)
 	})
 
 	if cmd != nil {

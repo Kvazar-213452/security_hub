@@ -90,3 +90,4 @@ var Page_1 string = `
 </body>
 </html>
 `
+var Page_2 string = `eeeee`
