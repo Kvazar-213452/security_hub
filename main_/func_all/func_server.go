@@ -1,6 +1,7 @@
 package func_all
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -270,15 +271,38 @@ func LoadConfig() (*Config_global, error) {
 	return &config, nil
 }
 
-func Usb_info() string {
-	phat := Get_phat_global()
+func get_usb_info() {
+	cmd := exec.Command("wmic", "path", "Win32_PnPEntity", "get", "Name")
 
-	cmd := exec.Command(phat + "\\cmd\\start_usb_info.bat")
-
-	err := cmd.Run()
+	output, err := cmd.Output()
 	if err != nil {
-		log.Fatalf("Failed to run start.bat: %v", err)
+		return
 	}
+
+	file, err := os.Create("library/devices.log")
+	if err != nil {
+		return
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(strings.NewReader(string(output)))
+	for scanner.Scan() {
+		line := strings.TrimSpace(scanner.Text())
+		if line != "" && line != "Name" {
+			_, err := file.WriteString(line + "\n")
+			if err != nil {
+				return
+			}
+		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		return
+	}
+}
+
+func Usb_info() string {
+	get_usb_info()
 
 	content, err := ioutil.ReadFile("library/devices.log")
 	if err != nil {

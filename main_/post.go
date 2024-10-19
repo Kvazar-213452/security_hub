@@ -53,7 +53,7 @@ func Post_wifi_network(w http.ResponseWriter, r *http.Request) {
 		func_all.AppendToLog("/get_wifi post")
 		networks, err := func_all.Get_available_Wifi_networks()
 		if err != nil {
-			http.Error(w, "Помилка отримання інформації про Wi-Fi мережі", http.StatusInternalServerError)
+			json.NewEncoder(w).Encode("error")
 			return
 		}
 
