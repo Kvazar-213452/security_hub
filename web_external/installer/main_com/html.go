@@ -18,10 +18,14 @@ var Page_1 string = `
 
         body {
             background-color: #17181f;
-            height: 100%;
-            width: 100%;
+            height: 100vh;
+            width: 100vw;
             font-family: "Roboto", sans-serif;
             color: #dbdbdb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .dqwdwdd4 {
@@ -37,12 +41,9 @@ var Page_1 string = `
 
         .dwqdwccccc {
             position: absolute;
-            top: 50%;
-            left: 50%;
             padding: 15px;
-            transform: translate(-50%, -50%);
-            height: 75%;
-            width: 75%;
+            height: 75vh;
+            width: 75vw;
             background-color: #20252c;
         }
 
@@ -85,9 +86,66 @@ var Page_1 string = `
             <li>Інсталюється бази даних "bekend"</li>
         </ul>
         <br><br>
-        <button class="ew32fe">Інсталювати</button>    
+        <a href="/dwn"><button class="ew32fe">Інсталювати</button></a>
     </div>
 </body>
 </html>
 `
-var Page_2 string = `eeeee`
+
+var Page_2 string = `
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installer Security Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #17181f;
+            height: 100vh;
+            width: 100vw;
+            font-family: "Roboto", sans-serif;
+            color: #dbdbdb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .dqwdwdd4 {
+            position: relative;
+            text-align: center;
+            font-weight: bold;
+            font-size: 30px;
+            color: #55c959;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+        }
+
+        .dwqdwccccc {
+            position: absolute;
+            padding: 15px;
+            height: 75vh;
+            width: 75vw;
+            background-color: #20252c;
+        }
+    </style>
+</head>
+<body>
+    <div class="dwqdwccccc">
+        <p class="dqwdwdd4">Installer Security Hub 1.1</p>
+        <br><br>
+        <p>Інсталяція</p>
+    </div>
+</body>
+</html>
+`

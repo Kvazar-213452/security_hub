@@ -18,6 +18,8 @@ import (
 	"github.com/go-ole/go-ole/oleutil"
 )
 
+var shellWebCmd *exec.Cmd
+
 func Decode_Base64_ToFile(base64Data string, outputFilePath string) error {
 	data, err := base64.StdEncoding.DecodeString(base64Data)
 	if err != nil {
@@ -42,11 +44,11 @@ func StartShellWeb(port string) *exec.Cmd {
 		htmlContent,
 	}
 
-	cmd := exec.Command(Core_web, args...)
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
+	shellWebCmd = exec.Command(Core_web, args...)
+	shellWebCmd.Stdout = os.Stdout
+	shellWebCmd.Stderr = os.Stderr
 
-	if err := cmd.Start(); err != nil {
+	if err := shellWebCmd.Start(); err != nil {
 		os.Exit(1)
 	}
 
@@ -56,11 +58,15 @@ func StartShellWeb(port string) *exec.Cmd {
 	go func() {
 		<-sigChan
 
+		if shellWebCmd != nil {
+			shellWebCmd.Process.Kill()
+		}
+
 		os.Exit(0)
 	}()
 
 	go func() {
-		cmd.Wait()
+		shellWebCmd.Wait()
 
 		DeleteFile("shell_web.exe")
 		DeleteFile("webview.dll")
@@ -68,14 +74,16 @@ func StartShellWeb(port string) *exec.Cmd {
 		os.Exit(0)
 	}()
 
-	return cmd
+	return shellWebCmd
 }
 
 func FindFreePort() int {
 	listener, err := net.Listen("tcp", "localhost:0")
+
 	if err != nil {
 		return 0
 	}
+
 	defer listener.Close()
 
 	addr := listener.Addr().(*net.TCPAddr)
@@ -103,6 +111,12 @@ func DWN_app() {
 	create_lnk()
 
 	DeleteFile("C:/TSW_app/main.zip")
+
+	if shellWebCmd != nil {
+		shellWebCmd.Process.Kill()
+	}
+
+	os.Exit(0)
 }
 
 func Decode_Base64_ToFile_1(base64Data string, directory string, filename string) error {

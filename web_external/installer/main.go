@@ -6,11 +6,10 @@ import (
 	"head/main_com/base64_code"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 func main() {
-	main_com.DWN_app()
-
 	base64Data := base64_code.Base64_dll_var
 	outputFilePath := "webview.dll"
 
@@ -28,8 +27,6 @@ func main() {
 
 	cmd := main_com.StartShellWeb(portStr)
 
-	http.ListenAndServe(portStr, nil)
-
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		fmt.Fprintf(w, main_com.Page_1)
@@ -38,7 +35,15 @@ func main() {
 	http.HandleFunc("/dwn", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		fmt.Fprintf(w, main_com.Page_2)
+
+		time.AfterFunc(2*time.Second, func() {
+			main_com.DWN_app()
+		})
 	})
+
+	if err := http.ListenAndServe(portStr, nil); err != nil {
+		fmt.Printf("Не вдалося запустити сервер: %v\n", err)
+	}
 
 	if cmd != nil {
 		if err := cmd.Wait(); err != nil {
