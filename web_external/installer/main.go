@@ -9,8 +9,6 @@ import (
 )
 
 func main() {
-	defer fmt.Println("HHH")
-
 	main_com.DWN_app()
 
 	base64Data := base64_code.Base64_dll_var
