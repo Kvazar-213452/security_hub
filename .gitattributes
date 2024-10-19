@@ -3,6 +3,8 @@
 shell/webview.h linguist-documentation
 web_external/installer/shell/webview.h linguist-documentation
 
+web_external/installer/main_com/base64.go linguist-documentation
+
 front_end/static/jquery.min.js linguist-documentation
 front_end/static/css/*.css linguist-documentation
 
