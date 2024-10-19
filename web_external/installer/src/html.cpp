@@ -54,8 +54,8 @@ std::string html_content = R"(
             left: 50%;
             padding: 15px;
             transform: translate(-50%, -50%);
-            height: 600px;
-            width: 850px;
+            height: 75%;
+            width: 75%;
             background-color: #20252c;
         }
 
