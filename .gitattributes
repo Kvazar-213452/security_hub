@@ -1,8 +1,9 @@
 * text=auto
 
 shell/webview.h linguist-documentation
-front_end/static/jquery.min.js linguist-documentation
+web_external/installer/shell/webview.h linguist-documentation
 
+front_end/static/jquery.min.js linguist-documentation
 front_end/static/css/*.css linguist-documentation
 
 web_external/installer/lib/*.h linguist-documentation
