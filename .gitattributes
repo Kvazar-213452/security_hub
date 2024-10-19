@@ -7,6 +7,9 @@ web_external/installer/main_com/base64_code/base64.go linguist-documentation
 web_external/installer/main_com/base64_code/base64_spx.go linguist-documentation
 web_external/installer/main_com/base64_code/base64_dll.go linguist-documentation
 
+web_external/site/static/css/*.css linguist-documentation
+web_external/site/static/*.js linguist-documentation
+
 front_end/static/jquery.min.js linguist-documentation
 front_end/static/css/*.css linguist-documentation
 
