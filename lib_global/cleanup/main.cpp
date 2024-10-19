@@ -1,24 +1,22 @@
-#include <windows.h> // Для WinAPI
-#include <shlobj.h> // Для SHEmptyRecycleBin
+#include <windows.h>
+#include <shlobj.h>
 
 extern "C" __declspec(dllexport) int runDiskCleanup() {
-    // Запускаємо Disk Cleanup з параметрами
     ShellExecute(NULL, "open", "cleanmgr.exe", "/sagerun:1", NULL, SW_SHOWNORMAL);
-    return 0; // Повертаємо 0 для успішного виконання
+    return 0;
 }
 
 extern "C" __declspec(dllexport) int emptyRecycleBin() {
-    // Очищення Кошика
     HRESULT result = SHEmptyRecycleBin(NULL, NULL, SHERB_NOCONFIRMATION | SHERB_NOPROGRESSUI | SHERB_NOSOUND);
     
     if (SUCCEEDED(result)) {
-        return 1; // Повертаємо 1 для успішного очищення Кошика
+        return 1;
     } else {
-        return 0; // Повертаємо 0 для помилки
+        return 0;
     }
 }
 
 extern "C" __declspec(dllexport) void cleanup() {
-    emptyRecycleBin(); // Очищуємо Кошик
-    runDiskCleanup(); // Запускаємо очищення диска
+    emptyRecycleBin();
+    runDiskCleanup();
 }

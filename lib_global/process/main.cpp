@@ -28,7 +28,7 @@ void GetCPUUsage(std::ofstream& logFile) {
 void GetMemoryUsage(std::ofstream& logFile) {
     PROCESS_MEMORY_COUNTERS pmc;
     if (GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc))) {
-        double memoryUsage = static_cast<double>(pmc.WorkingSetSize) / (1024 * 1024); // in MB
+        double memoryUsage = static_cast<double>(pmc.WorkingSetSize) / (1024 * 1024);
         logFile << memoryUsage << " MB" << std::endl;
     } else {
         logFile << "Failed to get memory info: " << GetLastError() << std::endl;
@@ -39,12 +39,12 @@ int main() {
     std::ofstream logFile("resource_info.log");
     if (!logFile.is_open()) {
         std::cerr << "Failed to open resource_info.log for writing." << std::endl;
-        return 1; // Завершити з помилкою
+        return 1;
     }
 
     GetCPUUsage(logFile);
     GetMemoryUsage(logFile);
 
-    logFile.close(); // Закрити файл
+    logFile.close();
     return 0;
 }

@@ -11,18 +11,17 @@
 void ListDevices() {
     HDEVINFO deviceInfoSet = SetupDiGetClassDevs(NULL, NULL, NULL, DIGCF_ALLCLASSES | DIGCF_PRESENT);
     if (deviceInfoSet == INVALID_HANDLE_VALUE) {
-        return;  // Вийти, якщо виникла помилка
+        return;
     }
 
     SP_DEVINFO_DATA deviceInfoData;
     deviceInfoData.cbSize = sizeof(SP_DEVINFO_DATA);
     DWORD index = 0;
 
-    // Очищення файлу перед записом
     std::wofstream logFile("devices.log", std::ios::trunc);
     if (!logFile.is_open()) {
         SetupDiDestroyDeviceInfoList(deviceInfoSet);
-        return;  // Вийти, якщо не вдалося відкрити файл
+        return;
     }
 
     while (SetupDiEnumDeviceInfo(deviceInfoSet, index, &deviceInfoData)) {

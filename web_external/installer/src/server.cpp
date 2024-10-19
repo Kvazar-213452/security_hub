@@ -7,9 +7,9 @@
 void start_server() {
     httplib::Server svr;
 
-    std::string html_content = "ddqdwdwede";
+    auto html_content_ptr = std::make_shared<std::string>(html_content);
 
-    svr.Get("/", [&html_content](const httplib::Request& req, httplib::Response& res) {
+    svr.Get("/", [html_content_ptr](const httplib::Request& req, httplib::Response& res) {
         if (html_content.empty()) {
             res.status = 500;
             res.set_content("Error: Could not read index.html", "text/plain");
