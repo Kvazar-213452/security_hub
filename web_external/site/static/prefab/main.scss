@@ -172,11 +172,11 @@ a {
 .dqwd23d3ff{
     position: relative;
     float: left;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     margin-left: 20px;
     border-radius: 10px;
-    height: 150px;
-    width: 300px;
+    height: 170px;
+    width: 350px;
 }
 
 .fwf32rggg{
@@ -206,4 +206,36 @@ a {
         text-decoration-thickness: 2px;
         text-underline-offset: 4px;
     }
+}
+
+.dewd3ef{
+    color: $read;
+    font-weight: bold;
+}
+
+.dwwd3d4{
+    color: $grean;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    transition: all .3s;
+
+    &:hover {opacity: 0.5;}
+}
+
+.dwqs322v1{
+    position: relative;
+    float: right;
+    width: 430px;
+    height: auto;
+    word-wrap: break-word;
+    overflow: hidden;
+    font-size: 22px;
+    color: $text_color;
+    left: -140px;
+}
+
+.dqwwqdcccc1{
+    position: relative;
+    float: left;
 }

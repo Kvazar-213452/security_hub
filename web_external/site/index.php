@@ -8,13 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
     <link rel="stylesheet" href="<?php echo $domen_name; ?>/style/main">
 </head>
 <body>
-    <div class="menu">
-        <div onclick="scrollToElement('dwdd32444')" class="efw42f">Про програму</div>
-        <div onclick="scrollToElement('dd2343gvef')" class="efw42f">Скріни</div>
-        <div onclick="scrollToElement('ewwfrg34')" class="efw42f">Завантажити</div>
-        <div onclick="scrollToElement('we33333xxx')" class="efw42f">Вихідний код</div>
-    </div>
-    <p id="dwdd32444"></p>
+    <?php require 'page/menu.php'; ?>
     <br><br><br><br><br><br><br><br><br><br>
     <div class="w3fwe">
         <div class="dwqs322v">
@@ -22,39 +16,46 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
         </div>
         <div class="dqwwqdcccc">
             <div class="cover1212 atvImg">
-                <div class="atvImg-layer" data-img="static/img/9.png"></div>
+                <div class="atvImg-layer" data-img="<?php echo $domen_name; ?>/static/img/9.png"></div>
             </div>
         </div>
     </div>
-    <div id="dd2343gvef" class="rrggef">
+    <div class="rrggef">
         <br><br><br><br>
         <div class="dqd2323"></div>
         <br><br><br>
-        <img class="dqwd23d3ff" src="static/img/1.jpg">
-        <img class="dqwd23d3ff" src="static/img/1.jpg">
-        <img class="dqwd23d3ff" src="static/img/1.jpg">
-        <img class="dqwd23d3ff" src="static/img/1.jpg">
-        <img class="dqwd23d3ff" src="static/img/1.jpg">
-        <img class="dqwd23d3ff" src="static/img/1.jpg">
-    </div>
-    <div id="ewwfrg34" class="rrggef">
-        <br><br><br><br>
-        <div class="dqd2323"></div>
-        <br><br><br>
-        <div class="fwf32rggg atvImg">
-            <div class="atvImg-layer" data-img="static/img/9.png"></div>
+        <div class="dwqs322v1">
+            <br><br>
+        Сигнатурний аналіз: перевіряє файли на наявність відомих вірусів шляхом порівняння їх з базою вірусних сигнатур.
+        <br><br>
+        Швидке сканування (лише найважливіші файли та системні каталоги)
+        <br>
+        Повне сканування (усі файли та каталоги)
         </div>
-        <br><br><br><br>
-        <button class="d3232f4ff">Скачати офлайн інсталятор</button>
-        <button class="d3232f4ff">Скачати онлайн інсталятор</button>
+        <div class="dqwwqdcccc1">
+            <div class="cover1212 atvImg">
+                <div class="atvImg-layer" data-img="<?php echo $domen_name; ?>/static/img/1.png"></div>
+            </div>
+        </div>
     </div>
-    <div id="we33333xxx" class="rrggef">
+    <div class="rrggef">
         <br><br><br><br>
         <div class="dqd2323"></div>
         <br><br><br>
-        <a href="https://github.com/Kvazar-213452/security_hub">https://github.com/Kvazar-213452/security_hub</a>
+        <div class="dwqs322v">
+            <br><br>
+            Security Hub захищає користувача від небезпечних веб-ресурсів, використовуючи вбудовану систему перевірки сайтів.
+        <br><br>
+        Вона попереджає про небезпечні сайти або сайти, які можуть містити фішингові атаки, шкідливі коди чи інші загрози.
+        </div>
+        <div class="dqwwqdcccc">
+            <div class="cover1212 atvImg">
+                <div class="atvImg-layer" data-img="<?php echo $domen_name; ?>/static/img/2.png"></div>
+            </div>
+        </div>
     </div>
-    <br><br><br><br>
+    <?php require 'page/footer.php'; ?>
+<br><br><br>
     <script src="<?php echo $domen_name; ?>/lib/js/jquery"></script>
     <script src="<?php echo $domen_name; ?>/js/main"></script>
 </body>

@@ -155,10 +155,3 @@ function atvImg() {
 }
 
 atvImg();
-
-function scrollToElement(name) {
-    var element = document.getElementById(name);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-}

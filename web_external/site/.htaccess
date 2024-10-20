@@ -21,7 +21,7 @@ RewriteRule ^lib/js/jquery$ static/jquery-3.6.4.min.js [L]
 
 
 #page html url
-RewriteRule ^page/main$ src/main.php [L]
-RewriteRule ^page/game$ src/game.php [L]
-RewriteRule ^page/app$ src/app.php [L]
+RewriteRule ^page/main$ index.php [L]
+RewriteRule ^page/screens$ screens.php [L]
+RewriteRule ^page/dwn$ download.php [L]
 RewriteRule ^page/music$ src/music.php [L]
