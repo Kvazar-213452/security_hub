@@ -1,2 +1,4 @@
 /web_external/server/node_modules/
-/web_external/installer/main.exe
+
+/web_external/installer/installer_ofline/main.exe
+/web_external/installer/installer_online/main.exe

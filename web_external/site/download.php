@@ -16,8 +16,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
             <div class="atvImg-layer" data-img="<?php echo $domen_name; ?>/static/img/9.png"></div>
         </div>
         <br><br><br><br>
-        <button class="d3232f4ff">Скачати офлайн інсталятор</button>
-        <button class="d3232f4ff">Скачати онлайн інсталятор</button>
+        <a href="http://localhost:3000/installer_online.exe"><button class="d3232f4ff">Скачати офлайн інсталятор</button></a>
+        <a href="http://localhost:3000/installer_ofline.exe"><button class="d3232f4ff">Скачати онлайн інсталятор</button></a>
+        <a href="http://localhost:3000/main.zip"><button class="d3232f4ff">Скачати zip архів</button></a>
     </div>
     <?php require 'page/footer.php'; ?>
     <br><br>
