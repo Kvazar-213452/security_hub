@@ -47,9 +47,7 @@ a {
 
     &:hover{
         color: $grean;
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 4px;
+        @include text_decoration();
     }
 }
 
@@ -60,16 +58,7 @@ a {
     margin: 0 auto;
 }
 
-.dwqs322v {
-    position: relative;
-    float: left;
-    width: 430px;
-    height: auto;
-    word-wrap: break-word;
-    overflow: hidden;
-    font-size: 22px;
-    color: $text_color;
-}
+.dwqs322v {@include text_decoration(0, left);}
 
 .dq3dcccc{
     font-size: 22px;
@@ -202,9 +191,7 @@ a {
 
     &:hover{
         opacity: 0.5;
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 4px;
+        @include text_decoration();
     }
 }
 
@@ -215,25 +202,13 @@ a {
 
 .dwwd3d4{
     color: $grean;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    @include text_decoration();
     transition: all .3s;
 
     &:hover {opacity: 0.5;}
 }
 
-.dwqs322v1{
-    position: relative;
-    float: right;
-    width: 430px;
-    height: auto;
-    word-wrap: break-word;
-    overflow: hidden;
-    font-size: 22px;
-    color: $text_color;
-    left: -140px;
-}
+.dwqs322v1{@include text_decoration(-140px, right);}
 
 .dqwwqdcccc1{
     position: relative;
