@@ -3,6 +3,7 @@ package main_
 import (
 	"encoding/hex"
 	"encoding/json"
+	"fmt"
 	"head/main_/antivirus"
 	"head/main_/encryption"
 	"head/main_/func_all"
@@ -396,6 +397,61 @@ func Post_encryption_file(w http.ResponseWriter, r *http.Request) {
 
 		keyHex := hex.EncodeToString(key)
 		w.Write([]byte(keyHex))
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_decipher_file(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("decipher_file")
+
+		key := r.FormValue("key")
+		filename := "data/decipher/" + "main.enc"
+
+		err := func_all.ClearDirectory("data/decipher")
+		if err != nil {
+			http.Error(w, "Не вдалося очистити директорію", http.StatusInternalServerError)
+			return
+		}
+
+		file, _, err := r.FormFile("file")
+		if err != nil {
+			http.Error(w, "Помилка при читанні файлу", http.StatusInternalServerError)
+			return
+		}
+		defer file.Close()
+
+		savePath := "data/decipher"
+		err = os.MkdirAll(savePath, os.ModePerm)
+		if err != nil {
+			http.Error(w, "Помилка при створенні директорії", http.StatusInternalServerError)
+			return
+		}
+
+		filePath := filepath.Join(savePath, "main.enc")
+
+		dst, err := os.Create(filePath)
+		if err != nil {
+			http.Error(w, "Помилка при створенні файлу", http.StatusInternalServerError)
+			return
+		}
+		defer dst.Close()
+
+		_, err = io.Copy(dst, file)
+		if err != nil {
+			http.Error(w, "Помилка при збереженні файлу", http.StatusInternalServerError)
+			return
+		}
+
+		err = encryption.DecryptFile(filename, key)
+		if err != nil {
+			fmt.Println("Помилка:", err)
+			w.Write([]byte("0"))
+			return
+		}
+
+		w.Write([]byte("1"))
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

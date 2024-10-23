@@ -57,6 +57,7 @@ func main() {
 	http.HandleFunc("/antivirus_web", main_.Post_antivirus_web)
 	http.HandleFunc("/antivirus_bekend", main_.Post_antivirus_bekend)
 	http.HandleFunc("/encryption_file", main_.Post_encryption_file)
+	http.HandleFunc("/decipher_file", main_.Post_decipher_file)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)

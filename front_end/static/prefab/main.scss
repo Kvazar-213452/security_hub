@@ -694,3 +694,54 @@
         color: $grean;
     }
 }
+
+.deferghhhh777{
+    @include text_decoration();
+    color: $grean;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.dwedffvvvvv{
+    color: $text_color;
+    font-size: 15px;
+}
+
+.thnnredf{
+    position: relative;
+    float: right;
+    padding: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: $bg_color4;
+    font-weight: bold;
+    transition: all .3s;
+    border: solid 2px $null;
+    color: $text_color;
+
+    &:hover{
+        border: solid 2px $grean;
+        color: $grean;
+    }
+}
+
+.ddwdcvvvwwqsz{
+    position: relative;
+    float: left;
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    font-weight: bold;
+    font-size: 15.5px;
+    border: solid 2px $null;
+    background-color: $bg_color4;
+    color: $text_color;
+    width: 73%;
+
+    &:focus{
+        outline: none;
+        box-shadow: none;
+        border: solid 2px $grean;
+        color: $grean;
+    }
+}
