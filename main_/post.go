@@ -2,7 +2,9 @@ package main_
 
 import (
 	"encoding/json"
+	"fmt"
 	"head/main_/antivirus"
+	"head/main_/encryption"
 	"head/main_/func_all"
 	"io"
 	"io/ioutil"
@@ -330,6 +332,29 @@ func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 				w.Write([]byte("1"))
 			}
 		}
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_encryption_file(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("encryption_file")
+
+		filename := "test.txt"
+
+		key := encryption.GetFixedKey("qqqqqqqqqqwweesr")
+		fmt.Printf("Ключ, використаний для шифрування: %x\n", key)
+
+		encryptedContent, err := encryption.EncryptFile(filename, key)
+		if err != nil {
+			fmt.Printf("Помилка при шифруванні файлу: %v\n", err)
+			return
+		}
+
+		fmt.Printf("Зашифрований вміст файлу: %x\n", encryptedContent)
+
+		w.Write(nil)
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

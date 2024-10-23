@@ -41,6 +41,7 @@ func main() {
 	http.HandleFunc("/off_app", main_.Get_off_app)
 	http.HandleFunc("/cleaning", main_.Render_cleaning)
 	http.HandleFunc("/antivirus", main_.Render_antivirus)
+	http.HandleFunc("/encryption", main_.Render_encryption)
 
 	// Post
 	http.HandleFunc("/get_wifi_now", main_.Post_gagat_network)
@@ -55,6 +56,7 @@ func main() {
 	http.HandleFunc("/cleanup", main_.Post_cleanup)
 	http.HandleFunc("/antivirus_web", main_.Post_antivirus_web)
 	http.HandleFunc("/antivirus_bekend", main_.Post_antivirus_bekend)
+	http.HandleFunc("/encryption_file", main_.Post_encryption_file)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)

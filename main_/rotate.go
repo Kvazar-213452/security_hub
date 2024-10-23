@@ -132,3 +132,23 @@ func Render_antivirus(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
+
+func Render_encryption(w http.ResponseWriter, r *http.Request) {
+	func_all.AppendToLog("transition to /encryption")
+
+	tmpl, err := template.ParseFiles(
+		"front_end/templates/html/menu.html",
+		"front_end/templates/html/console.html",
+		"front_end/templates/encryption.html",
+	)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = tmpl.ExecuteTemplate(w, "encryption.html", nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
