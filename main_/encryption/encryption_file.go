@@ -8,8 +8,13 @@ import (
 	"io/ioutil"
 )
 
-func GetFixedKey(key string) []byte {
-	return []byte(key)
+func GenerateKey() []byte {
+	key := make([]byte, 32)
+	_, err := rand.Read(key)
+	if err != nil {
+		panic(err)
+	}
+	return key
 }
 
 func EncryptFile(filename string, key []byte) ([]byte, error) {

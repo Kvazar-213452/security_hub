@@ -673,3 +673,24 @@
     color: $grean;
 }
 
+.fweufweffff{
+    font-size: 17px;
+    font-weight: bold;
+    color: $text_color;
+    border: none;
+    border-radius: 5px;
+    border: solid 2px $null;
+    transition: all .3s;
+    background-color: $bg_color4;
+    margin: 0 auto;
+    display: block;
+    padding: 7px;
+    cursor: pointer;
+    position: relative;
+    top: -40px;
+
+    &:hover{
+        border: solid 2px $grean;
+        color: $grean;
+    }
+}

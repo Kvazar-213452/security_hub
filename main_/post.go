@@ -1,8 +1,8 @@
 package main_
 
 import (
+	"encoding/hex"
 	"encoding/json"
-	"fmt"
 	"head/main_/antivirus"
 	"head/main_/encryption"
 	"head/main_/func_all"
@@ -341,20 +341,61 @@ func Post_encryption_file(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("encryption_file")
 
-		filename := "test.txt"
+		filename_u := r.FormValue("filename")
+		filename := "data/encryption/" + filename_u
 
-		key := encryption.GetFixedKey("qqqqqqqqqqwweesr")
-		fmt.Printf("Ключ, використаний для шифрування: %x\n", key)
-
-		encryptedContent, err := encryption.EncryptFile(filename, key)
+		err := func_all.ClearDirectory("data/encryption")
 		if err != nil {
-			fmt.Printf("Помилка при шифруванні файлу: %v\n", err)
+			http.Error(w, "Не вдалося очистити директорію", http.StatusInternalServerError)
 			return
 		}
 
-		fmt.Printf("Зашифрований вміст файлу: %x\n", encryptedContent)
+		file, header, err := r.FormFile("file")
+		if err != nil {
+			http.Error(w, "Помилка при читанні файлу", http.StatusInternalServerError)
+			return
+		}
+		defer file.Close()
 
-		w.Write(nil)
+		savePath := "data/encryption"
+		err = os.MkdirAll(savePath, os.ModePerm)
+		if err != nil {
+			http.Error(w, "Помилка при створенні директорії", http.StatusInternalServerError)
+			return
+		}
+
+		filePath := filepath.Join(savePath, header.Filename)
+
+		dst, err := os.Create(filePath)
+		if err != nil {
+			http.Error(w, "Помилка при створенні файлу", http.StatusInternalServerError)
+			return
+		}
+		defer dst.Close()
+
+		_, err = io.Copy(dst, file)
+		if err != nil {
+			http.Error(w, "Помилка при збереженні файлу", http.StatusInternalServerError)
+			return
+		}
+
+		key := encryption.GenerateKey()
+
+		encryptedContent, err := encryption.EncryptFile(filename, key)
+		if err != nil {
+			w.Write([]byte("0"))
+			return
+		}
+
+		encFilePath := "front_end/static/data/main.enc"
+		err = os.WriteFile(encFilePath, encryptedContent, 0644)
+		if err != nil {
+			http.Error(w, "Помилка при збереженні зашифрованого файлу", http.StatusInternalServerError)
+			return
+		}
+
+		keyHex := hex.EncodeToString(key)
+		w.Write([]byte(keyHex))
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

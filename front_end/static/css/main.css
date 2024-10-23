@@ -813,3 +813,22 @@
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
   color: #55c959; }
+
+.fweufweffff {
+  font-size: 17px;
+  font-weight: bold;
+  color: #ffffffd4;
+  border: none;
+  border-radius: 5px;
+  border: solid 2px #ffffff00;
+  transition: all .3s;
+  background-color: #181d25;
+  margin: 0 auto;
+  display: block;
+  padding: 7px;
+  cursor: pointer;
+  position: relative;
+  top: -40px; }
+  .fweufweffff:hover {
+    border: solid 2px #55c959;
+    color: #55c959; }

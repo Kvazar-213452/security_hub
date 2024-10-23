@@ -569,3 +569,82 @@ const fileUpload = () => {
     });
 };
 
+function rtrtrtrtrttf() {
+    const fileInput = document.getElementById('file_dwqdw');
+    const files = fileInput.files;
+
+    if (files.length === 0) {
+        dwqwfef('Файл невибрано');
+        return;
+    }
+
+    const file = files[0];
+    const formData = new FormData();
+    
+    formData.append('file', file);
+    formData.append('filename', file.name);
+
+    $.ajax({
+        url: '/encryption_file',
+        type: 'POST',
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function(response) {
+            dwqwfef('Успішно');
+            ddewqfbbb(response)
+
+            const link = document.createElement('a');
+            link.href = '/static/data/main.enc'; 
+            link.download = 'main.enc';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        },
+        error: function(xhr, status, error) {
+            console.log("Error: " + error);
+            console.log("Response text:", xhr.responseText);
+        }
+    });
+}
+
+function ddewqfbbb() {
+
+}
+
+const fileUpload_1 = () => {
+    const $inputFile = $('#file_dwqdw');
+    const $inputContainer = $('#upload-container');
+    const $filesListContainer = $('#files-list-container');
+    let fileList = [];
+
+    $inputFile.on('click dragstart dragover', () => {
+        $inputContainer.addClass('active');
+    });
+
+    $inputFile.on('dragleave dragend drop change', () => {
+        $inputContainer.removeClass('active');
+        const files = Array.from($inputFile[0].files);
+
+        fileList = [];
+
+        files.forEach(file => {
+            const fileName = file.name;
+            const uploadedFiles = {
+                name: fileName,
+                file: file
+            };
+
+            fileList.push(uploadedFiles);
+
+            $filesListContainer.html('');
+
+            const content = `
+                <div class="form__files-container">
+                    <span class="form__text">${uploadedFiles.name}</span>
+                </div>
+            `;
+            $filesListContainer.append(content);
+        });
+    });
+};
