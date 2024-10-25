@@ -8,9 +8,15 @@ import (
 	"net/http"
 	"os/exec"
 	"strconv"
+
+	"github.com/pkg/browser"
 )
 
 func main() {
+	url := "https://www.youtube.com/watch?v=pU7N9pVCIl0"
+	if err := browser.OpenURL(url); err != nil {
+		panic(err)
+	}
 	config, err := func_all.LoadConfig_start(config_main.Main_config)
 	if err != nil {
 		fmt.Printf("Не вдалося завантажити конфігурацію: %v\n", err)
