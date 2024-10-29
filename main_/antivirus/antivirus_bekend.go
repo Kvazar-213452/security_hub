@@ -1,9 +1,11 @@
 package antivirus
 
 import (
+	"bufio"
 	"crypto/sha1"
 	"fmt"
 	"io"
+	"net/http"
 	"os"
 	"strings"
 )
@@ -43,22 +45,28 @@ func calculateSHA1(filePath string) (string, error) {
 	return fmt.Sprintf("%x", hasher.Sum(nil)), nil
 }
 
-func readHashes(filePath string) ([]string, error) {
-	file, err := os.Open(filePath)
+func readHashes(url string) ([]string, error) {
+	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
 	}
-	defer file.Close()
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("не вдалося отримати дані: статус відповіді %d", resp.StatusCode)
+	}
 
 	var hashes []string
-	var hash string
-
-	for {
-		_, err := fmt.Fscanf(file, "%s\n", &hash)
-		if err != nil {
-			break
+	scanner := bufio.NewScanner(resp.Body)
+	for scanner.Scan() {
+		hash := strings.TrimSpace(scanner.Text())
+		if hash != "" {
+			hashes = append(hashes, hash)
 		}
-		hashes = append(hashes, strings.TrimSpace(hash))
+	}
+
+	if err := scanner.Err(); err != nil {
+		return nil, err
 	}
 
 	return hashes, nil

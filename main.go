@@ -8,15 +8,9 @@ import (
 	"net/http"
 	"os/exec"
 	"strconv"
-
-	"github.com/pkg/browser"
 )
 
 func main() {
-	url := "https://www.youtube.com/watch?v=pU7N9pVCIl0"
-	if err := browser.OpenURL(url); err != nil {
-		panic(err)
-	}
 	config, err := func_all.LoadConfig_start(config_main.Main_config)
 	if err != nil {
 		fmt.Printf("Не вдалося завантажити конфігурацію: %v\n", err)
@@ -48,6 +42,7 @@ func main() {
 	http.HandleFunc("/cleaning", main_.Render_cleaning)
 	http.HandleFunc("/antivirus", main_.Render_antivirus)
 	http.HandleFunc("/encryption", main_.Render_encryption)
+	http.HandleFunc("/browser_site_app", main_.Browser_site_app)
 
 	// Post
 	http.HandleFunc("/get_wifi_now", main_.Post_gagat_network)

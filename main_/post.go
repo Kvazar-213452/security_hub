@@ -317,7 +317,7 @@ func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 		value := r.FormValue("value")
 
 		if value == "0" {
-			data := antivirus.Scan_file_virus(filePath, "data/sha1_hashes_2.txt")
+			data := antivirus.Scan_file_virus(filePath, config_main.Server_data_sha1_hashes_2)
 
 			if data == 0 {
 				w.Write([]byte("0"))
@@ -325,8 +325,8 @@ func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 				w.Write([]byte("1"))
 			}
 		} else {
-			data := antivirus.Scan_file_virus(filePath, "data/sha1_hashes_1.txt")
-			data1 := antivirus.Scan_file_virus(filePath, "data/sha1_hashes_2.txt")
+			data := antivirus.Scan_file_virus(filePath, config_main.Server_data_sha1_hashes_1)
+			data1 := antivirus.Scan_file_virus(filePath, config_main.Server_data_sha1_hashes_2)
 
 			if data == 0 || data1 == 1 {
 				w.Write([]byte("0"))

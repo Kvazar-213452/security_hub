@@ -3,6 +3,7 @@ package antivirus
 import (
 	"bufio"
 	"bytes"
+	config_main "head/main_/config"
 	"io"
 	"net/http"
 	"os"
@@ -169,13 +170,17 @@ func DeleteFiles() {
 }
 
 func CheckUrlInFile(url string) int {
-	file, err := os.Open("data/site_virus.txt")
+	resp, err := http.Get(config_main.Server_data)
 	if err != nil {
 		return 0
 	}
-	defer file.Close()
+	defer resp.Body.Close()
 
-	scanner := bufio.NewScanner(file)
+	if resp.StatusCode != http.StatusOK {
+		return 0
+	}
+
+	scanner := bufio.NewScanner(resp.Body)
 	for scanner.Scan() {
 		line := scanner.Text()
 		if strings.TrimSpace(line) == url {

@@ -18,6 +18,7 @@ HID Keyboard Device
 PCI Simple Communications Controller
 Generic USB Hub
 WAN Miniport (PPPOE)
+Microsoft Hyper-V Virtual Machine Bus Provider
 PCI Express Root Complex
 Microsoft Basic Display Driver
 HP Wireless Button Driver
@@ -29,6 +30,7 @@ Microsoft Windows Management Interface for ACPI
 Fax
 Numeric data processor
 WAN Miniport (PPTP)
+Microphone (High Definition Audio Device)
 Volume
 Microsoft Hyper-V Virtualization Infrastructure Driver
 High precision event timer
@@ -43,6 +45,7 @@ USB Root Hub
 PCI standard host CPU bridge
 HID-compliant system controller
 Microsoft Kernel Debug Network Adapter
+Generic volume shadow copy
 Generic volume shadow copy
 Intel(R) 8 Series/C220 Series USB EHCI #2 - 8C2D
 Intel(R) Centrino(R) Advanced-N 6235
@@ -75,6 +78,7 @@ Generic USB Hub
 Microsoft Print to PDF
 Synaptics SMBus TouchPad
 USB Input Device
+Microsoft Hyper-V PCI Server
 Microsoft Wi-Fi Direct Virtual Adapter
 Microsoft Wi-Fi Direct Virtual Adapter #2
 Microsoft ACPI-Compliant System
@@ -93,6 +97,7 @@ NVIDIA Quadro K1100M
 Microsoft Windows Management Interface for ACPI
 HID-compliant vendor-defined device
 ACPI Thermal Zone
+Microsoft Hyper-V Virtual Disk Server
 Intel(R) Core(TM) i7-4800MQ CPU @ 2.70GHz
 Intel(R) Core(TM) i7-4800MQ CPU @ 2.70GHz
 Intel(R) Core(TM) i7-4800MQ CPU @ 2.70GHz

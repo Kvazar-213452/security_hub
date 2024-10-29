@@ -6,6 +6,8 @@ import (
 	"html/template"
 	"net/http"
 	"os"
+
+	"github.com/pkg/browser"
 )
 
 func Render_index_page(w http.ResponseWriter, r *http.Request) {
@@ -151,5 +153,14 @@ func Render_encryption(w http.ResponseWriter, r *http.Request) {
 	err = tmpl.ExecuteTemplate(w, "encryption.html", nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func Browser_site_app(w http.ResponseWriter, r *http.Request) {
+	func_all.AppendToLog("transition to /Browser_site_app")
+
+	url := "https://www.youtube.com/watch?v=pU7N9pVCIl0"
+	if err := browser.OpenURL(url); err != nil {
+		panic(err)
 	}
 }
