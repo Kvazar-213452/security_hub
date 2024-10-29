@@ -5,6 +5,7 @@ import (
 	"crypto/cipher"
 	"encoding/hex"
 	"fmt"
+	config_main "head/main_/config"
 	"io/ioutil"
 	"path/filepath"
 )
@@ -41,7 +42,7 @@ func DecryptFile(filePath string, keyHex string) error {
 		return fmt.Errorf("помилка розшифрування: %v", err)
 	}
 
-	outputFilePath := "front_end/static/data/" + filepath.Base(filePath[:len(filePath)-4])
+	outputFilePath := config_main.Frontend_folder + "/static/data/" + filepath.Base(filePath[:len(filePath)-4])
 
 	err = ioutil.WriteFile(outputFilePath, plaintext, 0644)
 	if err != nil {

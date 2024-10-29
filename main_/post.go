@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"head/main_/antivirus"
+	config_main "head/main_/config"
 	"head/main_/encryption"
 	"head/main_/func_all"
 	"io"
@@ -388,7 +389,7 @@ func Post_encryption_file(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		encFilePath := "front_end/static/data/main.enc"
+		encFilePath := config_main.Frontend_folder + "/static/data/main.enc"
 		err = os.WriteFile(encFilePath, encryptedContent, 0644)
 		if err != nil {
 			http.Error(w, "Помилка при збереженні зашифрованого файлу", http.StatusInternalServerError)

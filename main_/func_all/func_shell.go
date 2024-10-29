@@ -194,7 +194,7 @@ func Get_phat_global() string {
 }
 
 func Cleanup() {
-	cleanupDLL, err := syscall.LoadDLL("library/cleanup.dll")
+	cleanupDLL, err := syscall.LoadDLL(config_main.Cleanup_dll)
 	if err != nil {
 		fmt.Printf("Не вдалося завантажити DLL: %v\n", err)
 		return

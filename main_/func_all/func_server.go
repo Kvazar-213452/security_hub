@@ -279,7 +279,7 @@ func get_usb_info() {
 		return
 	}
 
-	file, err := os.Create("library/devices.log")
+	file, err := os.Create(config_main.Devices)
 	if err != nil {
 		return
 	}
@@ -304,7 +304,7 @@ func get_usb_info() {
 func Usb_info() string {
 	get_usb_info()
 
-	content, err := ioutil.ReadFile("library/devices.log")
+	content, err := ioutil.ReadFile(config_main.Devices)
 	if err != nil {
 		log.Fatalf("Failed to read devices.log: %v", err)
 	}
@@ -313,16 +313,14 @@ func Usb_info() string {
 }
 
 func Resource_info() string {
-	phat := Get_phat_global()
-
-	cmd := exec.Command(phat + "\\cmd\\start_resource_info.bat")
+	cmd := exec.Command(config_main.Global_phat + config_main.Start_resource_info)
 
 	err := cmd.Run()
 	if err != nil {
 		log.Fatalf("Failed to run start.bat: %v", err)
 	}
 
-	content, err := ioutil.ReadFile("library/resource_info.log")
+	content, err := ioutil.ReadFile(config_main.Resource_info)
 	if err != nil {
 		log.Fatalf("Failed to read devices.log: %v", err)
 	}

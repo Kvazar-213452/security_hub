@@ -1,6 +1,7 @@
 package main_
 
 import (
+	config_main "head/main_/config"
 	"head/main_/func_all"
 	"html/template"
 	"net/http"
@@ -11,9 +12,9 @@ func Render_index_page(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /index")
 
 	tmpl, err := template.ParseFiles(
-		"front_end/templates/html/menu.html",
-		"front_end/templates/html/console.html",
-		"front_end/templates/index.html",
+		config_main.Frontend_folder+"/templates/html/menu.html",
+		config_main.Frontend_folder+"/templates/html/console.html",
+		config_main.Frontend_folder+"/templates/index.html",
 	)
 
 	if err != nil {
@@ -31,9 +32,9 @@ func Render_about_page(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /about")
 
 	tmpl, err := template.ParseFiles(
-		"front_end/templates/html/menu.html",
-		"front_end/templates/html/console.html",
-		"front_end/templates/about.html",
+		config_main.Frontend_folder+"/templates/html/menu.html",
+		config_main.Frontend_folder+"/templates/html/console.html",
+		config_main.Frontend_folder+"/templates/about.html",
 	)
 
 	if err != nil {
@@ -51,9 +52,9 @@ func Render_settings_page(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /settings")
 
 	tmpl, err := template.ParseFiles(
-		"front_end/templates/html/menu.html",
-		"front_end/templates/html/console.html",
-		"front_end/templates/settings.html",
+		config_main.Frontend_folder+"/templates/html/menu.html",
+		config_main.Frontend_folder+"/templates/html/console.html",
+		config_main.Frontend_folder+"/templates/settings.html",
 	)
 
 	if err != nil {
@@ -71,9 +72,9 @@ func Render_system_page(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /system")
 
 	tmpl, err := template.ParseFiles(
-		"front_end/templates/html/menu.html",
-		"front_end/templates/html/console.html",
-		"front_end/templates/system.html",
+		config_main.Frontend_folder+"/templates/html/menu.html",
+		config_main.Frontend_folder+"/templates/html/console.html",
+		config_main.Frontend_folder+"/templates/system.html",
 	)
 
 	if err != nil {
@@ -97,9 +98,9 @@ func Render_cleaning(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /cleaning")
 
 	tmpl, err := template.ParseFiles(
-		"front_end/templates/html/menu.html",
-		"front_end/templates/html/console.html",
-		"front_end/templates/cleaning.html",
+		config_main.Frontend_folder+"/templates/html/menu.html",
+		config_main.Frontend_folder+"/templates/html/console.html",
+		config_main.Frontend_folder+"/templates/cleaning.html",
 	)
 
 	if err != nil {
@@ -117,9 +118,9 @@ func Render_antivirus(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /antivirus")
 
 	tmpl, err := template.ParseFiles(
-		"front_end/templates/html/menu.html",
-		"front_end/templates/html/console.html",
-		"front_end/templates/antivirus.html",
+		config_main.Frontend_folder+"/templates/html/menu.html",
+		config_main.Frontend_folder+"/templates/html/console.html",
+		config_main.Frontend_folder+"/templates/antivirus.html",
 	)
 
 	if err != nil {
@@ -137,9 +138,9 @@ func Render_encryption(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /encryption")
 
 	tmpl, err := template.ParseFiles(
-		"front_end/templates/html/menu.html",
-		"front_end/templates/html/console.html",
-		"front_end/templates/encryption.html",
+		config_main.Frontend_folder+"/templates/html/menu.html",
+		config_main.Frontend_folder+"/templates/html/console.html",
+		config_main.Frontend_folder+"/templates/encryption.html",
 	)
 
 	if err != nil {
