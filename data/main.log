@@ -63,3 +63,5 @@ transition to /index || 2024-10-12 12:26:25
 transition to /index || 2024-10-12 12:26:25
 /network_now post || 2024-10-12 12:26:25
 /get_logs post || 2024-10-12 12:26:26
+transition to /about || 2024-10-31 19:44:38
+/get_logs post || 2024-10-31 19:44:39

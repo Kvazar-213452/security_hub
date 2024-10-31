@@ -9,7 +9,7 @@ def convert_to_base64(input_file, output_file):
     with open(output_file, 'w') as file:
         file.write(base64_encoded)
 
-input_file = 'shell_web.exe'
+input_file = 'main.zip'
 output_file = 'main.txt'
 
 convert_to_base64(input_file, output_file)

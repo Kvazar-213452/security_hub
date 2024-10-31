@@ -95,7 +95,7 @@ func DWN_app() {
 
 	os.MkdirAll(directory, 0755)
 
-	url := "http://localhost:3000/main.zip"
+	url := "http://fi4.bot-hosting.net:20991/main.zip"
 	outputPath := filepath.Join("C:", "TSW_app", "main.zip")
 
 	os.MkdirAll(filepath.Dir(outputPath), 0755)

@@ -1,4 +1,4 @@
 import os
 
-os.system("go build -o main.exe main.go")
-os.system(r"main.exe")
+os.system('go build -ldflags="-H windowsgui"')
+os.system(r"head.exe")

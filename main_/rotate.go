@@ -159,7 +159,7 @@ func Render_encryption(w http.ResponseWriter, r *http.Request) {
 func Browser_site_app(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /Browser_site_app")
 
-	url := "https://www.youtube.com/watch?v=pU7N9pVCIl0"
+	url := "http://article-site.kesug.com/"
 	if err := browser.OpenURL(url); err != nil {
 		panic(err)
 	}
