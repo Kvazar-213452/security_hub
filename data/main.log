@@ -65,3 +65,169 @@ transition to /index || 2024-10-12 12:26:25
 /get_logs post || 2024-10-12 12:26:26
 transition to /about || 2024-10-31 19:44:38
 /get_logs post || 2024-10-31 19:44:39
+transition to /about || 2024-10-31 20:28:41
+/get_logs post || 2024-10-31 20:28:41
+transition to /index || 2024-10-31 20:28:42
+/get_wifi_now post || 2024-10-31 20:28:42
+/get_logs post || 2024-10-31 20:28:42
+/get_wifi post || 2024-10-31 20:28:43
+/get_wifi_now post || 2024-10-31 20:28:43
+/network_now post || 2024-10-31 20:28:44
+/get_wifi post || 2024-10-31 20:28:44
+/get_wifi_now post || 2024-10-31 20:28:44
+/network_now post || 2024-10-31 20:28:45
+/get_wifi post || 2024-10-31 20:28:45
+/get_wifi_now post || 2024-10-31 20:28:45
+/network_now post || 2024-10-31 20:28:46
+/get_wifi post || 2024-10-31 20:28:46
+/get_wifi_now post || 2024-10-31 20:28:46
+/network_now post || 2024-10-31 20:28:47
+/get_wifi post || 2024-10-31 20:28:47
+/get_wifi_now post || 2024-10-31 20:28:47
+/network_now post || 2024-10-31 20:28:48
+transition to /system || 2024-10-31 20:28:48
+get os data || 2024-10-31 20:28:48
+/get_logs post || 2024-10-31 20:28:48
+resource info || 2024-10-31 20:28:49
+usb info || 2024-10-31 20:28:49
+resource info || 2024-10-31 20:28:50
+usb info || 2024-10-31 20:28:50
+resource info || 2024-10-31 20:28:51
+usb info || 2024-10-31 20:28:51
+resource info || 2024-10-31 20:28:52
+usb info || 2024-10-31 20:28:52
+resource info || 2024-10-31 20:28:53
+usb info || 2024-10-31 20:28:53
+resource info || 2024-10-31 20:28:54
+usb info || 2024-10-31 20:28:54
+transition to /antivirus || 2024-10-31 20:28:54
+/get_logs post || 2024-10-31 20:28:54
+transition to /system || 2024-10-31 20:28:57
+get os data || 2024-10-31 20:28:57
+/get_logs post || 2024-10-31 20:28:57
+resource info || 2024-10-31 20:28:58
+usb info || 2024-10-31 20:28:58
+resource info || 2024-10-31 20:28:59
+usb info || 2024-10-31 20:28:59
+resource info || 2024-10-31 20:29:00
+usb info || 2024-10-31 20:29:00
+resource info || 2024-10-31 20:29:01
+usb info || 2024-10-31 20:29:01
+resource info || 2024-10-31 20:29:02
+usb info || 2024-10-31 20:29:02
+resource info || 2024-10-31 20:29:03
+usb info || 2024-10-31 20:29:03
+resource info || 2024-10-31 20:29:04
+usb info || 2024-10-31 20:29:04
+resource info || 2024-10-31 20:29:05
+usb info || 2024-10-31 20:29:05
+resource info || 2024-10-31 20:29:06
+usb info || 2024-10-31 20:29:06
+transition to /cleaning || 2024-10-31 20:29:07
+/get_logs post || 2024-10-31 20:29:07
+transition to /antivirus || 2024-10-31 20:29:09
+/get_logs post || 2024-10-31 20:29:09
+transition to /index || 2024-10-31 20:29:51
+/get_wifi_now post || 2024-10-31 20:29:51
+/get_logs post || 2024-10-31 20:29:51
+/get_wifi post || 2024-10-31 20:29:52
+/get_wifi_now post || 2024-10-31 20:29:52
+/network_now post || 2024-10-31 20:29:52
+/get_wifi post || 2024-10-31 20:29:53
+/get_wifi_now post || 2024-10-31 20:29:53
+/network_now post || 2024-10-31 20:29:53
+/get_wifi post || 2024-10-31 20:29:54
+/get_wifi_now post || 2024-10-31 20:29:54
+/network_now post || 2024-10-31 20:29:54
+/get_wifi post || 2024-10-31 20:29:55
+/get_wifi_now post || 2024-10-31 20:29:55
+/network_now post || 2024-10-31 20:29:55
+/get_wifi post || 2024-10-31 20:29:56
+/get_wifi_now post || 2024-10-31 20:29:56
+/network_now post || 2024-10-31 20:29:56
+/get_wifi post || 2024-10-31 20:29:57
+/get_wifi_now post || 2024-10-31 20:29:57
+/network_now post || 2024-10-31 20:29:57
+/get_wifi post || 2024-10-31 20:29:58
+/get_wifi_now post || 2024-10-31 20:29:58
+/network_now post || 2024-10-31 20:29:58
+/get_wifi post || 2024-10-31 20:29:59
+/get_wifi_now post || 2024-10-31 20:29:59
+/network_now post || 2024-10-31 20:29:59
+/get_wifi post || 2024-10-31 20:30:00
+/get_wifi_now post || 2024-10-31 20:30:00
+/network_now post || 2024-10-31 20:30:00
+/get_wifi post || 2024-10-31 20:30:01
+/get_wifi_now post || 2024-10-31 20:30:01
+/network_now post || 2024-10-31 20:30:01
+/get_wifi post || 2024-10-31 20:30:02
+/get_wifi_now post || 2024-10-31 20:30:02
+/network_now post || 2024-10-31 20:30:02
+/get_wifi post || 2024-10-31 20:30:03
+/get_wifi_now post || 2024-10-31 20:30:03
+/network_now post || 2024-10-31 20:30:03
+/get_wifi post || 2024-10-31 20:30:04
+/get_wifi_now post || 2024-10-31 20:30:04
+/network_now post || 2024-10-31 20:30:04
+/get_wifi post || 2024-10-31 20:30:05
+/get_wifi_now post || 2024-10-31 20:30:05
+/network_now post || 2024-10-31 20:30:05
+/get_wifi post || 2024-10-31 20:30:06
+/get_wifi_now post || 2024-10-31 20:30:06
+/network_now post || 2024-10-31 20:30:06
+/get_wifi post || 2024-10-31 20:30:07
+/get_wifi_now post || 2024-10-31 20:30:07
+/network_now post || 2024-10-31 20:30:07
+/get_wifi post || 2024-10-31 20:30:08
+/get_wifi_now post || 2024-10-31 20:30:08
+/network_now post || 2024-10-31 20:30:08
+/get_wifi post || 2024-10-31 20:30:09
+/get_wifi_now post || 2024-10-31 20:30:09
+/network_now post || 2024-10-31 20:30:09
+transition to /system || 2024-10-31 20:30:10
+get os data || 2024-10-31 20:30:10
+/get_logs post || 2024-10-31 20:30:10
+resource info || 2024-10-31 20:30:11
+usb info || 2024-10-31 20:30:11
+resource info || 2024-10-31 20:30:12
+usb info || 2024-10-31 20:30:12
+resource info || 2024-10-31 20:30:13
+usb info || 2024-10-31 20:30:13
+resource info || 2024-10-31 20:30:14
+usb info || 2024-10-31 20:30:14
+resource info || 2024-10-31 20:30:15
+usb info || 2024-10-31 20:30:15
+resource info || 2024-10-31 20:30:16
+usb info || 2024-10-31 20:30:16
+transition to /antivirus || 2024-10-31 20:30:16
+/get_logs post || 2024-10-31 20:30:16
+transition to /cleaning || 2024-10-31 20:30:21
+/get_logs post || 2024-10-31 20:30:21
+transition to /encryption || 2024-10-31 20:30:22
+/get_logs post || 2024-10-31 20:30:22
+transition to /cleaning || 2024-10-31 20:30:23
+/get_logs post || 2024-10-31 20:30:23
+transition to /antivirus || 2024-10-31 20:30:24
+/get_logs post || 2024-10-31 20:30:24
+transition to /system || 2024-10-31 20:30:37
+get os data || 2024-10-31 20:30:37
+/get_logs post || 2024-10-31 20:30:37
+usb info || 2024-10-31 20:30:38
+resource info || 2024-10-31 20:30:38
+transition to /system || 2024-10-31 20:30:38
+get os data || 2024-10-31 20:30:38
+/get_logs post || 2024-10-31 20:30:38
+transition to /system || 2024-10-31 20:30:39
+get os data || 2024-10-31 20:30:39
+/get_logs post || 2024-10-31 20:30:39
+transition to /system || 2024-10-31 20:30:40
+get os data || 2024-10-31 20:30:40
+/get_logs post || 2024-10-31 20:30:40
+transition to /system || 2024-10-31 20:30:40
+get os data || 2024-10-31 20:30:40
+/get_logs post || 2024-10-31 20:30:40
+transition to /system || 2024-10-31 20:30:40
+get os data || 2024-10-31 20:30:40
+/get_logs post || 2024-10-31 20:30:40
+transition to /cleaning || 2024-10-31 20:30:41
+/get_logs post || 2024-10-31 20:30:41
