@@ -15,9 +15,7 @@ var Name string = "Security Hub"
 var Global_phat = Get_phat_global()
 
 // lib
-var Start_resource_info = "\\cmd\\start_resource_info.bat"
 var Devices = "library/devices.log"
-var Resource_info = "library/resource_info.log"
 
 // dll
 var Cleanup_dll = "library/cleanup.dll"

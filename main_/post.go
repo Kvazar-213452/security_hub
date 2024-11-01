@@ -8,6 +8,7 @@ import (
 	config_main "head/main_/config"
 	"head/main_/encryption"
 	"head/main_/func_all"
+	page_func "head/main_/page_func_spec"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -15,7 +16,6 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
-	"syscall"
 )
 
 type VisualizationMessage struct {
@@ -147,21 +147,12 @@ func Post_get_os_data(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("get os data")
 
-		dll := syscall.NewLazyDLL("library/system_info.dll")
-
-		getSystemMemory := dll.NewProc("GetSystemMemory")
-		getProcessorInfo := dll.NewProc("GetProcessorInfo")
-		getOSVersion := dll.NewProc("GetOSVersion")
-		getComputerNameCustom := dll.NewProc("GetComputerNameCustom")
-		getUserNameCustom := dll.NewProc("GetUserNameCustom")
-		getSystemUptime := dll.NewProc("GetSystemUptime")
-
-		systemMemory := func_all.RemoveNewlines(func_all.CallDLLFunction(getSystemMemory, "System Memory Info"))
-		processorInfo := func_all.RemoveNewlines(func_all.CallDLLFunction(getProcessorInfo, "Processor Info"))
-		osVersion := func_all.RemoveNewlines(func_all.CallDLLFunction(getOSVersion, "OS Version Info"))
-		computerName := func_all.RemoveNewlines(func_all.CallDLLFunction(getComputerNameCustom, "Computer Name Info"))
-		userName := func_all.RemoveNewlines(func_all.CallDLLFunction(getUserNameCustom, "User Name Info"))
-		systemUptime := func_all.RemoveNewlines(func_all.CallDLLFunction(getSystemUptime, "System Uptime Info"))
+		systemMemory := page_func.GetSystemMemory()
+		processorInfo := page_func.GetProcessorInfo()
+		osVersion := page_func.GetOSVersion()
+		computerName := page_func.GetComputerNameCustom()
+		userName := page_func.GetUserNameCustom()
+		systemUptime := page_func.GetSystemUptime()
 
 		osData := OSData{
 			SystemMemory:  systemMemory,
@@ -206,7 +197,7 @@ func Post_resource_info(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("resource info")
 
-		info := func_all.Resource_info()
+		info := page_func.Get_all_data_now()
 		cleanedInfo := strings.ReplaceAll(info, "\r", "")
 		devices := strings.Split(cleanedInfo, "\n")
 		response := map[string][]string{"data": devices}
@@ -410,11 +401,7 @@ func Post_decipher_file(w http.ResponseWriter, r *http.Request) {
 		key := r.FormValue("key")
 		filename := "data/decipher/" + "main.enc"
 
-		err := func_all.ClearDirectory("data/decipher")
-		if err != nil {
-			http.Error(w, "Не вдалося очистити директорію", http.StatusInternalServerError)
-			return
-		}
+		func_all.ClearDirectory("data/decipher")
 
 		file, _, err := r.FormFile("file")
 		if err != nil {
@@ -424,11 +411,7 @@ func Post_decipher_file(w http.ResponseWriter, r *http.Request) {
 		defer file.Close()
 
 		savePath := "data/decipher"
-		err = os.MkdirAll(savePath, os.ModePerm)
-		if err != nil {
-			http.Error(w, "Помилка при створенні директорії", http.StatusInternalServerError)
-			return
-		}
+		os.MkdirAll(savePath, os.ModePerm)
 
 		filePath := filepath.Join(savePath, "main.enc")
 

@@ -44,10 +44,7 @@ func DecryptFile(filePath string, keyHex string) error {
 
 	outputFilePath := config_main.Frontend_folder + "/static/data/" + filepath.Base(filePath[:len(filePath)-4])
 
-	err = ioutil.WriteFile(outputFilePath, plaintext, 0644)
-	if err != nil {
-		return fmt.Errorf("помилка при запису розшифрованого файлу: %v", err)
-	}
+	ioutil.WriteFile(outputFilePath, plaintext, 0644)
 
 	return nil
 }
