@@ -160,7 +160,5 @@ func Browser_site_app(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /Browser_site_app")
 
 	url := "http://article-site.kesug.com/"
-	if err := browser.OpenURL(url); err != nil {
-		panic(err)
-	}
+	browser.OpenURL(url)
 }

@@ -348,6 +348,32 @@
     font-size: 15px;
 }
 
+.saert45trgf{
+    border: none;
+    color: $text_color;
+    padding: 7px;
+    font-size: 15px;
+    background-color: $bg_color3;
+    border-radius: 5px;
+    border: solid 2px $null;
+
+    &:focus {
+        outline: none;
+        box-shadow: none;
+        border: solid 2px $grean;
+        color: $grean;
+    }
+}
+
+.zxbnmewd{
+    @include button($text_color, $bg_color3, 15px);
+
+    &:hover{
+        border: solid 2px $grean;
+        color: $grean;
+    }
+}
+
 /* about page *//* about page *//* about page *//* about page *//* about page *//* about page */
 /* about page *//* about page *//* about page *//* about page *//* about page *//* about page */
 /* about page *//* about page *//* about page *//* about page *//* about page *//* about page */

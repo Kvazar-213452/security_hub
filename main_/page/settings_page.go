@@ -17,6 +17,10 @@ type VisualizationMessage struct {
 	Message int `json:"message"`
 }
 
+var data struct {
+	Value string `json:"value"`
+}
+
 func Post_config_global(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/config_global post")
@@ -55,6 +59,48 @@ func Post_config_change(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write(nil)
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_log_change(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/log_change change post")
+
+		json.NewDecoder(r.Body).Decode(&data)
+
+		page_func.UpdateConfigKey("log", data.Value)
+
+		w.Write([]byte("1"))
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_port_change(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/port_change change post")
+
+		json.NewDecoder(r.Body).Decode(&data)
+
+		page_func.UpdateConfigKey("port", data.Value)
+
+		w.Write([]byte("1"))
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_server_change(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/server_change change post")
+
+		json.NewDecoder(r.Body).Decode(&data)
+
+		page_func.UpdateConfigKey("server", data.Value)
+
+		w.Write([]byte("1"))
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

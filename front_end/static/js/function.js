@@ -232,11 +232,23 @@ function getConfig() {
     .then(data => {
         console.log(data);
         let visualization_button = data['visualization'];
+        let log = data['log'];
+        let port = data['port'];
+        let server = data['server'];
+
+        $('#ssdfredfgettt').val(port);
+        $('#bsdcfvbttrfgo').val(server);
         
         if (visualization_button === 1) {
             button_active('visualization1', visualization_mas);
         } else {
             button_active('visualization2', visualization_mas);
+        }
+        
+        if (log === 1) {
+            button_active('vsgretdbgc1', vsgretdbgc);
+        } else {
+            button_active('vsgretdbgc2', vsgretdbgc);
         }
     })
     .catch(error => {
@@ -742,3 +754,52 @@ const fileUpload_2 = () => {
         });
     });
 };
+
+function dwdjsdswq(val) {
+    $.ajax({
+        url: "/log_change",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({value: val}),
+        success: function(response) {
+            getConfig();
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function ftrgyujukyu() {
+    let value = $('#ssdfredfgettt').val();
+
+    $.ajax({
+        url: "/port_change",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({value: value}),
+        success: function(response) {
+            getConfig();
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function cfdgbhytjk999() {
+    let value = $('#bsdcfvbttrfgo').val();
+
+    $.ajax({
+        url: "/server_change",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({value: value}),
+        success: function(response) {
+            getConfig();
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}

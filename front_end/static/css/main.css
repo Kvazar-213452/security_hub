@@ -443,6 +443,34 @@
   color: #ffffffd4;
   font-size: 15px; }
 
+.saert45trgf {
+  border: none;
+  color: #ffffffd4;
+  padding: 7px;
+  font-size: 15px;
+  background-color: #12171e;
+  border-radius: 5px;
+  border: solid 2px #ffffff00; }
+  .saert45trgf:focus {
+    outline: none;
+    box-shadow: none;
+    border: solid 2px #55c959;
+    color: #55c959; }
+
+.zxbnmewd {
+  border: none;
+  padding: 7px;
+  background-color: #12171e;
+  color: #ffffffd4;
+  font-size: 15px;
+  border-radius: 5px;
+  transition: all .3s;
+  border: solid 2px #ffffff00;
+  cursor: pointer; }
+  .zxbnmewd:hover {
+    border: solid 2px #55c959;
+    color: #55c959; }
+
 /* about page */
 /* about page */
 /* about page */
