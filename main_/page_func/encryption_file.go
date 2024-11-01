@@ -1,4 +1,4 @@
-package encryption
+package page_func
 
 import (
 	"crypto/aes"

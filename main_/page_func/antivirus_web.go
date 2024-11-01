@@ -1,4 +1,4 @@
-package antivirus
+package page_func
 
 import (
 	"bufio"

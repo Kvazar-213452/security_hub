@@ -1,4 +1,4 @@
-package page_func_spec
+package page_func
 
 import (
 	"fmt"

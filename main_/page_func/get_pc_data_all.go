@@ -1,7 +1,14 @@
-package page_func_spec
+package page_func
 
 import (
+	"bufio"
 	"fmt"
+	config_main "head/main_/config"
+	"io/ioutil"
+	"log"
+	"os"
+	"os/exec"
+	"strings"
 	"syscall"
 	"unsafe"
 )
@@ -126,4 +133,45 @@ func GetSystemUptime() string {
 
 	return fmt.Sprintf("%d days, %d hours, %d minutes, %d seconds\n",
 		days, hours, minutes, seconds)
+}
+
+func get_usb_info() {
+	cmd := exec.Command("wmic", "path", "Win32_PnPEntity", "get", "Name")
+
+	output, err := cmd.Output()
+	if err != nil {
+		return
+	}
+
+	file, err := os.Create(config_main.Devices)
+	if err != nil {
+		return
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(strings.NewReader(string(output)))
+	for scanner.Scan() {
+		line := strings.TrimSpace(scanner.Text())
+		if line != "" && line != "Name" {
+			_, err := file.WriteString(line + "\n")
+			if err != nil {
+				return
+			}
+		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		return
+	}
+}
+
+func Usb_info() string {
+	get_usb_info()
+
+	content, err := ioutil.ReadFile(config_main.Devices)
+	if err != nil {
+		log.Fatalf("Failed to read devices.log: %v", err)
+	}
+
+	return string(content)
 }

@@ -5,6 +5,7 @@ import (
 	"head/main_"
 	config_main "head/main_/config"
 	"head/main_/func_all"
+	"head/main_/page"
 	"net/http"
 	"os/exec"
 	"strconv"
@@ -45,20 +46,20 @@ func main() {
 	http.HandleFunc("/browser_site_app", main_.Browser_site_app)
 
 	// Post
-	http.HandleFunc("/get_wifi_now", main_.Post_gagat_network)
-	http.HandleFunc("/get_wifi", main_.Post_wifi_network)
+	http.HandleFunc("/get_wifi_now", page.Post_gagat_network)
+	http.HandleFunc("/get_wifi", page.Post_wifi_network)
 	http.HandleFunc("/get_logs", main_.Post_server_fet_log)
-	http.HandleFunc("/network_now", main_.Post_network_now)
-	http.HandleFunc("/config_global", main_.Post_config_global)
-	http.HandleFunc("/visualization", main_.Post_config_change)
-	http.HandleFunc("/get_os_data", main_.Post_get_os_data)
-	http.HandleFunc("/usb_info", main_.Post_usb_info)
-	http.HandleFunc("/resource_info", main_.Post_resource_info)
-	http.HandleFunc("/cleanup", main_.Post_cleanup)
-	http.HandleFunc("/antivirus_web", main_.Post_antivirus_web)
-	http.HandleFunc("/antivirus_bekend", main_.Post_antivirus_bekend)
-	http.HandleFunc("/encryption_file", main_.Post_encryption_file)
-	http.HandleFunc("/decipher_file", main_.Post_decipher_file)
+	http.HandleFunc("/network_now", page.Post_network_now)
+	http.HandleFunc("/config_global", page.Post_config_global)
+	http.HandleFunc("/visualization", page.Post_config_change)
+	http.HandleFunc("/get_os_data", page.Post_get_os_data)
+	http.HandleFunc("/usb_info", page.Post_usb_info)
+	http.HandleFunc("/resource_info", page.Post_resource_info)
+	http.HandleFunc("/cleanup", page.Post_cleanup)
+	http.HandleFunc("/antivirus_web", page.Post_antivirus_web)
+	http.HandleFunc("/antivirus_bekend", page.Post_antivirus_bekend)
+	http.HandleFunc("/encryption_file", page.Post_encryption_file)
+	http.HandleFunc("/decipher_file", page.Post_decipher_file)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)
