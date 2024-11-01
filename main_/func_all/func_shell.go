@@ -49,6 +49,18 @@ func FindFreePort() int {
 }
 
 func StartShellWeb(port string) *exec.Cmd {
+	originalDir, err := os.Getwd()
+	if err != nil {
+		fmt.Printf("error: %v\n", err)
+		os.Exit(1)
+	}
+
+	os.Chdir("core")
+
+	defer func() {
+		os.Chdir(originalDir)
+	}()
+
 	htmlContent := fmt.Sprintf(`<style>iframe{position: fixed;height: 100%%;width: 100%%;top: 0%%;left: 0%%;}</style><iframe src='http://127.0.0.1%s/about' frameborder='0'></iframe>`, port)
 
 	args := []string{

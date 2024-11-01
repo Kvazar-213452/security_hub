@@ -1,6 +1,5 @@
 <?php
 $domen_name = "http://localhost";
-$server_name = "http://localhost:3000/";
 
 $content = <<<EOD
 <meta charset="UTF-8">

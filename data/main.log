@@ -231,3 +231,54 @@ get os data || 2024-10-31 20:30:40
 /get_logs post || 2024-10-31 20:30:40
 transition to /cleaning || 2024-10-31 20:30:41
 /get_logs post || 2024-10-31 20:30:41
+transition to /about || 2024-10-31 21:28:44
+/get_logs post || 2024-10-31 21:28:45
+transition to /antivirus || 2024-10-31 21:28:46
+/get_logs post || 2024-10-31 21:28:46
+transition to /system || 2024-10-31 21:28:46
+get os data || 2024-10-31 21:28:46
+/get_logs post || 2024-10-31 21:28:46
+transition to /antivirus || 2024-10-31 21:28:47
+/get_logs post || 2024-10-31 21:28:47
+transition to /system || 2024-10-31 21:28:58
+get os data || 2024-10-31 21:28:58
+/get_logs post || 2024-10-31 21:28:58
+resource info || 2024-10-31 21:28:59
+usb info || 2024-10-31 21:28:59
+resource info || 2024-10-31 21:29:00
+usb info || 2024-10-31 21:29:00
+transition to /about || 2024-11-01 12:47:51
+/get_logs post || 2024-11-01 12:47:52
+transition to /about || 2024-11-01 12:48:58
+/get_logs post || 2024-11-01 12:48:58
+transition to /index || 2024-11-01 12:49:01
+/get_wifi_now post || 2024-11-01 12:49:01
+/get_logs post || 2024-11-01 12:49:01
+transition to /system || 2024-11-01 12:49:01
+get os data || 2024-11-01 12:49:01
+/get_logs post || 2024-11-01 12:49:01
+resource info || 2024-11-01 12:49:02
+usb info || 2024-11-01 12:49:02
+transition to /antivirus || 2024-11-01 12:49:03
+/get_logs post || 2024-11-01 12:49:03
+transition to /system || 2024-11-01 12:49:04
+get os data || 2024-11-01 12:49:04
+/get_logs post || 2024-11-01 12:49:04
+resource info || 2024-11-01 12:49:05
+usb info || 2024-11-01 12:49:05
+resource info || 2024-11-01 12:49:06
+usb info || 2024-11-01 12:49:06
+resource info || 2024-11-01 12:49:07
+usb info || 2024-11-01 12:49:07
+transition to /index || 2024-11-01 12:49:07
+/get_wifi_now post || 2024-11-01 12:49:07
+/get_logs post || 2024-11-01 12:49:07
+transition to /system || 2024-11-01 12:49:07
+get os data || 2024-11-01 12:49:07
+/get_logs post || 2024-11-01 12:49:07
+resource info || 2024-11-01 12:49:08
+usb info || 2024-11-01 12:49:08
+resource info || 2024-11-01 12:49:09
+usb info || 2024-11-01 12:49:09
+resource info || 2024-11-01 12:49:10
+usb info || 2024-11-01 12:49:11
