@@ -16,8 +16,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
             <div class="atvImg-layer" data-img="<?php echo $domen_name; ?>/static/img/9.png"></div>
         </div>
         <br><br><br><br>
-        <a href="https://github.com/Kvazar-213452/security_hub/raw/refs/heads/main/web_external/data/installer_online.exe"><button class="d3232f4ff">Скачати офлайн інсталятор</button></a>
-        <a href="https://github.com/Kvazar-213452/security_hub/raw/refs/heads/main/web_external/data/installer_ofline.exe"><button class="d3232f4ff">Скачати онлайн інсталятор</button></a>
+        <a href="https://github.com/Kvazar-213452/security_hub/raw/refs/heads/main/web_external/data/installer_ofline.exe"><button class="d3232f4ff">Скачати офлайн інсталятор</button></a>
+        <a href="https://github.com/Kvazar-213452/security_hub/raw/refs/heads/main/web_external/data/installer_online.exe"><button class="d3232f4ff">Скачати онлайн інсталятор</button></a>
         <a href="https://github.com/Kvazar-213452/security_hub/raw/refs/heads/main/web_external/data/main.zip"><button class="d3232f4ff">Скачати zip архів</button></a>
     </div>
     <?php require 'page/footer.php'; ?>

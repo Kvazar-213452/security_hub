@@ -6,4 +6,5 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
     <a href="/page/main"><div class="efw42f">Про програму</div></a>
     <a href="/page/screens"><div class="efw42f">Скріни</div></a>
     <a href="/page/dwn"><div class="efw42f">Завантажити</div></a>
+    <a href="/page/dwn"><div class="efw42f">Версії</div></a>
 </div>
