@@ -1,7 +1,8 @@
 {
-  "visualization": 0,
+  "visualization": 1,
   "log": 0,
   "url": "http://localhost:64198/",
   "port": 4000,
-  "server": "https://raw.githubusercontent.com/Kvazar-213452/security_hub/refs/heads/main/web_external/data/"
+  "server": "https://raw.githubusercontent.com/Kvazar-213452/security_hub/refs/heads/main/web_external/data/",
+  "shell": 1
 }

@@ -9,6 +9,7 @@ import (
 	"os/exec"
 	"os/signal"
 	"path/filepath"
+	"strconv"
 	"syscall"
 	"time"
 	"unsafe"
@@ -19,6 +20,7 @@ type Config_global struct {
 	Log           int    `json:"log"`
 	URL           string `json:"url"`
 	Port          int    `json:"port"`
+	Shell         int    `json:"shell"`
 }
 
 func LoadConfig_start(filename string) (Config_global, error) {
@@ -47,7 +49,7 @@ func FindFreePort() int {
 	return addr.Port
 }
 
-func StartShellWeb(port string) *exec.Cmd {
+func StartShellWeb(port int, type_ int) *exec.Cmd {
 	originalDir, err := os.Getwd()
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
@@ -56,20 +58,40 @@ func StartShellWeb(port string) *exec.Cmd {
 
 	os.Chdir("core")
 
+	var cmd *exec.Cmd
+
+	if type_ == 0 {
+		os.Chdir("NM1")
+
+		htmlContent := fmt.Sprintf(`%s/about`, strconv.Itoa(port))
+
+		args := []string{
+			config_main.Name,
+			config_main.Window_h,
+			config_main.Window_w,
+			htmlContent,
+		}
+
+		cmd = exec.Command(config_main.Core_web, args...)
+	} else if type_ == 1 {
+		os.Chdir("NM2")
+
+		htmlContent := fmt.Sprintf(`%d/about`, port)
+
+		args := []string{
+			config_main.Window_w,
+			config_main.Window_h,
+			htmlContent,
+			config_main.Name,
+		}
+
+		cmd = exec.Command(config_main.Core_web_NM2, args...)
+	}
+
 	defer func() {
 		os.Chdir(originalDir)
 	}()
 
-	htmlContent := fmt.Sprintf(`<style>iframe{position: fixed;height: 100%%;width: 100%%;top: 0%%;left: 0%%;}</style><iframe src='http://127.0.0.1%s/about' frameborder='0'></iframe>`, port)
-
-	args := []string{
-		config_main.Name,
-		config_main.Window_h,
-		config_main.Window_w,
-		htmlContent,
-	}
-
-	cmd := exec.Command(config_main.Core_web, args...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
