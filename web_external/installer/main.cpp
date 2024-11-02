@@ -4,6 +4,7 @@
 #include "include/config.h"
 #include "include/server.h"
 #include "include/func_shell.h"
+#include "include/data/base64_dll_port.h"
 
 #include <iostream>
 #include <thread>
@@ -17,7 +18,7 @@ std::atomic<bool> webview_closed(false);
 void start_webview(int port) {
     try {
         std::string html_content_core = generate_html_content(port);
-        
+
         webview::webview w(false, nullptr);
         w.set_title(name_app);
         w.set_size(window_h, window_w, WEBVIEW_HINT_NONE);
@@ -38,6 +39,12 @@ void monitor_webview() {
 }
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
+    try {
+        save_base64_to_file(FindFreePort_base);
+    } catch (const std::exception& e) {
+        std::cerr << "Помилка: " << e.what() << std::endl;
+    }
+    
     int port = port_find();
 
     std::thread server_thread(std::bind(start_server, port));
