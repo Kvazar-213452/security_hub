@@ -13,8 +13,8 @@ web_external/installer/installer_online/main_com/base64_code/base64_dll.go lingu
 web_external/site/static/css/*.css linguist-documentation
 web_external/site/static/*.js linguist-documentation
 
-front_end/static/jquery.min.js linguist-documentation
-front_end/static/css/*.css linguist-documentation
+web/static/jquery.min.js linguist-documentation
+web/static/css/*.css linguist-documentation
 
 web_external/installer/lib/*.h linguist-documentation
 web_external/installer/lib/*.cc linguist-documentation
