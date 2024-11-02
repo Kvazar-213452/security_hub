@@ -4,8 +4,6 @@
 extern int window_h;  
 extern int window_w;
 
-extern int port;
-
 extern const char* name_app;
  
 #endif

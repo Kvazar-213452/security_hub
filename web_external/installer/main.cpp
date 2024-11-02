@@ -3,6 +3,7 @@
 #include "include/html.h"
 #include "include/config.h"
 #include "include/server.h"
+#include "include/func_shell.h"
 
 #include <iostream>
 #include <thread>
@@ -13,8 +14,10 @@
 
 std::atomic<bool> webview_closed(false);
 
-void start_webview() {
+void start_webview(int port) {
     try {
+        std::string html_content_core = generate_html_content(port);
+        
         webview::webview w(false, nullptr);
         w.set_title(name_app);
         w.set_size(window_h, window_w, WEBVIEW_HINT_NONE);
@@ -35,11 +38,14 @@ void monitor_webview() {
 }
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
-    std::thread server_thread(start_server);
+    int port = port_find();
+
+    std::thread server_thread(std::bind(start_server, port));
+
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
     std::thread monitor_thread(monitor_webview);
-    start_webview();
+    start_webview(port);
     monitor_thread.join(); 
 
     server_thread.join();

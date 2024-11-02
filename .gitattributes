@@ -1,15 +1,5 @@
 * text=auto
 
-shell/webview.h linguist-documentation
-web_external/installer/shell/webview.h linguist-documentation
-
-web_external/installer/installer_ofline/main_com/base64_code/base64.go linguist-documentation
-web_external/installer/installer_ofline/main_com/base64_code/base64_spx.go linguist-documentation
-web_external/installer/installer_ofline/main_com/base64_code/base64_dll.go linguist-documentation
-
-web_external/installer/installer_online/main_com/base64_code/base64_spx.go linguist-documentation
-web_external/installer/installer_online/main_com/base64_code/base64_dll.go linguist-documentation
-
 web_external/site/static/css/*.css linguist-documentation
 web_external/site/static/*.js linguist-documentation
 

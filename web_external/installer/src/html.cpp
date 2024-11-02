@@ -1,18 +1,5 @@
 #include <string>
 
-std::string html_content_core = R"(
-<style>
-    iframe{
-        position: fixed;
-        height: 100%;
-        width: 100%;
-        top: 0%;
-        left: 0%;
-    }
-</style>
-<iframe src="http://127.0.0.1:59093/" frameborder="0"></iframe>
-)";
-
 std::string html_content = R"(
 <!DOCTYPE html>
 <html lang="uk">
@@ -27,21 +14,30 @@ std::string html_content = R"(
         * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            color: #dbdbdb;
+            text-decoration: none;
         }
 
         body {
-            background-color: #17181f;
-            height: 100%;
-            width: 100%;
+            background-color: #14171f;
+            height: 100vh;
+            width: 100vw;
             font-family: "Roboto", sans-serif;
             color: #dbdbdb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .dqwdwdd4 {
             position: relative;
             text-align: center;
             font-weight: bold;
-            font-size: 30px;
+            font-size: 38px;
             color: #55c959;
             text-decoration: underline;
             text-decoration-thickness: 2px;
@@ -49,19 +45,35 @@ std::string html_content = R"(
         }
 
         .dwqdwccccc {
+            position: relative;
+            padding: 20px;
+            height: 75vh;
+            width: 55vw;
+            background-color: rgba(28, 31, 40, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .dwqdwccccc::before {
+            content: "";
             position: absolute;
-            top: 50%;
-            left: 50%;
-            padding: 15px;
-            transform: translate(-50%, -50%);
-            height: 75%;
-            width: 75%;
-            background-color: #20252c;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('http://spx-security-hub.wuaze.com/static/img/9.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            z-index: -1;
         }
 
         .dqfeffggg {
             padding: 15px;
             font-size: 17px;
+            font-weight: bold;
         }
 
         .ew32fe {
@@ -77,28 +89,132 @@ std::string html_content = R"(
             border-radius: 5px;
             transition: all .3s;
             cursor: pointer;
+            z-index: 1000;
         }
 
         .ew32fe:hover {
             border: solid 2px #55c959;
-            color: #55c959;
+            color: #55c959 !important;
+        }
+
+        .ew32fe:hover a {
+            color: #55c959 !important;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
         }
     </style>
 </head>
 <body>
     <div class="dwqdwccccc">
-        <p class="dqwdwdd4">Installer Security Hub 1.1</p>
+        <p class="dqwdwdd4">Installer online Security Hub 1.1</p>
         <br><br>
         <ul class="dqfeffggg">
             <li>Інсталюється ядро ASW для відображення програми вага 144КБ</li><br>
             <li>Створиться ярлик на робочому столі</li><br>
             <li>Файли будуть по шляху C:\security_hub</li><br>
-            <li>Програма важить 50 МБ</li><br>
-            <li>Інсталюється бази даних "web"</li><br>
-            <li>Інсталюється бази даних "bekend"</li>
+            <li>Програма важить 12 МБ</li>
         </ul>
         <br><br>
-        <button class="ew32fe">Інсталювати</button>    
+        <button class="ew32fe"><a href="/dwn">Інсталювати</a></button>
+    </div>
+</body>
+</html>
+)";
+
+std::string html_content_1 = R"(
+    <!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installer Security Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #14171f;
+            height: 100vh;
+            width: 100vw;
+            font-family: "Roboto", sans-serif;
+            color: #dbdbdb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .dqwdwdd4 {
+            position: relative;
+            text-align: center;
+            font-weight: bold;
+            font-size: 38px;
+            color: #55c959;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+        }
+
+        .dwqdwccccc {
+            position: relative;
+            padding: 20px;
+            height: 75vh;
+            width: 55vw;
+            background-color: rgba(28, 31, 40, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .dwqdwccccc::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('http://spx-security-hub.wuaze.com/static/img/9.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .dwaqwdggggg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #dbdbdb;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .dwqassrg{
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dwqdwccccc">
+        <p class="dqwdwdd4">Installer online Security Hub 1.1</p>
+        <br><br><br><br><br>
+        <p class="dwaqwdggggg">Інсталяція.....</p>
+        <p class="dwqassrg">Інсталятор закриється після успішної установки</p>
     </div>
 </body>
 </html>

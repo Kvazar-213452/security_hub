@@ -5,5 +5,6 @@
 
 extern std::string html_content_core;
 extern std::string html_content;
+extern std::string html_content_1;
 
 #endif 
