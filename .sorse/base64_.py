@@ -9,7 +9,7 @@ def convert_to_base64(input_file, output_file):
     with open(output_file, 'w') as file:
         file.write(base64_encoded)
 
-input_file = 'FindFreePort.dll'
+input_file = 'zip.dll'
 output_file = 'main.txt'
 
 convert_to_base64(input_file, output_file)
