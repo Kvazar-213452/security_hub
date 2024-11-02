@@ -5,7 +5,7 @@ import (
 	"crypto/cipher"
 	"encoding/hex"
 	"fmt"
-	config_main "head/main_/config"
+	config_main "head/main_com/config"
 	"io/ioutil"
 	"path/filepath"
 )

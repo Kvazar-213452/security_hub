@@ -1,8 +1,8 @@
-package main_
+package main_com
 
 import (
-	config_main "head/main_/config"
-	"head/main_/func_all"
+	config_main "head/main_com/config"
+	"head/main_com/func_all"
 	"html/template"
 	"net/http"
 	"os"

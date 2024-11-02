@@ -22,7 +22,7 @@ var Devices = "library/devices.log"
 var Cleanup_dll = "library/cleanup.dll"
 
 // Frontend
-var Frontend_folder = "front_end"
+var Frontend_folder = "web"
 
 // Server
 var Server_url = Get_server_url(Main_config)

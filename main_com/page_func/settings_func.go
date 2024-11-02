@@ -3,7 +3,7 @@ package page_func
 import (
 	"encoding/json"
 	"fmt"
-	config_main "head/main_/config"
+	config_main "head/main_com/config"
 	"io/ioutil"
 	"os"
 	"strconv"

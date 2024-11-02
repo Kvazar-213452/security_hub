@@ -2,8 +2,8 @@ package page
 
 import (
 	"encoding/json"
-	"head/main_/func_all"
-	"head/main_/page_func"
+	"head/main_com/func_all"
+	"head/main_com/page_func"
 	"net/http"
 )
 

@@ -3,7 +3,7 @@ package func_all
 import (
 	"encoding/json"
 	"fmt"
-	config_main "head/main_/config"
+	config_main "head/main_com/config"
 	"io/ioutil"
 	"os"
 	"path/filepath"

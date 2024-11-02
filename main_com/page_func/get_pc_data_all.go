@@ -3,7 +3,7 @@ package page_func
 import (
 	"bufio"
 	"fmt"
-	config_main "head/main_/config"
+	config_main "head/main_com/config"
 	"io/ioutil"
 	"log"
 	"os"

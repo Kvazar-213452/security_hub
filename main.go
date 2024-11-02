@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"head/main_"
-	config_main "head/main_/config"
-	"head/main_/func_all"
-	"head/main_/page"
+	"head/main_com"
+	config_main "head/main_com/config"
+	"head/main_com/func_all"
+	"head/main_com/page"
 	"net/http"
 	"os/exec"
 	"strconv"
@@ -35,20 +35,20 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("front_end/static"))))
 
 	// get
-	http.HandleFunc("/wifi", main_.Render_index_page)
-	http.HandleFunc("/about", main_.Render_about_page)
-	http.HandleFunc("/settings", main_.Render_settings_page)
-	http.HandleFunc("/system", main_.Render_system_page)
-	http.HandleFunc("/off_app", main_.Get_off_app)
-	http.HandleFunc("/cleaning", main_.Render_cleaning)
-	http.HandleFunc("/antivirus", main_.Render_antivirus)
-	http.HandleFunc("/encryption", main_.Render_encryption)
-	http.HandleFunc("/browser_site_app", main_.Browser_site_app)
+	http.HandleFunc("/wifi", main_com.Render_index_page)
+	http.HandleFunc("/about", main_com.Render_about_page)
+	http.HandleFunc("/settings", main_com.Render_settings_page)
+	http.HandleFunc("/system", main_com.Render_system_page)
+	http.HandleFunc("/off_app", main_com.Get_off_app)
+	http.HandleFunc("/cleaning", main_com.Render_cleaning)
+	http.HandleFunc("/antivirus", main_com.Render_antivirus)
+	http.HandleFunc("/encryption", main_com.Render_encryption)
+	http.HandleFunc("/browser_site_app", main_com.Browser_site_app)
 
 	// Post
 	http.HandleFunc("/get_wifi_now", page.Post_gagat_network)
 	http.HandleFunc("/get_wifi", page.Post_wifi_network)
-	http.HandleFunc("/get_logs", main_.Post_server_fet_log)
+	http.HandleFunc("/get_logs", main_com.Post_server_fet_log)
 	http.HandleFunc("/network_now", page.Post_network_now)
 	http.HandleFunc("/config_global", page.Post_config_global)
 	http.HandleFunc("/visualization", page.Post_config_change)

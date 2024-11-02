@@ -1,7 +1,7 @@
-package main_
+package main_com
 
 import (
-	"head/main_/func_all"
+	"head/main_com/func_all"
 	"net/http"
 )
 

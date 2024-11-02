@@ -2,8 +2,8 @@ package page
 
 import (
 	"fmt"
-	config_main "head/main_/config"
-	"head/main_/func_all"
+	config_main "head/main_com/config"
+	"head/main_com/func_all"
 	"net/http"
 	"syscall"
 )

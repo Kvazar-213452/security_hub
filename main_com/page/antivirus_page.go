@@ -2,9 +2,9 @@ package page
 
 import (
 	"encoding/json"
-	config_main "head/main_/config"
-	"head/main_/func_all"
-	"head/main_/page_func"
+	config_main "head/main_com/config"
+	"head/main_com/func_all"
+	"head/main_com/page_func"
 	"io"
 	"io/ioutil"
 	"net/http"
