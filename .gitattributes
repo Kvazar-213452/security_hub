@@ -5,6 +5,6 @@ web_external/site/static/*.js linguist-documentation
 
 web_external/installer/shell/*.h linguist-documentation
 web_external/installer/main_com/base64_code/*.go linguist-documentation
-
+ 
 web/static/jquery.min.js linguist-documentation
 web/static/css/*.css linguist-documentation
