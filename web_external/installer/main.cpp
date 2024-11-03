@@ -11,59 +11,6 @@
 #include <atomic>
 #include <string>
 #include <sstream>
-#include <winsock2.h>
-#include <ws2tcpip.h>
-
-#pragma comment(lib, "ws2_32.lib")
-
-int FindFreePort() {
-    // Ініціалізація бібліотеки WinSock
-    WSADATA wsaData;
-    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-        std::cerr << "Помилка ініціалізації WinSock" << std::endl;
-        return 0;
-    }
-
-    // Створення сокета
-    SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-    if (sock == INVALID_SOCKET) {
-        std::cerr << "Помилка створення сокета" << std::endl;
-        WSACleanup();
-        return 0;
-    }
-
-    // Налаштування адреси для прив'язки (порт 0 дозволяє вибрати вільний порт)
-    sockaddr_in addr;
-    addr.sin_family = AF_INET;
-    addr.sin_addr.s_addr = inet_addr("127.0.0.1");
-    addr.sin_port = htons(0);
-
-    // Прив'язка сокета
-    if (bind(sock, (sockaddr*)&addr, sizeof(addr)) == SOCKET_ERROR) {
-        std::cerr << "Помилка прив'язки сокета" << std::endl;
-        closesocket(sock);
-        WSACleanup();
-        return 0;
-    }
-
-    // Отримання вибраного порту
-    int addrLen = sizeof(addr);
-    if (getsockname(sock, (sockaddr*)&addr, &addrLen) == SOCKET_ERROR) {
-        std::cerr << "Помилка отримання інформації про сокет" << std::endl;
-        closesocket(sock);
-        WSACleanup();
-        return 0;
-    }
-
-    int freePort = ntohs(addr.sin_port);
-
-    // Закриття сокета і очищення WinSock
-    closesocket(sock);
-    WSACleanup();
-
-    return freePort;
-}
-
 
 std::atomic<bool> webview_closed(false);
 
