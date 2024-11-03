@@ -15,9 +15,6 @@ var Name string = "Security Hub"
 // phat
 var Global_phat = Get_phat_global()
 
-// lib
-var Devices = "library/devices.log"
-
 // dll
 var Cleanup_dll = "library/cleanup.dll"
 

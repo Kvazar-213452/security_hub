@@ -32,7 +32,7 @@ func main() {
 		cmd = func_all.StartShellWeb(port, config.Shell)
 	}
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("front_end/static"))))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 
 	// get
 	http.HandleFunc("/wifi", main_com.Render_index_page)
@@ -53,7 +53,7 @@ func main() {
 	http.HandleFunc("/config_global", page.Post_config_global)
 	http.HandleFunc("/visualization", page.Post_config_change)
 	http.HandleFunc("/get_os_data", page.Post_get_os_data)
-	http.HandleFunc("/usb_info", page.Post_usb_info)
+	http.HandleFunc("/usb_info", page.Post_window_open)
 	http.HandleFunc("/resource_info", page.Post_resource_info)
 	http.HandleFunc("/cleanup", page.Post_cleanup)
 	http.HandleFunc("/antivirus_web", page.Post_antivirus_web)

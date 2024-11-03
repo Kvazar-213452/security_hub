@@ -53,11 +53,11 @@ func Post_get_os_data(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func Post_usb_info(w http.ResponseWriter, r *http.Request) {
+func Post_window_open(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("usb info")
 
-		info := page_func.Usb_info()
+		info := page_func.App_open()
 		cleanedInfo := strings.ReplaceAll(info, "\r", "")
 		devices := strings.Split(cleanedInfo, "\n")
 		response := map[string][]string{"devices": devices}

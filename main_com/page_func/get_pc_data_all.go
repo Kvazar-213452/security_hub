@@ -1,21 +1,13 @@
 package page_func
 
 import (
-	"bufio"
 	"fmt"
-	config_main "head/main_com/config"
-	"io/ioutil"
-	"log"
-	"os"
-	"os/exec"
+	"regexp"
 	"strings"
 	"syscall"
 	"unsafe"
-)
 
-var (
-	modkernel32 = syscall.NewLazyDLL("kernel32.dll")
-	modadvapi32 = syscall.NewLazyDLL("advapi32.dll")
+	"golang.org/x/sys/windows"
 )
 
 const (
@@ -56,12 +48,10 @@ type OSVERSIONINFO struct {
 	szCSDVersion        [128]byte
 }
 
-// Convert a byte slice to string
 func byteSliceToString(b []byte) string {
-	return string(b[:len(b)-1]) // Remove the null terminator
+	return string(b[:len(b)-1])
 }
 
-// GetSystemMemory returns system memory information as a string
 func GetSystemMemory() string {
 	var memInfo MEMORYSTATUSEX
 	memInfo.dwLength = uint32(unsafe.Sizeof(memInfo))
@@ -76,7 +66,6 @@ func GetSystemMemory() string {
 		memInfo.ullAvailPhys/(1024*1024))
 }
 
-// GetProcessorInfo returns processor information as a string
 func GetProcessorInfo() string {
 	var sysInfo SYSTEM_INFO
 	modkernel32.NewProc("GetSystemInfo").Call(uintptr(unsafe.Pointer(&sysInfo)))
@@ -86,7 +75,6 @@ func GetProcessorInfo() string {
 		sysInfo.wProcessorArchitecture)
 }
 
-// GetOSVersion returns the OS version as a string
 func GetOSVersion() string {
 	var osvi OSVERSIONINFO
 	osvi.dwOSVersionInfoSize = uint32(unsafe.Sizeof(osvi))
@@ -98,7 +86,6 @@ func GetOSVersion() string {
 		osvi.dwBuildNumber)
 }
 
-// GetComputerNameCustom returns the computer name as a string
 func GetComputerNameCustom() string {
 	var computerName [syscall.MAX_COMPUTERNAME_LENGTH + 1]byte
 	var size uint32 = uint32(len(computerName))
@@ -108,7 +95,6 @@ func GetComputerNameCustom() string {
 	return fmt.Sprintf("%s\n", byteSliceToString(computerName[:size]))
 }
 
-// GetUserNameCustom returns the username as a string
 func GetUserNameCustom() string {
 	var userName [UNLEN + 1]byte
 	var size uint32 = uint32(len(userName))
@@ -118,12 +104,11 @@ func GetUserNameCustom() string {
 	return fmt.Sprintf("%s\n", byteSliceToString(userName[:size]))
 }
 
-// GetSystemUptime returns the system uptime as a string
 func GetSystemUptime() string {
 	getTickCount64 := modkernel32.NewProc("GetTickCount64")
 
 	uptime, _, _ := getTickCount64.Call()
-	uptime /= 1000 // Convert from milliseconds to seconds
+	uptime /= 1000
 	days := uptime / (24 * 3600)
 	uptime %= 24 * 3600
 	hours := uptime / 3600
@@ -135,43 +120,68 @@ func GetSystemUptime() string {
 		days, hours, minutes, seconds)
 }
 
-func get_usb_info() {
-	cmd := exec.Command("wmic", "path", "Win32_PnPEntity", "get", "Name")
+var (
+	user32                   = windows.NewLazySystemDLL("user32.dll")
+	procEnumWindows          = user32.NewProc("EnumWindows")
+	procGetWindowTextW       = user32.NewProc("GetWindowTextW")
+	procGetWindowTextLengthW = user32.NewProc("GetWindowTextLengthW")
 
-	output, err := cmd.Output()
-	if err != nil {
-		return
+	modkernel32 = syscall.NewLazyDLL("kernel32.dll")
+	modadvapi32 = syscall.NewLazyDLL("advapi32.dll")
+)
+
+func isValidProgramWindow(title string) bool {
+	title = strings.TrimSpace(title)
+	if title == "" {
+		return false
 	}
 
-	file, err := os.Create(config_main.Devices)
-	if err != nil {
-		return
+	systemWords := []string{
+		"Default IME", "MSCTFIME UI", "Program Manager", "Task Host Window",
+		"DWM Notification Window", "Service", "Wnd", "Monitor", "Notification",
+		"Input", "Webview", "Tray", "Window", "Cmd.exe", "Flyout",
+		"Settings", "Indicator", "Host", "UxdService", "NvSvc", "Provider",
 	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(strings.NewReader(string(output)))
-	for scanner.Scan() {
-		line := strings.TrimSpace(scanner.Text())
-		if line != "" && line != "Name" {
-			_, err := file.WriteString(line + "\n")
-			if err != nil {
-				return
-			}
+	for _, word := range systemWords {
+		if strings.Contains(title, word) {
+			return false
 		}
 	}
 
-	if err := scanner.Err(); err != nil {
-		return
-	}
+	systemRegex := regexp.MustCompile(`(?i)(window|helper|service|icon|notification|task|tray|cmd\.exe|\.exe)$`)
+	return !systemRegex.MatchString(title)
 }
 
-func Usb_info() string {
-	get_usb_info()
+func enumWindows(callback func(hwnd syscall.Handle) bool) {
+	cb := syscall.NewCallback(func(hwnd syscall.Handle, lparam uintptr) uintptr {
+		if callback(hwnd) {
+			return 1
+		}
+		return 0
+	})
+	procEnumWindows.Call(cb, 0)
+}
 
-	content, err := ioutil.ReadFile(config_main.Devices)
-	if err != nil {
-		log.Fatalf("Failed to read devices.log: %v", err)
-	}
+func App_open() string {
+	content := ""
+	windowTitles := make(map[string]bool)
+
+	enumWindows(func(hwnd syscall.Handle) bool {
+		length, _, _ := procGetWindowTextLengthW.Call(uintptr(hwnd))
+		if length > 0 {
+			buffer := make([]uint16, length+1)
+			procGetWindowTextW.Call(uintptr(hwnd), uintptr(unsafe.Pointer(&buffer[0])), uintptr(len(buffer)))
+			windowTitle := syscall.UTF16ToString(buffer)
+
+			if isValidProgramWindow(windowTitle) {
+				if _, exists := windowTitles[windowTitle]; !exists {
+					windowTitles[windowTitle] = true
+					content += windowTitle + "\n"
+				}
+			}
+		}
+		return true
+	})
 
 	return string(content)
 }
