@@ -85,3 +85,22 @@ void CreateShortcut(const std::wstring& shortcutPath, const std::wstring& target
 
     CoUninitialize();
 }
+
+void runCommandInBackground(const char* command) {
+    STARTUPINFO si;
+    PROCESS_INFORMATION pi;
+    ZeroMemory(&si, sizeof(si));
+    si.cb = sizeof(si);
+    si.dwFlags |= STARTF_USESHOWWINDOW;
+    si.wShowWindow = SW_HIDE;
+
+    ZeroMemory(&pi, sizeof(pi));
+
+    if (!CreateProcess(NULL, const_cast<char*>(command), NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, NULL, &si, &pi)) {
+        std::cerr << "Помилка при виконанні команди." << std::endl;
+        return;
+    }
+
+    CloseHandle(pi.hProcess);
+    CloseHandle(pi.hThread);
+}
