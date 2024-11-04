@@ -78,11 +78,15 @@ func StartShellWeb(port int, type_ int) *exec.Cmd {
 
 		htmlContent := fmt.Sprintf(`%d/about`, port)
 
+		var port_ int = FindFreePort()
+		portStr := strconv.Itoa(port_)
+
 		args := []string{
 			config_main.Window_w,
 			config_main.Window_h,
 			htmlContent,
 			config_main.Name,
+			portStr,
 		}
 
 		cmd = exec.Command(config_main.Core_web_NM2, args...)
