@@ -121,8 +121,6 @@ function get_wifi_info_level(data, wifi_now) {
     });
 }
 
-get_data_for_schedule()
-
 function data_wifi_render_now(response) {
     $('#name_wifi').text(response['ssid_name'] || 'N/A');
     $('#authentication_wifi').text(response['authentication'] || 'N/A');
@@ -208,6 +206,7 @@ function getConfig() {
         let log = data['log'];
         let port = data['port'];
         let server = data['server'];
+        let shell = data['shell'];
 
         $('#ssdfredfgettt').val(port);
         $('#bsdcfvbttrfgo').val(server);
@@ -222,6 +221,12 @@ function getConfig() {
             button_active('vsgretdbgc1', vsgretdbgc);
         } else {
             button_active('vsgretdbgc2', vsgretdbgc);
+        }
+
+        if (shell === 0) {
+            button_active('shell_NM', shell_NM);
+        } else {
+            button_active('shell_NM1', shell_NM);
         }
     })
     .catch(error => {
@@ -301,10 +306,14 @@ function render_data_window_open(response) {
     response = response['devices']
 
     for (let i = 0; i < response.length; i++) {
-        let text = `<div class="div_wifi_all">
-        <p class="name_wifi_div_all">${response[i]}</p>
-        </div>`;
-        $('#sifewfewx').append(text);
+        if (i + 1 === response.length) {
+            //pass
+        } else {
+            let text = `<div class="div_wifi_all">
+            <p class="name_wifi_div_all">${response[i]}</p>
+            </div>`;
+            $('#sifewfewx').append(text);
+        }
     }
 }
 
@@ -764,6 +773,21 @@ function server_change() {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({value: value}),
+        success: function(response) {
+            getConfig();
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function shell_NM_change(val) {
+    $.ajax({
+        url: "/shell_change",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({value: val}),
         success: function(response) {
             getConfig();
         },

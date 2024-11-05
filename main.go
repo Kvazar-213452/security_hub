@@ -63,6 +63,7 @@ func main() {
 	http.HandleFunc("/log_change", page.Post_log_change)
 	http.HandleFunc("/port_change", page.Post_port_change)
 	http.HandleFunc("/server_change", page.Post_server_change)
+	http.HandleFunc("/shell_change", page.Post_shell_change)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)

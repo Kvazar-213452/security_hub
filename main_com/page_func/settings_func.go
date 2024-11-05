@@ -15,6 +15,7 @@ type Config_global struct {
 	URL           string `json:"url"`
 	Port          int    `json:"port"`
 	Server        string `json:"server"`
+	Shell         int    `json:"shell"`
 }
 
 func LoadConfig() (*Config_global, error) {
@@ -108,6 +109,8 @@ func UpdateConfigKey(key, value string) error {
 	switch key {
 	case "log":
 		config.Log, err = strconv.Atoi(value)
+	case "shell":
+		config.Shell, err = strconv.Atoi(value)
 	case "port":
 		config.Port, err = strconv.Atoi(value)
 	case "server":

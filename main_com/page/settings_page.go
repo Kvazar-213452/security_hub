@@ -105,3 +105,17 @@ func Post_server_change(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}
 }
+
+func Post_shell_change(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/shell_change change post")
+
+		json.NewDecoder(r.Body).Decode(&data)
+
+		page_func.UpdateConfigKey("shell", data.Value)
+
+		w.Write([]byte("1"))
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}

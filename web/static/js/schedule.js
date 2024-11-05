@@ -199,7 +199,7 @@ function schedule_render(x, y) {
     });
 
     
-    if (data.length > 5) {
+    if (data.length > 6) {
         data.shift();
     }
 

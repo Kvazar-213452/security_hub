@@ -1,10 +1,11 @@
 package page_func
 
 import (
-	"bytes"
 	"fmt"
+	"io/ioutil"
 	"os/exec"
 	"strings"
+	"syscall"
 )
 
 type WifiInfo struct {
@@ -206,23 +207,20 @@ func Get_available_Wifi_networks() ([]WifiNetwork, error) {
 }
 
 func Get_connected_SSID() string {
-	cmd := exec.Command("netsh", "wlan", "show", "interfaces")
-	var out bytes.Buffer
-	cmd.Stdout = &out
-	err := cmd.Run()
+	dll := syscall.MustLoadDLL("library/get_ssid.dll")
+	proc := dll.MustFindProc("GetConnectedSSIDAndWriteToFile")
+
+	proc.Call()
+
+	data, err := ioutil.ReadFile("data.txt")
 	if err != nil {
+		fmt.Println("Не вдалося прочитати файл:", err)
 		return ""
 	}
 
-	lines := strings.Split(out.String(), "\n")
-	for _, line := range lines {
-		if strings.Contains(line, "SSID") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				return strings.TrimSpace(parts[1])
-			}
-		}
-	}
+	ssid := string(data)
+	ssid = strings.TrimPrefix(ssid, "Connected SSID: ")
+	ssid = strings.TrimSpace(ssid)
 
-	return ""
+	return ssid
 }
