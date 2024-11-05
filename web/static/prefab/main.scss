@@ -6,6 +6,8 @@
     width: 260px;
     height: 100%;
     background: linear-gradient(to bottom, #22272e, #1a1e25);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .ede33fff {
@@ -141,6 +143,22 @@
 /* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
 /* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
 
+#chart {
+    height: 100%;
+}
+
+.circle {
+    cursor: pointer;
+    transition: 0.2s stroke-width;
+}
+
+.tooltip {
+    padding: 20px;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0 0 2px black;
+}
+
 .wifi_main_content{
     position: absolute;
     left: 390px;
@@ -166,12 +184,19 @@
     transform: translate(-50%, -50%);
 }
 
+.wifi_sqd{
+    position: relative;
+    float: left;
+    width: calc(100% - 490px);
+}
+
 .img_wifi {
     position: relative;
     width: 100%;
     background-color: $bg_color1;
     height: 340px;
     border-radius: 5px;
+    padding: 20px;
 }
 
 .div_wifi_info{
@@ -197,66 +222,6 @@
     font-weight: normal;
     color: $text_color;
     font-size: 16px;
-}
-
-.container{
-    top:50%;
-    left:50%;
-    position:absolute;
-    transform:translate(-50%, -50%);
-    width:100%;
-}
-
-.container *{
-    box-sizing:border-box;
-    user-select: none;
-}
-
-.signal{
-    width:110px;
-    height:110px;
-    margin:auto;
-    position:relative;
-    overflow:hidden;
-    transform:rotate(45deg) scale(2);
-    margin-bottom:100px;
-}
-
-.curveOne1,
-.curveOne2{
-    border-radius:50%;
-    position:absolute;
-    width:200%;
-    height:200%;
-}
-
-.curveOne1,
-.curveTwo1,
-.curveThree1,
-.curveFour1{border:13px solid $grean;}
-
-.curveOne2,
-.curveTwo2,
-.curveThree2,
-.curveFour2{border:13px solid $bg_color2;}
-
-.curveTwo1,
-.curveTwo2{@include curveTwo(150%, 150%);}
-
-.curveThree1,
-.curveThree2{@include curveTwo(100%, 100%);}
-
-.curveFour1,
-.curveFour2{@include curveTwo(50%, 50%);}
-
-.curveFour1{background-color: $grean;}
-
-.curveFour2{background-color: $grean;}
-
-.wifi_sqd{
-    position: relative;
-    float: left;
-    width: calc(100% - 450px);
 }
 
 .wifi_all_div{

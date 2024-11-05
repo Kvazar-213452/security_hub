@@ -1,5 +1,5 @@
 {
-  "visualization": 1,
+  "visualization": 0,
   "log": 0,
   "url": "http://localhost:64198/",
   "port": 4000,
