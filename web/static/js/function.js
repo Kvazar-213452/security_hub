@@ -284,14 +284,14 @@ function change_shell(name, button) {
     });
 }
 
-function dw3fw3() {
+function get_os_data() {
     $.ajax({
         url: "/get_os_data",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function(response) {
-            dwqdqdxx(response)
+            write_os_data(response)
         },
         error: function(xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
@@ -299,14 +299,14 @@ function dw3fw3() {
     });
 }
 
-function dw3fw31() {
+function window_open() {
     $.ajax({
-        url: "/usb_info",
+        url: "/window_open",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function(response) {
-            render_usb(response);
+            render_data_window_open(response);
         },
         error: function(xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
@@ -314,7 +314,7 @@ function dw3fw31() {
     });
 }
 
-function dwqdqdxx(response) {
+function write_os_data(response) {
     $('#adqwdwxxxx').text(response['computer_name'] || 'N/A');
     $('#qwefsbsfb').text(response['os_version'] || 'N/A');
     $('#efwfwefwegwecc').text(response['processor_info'] || 'N/A');
@@ -323,7 +323,7 @@ function dwqdqdxx(response) {
     $('#retrevvvvde').text(response['user_name'] || 'N/A');
 }
 
-function render_usb(response) {
+function render_data_window_open(response) {
     $('#sifewfewx').html(null);
     response = response['devices']
 
@@ -335,14 +335,14 @@ function render_usb(response) {
     }
 }
 
-function redsgdff() {
+function resource_info() {
     $.ajax({
         url: "/resource_info",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function(response) {
-            dwqdqw2wwww(response);
+            resource_info_render_data(response);
         },
         error: function(xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
@@ -350,14 +350,14 @@ function redsgdff() {
     });
 }
 
-function dwqdqw2wwww(response) {
+function resource_info_render_data(response) {
     response = response['data'];
 
     $('#dwqwdwfcfff44').text(response[0] || 'N/A');
     $('#rggwiovnewcee').text(response[1] || 'N/A');
 }
 
-function dwqwfef(content) {
+function message_window(content) {
     const block = document.createElement("div");
     block.className = "animatedBlock hide";
     block.textContent = content;
@@ -378,8 +378,8 @@ function dwqwfef(content) {
     }, 3000);
 }
 
-function wef332wf() {
-    dwqwfef('Очищення компютера');
+function cleanup() {
+    message_window('Очищення компютера');
 
     $.ajax({
         url: "/cleanup",
@@ -402,7 +402,7 @@ function button_active_antivitys(name) {
     $("#" + name).css("color", "#55c959");
 }
 
-function ewffef4f() {
+function antivirus_web_start() {
     let inputValue = $('#fkwe9203f').val();
     const dataToSend = {
         url_site: [
@@ -418,7 +418,7 @@ function ewffef4f() {
         contentType: 'application/json',
         data: JSON.stringify(dataToSend),
         success: function(response) {
-            d32e23fw3(response)
+            antivirus_web_end(response)
         },
         error: function(xhr, status, error) {
             console.log("Error: " + error);
@@ -427,7 +427,7 @@ function ewffef4f() {
     });
 }
 
-function d32e23fw3(response) {
+function antivirus_web_end(response) {
     $('#dqdcew336g').show(); 
     $('#dwdefw4f4').text('Завершено');
 
@@ -458,7 +458,7 @@ function d32e23fw3(response) {
     }
 }
 
-function di3rwufnv(type, id) {
+function change_menu_antivirus(type, id) {
     $("#dwdc21e12d").css("text-decoration", "none");
     $("#dwdc21e12d").css("text-decoration-thickness", "none");
     $("#dwdc21e12d").css("text-underline-offset", "none");
@@ -520,7 +520,7 @@ const fileUpload = () => {
 
     $uploadButton.on('click', () => {
         if (fileList.length === 0) {
-            dwqwfef('Виберіть файл перед відправкою');
+            message_window('Виберіть файл перед відправкою');
             return;
         }
 
@@ -551,7 +551,7 @@ const fileUpload = () => {
 
     $uploadButton1.on('click', () => {
         if (fileList.length === 0) {
-            dwqwfef('Виберіть файл перед відправкою');
+            message_window('Виберіть файл перед відправкою');
             return;
         }
 
@@ -581,12 +581,12 @@ const fileUpload = () => {
     });
 };
 
-function rtrtrtrtrttf() {
+function encryption_file_start() {
     const fileInput = document.getElementById('file_dwqdw');
     const files = fileInput.files;
 
     if (files.length === 0) {
-        dwqwfef('Файл невибрано');
+        message_window('Файл невибрано');
         return;
     }
 
@@ -605,8 +605,8 @@ function rtrtrtrtrttf() {
         contentType: false,
         data: formData,
         success: function(response) {
-            dwqwfef('Успішно');
-            ddewqfbbb(response)
+            message_window('Успішно');
+            encryption_file_end(response)
 
             const link = document.createElement('a');
             link.href = '/static/data/main.enc'; 
@@ -622,7 +622,7 @@ function rtrtrtrtrttf() {
     });
 }
 
-function ddewqfbbb(response) {
+function encryption_file_end(response) {
     $('#errewfffee').html("");
 
     $('#errewfffee').html(`
@@ -669,12 +669,12 @@ const fileUpload_1 = () => {
     });
 };
 
-function dfvvftttt() {
+function decipher_file() {
     const fileInput = document.getElementById('file_dwqdw1');
     const files = fileInput.files;
 
     if (files.length === 0) {
-        dwqwfef('Файл невибрано');
+        message_window('Файл невибрано');
         return;
     }
 
@@ -694,10 +694,10 @@ function dfvvftttt() {
         data: formData,
         success: function(response) {
             if (response === 0) {
-                dwqwfef('Помилка');
+                message_window('Помилка');
             } else {
-                dwqwfef('Успішно');
-                dwcdsabsxs()
+                message_window('Успішно');
+                $('#bbbnsqee343').html("Успішно");
     
                 const link = document.createElement('a');
                 link.href = '/static/data/main'; 
@@ -712,10 +712,6 @@ function dfvvftttt() {
             console.log("Response text:", xhr.responseText);
         }
     });
-}
-
-function dwcdsabsxs() {
-    $('#bbbnsqee343').html("Успішно");
 }
 
 const fileUpload_2 = () => {
@@ -755,7 +751,7 @@ const fileUpload_2 = () => {
     });
 };
 
-function dwdjsdswq(val) {
+function log_change(val) {
     $.ajax({
         url: "/log_change",
         type: "POST",
@@ -770,7 +766,7 @@ function dwdjsdswq(val) {
     });
 }
 
-function ftrgyujukyu() {
+function port_change() {
     let value = $('#ssdfredfgettt').val();
 
     $.ajax({
@@ -787,7 +783,7 @@ function ftrgyujukyu() {
     });
 }
 
-function cfdgbhytjk999() {
+function server_change() {
     let value = $('#bsdcfvbttrfgo').val();
 
     $.ajax({
