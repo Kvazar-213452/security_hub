@@ -214,10 +214,11 @@
   transition: 0.2s stroke-width; }
 
 .tooltip {
-  padding: 20px;
-  background-color: white;
-  border-radius: 2px;
-  box-shadow: 0 0 2px black; }
+  background-color: #252831;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 12px; }
 
 .wifi_main_content {
   position: absolute;
@@ -248,6 +249,14 @@
   float: left;
   width: calc(100% - 490px); }
 
+.div_wifi_info {
+  position: relative;
+  width: calc(100% + 40px);
+  background-color: #20252c;
+  height: calc(100% - 420px);
+  overflow: auto;
+  border-radius: 5px; }
+
 .img_wifi {
   position: relative;
   width: 100%;
@@ -255,14 +264,6 @@
   height: 340px;
   border-radius: 5px;
   padding: 20px; }
-
-.div_wifi_info {
-  position: relative;
-  width: 100%;
-  background-color: #20252c;
-  height: calc(100% - 440px);
-  overflow: auto;
-  border-radius: 5px; }
 
 .padoge {
   padding: 20px; }
@@ -285,7 +286,7 @@
   background-color: #20252c;
   width: 440px;
   left: 10px;
-  height: 100%;
+  height: calc(100% - 20px);
   overflow-y: auto;
   border-radius: 5px; }
 

@@ -56,21 +56,6 @@ function get_data_wifi_now() {
     });
 }
 
-function get_data_wifi_now_level() {
-    $.ajax({
-        url: "/get_wifi_now",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(null),
-        success: function(response) {
-            level_wifi_render(response['signal_strength'])
-        },
-        error: function(xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
-        }
-    });
-}
-
 function get_data_wifi_all() {
     $.ajax({
         url: "/get_wifi",
@@ -88,40 +73,69 @@ function get_data_wifi_all() {
     });
 }
 
+function get_data_for_schedule() {
+    $.ajax({
+        url: "/get_wifi_now",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function(response) {
+            let wifi_now = response['ssid_name'];
+
+            const now = new Date();
+
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            let data = `${hours}:${minutes}:${seconds}`; 
+
+            get_wifi_info_level(data, wifi_now)
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function get_wifi_info_level(data, wifi_now) {
+    $.ajax({
+        url: "/get_wifi",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function(response) {
+            let i = 0
+
+            while (i < response.length) {
+                wifi_now = wifi_now.replace(/^"|"$/g, '');
+                if (wifi_now === response[i]['ssid']) {
+                    schedule_render(data, response[i]['signal']);
+                }
+                i++;
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+get_data_for_schedule()
+
 function data_wifi_render_now(response) {
     $('#name_wifi').text(response['ssid_name'] || 'N/A');
     $('#authentication_wifi').text(response['authentication'] || 'N/A');
-    $('#description_wifi').text(response['description'] || 'N/A');
-    $('#guid_wifi').text(response['guid'] || 'N/A');
-    $('#physical_address_wifi').text(response['physical_address'] || 'N/A');
-    $('#radio_type_wifi').text(response['radio_type'] || 'N/A');
-    $('#signal_strength_wifi').text(response['signal_strength'] || 'N/A');
-    $('#state_wifi').text(response['state'] || 'N/A');
     $('#cost_wifi').text(response['cost'] || 'N/A');
     $('#ciphers_wifi').text(response['ciphers'] ? response['ciphers'].join(', ') : 'N/A');
     $('#key_content_wifi').text(response['key_content'] || 'N/A');
     $('#profile_name_wifi').text(response['profile_name'] || 'N/A');
-    $('#cost_source_wifi').text(response['cost_source'] || 'N/A');
     $('#approaching_limit_wifi').text(response['approaching_limit'] || 'N/A');
     $('#congested_wifi').text(response['congested'] || 'N/A');
     $('#over_limit_wifi').text(response['over_limit'] || 'N/A');
     $('#roaming_wifi').text(response['roaming'] || 'N/A');
     $('#vendor_extension_wifi').text(response['vendor_extension'] || 'N/A');
     $('#version_wifi').text(response['version'] || 'N/A');
-}
-
-function max_wifi() {
-    $("#signal_1").removeClass("curveOne2");
-    $("#signal_1").addClass("curveOne1");
-
-    $("#signal_2").removeClass("curveTwo2");
-    $("#signal_2").addClass("curveTwo1");
-
-    $("#signal_3").removeClass("curveThree2");
-    $("#signal_3").addClass("curveThree1");
-
-    $("#signal_4").removeClass("curveFour2");
-    $("#signal_4").addClass("curveFour1");
 }
 
 function checkUnsafeProtocols() {
@@ -137,47 +151,6 @@ function checkUnsafeProtocols() {
     }
 
     $("#wifi_protection").html(`<p class="wifi_3_div">Захищено</p>`);
-}
-
-function level_wifi_render(level) {
-    if (level > 90) {
-        max_wifi();
-
-    } else if (level > 75) {
-        max_wifi();
-        $("#signal_1").removeClass("curveOne1");
-        $("#signal_1").addClass("curveOne2");
-    } else if (level > 50) {
-        max_wifi();
-        $("#signal_1").removeClass("curveOne1");
-        $("#signal_1").addClass("curveOne2");
-        
-        $("#signal_2").removeClass("curveTwo1");
-        $("#signal_2").addClass("curveTwo2");
-    } else if (level > 25) {
-        max_wifi();
-        $("#signal_1").removeClass("curveOne1");
-        $("#signal_1").addClass("curveOne2");
-        
-        $("#signal_2").removeClass("curveTwo1");
-        $("#signal_2").addClass("curveTwo2");
-        
-        $("#signal_3").removeClass("curveThree1");
-        $("#signal_3").addClass("curveThree2");
-    } else if (level === 0) {
-        max_wifi();
-        $("#signal_1").removeClass("curveOne1");
-        $("#signal_1").addClass("curveOne2");
-        
-        $("#signal_2").removeClass("curveTwo1");
-        $("#signal_2").addClass("curveTwo2");
-        
-        $("#signal_3").removeClass("curveThree1");
-        $("#signal_3").addClass("curveThree2");
-
-        $("#signal_").removeClass("curveFour1");
-        $("#signal_").addClass("curveFour2");
-    }
 }
 
 function render_all_network_wifi(response, ssid) {

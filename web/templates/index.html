@@ -4,6 +4,8 @@
        <title>SPX</title>
        <link rel="stylesheet" href="/static/css/main.css"/>
        <link rel="stylesheet" href="/static/css/global.css"/>
+       <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
    </head>
    <body>
         {{template "menu.html" .}}
@@ -11,9 +13,7 @@
         <div class="main">
             <div class="main_div">
                 <div class="wifi_sqd">
-                    <div class="img_wifi">
-                        <div id="chart"></div>
-                    </div>
+                    <div class="img_wifi"><div id="chart"></div></div>
                     <br>
                     <div class="div_wifi_info">
                         <div class="padoge">
@@ -23,17 +23,10 @@
                                 </div>
                                 <p class="info_wifi_">SSID: <span id="name_wifi" class="info_graan"></span></p>
                                 <p class="info_wifi_">Authentication: <span id="authentication_wifi" class="info_graan"></span></p>
-                                <p class="info_wifi_">Description: <span id="description_wifi" class="info_graan"></span></p>
-                                <p class="info_wifi_">GUID: <span id="guid_wifi" class="info_graan"></span></p>
-                                <p class="info_wifi_">Physical Address: <span id="physical_address_wifi" class="info_graan"></span></p>
-                                <p class="info_wifi_">Radio Type: <span id="radio_type_wifi" class="info_graan"></span></p>
-                                <p class="info_wifi_">Signal Strength: <span id="signal_strength_wifi" class="info_graan"></span></p>
-                                <p class="info_wifi_">State: <span id="state_wifi" class="info_graan"></span></p>
                                 <p class="info_wifi_">Cost: <span id="cost_wifi" class="info_graan"></span></p>
                                 <p class="info_wifi_">Ciphers: <span id="ciphers_wifi" class="info_graan"></span></p>
                                 <p class="info_wifi_">Key Content: <span id="key_content_wifi" class="info_graan"></span></p>
                                 <p class="info_wifi_">Profile Name: <span id="profile_name_wifi" class="info_graan"></span></p>
-                                <p class="info_wifi_">Cost Source: <span id="cost_source_wifi" class="info_graan"></span></p>
                                 <p class="info_wifi_">Approaching Limit: <span id="approaching_limit_wifi" class="info_graan"></span></p>
                                 <p class="info_wifi_">Congested: <span id="congested_wifi" class="info_graan"></span></p>
                                 <p class="info_wifi_">Over Limit: <span id="over_limit_wifi" class="info_graan"></span></p>
@@ -69,7 +62,7 @@
     <script>
         button_hover("btn1");
         get_data_wifi_now();
-        setInterval(get_data_wifi_all, 1000);
-        setInterval(get_data_wifi_now_level, 1000);
+        setInterval(get_data_wifi_all, 2500);
+        setInterval(get_data_for_schedule, 2500);
     </script>
 </html> 
