@@ -47,6 +47,7 @@ function get_data_wifi_now() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function(response) {
+            console.log(response)
             data_wifi_render_now(response)
             checkUnsafeProtocols();
         },

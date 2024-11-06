@@ -2,10 +2,10 @@ package page_func
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os/exec"
 	"strings"
 	"syscall"
+	"unsafe"
 )
 
 type WifiInfo struct {
@@ -37,11 +37,27 @@ type WifiNetwork struct {
 func Get_Wifi_info() (*WifiInfo, error) {
 	ssid := Get_connected_SSID()
 
-	cmd := exec.Command("netsh", "wlan", "show", "profile", fmt.Sprintf("name=%s", ssid), "key=clear")
+	// Вивести SSID для перевірки
+	fmt.Printf("Connected SSID: %s\n", ssid)
+
+	// Перевірка на наявність непотрібних символів у SSID
+	ssid = strings.TrimSpace(ssid)
+
+	// Формуємо команду
+	command := []string{"netsh", "wlan", "show", "profile", "name=" + ssid, "key=clear"}
+
+	// Вивести команду, яка буде виконана
+	fmt.Printf("Executing command: %s\n", strings.Join(command, " "))
+
+	// Виконуємо команду і отримуємо її вивід
+	cmd := exec.Command(command[0], command[1:]...)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		return nil, fmt.Errorf("не вдалося виконати команду: %v", err)
+		fmt.Printf("Error executing command: %v\n", err)
 	}
+
+	// Вивести результат команди
+	fmt.Printf("Command Output: %s\n", string(output))
 
 	lines := strings.Split(string(output), "\n")
 	wifiInfo := &WifiInfo{}
@@ -207,20 +223,18 @@ func Get_available_Wifi_networks() ([]WifiNetwork, error) {
 }
 
 func Get_connected_SSID() string {
-	dll := syscall.MustLoadDLL("library/get_ssid.dll")
-	proc := dll.MustFindProc("GetConnectedSSIDAndWriteToFile")
+	wifiDLL := syscall.NewLazyDLL("library/get_ssid.dll")
 
-	proc.Call()
+	listWifiNetworks := wifiDLL.NewProc("ListWifiNetworks")
 
-	data, err := ioutil.ReadFile("data.txt")
-	if err != nil {
-		fmt.Println("Не вдалося прочитати файл:", err)
+	ret, _, _ := listWifiNetworks.Call()
+
+	if ret != 0 {
+		result := string((*[1 << 10]byte)(unsafe.Pointer(ret))[:])
+		// Очищення зайвих пробілів та символів нового рядка на кінці
+		result = strings.TrimSpace(result)
+		return result
+	} else {
 		return ""
 	}
-
-	ssid := string(data)
-	ssid = strings.TrimPrefix(ssid, "Connected SSID: ")
-	ssid = strings.TrimSpace(ssid)
-
-	return ssid
 }
