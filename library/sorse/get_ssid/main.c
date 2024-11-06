@@ -7,49 +7,57 @@
 #pragma comment(lib, "wlanapi.lib")
 #pragma comment(lib, "ole32.lib")
 
-__declspec(dllexport) const char* ListWifiNetworks() {
-    static char networkList[1024];  // використовуємо static, щоб дані не були втрачені після виконання
-    memset(networkList, 0, sizeof(networkList)); // очищаємо масив
-
+void ListWifiNetworks() {
     DWORD dwResult = 0;
     HANDLE hClient = NULL;
     PWLAN_INTERFACE_INFO_LIST pIfList = NULL;
     PWLAN_INTERFACE_INFO pIfInfo = NULL;
     PWLAN_AVAILABLE_NETWORK_LIST pBssList = NULL;
 
+    FILE *file = fopen("data/file.txt", "w");
+    if (file == NULL) {
+        fprintf(stderr, "Не вдалося відкрити файл для запису\n");
+        return;
+    }
+
     dwResult = WlanOpenHandle(2, NULL, &dwResult, &hClient);
     if (dwResult != ERROR_SUCCESS) {
-        return "WlanOpenHandle failed";
+        fprintf(stderr, "WlanOpenHandle failed with error: %u\n", dwResult);
+        fclose(file);
+        return;
     }
 
     dwResult = WlanEnumInterfaces(hClient, NULL, &pIfList);
     if (dwResult != ERROR_SUCCESS) {
+        fprintf(stderr, "WlanEnumInterfaces failed with error: %u\n", dwResult);
         WlanCloseHandle(hClient, NULL);
-        return "WlanEnumInterfaces failed";
+        fclose(file);
+        return;
     }
 
-    int networkIndex = 0;
     for (int i = 0; i < (int)pIfList->dwNumberOfItems; i++) {
         pIfInfo = &pIfList->InterfaceInfo[i];
 
         dwResult = WlanScan(hClient, &pIfInfo->InterfaceGuid, NULL, NULL, NULL);
         if (dwResult != ERROR_SUCCESS) {
+            fprintf(stderr, "WlanScan failed with error: %u\n", dwResult);
             continue;
         }
 
         dwResult = WlanGetAvailableNetworkList(hClient, &pIfInfo->InterfaceGuid, 0, NULL, &pBssList);
         if (dwResult != ERROR_SUCCESS) {
+            fprintf(stderr, "WlanGetAvailableNetworkList failed with error: %u\n", dwResult);
             continue;
         }
 
         for (int j = 0; j < (int)pBssList->dwNumberOfItems; j++) {
             PWLAN_AVAILABLE_NETWORK pNetwork = &pBssList->Network[j];
+
             for (int k = 0; k < pNetwork->dot11Ssid.uSSIDLength; k++) {
-                if (networkIndex < sizeof(networkList) - 1) {
-                    networkList[networkIndex++] = pNetwork->dot11Ssid.ucSSID[k];
-                }
+                fprintf(file, "%c", pNetwork->dot11Ssid.ucSSID[k]);
             }
-            networkList[networkIndex++] = '\n';  // додаємо новий рядок між мережами
+
+            j = 100;
         }
 
         if (pBssList != NULL) {
@@ -64,6 +72,10 @@ __declspec(dllexport) const char* ListWifiNetworks() {
     }
 
     WlanCloseHandle(hClient, NULL);
+    fclose(file);
+}
 
-    return networkList;
+int main() {
+    ListWifiNetworks();
+    return 0;
 }

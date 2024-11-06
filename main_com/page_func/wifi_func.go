@@ -1,11 +1,12 @@
 package page_func
 
 import (
+	"bufio"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"os/exec"
 	"strings"
-	"syscall"
-	"unsafe"
 )
 
 type WifiInfo struct {
@@ -37,27 +38,11 @@ type WifiNetwork struct {
 func Get_Wifi_info() (*WifiInfo, error) {
 	ssid := Get_connected_SSID()
 
-	// Вивести SSID для перевірки
-	fmt.Printf("Connected SSID: %s\n", ssid)
-
-	// Перевірка на наявність непотрібних символів у SSID
-	ssid = strings.TrimSpace(ssid)
-
-	// Формуємо команду
-	command := []string{"netsh", "wlan", "show", "profile", "name=" + ssid, "key=clear"}
-
-	// Вивести команду, яка буде виконана
-	fmt.Printf("Executing command: %s\n", strings.Join(command, " "))
-
-	// Виконуємо команду і отримуємо її вивід
-	cmd := exec.Command(command[0], command[1:]...)
+	cmd := exec.Command("netsh", "wlan", "show", "profile", "name="+ssid, "key=clear")
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		fmt.Printf("Error executing command: %v\n", err)
+		return nil, fmt.Errorf("не вдалося виконати команду: %v", err)
 	}
-
-	// Вивести результат команди
-	fmt.Printf("Command Output: %s\n", string(output))
 
 	lines := strings.Split(string(output), "\n")
 	wifiInfo := &WifiInfo{}
@@ -164,77 +149,57 @@ func Get_Wifi_info() (*WifiInfo, error) {
 }
 
 func Get_available_Wifi_networks() ([]WifiNetwork, error) {
-	cmd := exec.Command("netsh", "wlan", "show", "networks", "mode=bssid")
-	output, err := cmd.CombinedOutput()
+	exePath := "./available_wifi.exe"
+	workingDir := "library"
+	dataFilePath := "./library/data/file_1.txt"
+
+	cmd := exec.Command(exePath)
+	cmd.Dir = workingDir
+
+	if err := cmd.Run(); err != nil {
+		return nil, fmt.Errorf("не вдалося запустити exe файл: %v", err)
+	}
+
+	data, err := ioutil.ReadFile(dataFilePath)
 	if err != nil {
-		return nil, fmt.Errorf("не вдалося виконати команду: %v", err)
+		return nil, fmt.Errorf("не вдалося прочитати файл: %v", err)
 	}
 
-	lines := strings.Split(string(output), "\n")
 	var networks []WifiNetwork
-	var currentNetwork WifiNetwork
-	var bssidCount int
-
-	for _, line := range lines {
-		line = strings.TrimSpace(line)
-
-		if strings.HasPrefix(line, "SSID") {
-			if currentNetwork.SSID != "" {
-				networks = append(networks, currentNetwork)
-				currentNetwork = WifiNetwork{}
-				bssidCount = 0
-			}
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				currentNetwork.SSID = strings.TrimSpace(parts[1])
-			} else {
-				currentNetwork.SSID = ""
-			}
-		}
-
-		if strings.HasPrefix(line, "BSSID") {
-			bssidCount++
-		}
-
-		if strings.HasPrefix(line, "Signal") {
-			if bssidCount == 1 {
-				parts := strings.Split(line, ":")
-				if len(parts) > 1 {
-					currentNetwork.Signal = strings.TrimSpace(parts[1])
-				}
-			} else if bssidCount == 2 {
-				parts := strings.Split(line, ":")
-				if len(parts) > 1 {
-					currentNetwork.Signal = strings.TrimSpace(parts[1])
-				}
-			}
+	scanner := bufio.NewScanner(strings.NewReader(string(data)))
+	for scanner.Scan() {
+		line := scanner.Text()
+		parts := strings.Split(line, "|")
+		if len(parts) == 2 {
+			ssid := strings.TrimSpace(parts[0])
+			signal := strings.TrimSpace(parts[1])
+			networks = append(networks, WifiNetwork{SSID: ssid, Signal: signal})
 		}
 	}
 
-	if currentNetwork.SSID != "" {
-		networks = append(networks, currentNetwork)
-	}
-
-	if len(networks) == 0 {
-		return nil, fmt.Errorf("доступні мережі не знайдені")
+	if err := scanner.Err(); err != nil {
+		return nil, fmt.Errorf("помилка під час обробки даних: %v", err)
 	}
 
 	return networks, nil
 }
 
 func Get_connected_SSID() string {
-	wifiDLL := syscall.NewLazyDLL("library/get_ssid.dll")
+	exePath := "./get_ssid.exe"
+	workingDir := "library"
+	dataFilePath := "./library/data/file.txt"
 
-	listWifiNetworks := wifiDLL.NewProc("ListWifiNetworks")
+	cmd := exec.Command(exePath)
+	cmd.Dir = workingDir
 
-	ret, _, _ := listWifiNetworks.Call()
-
-	if ret != 0 {
-		result := string((*[1 << 10]byte)(unsafe.Pointer(ret))[:])
-		// Очищення зайвих пробілів та символів нового рядка на кінці
-		result = strings.TrimSpace(result)
-		return result
-	} else {
-		return ""
+	if err := cmd.Run(); err != nil {
+		log.Fatalf("Не вдалося запустити exe файл: %v\n", err)
 	}
+
+	data, err := ioutil.ReadFile(dataFilePath)
+	if err != nil {
+		log.Fatalf("Не вдалося прочитати файл: %v\n", err)
+	}
+
+	return string(data)
 }
