@@ -1,0 +1,30 @@
+Архітектура: x64 (AMD or Intel)
+Кількість процесорів: 8
+Операційна система: Windows 10
+Версія: 10.0
+Вільна пам'ять: 7488 MB
+Загальна пам'ять: 16185 MB
+Вільна віртуальна пам'ять: 134213579 MB
+Час роботи системи: 0 днів, 22 годин, 47 хвилин, 29 секунд
+Вільне місце на диску C:\: 93966 MB
+Загальний обсяг диску C:\: 283282 MB
+Мережевий адаптер: Intel(R) Ethernet Connection I217-LM
+IP-адреса: 0.0.0.0
+Мережевий адаптер: Famatech Radmin VPN Ethernet Adapter
+IP-адреса: 26.11.126.55
+Мережевий адаптер: Intel(R) Centrino(R) Advanced-N 6235
+IP-адреса: 192.168.0.105
+Мережевий адаптер: Microsoft Wi-Fi Direct Virtual Adapter
+IP-адреса: 0.0.0.0
+Мережевий адаптер: Microsoft Wi-Fi Direct Virtual Adapter #2
+IP-адреса: 0.0.0.0
+Завантажені бібліотеки:
+C:\Users\god19\Desktop\security_hub\library\sorse\system_info.exe
+C:\WINDOWS\SYSTEM32\ntdll.dll
+C:\WINDOWS\System32\KERNEL32.DLL
+C:\WINDOWS\System32\KERNELBASE.dll
+C:\WINDOWS\System32\ucrtbase.dll
+C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL
+C:\WINDOWS\System32\NSI.dll
+C:\WINDOWS\SYSTEM32\dhcpcsvc.DLL
+C:\WINDOWS\System32\RPCRT4.dll

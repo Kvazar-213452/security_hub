@@ -29,15 +29,15 @@
                 <div class="settings_div">
                     <p class="settings_main_tetx">Логування</p>
                     <br>
-                    <button onclick="log_change('1')" id="vsgretdbgc1" class="button_settings">Да</button>
-                    <button onclick="log_change('0')" id="vsgretdbgc2" class="button_settings">Ні</button>
+                    <button onclick="button_settings_change('1', '/log_change')" id="vsgretdbgc1" class="button_settings">Да</button>
+                    <button onclick="button_settings_change('0', '/log_change')" id="vsgretdbgc2" class="button_settings">Ні</button>
                     <br><br>
                 </div>
                 <div class="settings_div">
                     <p class="settings_main_tetx">Порт</p>
                     <br>
                     <input id="ssdfredfgettt" class="saert45trgf" type="text">
-                    <button onclick="port_change()" class="zxbnmewd">Встановити</button>
+                    <button onclick="input_settings_change('ssdfredfgettt', 'port_change')" class="zxbnmewd">Встановити</button>
                     <br><br>
                     <p>Якщо встановети значення 0 то порт буде вибиратись автоматично</p>
                     <br>
@@ -46,7 +46,7 @@
                     <p class="settings_main_tetx">Дата сервер</p>
                     <br>
                     <input id="bsdcfvbttrfgo" class="saert45trgf" type="text">
-                    <button onclick="server_change()" class="zxbnmewd">Встановити</button>
+                    <button onclick="input_settings_change('bsdcfvbttrfgo', '/server_change')" class="zxbnmewd">Встановити</button>
                     <br><br>
                     <p>З дата сервера беруться дані сигнатур, хешів, інформація про вірусні сайти та інше</p>
                     <br>
@@ -54,8 +54,8 @@
                 <div class="settings_div">
                     <p class="settings_main_tetx">Вибір Оболонки</p>
                     <br>
-                    <button onclick="shell_NM_change('0')" id="shell_NM" class="button_settings">NM1</button>
-                    <button onclick="shell_NM_change('1')" id="shell_NM1" class="button_settings">NM2</button>
+                    <button onclick="button_settings_change('0', '/shell_change')" id="shell_NM" class="button_settings">NM1</button>
+                    <button onclick="button_settings_change('1', '/shell_change')" id="shell_NM1" class="button_settings">NM2</button>
                     <br><br>
                 </div>
                 <br><br><br><br>

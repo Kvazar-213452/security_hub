@@ -1,118 +1,130 @@
 #include <windows.h>
 #include <stdio.h>
-#include <time.h>
-#include <sysinfoapi.h>
 #include <psapi.h>
 #include <iphlpapi.h>
-#include <tchar.h>
+#include <time.h>
+
+#pragma comment(lib, "iphlpapi.lib")
+#pragma comment(lib, "psapi.lib")
 
 void getSystemInfo() {
+    FILE *file = fopen("data/file_2.txt", "w");
+    if (file == NULL) {
+        printf("Не вдалося відкрити файл для запису.\n");
+        return;
+    }
+
     SYSTEM_INFO si;
     GetSystemInfo(&si);
 
     switch (si.wProcessorArchitecture) {
         case PROCESSOR_ARCHITECTURE_AMD64:
-            printf("Архітектура: x64 (AMD or Intel)\n");
+            fprintf(file, "Архітектура: x64 (AMD or Intel)\n");
             break;
         case PROCESSOR_ARCHITECTURE_ARM:
-            printf("Архітектура: ARM\n");
+            fprintf(file, "Архітектура: ARM\n");
             break;
         case PROCESSOR_ARCHITECTURE_IA64:
-            printf("Архітектура: IA64 (Intel Itanium)\n");
+            fprintf(file, "Архітектура: IA64 (Intel Itanium)\n");
             break;
         default:
-            printf("Архітектура: невідома\n");
+            fprintf(file, "Архітектура: невідома\n");
             break;
     }
 
-    printf("Кількість процесорів: %u\n", si.dwNumberOfProcessors);
+    fprintf(file, "Кількість процесорів: %u\n", si.dwNumberOfProcessors);
 
     OSVERSIONINFOEX osvi;
     osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
     if (GetVersionEx((OSVERSIONINFO*)&osvi)) {
-        printf("Операційна система: ");
+        fprintf(file, "Операційна система: ");
         if (osvi.dwMajorVersion == 10) {
-            printf("Windows 10\n");
+            fprintf(file, "Windows 10\n");
         } else if (osvi.dwMajorVersion == 6) {
             if (osvi.dwMinorVersion == 3) {
-                printf("Windows 8.1\n");
+                fprintf(file, "Windows 8.1\n");
             } else if (osvi.dwMinorVersion == 2) {
-                printf("Windows 8\n");
+                fprintf(file, "Windows 8\n");
             } else if (osvi.dwMinorVersion == 1) {
-                printf("Windows 7\n");
+                fprintf(file, "Windows 7\n");
             } else if (osvi.dwMinorVersion == 0) {
-                printf("Windows Vista\n");
+                fprintf(file, "Windows Vista\n");
             }
         } else if (osvi.dwMajorVersion == 5) {
             if (osvi.dwMinorVersion == 1) {
-                printf("Windows XP\n");
+                fprintf(file, "Windows XP\n");
             } else if (osvi.dwMinorVersion == 0) {
-                printf("Windows 2000\n");
+                fprintf(file, "Windows 2000\n");
             }
         }
-        printf("Версія: %d.%d\n", osvi.dwMajorVersion, osvi.dwMinorVersion);
+        fprintf(file, "Версія: %d.%d\n", osvi.dwMajorVersion, osvi.dwMinorVersion);
     } else {
-        printf("Не вдалося отримати версію операційної системи.\n");
+        fprintf(file, "Не вдалося отримати версію операційної системи.\n");
     }
 
     MEMORYSTATUSEX statex;
     statex.dwLength = sizeof(statex);
     if (GlobalMemoryStatusEx(&statex)) {
-        printf("Вільна пам'ять: %llu MB\n", statex.ullAvailPhys / (1024 * 1024));
-        printf("Загальна пам'ять: %llu MB\n", statex.ullTotalPhys / (1024 * 1024));
-        printf("Вільна віртуальна пам'ять: %llu MB\n", statex.ullAvailVirtual / (1024 * 1024));
+        fprintf(file, "Вільна пам'ять: %llu MB\n", statex.ullAvailPhys / (1024 * 1024));
+        fprintf(file, "Загальна пам'ять: %llu MB\n", statex.ullTotalPhys / (1024 * 1024));
+        fprintf(file, "Вільна віртуальна пам'ять: %llu MB\n", statex.ullAvailVirtual / (1024 * 1024));
     } else {
-        printf("Не вдалося отримати інформацію про пам'ять.\n");
+        fprintf(file, "Не вдалося отримати інформацію про пам'ять.\n");
     }
 
-    ULONGLONG uptime = GetTickCount64();
-    ULONGLONG seconds = uptime / 1000;
-    ULONGLONG minutes = seconds / 60;
-    ULONGLONG hours = minutes / 60;
-    ULONGLONG days = hours / 24;
+    DWORD uptime = GetTickCount64() / 1000;
+    DWORD days = uptime / (24 * 3600);
+    uptime %= (24 * 3600);
+    DWORD hours = uptime / 3600;
+    uptime %= 3600;
+    DWORD minutes = uptime / 60;
+    uptime %= 60;
+    DWORD seconds = uptime;
+    fprintf(file, "Час роботи системи: %lu днів, %lu годин, %lu хвилин, %lu секунд\n", days, hours, minutes, seconds);
 
-    printf("Час роботи системи: %llu днів, %llu годин, %llu хвилин, %llu секунд\n", days, hours % 24, minutes % 60, seconds % 60);
-
-    char drive[] = "C:\\";
-    ULARGE_INTEGER freeBytesAvailable, totalNumberOfBytes, totalNumberOfFreeBytes;
-    if (GetDiskFreeSpaceEx(drive, &freeBytesAvailable, &totalNumberOfBytes, &totalNumberOfFreeBytes)) {
-        printf("Вільне місце на диску %s: %llu MB\n", drive, freeBytesAvailable.QuadPart / (1024 * 1024));
-        printf("Загальний обсяг диску %s: %llu MB\n", drive, totalNumberOfBytes.QuadPart / (1024 * 1024));
+    ULARGE_INTEGER freeBytes;
+    ULARGE_INTEGER totalBytes;
+    if (GetDiskFreeSpaceEx("C:\\", &freeBytes, &totalBytes, NULL)) {
+        fprintf(file, "Вільне місце на диску C:\\: %llu MB\n", freeBytes.QuadPart / (1024 * 1024));
+        fprintf(file, "Загальний обсяг диску C:\\: %llu MB\n", totalBytes.QuadPart / (1024 * 1024));
     } else {
-        printf("Не вдалося отримати інформацію про диск.\n");
+        fprintf(file, "Не вдалося отримати інформацію про диск C:\\.\n");
     }
 
-    ULONG ulSize = 0;
-    PIP_ADAPTER_INFO pAdapterInfo = NULL;
-    if (GetAdaptersInfo(pAdapterInfo, &ulSize) == ERROR_BUFFER_OVERFLOW) {
-        pAdapterInfo = (PIP_ADAPTER_INFO) malloc(ulSize);
-        if (GetAdaptersInfo(pAdapterInfo, &ulSize) == ERROR_SUCCESS) {
-            PIP_ADAPTER_INFO pAdapter = pAdapterInfo;
-            while (pAdapter) {
-                printf("Мережевий адаптер: %s\n", pAdapter->Description);
-                printf("IP-адреса: %s\n", pAdapter->IpAddressList.IpAddress.String);
-                pAdapter = pAdapter->Next;
-            }
-        }
-        free(pAdapterInfo);
-    } else {
-        printf("Не вдалося отримати інформацію про мережеві адаптери.\n");
-    }
-
-    DWORD cbNeeded;
-    DWORD dwProcessId = GetCurrentProcessId();
-    HMODULE hMods[1024];
-    if (EnumProcessModules(GetCurrentProcess(), hMods, sizeof(hMods), &cbNeeded)) {
-        printf("Завантажені бібліотеки:\n");
-        for (unsigned int i = 0; i < (cbNeeded / sizeof(HMODULE)); i++) {
-            TCHAR szModName[MAX_PATH];
-            if (GetModuleFileNameEx(GetCurrentProcess(), hMods[i], szModName, sizeof(szModName) / sizeof(TCHAR))) {
-                printf("\t%s\n", szModName);
-            }
+    IP_ADAPTER_INFO adapterInfo[16];
+    DWORD dwBufLen = sizeof(adapterInfo);
+    DWORD dwRetVal = GetAdaptersInfo(adapterInfo, &dwBufLen);
+    if (dwRetVal == ERROR_SUCCESS) {
+        PIP_ADAPTER_INFO pAdapterInfo = adapterInfo;
+        while (pAdapterInfo) {
+            fprintf(file, "Мережевий адаптер: %s\n", pAdapterInfo->Description);
+            fprintf(file, "IP-адреса: %s\n", pAdapterInfo->IpAddressList.IpAddress.String);
+            pAdapterInfo = pAdapterInfo->Next;
         }
     } else {
-        printf("Не вдалося отримати інформацію про бібліотеки.\n");
+        fprintf(file, "Не вдалося отримати інформацію про мережеві адаптери.\n");
     }
+
+    DWORD processID = GetCurrentProcessId();
+    HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, processID);
+    if (hProcess) {
+        HMODULE hMods[1024];
+        DWORD cbNeeded;
+        if (EnumProcessModules(hProcess, hMods, sizeof(hMods), &cbNeeded)) {
+            fprintf(file, "Завантажені бібліотеки:\n");
+            for (unsigned int i = 0; i < cbNeeded / sizeof(HMODULE); i++) {
+                char szModName[MAX_PATH];
+                if (GetModuleFileNameEx(hProcess, hMods[i], szModName, sizeof(szModName) / sizeof(char))) {
+                    fprintf(file, "%s\n", szModName);
+                }
+            }
+        } else {
+            fprintf(file, "Не вдалося отримати список завантажених бібліотек.\n");
+        }
+        CloseHandle(hProcess);
+    }
+
+    fclose(file);
 }
 
 int main() {

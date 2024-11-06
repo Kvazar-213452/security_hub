@@ -742,26 +742,11 @@ const fileUpload_2 = () => {
     });
 };
 
-function log_change(val) {
-    $.ajax({
-        url: "/log_change",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({value: val}),
-        success: function(response) {
-            getConfig();
-        },
-        error: function(xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
-        }
-    });
-}
-
-function port_change() {
-    let value = $('#ssdfredfgettt').val();
+function input_settings_change(input, url) {
+    let value = $('#' + input).val();
 
     $.ajax({
-        url: "/port_change",
+        url: url,
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({value: value}),
@@ -774,26 +759,9 @@ function port_change() {
     });
 }
 
-function server_change() {
-    let value = $('#bsdcfvbttrfgo').val();
-
+function button_settings_change(val, url) {
     $.ajax({
-        url: "/server_change",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({value: value}),
-        success: function(response) {
-            getConfig();
-        },
-        error: function(xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
-        }
-    });
-}
-
-function shell_NM_change(val) {
-    $.ajax({
-        url: "/shell_change",
+        url: url,
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({value: val}),
