@@ -1,12 +1,12 @@
 #include <windows.h>
 #include <shlobj.h>
 
-extern "C" __declspec(dllexport) int runDiskCleanup() {
+int runDiskCleanup() {
     ShellExecute(NULL, "open", "cleanmgr.exe", "/sagerun:1", NULL, SW_SHOWNORMAL);
     return 0;
 }
 
-extern "C" __declspec(dllexport) int emptyRecycleBin() {
+int emptyRecycleBin() {
     HRESULT result = SHEmptyRecycleBin(NULL, NULL, SHERB_NOCONFIRMATION | SHERB_NOPROGRESSUI | SHERB_NOSOUND);
     
     if (SUCCEEDED(result)) {
@@ -16,7 +16,7 @@ extern "C" __declspec(dllexport) int emptyRecycleBin() {
     }
 }
 
-extern "C" __declspec(dllexport) void cleanup() {
+void cleanup() {
     emptyRecycleBin();
     runDiskCleanup();
 }

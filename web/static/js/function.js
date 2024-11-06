@@ -76,12 +76,12 @@ function get_data_wifi_all() {
 
 function get_data_for_schedule() {
     $.ajax({
-        url: "/get_wifi_now",
+        url: "/network_now",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function(response) {
-            let wifi_now = response['ssid_name'];
+            let wifi_now = response['ssid'];
 
             const now = new Date();
 
@@ -154,6 +154,14 @@ function checkUnsafeProtocols() {
 
 function render_all_network_wifi(response, ssid) {
     $('#render_all_wifi').html(null);
+
+    for (let i = 0; i < response.length; i++) {
+        for (let r = i + 1; r < response.length; r++) {
+            if (response[i]['ssid'] === response[r]['ssid']) {
+                response.splice(r, 1);
+            }
+        }
+    }
 
     for (let i = 0; i < response.length; i++) {
         let text = `<div class="div_wifi_all">

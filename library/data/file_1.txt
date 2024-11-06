@@ -1,6 +1,5 @@
+TP-LINK_B138|95%
+MTS_Connect|36%
+Misha|30%
+TP-Link_1ACE|21%
 TP-LINK_B138|99%
-TP-LINK_B138|99%
-MTS_Connect|35%
-TP-Link_3C28|30%
-TP-Link_1ACE_EXT|28%
-TP-Link_1ACE|23%
