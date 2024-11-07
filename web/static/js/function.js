@@ -299,12 +299,59 @@ function window_open() {
 }
 
 function write_os_data(response) {
-    $('#adqwdwxxxx').text(response['computer_name'] || 'N/A');
-    $('#qwefsbsfb').text(response['os_version'] || 'N/A');
-    $('#efwfwefwegwecc').text(response['processor_info'] || 'N/A');
-    $('#fewffefevrewew').text(response['system_memory'] || 'N/A');
-    $('#gwghyjyyjy').text(response['system_uptime'] || 'N/A');
-    $('#retrevvvvde').text(response['user_name'] || 'N/A');
+    let data = response['data'];
+    let jsonData = JSON.parse(data);
+
+    $('#ddcbnxcew33333').html(null);
+    $('#ndwe8rfier').html(null);
+    
+    console.log(jsonData);
+
+    let text = `
+        <div class="div_info_os">
+            <p class="name_o">OS</p>
+            <p class="desc_o">${jsonData['OS']['Name']}</p>
+            <p class="desc_o_1">${jsonData['OS']['Version']}</p>
+            <div class="hr_div"></div>
+        </div>
+        <div class="div_info_os">
+            <p class="name_o">Architecture</p>
+            <p class="desc_o">${jsonData['Architecture']}</p>
+            <div class="hr_div"></div>
+        </div>
+        <div class="div_info_os">
+            <p class="name_o">Disk</p>
+            <p class="desc_o">${jsonData['Disk']['FreeSpace']}</p>
+            <p class="desc_o_1">${jsonData['Disk']['TotalSpace']}</p>
+            <div class="hr_div"></div>
+        </div>
+        <div class="div_info_os">
+            <p class="name_o">Memory</p>
+            <p class="desc_o">${jsonData['Memory']['FreeMemory']}</p>
+            <p class="desc_o_1">${jsonData['Memory']['FreeVirtualMemory']}</p>
+            <p class="desc_o_2">${jsonData['Memory']['TotalMemory']}</p>
+            <div class="hr_div"></div>
+        </div>
+        <div class="div_info_os">
+            <p class="name_o">Processor Count</p>
+            <p class="desc_o">${jsonData['ProcessorCount']}</p>
+            <div class="hr_div"></div>
+        </div>
+        <div class="div_info_os">
+            <p class="name_o">System Uptime</p>
+            <p class="desc_o">${jsonData['SystemUptime']['Days']}:${jsonData['SystemUptime']['Hours']}:${jsonData['SystemUptime']['Minutes']}:${jsonData['SystemUptime']['Seconds']}</p>
+            <div class="hr_div"></div>
+        </div>
+    `;
+    $('#ddcbnxcew33333').append(text);
+
+
+    for (let i = 0; i < jsonData['LoadedLibraries']['Libraries'].length; i++) {
+
+    }
+    
+
+    $('#ddcbnxcew33333').append(text);
 }
 
 function render_data_window_open(response) {

@@ -161,7 +161,7 @@
 .about_div::-webkit-scrollbar-thumb,
 .div_wifi_info::-webkit-scrollbar-thumb,
 .div_system_info::-webkit-scrollbar-thumb{
-  background-color: #23252e; 
+  background-color: $bg_color2; 
 }
 
 .modal_rev_button_d{
@@ -391,6 +391,47 @@
 /* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
 /* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
 /* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
+
+.hr_div{
+    position: absolute;
+    width: calc(100% - 40px);
+    height: 1.5px;
+    background-color: #d0d0d065;
+    bottom: 0px;
+}
+
+.div_info_os{
+    position: relative;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.name_o{
+    position: relative;
+    float: left;
+    color: $white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.name_system{
+    font-size: 19px;
+    color: $grean;
+    font-weight: bold;
+}
+
+.desc_o,
+.desc_o_1,
+.desc_o_2{
+    position: absolute;
+    left: 25%;
+    color: $text_color;
+    font-size: 17px;
+}
+
+.desc_o_1{left: 50%;}
+
+.desc_o_2{left: 80%;}
 
 .system_div_os{
     position: relative;

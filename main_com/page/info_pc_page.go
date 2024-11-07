@@ -14,32 +14,17 @@ import (
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 
 type OSData struct {
-	SystemMemory  string `json:"system_memory"`
-	ProcessorInfo string `json:"processor_info"`
-	OSVersion     string `json:"os_version"`
-	ComputerName  string `json:"computer_name"`
-	UserName      string `json:"user_name"`
-	SystemUptime  string `json:"system_uptime"`
+	Data string `json:"data"`
 }
 
 func Post_get_os_data(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("get os data")
 
-		systemMemory := page_func.GetSystemMemory()
-		processorInfo := page_func.GetProcessorInfo()
-		osVersion := page_func.GetOSVersion()
-		computerName := page_func.GetComputerNameCustom()
-		userName := page_func.GetUserNameCustom()
-		systemUptime := page_func.GetSystemUptime()
+		data := page_func.Get_data_os()
 
 		osData := OSData{
-			SystemMemory:  systemMemory,
-			ProcessorInfo: processorInfo,
-			OSVersion:     osVersion,
-			ComputerName:  computerName,
-			UserName:      userName,
-			SystemUptime:  systemUptime,
+			Data: data,
 		}
 
 		w.Header().Set("Content-Type", "application/json")

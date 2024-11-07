@@ -1,7 +1,11 @@
 package page_func
 
 import (
-	"fmt"
+	"encoding/json"
+	"encoding/xml"
+	"io/ioutil"
+	"log"
+	"os/exec"
 	"regexp"
 	"strings"
 	"syscall"
@@ -10,114 +14,69 @@ import (
 	"golang.org/x/sys/windows"
 )
 
-const (
-	UNLEN = 256
-)
-
-type MEMORYSTATUSEX struct {
-	dwLength           uint32
-	dwMemoryLoad       uint32
-	ullTotalPhys       uint64
-	ullAvailPhys       uint64
-	ullTotalPageFile   uint64
-	ullAvailPageFile   uint64
-	ullTotalVirtual    uint64
-	ullAvailVirtual    uint64
-	ullExtendedVirtual uint64
+type SystemInfo struct {
+	XMLName        xml.Name `xml:"SystemInfo"`
+	Architecture   string   `xml:"Architecture"`
+	ProcessorCount int      `xml:"ProcessorCount"`
+	OS             struct {
+		Name    string `xml:"Name"`
+		Version string `xml:"Version"`
+	} `xml:"OS"`
+	Memory struct {
+		FreeMemory        int64 `xml:"FreeMemory"`
+		TotalMemory       int64 `xml:"TotalMemory"`
+		FreeVirtualMemory int64 `xml:"FreeVirtualMemory"`
+	} `xml:"Memory"`
+	SystemUptime struct {
+		Days    int `xml:"Days"`
+		Hours   int `xml:"Hours"`
+		Minutes int `xml:"Minutes"`
+		Seconds int `xml:"Seconds"`
+	} `xml:"SystemUptime"`
+	Disk struct {
+		FreeSpace  int64 `xml:"FreeSpace"`
+		TotalSpace int64 `xml:"TotalSpace"`
+	} `xml:"Disk"`
+	NetworkAdapters struct {
+		Adapters []struct {
+			Description string `xml:"Description"`
+			IPAddress   string `xml:"IPAddress"`
+		} `xml:"Adapter"`
+	} `xml:"NetworkAdapters"`
+	LoadedLibraries struct {
+		Libraries []string `xml:"Library"`
+	} `xml:"LoadedLibraries"`
 }
 
-type SYSTEM_INFO struct {
-	dwOemId                     uint32
-	dwPageSize                  uint32
-	lpMinimumApplicationAddress uintptr
-	lpMaximumApplicationAddress uintptr
-	dwActiveProcessorMask       uintptr
-	dwNumberOfProcessors        uint32
-	dwProcessorType             uint32
-	dwAllocationGranularity     uint32
-	wProcessorArchitecture      uint16
-	wReserved                   uint16
-}
+func Get_data_os() string {
+	exePath := "./system_info.exe"
+	workingDir := "library"
+	dataFilePath := "./library/data/file_2.txt"
 
-type OSVERSIONINFO struct {
-	dwOSVersionInfoSize uint32
-	dwMajorVersion      uint32
-	dwMinorVersion      uint32
-	dwBuildNumber       uint32
-	dwPlatformId        uint32
-	szCSDVersion        [128]byte
-}
+	cmd := exec.Command(exePath)
+	cmd.Dir = workingDir
 
-func byteSliceToString(b []byte) string {
-	return string(b[:len(b)-1])
-}
-
-func GetSystemMemory() string {
-	var memInfo MEMORYSTATUSEX
-	memInfo.dwLength = uint32(unsafe.Sizeof(memInfo))
-
-	r1, _, _ := modkernel32.NewProc("GlobalMemoryStatusEx").Call(uintptr(unsafe.Pointer(&memInfo)))
-	if r1 == 0 {
-		return "Failed to get memory status"
+	if err := cmd.Run(); err != nil {
+		log.Fatalf("Не вдалося запустити exe файл: %v\n", err)
 	}
 
-	return fmt.Sprintf("%d MB\n%d MB\n",
-		memInfo.ullTotalPhys/(1024*1024),
-		memInfo.ullAvailPhys/(1024*1024))
-}
+	data, err := ioutil.ReadFile(dataFilePath)
+	if err != nil {
+		log.Fatalf("Не вдалося прочитати файл: %v\n", err)
+	}
 
-func GetProcessorInfo() string {
-	var sysInfo SYSTEM_INFO
-	modkernel32.NewProc("GetSystemInfo").Call(uintptr(unsafe.Pointer(&sysInfo)))
+	var sysInfo SystemInfo
+	err = xml.Unmarshal(data, &sysInfo)
+	if err != nil {
+		log.Fatalf("Не вдалося розпарсити XML: %v", err)
+	}
 
-	return fmt.Sprintf("%d\n%d\n",
-		sysInfo.dwNumberOfProcessors,
-		sysInfo.wProcessorArchitecture)
-}
+	jsonData, err := json.MarshalIndent(sysInfo, "", "  ")
+	if err != nil {
+		log.Fatalf("Не вдалося конвертувати в JSON: %v", err)
+	}
 
-func GetOSVersion() string {
-	var osvi OSVERSIONINFO
-	osvi.dwOSVersionInfoSize = uint32(unsafe.Sizeof(osvi))
-	modkernel32.NewProc("GetVersionExW").Call(uintptr(unsafe.Pointer(&osvi)))
-
-	return fmt.Sprintf("%d.%d\n%d\n",
-		osvi.dwMajorVersion,
-		osvi.dwMinorVersion,
-		osvi.dwBuildNumber)
-}
-
-func GetComputerNameCustom() string {
-	var computerName [syscall.MAX_COMPUTERNAME_LENGTH + 1]byte
-	var size uint32 = uint32(len(computerName))
-
-	modkernel32.NewProc("GetComputerNameA").Call(uintptr(unsafe.Pointer(&computerName[0])), uintptr(unsafe.Pointer(&size)))
-
-	return fmt.Sprintf("%s\n", byteSliceToString(computerName[:size]))
-}
-
-func GetUserNameCustom() string {
-	var userName [UNLEN + 1]byte
-	var size uint32 = uint32(len(userName))
-
-	modadvapi32.NewProc("GetUserNameA").Call(uintptr(unsafe.Pointer(&userName[0])), uintptr(unsafe.Pointer(&size)))
-
-	return fmt.Sprintf("%s\n", byteSliceToString(userName[:size]))
-}
-
-func GetSystemUptime() string {
-	getTickCount64 := modkernel32.NewProc("GetTickCount64")
-
-	uptime, _, _ := getTickCount64.Call()
-	uptime /= 1000
-	days := uptime / (24 * 3600)
-	uptime %= 24 * 3600
-	hours := uptime / 3600
-	uptime %= 3600
-	minutes := uptime / 60
-	seconds := uptime % 60
-
-	return fmt.Sprintf("%d days, %d hours, %d minutes, %d seconds\n",
-		days, hours, minutes, seconds)
+	return string(jsonData)
 }
 
 var (
@@ -125,9 +84,6 @@ var (
 	procEnumWindows          = user32.NewProc("EnumWindows")
 	procGetWindowTextW       = user32.NewProc("GetWindowTextW")
 	procGetWindowTextLengthW = user32.NewProc("GetWindowTextLengthW")
-
-	modkernel32 = syscall.NewLazyDLL("kernel32.dll")
-	modadvapi32 = syscall.NewLazyDLL("advapi32.dll")
 )
 
 func isValidProgramWindow(title string) bool {
