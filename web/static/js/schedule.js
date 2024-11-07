@@ -107,7 +107,7 @@ class LineChart extends Chart {
             fill: '#55c959',
             stroke: '#55c959',
         });
-        $circle.dataset.text = `${el.x}, ${el.y}`;
+        $circle.dataset.text = `${el.z}, ${el.y}`;
         $circle.classList.add('circle');
         $circle.dataset.circle = 'true';
         return $circle;
@@ -189,17 +189,20 @@ class LineChart extends Chart {
 const $chartContainer = document.getElementById('chart');
 
 let data = [];
+let len = data.length;
 
 function schedule_render(x, y) {
     y = String(y).replace('%', '');
+    len += 1;
 
     data.push({
-        x: x,
-        y: y
+        x: len,
+        y: y,
+        z: x
     });
 
     
-    if (data.length > 6) {
+    if (data.length > 8) {
         data.shift();
     }
 

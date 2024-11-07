@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-    background-color: #12171e;
+    background-color: $bg_color;
     font-family: "Roboto", sans-serif;
     color: $text_color;
     overflow-y: hidden;
@@ -37,4 +37,15 @@ a {
     overflow-y: auto;
     overflow-x: auto;
     display: none;
+}
+
+.name_page{
+    font-size: 21px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.description_page{
+    font-size: 17px;
+    color: $text_color;
 }

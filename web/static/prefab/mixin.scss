@@ -8,8 +8,8 @@
     transition: all .3s;
     cursor: pointer;
     color: $color;
-    font-weight: 600;
-    
+    opacity: 0.6;
+
     p {
         position: relative;
         left: 35px;
@@ -17,14 +17,14 @@
         top: 15px;
     }
 
-    &:hover {background-color: #2e363f;}
+    &:hover {opacity: 1;}
 
     img {
         filter: invert($val);
         height: 25px;
         position: relative;
         float: left;
-        left: 29px;
+        left: 25px;
         top: $top;
     }
 }

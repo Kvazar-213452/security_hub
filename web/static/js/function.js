@@ -1,8 +1,5 @@
 function button_hover(name) {
-    $("#" + name).css("background-color", "#2e363f");
-    $("#" + name).css("text-decoration", "underline");
-    $("#" + name).css("text-decoration-thickness", "2px");
-    $("#" + name).css("text-underline-offset", "4px");
+    $("#" + name).css("opacity", "1");
 }
 
 function clos(name) {

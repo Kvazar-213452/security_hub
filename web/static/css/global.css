@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 body {
-  background-color: #12171e;
+  background-color: #26262e;
   font-family: "Roboto", sans-serif;
-  color: #ffffffd4;
+  color: #ffffffa5;
   overflow-y: hidden;
   overflow-x: hidden; }
 
 a {
-  color: #ffffffd4; }
+  color: #ffffffa5; }
 
 .sin {
   color: #ffffff00; }
@@ -18,7 +18,7 @@ a {
   font-family: "Roboto", sans-serif; }
 
 a {
-  color: #ffffffd4;
+  color: #ffffffa5;
   text-decoration: none; }
 
 .console {
@@ -28,9 +28,18 @@ a {
   bottom: 10px;
   right: 10px;
   width: calc(100% - 400px);
-  background-color: #20252c;
+  background-color: #222128;
   padding: 10px;
   z-index: 100;
   overflow-y: auto;
   overflow-x: auto;
   display: none; }
+
+.name_page {
+  font-size: 21px;
+  font-weight: bold;
+  color: #fff; }
+
+.description_page {
+  font-size: 17px;
+  color: #ffffffa5; }

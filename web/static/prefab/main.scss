@@ -3,17 +3,44 @@
 
 .menu{
     position: fixed;
-    width: 260px;
+    width: 280px;
     height: 100%;
-    background: linear-gradient(to bottom, #22272e, #1a1e25);
+    background-color: $bg_color2;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-.ede33fff {
-    display: block;
-    margin: 0 auto;
-    height: 150px;
+.menu_logo{
+    position: relative;
+    left: 25px;
+    top: 25px;
+
+    img {
+        height: 40px;
+        float: left;
+        position: relative;
+    }
+
+    p {
+        position: relative;
+        left: 20px;
+        top: 7px;
+        font-weight: bold;
+        font-size: 21px;
+        color: $white;
+    }
+}
+
+.menu_div_name{
+    position: relative;
+    left: 25px;
+    font-size: 18px;
+    color: $text_color;
+}
+
+.menu_div{
+    position: relative;
+    top: 15px;
 }
 
 .animatedBlock {
@@ -23,7 +50,7 @@
     padding: 20px;
     background-color: #1c1d27;
     box-shadow: 0 4px 20px $null_bleck;
-    color: white;
+    color: $white;
     border-radius: 5px;
     transition: opacity 1s ease, transform 1s ease;
     opacity: 0;
@@ -40,18 +67,17 @@
     transform: translateY(100%);
 }
 
-.button {@include menu_button($text_color, 10px, 85%);}
+.button {@include menu_button($white, 10px, 100%);}
 
-.button1 {@include menu_button($text_color, 12.5px, 85%);}
+.button1 {@include menu_button($white, 12px, 100%);}
 
 .button2 {@include menu_button($read, 14px, 0%);}
 
 .main{
     position: fixed;
-    left: 260px;
-    top: 10px;
-    height: calc(100% - 10px);
-    width: calc(100% - 260px);
+    left: 280px;
+    height: 100%;
+    width: calc(100% - 280px);
 }
 
 .main_div{
@@ -59,7 +85,8 @@
     padding-right: 20px;
     height: 100%;
     position: relative;
-    width: calc(100% - 40px);
+    left: 25px;
+    width: calc(100% - 50px);
     overflow-y: auto;
     overflow-x: auto;
 }
@@ -145,9 +172,7 @@
 /* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
 /* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
 
-#chart {
-    height: 100%;
-}
+#chart {height: 100%;}
 
 .circle {
     cursor: pointer;
@@ -156,7 +181,7 @@
 
 .tooltip {
     background-color: #252831;
-    color: #ffffff;
+    color: $white;
     padding: 5px;
     border-radius: 4px;
     font-size: 12px;
@@ -197,6 +222,7 @@
     position: relative;
     width: calc(100% + 40px);
     background-color: $bg_color1;
+    top: 15px;
     height: calc(100% - 420px);
     overflow: auto;
     border-radius: 5px;
@@ -231,48 +257,43 @@
     position: relative;
     float: right;
     background-color: $bg_color1;
-    width: 440px;
-    left: 10px;
+    width: 390px;
+    left: -25px;
     height: calc(100% - 20px);
     overflow-y: auto;
     border-radius: 5px;
 }
 
 .div_wifi_all{
-    font-weight: bold;
     position: relative;
     top: -20px;
     margin-top: 20px;
     width: 100%;
     height: 35px;
-    background-color: $bg_color3;
-    border: solid 2px $null;
-    cursor: pointer;
-    transition: all .3s;
+    background-color: $bg_color;
     border-radius: 5px;
-
-    &:hover{border: solid 2px $text_color;}
 }
 
 .name_wifi_div_all{
     position: relative;
     font-size: 16px;
-    color: $text_color;
+    color: $grean;
     top: 8px;
     left: 10px;
     float: left;
+    font-weight: bold;
 }
 
 .right_left_signal{
     position: relative;
     font-size: 15px;
-    color: $grean;
+    color: $text_color;
     top: 9px;
     left: -10px;
     float: right;
 }
 
-.border_active_grran{border: solid 2px $grean;}
+.border_active_grran{background-color: $bg_color2;}
 
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
@@ -412,21 +433,6 @@
     overflow-y: auto;
     border-radius: 10px;
     float: right;
-}
-
-.qdwfwfecc{
-    position: relative;
-    background-color: $bg_color4;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-.dwqqttgttbb1{
-    font-weight: bold;
-    color: $grean;
-    position: relative;
-    float: left;
-    margin-right: 5px;
 }
 
 .wefewfvgg4{
