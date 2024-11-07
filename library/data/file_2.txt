@@ -7,18 +7,18 @@
     <Version>10.0</Version>
   </OS>
   <Memory>
-    <FreeMemory>7914</FreeMemory>
+    <FreeMemory>7337</FreeMemory>
     <TotalMemory>16185</TotalMemory>
     <FreeVirtualMemory>134213579</FreeVirtualMemory>
   </Memory>
   <SystemUptime>
     <Days>1</Days>
-    <Hours>22</Hours>
-    <Minutes>52</Minutes>
-    <Seconds>25</Seconds>
+    <Hours>23</Hours>
+    <Minutes>37</Minutes>
+    <Seconds>48</Seconds>
   </SystemUptime>
   <Disk>
-    <FreeSpace>103699</FreeSpace>
+    <FreeSpace>103615</FreeSpace>
     <TotalSpace>283282</TotalSpace>
   </Disk>
   <NetworkAdapters>

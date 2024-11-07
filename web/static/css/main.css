@@ -141,58 +141,6 @@
   overflow-y: auto;
   overflow-x: auto; }
 
-#modal1,
-#modal2,
-#modal3,
-#modal4,
-#modal5,
-#modal6,
-#modal7,
-#modal8,
-#modal9,
-#modal10,
-#modal11,
-#modal12,
-#modal13,
-#modal14,
-#modal15,
-#modal16,
-#modal17 {
-  display: none;
-  position: fixed;
-  z-index: 10000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4); }
-
-.modal-content2 {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  padding: 20px;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  height: 60%;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  background-color: #26262e; }
-
-.close {
-  float: right;
-  font-size: 28px;
-  cursor: pointer;
-  position: relative;
-  top: -10px;
-  z-index: 1000; }
-
-.close:hover {
-  text-decoration: none;
-  cursor: pointer;
-  color: #ff5c5c; }
-
 .console::-webkit-scrollbar,
 .main_div::-webkit-scrollbar,
 .about_div::-webkit-scrollbar,
@@ -353,9 +301,6 @@
 /* settings page */
 .settings_main_tetx {
   font-size: 19px;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
   color: #37cc34;
   font-weight: bold; }
 
@@ -443,22 +388,32 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -50%);
   background-color: #222128;
   width: 70%;
   height: 70%;
   overflow-y: auto;
   overflow-x: auto;
-  padding: 10px; }
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto; }
 
 .about_tetx_main {
   position: relative;
   text-align: center;
-  font-size: 24px;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  color: #506aff; }
+  font-size: 30px;
+  color: #37cc34;
+  font-weight: bold; }
+
+.about_desc_text {
+  position: relative;
+  left: 20px;
+  font-size: 17px;
+  color: #ffffffa5; }
+
+.about_desc_p {
+  font-size: 19px;
+  color: #fff; }
 
 /* system page */
 /* system page */
@@ -601,10 +556,7 @@
   border-radius: 10px; }
   .dqeeefc1 h1 {
     position: relative;
-    text-align: center;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px; }
+    text-align: center; }
   .dqeeefc1 ul {
     position: relative;
     left: 20px;
@@ -649,7 +601,7 @@
 /* antivirus page */
 .fewfedddd {
   position: relative;
-  width: calc(100% - 25px);
+  width: calc(100% - 35px);
   height: 30px;
   border-bottom: solid 2px #d0d0d065; }
 
@@ -714,7 +666,8 @@
 
 .dwdwffff2 {
   position: relative;
-  width: calc(100% - 40px);
+  width: calc(100% - 30px);
+  left: -20px;
   background-color: #222128;
   height: calc(100% - 370px);
   border-radius: 5px; }
@@ -723,22 +676,16 @@
   font-size: 34px; }
 
 .dd223dfwef {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
   color: #37cc34;
   font-size: 24px; }
 
 .weirwnofqwd_w {
-  background-color: #181d25;
+  background-color: #1b1a1f;
   height: calc(100% - 190px);
   width: calc(100% - 420px);
   border-radius: 5px; }
 
 .ew54tgtrbb {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
   color: #ff5c5c;
   position: relative;
   left: 10px; }
@@ -800,9 +747,10 @@
 
 .dwdwffff22 {
   position: relative;
-  width: calc(100% - 40px);
+  width: calc(100% - 30px);
   background-color: #222128;
   height: calc(100% - 590px);
+  left: -20px;
   border-radius: 5px;
   color: #ffffffa5;
   font-size: 25px;
@@ -813,15 +761,9 @@
   left: -10px; }
 
 .f343ffv {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
   color: #ff5c5c; }
 
 .f343ffv1 {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
   color: #37cc34; }
 
 .fweufweffff {
@@ -832,7 +774,7 @@
   border-radius: 5px;
   border: solid 2px #ffffff00;
   transition: all .3s;
-  background-color: #181d25;
+  background-color: #1b1a1f;
   margin: 0 auto;
   display: block;
   padding: 7px;
@@ -844,9 +786,6 @@
     color: #37cc34; }
 
 .deferghhhh777 {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
   color: #37cc34;
   font-size: 17px;
   font-weight: bold; }
@@ -861,7 +800,7 @@
   padding: 7px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #181d25;
+  background-color: #1b1a1f;
   font-weight: bold;
   transition: all .3s;
   border: solid 2px #ffffff00;
@@ -879,7 +818,7 @@
   font-weight: bold;
   font-size: 15.5px;
   border: solid 2px #ffffff00;
-  background-color: #181d25;
+  background-color: #1b1a1f;
   color: #ffffffa5;
   width: 73%; }
   .ddwdcvvvwwqsz:focus {
