@@ -2,16 +2,8 @@ function button_hover(name) {
     $("#" + name).css("opacity", "1");
 }
 
-function clos(name) {
-    $('#' + name).hide(); 
-}
-
-function openModal(name) {
-    $('#' + name).show(); 
-}
-
 function fetchLogs() {
-    $.post('/get_logs', function(data) {
+    $.post('/get_logs', function (data) {
         const logsArray = data.log.split('\n');
 
         $('.console').html(logsArray.join('<br>'));
@@ -24,7 +16,7 @@ function console_open() {
 }
 
 function button_active(name, mas) {
-    mas.forEach(function(item) {
+    mas.forEach(function (item) {
         $("#" + item).css({
             "border": "none",
             "color": "#ffffffd4"
@@ -32,7 +24,6 @@ function button_active(name, mas) {
     });
 
     $("#" + name).css({
-        "border": "2px solid #55c959",
         "color": "#55c959"
     });
 }
@@ -43,12 +34,12 @@ function get_data_wifi_now() {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
-        success: function(response) {
+        success: function (response) {
             console.log(response)
             data_wifi_render_now(response)
             checkUnsafeProtocols();
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });
@@ -60,12 +51,12 @@ function get_data_wifi_all() {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
-        success: function(response) {
-            get_network_now(function(ssid) {
+        success: function (response) {
+            get_network_now(function (ssid) {
                 render_all_network_wifi(response, ssid);
             });
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });
@@ -77,7 +68,7 @@ function get_data_for_schedule() {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
-        success: function(response) {
+        success: function (response) {
             let wifi_now = response['ssid'];
 
             const now = new Date();
@@ -86,11 +77,11 @@ function get_data_for_schedule() {
             const minutes = now.getMinutes();
             const seconds = now.getSeconds();
 
-            let data = `${hours}:${minutes}:${seconds}`; 
+            let data = `${hours}:${minutes}:${seconds}`;
 
             get_wifi_info_level(data, wifi_now)
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });
@@ -102,7 +93,7 @@ function get_wifi_info_level(data, wifi_now) {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
-        success: function(response) {
+        success: function (response) {
             let i = 0
 
             while (i < response.length) {
@@ -113,25 +104,43 @@ function get_wifi_info_level(data, wifi_now) {
                 i++;
             }
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });
 }
 
 function data_wifi_render_now(response) {
-    $('#name_wifi').text(response['ssid_name'] || 'N/A');
-    $('#authentication_wifi').text(response['authentication'] || 'N/A');
-    $('#cost_wifi').text(response['cost'] || 'N/A');
-    $('#ciphers_wifi').text(response['ciphers'] ? response['ciphers'].join(', ') : 'N/A');
-    $('#key_content_wifi').text(response['key_content'] || 'N/A');
-    $('#profile_name_wifi').text(response['profile_name'] || 'N/A');
-    $('#approaching_limit_wifi').text(response['approaching_limit'] || 'N/A');
-    $('#congested_wifi').text(response['congested'] || 'N/A');
-    $('#over_limit_wifi').text(response['over_limit'] || 'N/A');
-    $('#roaming_wifi').text(response['roaming'] || 'N/A');
-    $('#vendor_extension_wifi').text(response['vendor_extension'] || 'N/A');
-    $('#version_wifi').text(response['version'] || 'N/A');
+    $('#fweetrfgcvweee').html(null);
+
+    for (let key in response) {
+
+        if (response.hasOwnProperty(key)) {
+            let formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
+
+            if (response[key] == "") {
+                let text = `
+                <div class="div_info_os">
+                    <p class="name_o">${formattedKey}</p>
+                    <p class="desc_o">N/A</p>
+                    <div class="hr_div"></div>
+                </div>
+                `;
+
+                $('#fweetrfgcvweee').append(text);
+            } else {
+                let text = `
+                <div class="div_info_os">
+                    <p class="name_o">${formattedKey}</p>
+                    <p class="desc_o">${response[key]}</p>
+                    <div class="hr_div"></div>
+                </div>
+                `;
+
+                $('#fweetrfgcvweee').append(text);
+            }
+        }
+    }
 }
 
 function checkUnsafeProtocols() {
@@ -168,7 +177,7 @@ function render_all_network_wifi(response, ssid) {
         $('#render_all_wifi').append(text);
     }
 
-    $('.name_wifi_div_all').each(function() {
+    $('.name_wifi_div_all').each(function () {
         if ($(this).text() === ssid) {
             $(this).closest('.div_wifi_all').addClass("border_active_grran");
         }
@@ -181,12 +190,12 @@ function get_network_now(callback) {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
-        success: function(response) {
+        success: function (response) {
             if (callback) {
                 callback(response['ssid']);
             }
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });
@@ -200,45 +209,45 @@ function getConfig() {
         },
         body: JSON.stringify(null)
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-        let visualization_button = data['visualization'];
-        let log = data['log'];
-        let port = data['port'];
-        let server = data['server'];
-        let shell = data['shell'];
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            let visualization_button = data['visualization'];
+            let log = data['log'];
+            let port = data['port'];
+            let server = data['server'];
+            let shell = data['shell'];
 
-        $('#ssdfredfgettt').val(port);
-        $('#bsdcfvbttrfgo').val(server);
-        
-        if (visualization_button === 1) {
-            button_active('visualization1', visualization_mas);
-        } else {
-            button_active('visualization2', visualization_mas);
-        }
-        
-        if (log === 1) {
-            button_active('vsgretdbgc1', vsgretdbgc);
-        } else {
-            button_active('vsgretdbgc2', vsgretdbgc);
-        }
+            $('#ssdfredfgettt').val(port);
+            $('#bsdcfvbttrfgo').val(server);
 
-        if (shell === 0) {
-            button_active('shell_NM', shell_NM);
-        } else {
-            button_active('shell_NM1', shell_NM);
-        }
-    })
-    .catch(error => {
-        console.error("Помилка при запиті:", error);
-        throw error;
-    });
+            if (visualization_button === 1) {
+                button_active('visualization1', visualization_mas);
+            } else {
+                button_active('visualization2', visualization_mas);
+            }
+
+            if (log === 1) {
+                button_active('vsgretdbgc1', vsgretdbgc);
+            } else {
+                button_active('vsgretdbgc2', vsgretdbgc);
+            }
+
+            if (shell === 0) {
+                button_active('shell_NM', shell_NM);
+            } else {
+                button_active('shell_NM1', shell_NM);
+            }
+        })
+        .catch(error => {
+            console.error("Помилка при запиті:", error);
+            throw error;
+        });
 }
 
 function change_shell(name, button) {
@@ -258,10 +267,10 @@ function change_shell(name, button) {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(dataToSend),
-        success: function(response) {
+        success: function (response) {
 
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.log("Error: " + error);
             console.log("Response text:", xhr.responseText);
         }
@@ -274,10 +283,10 @@ function get_os_data() {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
-        success: function(response) {
+        success: function (response) {
             write_os_data(response)
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });
@@ -289,10 +298,10 @@ function window_open() {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
-        success: function(response) {
+        success: function (response) {
             render_data_window_open(response);
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });
@@ -304,7 +313,8 @@ function write_os_data(response) {
 
     $('#ddcbnxcew33333').html(null);
     $('#ndwe8rfier').html(null);
-    
+    $('#bfgtey65yt').html(null);
+
     console.log(jsonData);
 
     let text = `
@@ -343,15 +353,26 @@ function write_os_data(response) {
             <div class="hr_div"></div>
         </div>
     `;
+
     $('#ddcbnxcew33333').append(text);
 
+    for (let i = 1; i < jsonData['LoadedLibraries']['Libraries'].length; i++) {
+        let data_text = `<p>${jsonData['LoadedLibraries']['Libraries'][i]}</p>`;
 
-    for (let i = 0; i < jsonData['LoadedLibraries']['Libraries'].length; i++) {
-
+        $('#ndwe8rfier').append(data_text);
     }
-    
 
-    $('#ddcbnxcew33333').append(text);
+    for (let i = 1; i < jsonData['NetworkAdapters']['Adapters'].length; i++) {
+        let data_text = `
+        <div class="div_info_os">
+            <p class="name_o">${jsonData['NetworkAdapters']['Adapters'][i]['Description']}</p>
+            <p class="desc_o_3">${jsonData['NetworkAdapters']['Adapters'][i]['IPAddress']}</p>
+            <div class="hr_div"></div>
+        </div>
+        `;
+
+        $('#bfgtey65yt').append(data_text);
+    }
 }
 
 function render_data_window_open(response) {
@@ -376,10 +397,10 @@ function resource_info() {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
-        success: function(response) {
+        success: function (response) {
             resource_info_render_data(response);
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });
@@ -421,19 +442,16 @@ function cleanup() {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(null),
-        success: function(response) {
-            
+        success: function (response) {
+
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });
 }
 
 function button_active_antivitys(name) {
-    $("#" + name).css("text-decoration", "underline");
-    $("#" + name).css("text-decoration-thickness", "2px");
-    $("#" + name).css("text-underline-offset", "4px");
     $("#" + name).css("color", "#55c959");
 }
 
@@ -452,10 +470,10 @@ function antivirus_web_start() {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(dataToSend),
-        success: function(response) {
+        success: function (response) {
             antivirus_web_end(response)
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.log("Error: " + error);
             console.log("Response text:", xhr.responseText);
         }
@@ -463,7 +481,7 @@ function antivirus_web_start() {
 }
 
 function antivirus_web_end(response) {
-    $('#dqdcew336g').show(); 
+    $('#dqdcew336g').show();
     $('#dwdefw4f4').text('Завершено');
 
     if (response['found'] === false) {
@@ -474,7 +492,7 @@ function antivirus_web_end(response) {
 
     const decodedString = atob(response['data']);
     const jsonObject = JSON.parse(decodedString);
-    
+
     $('#dwdw3333rffcc').html(null);
 
     jsonObject1 = jsonObject['data'];
@@ -494,23 +512,17 @@ function antivirus_web_end(response) {
 }
 
 function change_menu_antivirus(type, id) {
-    $("#dwdc21e12d").css("text-decoration", "none");
-    $("#dwdc21e12d").css("text-decoration-thickness", "none");
-    $("#dwdc21e12d").css("text-underline-offset", "none");
     $("#dwdc21e12d").css("color", "#ffffffd4");
 
-    $("#dwdc21e12d1").css("text-decoration", "none");
-    $("#dwdc21e12d1").css("text-decoration-thickness", "none");
-    $("#dwdc21e12d1").css("text-underline-offset", "none");
     $("#dwdc21e12d1").css("color", "#ffffffd4");
 
     button_active_antivitys(id);
 
     if (type === 0) {
-        $('#frg45th9nd1').hide(); 
+        $('#frg45th9nd1').hide();
         $('#frg45th9nd').show();
     } else if (type === 1) {
-        $('#frg45th9nd').hide(); 
+        $('#frg45th9nd').hide();
         $('#frg45th9nd1').show();
     }
 }
@@ -571,14 +583,14 @@ const fileUpload = () => {
             data: formData,
             processData: false,
             contentType: false,
-            success: function(response) {
+            success: function (response) {
                 if (response == 0) {
                     $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');
                 } else {
                     $('#we332dvc').html('<span class="f343ffv">Обережно вірус</span>');
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.error('Помилка відправки:', error);
             }
         });
@@ -602,14 +614,14 @@ const fileUpload = () => {
             data: formData,
             processData: false,
             contentType: false,
-            success: function(response) {
+            success: function (response) {
                 if (response == 0) {
                     $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');
                 } else {
                     $('#we332dvc').html('<span class="f343ffv">Обережно вірус</span>');
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.error('Помилка відправки:', error);
             }
         });
@@ -629,7 +641,7 @@ function encryption_file_start() {
 
     const file = files[0];
     const formData = new FormData();
-    
+
     formData.append('file', file);
     formData.append('filename', file.name);
 
@@ -639,18 +651,18 @@ function encryption_file_start() {
         processData: false,
         contentType: false,
         data: formData,
-        success: function(response) {
+        success: function (response) {
             message_window('Успішно');
             encryption_file_end(response)
 
             const link = document.createElement('a');
-            link.href = '/static/data/main.enc'; 
+            link.href = '/static/data/main.enc';
             link.download = 'main.enc';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.log("Error: " + error);
             console.log("Response text:", xhr.responseText);
         }
@@ -717,7 +729,7 @@ function decipher_file() {
 
     const file = files[0];
     const formData = new FormData();
-    
+
     formData.append('file', file);
     formData.append('key', document.getElementById('cwwzevbnnn').value);
 
@@ -727,22 +739,22 @@ function decipher_file() {
         processData: false,
         contentType: false,
         data: formData,
-        success: function(response) {
+        success: function (response) {
             if (response === 0) {
                 message_window('Помилка');
             } else {
                 message_window('Успішно');
                 $('#bbbnsqee343').html("Успішно");
-    
+
                 const link = document.createElement('a');
-                link.href = '/static/data/main'; 
+                link.href = '/static/data/main';
                 link.download = 'main';
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
             }
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.log("Error: " + error);
             console.log("Response text:", xhr.responseText);
         }
@@ -793,11 +805,11 @@ function input_settings_change(input, url) {
         url: url,
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({value: value}),
-        success: function(response) {
+        data: JSON.stringify({ value: value }),
+        success: function (response) {
             getConfig();
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });
@@ -808,11 +820,11 @@ function button_settings_change(val, url) {
         url: url,
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({value: val}),
-        success: function(response) {
+        data: JSON.stringify({ value: val }),
+        success: function (response) {
             getConfig();
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });

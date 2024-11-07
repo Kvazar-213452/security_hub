@@ -206,6 +206,10 @@ function schedule_render(x, y) {
         data.shift();
     }
 
+    if (len >= 1000) {
+        len = 1;
+    }
+
     $chartContainer.innerHTML = '';
     new LineChart(data, $chartContainer).create();
 }

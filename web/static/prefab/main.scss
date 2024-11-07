@@ -91,67 +91,12 @@
     overflow-x: auto;
 }
 
-#modal1,
-#modal2,
-#modal3,
-#modal4,
-#modal5,
-#modal6,
-#modal7,
-#modal8,
-#modal9,
-#modal10,
-#modal11,
-#modal12,
-#modal13,
-#modal14,
-#modal15,
-#modal16,
-#modal17 {
-  display: none;
-  position: fixed;
-  z-index: 10000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4); 
-}
-
-.modal-content2 {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    padding: 20px;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 60%;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    background-color: $bg_color; 
-}
-
-.close {
-    float: right;
-    font-size: 28px;
-    cursor: pointer;
-    position: relative;
-    top: -10px;
-    z-index: 1000;
-}
-
-.close:hover{
-    text-decoration: none;
-    cursor: pointer;
-    color: $read;
-}
-
 .console::-webkit-scrollbar,
 .main_div::-webkit-scrollbar,
 .about_div::-webkit-scrollbar,
 .div_wifi_info::-webkit-scrollbar,
-.div_system_info::-webkit-scrollbar{
+.div_system_info::-webkit-scrollbar,
+.imfowdwqdd::-webkit-scrollbar{
   width: 11px;
   background-color: $bg_color; 
 }
@@ -160,13 +105,12 @@
 .main_div::-webkit-scrollbar-thumb,
 .about_div::-webkit-scrollbar-thumb,
 .div_wifi_info::-webkit-scrollbar-thumb,
-.div_system_info::-webkit-scrollbar-thumb{
+.div_system_info::-webkit-scrollbar-thumb,
+.imfowdwqdd::-webkit-scrollbar-thumb{
   background-color: $bg_color2; 
 }
 
-.modal_rev_button_d{
-    color: $read;
-}
+.modal_rev_button_d{color: $read;}
 
 /* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
 /* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
@@ -239,20 +183,6 @@
 
 .padoge{padding: 20px;}
 
-.info_wifi_{
-    font-weight: bold;
-    font-size: 16px;
-    color: $grean;
-}
-
-.info_graan{
-    position: absolute;
-    left: 230px;
-    font-weight: normal;
-    color: $text_color;
-    font-size: 16px;
-}
-
 .wifi_all_div{
     position: relative;
     float: right;
@@ -301,7 +231,6 @@
 
 .settings_main_tetx{
     font-size: 19px;
-    @include text_decoration();
     color: $grean;
     font-weight: bold;
 }
@@ -312,10 +241,11 @@
     background-color: $bg_color1;
     padding: 10px;
     border-radius: 5px;
+    width: calc(100% - 40px);
 }
 
 .button_settings{
-    @include button($text_color, $bg_color3, 15px);
+    @include button($text_color, $bg_color2, 15px);
     position: relative;
     float: left;
     margin-left: 10px;
@@ -342,24 +272,22 @@
     color: $text_color;
     padding: 7px;
     font-size: 15px;
-    background-color: $bg_color3;
+    background-color: $bg_color2;
     border-radius: 5px;
-    border: solid 2px $null;
 
     &:focus {
         outline: none;
         box-shadow: none;
-        border: solid 2px $grean;
         color: $grean;
     }
 }
 
 .zxbnmewd{
-    @include button($text_color, $bg_color3, 15px);
+    @include button($text_color, $bg_color2, 15px);
 
     &:hover{
-        border: solid 2px $grean;
         color: $grean;
+        opacity: 0.6;
     }
 }
 
@@ -394,7 +322,7 @@
 
 .hr_div{
     position: absolute;
-    width: calc(100% - 40px);
+    width: 100%;
     height: 1.5px;
     background-color: #d0d0d065;
     bottom: 0px;
@@ -410,28 +338,34 @@
     position: relative;
     float: left;
     color: $white;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
 }
 
 .name_system{
-    font-size: 19px;
+    font-size: 18px;
     color: $grean;
     font-weight: bold;
 }
 
+#ndwe8rfier{
+    position: relative;
+    left: 20px;
+}
+
 .desc_o,
 .desc_o_1,
-.desc_o_2{
+.desc_o_2,
+.desc_o_3{
     position: absolute;
     left: 25%;
     color: $text_color;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .desc_o_1{left: 50%;}
-
 .desc_o_2{left: 80%;}
+.desc_o_3{left: 75%;}
 
 .system_div_os{
     position: relative;
@@ -454,10 +388,10 @@
     position: relative;
     background-color: $bg_color1;
     width: 500px;
-    height: calc(100% - 400px);
+    height: calc(100% - 430px);
     overflow-y: auto;
     border-radius: 10px;
-    top: 10px;
+    top: 35px;
 }
 
 .wddxxq{
@@ -468,9 +402,9 @@
 .imfowdwqdd{
     position: relative;
     background-color: $bg_color1;
-    width: calc(100% - 510px);
+    width: calc(100% - 565px);
     height: 100%;
-    left: 10px;
+    left: -25px;
     overflow-y: auto;
     border-radius: 10px;
     float: right;
@@ -517,7 +451,7 @@
     }
 
     button {
-        @include button($text_color, $bg_color3, 15px);
+        @include button($text_color, $bg_color2, 15px);
         font-weight: bold;
     }
 
@@ -536,28 +470,24 @@
 /* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page */
 /* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page */
 
-.wedn77382bd3i2{
-    position: relative;
-    left: 20px;
-}
-
 .fewfedddd{
     position: relative;
-    width: 100%;
-    height: 25px;
+    width: calc(100% - 25px);
+    height: 30px;
     border-bottom: solid 2px #d0d0d065;
 }
 
 .dwqdwcccc2{    
     float: left;
     position: relative;
-    margin-left: 20px;
+    margin-right: 20px;
     font-weight: bold;
     font-size: 19px;
     z-index: 10000;
     transition: all .3s;
     cursor: pointer;
     color: $text_color;
+    text-decoration: none;
 
     &:hover {opacity: 0.5;}
 }
@@ -576,11 +506,10 @@
     padding-right: 40px;
     font-weight: bold;
     color: $text_color;
-    background-color: $bg_color4;
+    background-color: $bg_color2;
     box-shadow: 0 4px 20px $null_bleck;
     font-size: 20px;
     border: none;
-    border: solid 2px $null;
     border-radius: 5px;
     width: 600px;
     display: block;
@@ -589,7 +518,7 @@
     &:focus {
         outline: none;
         box-shadow: none;
-        border: solid 2px $grean;
+        color: $grean
     }
 }
 
@@ -600,6 +529,9 @@
     font-weight: bold;
     position: relative;
     left: -20px;
+    transition: all .3s;
+
+    &:hover{opacity: 0.6;}
 }
 
 .dwdwffff2{
@@ -675,11 +607,9 @@
     top: -30px;
     float: left;
     margin-right: 20px;
+    transition: all .3s;
 
-    &:hover{
-        border: solid 2px $grean;
-        color: $grean;
-    }
+    &:hover{opacity: 0.6;}
 }
 
 .parent-container {
