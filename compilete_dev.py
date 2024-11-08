@@ -12,7 +12,7 @@ elif int(let) == 1:
     os.system("node-sass web/static/prefab/global.scss web/static/css/global.css")
 elif int(let) == 2:
     os.system('go build"')
-    os.system(r"head.exe")
+    os.system(r"head.exe") 
 elif int(let) == 3:
     os.system('go build -ldflags="-H windowsgui"')
-    os.system(r"head.exe")
+    os.system(r"head.exe") 
