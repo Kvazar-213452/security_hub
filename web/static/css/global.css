@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 body {
-  background-color: #26262e;
+  background-color: #1b1c30;
   font-family: "Roboto", sans-serif;
   color: #ffffffa5;
   overflow-y: hidden;
@@ -28,7 +28,7 @@ a {
   bottom: 10px;
   right: 10px;
   width: calc(100% - 400px);
-  background-color: #222128;
+  background-color: #32344d;
   padding: 10px;
   z-index: 100;
   overflow-y: auto;

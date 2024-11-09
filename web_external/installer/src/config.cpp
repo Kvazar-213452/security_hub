@@ -1,7 +1,7 @@
 #include <string>
 
-int window_h = 550;  
-int window_w = 400;
+int window_h = 500;  
+int window_w = 350;
 
 const char* name_app = "Installer Security Hub";
 

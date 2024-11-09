@@ -28,6 +28,8 @@ std::string html_content = R"(
             font-family: "Roboto", sans-serif;
             height: 600px;
             padding: 20px;
+            overflow-y: hidden;
+            overflow-x: hidden;
         }
 
         .ew32fe,

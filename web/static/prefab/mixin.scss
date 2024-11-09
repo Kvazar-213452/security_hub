@@ -2,13 +2,14 @@
 
 @mixin menu_button($color, $top, $val) {
     position: relative;
-    width: 100%;
+    width: calc(100% - 40px);
     height: 50px;
-    left: 0%;
+    left: 20px;
     transition: all .3s;
     cursor: pointer;
     color: $color;
     opacity: 0.6;
+    border-radius: 10px;
 
     p {
         position: relative;
@@ -17,14 +18,17 @@
         top: 15px;
     }
 
-    &:hover {opacity: 1;}
+    &:hover {
+        background-color: $bg_color3;
+        opacity: 1;
+    }
 
     img {
         filter: invert($val);
         height: 25px;
         position: relative;
         float: left;
-        left: 25px;
+        left: 20px;
         top: $top;
     }
 }

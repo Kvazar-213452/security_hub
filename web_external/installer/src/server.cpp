@@ -65,7 +65,7 @@ void start_server(int port) {
                 std::cerr << "Не вдалося отримати шлях до робочого столу." << std::endl;
             }
 
-            deleteFile("./main.zip");
+            deleteFile("main.zip");
 
             Sleep(sleep_app);
 

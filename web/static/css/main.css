@@ -1,14 +1,14 @@
 .menu {
   position: fixed;
-  width: 280px;
+  width: 275px;
   height: 100%;
-  background-color: #1b1a1f;
+  background-color: #22223a;
   overflow-y: auto;
   overflow-x: hidden; }
 
 .menu_logo {
   position: relative;
-  left: 25px;
+  left: 40px;
   top: 25px; }
   .menu_logo img {
     height: 40px;
@@ -21,12 +21,6 @@
     font-weight: bold;
     font-size: 21px;
     color: #fff; }
-
-.menu_div_name {
-  position: relative;
-  left: 25px;
-  font-size: 18px;
-  color: #ffffffa5; }
 
 .menu_div {
   position: relative;
@@ -55,74 +49,80 @@
 
 .button {
   position: relative;
-  width: 100%;
+  width: calc(100% - 40px);
   height: 50px;
-  left: 0%;
+  left: 20px;
   transition: all .3s;
   cursor: pointer;
   color: #fff;
-  opacity: 0.6; }
+  opacity: 0.6;
+  border-radius: 10px; }
   .button p {
     position: relative;
     left: 35px;
     font-size: 18px;
     top: 15px; }
   .button:hover {
+    background-color: #565574;
     opacity: 1; }
   .button img {
     filter: invert(100%);
     height: 25px;
     position: relative;
     float: left;
-    left: 25px;
+    left: 20px;
     top: 10px; }
 
 .button1 {
   position: relative;
-  width: 100%;
+  width: calc(100% - 40px);
   height: 50px;
-  left: 0%;
+  left: 20px;
   transition: all .3s;
   cursor: pointer;
   color: #fff;
-  opacity: 0.6; }
+  opacity: 0.6;
+  border-radius: 10px; }
   .button1 p {
     position: relative;
     left: 35px;
     font-size: 18px;
     top: 15px; }
   .button1:hover {
+    background-color: #565574;
     opacity: 1; }
   .button1 img {
     filter: invert(100%);
     height: 25px;
     position: relative;
     float: left;
-    left: 25px;
+    left: 20px;
     top: 12px; }
 
 .button2 {
   position: relative;
-  width: 100%;
+  width: calc(100% - 40px);
   height: 50px;
-  left: 0%;
+  left: 20px;
   transition: all .3s;
   cursor: pointer;
   color: #ff5c5c;
-  opacity: 0.6; }
+  opacity: 0.6;
+  border-radius: 10px; }
   .button2 p {
     position: relative;
     left: 35px;
     font-size: 18px;
     top: 15px; }
   .button2:hover {
+    background-color: #565574;
     opacity: 1; }
   .button2 img {
     filter: invert(0%);
     height: 25px;
     position: relative;
     float: left;
-    left: 25px;
+    left: 20px;
     top: 14px; }
 
 .main {
@@ -136,7 +136,7 @@
   padding-right: 20px;
   height: 100%;
   position: relative;
-  left: 25px;
+  left: 15px;
   width: calc(100% - 50px);
   overflow-y: auto;
   overflow-x: auto; }
@@ -148,7 +148,7 @@
 .div_system_info::-webkit-scrollbar,
 .imfowdwqdd::-webkit-scrollbar {
   width: 11px;
-  background-color: #26262e; }
+  background-color: #1b1c30; }
 
 .console::-webkit-scrollbar-thumb,
 .main_div::-webkit-scrollbar-thumb,
@@ -156,7 +156,7 @@
 .div_wifi_info::-webkit-scrollbar-thumb,
 .div_system_info::-webkit-scrollbar-thumb,
 .imfowdwqdd::-webkit-scrollbar-thumb {
-  background-color: #1b1a1f; }
+  background-color: #22223a; }
 
 .modal_rev_button_d {
   color: #ff5c5c; }
@@ -200,17 +200,17 @@
 .wifi_3_div {
   color: #ffffffa5; }
 
+.wifi_3_div_red {
+  color: #ff5c5c; }
+
 .wifi_3_div,
 .wifi_3_div_red {
   color: #ffffffa5;
   font-weight: bold; }
 
-.wifi_3_div_red {
-  color: #ff5c5c; }
-
 .main_text_wifi {
   font-size: 40px;
-  color: #37cc34;
+  color: #766aff;
   text-align: center;
   position: absolute;
   top: 50%;
@@ -225,7 +225,7 @@
 .div_wifi_info {
   position: relative;
   width: calc(100% + 40px);
-  background-color: #222128;
+  background-color: #32344d;
   top: 15px;
   height: calc(100% - 420px);
   overflow: auto;
@@ -234,7 +234,7 @@
 .img_wifi {
   position: relative;
   width: 100%;
-  background-color: #222128;
+  background-color: #32344d;
   height: 340px;
   border-radius: 5px;
   padding: 20px; }
@@ -245,7 +245,7 @@
 .wifi_all_div {
   position: relative;
   float: right;
-  background-color: #222128;
+  background-color: #32344d;
   width: 390px;
   left: -25px;
   height: calc(100% - 20px);
@@ -258,13 +258,13 @@
   margin-top: 20px;
   width: 100%;
   height: 35px;
-  background-color: #26262e;
+  background-color: #22223a;
   border-radius: 5px; }
 
 .name_wifi_div_all {
   position: relative;
   font-size: 16px;
-  color: #37cc34;
+  color: #766aff;
   top: 8px;
   left: 10px;
   float: left;
@@ -279,7 +279,7 @@
   float: right; }
 
 .border_active_grran {
-  background-color: #1b1a1f; }
+  background-color: #1b1c30; }
 
 /* settings page */
 /* settings page */
@@ -301,13 +301,13 @@
 /* settings page */
 .settings_main_tetx {
   font-size: 19px;
-  color: #37cc34;
+  color: #766aff;
   font-weight: bold; }
 
 .settings_div {
   position: relative;
   margin-bottom: 20px;
-  background-color: #222128;
+  background-color: #32344d;
   padding: 10px;
   border-radius: 5px;
   width: calc(100% - 40px); }
@@ -315,7 +315,7 @@
 .button_settings {
   border: none;
   padding: 7px;
-  background-color: #1b1a1f;
+  background-color: #22223a;
   color: #ffffffa5;
   font-size: 15px;
   border-radius: 5px;
@@ -336,7 +336,7 @@
   position: relative;
   border: none;
   padding: 6px;
-  background-color: #26262e;
+  background-color: #1b1c30;
   color: #ffffffa5;
   font-size: 15px; }
 
@@ -345,17 +345,17 @@
   color: #ffffffa5;
   padding: 7px;
   font-size: 15px;
-  background-color: #1b1a1f;
+  background-color: #22223a;
   border-radius: 5px; }
   .saert45trgf:focus {
     outline: none;
     box-shadow: none;
-    color: #37cc34; }
+    color: #766aff; }
 
 .zxbnmewd {
   border: none;
   padding: 7px;
-  background-color: #1b1a1f;
+  background-color: #22223a;
   color: #ffffffa5;
   font-size: 15px;
   border-radius: 5px;
@@ -363,7 +363,7 @@
   border: solid 2px #ffffff00;
   cursor: pointer; }
   .zxbnmewd:hover {
-    color: #37cc34;
+    color: #766aff;
     opacity: 0.6; }
 
 /* about page */
@@ -389,7 +389,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #222128;
+  background-color: #32344d;
   width: 70%;
   height: 70%;
   overflow-y: auto;
@@ -402,7 +402,7 @@
   position: relative;
   text-align: center;
   font-size: 30px;
-  color: #37cc34;
+  color: #766aff;
   font-weight: bold; }
 
 .about_desc_text {
@@ -454,7 +454,7 @@
 
 .name_system {
   font-size: 18px;
-  color: #37cc34;
+  color: #766aff;
   font-weight: bold; }
 
 #ndwe8rfier {
@@ -484,7 +484,7 @@
   width: 500px;
   height: 370px;
   border-radius: 10px;
-  background-color: #222128; }
+  background-color: #32344d; }
 
 .img_os {
   position: absolute;
@@ -496,7 +496,7 @@
 
 .div_system_info {
   position: relative;
-  background-color: #222128;
+  background-color: #32344d;
   width: 500px;
   height: calc(100% - 430px);
   overflow-y: auto;
@@ -509,7 +509,7 @@
 
 .imfowdwqdd {
   position: relative;
-  background-color: #222128;
+  background-color: #32344d;
   width: calc(100% - 565px);
   height: 100%;
   left: -25px;
@@ -522,7 +522,7 @@
   float: left;
   font-size: 24px;
   font-weight: bold;
-  color: #37cc34;
+  color: #766aff;
   margin-right: 100px; }
 
 /* cleaning page */
@@ -549,7 +549,7 @@
   left: 60%;
   padding: 20px;
   transform: translate(-60%, -50%);
-  background-color: #222128;
+  background-color: #32344d;
   height: 600px;
   width: 600px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -560,12 +560,12 @@
   .dqeeefc1 ul {
     position: relative;
     left: 20px;
-    color: #37cc34;
+    color: #766aff;
     font-size: 17px; }
   .dqeeefc1 button {
     border: none;
     padding: 7px;
-    background-color: #1b1a1f;
+    background-color: #22223a;
     color: #ffffffa5;
     font-size: 15px;
     border-radius: 5px;
@@ -574,8 +574,8 @@
     cursor: pointer;
     font-weight: bold; }
   .dqeeefc1 button:hover {
-    color: #37cc34;
-    border: solid 2px #37cc34; }
+    color: #766aff;
+    border: solid 2px #766aff; }
 
 .dwfe3ru43ff {
   font-size: 19px;
@@ -632,7 +632,7 @@
   padding-right: 40px;
   font-weight: bold;
   color: #ffffffa5;
-  background-color: #1b1a1f;
+  background-color: #22223a;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   font-size: 20px;
   border: none;
@@ -643,12 +643,12 @@
   .dvwe5tgg:focus {
     outline: none;
     box-shadow: none;
-    color: #37cc34; }
+    color: #766aff; }
 
 .dwwccv7u3jf {
   border: none;
   padding: 7px;
-  background-color: #222128;
+  background-color: #32344d;
   color: #ffffffa5;
   font-size: 18px;
   border-radius: 5px;
@@ -668,7 +668,7 @@
   position: relative;
   width: calc(100% - 30px);
   left: -20px;
-  background-color: #222128;
+  background-color: #32344d;
   height: calc(100% - 370px);
   border-radius: 5px; }
 
@@ -676,11 +676,11 @@
   font-size: 34px; }
 
 .dd223dfwef {
-  color: #37cc34;
+  color: #766aff;
   font-size: 24px; }
 
 .weirwnofqwd_w {
-  background-color: #1b1a1f;
+  background-color: #22223a;
   height: calc(100% - 190px);
   width: calc(100% - 420px);
   border-radius: 5px; }
@@ -707,7 +707,7 @@
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  color: #37cc34;
+  color: #766aff;
   margin-bottom: 5px; }
 
 .form__container.active {
@@ -725,7 +725,7 @@
 .wd32we4f {
   border: none;
   padding: 7px;
-  background-color: #222128;
+  background-color: #32344d;
   color: #ffffffa5;
   font-size: 19px;
   border-radius: 5px;
@@ -748,7 +748,7 @@
 .dwdwffff22 {
   position: relative;
   width: calc(100% - 30px);
-  background-color: #222128;
+  background-color: #32344d;
   height: calc(100% - 590px);
   left: -20px;
   border-radius: 5px;
@@ -764,7 +764,7 @@
   color: #ff5c5c; }
 
 .f343ffv1 {
-  color: #37cc34; }
+  color: #766aff; }
 
 .fweufweffff {
   font-size: 17px;
@@ -774,7 +774,7 @@
   border-radius: 5px;
   border: solid 2px #ffffff00;
   transition: all .3s;
-  background-color: #1b1a1f;
+  background-color: #22223a;
   margin: 0 auto;
   display: block;
   padding: 7px;
@@ -782,11 +782,11 @@
   position: relative;
   top: -40px; }
   .fweufweffff:hover {
-    border: solid 2px #37cc34;
-    color: #37cc34; }
+    border: solid 2px #766aff;
+    color: #766aff; }
 
 .deferghhhh777 {
-  color: #37cc34;
+  color: #766aff;
   font-size: 17px;
   font-weight: bold; }
 
@@ -800,14 +800,14 @@
   padding: 7px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #1b1a1f;
+  background-color: #22223a;
   font-weight: bold;
   transition: all .3s;
   border: solid 2px #ffffff00;
   color: #ffffffa5; }
   .thnnredf:hover {
-    border: solid 2px #37cc34;
-    color: #37cc34; }
+    border: solid 2px #766aff;
+    color: #766aff; }
 
 .ddwdcvvvwwqsz {
   position: relative;
@@ -818,11 +818,11 @@
   font-weight: bold;
   font-size: 15.5px;
   border: solid 2px #ffffff00;
-  background-color: #1b1a1f;
+  background-color: #22223a;
   color: #ffffffa5;
   width: 73%; }
   .ddwdcvvvwwqsz:focus {
     outline: none;
     box-shadow: none;
-    border: solid 2px #37cc34;
-    color: #37cc34; }
+    border: solid 2px #766aff;
+    color: #766aff; }

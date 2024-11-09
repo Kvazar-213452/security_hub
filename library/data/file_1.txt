@@ -1,10 +1,3 @@
-TP-LINK_B138|91%
-TP-Link_3C28|30%
-St. Razina 12|18%
-Zsolt 2,4|18%
-Гость|18%
-MTS_Connect|38%
-TP-Link_579C|15%
-TP-Link_1ACE_EXT|23%
-Misha|35%
 TP-LINK_B138|95%
+TP-LINK_B138|91%
+MTS_Connect|38%

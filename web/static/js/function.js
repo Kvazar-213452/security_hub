@@ -1,5 +1,6 @@
 function button_hover(name) {
     $("#" + name).css("opacity", "1");
+    $("#" + name).css("background-color", "#565574");
 }
 
 function fetchLogs() {
