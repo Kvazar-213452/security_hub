@@ -1,11 +1,11 @@
 package page
 
 import (
+	"encoding/json"
 	"fmt"
-	config_main "head/main_com/config"
 	"head/main_com/func_all"
+	"head/main_com/page_func"
 	"net/http"
-	"syscall"
 )
 
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
@@ -13,35 +13,39 @@ import (
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 
+type CleanupData struct {
+	Backup  int `json:"backup"`
+	Wifi    int `json:"wifi"`
+	Desktop int `json:"desktop"`
+	Doskey  int `json:"doskey"`
+}
+
 func Post_cleanup(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("cleanup")
+		var dataCleanup CleanupData
 
-		cleanup()
+		err := json.NewDecoder(r.Body).Decode(&dataCleanup)
+		if err != nil {
+			http.Error(w, "Невірний формат JSON", http.StatusBadRequest)
+			return
+		}
+
+		if dataCleanup.Wifi == 1 {
+			page_func.Cleanup_wifi()
+		} else if dataCleanup.Backup == 1 {
+			page_func.Cleanup_backup()
+			fmt.Printf("Backup: %d\n", dataCleanup.Backup)
+		} else if dataCleanup.Desktop == 1 {
+			page_func.Cleanup_desktop()
+		} else if dataCleanup.Doskey == 1 {
+			page_func.Cleanup_doskey()
+		}
+
+		func_all.AppendToLog("cleanup")
+		page_func.Cleanup()
 
 		w.Write(nil)
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}
-}
-
-//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func
-//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func
-//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func
-//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func//func
-
-func cleanup() {
-	cleanupDLL, err := syscall.LoadDLL(config_main.Cleanup_dll)
-	if err != nil {
-		fmt.Printf("Не вдалося завантажити DLL: %v\n", err)
-		return
-	}
-	defer cleanupDLL.Release()
-
-	cleanupProc, err := cleanupDLL.FindProc("cleanup")
-	if err != nil {
-		return
-	}
-
-	cleanupProc.Call()
 }

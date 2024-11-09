@@ -517,8 +517,7 @@
 /* cleaning page */
 /* cleaning page */
 /* cleaning page */
-.deccc,
-.deccc1 {
+.deccc {
   transition: all .3s;
   margin-right: 10px; }
 
@@ -534,18 +533,6 @@
   cursor: pointer;
   font-weight: bold; }
 
-.deccc1 {
-  border: none;
-  padding: 7px;
-  background-color: #1b1c30;
-  color: #506aff;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: all .3s;
-  border: solid 2px #ffffff00;
-  cursor: pointer;
-  font-weight: bold; }
-
 .toggle-btn {
   color: #fff;
   cursor: pointer; }
@@ -553,8 +540,10 @@
 .toggle-btn:hover {
   color: #766aff; }
 
-.deccc:hover,
-.deccc1:hover {
+.deccc:hover {
+  opacity: 0.6; }
+
+.ump_button:hover {
   opacity: 0.6; }
 
 .dropdown-content {
@@ -571,6 +560,22 @@
   height: 2px;
   background-color: #766aff;
   top: 5px; }
+
+.dqfeffggg {
+  position: relative;
+  left: 18px; }
+
+.ump_button {
+  border: none;
+  padding: 7px;
+  background-color: #32344d;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 5px;
+  transition: all .3s;
+  border: solid 2px #ffffff00;
+  cursor: pointer;
+  transition: all .3s; }
 
 /* antivirus page */
 /* antivirus page */

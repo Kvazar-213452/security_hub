@@ -16,21 +16,45 @@
                 <br>
                 <div class="imfowdwqdd">
                     <div class="padoge">
+                        <p class="name_system">Інформація очистки</p>
+                        <ul class="dqfeffggg">
+                            <li>Очищення DNS та ARP-таблиць</li>
+                            <li>Журнали файлової системи</li>
+                            <li>Видалення історії відкритих шляхів</li>
+                            <li>Очищення інтернет-кешу</li>
+                            <li>Видалення специфічних файлів</li>
+                            <li>Видалення тимчасових файлів, кешу та логів</li>
+                        </ul>
+                        <br>
+                        <button class="deccc" onclick="cleanup()">Очистити компютер</button>
+                    </div>
+                </div>
+                <br>
+                <div class="imfowdwqdd">
+                    <div class="padoge">
+                        <p class="name_system">Додаткові налаштування</p>
+                        <br>
                         <p class="toggle-btn">Видалити резервні копії Windows</p>
                         <div class="dropdown-content" id="dropdown1">
                             <p>Налаштування "Видалити резервні копії Windows" видаляє збережені резервні копії системи, які створювалися для відновлення Windows у випадку збою або втрати даних. Резервні копії можуть включати зображення системи (системні копії), точки відновлення, а також автоматичні архіви файлів.</p>
+                            <br>
+                            <button class="ump_button" data-data="backup">Встановити</button>
                         </div>
                         <div class="hr_div1"></div>
                         <br><br>
                         <p class="toggle-btn">Видалити всі профілі Wi-Fi</p>
                         <div class="dropdown-content">
                             <p>Налаштування "Видалити всі профілі Wi-Fi" призведе до видалення збережених профілів бездротових мереж, до яких підключався ваш пристрій.</p>
+                            <br>
+                            <button class="ump_button" data-data="wifi">Встановити</button>
                         </div>
                         <div class="hr_div1"></div>                   
                         <br><br>
                         <p class="toggle-btn">Видалити налаштування підключення до віддаленого робочого столу.</p>
                         <div class="dropdown-content">
                             <p>Налаштування "Видалити налаштування підключення до віддаленого робочого столу" видаляє збережені конфігурації та історію підключень до віддалених робочих столів. </p>
+                            <br>
+                            <button class="ump_button" data-data="desktop">Встановити</button>
                         </div>
                         <div class="hr_div1"></div>
                         <br><br>
@@ -41,11 +65,10 @@
                                 <br><br>
                                 Перезапуск doskey очищає історію команд та скидає всі визначені макроси. Це може бути корисним для скидання середовища командного рядка до початкового стану.
                             </p>
+                            <br>
+                            <button class="ump_button" data-data="doskey">Встановити</button>
                         </div>
-                        <div class="hr_div1"></div>
-                        <br><br>
-                        <button class="deccc1" onclick="cleanup()">Зберегти налаштування</button>
-                        <button class="deccc" onclick="cleanup()">Очистити компютер</button>
+                        <div class="hr_div1"></div>     
                     </div>
                 </div>
             </div>

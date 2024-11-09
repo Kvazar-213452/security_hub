@@ -393,8 +393,7 @@
 /* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page */
 /* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page */
 
-.deccc,
-.deccc1 {
+.deccc{
     transition: all .3s;
     margin-right: 10px
 }
@@ -404,19 +403,14 @@
     font-weight: bold;
 }
 
-.deccc1 {
-    @include button($blue, $bg_color, 16px);
-    font-weight: bold;
-}
-
 .toggle-btn {
     color: $white;
     cursor: pointer;
 }
 
 .toggle-btn:hover {color: $violet;}
-.deccc:hover,
-.deccc1:hover {opacity: 0.6;}
+.deccc:hover {opacity: 0.6;}
+.ump_button:hover {opacity: 0.6;}
 
 .dropdown-content {
     display: none;
@@ -433,6 +427,16 @@
     height: 2px;
     background-color: $violet;
     top: 5px;
+}
+
+.dqfeffggg{
+    position: relative;
+    left: 18px;
+}
+
+.ump_button {
+    @include button($white, $bg_color1, 15px);
+    transition: all .3s;
 }
 
 /* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page */

@@ -9,31 +9,6 @@ fsutil behavior set encryptpagingfile 1
 fsutil behavior set disablelastaccess 1
 reg delete "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths" /va /f
 
-attrib /d /s -r -h -s "%LocalAppData%\Microsoft\Windows\Explorer\thumbcache*"
-attrib /d /s -r -h -s "%userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt"
-attrib /d /s -r -h -s "C:\ProgramData\Microsoft\Wlansvc\Profiles\Interfaces\*"
-attrib /d /s -r -h -s "%userprofile%\AppData\Local\Microsoft\Windows\Explorer\*.db"
-attrib /d /s -r -h -s "%userprofile%\AppData\Local\Microsoft\Windows\Explorer\*.etl"
-attrib /d /s -r -h -s "%userprofile%\AppData\Local\ConnectedDevicesPlatform\*.*"
-attrib /d /s -r -h -s "%AppData%\Microsoft\Windows\Recent\AutomaticDestinations\*.*"
-attrib /d /s -r -h -s "%AppData%\Microsoft\Windows\Recent\CustomDestinations\*.*"
-attrib /d /s -r -h -s "%SystemRoot%\AppCompat\Programs\*.*"
-attrib /d /s -r -h -s "C:\Windows\appcompat\Programs\Install\*.*"
-attrib /d /s -r -h -s "C:\Windows\System32\sru\*.*"
-attrib /d /s -r -h -s "%userprofile%\AppData\Local\Temp\*.*"
-attrib /d /s -r -h -s "C:\Windows\Temp\*.*"
-attrib /d /s -r -h -s "C:\Windows\AppCompat\Programs\Amcache\sysmain.sdb"
-attrib /d /s -r -h -s "C:\Windows\AppCompat\Programs\Amcache\*.*"
-attrib /d /s -r -h -s "C:\ProgramData\Microsoft\Diagnosis\EventTranscript\*.*"
-attrib /d /s -r -h -s "%UserProfile%\AppData\Local\Microsoft\Windows\Notifications\*.*"
-attrib /d /s -r -h -s "%userprofile%\AppData\Local\Microsoft\Terminal Server Client\*.*"
-attrib /d /s -r -h -s "C:\ProgramData\Microsoft\Windows\WER\*.*"
-attrib /d /s -r -h -s "%userprofile%\Appdata\Local\Microsoft\Windows\WER\*.*"
-attrib /d /s -r -h -s "%windir%\System32\LogFiles\Sum\*.*"
-attrib /d /s -r -h -s "C:\Windows\apppatch\*.sdb"
-attrib /d /s -r -h -s "%windir%\SoftwareDistribution\DataStore\*.*"
-attrib /d /s -r -h -s "C:\ProgramData\Microsoft\Search\Data\Applications\Windows\*.*"
-
 erase "%ALLUSERSPROFILE%\TEMP\*.*" /f /s /q
 for /D %%i in ("%ALLUSERSPROFILE%\TEMP\*") do RD /S /Q "%%i"
 
