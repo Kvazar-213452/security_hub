@@ -20,7 +20,7 @@ void start_webview(int port) {
 
         webview::webview w(false, nullptr);
         w.set_title(name_app);
-        w.set_size(window_h, window_w, WEBVIEW_HINT_NONE);
+        w.set_size(window_h, window_w, WEBVIEW_HINT_FIXED);
         w.set_html(html_content_core);
         w.run();
         webview_closed.store(true);
@@ -29,7 +29,6 @@ void start_webview(int port) {
         exit(1);
     }
 }
-
 void monitor_webview() {
     while (!webview_closed.load()) {
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
