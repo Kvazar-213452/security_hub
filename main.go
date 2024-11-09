@@ -43,7 +43,6 @@ func main() {
 	http.HandleFunc("/cleaning", main_com.Render_cleaning)
 	http.HandleFunc("/antivirus", main_com.Render_antivirus)
 	http.HandleFunc("/encryption", main_com.Render_encryption)
-	http.HandleFunc("/browser_site_app", main_com.Browser_site_app)
 
 	// Post
 	http.HandleFunc("/get_wifi_now", page.Post_gagat_network)
@@ -64,6 +63,7 @@ func main() {
 	http.HandleFunc("/port_change", page.Post_port_change)
 	http.HandleFunc("/server_change", page.Post_server_change)
 	http.HandleFunc("/shell_change", page.Post_shell_change)
+	http.HandleFunc("/browser_site_app", main_com.Post_Browser_site_app)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)

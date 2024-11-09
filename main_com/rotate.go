@@ -6,8 +6,6 @@ import (
 	"html/template"
 	"net/http"
 	"os"
-
-	"github.com/pkg/browser"
 )
 
 func Render_index_page(w http.ResponseWriter, r *http.Request) {
@@ -154,11 +152,4 @@ func Render_encryption(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-}
-
-func Browser_site_app(w http.ResponseWriter, r *http.Request) {
-	func_all.AppendToLog("transition to /Browser_site_app")
-
-	url := "https://spx-security-hub.wuaze.com/"
-	browser.OpenURL(url)
 }

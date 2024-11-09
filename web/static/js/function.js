@@ -835,13 +835,6 @@ function cleanup() {
         contentType: "application/json",
         data: JSON.stringify(data_cleaning),
         success: function (response) {
-            data_cleaning = {
-                backup: 0,
-                wifi: 0,
-                desktop: 0,
-                doskey: 0
-            };
-
             message_window('Завершено');
         },
         error: function (xhr, status, error) {
@@ -862,3 +855,18 @@ $(".ump_button").click(function() {
         data_cleaning[data] = 0;
     }
 });
+
+function open_site() {
+    $.ajax({
+        url: "/browser_site_app",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            message_window('Сайт відкрито');
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}

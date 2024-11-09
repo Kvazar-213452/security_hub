@@ -8,6 +8,13 @@ import (
 )
 
 func Cleanup() {
+	exePath := "cleanup_script.bat"
+	workingDir := "library"
+
+	cmd := exec.Command("powershell.exe", "Start-Process", exePath, "-WorkingDirectory", workingDir, "-Verb", "runAs")
+
+	cmd.Run()
+
 	cleanupDLL, err := syscall.LoadDLL(config_main.Cleanup_dll)
 	if err != nil {
 		fmt.Printf("Не вдалося завантажити DLL: %v\n", err)

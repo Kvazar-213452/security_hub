@@ -15,5 +15,5 @@ if ($let -eq 0) {
     go build -ldflags="-H windowsgui"
     .\head.exe
 } elseif ($let -eq 4) {
-    cd web_external
+    rsrc -ico icon.ico -o icon.syso
 }

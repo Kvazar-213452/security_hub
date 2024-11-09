@@ -535,7 +535,8 @@
 
 .toggle-btn {
   color: #fff;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: all .3s; }
 
 .toggle-btn:hover {
   color: #766aff; }

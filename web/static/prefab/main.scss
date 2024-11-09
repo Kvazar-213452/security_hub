@@ -406,6 +406,7 @@
 .toggle-btn {
     color: $white;
     cursor: pointer;
+    transition: all .3s;
 }
 
 .toggle-btn:hover {color: $violet;}

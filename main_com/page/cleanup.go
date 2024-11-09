@@ -2,7 +2,6 @@ package page
 
 import (
 	"encoding/json"
-	"fmt"
 	"head/main_com/func_all"
 	"head/main_com/page_func"
 	"net/http"
@@ -34,7 +33,6 @@ func Post_cleanup(w http.ResponseWriter, r *http.Request) {
 			page_func.Cleanup_wifi()
 		} else if dataCleanup.Backup == 1 {
 			page_func.Cleanup_backup()
-			fmt.Printf("Backup: %d\n", dataCleanup.Backup)
 		} else if dataCleanup.Desktop == 1 {
 			page_func.Cleanup_desktop()
 		} else if dataCleanup.Doskey == 1 {
