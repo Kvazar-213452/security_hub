@@ -35,7 +35,7 @@ std::string html_content = R"(
         .ew32fe,
         .ew32fe1 {
             padding: 7px;
-            background-color: #55c959;
+            background-color: #766aff;
             font-size: 16px;
             border: none;
             border-radius: 5px;
@@ -67,7 +67,7 @@ std::string html_content = R"(
             height: 80px;
         }
 
-        .dest{color: #55c959c8;}
+        .dest{color: #766affc8;}
 
         .wdqe333{color: #ffffff;}
 
@@ -81,12 +81,12 @@ std::string html_content = R"(
 
         .edwe{color: #ffffff;}
 
-        .e332s{color: #55c959;}
+        .e332s{color: #766aff;}
     </style>
 </head>
 <body>
     <h1>Інсталятор Security Hub</h1>
-    <img class="imfe" src="http://spx-security-hub.wuaze.com/static/img/9.png">
+    <img class="imfe" src="https://raw.githubusercontent.com/Kvazar-213452/security_hub/refs/heads/main/web/static/img/9.png">
     <br><br><br>
     <p class="dest">Опубліковано 09.11.2024</p>
     <p class="dest">Версія 3</p>
