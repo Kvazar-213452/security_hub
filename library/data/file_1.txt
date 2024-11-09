@@ -1,3 +1,8 @@
-TP-LINK_B138|95%
-TP-LINK_B138|91%
-MTS_Connect|38%
+TP-LINK_B138|87%
+TP-LINK_B138|87%
+TP-Link_3C28|33%
+Гость|25%
+MTS_Connect|35%
+TP-Link_1ACE_EXT|25%
+TP-Link_1ACE|21%
+Misha|26%

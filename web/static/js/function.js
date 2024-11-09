@@ -25,7 +25,7 @@ function button_active(name, mas) {
     });
 
     $("#" + name).css({
-        "color": "#55c959"
+        "color": "#766aff"
     });
 }
 
@@ -453,7 +453,7 @@ function cleanup() {
 }
 
 function button_active_antivitys(name) {
-    $("#" + name).css("color", "#55c959");
+    $("#" + name).css("color", "#766aff");
 }
 
 function antivirus_web_start() {
@@ -830,3 +830,15 @@ function button_settings_change(val, url) {
         }
     });
 }
+
+$(".toggle-btn").click(function() {
+    let nextDropdown = $(this).next(".dropdown-content");
+    
+    if (nextDropdown.css("display") === "none") {
+        nextDropdown.show();
+        $(this).css("color", "#766aff");
+    } else if (nextDropdown.css("display") === "block") {
+        nextDropdown.hide();
+        $(this).css("color", "#fff");
+    }
+});

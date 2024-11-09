@@ -60,11 +60,9 @@
     transform: translateY(100%);
 }
 
-.button {@include menu_button($white, 10px, 100%);}
-
-.button1 {@include menu_button($white, 12px, 100%);}
-
-.button2 {@include menu_button($read, 14px, 0%);}
+.button {@include menu_button($white, 7px, 100%);}
+.button1 {@include menu_button($white, 9px, 100%);}
+.button2 {@include menu_button($read, 11px, 0%);}
 
 .main{
     position: fixed;
@@ -106,7 +104,13 @@
 /* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
 /* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
 
-#chart {height: 100%;}
+.ed3wed{
+    color: $violet;
+    font-weight: bold;
+    position: relative;
+    float: left;
+    margin-right: 5px;
+}
 
 .circle {
     cursor: pointer;
@@ -121,14 +125,9 @@
     font-size: 12px;
 }
 
-.wifi_3_div{color: $text_color;}
-.wifi_3_div_red{color: $read;}
-
-.wifi_3_div,
-.wifi_3_div_red{
-    color: $text_color;
-    font-weight: bold;
-}
+#chart {height: 100%;}
+.padoge{padding: 20px;}
+.border_active_grran{background-color: $bg_color;}
 
 .main_text_wifi {
     font-size: 40px;
@@ -151,7 +150,7 @@
     width: calc(100% + 40px);
     background-color: $bg_color1;
     top: 15px;
-    height: calc(100% - 420px);
+    height: calc(100% - 520px);
     overflow: auto;
     border-radius: 5px;
 }
@@ -165,15 +164,13 @@
     padding: 20px;
 }
 
-.padoge{padding: 20px;}
-
 .wifi_all_div{
     position: relative;
     float: right;
     background-color: $bg_color1;
     width: 390px;
     left: -25px;
-    height: calc(100% - 20px);
+    height: calc(100% - 110px);
     overflow-y: auto;
     border-radius: 5px;
 }
@@ -206,8 +203,6 @@
     left: -10px;
     float: right;
 }
-
-.border_active_grran{background-color: $bg_color;}
 
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
@@ -346,11 +341,6 @@
     font-weight: bold;
 }
 
-#ndwe8rfier{
-    position: relative;
-    left: 20px;
-}
-
 .desc_o,
 .desc_o_1,
 .desc_o_2,
@@ -365,47 +355,29 @@
 .desc_o_2{left: 80%;}
 .desc_o_3{left: 75%;}
 
-.system_div_os{
-    position: relative;
-    width: 500px;
-    height: 370px;
-    border-radius: 10px;
-    background-color: $bg_color1;
-}
-
-.img_os{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    height: 350px;
-    width: auto;
-}
-
 .div_system_info{
     position: relative;
     background-color: $bg_color1;
-    width: 500px;
-    height: calc(100% - 430px);
+    width: calc(100% - 20px);
+    height: 350px;
     overflow-y: auto;
     border-radius: 10px;
-    top: 35px;
-}
 
-.wddxxq{
-    position: relative;
-    float: left;
+    span {
+        position: relative;
+        top: 20px;
+        left: 20px;
+    }
 }
 
 .imfowdwqdd{
     position: relative;
     background-color: $bg_color1;
-    width: calc(100% - 565px);
-    height: 100%;
-    left: -25px;
+    width: calc(100% - 20px);
     overflow-y: auto;
+    overflow-x: hidden;
     border-radius: 10px;
-    float: right;
+    margin-bottom: 20px;
 }
 
 .wefewfvgg4{
@@ -421,44 +393,46 @@
 /* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page */
 /* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page */
 
-.dqeeefc1{
-    position: fixed;
-    top: 50%;
-    left: 60%;
-    padding: 20px;
-    transform: translate(-60%, -50%);
-    background-color: $bg_color1;
-    height: 600px;
-    width: 600px;
-    box-shadow: 0 4px 20px $null_bleck;
-    border-radius: 10px;
-
-    h1 {
-        position: relative;
-        text-align: center;
-    }
-
-    ul {
-        position: relative;
-        left: 20px;
-        color: $violet;
-        font-size: 17px;
-    }
-
-    button {
-        @include button($text_color, $bg_color2, 15px);
-        font-weight: bold;
-    }
-
-    button:hover {
-        color: $violet;
-        border: solid 2px $violet;
-    }
+.deccc,
+.deccc1 {
+    transition: all .3s;
+    margin-right: 10px
 }
 
-.dwfe3ru43ff{
-    font-size: 19px;
+.deccc {
+    @include button($violet, $bg_color, 16px);
     font-weight: bold;
+}
+
+.deccc1 {
+    @include button($blue, $bg_color, 16px);
+    font-weight: bold;
+}
+
+.toggle-btn {
+    color: $white;
+    cursor: pointer;
+}
+
+.toggle-btn:hover {color: $violet;}
+.deccc:hover,
+.deccc1:hover {opacity: 0.6;}
+
+.dropdown-content {
+    display: none;
+    padding: 10px;
+    background-color: $bg_color2;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    width: calc(100% - 30px);
+    margin-top: 10px;
+}
+
+.hr_div1{
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: $violet;
+    top: 5px;
 }
 
 /* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page */

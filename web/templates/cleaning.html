@@ -10,18 +10,43 @@
         {{template "console.html" .}}
         <div class="main">
             <div class="main_div">
-                <div class="dqeeefc1">
-                    <h1>Очищення</h1>
-                    <br>
-                    <p class="dwfe3ru43ff">Очиститься:</p>
-                    <br>
-                    <ul>
-                        <li>тимчасові файли інтернету</li><br>
-                        <li>файли завантаження програм</li><br>
-                        <li>кошик</li><br>
-                    </ul>
-                    <br>
-                    <button onclick="cleanup()">Очистити компютер</button>
+                <br>
+                <p class="name_page">Cleaning pc</p>
+                <p class="description_page">Cleaning pc</p>
+                <br>
+                <div class="imfowdwqdd">
+                    <div class="padoge">
+                        <p class="toggle-btn">Видалити резервні копії Windows</p>
+                        <div class="dropdown-content" id="dropdown1">
+                            <p>Налаштування "Видалити резервні копії Windows" видаляє збережені резервні копії системи, які створювалися для відновлення Windows у випадку збою або втрати даних. Резервні копії можуть включати зображення системи (системні копії), точки відновлення, а також автоматичні архіви файлів.</p>
+                        </div>
+                        <div class="hr_div1"></div>
+                        <br><br>
+                        <p class="toggle-btn">Видалити всі профілі Wi-Fi</p>
+                        <div class="dropdown-content">
+                            <p>Налаштування "Видалити всі профілі Wi-Fi" призведе до видалення збережених профілів бездротових мереж, до яких підключався ваш пристрій.</p>
+                        </div>
+                        <div class="hr_div1"></div>                   
+                        <br><br>
+                        <p class="toggle-btn">Видалити налаштування підключення до віддаленого робочого столу.</p>
+                        <div class="dropdown-content">
+                            <p>Налаштування "Видалити налаштування підключення до віддаленого робочого столу" видаляє збережені конфігурації та історію підключень до віддалених робочих столів. </p>
+                        </div>
+                        <div class="hr_div1"></div>
+                        <br><br>
+                        <p class="toggle-btn">Перезапустити командний процесор doskey</p>
+                        <div class="dropdown-content">
+                            <p>
+                                Налаштування "Перезапускає командний процесор doskey" оновлює роботу командного процесора doskey
+                                <br><br>
+                                Перезапуск doskey очищає історію команд та скидає всі визначені макроси. Це може бути корисним для скидання середовища командного рядка до початкового стану.
+                            </p>
+                        </div>
+                        <div class="hr_div1"></div>
+                        <br><br>
+                        <button class="deccc1" onclick="cleanup()">Зберегти налаштування</button>
+                        <button class="deccc" onclick="cleanup()">Очистити компютер</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -50,18 +50,19 @@
 .button {
   position: relative;
   width: calc(100% - 40px);
-  height: 50px;
+  height: 45px;
   left: 20px;
   transition: all .3s;
   cursor: pointer;
   color: #fff;
   opacity: 0.6;
-  border-radius: 10px; }
+  border-radius: 10px;
+  margin-bottom: 10px; }
   .button p {
     position: relative;
     left: 35px;
     font-size: 18px;
-    top: 15px; }
+    top: 12px; }
   .button:hover {
     background-color: #565574;
     opacity: 1; }
@@ -71,23 +72,24 @@
     position: relative;
     float: left;
     left: 20px;
-    top: 10px; }
+    top: 7px; }
 
 .button1 {
   position: relative;
   width: calc(100% - 40px);
-  height: 50px;
+  height: 45px;
   left: 20px;
   transition: all .3s;
   cursor: pointer;
   color: #fff;
   opacity: 0.6;
-  border-radius: 10px; }
+  border-radius: 10px;
+  margin-bottom: 10px; }
   .button1 p {
     position: relative;
     left: 35px;
     font-size: 18px;
-    top: 15px; }
+    top: 12px; }
   .button1:hover {
     background-color: #565574;
     opacity: 1; }
@@ -97,23 +99,24 @@
     position: relative;
     float: left;
     left: 20px;
-    top: 12px; }
+    top: 9px; }
 
 .button2 {
   position: relative;
   width: calc(100% - 40px);
-  height: 50px;
+  height: 45px;
   left: 20px;
   transition: all .3s;
   cursor: pointer;
   color: #ff5c5c;
   opacity: 0.6;
-  border-radius: 10px; }
+  border-radius: 10px;
+  margin-bottom: 10px; }
   .button2 p {
     position: relative;
     left: 35px;
     font-size: 18px;
-    top: 15px; }
+    top: 12px; }
   .button2:hover {
     background-color: #565574;
     opacity: 1; }
@@ -123,7 +126,7 @@
     position: relative;
     float: left;
     left: 20px;
-    top: 14px; }
+    top: 11px; }
 
 .main {
   position: fixed;
@@ -179,8 +182,12 @@
 /* index page */
 /* index page */
 /* index page */
-#chart {
-  height: 100%; }
+.ed3wed {
+  color: #766aff;
+  font-weight: bold;
+  position: relative;
+  float: left;
+  margin-right: 5px; }
 
 .circle {
   cursor: pointer;
@@ -193,20 +200,14 @@
   border-radius: 4px;
   font-size: 12px; }
 
-.wifi_main_content {
-  position: absolute;
-  left: 390px; }
+#chart {
+  height: 100%; }
 
-.wifi_3_div {
-  color: #ffffffa5; }
+.padoge {
+  padding: 20px; }
 
-.wifi_3_div_red {
-  color: #ff5c5c; }
-
-.wifi_3_div,
-.wifi_3_div_red {
-  color: #ffffffa5;
-  font-weight: bold; }
+.border_active_grran {
+  background-color: #1b1c30; }
 
 .main_text_wifi {
   font-size: 40px;
@@ -227,7 +228,7 @@
   width: calc(100% + 40px);
   background-color: #32344d;
   top: 15px;
-  height: calc(100% - 420px);
+  height: calc(100% - 520px);
   overflow: auto;
   border-radius: 5px; }
 
@@ -239,16 +240,13 @@
   border-radius: 5px;
   padding: 20px; }
 
-.padoge {
-  padding: 20px; }
-
 .wifi_all_div {
   position: relative;
   float: right;
   background-color: #32344d;
   width: 390px;
   left: -25px;
-  height: calc(100% - 20px);
+  height: calc(100% - 110px);
   overflow-y: auto;
   border-radius: 5px; }
 
@@ -277,9 +275,6 @@
   top: 9px;
   left: -10px;
   float: right; }
-
-.border_active_grran {
-  background-color: #1b1c30; }
 
 /* settings page */
 /* settings page */
@@ -457,10 +452,6 @@
   color: #766aff;
   font-weight: bold; }
 
-#ndwe8rfier {
-  position: relative;
-  left: 20px; }
-
 .desc_o,
 .desc_o_1,
 .desc_o_2,
@@ -479,43 +470,26 @@
 .desc_o_3 {
   left: 75%; }
 
-.system_div_os {
-  position: relative;
-  width: 500px;
-  height: 370px;
-  border-radius: 10px;
-  background-color: #32344d; }
-
-.img_os {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 350px;
-  width: auto; }
-
 .div_system_info {
   position: relative;
   background-color: #32344d;
-  width: 500px;
-  height: calc(100% - 430px);
+  width: calc(100% - 20px);
+  height: 350px;
   overflow-y: auto;
-  border-radius: 10px;
-  top: 35px; }
-
-.wddxxq {
-  position: relative;
-  float: left; }
+  border-radius: 10px; }
+  .div_system_info span {
+    position: relative;
+    top: 20px;
+    left: 20px; }
 
 .imfowdwqdd {
   position: relative;
   background-color: #32344d;
-  width: calc(100% - 565px);
-  height: 100%;
-  left: -25px;
+  width: calc(100% - 20px);
   overflow-y: auto;
+  overflow-x: hidden;
   border-radius: 10px;
-  float: right; }
+  margin-bottom: 20px; }
 
 .wefewfvgg4 {
   position: relative;
@@ -543,43 +517,60 @@
 /* cleaning page */
 /* cleaning page */
 /* cleaning page */
-.dqeeefc1 {
-  position: fixed;
-  top: 50%;
-  left: 60%;
-  padding: 20px;
-  transform: translate(-60%, -50%);
-  background-color: #32344d;
-  height: 600px;
-  width: 600px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 10px; }
-  .dqeeefc1 h1 {
-    position: relative;
-    text-align: center; }
-  .dqeeefc1 ul {
-    position: relative;
-    left: 20px;
-    color: #766aff;
-    font-size: 17px; }
-  .dqeeefc1 button {
-    border: none;
-    padding: 7px;
-    background-color: #22223a;
-    color: #ffffffa5;
-    font-size: 15px;
-    border-radius: 5px;
-    transition: all .3s;
-    border: solid 2px #ffffff00;
-    cursor: pointer;
-    font-weight: bold; }
-  .dqeeefc1 button:hover {
-    color: #766aff;
-    border: solid 2px #766aff; }
+.deccc,
+.deccc1 {
+  transition: all .3s;
+  margin-right: 10px; }
 
-.dwfe3ru43ff {
-  font-size: 19px;
+.deccc {
+  border: none;
+  padding: 7px;
+  background-color: #1b1c30;
+  color: #766aff;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: all .3s;
+  border: solid 2px #ffffff00;
+  cursor: pointer;
   font-weight: bold; }
+
+.deccc1 {
+  border: none;
+  padding: 7px;
+  background-color: #1b1c30;
+  color: #506aff;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: all .3s;
+  border: solid 2px #ffffff00;
+  cursor: pointer;
+  font-weight: bold; }
+
+.toggle-btn {
+  color: #fff;
+  cursor: pointer; }
+
+.toggle-btn:hover {
+  color: #766aff; }
+
+.deccc:hover,
+.deccc1:hover {
+  opacity: 0.6; }
+
+.dropdown-content {
+  display: none;
+  padding: 10px;
+  background-color: #22223a;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  width: calc(100% - 30px);
+  margin-top: 10px; }
+
+.hr_div1 {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: #766aff;
+  top: 5px; }
 
 /* antivirus page */
 /* antivirus page */
