@@ -1,5 +1,4 @@
 import eel
-import ctypes
 import sys
 
 width = sys.argv[1]

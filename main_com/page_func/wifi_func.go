@@ -3,6 +3,8 @@ package page_func
 import (
 	"bufio"
 	"fmt"
+	config_main "head/main_com/config"
+	"head/main_com/func_all"
 	"io/ioutil"
 	"log"
 	"os/exec"
@@ -181,6 +183,8 @@ func Get_available_Wifi_networks() ([]WifiNetwork, error) {
 		return nil, fmt.Errorf("помилка під час обробки даних: %v", err)
 	}
 
+	func_all.Clear_file(config_main.Global_phat + "\\library\\data\\file_1.txt")
+
 	return networks, nil
 }
 
@@ -200,6 +204,8 @@ func Get_connected_SSID() string {
 	if err != nil {
 		log.Fatalf("Не вдалося прочитати файл: %v\n", err)
 	}
+
+	func_all.Clear_file(config_main.Global_phat + "\\library\\data\\file.txt")
 
 	return string(data)
 }

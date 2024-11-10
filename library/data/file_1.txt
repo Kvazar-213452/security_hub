@@ -1,8 +1,0 @@
-TP-LINK_B138|95%
-TP-LINK_B138|99%
-St. Razina 12|21%
-TP-Link_3C28|23%
-TP-Link_579C|18%
-MTS_Connect|40%
-TP-Link_1ACE_EXT|21%
-Misha|18%

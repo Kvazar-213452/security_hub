@@ -186,3 +186,11 @@ func Get_phat_global() string {
 	exeDir := filepath.Dir(exePath)
 	return exeDir
 }
+
+func Clear_file(filePath string) {
+	file, err := os.OpenFile(filePath, os.O_TRUNC|os.O_WRONLY, 0644)
+	if err != nil {
+		//pass
+	}
+	defer file.Close()
+}

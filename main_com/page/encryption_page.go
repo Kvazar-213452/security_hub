@@ -24,11 +24,8 @@ func Post_encryption_file(w http.ResponseWriter, r *http.Request) {
 		filename_u := r.FormValue("filename")
 		filename := "data/encryption/" + filename_u
 
-		err := func_all.ClearDirectory("data/encryption")
-		if err != nil {
-			http.Error(w, "Не вдалося очистити директорію", http.StatusInternalServerError)
-			return
-		}
+		func_all.ClearDirectory("data/encryption")
+		func_all.ClearDirectory("web/static/data")
 
 		file, header, err := r.FormFile("file")
 		if err != nil {
@@ -38,11 +35,7 @@ func Post_encryption_file(w http.ResponseWriter, r *http.Request) {
 		defer file.Close()
 
 		savePath := "data/encryption"
-		err = os.MkdirAll(savePath, os.ModePerm)
-		if err != nil {
-			http.Error(w, "Помилка при створенні директорії", http.StatusInternalServerError)
-			return
-		}
+		os.MkdirAll(savePath, os.ModePerm)
 
 		filePath := filepath.Join(savePath, header.Filename)
 
@@ -68,11 +61,7 @@ func Post_encryption_file(w http.ResponseWriter, r *http.Request) {
 		}
 
 		encFilePath := config_main.Frontend_folder + "/static/data/main.enc"
-		err = os.WriteFile(encFilePath, encryptedContent, 0644)
-		if err != nil {
-			http.Error(w, "Помилка при збереженні зашифрованого файлу", http.StatusInternalServerError)
-			return
-		}
+		os.WriteFile(encFilePath, encryptedContent, 0644)
 
 		keyHex := hex.EncodeToString(key)
 		w.Write([]byte(keyHex))
@@ -89,6 +78,7 @@ func Post_decipher_file(w http.ResponseWriter, r *http.Request) {
 		filename := "data/decipher/" + "main.enc"
 
 		func_all.ClearDirectory("data/decipher")
+		func_all.ClearDirectory("web/static/data")
 
 		file, _, err := r.FormFile("file")
 		if err != nil {

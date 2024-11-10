@@ -43,6 +43,8 @@ func Post_antivirus_web(w http.ResponseWriter, r *http.Request) {
 
 		jsonData := func_all.ReadFileToJSON("data/inter.txt")
 
+		func_all.Clear_file(config_main.Global_phat + "\\data\\inter.txt")
+
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 
@@ -69,17 +71,9 @@ func Post_antivirus_web(w http.ResponseWriter, r *http.Request) {
 func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		saveDir := "data/bekend"
-		err := os.MkdirAll(saveDir, os.ModePerm)
-		if err != nil {
-			http.Error(w, "Не вдалося створити директорію", http.StatusInternalServerError)
-			return
-		}
+		os.MkdirAll(saveDir, os.ModePerm)
 
-		err = func_all.ClearDirectory(saveDir)
-		if err != nil {
-			http.Error(w, "Не вдалося очистити директорію", http.StatusInternalServerError)
-			return
-		}
+		func_all.ClearDirectory(saveDir)
 
 		file, fileHeader, err := r.FormFile("file")
 		if err != nil {

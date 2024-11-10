@@ -3,6 +3,9 @@ package page_func
 import (
 	"encoding/json"
 	"encoding/xml"
+	"fmt"
+	config_main "head/main_com/config"
+	"head/main_com/func_all"
 	"io/ioutil"
 	"log"
 	"os/exec"
@@ -12,6 +15,18 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/windows"
+)
+
+var (
+	user32                   = windows.NewLazySystemDLL("user32.dll")
+	procEnumWindows          = user32.NewProc("EnumWindows")
+	procGetWindowTextW       = user32.NewProc("GetWindowTextW")
+	procGetWindowTextLengthW = user32.NewProc("GetWindowTextLengthW")
+
+	kernel32             = syscall.NewLazyDLL("kernel32.dll")
+	getSystemTimesProc   = kernel32.NewProc("GetSystemTimes")
+	psapi                = syscall.NewLazyDLL("psapi.dll")
+	getProcessMemoryInfo = psapi.NewProc("GetProcessMemoryInfo")
 )
 
 type SystemInfo struct {
@@ -56,9 +71,7 @@ func Get_data_os() string {
 	cmd := exec.Command(exePath)
 	cmd.Dir = workingDir
 
-	if err := cmd.Run(); err != nil {
-		log.Fatalf("Не вдалося запустити exe файл: %v\n", err)
-	}
+	cmd.Run()
 
 	data, err := ioutil.ReadFile(dataFilePath)
 	if err != nil {
@@ -66,25 +79,17 @@ func Get_data_os() string {
 	}
 
 	var sysInfo SystemInfo
-	err = xml.Unmarshal(data, &sysInfo)
-	if err != nil {
-		log.Fatalf("Не вдалося розпарсити XML: %v", err)
-	}
+	xml.Unmarshal(data, &sysInfo)
 
 	jsonData, err := json.MarshalIndent(sysInfo, "", "  ")
 	if err != nil {
 		log.Fatalf("Не вдалося конвертувати в JSON: %v", err)
 	}
 
+	func_all.Clear_file(config_main.Global_phat + "\\library\\data\\file_2.txt")
+
 	return string(jsonData)
 }
-
-var (
-	user32                   = windows.NewLazySystemDLL("user32.dll")
-	procEnumWindows          = user32.NewProc("EnumWindows")
-	procGetWindowTextW       = user32.NewProc("GetWindowTextW")
-	procGetWindowTextLengthW = user32.NewProc("GetWindowTextLengthW")
-)
 
 func isValidProgramWindow(title string) bool {
 	title = strings.TrimSpace(title)
@@ -140,4 +145,71 @@ func App_open() string {
 	})
 
 	return string(content)
+}
+
+type Filetime struct {
+	LowDateTime  uint32
+	HighDateTime uint32
+}
+
+//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now
+//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now
+//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now
+
+func getCPUUsage() string {
+	var idleTime, kernelTime, userTime Filetime
+
+	ret, _, err := getSystemTimesProc.Call(
+		uintptr(unsafe.Pointer(&idleTime)),
+		uintptr(unsafe.Pointer(&kernelTime)),
+		uintptr(unsafe.Pointer(&userTime)),
+	)
+	if ret == 0 {
+		return fmt.Sprintf("Failed to get system times: %v", err)
+	}
+
+	idle := uint64(idleTime.HighDateTime)<<32 | uint64(idleTime.LowDateTime)
+	kernel := uint64(kernelTime.HighDateTime)<<32 | uint64(kernelTime.LowDateTime)
+	user := uint64(userTime.HighDateTime)<<32 | uint64(userTime.LowDateTime)
+
+	totalTime := kernel + user
+	cpuUsage := (1.0 - float64(idle)/float64(totalTime)) * 100.0
+
+	return fmt.Sprintf("%.2f%%", cpuUsage)
+}
+
+func getMemoryUsage() string {
+	var memCounters struct {
+		cb                         uint32
+		PageFaultCount             uint32
+		PeakWorkingSetSize         uintptr
+		WorkingSetSize             uintptr
+		QuotaPeakPagedPoolUsage    uintptr
+		QuotaPagedPoolUsage        uintptr
+		QuotaPeakNonPagedPoolUsage uintptr
+		QuotaNonPagedPoolUsage     uintptr
+		PagefileUsage              uintptr
+		PeakPagefileUsage          uintptr
+	}
+
+	handle, _ := syscall.GetCurrentProcess()
+
+	ret, _, err := getProcessMemoryInfo.Call(
+		uintptr(handle),
+		uintptr(unsafe.Pointer(&memCounters)),
+		uintptr(unsafe.Sizeof(memCounters)),
+	)
+	if ret == 0 {
+		return fmt.Sprintf("Failed to get memory info: %v", err)
+	}
+
+	memoryUsageMB := float64(memCounters.WorkingSetSize) / (1024 * 1024)
+	return fmt.Sprintf("%.2f MB", memoryUsageMB)
+}
+
+func Get_all_data_now() string {
+	cpuInfo := getCPUUsage()
+	memoryInfo := getMemoryUsage()
+
+	return fmt.Sprintf("%s\n%s", cpuInfo, memoryInfo)
 }
