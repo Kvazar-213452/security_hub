@@ -6,10 +6,13 @@ import (
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
 	"head/main_com/page"
+	"head/main_com/page_func/background"
 	"net/http"
 	"os/exec"
 	"strconv"
 )
+
+var Stop_antivirus_flash_drive = make(chan bool)
 
 func main() {
 	config, err := func_all.LoadConfig_start(config_main.Main_config)
@@ -24,6 +27,12 @@ func main() {
 	} else {
 		port = config.Port
 	}
+
+	if config.Antivirus.Antivirus_flash_drive == 1 {
+		go background.MonitorFlashDrives(Stop_antivirus_flash_drive)
+	}
+
+	fmt.Printf("Значення antivirus_flash_drive: %d\n", config.Antivirus.Antivirus_flash_drive)
 
 	portStr := ":" + strconv.Itoa(port)
 
@@ -76,4 +85,8 @@ func main() {
 			fmt.Printf("Не вдалося завершити shell_web.exe: %v\n", err)
 		}
 	}
+}
+
+func Stop_antivirus_flash_drive_func() {
+	Stop_antivirus_flash_drive <- true
 }

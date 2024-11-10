@@ -4,5 +4,9 @@
   "url": "http://localhost:64198/",
   "port": 4000,
   "server": "https://raw.githubusercontent.com/Kvazar-213452/security_hub/refs/heads/main/web_external/data/",
-  "shell": 1
+  "shell": 1,
+  "lang": "uk",
+  "antivirus": {
+    "antivirus_flash_drive": 1
+  }
 }

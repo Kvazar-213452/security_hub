@@ -21,6 +21,10 @@ type Config_global struct {
 	URL           string `json:"url"`
 	Port          int    `json:"port"`
 	Shell         int    `json:"shell"`
+	Lang          string `json:"lang"`
+	Antivirus     struct {
+		Antivirus_flash_drive int `json:"antivirus_flash_drive"`
+	} `json:"antivirus"`
 }
 
 func LoadConfig_start(filename string) (Config_global, error) {
