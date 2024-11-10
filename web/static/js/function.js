@@ -1,3 +1,11 @@
+function clos(name) {
+    $('#' + name).hide(); 
+}
+
+function openModal(name) {
+    $('#' + name).show(); 
+}
+
 function button_hover(name) {
     $("#" + name).css("opacity", "1");
     $("#" + name).css("background-color", "#565574");
@@ -938,4 +946,22 @@ function lang_change_page(lang) {
         $('#lang_wefsdeeeeee').html("Вайфай менеджер");
         $('#lang_nfefdfdvghyt').html("Отримайте більше інформації про ваш вайфай");
     }
+}
+
+function get_massage_info() {
+    openModal("modal1");
+
+    $.ajax({
+        url: "http://localhost:3000/data",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            $('#r4e23efvd_').html(response['message']);
+            $('#textfrwefwf_').html(response['desc']);
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
 }
