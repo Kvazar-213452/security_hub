@@ -12,8 +12,6 @@ import (
 	"strconv"
 )
 
-var Stop_antivirus_flash_drive = make(chan bool)
-
 func main() {
 	config, err := func_all.LoadConfig_start(config_main.Main_config)
 	if err != nil {
@@ -29,10 +27,8 @@ func main() {
 	}
 
 	if config.Antivirus.Antivirus_flash_drive == 1 {
-		go background.MonitorFlashDrives(Stop_antivirus_flash_drive)
+		go background.MonitorFlashDrives(config_main.Stop_antivirus_flash_drive)
 	}
-
-	fmt.Printf("Значення antivirus_flash_drive: %d\n", config.Antivirus.Antivirus_flash_drive)
 
 	portStr := ":" + strconv.Itoa(port)
 
@@ -73,6 +69,7 @@ func main() {
 	http.HandleFunc("/server_change", page.Post_server_change)
 	http.HandleFunc("/shell_change", page.Post_shell_change)
 	http.HandleFunc("/browser_site_app", main_com.Post_Browser_site_app)
+	http.HandleFunc("/change_val_gb_usb", page.Post_change_val_gb_usb)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)
@@ -85,8 +82,5 @@ func main() {
 			fmt.Printf("Не вдалося завершити shell_web.exe: %v\n", err)
 		}
 	}
-}
 
-func Stop_antivirus_flash_drive_func() {
-	Stop_antivirus_flash_drive <- true
 }

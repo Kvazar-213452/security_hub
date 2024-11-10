@@ -435,10 +435,6 @@ function message_window(content) {
     }, 3000);
 }
 
-function button_active_antivitys(name) {
-    $("#" + name).css("color", "#766aff");
-}
-
 function antivirus_web_start() {
     let inputValue = $('#fkwe9203f').val();
     const dataToSend = {
@@ -495,20 +491,17 @@ function antivirus_web_end(response) {
     }
 }
 
-function change_menu_antivirus(type, id) {
-    $("#dwdc21e12d").css("color", "#ffffffd4");
-
-    $("#dwdc21e12d1").css("color", "#ffffffd4");
-
-    button_active_antivitys(id);
-
-    if (type === 0) {
-        $('#frg45th9nd1').hide();
-        $('#frg45th9nd').show();
-    } else if (type === 1) {
-        $('#frg45th9nd').hide();
-        $('#frg45th9nd1').show();
+function change_menu_antivirus(id) {
+    for (let i = 0; i < dwdc21e12d.length; i++) {
+        $("#" + dwdc21e12d[i]).css("color", "#ffffffd4");
     }
+
+    for (let i = 0; i < frg45th9nd.length; i++) {
+        $("#" + frg45th9nd[i]).hide();
+    }
+
+    $("#" + dwdc21e12d[id]).css("color", "#766aff");
+    $('#' + frg45th9nd[id]).show();
 }
 
 const fileUpload = () => {
@@ -864,6 +857,51 @@ function open_site() {
         data: JSON.stringify(null),
         success: function (response) {
             message_window('Сайт відкрито');
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function config_bg() {
+    $.ajax({
+        url: "/config_global",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            antivirus_flash_drive = response['antivirus']['antivirus_flash_drive'];
+
+            $("#bg_input").val(response['antivirus']['antivirus_flash_drive_cmd']);
+
+            if (antivirus_flash_drive === 0) {
+                $("#bg_dqwderfd").css("background-color", "#22223a");
+            } else {
+                $("#bg_dqwderfd").css("background-color", "#565574");
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function new_val_gb_usb() {
+    if (antivirus_flash_drive === 0) {
+        antivirus_flash_drive = 1;
+    } else {
+        antivirus_flash_drive = 0;
+    }
+
+    $.ajax({
+        url: "/change_val_gb_usb",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: antivirus_flash_drive, data1: $("#bg_input").val()}),
+        success: function (response) {
+            message_window('Значення встановлено');
+            config_bg();
         },
         error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);

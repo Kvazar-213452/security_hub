@@ -544,7 +544,8 @@
 .deccc:hover {
   opacity: 0.6; }
 
-.ump_button:hover {
+.ump_button:hover,
+.ump_button1:hover {
   opacity: 0.6; }
 
 .dropdown-content {
@@ -566,7 +567,8 @@
   position: relative;
   left: 18px; }
 
-.ump_button {
+.ump_button,
+.ump_button1 {
   border: none;
   padding: 7px;
   background-color: #32344d;
@@ -596,6 +598,25 @@
 /* antivirus page */
 /* antivirus page */
 /* antivirus page */
+.ump_button1 {
+  background-color: #22223a; }
+
+.dqwwee333f {
+  font-size: 34px; }
+
+.input_cmd {
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+  color: #ffffffa5;
+  background-color: #22223a;
+  position: relative;
+  top: 4px; }
+  .input_cmd:focus {
+    outline: none;
+    box-shadow: none; }
+
 .fewfedddd {
   position: relative;
   width: calc(100% - 35px);
@@ -668,9 +689,6 @@
   background-color: #32344d;
   height: calc(100% - 370px);
   border-radius: 5px; }
-
-.dqwwee333f {
-  font-size: 34px; }
 
 .dd223dfwef {
   color: #766aff;

@@ -411,7 +411,8 @@
 
 .toggle-btn:hover {color: $violet;}
 .deccc:hover {opacity: 0.6;}
-.ump_button:hover {opacity: 0.6;}
+.ump_button:hover,
+.ump_button1:hover {opacity: 0.6;}
 
 .dropdown-content {
     display: none;
@@ -435,7 +436,8 @@
     left: 18px;
 }
 
-.ump_button {
+.ump_button,
+.ump_button1 {
     @include button($white, $bg_color1, 15px);
     transition: all .3s;
 }
@@ -443,6 +445,25 @@
 /* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page */
 /* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page */
 /* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page */
+
+.ump_button1{background-color: $bg_color2;}
+.dqwwee333f{font-size: 34px;}
+
+.input_cmd {
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    color: $text_color;
+    background-color: $bg_color2;
+    position: relative;
+    top: 4px;
+    
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
 
 .fewfedddd{
     position: relative;
@@ -517,8 +538,6 @@
     border-radius: 5px;
 }
 
-.dqwwee333f{font-size: 34px;}
-
 .dd223dfwef{
     color: $violet;
     font-size: 24px;
@@ -560,9 +579,7 @@
     margin-bottom: 5px;
 }
 
-.form__container.active {
-    background-color: rgba(192, 192, 192, 0.2);
-}
+.form__container.active {background-color: rgba(192, 192, 192, 0.2);}
 
 .form__file {
     position: absolute;
@@ -608,13 +625,8 @@
     left: -10px;
 }
 
-.f343ffv{
-    color: $read;
-}
-
-.f343ffv1{
-    color: $violet;
-}
+.f343ffv{color: $read;}
+.f343ffv1{color: $violet;}
 
 .fweufweffff{
     font-size: 17px;

@@ -27,3 +27,5 @@ var Server_url = Get_server_url(Main_config)
 var Server_data = Server_url + "site_virus.txt"
 var Server_data_sha1_hashes_1 = Server_url + "sha1_hashes_1.txt"
 var Server_data_sha1_hashes_2 = Server_url + "sha1_hashes_2.txt"
+
+var Stop_antivirus_flash_drive = make(chan bool)

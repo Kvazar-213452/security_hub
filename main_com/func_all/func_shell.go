@@ -23,7 +23,8 @@ type Config_global struct {
 	Shell         int    `json:"shell"`
 	Lang          string `json:"lang"`
 	Antivirus     struct {
-		Antivirus_flash_drive int `json:"antivirus_flash_drive"`
+		Antivirus_flash_drive     int    `json:"antivirus_flash_drive"`
+		Antivirus_flash_drive_cmd string `json:"antivirus_flash_drive_cmd"`
 	} `json:"antivirus"`
 }
 

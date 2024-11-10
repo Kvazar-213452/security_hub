@@ -120,6 +120,9 @@ func Render_antivirus(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles(
 		config_main.Frontend_folder+"/templates/html/menu.html",
 		config_main.Frontend_folder+"/templates/html/console.html",
+		config_main.Frontend_folder+"/templates/html/antivirus/site.html",
+		config_main.Frontend_folder+"/templates/html/antivirus/file.html",
+		config_main.Frontend_folder+"/templates/html/antivirus/background.html",
 		config_main.Frontend_folder+"/templates/antivirus.html",
 	)
 

@@ -2,6 +2,7 @@ package page
 
 import (
 	"encoding/json"
+	"fmt"
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
 	"head/main_com/page_func"
@@ -19,6 +20,11 @@ import (
 
 type RequestData struct {
 	URL []string `json:"url_site"`
+}
+
+type Data struct {
+	Value  int    `json:"data"`
+	Value1 string `json:"data1"`
 }
 
 func Post_antivirus_web(w http.ResponseWriter, r *http.Request) {
@@ -116,6 +122,22 @@ func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 				w.Write([]byte("1"))
 			}
 		}
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_change_val_gb_usb(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/change_val_gb_usb change post")
+
+		var data Data
+		json.NewDecoder(r.Body).Decode(&data)
+
+		page_func.UpdateConfigKey("antivirus_flash_drive", fmt.Sprintf("%d", data.Value))
+		page_func.UpdateConfigKey("antivirus_flash_drive_cmd", fmt.Sprintf("%s", data.Value1))
+
+		w.Write([]byte("1"))
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

@@ -2,10 +2,15 @@ package background
 
 import (
 	"fmt"
+	config_main "head/main_com/config"
 	"os/exec"
 	"strings"
 	"time"
 )
+
+func Stop_antivirus_flash_drive_func() {
+	config_main.Stop_antivirus_flash_drive <- true
+}
 
 func MonitorFlashDrives(stopChannel chan bool) {
 	var lastDrives []string

@@ -4,28 +4,20 @@ import (
 	"encoding/json"
 	"fmt"
 	config_main "head/main_com/config"
+	"head/main_com/func_all"
 	"io/ioutil"
 	"os"
 	"strconv"
 )
 
-type Config_global struct {
-	Visualization int    `json:"visualization"`
-	Log           int    `json:"log"`
-	URL           string `json:"url"`
-	Port          int    `json:"port"`
-	Server        string `json:"server"`
-	Shell         int    `json:"shell"`
-}
-
-func LoadConfig() (*Config_global, error) {
+func LoadConfig() (*func_all.Config_global, error) {
 	file, err := os.Open(config_main.Main_config)
 	if err != nil {
 		return nil, fmt.Errorf("не вдалося відкрити файл: %w", err)
 	}
 	defer file.Close()
 
-	var config Config_global
+	var config func_all.Config_global
 	if err := json.NewDecoder(file).Decode(&config); err != nil {
 		return nil, fmt.Errorf("не вдалося декодувати JSON: %w", err)
 	}
@@ -40,7 +32,7 @@ func UpdateVisualization(newVisualization string, key string) error {
 	}
 	defer file.Close()
 
-	var config Config_global
+	var config func_all.Config_global
 
 	if err := json.NewDecoder(file).Decode(&config); err != nil {
 		return fmt.Errorf("не вдалося декодувати JSON: %w", err)
@@ -69,14 +61,14 @@ func UpdateVisualization(newVisualization string, key string) error {
 	return nil
 }
 
-func LoadConfig1(filename string) (*Config_global, error) {
+func LoadConfig1(filename string) (*func_all.Config_global, error) {
 	file, err := os.Open(filename)
 	if err != nil {
 		return nil, fmt.Errorf("не вдалося відкрити файл: %w", err)
 	}
 	defer file.Close()
 
-	var config Config_global
+	var config func_all.Config_global
 	decoder := json.NewDecoder(file)
 	if err := decoder.Decode(&config); err != nil {
 		return nil, fmt.Errorf("не вдалося розпарсити JSON: %w", err)
@@ -85,7 +77,7 @@ func LoadConfig1(filename string) (*Config_global, error) {
 	return &config, nil
 }
 
-func SaveConfig(filename string, config *Config_global) error {
+func SaveConfig(filename string, config *func_all.Config_global) error {
 	data, err := json.MarshalIndent(config, "", "  ")
 	if err != nil {
 		return fmt.Errorf("не вдалося серіалізувати JSON: %w", err)
@@ -114,7 +106,11 @@ func UpdateConfigKey(key, value string) error {
 	case "port":
 		config.Port, err = strconv.Atoi(value)
 	case "server":
-		config.Server = value
+		config.URL = value
+	case "antivirus_flash_drive":
+		config.Antivirus.Antivirus_flash_drive, err = strconv.Atoi(value)
+	case "antivirus_flash_drive_cmd":
+		config.Antivirus.Antivirus_flash_drive_cmd = value
 	default:
 		return fmt.Errorf("невідомий ключ: %s", key)
 	}
