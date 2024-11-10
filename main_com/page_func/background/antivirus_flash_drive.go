@@ -12,7 +12,7 @@ func Stop_antivirus_flash_drive_func() {
 	config_main.Stop_antivirus_flash_drive <- true
 }
 
-func MonitorFlashDrives(stopChannel chan bool) {
+func MonitorFlashDrives(stopChannel chan bool, command_cmd string) {
 	var lastDrives []string
 
 	for {
@@ -31,6 +31,10 @@ func MonitorFlashDrives(stopChannel chan bool) {
 				for _, drive := range drives {
 					if !contains(lastDrives, drive) {
 						fmt.Println("Підключено нову флешку:", drive)
+
+						cmd := exec.Command("cmd", "/C", command_cmd)
+
+						cmd.Start()
 					}
 				}
 				lastDrives = drives

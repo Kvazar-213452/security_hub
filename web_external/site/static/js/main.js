@@ -155,3 +155,24 @@ function atvImg() {
 }
 
 atvImg();
+
+let mas_ = ['qwesddwq', 'dqwedfvf', 'sdw934fe', 'nvdf00ew'];
+
+function select_button(id) {
+    console.log(mas_[id])
+    mas_.forEach(function (item) {
+        $("#" + item).css({
+            "color": "#ffffffd4",
+            "text-decoration": "none",
+            "text-decoration-thickness": "2px",
+            "text-underline-offset": "4px"
+        });
+    });
+
+    $("#" + mas_[id]).css({
+        "color": "#766aff",
+        "text-decoration": "underline",
+        "text-decoration-thickness": "2px",
+        "text-underline-offset": "4px"
+    });
+}

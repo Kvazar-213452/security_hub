@@ -22,5 +22,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
     <br><br>
     <script src="<?php echo $domen_name; ?>/lib/js/jquery"></script>
     <script src="<?php echo $domen_name; ?>/js/main"></script>
+
+    <script>
+        select_button(1);
+    </script>
 </body>
 </html>

@@ -119,3 +119,17 @@ func Post_shell_change(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}
 }
+
+func Post_change_lang_settings(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/change_lang_settings post")
+
+		json.NewDecoder(r.Body).Decode(&data)
+
+		page_func.UpdateConfigKey("lang", data.Value)
+
+		w.Write([]byte("1"))
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}

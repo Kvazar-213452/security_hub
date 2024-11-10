@@ -29,3 +29,18 @@ var Server_data_sha1_hashes_1 = Server_url + "sha1_hashes_1.txt"
 var Server_data_sha1_hashes_2 = Server_url + "sha1_hashes_2.txt"
 
 var Stop_antivirus_flash_drive = make(chan bool)
+
+var Antivirus_flash_drive_cmd string = Get_antivirus_flash_drive_cmd(Main_config)
+
+type Config_global struct {
+	Visualization int    `json:"visualization"`
+	Log           int    `json:"log"`
+	URL           string `json:"url"`
+	Port          int    `json:"port"`
+	Shell         int    `json:"shell"`
+	Lang          string `json:"lang"`
+	Antivirus     struct {
+		Antivirus_flash_drive     int    `json:"antivirus_flash_drive"`
+		Antivirus_flash_drive_cmd string `json:"antivirus_flash_drive_cmd"`
+	} `json:"antivirus"`
+}

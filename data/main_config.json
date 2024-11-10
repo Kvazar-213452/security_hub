@@ -1,7 +1,7 @@
 {
   "visualization": 0,
   "log": 0,
-  "url": "http://localhost:64198/",
+  "url": "https://raw.githubusercontent.com/Kvazar-213452/security_hub/refs/heads/main/web_external/data/",
   "port": 4000,
   "shell": 1,
   "lang": "uk",

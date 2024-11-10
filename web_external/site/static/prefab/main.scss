@@ -1,4 +1,5 @@
 @import 'config';
+@import 'mixin';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
@@ -45,10 +46,7 @@ a {
     cursor: pointer;
     transition: all .3s;
 
-    &:hover{
-        color: $grean;
-        @include text_decoration();
-    }
+    &:hover{color: $violet;}
 }
 
 .w3fwe{
@@ -58,11 +56,20 @@ a {
     margin: 0 auto;
 }
 
-.dwqs322v {@include text_decoration(0, left);}
+.dwqs322v {
+    position: relative;
+    float: left;
+    width: 430px;
+    height: auto;
+    word-wrap: break-word;
+    overflow: hidden;
+    font-size: 22px;
+    color: #ffffffd4; 
+}
 
 .dq3dcccc{
     font-size: 22px;
-    color: $grean;
+    color: $violet;
     font-weight: bold;
 }
 
@@ -178,11 +185,11 @@ a {
 .d3232f4ff{
     border: none;
     border-radius: 5px;
-    border: solid 2px $grean;
+    border: solid 2px $violet;
     padding: 10px;
     font-size: 19px;
     font-weight: bold;
-    color: $grean;
+    color: $violet;
     transition: all .3s;
     cursor: pointer;
     background-color: $bg_color4;
@@ -201,16 +208,28 @@ a {
 }
 
 .dwwd3d4{
-    color: $grean;
-    @include text_decoration();
+    color: $violet;
     transition: all .3s;
+    font-weight: bold;
+    @include text_decoration();
 
     &:hover {opacity: 0.5;}
 }
 
-.dwqs322v1{@include text_decoration(-140px, right);}
+.dwqs322v1 {
+    position: relative;
+    float: right;
+    width: 430px;
+    height: auto;
+    word-wrap: break-word;
+    overflow: hidden;
+    font-size: 22px;
+    color: #ffffffd4;
+    left: -140px; 
+}
 
 .dqwwqdcccc1{
     position: relative;
     float: left;
 }
+

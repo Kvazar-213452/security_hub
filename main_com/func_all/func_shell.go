@@ -15,29 +15,16 @@ import (
 	"unsafe"
 )
 
-type Config_global struct {
-	Visualization int    `json:"visualization"`
-	Log           int    `json:"log"`
-	URL           string `json:"url"`
-	Port          int    `json:"port"`
-	Shell         int    `json:"shell"`
-	Lang          string `json:"lang"`
-	Antivirus     struct {
-		Antivirus_flash_drive     int    `json:"antivirus_flash_drive"`
-		Antivirus_flash_drive_cmd string `json:"antivirus_flash_drive_cmd"`
-	} `json:"antivirus"`
-}
-
-func LoadConfig_start(filename string) (Config_global, error) {
+func LoadConfig_start(filename string) (config_main.Config_global, error) {
 	file, err := os.Open(filename)
 	if err != nil {
-		return Config_global{}, fmt.Errorf("не вдалося відкрити файл: %w", err)
+		return config_main.Config_global{}, fmt.Errorf("не вдалося відкрити файл: %w", err)
 	}
 	defer file.Close()
 
-	var config Config_global
+	var config config_main.Config_global
 	if err := json.NewDecoder(file).Decode(&config); err != nil {
-		return Config_global{}, fmt.Errorf("не вдалося декодувати JSON: %w", err)
+		return config_main.Config_global{}, fmt.Errorf("не вдалося декодувати JSON: %w", err)
 	}
 
 	return config, nil

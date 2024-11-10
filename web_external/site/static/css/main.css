@@ -1,7 +1,6 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 body {
-  background-color: #12171e;
+  background-color: #1b1c30;
   font-family: "Roboto", sans-serif;
   color: #ffffffd4; }
 
@@ -25,7 +24,7 @@ a {
   left: 50%;
   transform: translateX(-50%);
   border-radius: 10px;
-  background-color: #181d25;
+  background-color: #22223a;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   z-index: 1000000000000; }
 
@@ -41,10 +40,7 @@ a {
   cursor: pointer;
   transition: all .3s; }
   .efw42f:hover {
-    color: #55c959;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px; }
+    color: #766aff; }
 
 .w3fwe {
   width: calc(100% - 400px);
@@ -64,7 +60,7 @@ a {
 
 .dq3dcccc {
   font-size: 22px;
-  color: #55c959;
+  color: #766aff;
   font-weight: bold; }
 
 .cover1212 {
@@ -167,14 +163,14 @@ a {
 .d3232f4ff {
   border: none;
   border-radius: 5px;
-  border: solid 2px #55c959;
+  border: solid 2px #766aff;
   padding: 10px;
   font-size: 19px;
   font-weight: bold;
-  color: #55c959;
+  color: #766aff;
   transition: all .3s;
   cursor: pointer;
-  background-color: #181d25;
+  background-color: #22223a;
   float: left;
   margin-right: 40px; }
   .d3232f4ff:hover {
@@ -188,11 +184,12 @@ a {
   font-weight: bold; }
 
 .dwwd3d4 {
-  color: #55c959;
+  color: #766aff;
+  transition: all .3s;
+  font-weight: bold;
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  transition: all .3s; }
+  text-underline-offset: 4px; }
   .dwwd3d4:hover {
     opacity: 0.5; }
 
@@ -210,21 +207,3 @@ a {
 .dqwwqdcccc1 {
   position: relative;
   float: left; }
-
-.c2dwi4444 {
-  position: relative;
-  z-index: 1;
-  /* Забезпечує, що вміст буде зверху */ }
-
-.c2dwi4444::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: inherit;
-  /* Використовує фоновий колір батьківського елемента */
-  z-index: -1;
-  /* Забезпечує, що фон залишиться позаду вмісту */
-  filter: invert(100%); }

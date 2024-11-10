@@ -4,20 +4,19 @@ import (
 	"encoding/json"
 	"fmt"
 	config_main "head/main_com/config"
-	"head/main_com/func_all"
 	"io/ioutil"
 	"os"
 	"strconv"
 )
 
-func LoadConfig() (*func_all.Config_global, error) {
+func LoadConfig() (*config_main.Config_global, error) {
 	file, err := os.Open(config_main.Main_config)
 	if err != nil {
 		return nil, fmt.Errorf("не вдалося відкрити файл: %w", err)
 	}
 	defer file.Close()
 
-	var config func_all.Config_global
+	var config config_main.Config_global
 	if err := json.NewDecoder(file).Decode(&config); err != nil {
 		return nil, fmt.Errorf("не вдалося декодувати JSON: %w", err)
 	}
@@ -32,7 +31,7 @@ func UpdateVisualization(newVisualization string, key string) error {
 	}
 	defer file.Close()
 
-	var config func_all.Config_global
+	var config config_main.Config_global
 
 	if err := json.NewDecoder(file).Decode(&config); err != nil {
 		return fmt.Errorf("не вдалося декодувати JSON: %w", err)
@@ -61,14 +60,14 @@ func UpdateVisualization(newVisualization string, key string) error {
 	return nil
 }
 
-func LoadConfig1(filename string) (*func_all.Config_global, error) {
+func LoadConfig1(filename string) (*config_main.Config_global, error) {
 	file, err := os.Open(filename)
 	if err != nil {
 		return nil, fmt.Errorf("не вдалося відкрити файл: %w", err)
 	}
 	defer file.Close()
 
-	var config func_all.Config_global
+	var config config_main.Config_global
 	decoder := json.NewDecoder(file)
 	if err := decoder.Decode(&config); err != nil {
 		return nil, fmt.Errorf("не вдалося розпарсити JSON: %w", err)
@@ -77,7 +76,7 @@ func LoadConfig1(filename string) (*func_all.Config_global, error) {
 	return &config, nil
 }
 
-func SaveConfig(filename string, config *func_all.Config_global) error {
+func SaveConfig(filename string, config *config_main.Config_global) error {
 	data, err := json.MarshalIndent(config, "", "  ")
 	if err != nil {
 		return fmt.Errorf("не вдалося серіалізувати JSON: %w", err)
@@ -107,6 +106,8 @@ func UpdateConfigKey(key, value string) error {
 		config.Port, err = strconv.Atoi(value)
 	case "server":
 		config.URL = value
+	case "lang":
+		config.Lang = value
 	case "antivirus_flash_drive":
 		config.Antivirus.Antivirus_flash_drive, err = strconv.Atoi(value)
 	case "antivirus_flash_drive_cmd":

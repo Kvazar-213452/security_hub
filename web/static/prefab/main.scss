@@ -263,6 +263,7 @@
 
 .zxbnmewd{
     @include button($text_color, $bg_color2, 15px);
+    padding: 5px;
 
     &:hover{
         color: $violet;

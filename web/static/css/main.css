@@ -356,7 +356,8 @@
   border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
-  cursor: pointer; }
+  cursor: pointer;
+  padding: 5px; }
   .zxbnmewd:hover {
     color: #766aff;
     opacity: 0.6; }

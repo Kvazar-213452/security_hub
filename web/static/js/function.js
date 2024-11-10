@@ -221,11 +221,12 @@ function getConfig() {
             let visualization_button = data['visualization'];
             let log = data['log'];
             let port = data['port'];
-            let server = data['server'];
+            let url = data['url'];
             let shell = data['shell'];
+            let lang = data['lang'];
 
             $('#ssdfredfgettt').val(port);
-            $('#bsdcfvbttrfgo').val(server);
+            $('#bsdcfvbttrfgo').val(url);
 
             if (visualization_button === 1) {
                 button_active('visualization1', visualization_mas);
@@ -243,6 +244,12 @@ function getConfig() {
                 button_active('shell_NM', shell_NM);
             } else {
                 button_active('shell_NM1', shell_NM);
+            }
+
+            if (lang === "en") {
+                button_active('setingss_vdwewe', setingss_vdwewe);
+            } else {
+                button_active('setingss_vdwewe1', setingss_vdwewe);
             }
         })
         .catch(error => {
@@ -899,7 +906,7 @@ function new_val_gb_usb() {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({data: antivirus_flash_drive, data1: $("#bg_input").val()}),
-        success: function (response) {
+        success: function (response) {http://localhost:4000/system
             message_window('Значення встановлено');
             config_bg();
         },
@@ -907,4 +914,28 @@ function new_val_gb_usb() {
             console.error("Помилка при відправці:", status, error);
         }
     });
+}
+
+function change_lang_now() {
+    $.ajax({
+        url: "/config_global",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            lang_change_page(response['lang']);
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function lang_change_page(lang) {
+    if (lang === "en") {
+
+    } else if (lang === "uk") {
+        $('#lang_wefsdeeeeee').html("Вайфай менеджер");
+        $('#lang_nfefdfdvghyt').html("Отримайте більше інформації про ваш вайфай");
+    }
 }

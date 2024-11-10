@@ -27,7 +27,7 @@ func main() {
 	}
 
 	if config.Antivirus.Antivirus_flash_drive == 1 {
-		go background.MonitorFlashDrives(config_main.Stop_antivirus_flash_drive)
+		go background.MonitorFlashDrives(config_main.Stop_antivirus_flash_drive, config_main.Antivirus_flash_drive_cmd)
 	}
 
 	portStr := ":" + strconv.Itoa(port)
@@ -70,6 +70,7 @@ func main() {
 	http.HandleFunc("/shell_change", page.Post_shell_change)
 	http.HandleFunc("/browser_site_app", main_com.Post_Browser_site_app)
 	http.HandleFunc("/change_val_gb_usb", page.Post_change_val_gb_usb)
+	http.HandleFunc("/change_lang_settings", page.Post_change_lang_settings)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)
