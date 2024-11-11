@@ -5,4 +5,4 @@
 0 - false
 
 img
-![Alt text](.sorse/image.png)
+![Alt text](.sorse/image.jpg)
