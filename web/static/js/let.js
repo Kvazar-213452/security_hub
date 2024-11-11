@@ -8,6 +8,7 @@ let setingss_vdwewe = ['setingss_vdwewe', 'setingss_vdwewe1'];
 const unsafeProtocols = ["WEP", "WPA", "HTTP", "FTP", "Telnet", "RDP", "SNMP", "ICMP"];
 
 let antivirus_flash_drive;
+let lang_global;
 
 let data_cleaning = {
     backup: 0,

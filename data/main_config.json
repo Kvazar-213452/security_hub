@@ -6,7 +6,7 @@
   "shell": 1,
   "lang": "uk",
   "antivirus": {
-    "antivirus_flash_drive": 1,
+    "antivirus_flash_drive": 0,
     "antivirus_flash_drive_cmd": ""
   }
 }

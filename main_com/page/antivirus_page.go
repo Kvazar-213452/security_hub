@@ -45,12 +45,7 @@ func Post_antivirus_web(w http.ResponseWriter, r *http.Request) {
 		}
 
 		url := requestData.URL[0]
-		page_func.FetchHTMLAndJS(url)
 		code := page_func.CheckUrlInFile(url)
-
-		jsonData := func_all.ReadFileToJSON("data/inter.txt")
-
-		func_all.Clear_file(config_main.Global_phat + "\\data\\inter.txt")
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
@@ -58,18 +53,14 @@ func Post_antivirus_web(w http.ResponseWriter, r *http.Request) {
 		if code == 1 {
 			response := map[string]interface{}{
 				"found": true,
-				"data":  jsonData,
 			}
 			json.NewEncoder(w).Encode(response)
 		} else {
 			response := map[string]interface{}{
 				"found": false,
-				"data":  jsonData,
 			}
 			json.NewEncoder(w).Encode(response)
 		}
-
-		page_func.DeleteFiles()
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

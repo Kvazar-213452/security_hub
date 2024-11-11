@@ -158,13 +158,21 @@ function checkUnsafeProtocols() {
     if (text) {
         for (const protocol of unsafeProtocols) {
             if (text.includes(protocol)) {
-                $("#wifi_protection").html(`<p class="wifi_3_div_red">Незахищено</p>`);
+                if (lang_global === "uk") {
+                    $("#wifi_protection").html(`<p class="wifi_3_div_red">Незахищено</p>`);
+                } else if (lang_global === "en") {
+                    $("#wifi_protection").html(`<p class="wifi_3_div_red">Not protected</p>`);
+                }
                 break;
             }
         }
     }
 
-    $("#wifi_protection").html(`<p class="wifi_3_div">Захищено</p>`);
+    if (lang_global === "uk") {
+        $("#wifi_protection").html(`<p class="wifi_3_div">Захищено</p>`);
+    } else if (lang_global === "en") {
+        $("#wifi_protection").html(`<p class="wifi_3_div">Protected</p>`);
+    }
 }
 
 function render_all_network_wifi(response, ssid) {
@@ -335,36 +343,36 @@ function write_os_data(response) {
 
     let text = `
         <div class="div_info_os">
-            <p class="name_o">OS</p>
+            <p class="name_o">${lang_global === "uk" ? "Операційна система" : (lang_global === "en" ? "Operating System" : "")}</p>
             <p class="desc_o">${jsonData['OS']['Name']}</p>
             <p class="desc_o_1">${jsonData['OS']['Version']}</p>
             <div class="hr_div"></div>
         </div>
         <div class="div_info_os">
-            <p class="name_o">Architecture</p>
+            <p class="name_o">${lang_global === "uk" ? "Архітектура" : (lang_global === "en" ? "Architecture" : "")}</p>
             <p class="desc_o">${jsonData['Architecture']}</p>
             <div class="hr_div"></div>
         </div>
         <div class="div_info_os">
-            <p class="name_o">Disk</p>
+            <p class="name_o">${lang_global === "uk" ? "Диск" : (lang_global === "en" ? "Disk" : "")}</p>
             <p class="desc_o">${jsonData['Disk']['FreeSpace']}</p>
             <p class="desc_o_1">${jsonData['Disk']['TotalSpace']}</p>
             <div class="hr_div"></div>
         </div>
         <div class="div_info_os">
-            <p class="name_o">Memory</p>
+            <p class="name_o">${lang_global === "uk" ? "Память" : (lang_global === "en" ? "Memory" : "")}</p>
             <p class="desc_o">${jsonData['Memory']['FreeMemory']}</p>
             <p class="desc_o_1">${jsonData['Memory']['FreeVirtualMemory']}</p>
             <p class="desc_o_2">${jsonData['Memory']['TotalMemory']}</p>
             <div class="hr_div"></div>
         </div>
         <div class="div_info_os">
-            <p class="name_o">Processor Count</p>
+            <p class="name_o">${lang_global === "uk" ? "Кількість процесорів" : (lang_global === "en" ? "Processor сount" : "")}</p>
             <p class="desc_o">${jsonData['ProcessorCount']}</p>
             <div class="hr_div"></div>
         </div>
         <div class="div_info_os">
-            <p class="name_o">System Uptime</p>
+            <p class="name_o">${lang_global === "uk" ? "Час роботи системи" : (lang_global === "en" ? "System uptime" : "")}</p>
             <p class="desc_o">${jsonData['SystemUptime']['Days']}:${jsonData['SystemUptime']['Hours']}:${jsonData['SystemUptime']['Minutes']}:${jsonData['SystemUptime']['Seconds']}</p>
             <div class="hr_div"></div>
         </div>
@@ -483,26 +491,6 @@ function antivirus_web_end(response) {
         $('#dw93244444').text('Сайт безпечний');
     } else {
         $('#dw93244444').text('Сайт небезпечний');
-    }
-
-    const decodedString = atob(response['data']);
-    const jsonObject = JSON.parse(decodedString);
-
-    $('#dwdw3333rffcc').html(null);
-
-    jsonObject1 = jsonObject['data'];
-
-    let i = 0;
-    while (i < jsonObject1.length) {
-        if (jsonObject1[i] === "window.location.href") {
-            $('#dwdw3333rffcc').append("<li>Переадресацію на другі джерела</li><br>");
-        } else if (jsonObject1[i] === "window.open") {
-            $('#dwdw3333rffcc').append("<li>Використання pop-up вікон</li><br>");
-        } else if (jsonObject1[i] === "requestFullscreen") {
-            $('#dwdw3333rffcc').append("<li>Відкриття на повний екран</li><br>");
-        }
-
-        i++;
     }
 }
 
@@ -914,7 +902,7 @@ function new_val_gb_usb() {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({data: antivirus_flash_drive, data1: $("#bg_input").val()}),
-        success: function (response) {http://localhost:4000/system
+        success: function (response) {
             message_window('Значення встановлено');
             config_bg();
         },
@@ -931,7 +919,8 @@ function change_lang_now() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function (response) {
-            lang_change_page(response['lang']);
+            lang_global = response['lang'];
+            lang_change_page(lang_global);
         },
         error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
@@ -941,10 +930,32 @@ function change_lang_now() {
 
 function lang_change_page(lang) {
     if (lang === "en") {
+        // wifi
+        $('#lang_wefsdeeeeee').html("WIFI management");
+        $('#lang_nfefdfdvghyt').html("Get more information about yours WIFI");
+        $('#lang_dqwedddcwww').html("Connection:");
 
+        // system
+        $('#lang_system_wdeewds').html("Data os");
+        $('#lang_system_fesrdfyyyyy').html("library data");
+        $('#lang_system_wfr839wefsff').html("NetworkAdapters data");
+        $('#lang_system_v00qwdweee').html("Open programs");
+        $('#lang_system_vfd8723ed').html("System data");
+        $('#lang_system_verdfvcww').html("There is something interesting here");
     } else if (lang === "uk") {
+        // wifi
         $('#lang_wefsdeeeeee').html("Вайфай менеджер");
         $('#lang_nfefdfdvghyt').html("Отримайте більше інформації про ваш вайфай");
+        $('#lang_dqwedddcwww').html("З'єднання:");
+
+        // system
+        $('#lang_system_wdeewds').html("Дані операційної системи");
+        $('#lang_system_fesrdfyyyyy').html("Дані бібліотек");
+        $('#lang_system_wfr839wefsff').html("Дані мережевих адаптерів");
+        $('#lang_system_v00qwdweee').html("Відкриті програми");
+        $('#lang_system_vfd8723ed').html("Системні дані");
+        $('#lang_system_verdfvcww').html("Тут є дещо цікаве можливо");
+        
     }
 }
 
@@ -965,3 +976,4 @@ function get_massage_info() {
         }
     });
 }
+

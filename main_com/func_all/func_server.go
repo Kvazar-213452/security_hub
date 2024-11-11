@@ -40,26 +40,6 @@ func splitLines(content string) []string {
 	return strings.Split(strings.TrimSpace(content), "\n")
 }
 
-func ReadFileToJSON(filePath string) []byte {
-	content, err := ioutil.ReadFile(filePath)
-	if err != nil {
-		return nil
-	}
-
-	lines := splitLines(string(content))
-
-	responseData := map[string]interface{}{
-		"data": lines,
-	}
-
-	jsonData, err := json.Marshal(responseData)
-	if err != nil {
-		return nil
-	}
-
-	return jsonData
-}
-
 func ClearDirectory(dir string) error {
 	files, err := ioutil.ReadDir(dir)
 	if err != nil {
