@@ -1,0 +1,190 @@
+function antivirus_web_start() {
+    let inputValue = $('#fkwe9203f').val();
+    const dataToSend = {url_site: [inputValue]};
+
+    $('#dwdefw4f4').text('Перевірка.....');
+
+    $.ajax({
+        url: '/antivirus_web',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(dataToSend),
+        success: function (response) {
+            antivirus_web_end(response)
+        },
+        error: function (xhr, status, error) {
+            console.log("Error: " + error);
+            console.log("Response text:", xhr.responseText);
+        }
+    });
+}
+
+function antivirus_web_end(response) {
+    $('#dqdcew336g').show();
+
+    if (lang_global === "uk") {
+        $('#dwdefw4f4').text('Завершено'); 
+    } else if (lang_global === "en") {
+        $('#dwdefw4f4').text('Completed'); 
+    }
+
+    if (response['found'] === false) {
+        if (lang_global === "uk") {
+            $('#dw93244444').text('Сайт безпечний');
+        } else if (lang_global === "en") {
+            $('#dw93244444').text('The site is safe');
+        }
+    } else {
+        if (lang_global === "uk") {
+            $('#dw93244444').text('Сайт небезпечний');
+        } else if (lang_global === "en") {
+            $('#dw93244444').text('The site is dangerous');
+        }
+    }
+}
+
+const fileUpload = () => {
+    const $inputFile = $('#upload-files');
+    const $inputContainer = $('#upload-container');
+    const $filesListContainer = $('#files-list-container');
+    const $uploadButton = $('#upload-button');
+    const $uploadButton1 = $('#upload-button1');
+    let fileList = [];
+
+    $inputFile.on('click dragstart dragover', () => {
+        $inputContainer.addClass('active');
+    });
+
+    $inputFile.on('dragleave dragend drop change', () => {
+        $inputContainer.removeClass('active');
+        const files = Array.from($inputFile[0].files);
+
+        fileList = [];
+
+        files.forEach(file => {
+            const fileName = file.name;
+            const uploadedFiles = {
+                name: fileName,
+                file: file
+            };
+
+            fileList.push(uploadedFiles);
+
+            $filesListContainer.html('');
+
+            const content = `
+                <div class="form__files-container">
+                    <span class="form__text">${uploadedFiles.name}</span>
+                </div>
+            `;
+            $filesListContainer.append(content);
+        });
+    });
+
+    $uploadButton.on('click', () => {
+        if (fileList.length === 0) {
+            message_window('Виберіть файл перед відправкою');
+            return;
+        }
+
+        $('#we332dvc').html("Обробка");
+
+        const formData = new FormData();
+        formData.append('file', fileList[0].file);
+        formData.append('value', 0);
+
+        $.ajax({
+            url: '/antivirus_bekend',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response == 0) {
+                    $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');
+                } else {
+                    $('#we332dvc').html('<span class="f343ffv">Обережно вірус</span>');
+                }
+            },
+            error: function (error) {
+                console.error('Помилка відправки:', error);
+            }
+        });
+    });
+
+    $uploadButton1.on('click', () => {
+        if (fileList.length === 0) {
+            message_window('Виберіть файл перед відправкою');
+            return;
+        }
+
+        $('#we332dvc').html("Обробка");
+
+        const formData = new FormData();
+        formData.append('file', fileList[0].file);
+        formData.append('value', 1);
+
+        $.ajax({
+            url: '/antivirus_bekend',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response == 0) {
+                    $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');
+                } else {
+                    $('#we332dvc').html('<span class="f343ffv">Обережно вірус</span>');
+                }
+            },
+            error: function (error) {
+                console.error('Помилка відправки:', error);
+            }
+        });
+    });
+};
+
+function config_bg() {
+    $.ajax({
+        url: "/config_global",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            antivirus_flash_drive = response['antivirus']['antivirus_flash_drive'];
+
+            $("#bg_input").val(response['antivirus']['antivirus_flash_drive_cmd']);
+
+            if (antivirus_flash_drive === 0) {
+                $("#bg_dqwderfd").css("background-color", "#22223a");
+            } else {
+                $("#bg_dqwderfd").css("background-color", "#565574");
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function new_val_gb_usb() {
+    if (antivirus_flash_drive === 0) {
+        antivirus_flash_drive = 1;
+    } else {
+        antivirus_flash_drive = 0;
+    }
+
+    $.ajax({
+        url: "/change_val_gb_usb",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: antivirus_flash_drive, data1: $("#bg_input").val()}),
+        success: function (response) {
+            message_window('Значення встановлено');
+            config_bg();
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
