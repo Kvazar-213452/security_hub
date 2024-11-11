@@ -485,12 +485,25 @@ function antivirus_web_start() {
 
 function antivirus_web_end(response) {
     $('#dqdcew336g').show();
-    $('#dwdefw4f4').text('Завершено');
+
+    if (lang_global === "uk") {
+        $('#dwdefw4f4').text('Завершено'); 
+    } else if (lang_global === "en") {
+        $('#dwdefw4f4').text('Completed'); 
+    }
 
     if (response['found'] === false) {
-        $('#dw93244444').text('Сайт безпечний');
+        if (lang_global === "uk") {
+            $('#dw93244444').text('Сайт безпечний');
+        } else if (lang_global === "en") {
+            $('#dw93244444').text('The site is safe');
+        }
     } else {
-        $('#dw93244444').text('Сайт небезпечний');
+        if (lang_global === "uk") {
+            $('#dw93244444').text('Сайт небезпечний');
+        } else if (lang_global === "en") {
+            $('#dw93244444').text('The site is dangerous');
+        }
     }
 }
 
@@ -942,6 +955,26 @@ function lang_change_page(lang) {
         $('#lang_system_v00qwdweee').html("Open programs");
         $('#lang_system_vfd8723ed').html("System data");
         $('#lang_system_verdfvcww').html("There is something interesting here");
+
+        // antivirus
+        $('#antivirus_errfee2').html("Antivirus");
+        $('#antivirus_vef093f').html("Be in information security");
+        $('#dwdc21e12d').html("Check the site");
+        $('#dwdc21e12d1').html("Check the file");
+        $('#dwdc21e12d2').html("On the background");
+        $('#antivirus_894534ffvvv').html("Check");
+        $('#h3ruiwefer24f').html("Description");
+        $('#fewrvw243rgefvcc').html("Background features are enabled automatically at startup");
+        $('#vbs612dwes655').html("Monitoring flash drives");
+        $('#vb92354gu04ttg').html("This setting activates the USB media monitoring function, which notifies users when new flash drives are connected. After enabling this function, the program constantly scans available USB media and reports each new device that is connected.");
+        $('#bbv612ee3dwe').html("Set the cmd command that will be launched after connecting the USB drive");
+        $('#bg_dqwderfd').html("Turn on");
+        $('#upload-button').html("Quick check");
+        $('#upload-button1').html("Detailed check");
+
+        // cleaning
+        $('#vc728i32000').html("Cleaning pc");
+        $('#bvh9iuweddd').html("Unfortunately, the script does not clean the System32 folder. Sorry");
     } else if (lang === "uk") {
         // wifi
         $('#lang_wefsdeeeeee').html("Вайфай менеджер");
@@ -956,6 +989,26 @@ function lang_change_page(lang) {
         $('#lang_system_vfd8723ed').html("Системні дані");
         $('#lang_system_verdfvcww').html("Тут є дещо цікаве можливо");
         
+        // antivirus
+        $('#antivirus_errfee2').html("Антивірус");
+        $('#antivirus_vef093f').html("Будьте в інформаційній безпеці");
+        $('#dwdc21e12d').html("Перевірити сайт");
+        $('#dwdc21e12d1').html("Перевірити файл");
+        $('#dwdc21e12d2').html("На фоні");
+        $('#antivirus_894534ffvvv').html("Перевірити");
+        $('#h3ruiwefer24f').html("Опис");
+        $('#fewrvw243rgefvcc').html("Функції на фоні вмикаються автоматично при запуску");
+        $('#vbs612dwes655').html("Моніторинг флешок");
+        $('#vb92354gu04ttg').html("Це налаштування активує функцію моніторингу USB-носіїв, яка попереджає користувача при підключенні нових флешок. Після ввімкнення цієї функції програма постійно сканує доступні USB-носії і повідомляє про кожен новий пристрій, що підключається.");
+        $('#bbv612ee3dwe').html("Встановити cmd команду яка буде запускатись після підключення USB-носія");
+        $('#bg_dqwderfd').html("Увімкнути");
+        $('#upload-button').html("Швидка перевірка");
+        $('#upload-button1').html("Детальна перевірка");
+
+        // cleaning
+        $('#vc728i32000').html("Очищення ПК");
+        $('#bvh9iuweddd').html("На жаль скрипт не очищує папку System32. Вибачте");
+
     }
 }
 
