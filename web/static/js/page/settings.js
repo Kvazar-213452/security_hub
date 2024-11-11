@@ -125,3 +125,18 @@ function button_settings_change(val, url) {
         }
     });
 }
+
+function change_lang_all(val) {
+    $.ajax({
+        url: "/change_lang_settings",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ value: val }),
+        success: function (response) {
+            window.parent.postMessage("lang_change", "*");
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+} 

@@ -6,66 +6,62 @@
        <link rel="stylesheet" href="/static/css/global.css"/>
    </head>
    <body>
-        {{template "menu.html" .}}
-        {{template "console.html" .}}
-        <div class="main">
-            <div class="main_div">
-                <br>
-                <p id="vc728i32000" class="name_page"></p>
-                <p id="bvh9iuweddd" class="description_page"></p>
-                <br>
-                <div class="imfowdwqdd">
-                    <div class="padoge">
-                        <p id="bx66210doddddw" class="name_system"></p>
-                        <ul class="dqfeffggg">
-                            <li id="bo9ho2_0dddd"></li>
-                            <li id="d_odw2983fff"></li>
-                            <li id="b8cq82d3333"></li>
-                            <li id="vc972odwe9"></li>
-                            <li id="b89bdq9822222"></li>
-                            <li id="bc92idw092222d"></li>
-                        </ul>
-                        <br>
-                        <button class="deccc" id="bf0qwp32r4t5651222" onclick="cleanup()">Очистити компютер</button>
-                    </div>
+        <div class="main_div">
+            <br>
+            <p id="vc728i32000" class="name_page"></p>
+            <p id="bvh9iuweddd" class="description_page"></p>
+            <br>
+            <div class="imfowdwqdd">
+                <div class="padoge">
+                    <p id="bx66210doddddw" class="name_system"></p>
+                    <ul class="dqfeffggg">
+                        <li id="bo9ho2_0dddd"></li>
+                        <li id="d_odw2983fff"></li>
+                        <li id="b8cq82d3333"></li>
+                        <li id="vc972odwe9"></li>
+                        <li id="b89bdq9822222"></li>
+                        <li id="bc92idw092222d"></li>
+                    </ul>
+                    <br>
+                    <button class="deccc" id="bf0qwp32r4t5651222" onclick="cleanup()">Очистити компютер</button>
                 </div>
-                <br>
-                <div class="imfowdwqdd">
-                    <div class="padoge">
-                        <p id="vwer43erfdfcff" class="name_system"></p>
+            </div>
+            <br>
+            <div class="imfowdwqdd">
+                <div class="padoge">
+                    <p id="vwer43erfdfcff" class="name_system"></p>
+                    <br>
+                    <p id="bvpuwe033230_233" class="toggle-btn"></p>
+                    <div class="dropdown-content" id="dropdown1">
+                        <p id="v21qp9wd000222s"></p>
                         <br>
-                        <p id="bvpuwe033230_233" class="toggle-btn"></p>
-                        <div class="dropdown-content" id="dropdown1">
-                            <p id="v21qp9wd000222s"></p>
-                            <br>
-                            <button class="ump_button cbq98222fz233" data-data="backup"></button>
-                        </div>
-                        <div class="hr_div1"></div>
-                        <br><br>
-                        <p id="cbwq982fff45t5" class="toggle-btn"></p>
-                        <div class="dropdown-content">
-                            <p id="cbqw278d436666"></p>
-                            <br>
-                            <button class="ump_button cbq98222fz233" data-data="wifi"></button>
-                        </div>
-                        <div class="hr_div1"></div>                   
-                        <br><br>
-                        <p id="bv89qwdasdwededddd" class="toggle-btn"></p>
-                        <div class="dropdown-content">
-                            <p id="vb0928923ee3ddd"></p>
-                            <br>
-                            <button class="ump_button cbq98222fz233" data-data="desktop"></button>
-                        </div>
-                        <div class="hr_div1"></div>
-                        <br><br>
-                        <p id="bviubiwdd3333r" class="toggle-btn"></p>
-                        <div class="dropdown-content">
-                            <p id="bciu292ed45675663"></p>
-                            <br>
-                            <button class="ump_button cbq98222fz233" data-data="doskey"></button>
-                        </div>
-                        <div class="hr_div1"></div>     
+                        <button class="ump_button cbq98222fz233" data-data="backup"></button>
                     </div>
+                    <div class="hr_div1"></div>
+                    <br><br>
+                    <p id="cbwq982fff45t5" class="toggle-btn"></p>
+                    <div class="dropdown-content">
+                        <p id="cbqw278d436666"></p>
+                        <br>
+                        <button class="ump_button cbq98222fz233" data-data="wifi"></button>
+                    </div>
+                    <div class="hr_div1"></div>                   
+                    <br><br>
+                    <p id="bv89qwdasdwededddd" class="toggle-btn"></p>
+                    <div class="dropdown-content">
+                        <p id="vb0928923ee3ddd"></p>
+                        <br>
+                        <button class="ump_button cbq98222fz233" data-data="desktop"></button>
+                    </div>
+                    <div class="hr_div1"></div>
+                    <br><br>
+                    <p id="bviubiwdd3333r" class="toggle-btn"></p>
+                    <div class="dropdown-content">
+                        <p id="bciu292ed45675663"></p>
+                        <br>
+                        <button class="ump_button cbq98222fz233" data-data="doskey"></button>
+                    </div>
+                    <div class="hr_div1"></div>     
                 </div>
             </div>
         </div>
@@ -76,7 +72,6 @@
     <script src="/static/js/global.js"></script>
     <script src="/static/js/page/cleanup.js"></script>
     <script>
-        change_lang_now();
-        button_hover("btn4");
+        change_lang_now(0);
     </script>
 </html>

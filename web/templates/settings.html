@@ -6,67 +6,63 @@
        <link rel="stylesheet" href="/static/css/global.css"/>
    </head>
    <body>
-        {{template "menu.html" .}}
-        {{template "console.html" .}}
-        <div class="main">
-            <div class="main_div">
+        <div class="main_div">
+            <br>
+            <div class="settings_div">
+                <p class="settings_main_tetx">Оболонка</p>
                 <br>
-                <div class="settings_div">
-                    <p class="settings_main_tetx">Оболонка</p>
-                    <br>
-                    <button onclick="change_shell(true, 'visualization1')" id="visualization1" class="button_settings">Використовувати SPX</button>
-                    <button onclick="change_shell(false, 'visualization2')" id="visualization2" class="button_settings">Використовувати свій браузер</button>
-                    <br><br>
-                </div>
-                <div class="settings_div">
-                    <p class="settings_main_tetx">Для розробників</p>
-                    <br>
-                    <p>Щоб відкрити Логи натисніть на клавішу клавіатури "]"</p>
-                    <br>
-                    <p>Логи перезавантажуються при натиснані на клавішу клавіатури "]"</p>
-                    <br>
-                </div>
-                <div class="settings_div">
-                    <p class="settings_main_tetx">Логування</p>
-                    <br>
-                    <button onclick="button_settings_change('1', '/log_change')" id="vsgretdbgc1" class="button_settings">Да</button>
-                    <button onclick="button_settings_change('0', '/log_change')" id="vsgretdbgc2" class="button_settings">Ні</button>
-                    <br><br>
-                </div>
-                <div class="settings_div">
-                    <p class="settings_main_tetx">Порт</p>
-                    <br>
-                    <input id="ssdfredfgettt" class="saert45trgf" type="text">
-                    <button onclick="input_settings_change('ssdfredfgettt', 'port_change')" class="zxbnmewd">Встановити</button>
-                    <br><br>
-                    <p>Якщо встановети значення 0 то порт буде вибиратись автоматично</p>
-                    <br>
-                </div>
-                <div class="settings_div">
-                    <p class="settings_main_tetx">Дата сервер</p>
-                    <br>
-                    <input id="bsdcfvbttrfgo" class="saert45trgf" type="text">
-                    <button onclick="input_settings_change('bsdcfvbttrfgo', '/server_change')" class="zxbnmewd">Встановити</button>
-                    <br><br>
-                    <p>З дата сервера беруться дані сигнатур, хешів, інформація про вірусні сайти та інше</p>
-                    <br>
-                </div>
-                <div class="settings_div">
-                    <p class="settings_main_tetx">Вибір оболонки</p>
-                    <br>
-                    <button onclick="button_settings_change('0', '/shell_change')" id="shell_NM" class="button_settings">NM1</button>
-                    <button onclick="button_settings_change('1', '/shell_change')" id="shell_NM1" class="button_settings">NM2</button>
-                    <br><br>
-                </div>
-                <div class="settings_div">
-                    <p class="settings_main_tetx">Вибір мови</p>
-                    <br>
-                    <button onclick="button_settings_change('en', '/change_lang_settings')" id="setingss_vdwewe" class="button_settings">Англійська</button>
-                    <button onclick="button_settings_change('uk', '/change_lang_settings')" id="setingss_vdwewe1" class="button_settings">Українська</button>
-                    <br><br>
-                </div>
-                <br><br><br><br>
+                <button onclick="change_shell(true, 'visualization1')" id="visualization1" class="button_settings">Використовувати SPX</button>
+                <button onclick="change_shell(false, 'visualization2')" id="visualization2" class="button_settings">Використовувати свій браузер</button>
+                <br><br>
             </div>
+            <div class="settings_div">
+                <p class="settings_main_tetx">Для розробників</p>
+                <br>
+                <p>Щоб відкрити Логи натисніть на клавішу клавіатури "]"</p>
+                <br>
+                <p>Логи перезавантажуються при натиснані на клавішу клавіатури "]"</p>
+                <br>
+            </div>
+            <div class="settings_div">
+                <p class="settings_main_tetx">Логування</p>
+                <br>
+                <button onclick="button_settings_change('1', '/log_change')" id="vsgretdbgc1" class="button_settings">Да</button>
+                <button onclick="button_settings_change('0', '/log_change')" id="vsgretdbgc2" class="button_settings">Ні</button>
+                <br><br>
+            </div>
+            <div class="settings_div">
+                <p class="settings_main_tetx">Порт</p>
+                <br>
+                <input id="ssdfredfgettt" class="saert45trgf" type="text">
+                <button onclick="input_settings_change('ssdfredfgettt', 'port_change')" class="zxbnmewd">Встановити</button>
+                <br><br>
+                <p>Якщо встановети значення 0 то порт буде вибиратись автоматично</p>
+                <br>
+            </div>
+            <div class="settings_div">
+                <p class="settings_main_tetx">Дата сервер</p>
+                <br>
+                <input id="bsdcfvbttrfgo" class="saert45trgf" type="text">
+                <button onclick="input_settings_change('bsdcfvbttrfgo', '/server_change')" class="zxbnmewd">Встановити</button>
+                <br><br>
+                <p>З дата сервера беруться дані сигнатур, хешів, інформація про вірусні сайти та інше</p>
+                <br>
+            </div>
+            <div class="settings_div">
+                <p class="settings_main_tetx">Вибір оболонки</p>
+                <br>
+                <button onclick="button_settings_change('0', '/shell_change')" id="shell_NM" class="button_settings">NM1</button>
+                <button onclick="button_settings_change('1', '/shell_change')" id="shell_NM1" class="button_settings">NM2</button>
+                <br><br>
+            </div>
+            <div class="settings_div">
+                <p class="settings_main_tetx">Вибір мови</p>
+                <br>
+                <button onclick="change_lang_all('en')" id="setingss_vdwewe" class="button_settings">Англійська</button>
+                <button onclick="change_lang_all('uk')" id="setingss_vdwewe1" class="button_settings">Українська</button>
+                <br><br>
+            </div>
+            <br><br><br><br>
         </div>
    </body>
     <script src="/static/jquery.min.js"></script>
@@ -75,8 +71,7 @@
     <script src="/static/js/global.js"></script>
     <script src="/static/js/page/settings.js"></script>
     <script>
-        change_lang_now();
+        change_lang_now(0);
         getConfig();
-        button_hover("btn6");
     </script>
 </html>

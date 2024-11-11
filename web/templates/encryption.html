@@ -6,10 +6,7 @@
        <link rel="stylesheet" href="/static/css/global.css"/>
    </head>
    <body>
-        {{template "menu.html" .}}
-        {{template "console.html" .}}
-        <div class="main">
-            <div class="main_div">
+        <div class="main_div">
             <br>
             <p class="name_page">WIFI management</p>
             <p class="description_page">Get more information about yours WIFI</p>
@@ -42,7 +39,6 @@
                 </div>
             </div>
         </div>
-        </div>
    </body>
     <script src="/static/jquery.min.js"></script>
     <script src="/static/js/config.js"></script>
@@ -50,7 +46,6 @@
     <script src="/static/js/global.js"></script>
     <script src="/static/js/page/encryption.js"></script>
     <script>
-        button_hover("btn5");
         $('#frg45th9nd').hide(); 
         $('#frg45th9nd1').hide(); 
         change_menu_antivirus(0, "dwdc21e12d")

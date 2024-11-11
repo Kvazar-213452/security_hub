@@ -8,15 +8,12 @@ $(document).ready(function() {
     fetchLogs();
 });
 
-function clos(name) {
-    $('#' + name).hide(); 
-}
-
-function openModal(name) {
-    $('#' + name).show(); 
-}
-
 function button_hover(name) {
+    for (let i = 0; i < mmain_buuton.length; i++) {
+        $("#" + mmain_buuton[i]).css("opacity", "0.6");
+        $("#" + mmain_buuton[i]).css("background-color", "#ffffff00");
+    }
+
     $("#" + name).css("opacity", "1");
     $("#" + name).css("background-color", "#565574");
 }
@@ -66,24 +63,6 @@ function open_site() {
     });
 }
 
-function get_massage_info() {
-    openModal("modal1");
-
-    $.ajax({
-        url: "http://localhost:3000/data",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(null),
-        success: function (response) {
-            $('#r4e23efvd_').html(response['message']);
-            $('#textfrwefwf_').html(response['desc']);
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
-        }
-    });
-}
-
 function change_menu_antivirus(id) {
     for (let i = 0; i < dwdc21e12d.length; i++) {
         $("#" + dwdc21e12d[i]).css("color", "#ffffffd4");
@@ -95,4 +74,25 @@ function change_menu_antivirus(id) {
 
     $("#" + dwdc21e12d[id]).css("color", "#766aff");
     $('#' + frg45th9nd[id]).show();
+}
+
+function change_lang_now(type) {
+    $.ajax({
+        url: "/config_global",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            lang_global = response['lang'];
+
+            if (type === 0) {
+                lang_change_page(lang_global);
+            } else {
+                lang_change_main(lang_global);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
 }

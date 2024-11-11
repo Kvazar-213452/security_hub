@@ -10,63 +10,13 @@
     overflow-x: hidden;
 }
 
-.img_message_unp{
+#iframe{
     position: absolute;
-    right: 45px;
-    height: 35px;
-    filter: invert(85%);
-    top: 20px;
-    cursor: pointer;
-    transition: all .3s;
-
-    &:hover{opacity: 0.6;}
-}
-
-#modal1 {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
+    left: 275px;
+    width: calc(100% - 275px);
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4); 
-}
-
-#modal-content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    padding: 20px;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 60%;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    background-color: $bg_color;
-    font-weight: bold;
-}
-
-.close1 {
-    float: right;
-    font-size: 30px;
-    cursor: pointer;
-    position: absolute;
-    right: 10px;
-    top: 0px;
-    z-index: 1000; 
-}
-
-.close1:hover, .close1:focus {
-    text-decoration: none;
-    cursor: pointer; 
-}
-
-.desc_opdw{
-    color: $violet;
-    font-weight: bold;
-    font-size: 22px;
+    border: none;
+    background-color: transparent;
 }
 
 .menu_logo{
@@ -122,13 +72,6 @@
 .button {@include menu_button($white, 7px, 100%);}
 .button1 {@include menu_button($white, 9px, 100%);}
 .button2 {@include menu_button($read, 11px, 0%);}
-
-.main{
-    position: fixed;
-    left: 280px;
-    height: 100%;
-    width: calc(100% - 280px);
-}
 
 .main_div{
     padding-left: 20px;

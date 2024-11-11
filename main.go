@@ -40,7 +40,7 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 
 	// get
-	http.HandleFunc("/wifi", main_com.Render_index_page)
+	http.HandleFunc("/main", main_com.Render_index_page)
 	http.HandleFunc("/about", main_com.Render_about_page)
 	http.HandleFunc("/settings", main_com.Render_settings_page)
 	http.HandleFunc("/system", main_com.Render_system_page)
@@ -48,6 +48,7 @@ func main() {
 	http.HandleFunc("/cleaning", main_com.Render_cleaning)
 	http.HandleFunc("/antivirus", main_com.Render_antivirus)
 	http.HandleFunc("/encryption", main_com.Render_encryption)
+	http.HandleFunc("/wifi", main_com.Render_wifi_page)
 
 	// Post
 	http.HandleFunc("/get_wifi_now", page.Post_gagat_network)

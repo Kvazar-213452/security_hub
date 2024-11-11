@@ -1,19 +1,3 @@
-function change_lang_now() {
-    $.ajax({
-        url: "/config_global",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(null),
-        success: function (response) {
-            lang_global = response['lang'];
-            lang_change_page(lang_global);
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
-        }
-    });
-}
-
 function lang_change_page(lang) {
     if (lang === "en") {
         // wifi

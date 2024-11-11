@@ -6,10 +6,7 @@
        <link rel="stylesheet" href="/static/css/global.css"/>
    </head>
    <body>
-        {{template "menu.html" .}}
-        {{template "console.html" .}}
-        <div class="main">
-            <div class="main_div">
+        <div class="main_div">
             <br>
             <p id="antivirus_errfee2" class="name_page"></p>
             <p id="antivirus_vef093f" class="description_page"></p>
@@ -31,7 +28,6 @@
                     {{template "background.html" .}}
                 </div>
             </div>
-            </div>
         </div>
    </body>
     <script src="/static/jquery.min.js"></script>
@@ -40,8 +36,7 @@
     <script src="/static/js/global.js"></script>
     <script src="/static/js/page/antivirus.js"></script>
     <script>
-        change_lang_now();
-        button_hover("btn3");
+        change_lang_now(0);
         $('#frg45th9nd').hide(); 
         $('#frg45th9nd1').hide(); 
         change_menu_antivirus(0)

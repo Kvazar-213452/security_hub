@@ -4,7 +4,7 @@
   "url": "https://raw.githubusercontent.com/Kvazar-213452/security_hub/refs/heads/main/web_external/data/",
   "port": 4000,
   "shell": 1,
-  "lang": "uk",
+  "lang": "en",
   "antivirus": {
     "antivirus_flash_drive": 0,
     "antivirus_flash_drive_cmd": ""

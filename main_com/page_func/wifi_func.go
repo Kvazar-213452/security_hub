@@ -210,9 +210,7 @@ func Get_connected_SSID() string {
 	}
 
 	var network Network
-	if err := xml.Unmarshal(data, &network); err != nil {
-		log.Fatalf("Не вдалося розібрати XML: %v\n", err)
-	}
+	xml.Unmarshal(data, &network)
 
 	func_all.Clear_file(config_main.Global_phat + "\\" + config_main.Library_folder + "\\data\\" + config_main.File_exe_data)
 

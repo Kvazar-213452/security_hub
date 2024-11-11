@@ -4,50 +4,34 @@
        <title>SPX</title>
        <link rel="stylesheet" href="/static/css/main.css"/>
        <link rel="stylesheet" href="/static/css/global.css"/>
-       <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-
    </head>
    <body>
-        {{template "menu.html" .}}
-        {{template "console.html" .}}
-        <div class="main">
-            <div class="main_div">
-                <br>
-                <p id="lang_wefsdeeeeee" class="name_page"></p>
-                <p id="lang_nfefdfdvghyt" class="description_page"></p>
-                <img class="img_message_unp" onclick="get_massage_info()" src="/static/img/12.png">
-                <br>
-                <div class="wifi_sqd">
-                    <div class="img_wifi"><div id="chart"></div></div>
-                    <br>
-                    <div class="div_wifi_info">
-                        <div class="padoge">
-                            <div id="info_wifi_div">
-                                <p id="lang_dqwedddcwww" class="ed3wed"></p>
-                                <div id="wifi_protection"></div>
-                                <br>
-                                <div id="fweetrfgcvweee"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="wifi_all_div">
-                    <div id="render_all_wifi" class="padoge"></div>
-                </div>
+        <div class="menu">
+            <div class="menu_logo"><img src="/static/img/9.png"><p>Security Hub</p></div>
+            <br><br><br>
+            <div class="menu_div">
+                <div onclick="page_iframe('/wifi', 'btn1')" id="btn1" class="button"><img src="/static/img/4.png"><p>WIFI</p></div>
+                <div onclick="page_iframe('/system', 'btn2')" id="btn2" class="button"><img src="/static/img/6.png"><p>Система</p></div>
+                <div onclick="page_iframe('/antivirus', 'btn3')" id="btn3" class="button"><img src="/static/img/7.png"><p>Антивірус</p></div>
+                <div onclick="page_iframe('/cleaning', 'btn4')" id="btn4" class="button"><img src="/static/img/8.png"><p>Очищення</p></div>
+                <div onclick="page_iframe('/encryption', 'btn5')" id="btn5" class="button"><img src="/static/img/11.png"><p>Шифрування</p></div>
+                <div onclick="page_iframe('/settings', 'btn6')" id="btn6" class="button1"><img src="/static/img/3.png"><p>Налаштування</p></div>
+                <div onclick="page_iframe('/about', 'btn7')" id="btn7" class="button1"><img src="/static/img/2.png"><p>Про програму</p></div>
+                <br><br><br>
+                <a href="/off_app"><div id="btn9" class="button2"><img src="/static/img/10.png"><p>Закрити програму</p></div></a>
             </div>
-        </div>
+        </div> 
+
+        <div class="console"></div>
+
+        <iframe id="iframe"></iframe>
    </body>
     <script src="/static/jquery.min.js"></script>
     <script src="/static/js/config.js"></script>
-    <script src="/static/js/page/lang.js"></script>
     <script src="/static/js/global.js"></script>
-    <script src="/static/js/page/wifi.js"></script>
-    <script src="/static/js/page/schedule.js"></script>
+    <script src="/static/js/index.js"></script>
+    <script src="/static/js/page/lang_main.js"></script>
     <script>
-        change_lang_now();
-        button_hover("btn1");
-        get_data_wifi_now();
-        setInterval(get_data_wifi_all, 2500);
-        setInterval(get_data_for_schedule, 2500);
+        page_iframe("/wifi", "btn1");
     </script> 
 </html>
