@@ -1,7 +1,7 @@
 package page_func
 
 import (
-	"bufio"
+	"encoding/xml"
 	"fmt"
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
@@ -150,14 +150,23 @@ func Get_Wifi_info() (*WifiInfo, error) {
 	return wifiInfo, nil
 }
 
-func Get_available_Wifi_networks() ([]WifiNetwork, error) {
-	exePath := "./available_wifi.exe"
-	workingDir := "library"
-	dataFilePath := "./library/data/file_1.txt"
+type WifiNetwork_1 struct {
+	SSID          string `xml:"SSID"`
+	SignalQuality int    `xml:"SignalQuality"`
+}
+
+type Networks struct {
+	XMLName  xml.Name        `xml:"Networks"`
+	Networks []WifiNetwork_1 `xml:"Network"`
+}
+
+func Get_available_Wifi_networks() ([]WifiNetwork_1, error) {
+	exePath := config_main.Available_wifi_exe
+	workingDir := config_main.Library_folder
+	dataFilePath := "./" + config_main.Library_folder + "/data/" + config_main.File_1_exe_data
 
 	cmd := exec.Command(exePath)
 	cmd.Dir = workingDir
-
 	if err := cmd.Run(); err != nil {
 		return nil, fmt.Errorf("не вдалося запустити exe файл: %v", err)
 	}
@@ -167,31 +176,26 @@ func Get_available_Wifi_networks() ([]WifiNetwork, error) {
 		return nil, fmt.Errorf("не вдалося прочитати файл: %v", err)
 	}
 
-	var networks []WifiNetwork
-	scanner := bufio.NewScanner(strings.NewReader(string(data)))
-	for scanner.Scan() {
-		line := scanner.Text()
-		parts := strings.Split(line, "|")
-		if len(parts) == 2 {
-			ssid := strings.TrimSpace(parts[0])
-			signal := strings.TrimSpace(parts[1])
-			networks = append(networks, WifiNetwork{SSID: ssid, Signal: signal})
-		}
+	var networks Networks
+	err = xml.Unmarshal(data, &networks)
+	if err != nil {
+		return nil, fmt.Errorf("помилка при парсингу XML: %v", err)
 	}
 
-	if err := scanner.Err(); err != nil {
-		return nil, fmt.Errorf("помилка під час обробки даних: %v", err)
-	}
+	func_all.Clear_file(config_main.Global_phat + "\\" + config_main.Library_folder + "\\data\\" + config_main.File_1_exe_data)
 
-	func_all.Clear_file(config_main.Global_phat + "\\library\\data\\file_1.txt")
+	return networks.Networks, nil
+}
 
-	return networks, nil
+type Network struct {
+	XMLName xml.Name `xml:"Networks"`
+	SSIDs   []string `xml:"SSID"`
 }
 
 func Get_connected_SSID() string {
-	exePath := "./get_ssid.exe"
-	workingDir := "library"
-	dataFilePath := "./library/data/file.txt"
+	exePath := config_main.Get_ssid_exe
+	workingDir := config_main.Library_folder
+	dataFilePath := "./" + config_main.Library_folder + "/data/" + config_main.File_exe_data
 
 	cmd := exec.Command(exePath)
 	cmd.Dir = workingDir
@@ -205,7 +209,15 @@ func Get_connected_SSID() string {
 		log.Fatalf("Не вдалося прочитати файл: %v\n", err)
 	}
 
-	func_all.Clear_file(config_main.Global_phat + "\\library\\data\\file.txt")
+	var network Network
+	if err := xml.Unmarshal(data, &network); err != nil {
+		log.Fatalf("Не вдалося розібрати XML: %v\n", err)
+	}
 
-	return string(data)
+	func_all.Clear_file(config_main.Global_phat + "\\" + config_main.Library_folder + "\\data\\" + config_main.File_exe_data)
+
+	if len(network.SSIDs) > 0 {
+		return network.SSIDs[0]
+	}
+	return ""
 }

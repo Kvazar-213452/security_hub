@@ -64,9 +64,9 @@ type SystemInfo struct {
 }
 
 func Get_data_os() string {
-	exePath := "./system_info.exe"
-	workingDir := "library"
-	dataFilePath := "./library/data/file_2.txt"
+	exePath := config_main.System_info_exe
+	workingDir := config_main.Library_folder
+	dataFilePath := "./" + config_main.Library_folder + "/data/" + config_main.File_2_exe_data
 
 	cmd := exec.Command(exePath)
 	cmd.Dir = workingDir
@@ -86,7 +86,7 @@ func Get_data_os() string {
 		log.Fatalf("Не вдалося конвертувати в JSON: %v", err)
 	}
 
-	func_all.Clear_file(config_main.Global_phat + "\\library\\data\\file_2.txt")
+	func_all.Clear_file(config_main.Global_phat + "\\" + config_main.Library_folder + "\\data\\" + config_main.File_2_exe_data)
 
 	return string(jsonData)
 }

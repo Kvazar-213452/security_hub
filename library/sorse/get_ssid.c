@@ -14,11 +14,14 @@ void ListWifiNetworks() {
     PWLAN_INTERFACE_INFO pIfInfo = NULL;
     PWLAN_AVAILABLE_NETWORK_LIST pBssList = NULL;
 
-    FILE *file = fopen("data/file.txt", "w");
+    FILE *file = fopen("data/get_ssid.xml", "w");
     if (file == NULL) {
         fprintf(stderr, "Не вдалося відкрити файл для запису\n");
         return;
     }
+
+    fprintf(file, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+    fprintf(file, "<Networks>\n");
 
     dwResult = WlanOpenHandle(2, NULL, &dwResult, &hClient);
     if (dwResult != ERROR_SUCCESS) {
@@ -53,11 +56,13 @@ void ListWifiNetworks() {
         for (int j = 0; j < (int)pBssList->dwNumberOfItems; j++) {
             PWLAN_AVAILABLE_NETWORK pNetwork = &pBssList->Network[j];
 
+            fprintf(file, "  <SSID>");
             for (int k = 0; k < pNetwork->dot11Ssid.uSSIDLength; k++) {
                 fprintf(file, "%c", pNetwork->dot11Ssid.ucSSID[k]);
             }
+            fprintf(file, "</SSID>\n");
 
-            j = 100;
+            j = 1000;
         }
 
         if (pBssList != NULL) {
@@ -65,6 +70,8 @@ void ListWifiNetworks() {
             pBssList = NULL;
         }
     }
+
+    fprintf(file, "</Networks>\n");
 
     if (pIfList != NULL) {
         WlanFreeMemory(pIfList);

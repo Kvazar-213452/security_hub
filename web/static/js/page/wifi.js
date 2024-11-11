@@ -23,6 +23,7 @@ function get_data_wifi_all() {
         data: JSON.stringify(null),
         success: function (response) {
             get_network_now(function (ssid) {
+                console.log(response)
                 render_all_network_wifi(response, ssid);
             });
         },
@@ -68,8 +69,8 @@ function get_wifi_info_level(data, wifi_now) {
 
             while (i < response.length) {
                 wifi_now = wifi_now.replace(/^"|"$/g, '');
-                if (wifi_now === response[i]['ssid']) {
-                    schedule_render(data, response[i]['signal']);
+                if (wifi_now === response[i]['SSID']) {
+                    schedule_render(data, response[i]['SignalQuality']);
                 }
                 i++;
             }
@@ -141,7 +142,7 @@ function render_all_network_wifi(response, ssid) {
 
     for (let i = 0; i < response.length; i++) {
         for (let r = i + 1; r < response.length; r++) {
-            if (response[i]['ssid'] === response[r]['ssid']) {
+            if (response[i]['SSID'] === response[r]['SSID']) {
                 response.splice(r, 1);
             }
         }
@@ -149,8 +150,8 @@ function render_all_network_wifi(response, ssid) {
 
     for (let i = 0; i < response.length; i++) {
         let text = `<div class="div_wifi_all">
-        <p class="name_wifi_div_all">${response[i]['ssid']}</p>
-        <p class="right_left_signal">${response[i]['signal']}</p>
+        <p class="name_wifi_div_all">${response[i]['SSID']}</p>
+        <p class="right_left_signal">${response[i]['SignalQuality']}%</p>
         </div>`;
         $('#render_all_wifi').append(text);
     }

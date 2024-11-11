@@ -12,12 +12,18 @@ int main() {
     DWORD dwVersion = 0;
     DWORD dwResult = 0;
     
-    FILE *file = fopen("data/file_1.txt", "w");
+    // Відкриваємо файл для запису XML
+    FILE *file = fopen("data/available_wifi.xml", "w");
     if (file == NULL) {
         printf("Не вдалося відкрити файл для запису.\n");
         return 1;
     }
 
+    // Початок XML документа
+    fprintf(file, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+    fprintf(file, "<Networks>\n");
+
+    // Отримуємо доступ до клієнта WLAN
     if (WlanOpenHandle(2, NULL, &dwVersion, &hClient) != ERROR_SUCCESS) {
         fprintf(file, "Помилка при відкритті ручки до клієнта WLAN.\n");
         fclose(file);
@@ -31,29 +37,40 @@ int main() {
         return 1;
     }
 
+    // Перебираємо інтерфейси
     for (DWORD i = 0; i < pIfList->dwNumberOfItems; i++) {
         PWLAN_AVAILABLE_NETWORK_LIST pNetworkList = NULL;
-        
+
+        // Отримуємо список доступних мереж
         if (WlanGetAvailableNetworkList(hClient, &pIfList->InterfaceInfo[i].InterfaceGuid, 0, NULL, &pNetworkList) != ERROR_SUCCESS) {
             fprintf(file, "Помилка при отриманні списку доступних мереж.\n");
             continue;
         }
-        
+
+        // Перебираємо кожну мережу
         for (DWORD j = 0; j < pNetworkList->dwNumberOfItems; j++) {
             WLAN_AVAILABLE_NETWORK network = pNetworkList->Network[j];
-            
+
+            // Записуємо SSID у форматі XML
+            fprintf(file, "  <Network>\n");
+            fprintf(file, "    <SSID>");
             for (DWORD k = 0; k < network.dot11Ssid.uSSIDLength; k++) {
                 fprintf(file, "%c", network.dot11Ssid.ucSSID[k]);
             }
-            
-            fprintf(file, "|%d%%\n", network.wlanSignalQuality);
+            fprintf(file, "</SSID>\n");
+
+            // Записуємо рівень сигналу
+            fprintf(file, "    <SignalQuality>%d</SignalQuality>\n", network.wlanSignalQuality);
+            fprintf(file, "  </Network>\n");
         }
 
+        // Очищаємо пам'ять
         if (pNetworkList != NULL) {
             WlanFreeMemory(pNetworkList);
         }
     }
 
+    // Очищаємо пам'ять та закриваємо клієнта WLAN
     if (pIfList != NULL) {
         WlanFreeMemory(pIfList);
     }
@@ -62,6 +79,9 @@ int main() {
         WlanCloseHandle(hClient, NULL);
     }
 
+    // Закриваємо файл і завершуємо XML документ
+    fprintf(file, "</Networks>\n");
     fclose(file);
+
     return 0;
 }

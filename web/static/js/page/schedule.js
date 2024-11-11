@@ -202,11 +202,11 @@ function schedule_render(x, y) {
     });
 
     
-    if (data.length > 8) {
+    if (data.length > 10) {
         data.shift();
     }
 
-    if (len >= 1000) {
+    if (len >= 99) {
         len = 1;
     }
 

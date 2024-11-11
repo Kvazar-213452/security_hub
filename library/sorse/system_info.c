@@ -8,7 +8,7 @@
 #pragma comment(lib, "psapi.lib")
 
 void getSystemInfo() {
-    FILE *file = fopen("data/file_2.txt", "w");
+    FILE *file = fopen("data/system_info.xml", "w");
     if (file == NULL) {
         printf("Не вдалося відкрити файл для запису.\n");
         return;

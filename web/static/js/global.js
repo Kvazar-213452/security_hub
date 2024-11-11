@@ -35,22 +35,18 @@ function console_open() {
 }
 
 function message_window(content) {
-    const block = document.createElement("div");
-    block.className = "animatedBlock hide";
-    block.textContent = content;
-    document.body.appendChild(block);
+    const $block = $('<div class="animatedBlock hide"></div>').text(content);
+    $('body').append($block);
 
     setTimeout(() => {
-        block.classList.remove("hide");
-        block.classList.add("show");
+        $block.removeClass('hide').addClass('show');
     }, 0);
 
     setTimeout(() => {
-        block.classList.remove("show");
-        block.classList.add("hide");
+        $block.removeClass('show').addClass('hide');
 
         setTimeout(() => {
-            block.remove();
+            $block.remove();
         }, 1000);
     }, 3000);
 }

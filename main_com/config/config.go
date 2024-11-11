@@ -1,8 +1,23 @@
 package config
 
+// struct
+type Config_global struct {
+	Visualization int    `json:"visualization"`
+	Log           int    `json:"log"`
+	URL           string `json:"url"`
+	Port          int    `json:"port"`
+	Shell         int    `json:"shell"`
+	Lang          string `json:"lang"`
+	Antivirus     struct {
+		Antivirus_flash_drive     int    `json:"antivirus_flash_drive"`
+		Antivirus_flash_drive_cmd string `json:"antivirus_flash_drive_cmd"`
+	} `json:"antivirus"`
+}
+
 // data
 var Main_config string = "data/main_config.json"
 var Log_file string = "data/main.log"
+var Library_folder string = "library"
 
 // core web
 var Core_web string = "./shell_web.exe"
@@ -28,19 +43,18 @@ var Server_data = Server_url + "site_virus.txt"
 var Server_data_sha1_hashes_1 = Server_url + "sha1_hashes_1.txt"
 var Server_data_sha1_hashes_2 = Server_url + "sha1_hashes_2.txt"
 
+// flows func
 var Stop_antivirus_flash_drive = make(chan bool)
 
-var Antivirus_flash_drive_cmd string = Get_antivirus_flash_drive_cmd(Main_config)
+// exe lib
+var Available_wifi_exe string = "./available_wifi.exe"
+var Get_ssid_exe string = "./get_ssid.exe"
+var System_info_exe string = "./system_info.exe"
 
-type Config_global struct {
-	Visualization int    `json:"visualization"`
-	Log           int    `json:"log"`
-	URL           string `json:"url"`
-	Port          int    `json:"port"`
-	Shell         int    `json:"shell"`
-	Lang          string `json:"lang"`
-	Antivirus     struct {
-		Antivirus_flash_drive     int    `json:"antivirus_flash_drive"`
-		Antivirus_flash_drive_cmd string `json:"antivirus_flash_drive_cmd"`
-	} `json:"antivirus"`
-}
+// exe lib data
+var File_exe_data string = "get_ssid.xml"
+var File_1_exe_data string = "available_wifi.xml"
+var File_2_exe_data string = "system_info.xml"
+
+// data json
+var Antivirus_flash_drive_cmd string = Get_antivirus_flash_drive_cmd(Main_config)
