@@ -3,11 +3,20 @@ function encryption_file_start() {
     const files = fileInput.files;
 
     if (files.length === 0) {
-        message_window('Файл невибрано');
+        if (lang_global === "uk") {
+            message_window('Файл не вибрано');
+        } else if (lang_global === "en") {
+            message_window('No file selected');
+        }
+
         return;
     }
 
-    $('#errewfffee').html("Обробка");
+    if (lang_global === "uk") {
+        $('#bbbnsqee343').html("Обробка");
+    } else if (lang_global === "en") {
+        $('#bbbnsqee343').html("Processing");       
+    }
 
     const file = files[0];
     const formData = new FormData();
@@ -43,7 +52,7 @@ function encryption_file_end(response) {
     $('#errewfffee').html("");
 
     $('#errewfffee').html(`
-        <p class="deferghhhh777">Ванш куюч для розшифрування:</p> 
+        <p class="deferghhhh777">Your decryption key:</p> 
         <br>
         <span class="dwedffvvvvv">${response}</span>
     `);
@@ -91,11 +100,20 @@ function decipher_file() {
     const files = fileInput.files;
 
     if (files.length === 0) {
-        message_window('Файл невибрано');
+        if (lang_global === "uk") {
+            message_window('Файл не вибрано');
+        } else if (lang_global === "en") {
+            message_window('No file selected');
+        }
+
         return;
     }
 
-    $('#bbbnsqee343').html("Обробка");
+    if (lang_global === "uk") {
+        $('#bbbnsqee343').html("Обробка");
+    } else if (lang_global === "en") {
+        $('#bbbnsqee343').html("Processing");       
+    }
 
     const file = files[0];
     const formData = new FormData();
@@ -111,10 +129,19 @@ function decipher_file() {
         data: formData,
         success: function (response) {
             if (response === 0) {
-                message_window('Помилка');
+                if (lang_global === "uk") {
+                    message_window('Помилка');
+                } else if (lang_global === "en") {
+                    message_window('Error');                
+                }
             } else {
-                message_window('Успішно');
-                $('#bbbnsqee343').html("Успішно");
+                if (lang_global === "uk") {
+                    message_window('Успішно');
+                    $('#bbbnsqee343').html("Успішно"); 
+                } else if (lang_global === "en") {
+                    message_window('Success');
+                    $('#bbbnsqee343').html("Success");                    
+                }
 
                 const link = document.createElement('a');
                 link.href = '/static/data/main';

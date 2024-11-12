@@ -14,17 +14,6 @@
   border: none;
   background-color: transparent; }
 
-.img_message_unp {
-  position: absolute;
-  right: 45px;
-  height: 35px;
-  filter: invert(85%);
-  top: 20px;
-  cursor: pointer;
-  transition: all .3s; }
-  .img_message_unp:hover {
-    opacity: 0.6; }
-
 .menu_logo {
   position: relative;
   left: 40px;
@@ -836,3 +825,17 @@
     box-shadow: none;
     border: solid 2px #766aff;
     color: #766aff; }
+
+.vbwe8b2_btn {
+  border: none;
+  padding: 7px;
+  background-color: #ff5c5c;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: all .3s;
+  border: solid 2px #ffffff00;
+  cursor: pointer;
+  transition: all .3s; }
+  .vbwe8b2_btn:hover {
+    opacity: 0.6; }

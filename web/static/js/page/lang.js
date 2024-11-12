@@ -55,6 +55,32 @@ function lang_change_page(lang) {
             Restarting doskey clears the command history and resets all defined macros. This can be useful for resetting the command line environment to its default state.
         `);
         $('#bf0qwp32r4t5651222').html("Clean the computer");
+
+        // encryption
+        $('#bnoewfcc_i033e').html("Encryption File");
+        $('#bvoif2032991367').html("Don't lose the keys");
+        $('#brbtedfe4443').html("Encrypt File");
+        $('#brbtedfe44431').html("Decrypt File");
+        $('.vb0f0234456465').html("Send");
+
+        // settings
+        $('#ev23weswe232f223e').html("Settings");
+        $('#fwe34357554ttr').html("Customize everything to your liking");
+        $('#bv92021dqdskx').html("Shell");
+        $('#visualization1').html("Use SPX");
+        $('#visualization2').html("Use your own browser");
+        $('#bc0wjcw_o').html("For Developers");
+        $('#bc921328dhaaaa').html('To open Logs, press the "]" key on your keyboard');
+        $('#bc929d20221111').html('Logs reload when you press the "]" key on your keyboard');
+        $('#vcwdwqd77777777').html("Close Program");
+        $('#nc000092731').html("Logging");
+        $('#vsgretdbgc1').html("Yes");
+        $('#vsgretdbgc2').html("No");
+        $('.zxbnmewd').html("Install");
+        $('#bv09209092922').html("If you set the value to 0, the port will be selected automatically");
+        $('#bv90999999992').html("Data from the server includes signatures, hashes, information about malicious sites, and more");
+        $('#nv99121222221').html("Shell Selection");
+        $('#bv902u12222225555').html("Language Selection");
     } else if (lang === "uk") {
         // wifi
         $('#lang_wefsdeeeeee').html("Вайфай менеджер");
@@ -110,5 +136,31 @@ function lang_change_page(lang) {
                             Перезапуск doskey очищає історію команд та скидає всі визначені макроси. Це може бути корисним для скидання середовища командного рядка до початкового стану.
         `);
         $('#bf0qwp32r4t5651222').html("Очистити комп'ютер");
+
+        // encryption
+        $('#bnoewfcc_i033e').html("Файл шифрування");
+        $('#bvoif2032991367').html("Не загуби ключі");
+        $('#brbtedfe4443').html("Зашифрувати файл");
+        $('#brbtedfe44431').html("Розшифрувати файл");
+        $('.vb0f0234456465').html("Відправити");
+
+        // settings
+        $('#ev23weswe232f223e').html("Налаштування");
+        $('#fwe34357554ttr').html("Налаштуйте все під себе");
+        $('#bv92021dqdskx').html("Оболонка");
+        $('#visualization1').html("Використовувати SPX");
+        $('#visualization2').html("Використовувати свій браузер");
+        $('#bc0wjcw_o').html("Для розробників");
+        $('#bc921328dhaaaa').html('Щоб відкрити Логи натисніть на клавішу клавіатури "]"');
+        $('#bc929d20221111').html('Логи перезавантажуються при натиснані на клавішу клавіатури "]"');
+        $('#vcwdwqd77777777').html("Закрити програму");
+        $('#nc000092731').html("Логування");
+        $('#vsgretdbgc1').html("Да");
+        $('#vsgretdbgc2').html("Ні");
+        $('.zxbnmewd').html("Встановити");
+        $('#bv09209092922').html("Якщо встановети значення 0 то порт буде вибиратись автоматично");
+        $('#bv90999999992').html("З дата сервера беруться дані сигнатур, хешів, інформація про вірусні сайти та інше");
+        $('#nv99121222221').html("Вибір оболонки");
+        $('#bv902u12222225555').html("Вибір мови");
     }
 }

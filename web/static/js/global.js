@@ -48,21 +48,6 @@ function message_window(content) {
     }, 3000);
 }
 
-function open_site() {
-    $.ajax({
-        url: "/browser_site_app",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(null),
-        success: function (response) {
-            message_window('Сайт відкрито');
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
-        }
-    });
-}
-
 function change_menu_antivirus(id) {
     for (let i = 0; i < dwdc21e12d.length; i++) {
         $("#" + dwdc21e12d[i]).css("color", "#ffffffd4");

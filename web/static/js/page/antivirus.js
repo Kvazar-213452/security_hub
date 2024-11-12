@@ -2,7 +2,11 @@ function antivirus_web_start() {
     let inputValue = $('#fkwe9203f').val();
     const dataToSend = {url_site: [inputValue]};
 
-    $('#dwdefw4f4').text('Перевірка.....');
+    if (lang_global === "uk") {
+        $('#dwdefw4f4').text('Перевірка.....');
+    } else if (lang_global === "en") {
+        $('#dwdefw4f4').text('Audit.....');
+    }
 
     $.ajax({
         url: '/antivirus_web',
@@ -83,11 +87,19 @@ const fileUpload = () => {
 
     $uploadButton.on('click', () => {
         if (fileList.length === 0) {
-            message_window('Виберіть файл перед відправкою');
+            if (lang_global === "uk") {
+                message_window('Виберіть файл перед відправкою'); 
+            } else if (lang_global === "en") {
+                message_window('Select a file before sending'); 
+            }
             return;
         }
 
-        $('#we332dvc').html("Обробка");
+        if (lang_global === "uk") {
+            $('#we332dvc').html("Обробка");
+        } else if (lang_global === "en") {
+            $('#we332dvc').html("Processing");
+        }
 
         const formData = new FormData();
         formData.append('file', fileList[0].file);
@@ -101,9 +113,17 @@ const fileUpload = () => {
             contentType: false,
             success: function (response) {
                 if (response == 0) {
-                    $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');
+                    if (lang_global === "uk") {
+                        $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');
+                    } else if (lang_global === "en") {
+                        $('#we332dvc').html('<span class="f343ffv1">No viruses found</span>');
+                    }
                 } else {
-                    $('#we332dvc').html('<span class="f343ffv">Обережно вірус</span>');
+                    if (lang_global === "uk") {
+                        $('#we332dvc').html('<span class="f343ffv">Вірус знайдено</span>');
+                    } else if (lang_global === "en") {
+                        $('#we332dvc').html('<span class="f343ffv">Virus found</span>');
+                    }
                 }
             },
             error: function (error) {
@@ -114,11 +134,19 @@ const fileUpload = () => {
 
     $uploadButton1.on('click', () => {
         if (fileList.length === 0) {
-            message_window('Виберіть файл перед відправкою');
+            if (lang_global === "uk") {
+                message_window('Виберіть файл перед відправкою'); 
+            } else if (lang_global === "en") {
+                message_window('Select a file before sending'); 
+            }
             return;
         }
 
-        $('#we332dvc').html("Обробка");
+        if (lang_global === "uk") {
+            $('#we332dvc').html("Обробка");
+        } else if (lang_global === "en") {
+            $('#we332dvc').html("Processing");
+        }
 
         const formData = new FormData();
         formData.append('file', fileList[0].file);
@@ -132,9 +160,17 @@ const fileUpload = () => {
             contentType: false,
             success: function (response) {
                 if (response == 0) {
-                    $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');
+                    if (lang_global === "uk") {
+                        $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');
+                    } else if (lang_global === "en") {
+                        $('#we332dvc').html('<span class="f343ffv1">No viruses found</span>');
+                    }
                 } else {
-                    $('#we332dvc').html('<span class="f343ffv">Обережно вірус</span>');
+                    if (lang_global === "uk") {
+                        $('#we332dvc').html('<span class="f343ffv">Вірус знайдено</span>');
+                    } else if (lang_global === "en") {
+                        $('#we332dvc').html('<span class="f343ffv">Virus found</span>');
+                    }
                 }
             },
             error: function (error) {
@@ -180,7 +216,12 @@ function new_val_gb_usb() {
         contentType: "application/json",
         data: JSON.stringify({data: antivirus_flash_drive, data1: $("#bg_input").val()}),
         success: function (response) {
-            message_window('Значення встановлено');
+            if (lang_global === "uk") {
+                message_window('Значення встановлено');
+            } else if (lang_global === "en") {
+                message_window('The value is set');
+            }
+
             config_bg();
         },
         error: function (xhr, status, error) {

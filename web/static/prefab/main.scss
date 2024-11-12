@@ -71,7 +71,6 @@
 
 .button {@include menu_button($white, 7px, 100%);}
 .button1 {@include menu_button($white, 9px, 100%);}
-.button2 {@include menu_button($read, 11px, 0%);}
 
 .main_div{
     padding-left: 20px;
@@ -298,18 +297,6 @@
     font-size: 30px;
     color: $violet;
     font-weight: bold;
-}
-
-.about_desc_text{
-    position: relative;
-    left: 20px;
-    font-size: 17px;
-    color: $text_color;
-}
-
-.about_desc_p{
-    font-size: 19px;
-    color: $white;
 }
 
 /* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
@@ -678,4 +665,11 @@
         border: solid 2px $violet;
         color: $violet;
     }
+}
+
+.vbwe8b2_btn{
+    @include button($white, $read, 16px);
+    transition: all .3s;
+
+    &:hover {opacity: 0.6;}
 }

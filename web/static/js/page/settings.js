@@ -133,10 +133,26 @@ function change_lang_all(val) {
         contentType: "application/json",
         data: JSON.stringify({ value: val }),
         success: function (response) {
+            getConfig();
             window.parent.postMessage("lang_change", "*");
         },
         error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);
         }
     });
-} 
+}
+
+function open_site() {
+    $.ajax({
+        url: "/browser_site_app",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            message_window('Сайт відкрито');
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
