@@ -34,7 +34,6 @@ void unzip(const std::string& zipFilePath, const std::string& destDir) {
 
         std::string outputPath = destDir + "\\" + filename;
 
-        // Створення директорій для файлу
         if (filename[strlen(filename) - 1] == '/') {
             std::filesystem::create_directories(outputPath);
         } else {
