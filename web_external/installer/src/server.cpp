@@ -12,8 +12,6 @@
 #include <thread>
 #include <future>
 
-typedef const char* (*UnzipFunc)(const char*, const char*);
-
 void start_server(int port) {
     httplib::Server svr;
 

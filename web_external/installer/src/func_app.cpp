@@ -7,6 +7,8 @@
 #include <zlib.h>
 #include <bzlib.h>
 
+typedef const char* (*UnzipFunc)(const char*, const char*);
+
 void unzip(const std::string& zipFilePath, const std::string& destDir) {
     unzFile zipfile = unzOpen(zipFilePath.c_str());
     if (!zipfile) {
@@ -18,7 +20,11 @@ void unzip(const std::string& zipFilePath, const std::string& destDir) {
 
     char filename[256];
     unz_global_info globalInfo;
-    unzGetGlobalInfo(zipfile, &globalInfo);
+    if (unzGetGlobalInfo(zipfile, &globalInfo) != UNZ_OK) {
+        std::cerr << "Не вдалося отримати глобальну інформацію ZIP-файлу." << std::endl;
+        unzClose(zipfile);
+        return;
+    }
 
     for (uLong i = 0; i < globalInfo.number_entry; ++i) {
         if (unzGetCurrentFileInfo(zipfile, nullptr, filename, sizeof(filename), nullptr, 0, nullptr, 0) != UNZ_OK) {
@@ -28,6 +34,7 @@ void unzip(const std::string& zipFilePath, const std::string& destDir) {
 
         std::string outputPath = destDir + "\\" + filename;
 
+        // Створення директорій для файлу
         if (filename[strlen(filename) - 1] == '/') {
             std::filesystem::create_directories(outputPath);
         } else {
@@ -45,10 +52,20 @@ void unzip(const std::string& zipFilePath, const std::string& destDir) {
                 break;
             }
 
-            char buffer[8192];
+            const size_t bufferSize = 285536;
+            char buffer[bufferSize];
             int bytesRead;
             while ((bytesRead = unzReadCurrentFile(zipfile, buffer, sizeof(buffer))) > 0) {
-                fwrite(buffer, sizeof(char), bytesRead, outFile);
+                if (fwrite(buffer, sizeof(char), bytesRead, outFile) != bytesRead) {
+                    std::cerr << "Помилка запису до файлу: " << outputPath << std::endl;
+                    fclose(outFile);
+                    unzCloseCurrentFile(zipfile);
+                    return;
+                }
+            }
+
+            if (bytesRead < 0) {
+                std::cerr << "Помилка читання файлу з ZIP: " << filename << std::endl;
             }
 
             fclose(outFile);
