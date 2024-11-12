@@ -55,7 +55,7 @@ func StartShellWeb(port int, type_ int) *exec.Cmd {
 	if type_ == 0 {
 		os.Chdir("NM1")
 
-		htmlContent := fmt.Sprintf(`%s/about`, strconv.Itoa(port))
+		htmlContent := fmt.Sprintf(`%s/main`, strconv.Itoa(port))
 
 		args := []string{
 			config_main.Name,
@@ -68,7 +68,7 @@ func StartShellWeb(port int, type_ int) *exec.Cmd {
 	} else if type_ == 1 {
 		os.Chdir("NM2")
 
-		htmlContent := fmt.Sprintf(`%d/about`, port)
+		htmlContent := fmt.Sprintf(`%d/main`, port)
 
 		var port_ int = FindFreePort()
 		portStr := strconv.Itoa(port_)

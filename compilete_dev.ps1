@@ -13,7 +13,6 @@ if ($let -eq 0) {
     .\head.exe
 } elseif ($let -eq 3) {
     go build -ldflags="-H windowsgui"
-    .\head.exe
 } elseif ($let -eq 4) {
     rsrc -ico icon.ico -o icon.syso
 }
