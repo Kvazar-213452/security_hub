@@ -5,5 +5,5 @@ int window_w = 350;
 
 const char* name_app = "Installer Security Hub";
 
-std::string server = "https://raw.githubusercontent.com/Kvazar-213452/security_hub/refs/heads/main/web_external/data/main.zip";
+std::string server = "https://raw.githubusercontent.com/Kvazar-213452/security_hub/refs/heads/main/web_external/data/main_fix.zip";
 int sleep_app = 3000;
