@@ -32,19 +32,7 @@ function antivirus_web_end(response) {
         $('#dwdefw4f4').text('Completed'); 
     }
 
-    if (response['found'] === false) {
-        if (lang_global === "uk") {
-            $('#dw93244444').text('Сайт безпечний');
-        } else if (lang_global === "en") {
-            $('#dw93244444').text('The site is safe');
-        }
-    } else {
-        if (lang_global === "uk") {
-            $('#dw93244444').text('Сайт небезпечний');
-        } else if (lang_global === "en") {
-            $('#dw93244444').text('The site is dangerous');
-        }
-    }
+    $('#dwdefw4f4ewqe').text(response['dns'] + response['ssl'] + response['url']); 
 }
 
 const fileUpload = () => {
@@ -103,7 +91,6 @@ const fileUpload = () => {
 
         const formData = new FormData();
         formData.append('file', fileList[0].file);
-        formData.append('value', 0);
 
         $.ajax({
             url: '/antivirus_bekend',
@@ -112,53 +99,7 @@ const fileUpload = () => {
             processData: false,
             contentType: false,
             success: function (response) {
-                if (response == 0) {
-                    if (lang_global === "uk") {
-                        $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');
-                    } else if (lang_global === "en") {
-                        $('#we332dvc').html('<span class="f343ffv1">No viruses found</span>');
-                    }
-                } else {
-                    if (lang_global === "uk") {
-                        $('#we332dvc').html('<span class="f343ffv">Вірус знайдено</span>');
-                    } else if (lang_global === "en") {
-                        $('#we332dvc').html('<span class="f343ffv">Virus found</span>');
-                    }
-                }
-            },
-            error: function (error) {
-                console.error('Помилка відправки:', error);
-            }
-        });
-    });
-
-    $uploadButton1.on('click', () => {
-        if (fileList.length === 0) {
-            if (lang_global === "uk") {
-                message_window('Виберіть файл перед відправкою'); 
-            } else if (lang_global === "en") {
-                message_window('Select a file before sending'); 
-            }
-            return;
-        }
-
-        if (lang_global === "uk") {
-            $('#we332dvc').html("Обробка");
-        } else if (lang_global === "en") {
-            $('#we332dvc').html("Processing");
-        }
-
-        const formData = new FormData();
-        formData.append('file', fileList[0].file);
-        formData.append('value', 1);
-
-        $.ajax({
-            url: '/antivirus_bekend',
-            method: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
+                console.log(response)
                 if (response == 0) {
                     if (lang_global === "uk") {
                         $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');

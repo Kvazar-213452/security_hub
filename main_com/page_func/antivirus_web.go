@@ -11,7 +11,13 @@ import (
 	config_main "head/main_com/config"
 )
 
-type ResponseData struct {
+type return_func_data struct {
+	DNS string `json:"dns"`
+	SSL int    `json:"ssl"`
+	URL int    `json:"url"`
+}
+
+type responseData struct {
 	Data struct {
 		Attributes struct {
 			LastDNSRecordsDate   int64 `json:"last_dns_records_date"`
@@ -24,7 +30,7 @@ type ResponseData struct {
 	} `json:"data"`
 }
 
-type ResponseData_1 struct {
+type responseData_1 struct {
 	Data struct {
 		Attributes struct {
 			LastAnalysisStats struct {
@@ -34,12 +40,7 @@ type ResponseData_1 struct {
 	} `json:"data"`
 }
 
-type Return_data struct {
-	DNS string `json:"dns"`
-	SSL string `json:"ssl"`
-}
-
-func checkDomain(domain string) Return_data {
+func checkDomain(domain string) (string, int) {
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", config_main.Url_domains_virustotal+domain, nil)
 
@@ -53,25 +54,26 @@ func checkDomain(domain string) Return_data {
 		fmt.Printf("Помилка при запиті: %d\n", resp.StatusCode)
 	}
 
-	var result ResponseData
+	var result responseData
 	json.NewDecoder(resp.Body).Decode(&result)
 
-	var result_func Return_data
+	data_1 := ""
+	data_2 := 0
 
 	if result.Data.Attributes.LastDNSRecordsDate != 0 {
 		lastDNSDate := time.Unix(result.Data.Attributes.LastDNSRecordsDate, 0).UTC().Format("2006-01-02 15:04:05")
-		result_func.DNS = lastDNSDate
+		data_1 = lastDNSDate
 	} else {
-		result_func.DNS = "null"
+		data_1 = "null"
 	}
 
 	if result.Data.Attributes.LastHTTPSCertificate.CertSignature.SignatureAlgorithm != "" {
-		result_func.SSL = "Безпечний (сертифікат HTTPS знайдено)"
+		data_2 = 1
 	} else {
-		result_func.SSL = "Небезпечний (можливо, відсутній HTTPS)"
+		data_2 = 0
 	}
 
-	return result_func
+	return data_1, data_2
 }
 
 func extractDomain(url string) string {
@@ -105,7 +107,7 @@ func checkURL(url string) int {
 		fmt.Printf("Помилка при запиті: %d\n", resp.StatusCode)
 	}
 
-	var result ResponseData_1
+	var result responseData_1
 	json.NewDecoder(resp.Body).Decode(&result)
 
 	maliciousCount := result.Data.Attributes.LastAnalysisStats.Malicious
@@ -117,12 +119,16 @@ func checkURL(url string) int {
 	return securityStatus
 }
 
-func CheckUrlInFile(url_ string) int {
+func CheckUrlInFile(url_ string) return_func_data {
 	domain := extractDomain(url_)
+	var return_func return_func_data
 
-	checkDomain(domain)
+	data_1, data_2 := checkDomain(domain)
+	data_3 := checkURL(url_)
 
-	checkURL(url_)
+	return_func.DNS = data_1
+	return_func.SSL = data_2
+	return_func.URL = data_3
 
-	return 0
+	return return_func
 }

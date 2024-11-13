@@ -45,22 +45,12 @@ func Post_antivirus_web(w http.ResponseWriter, r *http.Request) {
 		}
 
 		url := requestData.URL[0]
-		code := page_func.CheckUrlInFile(url)
+		data_good := page_func.CheckUrlInFile(url)
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 
-		if code == 1 {
-			response := map[string]interface{}{
-				"found": true,
-			}
-			json.NewEncoder(w).Encode(response)
-		} else {
-			response := map[string]interface{}{
-				"found": false,
-			}
-			json.NewEncoder(w).Encode(response)
-		}
+		json.NewEncoder(w).Encode(data_good)
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}
@@ -88,32 +78,11 @@ func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 		}
 		defer destFile.Close()
 
-		_, err = io.Copy(destFile, file)
-		if err != nil {
-			http.Error(w, "Не вдалося зберегти файл", http.StatusInternalServerError)
-			return
-		}
+		io.Copy(destFile, file)
 
-		value := r.FormValue("value")
+		data_good := page_func.Scan_file_virus(filePath)
 
-		if value == "0" {
-			data := page_func.Scan_file_virus(filePath, config_main.Server_data_sha1_hashes_2)
-
-			if data == 0 {
-				w.Write([]byte("0"))
-			} else {
-				w.Write([]byte("1"))
-			}
-		} else {
-			data := page_func.Scan_file_virus(filePath, config_main.Server_data_sha1_hashes_1)
-			data1 := page_func.Scan_file_virus(filePath, config_main.Server_data_sha1_hashes_2)
-
-			if data == 0 || data1 == 1 {
-				w.Write([]byte("0"))
-			} else {
-				w.Write([]byte("1"))
-			}
-		}
+		json.NewEncoder(w).Encode(data_good)
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

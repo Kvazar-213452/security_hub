@@ -36,13 +36,6 @@ var Cleanup_dll = "library/cleanup.dll"
 // Frontend
 var Frontend_folder = "web"
 
-// Server
-var Server_url = Get_server_url(Main_config)
-
-var Server_data = Server_url + "site_virus.txt"
-var Server_data_sha1_hashes_1 = Server_url + "sha1_hashes_1.txt"
-var Server_data_sha1_hashes_2 = Server_url + "sha1_hashes_2.txt"
-
 // flows func
 var Stop_antivirus_flash_drive = make(chan bool)
 
@@ -64,3 +57,4 @@ const ApiKey_virustotal = "b022e26c03533fcd236535e650661b72c41165db486500bf5877f
 
 const ApiURL_virustotal = "https://www.virustotal.com/api/v3/urls/"
 const Url_domains_virustotal = "https://www.virustotal.com/api/v3/domains/"
+const Files_virustotal = "https://www.virustotal.com/api/v3/files/"

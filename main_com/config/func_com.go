@@ -18,26 +18,6 @@ func Get_phat_global() string {
 	return exeDir
 }
 
-func Get_server_url(filePath string) string {
-	file, err := os.Open(filePath)
-	if err != nil {
-		return ""
-	}
-	defer file.Close()
-
-	var data map[string]interface{}
-	if err := json.NewDecoder(file).Decode(&data); err != nil {
-		return ""
-	}
-
-	server, ok := data["url"].(string)
-	if !ok {
-		return ""
-	}
-
-	return server
-}
-
 func Get_antivirus_flash_drive_cmd(filePath string) string {
 	file, err := os.Open(filePath)
 	if err != nil {
