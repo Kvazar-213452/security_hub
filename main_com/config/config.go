@@ -58,3 +58,9 @@ var File_2_exe_data string = "system_info.xml"
 
 // data json
 var Antivirus_flash_drive_cmd string = Get_antivirus_flash_drive_cmd(Main_config)
+
+// virustotal api
+const ApiKey_virustotal = "b022e26c03533fcd236535e650661b72c41165db486500bf5877f08184b21099"
+
+const ApiURL_virustotal = "https://www.virustotal.com/api/v3/urls/"
+const Url_domains_virustotal = "https://www.virustotal.com/api/v3/domains/"
