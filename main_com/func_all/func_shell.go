@@ -186,3 +186,16 @@ func Clear_file(filePath string) {
 	}
 	defer file.Close()
 }
+
+func Config_port(data string) {
+	Clear_file(config_main.Starter_file)
+
+	file, err := os.OpenFile(config_main.Starter_file, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
+	if err != nil {
+		fmt.Println("Помилка при відкритті файлу:", err)
+		return
+	}
+	defer file.Close()
+
+	file.WriteString(data)
+}

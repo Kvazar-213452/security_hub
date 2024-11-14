@@ -31,6 +31,7 @@ func main() {
 	}
 
 	portStr := ":" + strconv.Itoa(port)
+	func_all.Config_port(strconv.Itoa(port))
 
 	var cmd *exec.Cmd
 	if config.Visualization == 1 {
@@ -83,5 +84,4 @@ func main() {
 			fmt.Printf("Не вдалося завершити shell_web.exe: %v\n", err)
 		}
 	}
-
 }

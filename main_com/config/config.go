@@ -59,3 +59,7 @@ const ApiKey_virustotal = "b022e26c03533fcd236535e650661b72c41165db486500bf5877f
 const ApiURL_virustotal = "https://www.virustotal.com/api/v3/urls/"
 const Url_domains_virustotal = "https://www.virustotal.com/api/v3/domains/"
 const Files_virustotal = "https://www.virustotal.com/api/v3/files/"
+
+// solver
+const Site_main = "https://spx-security-hub.wuaze.com/"
+const Starter_file = "data/starter.md"

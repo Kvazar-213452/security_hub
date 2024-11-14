@@ -81,6 +81,7 @@ function lang_change_page(lang) {
         $('#nv99121222221').html("Shell Selection");
         $('#bv902u12222225555').html("Language Selection");
         $('#c093efw4fwc2322323rfvv').html("Port");
+        $('#duw1291291e12fq').html("Open site");
     } else if (lang === "uk") {
         // wifi
         $('#lang_wefsdeeeeee').html("Вайфай менеджер");
@@ -162,6 +163,7 @@ function lang_change_page(lang) {
         $('#nv99121222221').html("Вибір оболонки");
         $('#bv902u12222225555').html("Вибір мови");
         $('#c093efw4fwc2322323rfvv').html("Порт");
+        $('#duw1291291e12fq').html("Відкрити сайт");
     }
 }
 

@@ -1,6 +1,7 @@
 package main_com
 
 import (
+	config_main "head/main_com/config"
 	"head/main_com/func_all"
 	"net/http"
 
@@ -30,7 +31,7 @@ func Post_Browser_site_app(w http.ResponseWriter, r *http.Request) {
 
 		func_all.AppendToLog("transition to /Browser_site_app")
 
-		url := "https://spx-security-hub.wuaze.com/"
+		url := config_main.Site_main
 		browser.OpenURL(url)
 
 		w.Write(nil)
