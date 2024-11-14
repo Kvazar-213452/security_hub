@@ -32,7 +32,19 @@ function antivirus_web_end(response) {
         $('#dwdefw4f4').text('Completed'); 
     }
 
-    $('#dwdefw4f4ewqe').text(response['dns'] + response['ssl'] + response['url']); 
+    if (response['ssl'] === 1) {
+        $('#dwdefw4f4ewqe').html("Працює");
+    } else {
+        $('#dwdefw4f4ewqe').html("не працює");
+    }
+
+    if (response['url'] === 1) {
+        $('#ewfsdt4w43tgfd321').html("незнайдено");
+    } else {
+        $('#ewfsdt4w43tgfd3211').html("Знайдені");
+    }
+
+    $('#qefwfvd244ttff').html(response['dns']);
 }
 
 const fileUpload = () => {
@@ -159,33 +171,54 @@ function new_val_gb_usb() {
 }
 
 function data_bekend_solver(response) {
+    console.log(response)
     response = JSON.parse(response);
 
-    $('#we332dvc').html(null);
-    $('#we332dvc1').html('Завершено успішно');
-    $('#we332dvc3').html('Хеш файлу: ' + response['hash']);
-
-    let data = JSON.parse(response['data']);
-
-    if (data === "") {
-        $('#we332dvc4').html('Файл не є exe дані детальні дані отримати невдалось');
-    } else {
-        $('#we332dvc4').html('Детальніші дані про exe');
-        console.log(data);
-    }
-
-
-    if (response['namber'] === 0) {
-        if (lang_global === "uk") {
-            $('#we332dvc2').html('<span class="f343ffv1 grean_1">Вірусів незнайдено</span>');
-        } else if (lang_global === "en") {
-            $('#we332dvc2').html('<span class="f343ffv1 grean_1">No viruses found</span>');
+    if (response['status'] === 2) {
+        $('#we332dvc').html(null);
+        $('#we332dvc1').html('Завершено успішно');
+        $('#we332dvc3').html('Хеш файлу: ' + response['hash']);
+    
+        if (response['data'] != "") {
+            data_json_exe = JSON.parse(response['data']);
+    
+            if (data_json_exe === "") {
+                $('#we332dvc4').html('Файл не є exe дані детальні дані отримати невдалось');
+            } else {
+                $('#we332dvc4').html('Детальніші дані про exe');
+            }
+        }
+    
+        if (response['namber'] === 0) {
+            if (lang_global === "uk") {
+                $('#we332dvc2').html('<span class="f343ffv1 grean_1">Вірусів незнайдено</span>');
+            } else if (lang_global === "en") {
+                $('#we332dvc2').html('<span class="f343ffv1 grean_1">No viruses found</span>');
+            }
+        } else {
+            if (lang_global === "uk") {
+                $('#we332dvc2').html(`<span class="f343ffv read">Вірус знайдено кількість ${response['namber']}</span>`);
+            } else if (lang_global === "en") {
+                $('#we332dvc2').html(`<span class="f343ffv read">Virus found number ${response['namber']}</span>`);
+            }
         }
     } else {
-        if (lang_global === "uk") {
-            $('#we332dvc2').html(`<span class="f343ffv read">Вірус знайдено кількість ${response['namber']}</span>`);
-        } else if (lang_global === "en") {
-            $('#we332dvc2').html(`<span class="f343ffv read">Virus found number ${response['namber']}</span>`);
-        }
+        $('#we332dvc1').html('Завершено з помилкаою зачикайте декілька хвелин щоб ваш файл обробився і повторять запрос');
     }
+}
+
+function download_json_data() {
+    const jsonData = JSON.stringify(data_json_exe, null, 2); 
+
+    const blob = new Blob([jsonData], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = "data.json";
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 }

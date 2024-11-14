@@ -2,7 +2,7 @@
 
 std::string html_content = R"(
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,28 +50,28 @@ std::string html_content = R"(
         .ew32fe:hover,
         .ew32fe1:hover {opacity: 0.6;}
 
-        .ew32fe1{background-color: #303030;}
+        .ew32fe1 {background-color: #303030;}
 
-        .ew32fe1 a{color: #ffffff}
+        .ew32fe1 a {color: #ffffff;}
 
-        h1{
+        h1 {
             color: #ffffff;
             position: relative;
             float: left;
             top: 15px;
         }
 
-        .imfe{
+        .imfe {
             position: relative;
             float: right;
             height: 80px;
         }
 
-        .dest{color: #766affc8;}
+        .dest {color: #766affc8;}
 
-        .wdqe333{color: #ffffff;}
+        .wdqe333 {color: #ffffff;}
 
-        .dqfeffggg{
+        .dqfeffggg {
             position: relative;
             left: 15px;
             top: 5px;
@@ -79,17 +79,17 @@ std::string html_content = R"(
             opacity: 0.5;
         }
 
-        .edwe{color: #ffffff;}
+        .edwe {color: #ffffff;}
 
-        .e332s{color: #766aff;}
+        .e332s {color: #766aff;}
     </style>
 </head>
 <body>
-    <h1>Інсталятор Security Hub</h1>
+    <h1>Installer Security Hub</h1>
     <img class="imfe" src="https://raw.githubusercontent.com/Kvazar-213452/security_hub/refs/heads/main/web/static/img/9.png">
     <br><br><br>
-    <p class="dest">Опубліковано 09.11.2024</p>
-    <p class="dest">Версія 3</p>
+    <p class="dest">Published on 09.11.2024</p>
+    <p class="dest">Version 3</p>
     <br>
     <div id="ddcbnxcew33333"></div>
 </body>
@@ -106,7 +106,7 @@ function dwn() {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error(`Помилка при відправці: ${response.statusText}`);
+            throw new Error(`Error on send: ${response.statusText}`);
         }
         return response.text();
     })
@@ -116,16 +116,16 @@ function dwn() {
         }
     })
     .catch(error => {
-        console.error("Помилка при відправці:", error);
+        console.error("Error on send:", error);
     });
 }
 
 function dwn_page() {
     let content = `
-    <p class="edwe">Інсталяція ...</p>
-    <p class="edwe">Інсталяція триватє в середньому 3 секунди</p>
+    <p class="edwe">Installing ...</p>
+    <p class="edwe">Installation takes about 3 seconds</p>
     <br>
-    <button class="ew32fe1"><a href="/exit">Закрити інсталятор</a></button>
+    <button class="ew32fe1"><a href="/exit">Close Installer</a></button>
     `;
 
     document.getElementById("ddcbnxcew33333").innerHTML = content;
@@ -135,27 +135,27 @@ function dwn_page() {
 
 function main_page() {
     let content = `
-    <p class="wdqe333">Інормація</p>
+    <p class="wdqe333">Information</p>
     <ul class="dqfeffggg">
-        <li>Інсталюються оболонки NM1 NM2</li>
-        <li>Створиться ярлик на робочому столі</li>
-        <li>Файли будуть по шляху C:\\security_hub</li>
-        <li>Програма важить 14 МБ</li>
-        <li>Програма з залежностями важить 61 МБ</li>
+        <li>Shells NM1 NM2 are being installed</li>
+        <li>A shortcut will be created on the desktop</li>
+        <li>Files will be located at C:\\security_hub</li>
+        <li>The program size is 14 MB</li>
+        <li>Program with dependencies is 61 MB</li>
     </ul>
     <br>
-    <button class="ew32fe1"><a href="/exit">Закрити інсталятор</a></button>
-    <button onclick='dwn_page()' class="ew32fe"><a>Інсталювати</a></button>
+    <button class="ew32fe1"><a href="/exit">Close Installer</a></button>
+    <button onclick='dwn_page()' class="ew32fe"><a>Install</a></button>
     `;
     document.getElementById("ddcbnxcew33333").innerHTML = content;
 }
 
 function end_page() {
     let content = `
-    <p class="e332s">Завершино</p>
-    <p class="edwe">Можете закрити інсталятор</p>
+    <p class="e332s">Completed</p>
+    <p class="edwe">You may close the installer</p>
     <br>
-    <button class="ew32fe1"><a href="/exit">Закрити інсталятор</a></button>
+    <button class="ew32fe1"><a href="/exit">Close Installer</a></button>
     `;
 
     document.getElementById("ddcbnxcew33333").innerHTML = content;

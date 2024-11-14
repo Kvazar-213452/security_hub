@@ -5,7 +5,8 @@ function lang_change_main(lang) {
         $('#btn3 p').html("Antivirus");
         $('#btn4 p').html("Cleanup");
         $('#btn5 p').html("Encryption");
-        $('#btn6 p').html("Settings");        
+        $('#btn6 p').html("Settings");
+        $('#btn7 p').html("Reboot");       
     } else if (lang === "uk") {
         $('#btn1 p').html("Вайфай");
         $('#btn2 p').html("Система");
@@ -13,5 +14,6 @@ function lang_change_main(lang) {
         $('#btn4 p').html("Очищення");
         $('#btn5 p').html("Шифрування");
         $('#btn6 p').html("Налаштування");
+        $('#btn7 p').html("Перезавантажити");
     }
 }

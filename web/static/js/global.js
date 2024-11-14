@@ -1,13 +1,3 @@
-$(document).on('keydown', function(event) {
-    if (event.key === ']' || event.key === 'ї') {
-        console_open();
-    }
-});
-
-$(document).ready(function() {
-    fetchLogs();
-});
-
 function button_hover(name) {
     for (let i = 0; i < mmain_buuton.length; i++) {
         $("#" + mmain_buuton[i]).removeClass("vw92dy9qccde32122021"); 
@@ -16,19 +6,6 @@ function button_hover(name) {
 
     $("#" + name).removeClass("vw92dy9qccde3212202"); 
     $("#" + name).addClass("vw92dy9qccde32122021"); 
-}
-
-function fetchLogs() {
-    $.post('/get_logs', function (data) {
-        const logsArray = data.log.split('\n');
-
-        $('.console').html(logsArray.join('<br>'));
-    });
-}
-
-function console_open() {
-    fetchLogs();
-    $('.console').toggle();
 }
 
 function message_window(content) {
@@ -116,4 +93,4 @@ function get_style() {
     });
 }
 
-get_data_config()
+get_data_config();

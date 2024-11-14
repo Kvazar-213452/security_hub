@@ -254,8 +254,12 @@ a {color: #171717;}
 .wefopq2e2e2ccc1{color: #000000;}
 .weyiqwd22e3c{background-color: rgb(50, 52, 77);}
 .weyiqwd22e3c1{background-color: rgb(86, 85, 116);}
-.style_button{color: #766aff;}
+
+.style_button{
+    color: #766aff;
+    border: solid 0px #ffffff00 !important;
+}
+
 .beds12323r4feddfq{color: #766aff;}
 .beds12323r4feddfq1{color: #171717;}
-
 .none_style_button{color: #171717;}

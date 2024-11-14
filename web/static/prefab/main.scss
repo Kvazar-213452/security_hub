@@ -535,11 +535,10 @@
 
 .dwdwffff2{
     position: relative;
-    width: calc(100% - 30px);
-    left: -20px;
+    width: 100%;
     background-color: $bg_color1;
-    height: calc(100% - 370px);
-    border-radius: 5px;
+    height: calc(100% - 350px);
+    border-radius: 10px;
 }
 
 .form {
@@ -692,11 +691,28 @@
 .wefopq2e2e2ccc1{color: $white;}
 .weyiqwd22e3c{background-color: rgb(50, 52, 77);}
 .weyiqwd22e3c1{background-color: rgb(86, 85, 116);}
-.style_button{color: $violet;}
+
+.style_button{
+    color: $violet;
+    border: solid 0px $null !important;
+}
+
 .beds12323r4feddfq{color: $violet;}
 .beds12323r4feddfq1{color: $text_color;}
 
 .none_style_button{
     border: none;
     color: $text_color;
+}
+
+.ge4resdx{
+    color: $white;
+    font-size: 17px;
+}
+
+.ewwdqszx4wefff{
+    @include button($white, $grean, 16px);
+    transition: all .3s;
+
+    &:hover {opacity: 0.6;}
 }

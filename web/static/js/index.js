@@ -11,3 +11,26 @@ $(window).on("message", function(event) {
         change_lang_now(1);
     }
 });
+
+function fetchLogs() {
+    $.post('/get_logs', function (data) {
+        const logsArray = data.log.split('\n');
+
+        $('.console').html(logsArray.join('<br>'));
+    });
+}
+
+function console_open() {
+    fetchLogs();
+    $('.console').toggle();
+}
+
+$(document).on('keydown', function(event) {
+    if (event.key === ']' || event.key === 'ї') {
+        console_open();
+    }
+});
+
+$(document).ready(function() {
+    fetchLogs();
+});

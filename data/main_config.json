@@ -4,7 +4,7 @@
   "port": 4000,
   "shell": 1,
   "lang": "en",
-  "style": "main",
+  "style": "null",
   "antivirus": {
     "antivirus_flash_drive": 0,
     "antivirus_flash_drive_cmd": ""
