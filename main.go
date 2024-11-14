@@ -67,7 +67,6 @@ func main() {
 	http.HandleFunc("/decipher_file", page.Post_decipher_file)
 	http.HandleFunc("/log_change", page.Post_log_change)
 	http.HandleFunc("/port_change", page.Post_port_change)
-	http.HandleFunc("/server_change", page.Post_server_change)
 	http.HandleFunc("/shell_change", page.Post_shell_change)
 	http.HandleFunc("/browser_site_app", main_com.Post_Browser_site_app)
 	http.HandleFunc("/change_val_gb_usb", page.Post_change_val_gb_usb)

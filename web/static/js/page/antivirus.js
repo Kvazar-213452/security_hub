@@ -99,20 +99,7 @@ const fileUpload = () => {
             processData: false,
             contentType: false,
             success: function (response) {
-                console.log(response)
-                if (response == 0) {
-                    if (lang_global === "uk") {
-                        $('#we332dvc').html('<span class="f343ffv1">Вірусів незнайдено</span>');
-                    } else if (lang_global === "en") {
-                        $('#we332dvc').html('<span class="f343ffv1">No viruses found</span>');
-                    }
-                } else {
-                    if (lang_global === "uk") {
-                        $('#we332dvc').html('<span class="f343ffv">Вірус знайдено</span>');
-                    } else if (lang_global === "en") {
-                        $('#we332dvc').html('<span class="f343ffv">Virus found</span>');
-                    }
-                }
+                data_bekend_solver(response);
             },
             error: function (error) {
                 console.error('Помилка відправки:', error);
@@ -169,4 +156,36 @@ function new_val_gb_usb() {
             console.error("Помилка при відправці:", status, error);
         }
     });
+}
+
+function data_bekend_solver(response) {
+    response = JSON.parse(response);
+
+    $('#we332dvc').html(null);
+    $('#we332dvc1').html('Завершено успішно');
+    $('#we332dvc3').html('Хеш файлу: ' + response['hash']);
+
+    let data = JSON.parse(response['data']);
+
+    if (data === "") {
+        $('#we332dvc4').html('Файл не є exe дані детальні дані отримати невдалось');
+    } else {
+        $('#we332dvc4').html('Детальніші дані про exe');
+        console.log(data);
+    }
+
+
+    if (response['namber'] === 0) {
+        if (lang_global === "uk") {
+            $('#we332dvc2').html('<span class="f343ffv1 grean_1">Вірусів незнайдено</span>');
+        } else if (lang_global === "en") {
+            $('#we332dvc2').html('<span class="f343ffv1 grean_1">No viruses found</span>');
+        }
+    } else {
+        if (lang_global === "uk") {
+            $('#we332dvc2').html(`<span class="f343ffv read">Вірус знайдено кількість ${response['namber']}</span>`);
+        } else if (lang_global === "en") {
+            $('#we332dvc2').html(`<span class="f343ffv read">Virus found number ${response['namber']}</span>`);
+        }
+    }
 }

@@ -59,8 +59,8 @@ function lang_change_page(lang) {
         // encryption
         $('#bnoewfcc_i033e').html("Encryption File");
         $('#bvoif2032991367').html("Don't lose the keys");
-        $('#brbtedfe4443').html("Encrypt File");
-        $('#brbtedfe44431').html("Decrypt File");
+        $('.brbtedfe4443').html("Encrypt File");
+        $('.brbtedfe44431').html("Decrypt File");
         $('.vb0f0234456465').html("Send");
 
         // settings
@@ -78,9 +78,9 @@ function lang_change_page(lang) {
         $('#vsgretdbgc2').html("No");
         $('.zxbnmewd').html("Install");
         $('#bv09209092922').html("If you set the value to 0, the port will be selected automatically");
-        $('#bv90999999992').html("Data from the server includes signatures, hashes, information about malicious sites, and more");
         $('#nv99121222221').html("Shell Selection");
         $('#bv902u12222225555').html("Language Selection");
+        $('#c093efw4fwc2322323rfvv').html("Port");
     } else if (lang === "uk") {
         // wifi
         $('#lang_wefsdeeeeee').html("Вайфай менеджер");
@@ -140,8 +140,8 @@ function lang_change_page(lang) {
         // encryption
         $('#bnoewfcc_i033e').html("Файл шифрування");
         $('#bvoif2032991367').html("Не загуби ключі");
-        $('#brbtedfe4443').html("Зашифрувати файл");
-        $('#brbtedfe44431').html("Розшифрувати файл");
+        $('.brbtedfe4443').html("Зашифрувати файл");
+        $('.brbtedfe44431').html("Розшифрувати файл");
         $('.vb0f0234456465').html("Відправити");
 
         // settings
@@ -159,8 +159,9 @@ function lang_change_page(lang) {
         $('#vsgretdbgc2').html("Ні");
         $('.zxbnmewd').html("Встановити");
         $('#bv09209092922').html("Якщо встановети значення 0 то порт буде вибиратись автоматично");
-        $('#bv90999999992').html("З дата сервера беруться дані сигнатур, хешів, інформація про вірусні сайти та інше");
         $('#nv99121222221').html("Вибір оболонки");
         $('#bv902u12222225555').html("Вибір мови");
+        $('#c093efw4fwc2322323rfvv').html("Порт");
     }
 }
+

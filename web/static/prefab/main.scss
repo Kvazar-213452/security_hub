@@ -88,7 +88,8 @@
 .about_div::-webkit-scrollbar,
 .div_wifi_info::-webkit-scrollbar,
 .div_system_info::-webkit-scrollbar,
-.imfowdwqdd::-webkit-scrollbar{
+.imfowdwqdd::-webkit-scrollbar,
+.dqwdwec9923ed::-webkit-scrollbar{
   width: 11px;
   background-color: $bg_color; 
 }
@@ -98,7 +99,9 @@
 .about_div::-webkit-scrollbar-thumb,
 .div_wifi_info::-webkit-scrollbar-thumb,
 .div_system_info::-webkit-scrollbar-thumb,
-.imfowdwqdd::-webkit-scrollbar-thumb{background-color: $bg_color2; }
+.imfowdwqdd::-webkit-scrollbar-thumb,
+.dqwdwec9923ed::-webkit-scrollbar-thumb{background-color: $bg_color2; }
+
 .modal_rev_button_d{color: $read;}
 
 /* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
@@ -579,12 +582,9 @@
     position: relative;
     width: calc(100% - 30px);
     background-color: $bg_color1;
-    height: calc(100% - 590px);
-    left: -20px;
-    border-radius: 5px;
-    color: $text_color;
-    font-size: 25px;
-    font-weight: bold;
+    height: calc(100% - 200px);
+    border-radius: 10px;
+    color: $white;
 }
 
 .dfwefwefcvv22{
@@ -673,3 +673,7 @@
 
     &:hover {opacity: 0.6;}
 }
+
+#we332dvc,
+#we332dvc1{font-size: 24px;}
+#we332dvc2{font-size: 19px;}

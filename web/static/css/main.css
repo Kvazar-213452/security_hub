@@ -109,33 +109,6 @@
     left: 20px;
     top: 9px; }
 
-.button2 {
-  position: relative;
-  width: calc(100% - 40px);
-  height: 45px;
-  left: 20px;
-  transition: all .3s;
-  cursor: pointer;
-  color: #ff5c5c;
-  opacity: 0.6;
-  border-radius: 10px;
-  margin-bottom: 10px; }
-  .button2 p {
-    position: relative;
-    left: 35px;
-    font-size: 18px;
-    top: 12px; }
-  .button2:hover {
-    background-color: #565574;
-    opacity: 1; }
-  .button2 img {
-    filter: invert(0%);
-    height: 25px;
-    position: relative;
-    float: left;
-    left: 20px;
-    top: 11px; }
-
 .main_div {
   padding-left: 20px;
   padding-right: 20px;
@@ -151,7 +124,8 @@
 .about_div::-webkit-scrollbar,
 .div_wifi_info::-webkit-scrollbar,
 .div_system_info::-webkit-scrollbar,
-.imfowdwqdd::-webkit-scrollbar {
+.imfowdwqdd::-webkit-scrollbar,
+.dqwdwec9923ed::-webkit-scrollbar {
   width: 11px;
   background-color: #1b1c30; }
 
@@ -160,7 +134,8 @@
 .about_div::-webkit-scrollbar-thumb,
 .div_wifi_info::-webkit-scrollbar-thumb,
 .div_system_info::-webkit-scrollbar-thumb,
-.imfowdwqdd::-webkit-scrollbar-thumb {
+.imfowdwqdd::-webkit-scrollbar-thumb,
+.dqwdwec9923ed::-webkit-scrollbar-thumb {
   background-color: #22223a; }
 
 .modal_rev_button_d {
@@ -402,16 +377,6 @@
   font-size: 30px;
   color: #766aff;
   font-weight: bold; }
-
-.about_desc_text {
-  position: relative;
-  left: 20px;
-  font-size: 17px;
-  color: #ffffffa5; }
-
-.about_desc_p {
-  font-size: 19px;
-  color: #fff; }
 
 /* system page */
 /* system page */
@@ -748,12 +713,9 @@
   position: relative;
   width: calc(100% - 30px);
   background-color: #32344d;
-  height: calc(100% - 590px);
-  left: -20px;
-  border-radius: 5px;
-  color: #ffffffa5;
-  font-size: 25px;
-  font-weight: bold; }
+  height: calc(100% - 200px);
+  border-radius: 10px;
+  color: #fff; }
 
 .dfwefwefcvv22 {
   position: relative;
@@ -839,3 +801,10 @@
   transition: all .3s; }
   .vbwe8b2_btn:hover {
     opacity: 0.6; }
+
+#we332dvc,
+#we332dvc1 {
+  font-size: 24px; }
+
+#we332dvc2 {
+  font-size: 19px; }

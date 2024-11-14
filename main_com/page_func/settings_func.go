@@ -43,8 +43,6 @@ func UpdateVisualization(newVisualization string, key string) error {
 			return fmt.Errorf("не вдалося перетворити visualization: %w", err)
 		}
 		config.Visualization = newVis
-	} else if key == "URL" {
-		config.URL = newVisualization
 	}
 
 	outputFile, err := os.Create(config_main.Main_config)
@@ -104,8 +102,6 @@ func UpdateConfigKey(key, value string) error {
 		config.Shell, err = strconv.Atoi(value)
 	case "port":
 		config.Port, err = strconv.Atoi(value)
-	case "server":
-		config.URL = value
 	case "lang":
 		config.Lang = value
 	case "antivirus_flash_drive":
