@@ -159,20 +159,3 @@ function open_site() {
         }
     });
 }
-
-function get_style() {
-    $.ajax({
-        url: "/get_style",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(null),
-        success: function (response) {
-           console.log(response)
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
-        }
-    });
-}
-
-get_style()

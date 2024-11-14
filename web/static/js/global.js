@@ -10,6 +10,7 @@ $(document).ready(function() {
 
 function button_hover(name) {
     for (let i = 0; i < mmain_buuton.length; i++) {
+        $("#" + mmain_buuton[i]).removeClass("vw92dy9qccde32122021"); 
         $("#" + mmain_buuton[i]).addClass("vw92dy9qccde3212202"); 
     }
 
@@ -81,3 +82,38 @@ function change_lang_now(type) {
         }
     });
 }
+
+function get_data_config() {
+    $.ajax({
+        url: "/config_global",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            if (response['style'] === "main") {
+                get_style();
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function get_style() {
+    $.ajax({
+        url: "/get_style",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+           console.log(response)
+           $('#style_dudqdc').html(response);
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+get_data_config()
