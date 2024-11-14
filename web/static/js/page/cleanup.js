@@ -3,10 +3,12 @@ $(".toggle-btn").click(function() {
     
     if (nextDropdown.css("display") === "none") {
         nextDropdown.show();
-        $(this).css("color", "#766aff");
+        $(this).removeClass("wefopq2e2e2ccc1");
+        $(this).addClass("wefopq2e2e2ccc"); 
     } else if (nextDropdown.css("display") === "block") {
         nextDropdown.hide();
-        $(this).css("color", "#fff");
+        $(this).removeClass("wefopq2e2e2ccc");
+        $(this).addClass("wefopq2e2e2ccc1"); 
     }
 });
 
@@ -32,10 +34,12 @@ $(".ump_button").click(function() {
     let currentColor = $(this).css("background-color");
 
     if (currentColor === "rgb(50, 52, 77)") {
-        $(this).css("background-color", "#565574");
+        $(this).removeClass("weyiqwd22e3c");
+        $(this).addClass("weyiqwd22e3c1"); 
         data_cleaning[data] = 1;
     } else if (currentColor === "rgb(86, 85, 116)") {
-        $(this).css("background-color", "#32344d");
+        $(this).removeClass("weyiqwd22e3c1");
+        $(this).addClass("weyiqwd22e3c"); 
         data_cleaning[data] = 0;
     }
 });

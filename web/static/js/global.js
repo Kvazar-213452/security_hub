@@ -10,12 +10,11 @@ $(document).ready(function() {
 
 function button_hover(name) {
     for (let i = 0; i < mmain_buuton.length; i++) {
-        $("#" + mmain_buuton[i]).css("opacity", "0.6");
-        $("#" + mmain_buuton[i]).css("background-color", "#ffffff00");
+        $("#" + mmain_buuton[i]).addClass("vw92dy9qccde3212202"); 
     }
 
-    $("#" + name).css("opacity", "1");
-    $("#" + name).css("background-color", "#565574");
+    $("#" + name).removeClass("vw92dy9qccde3212202"); 
+    $("#" + name).addClass("vw92dy9qccde32122021"); 
 }
 
 function fetchLogs() {
@@ -50,14 +49,15 @@ function message_window(content) {
 
 function change_menu_antivirus(id) {
     for (let i = 0; i < dwdc21e12d.length; i++) {
-        $("#" + dwdc21e12d[i]).css("color", "#ffffffd4");
+        $("#" + dwdc21e12d[i]).addClass("beds12323r4feddfq1");
     }
 
     for (let i = 0; i < frg45th9nd.length; i++) {
         $("#" + frg45th9nd[i]).hide();
     }
 
-    $("#" + dwdc21e12d[id]).css("color", "#766aff");
+    $("#" + dwdc21e12d[id]).removeClass("beds12323r4feddfq1"); 
+    $("#" + dwdc21e12d[id]).addClass("beds12323r4feddfq"); 
     $('#' + frg45th9nd[id]).show();
 }
 

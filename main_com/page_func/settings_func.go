@@ -104,6 +104,8 @@ func UpdateConfigKey(key, value string) error {
 		config.Port, err = strconv.Atoi(value)
 	case "lang":
 		config.Lang = value
+	case "style":
+		config.Style = value
 	case "antivirus_flash_drive":
 		config.Antivirus.Antivirus_flash_drive, err = strconv.Atoi(value)
 	case "antivirus_flash_drive_cmd":

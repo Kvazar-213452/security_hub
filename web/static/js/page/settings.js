@@ -1,14 +1,10 @@
 function button_active(name, mas) {
     mas.forEach(function (item) {
-        $("#" + item).css({
-            "border": "none",
-            "color": "#ffffffd4"
-        });
+        $("#" + item).addClass("none_style_button"); 
     });
 
-    $("#" + name).css({
-        "color": "#766aff"
-    });
+    $("#" + name).removeClass("none_style_button"); 
+    $("#" + name).addClass("style_button"); 
 }
 
 function getConfig() {
@@ -33,6 +29,7 @@ function getConfig() {
             let url = data['url'];
             let shell = data['shell'];
             let lang = data['lang'];
+            let style = data['style'];
 
             $('#ssdfredfgettt').val(port);
             $('#bsdcfvbttrfgo').val(url);
@@ -59,6 +56,12 @@ function getConfig() {
                 button_active('setingss_vdwewe', setingss_vdwewe);
             } else {
                 button_active('setingss_vdwewe1', setingss_vdwewe);
+            }
+
+            if (style === "main") {
+                button_active('vvw2311323ferererg3g3g3', vvw2311323ferererg3g3g3);
+            } else {
+                button_active('vvw2311323ferererg3g3g31', vvw2311323ferererg3g3g3);
             }
         })
         .catch(error => {
@@ -156,3 +159,20 @@ function open_site() {
         }
     });
 }
+
+function get_style() {
+    $.ajax({
+        url: "/get_style",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+           console.log(response)
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+get_style()

@@ -7,6 +7,7 @@ type Config_global struct {
 	Port          int    `json:"port"`
 	Shell         int    `json:"shell"`
 	Lang          string `json:"lang"`
+	Style         string `json:"style"`
 	Antivirus     struct {
 		Antivirus_flash_drive     int    `json:"antivirus_flash_drive"`
 		Antivirus_flash_drive_cmd string `json:"antivirus_flash_drive_cmd"`
