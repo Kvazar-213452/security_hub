@@ -74,6 +74,7 @@ func main() {
 	http.HandleFunc("/change_lang_settings", page.Post_change_lang_settings)
 	http.HandleFunc("/style_change", page.Post_style_change)
 	http.HandleFunc("/get_style", main_com.Post_get_style)
+	http.HandleFunc("/install_style", main_com.Post_install_style)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)

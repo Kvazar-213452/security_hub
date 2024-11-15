@@ -222,6 +222,19 @@
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
 
+#file_input_qfEASD{
+    border: none;
+    padding: 7px;
+    font-size: 15px;
+    color: $white;
+    transition: all .3s;
+    background-color: $bg_color2;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {opacity: 0.6;}
+}
+
 .settings_main_tetx{
     font-size: 19px;
     color: $violet;

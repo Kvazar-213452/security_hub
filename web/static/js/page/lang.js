@@ -85,6 +85,8 @@ function lang_change_page(lang) {
         $('#vwf3c3fcew0823qe2k').html("Usage of slots");
         $('#vvw2311323ferererg3g3g3').html("Use");
         $('#vvw2311323ferererg3g3g31').html("Do not use");
+        $('#vwf3c3fcew0823qe2k1').html("Style");
+        $('#vwf3c3fcew0823qe2k2').html("Install");
     } else if (lang === "uk") {
         // wifi
         $('#lang_wefsdeeeeee').html("Вайфай менеджер");
@@ -170,6 +172,8 @@ function lang_change_page(lang) {
         $('#vwf3c3fcew0823qe2k').html("Використання слитів");
         $('#vvw2311323ferererg3g3g3').html("Використовувати");
         $('#vvw2311323ferererg3g3g31').html("Не використовувати");
+        $('#vwf3c3fcew0823qe2k1').html("Стилі");
+        $('#vwf3c3fcew0823qe2k2').html("Встановийти");
     }
 }
 

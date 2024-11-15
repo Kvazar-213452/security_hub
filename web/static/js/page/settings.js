@@ -152,7 +152,46 @@ function open_site() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function (response) {
-            message_window('Сайт відкрито');
+            if (lang_global === "uk") {
+                message_window('Сайт відкрито');
+            } else if (lang_global === "en") {
+                message_window('The site is open');
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function install_style() {
+    const fileInput = document.getElementById("file_input_qfEASD");
+    const file = fileInput.files[0];
+
+    if (!file) {
+        if (lang_global === "uk") {
+            message_window('Виберіть файл стилів');
+        } else if (lang_global === "en") {
+            message_window('Select the styles file');
+        }
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    $.ajax({
+        url: "/install_style",
+        type: "POST",
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function (response) {
+            if (lang_global === "uk") {
+                message_window('Встановлено');
+            } else if (lang_global === "en") {
+                message_window('Install');
+            }
         },
         error: function (xhr, status, error) {
             console.error("Помилка при відправці:", status, error);

@@ -4,8 +4,11 @@ import (
 	"encoding/json"
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
+	"io"
 	"io/ioutil"
 	"net/http"
+	"os"
+	"path/filepath"
 
 	"github.com/pkg/browser"
 )
@@ -54,6 +57,40 @@ func Post_get_style(w http.ResponseWriter, r *http.Request) {
 		decodedString := string(data)
 
 		json.NewEncoder(w).Encode(decodedString)
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_install_style(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/install_style post")
+
+		file, _, err := r.FormFile("file")
+		if err != nil {
+			http.Error(w, "Не вдалося отримати файл: "+err.Error(), http.StatusBadRequest)
+			return
+		}
+		defer file.Close()
+
+		savePath := filepath.Join("data", "style", "main.css")
+
+		outFile, err := os.Create(savePath)
+		if err != nil {
+			http.Error(w, "Не вдалося створити файл: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+		defer outFile.Close()
+
+		_, err = io.Copy(outFile, file)
+		if err != nil {
+			http.Error(w, "Не вдалося зберегти файл: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(nil)
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

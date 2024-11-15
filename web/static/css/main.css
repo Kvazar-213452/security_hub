@@ -279,6 +279,18 @@
 /* settings page */
 /* settings page */
 /* settings page */
+#file_input_qfEASD {
+  border: none;
+  padding: 7px;
+  font-size: 15px;
+  color: #fff;
+  transition: all .3s;
+  background-color: #22223a;
+  border-radius: 5px;
+  cursor: pointer; }
+  #file_input_qfEASD:hover {
+    opacity: 0.6; }
+
 .settings_main_tetx {
   font-size: 19px;
   color: #766aff;
