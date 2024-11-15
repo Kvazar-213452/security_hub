@@ -7,17 +7,21 @@ RewriteEngine On
 </FilesMatch>
 
 
-
 #style css url
 RewriteRule ^style/main$ static/css/main.css [L]
 
 
 #script js url
 RewriteRule ^js/main$ static/js/main.js [L]
+RewriteRule ^js/massage$ static/js/massage.js [L]
 
 
 #lib url
 RewriteRule ^lib/js/jquery$ static/jquery-3.6.4.min.js [L]
+
+#server
+RewriteRule ^server/save_data$ script/save_data.php [L]
+RewriteRule ^db$ script/db.json [L]
 
 
 #page html url

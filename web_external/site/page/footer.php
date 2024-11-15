@@ -8,5 +8,5 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
     <br><br>
     <a class="dwwd3d4" href="https://github.com/Kvazar-213452/security_hub">Код проекта: https://github.com/Kvazar-213452/security_hub</a>
     <br><br>
-    <p>Автор вибачається за його невиликі знання в <span class="dewd3ef">asm</span></p>
+    <p>Створено по системі <span class="dewd3ef">SPX</span>, з використанням ядрів <span class="dewd3ef">NM1 NM2</span></p>
 </div>

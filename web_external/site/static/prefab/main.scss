@@ -203,7 +203,7 @@ a {
 }
 
 .dewd3ef{
-    color: $read;
+    color: $violet;
     font-weight: bold;
 }
 
@@ -235,8 +235,82 @@ a {
 
 .bfievfdwere{
     position: relative;
-    width: calc(100% - 400px);
+    width: 100%;
     height: 500px;
-    left: 200px;
     background-color: $bg_color4;
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: none;
+}
+
+.wedwffcsd{padding: 20px;}
+
+.cwd23103100c{
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.e46fetgr{
+    color: $violet;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.dqw32wert54eg{
+    color: #fff;
+    font-size: 17px;
+}
+
+#myInput{
+    border: none;
+    border-radius: 5px;
+    padding: 6px;
+    font-size: 15px;
+    color: #fff;
+    background-color: $bg_color4;
+    font-weight: bold;
+
+    &:focus {
+        outline: none;
+        color: $violet;
+    }
+}
+
+#myTextarea{
+    border: none;
+    border-radius: 5px;
+    padding: 6px;
+    font-size: 16px;
+    color: #fff;
+    background-color: $bg_color4;
+    font-weight: bold;
+    width: 400px;
+    height: 150px;
+
+    &:focus {
+        outline: none;
+        color: $violet;
+    }
+}
+
+#sendButton{
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    font-size: 16px;
+    color: #fff;
+    background-color: $bg_color4;
+    font-weight: bold;
+    border: solid 2px $null;
+    transition: all .3s;
+    cursor: pointer;
+
+    &:hover {
+        border: solid 2px $violet;
+        color: $violet;
+    }
+
+    &:focus {outline: none;}
 }
