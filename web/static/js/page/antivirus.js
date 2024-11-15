@@ -26,22 +26,46 @@ function antivirus_web_start() {
 function antivirus_web_end(response) {
     $('#dqdcew336g').show();
 
+    clean_div("dq13892r2323233313");
+
     if (lang_global === "uk") {
         $('#dwdefw4f4').text('Завершено'); 
     } else if (lang_global === "en") {
         $('#dwdefw4f4').text('Completed'); 
     }
 
-    if (response['ssl'] === 1) {
-        $('#dwdefw4f4ewqe').html("Працює");
-    } else {
-        $('#dwdefw4f4ewqe').html("не працює");
-    }
+    if (lang_global === "uk") {
+        $('#we31f3qecsdx13rv1').prepend("SSL сервтифікат: ");
+        $('#we31f3qecsdx13rv').prepend("Загрози: ");
+        $('#we31f3qecsdx13rv2').prepend("DNS зміни: ");
 
-    if (response['url'] === 1) {
-        $('#ewfsdt4w43tgfd321').html("незнайдено");
-    } else {
-        $('#ewfsdt4w43tgfd3211').html("Знайдені");
+        if (response['ssl'] === 1) {
+            $('#dwdefw4f4ewqe').html("працює");
+        } else {
+            $('#dwdefw4f4ewqe').html("не працює");
+        }
+    
+        if (response['url'] === 1) {
+            $('#ewfsdt4w43tgfd321').html("не знайдено");
+        } else {
+            $('#ewfsdt4w43tgfd3211').html("pнайдені");
+        }
+    } else if (lang_global === "en") {
+        $('#we31f3qecsdx13rv1').prepend("SSL Certificate: ");
+        $('#we31f3qecsdx13rv').prepend("Threats: ");
+        $('#we31f3qecsdx13rv2').prepend("DNS Changes: ");
+        
+        if (response['ssl'] === 1) {
+            $('#dwdefw4f4ewqe').html("working");
+        } else {
+            $('#dwdefw4f4ewqe').html("not working");
+        }
+        
+        if (response['url'] === 1) {
+            $('#ewfsdt4w43tgfd321').html("Not found");
+        } else {
+            $('#ewfsdt4w43tgfd3211').html("Found");
+        }        
     }
 
     $('#qefwfvd244ttff').html(response['dns']);
@@ -111,6 +135,8 @@ const fileUpload = () => {
             processData: false,
             contentType: false,
             success: function (response) {
+                $('#d13dqe021w34fwvqedddd').hide();
+                clean_div("f2ewds322r3345trg");
                 data_bekend_solver(response);
             },
             error: function (error) {
@@ -171,21 +197,40 @@ function new_val_gb_usb() {
 }
 
 function data_bekend_solver(response) {
-    console.log(response)
     response = JSON.parse(response);
 
+    $('#we332dvc').html('Завершено успішно');
+
     if (response['status'] === 2) {
-        $('#we332dvc').html(null);
-        $('#we332dvc1').html('Завершено успішно');
-        $('#we332dvc3').html('Хеш файлу: ' + response['hash']);
+        if (lang_global === "uk") {
+            $('#we332dvc1').html('Завершено успішно');
+            $('#we332dvc3').html('Хеш файлу: ' + response['hash']);
+        } else if (lang_global === "en") {
+            $('#we332dvc1').html('Completed successfully');
+            $('#we332dvc3').html('The hash of the file: ' + response['hash']);
+        }
     
         if (response['data'] != "") {
             data_json_exe = JSON.parse(response['data']);
     
             if (data_json_exe === "") {
-                $('#we332dvc4').html('Файл не є exe дані детальні дані отримати невдалось');
+                if (lang_global === "uk") {
+                    $('#we332dvc4').html('Файл не є exe дані детальні дані отримати невдалось');
+                    $('#d13dqe021w34fwvqedddd').hide();
+                } else if (lang_global === "en") {
+                    $('#we332dvc4').html('The file is not an exe data detailed data failed to get');
+                    $('#d13dqe021w34fwvqedddd').hide();
+                }
             } else {
-                $('#we332dvc4').html('Детальніші дані про exe');
+                if (lang_global === "uk") {
+                    $('#we332dvc4').html('Детальні дані про exe');
+                    $('#d13dqe021w34fwvqedddd').show();
+                    $('#d13dqe021w34fwvqedddd').html('Скачати');
+                } else if (lang_global === "en") {
+                    $('#we332dvc4').html('More details about the exe');
+                    $('#d13dqe021w34fwvqedddd').show();
+                    $('#d13dqe021w34fwvqedddd').html("Download");
+                }
             }
         }
     

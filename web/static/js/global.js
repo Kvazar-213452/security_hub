@@ -77,6 +77,14 @@ function get_data_config() {
     });
 }
 
+function clean_div(name) {
+    $('#' + name).find('*').contents().filter(function () {
+        return this.nodeType === Node.TEXT_NODE;
+    }).each(function () {
+        this.nodeValue = '';
+    });
+}
+
 function get_style() {
     $.ajax({
         url: "/get_style",
