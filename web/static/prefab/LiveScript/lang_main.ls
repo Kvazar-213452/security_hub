@@ -1,0 +1,17 @@
+lang_change_main = (lang) ->
+  if lang is "en"
+    $('#btn1 p').html("Wi-Fi")
+    $('#btn2 p').html("System")
+    $('#btn3 p').html("Antivirus")
+    $('#btn4 p').html("Cleanup")
+    $('#btn5 p').html("Encryption")
+    $('#btn6 p').html("Settings")
+    $('#btn7 p').html("Reboot")
+  else if lang is "uk"
+    $('#btn1 p').html("Вайфай")
+    $('#btn2 p').html("Система")
+    $('#btn3 p').html("Антивірус")
+    $('#btn4 p').html("Очищення")
+    $('#btn5 p').html("Шифрування")
+    $('#btn6 p').html("Налаштування")
+    $('#btn7 p').html("Перезавантажити")

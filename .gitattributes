@@ -11,3 +11,6 @@ web/static/jquery.min.js linguist-documentation
 web/static/css/*.css linguist-documentation
 
 core_sorse/shell_web_NM1/webview.h linguist-documentation
+
+web/static/js/page/lang.js linguist-documentation
+web/static/js/lang_main.js linguist-documentation
