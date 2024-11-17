@@ -314,3 +314,41 @@ a {
 
     &:focus {outline: none;}
 }
+
+.style_dqw{
+    position: relative;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    padding: 7px;
+    border-radius: 5px;
+    background-color: $bg_color4;
+
+    button {
+        border: none;
+        border: solid 2px $null;
+        background-color: $bg_color3;
+        color: #fff;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all .3s;
+
+        &:hover {
+            color: $violet;
+            border: solid 2px $violet;
+        }
+    }
+}
+
+.dq3233rrffff{
+    color: #fff;
+    font-size: 17px;
+}
+
+.dqd313qe3qdw22{
+    font-size: 20px;
+    color: $violet;
+    font-weight: bold;
+    @include text_decoration();
+}

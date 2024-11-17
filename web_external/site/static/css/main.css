@@ -277,3 +277,36 @@ a {
     color: #766aff; }
   #sendButton:focus {
     outline: none; }
+
+.style_dqw {
+  position: relative;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: #22223a; }
+  .style_dqw button {
+    border: none;
+    border: solid 2px #ffffff00;
+    background-color: #1b1c30;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all .3s; }
+    .style_dqw button:hover {
+      color: #766aff;
+      border: solid 2px #766aff; }
+
+.dq3233rrffff {
+  color: #fff;
+  font-size: 17px; }
+
+.dqd313qe3qdw22 {
+  font-size: 20px;
+  color: #766aff;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px; }

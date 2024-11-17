@@ -156,7 +156,7 @@ function atvImg() {
 
 atvImg();
 
-let mas_ = ['qwesddwq', 'dqwedfvf', 'sdw934fe', 'nvdf00ew'];
+let mas_ = ['qwesddwq', 'dqwedfvf', 'sdw934fe', 'nvdf00ew', 'nvdf00ew1'];
 
 function select_button(id) {
     console.log(mas_[id])
