@@ -3,6 +3,8 @@
 web_external/site/static/css/*.css linguist-documentation
 web_external/site/static/*.js linguist-documentation
 
+data/style/*.css linguist-documentation
+
 web_external/installer/lib/*.h linguist-documentation
 web_external/installer/lib/*.cc linguist-documentation
 web_external/installer/lib/*.i linguist-documentation

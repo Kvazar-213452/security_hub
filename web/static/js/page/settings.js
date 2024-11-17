@@ -198,3 +198,15 @@ function install_style() {
         }
     });
 }
+
+$("#file_input_qfEASD").on("change", function () {
+    let fileName;
+
+    if (lang_global === "uk") {
+        fileName = this.files[0]?.name || "Файл не обрано";
+    } else if (lang_global === "en") {
+        fileName = this.files[0]?.name || "No file selected";
+    }
+
+    $("#file_name").text(fileName);
+});

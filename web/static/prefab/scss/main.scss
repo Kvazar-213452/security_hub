@@ -222,17 +222,36 @@
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
 
-#file_input_qfEASD{
-    border: none;
-    padding: 7px;
-    font-size: 15px;
+.file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.file-input {display: none;}
+
+.file-label {
+    background-color: $violet;
     color: $white;
-    transition: all .3s;
-    background-color: $bg_color2;
+    padding: 7px;
     border-radius: 5px;
     cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
 
-    &:hover {opacity: 0.6;}
+.file-label:hover {
+    background-color: $bg_color2;
+    color: $violet;
+}
+
+.file-name {
+    color: $text_color;
+    font-size: 14px;
+    font-style: italic;
 }
 
 .settings_main_tetx{

@@ -87,6 +87,8 @@ lang_change_page = (lang) ->
     $('#vvw2311323ferererg3g3g31').html("Do not use")
     $('#vwf3c3fcew0823qe2k1').html("Style")
     $('#vwf3c3fcew0823qe2k2').html("Install")
+    $('#f2w311e23qqaaa').html("Select a file")
+    $('#file_name').html("No file selected")
   else if lang is "uk"
     # wifi
     $('#lang_wefsdeeeeee').html("Вайфай менеджер")
@@ -174,3 +176,5 @@ lang_change_page = (lang) ->
     $('#vvw2311323ferererg3g3g31').html("Не використовувати")
     $('#vwf3c3fcew0823qe2k1').html("Стиль")
     $('#vwf3c3fcew0823qe2k2').html("Встановити")
+    $('#f2w311e23qqaaa').html("Обрати файл")
+    $('#file_name').html("Файл не обрано")

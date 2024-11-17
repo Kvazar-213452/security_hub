@@ -199,8 +199,6 @@ function new_val_gb_usb() {
 function data_bekend_solver(response) {
     response = JSON.parse(response);
 
-    $('#we332dvc').html('Завершено успішно');
-
     if (response['status'] === 2) {
         if (lang_global === "uk") {
             $('#we332dvc1').html('Завершено успішно');
@@ -248,7 +246,11 @@ function data_bekend_solver(response) {
             }
         }
     } else {
-        $('#we332dvc1').html('Завершено з помилкаою зачикайте декілька хвелин щоб ваш файл обробився і повторять запрос');
+        if (lang_global === "uk") {
+            $('#we332dvc1').html('Завершено з помилкою зачекайте декілька хвилин щоб ваш файл обробився і повторять запрос');
+        } else if (lang_global === "en") {
+            $('#we332dvc1').html('Completed with an error, please wait a few minutes for your file to be processed and the request will be repeated');
+        }
     }
 }
 

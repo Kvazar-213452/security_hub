@@ -279,17 +279,34 @@
 /* settings page */
 /* settings page */
 /* settings page */
-#file_input_qfEASD {
-  border: none;
-  padding: 7px;
-  font-size: 15px;
+.file-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Arial, sans-serif;
+  position: relative;
+  margin-bottom: 10px; }
+
+.file-input {
+  display: none; }
+
+.file-label {
+  background-color: #766aff;
   color: #fff;
-  transition: all .3s;
-  background-color: #22223a;
+  padding: 7px;
   border-radius: 5px;
-  cursor: pointer; }
-  #file_input_qfEASD:hover {
-    opacity: 0.6; }
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease; }
+
+.file-label:hover {
+  background-color: #22223a;
+  color: #766aff; }
+
+.file-name {
+  color: #ffffffa5;
+  font-size: 14px;
+  font-style: italic; }
 
 .settings_main_tetx {
   font-size: 19px;
