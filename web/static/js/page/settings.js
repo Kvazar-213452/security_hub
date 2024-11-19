@@ -137,6 +137,7 @@ function change_lang_all(val) {
         data: JSON.stringify({ value: val }),
         success: function (response) {
             getConfig();
+            change_lang_now(0);
             window.parent.postMessage("lang_change", "*");
         },
         error: function (xhr, status, error) {
