@@ -33,11 +33,11 @@ $(".ump_button").click(function() {
     let data = $(this).data("data");
     let currentColor = $(this).css("background-color");
 
-    if (currentColor === "rgb(50, 52, 77)") {
+    if (currentColor === "rgb(24, 24, 34)") {
         $(this).removeClass("weyiqwd22e3c");
         $(this).addClass("weyiqwd22e3c1"); 
         data_cleaning[data] = 1;
-    } else if (currentColor === "rgb(86, 85, 116)") {
+    } else if (currentColor === "rgb(55, 55, 69)") {
         $(this).removeClass("weyiqwd22e3c1");
         $(this).addClass("weyiqwd22e3c"); 
         data_cleaning[data] = 0;

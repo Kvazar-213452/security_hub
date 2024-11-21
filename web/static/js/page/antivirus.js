@@ -158,9 +158,9 @@ function config_bg() {
             $("#bg_input").val(response['antivirus']['antivirus_flash_drive_cmd']);
 
             if (antivirus_flash_drive === 0) {
-                $("#bg_dqwderfd").css("background-color", "#22223a");
+                $("#bg_dqwderfd").css("background-color", "#181822");
             } else {
-                $("#bg_dqwderfd").css("background-color", "#565574");
+                $("#bg_dqwderfd").css("background-color", "#373745");
             }
         },
         error: function (xhr, status, error) {

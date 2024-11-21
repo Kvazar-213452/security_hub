@@ -43,7 +43,7 @@ class LineChart extends Chart {
     createChartLine() {
         const $chartLine = this.createSvgElement('path');
         this.setAttributes($chartLine, {
-        stroke: '#766aff',
+        stroke: '#81a6c7',
         'stroke-width': this.chartLineStrokeWidth,
         fill: 'none',
         'stroke-linecap': 'round',
@@ -81,7 +81,7 @@ class LineChart extends Chart {
             y1: currentY,
             y2: currentY,
             'stroke-width': 0.5,
-            stroke: '#766aff',
+            stroke: '#81a6c7',
         });
     
         const $text = this.createSvgElement('text');
@@ -104,8 +104,8 @@ class LineChart extends Chart {
             r: this.circleRadius,
             cx: x,
             cy: y,
-            fill: '#766aff',
-            stroke: '#766aff',
+            fill: '#81a6c7',
+            stroke: '#81a6c7',
         });
         $circle.dataset.text = `${el.z}, ${el.y}`;
         $circle.classList.add('circle');
