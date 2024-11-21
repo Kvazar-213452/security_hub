@@ -23,7 +23,7 @@ std::string html_content = R"(
         }
 
         body {
-            background-color: #202020;
+            background-color: #181822;
             width: 500px;
             font-family: "Roboto", sans-serif;
             height: 600px;
@@ -35,7 +35,7 @@ std::string html_content = R"(
         .ew32fe,
         .ew32fe1 {
             padding: 7px;
-            background-color: #766aff;
+            background-color: #81a6c7;
             font-size: 16px;
             border: none;
             border-radius: 5px;
@@ -50,7 +50,7 @@ std::string html_content = R"(
         .ew32fe:hover,
         .ew32fe1:hover {opacity: 0.6;}
 
-        .ew32fe1{background-color: #303030;}
+        .ew32fe1{background-color: #22222e;}
 
         .ew32fe1 a{color: #ffffff}
 
@@ -67,7 +67,7 @@ std::string html_content = R"(
             height: 80px;
         }
 
-        .dest{color: #766affc8;}
+        .dest{color: #81a6c7;}
 
         .wdqe333{color: #ffffff;}
 
@@ -81,7 +81,7 @@ std::string html_content = R"(
 
         .edwe{color: #ffffff;}
 
-        .e332s{color: #766aff;}
+        .e332s{color: #81a6c7;}
     </style>
 </head>
 <body>
@@ -106,7 +106,7 @@ function dwn() {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error(Помилка при відправці: ${response.statusText});
+            throw new Error(`Помилка при відправці: ${response.statusText}`);
         }
         return response.text();
     })
@@ -121,20 +121,20 @@ function dwn() {
 }
 
 function dwn_page() {
-    let content = 
+    let content = `
     <p class="edwe">Інсталяція ...</p>
     <p class="edwe">Інсталяція триватє в середньому 3 секунди</p>
     <br>
     <button class="ew32fe1"><a href="/exit">Закрити інсталятор</a></button>
     ;
-
+`
     document.getElementById("ddcbnxcew33333").innerHTML = content;
 
     dwn();
 }
 
 function main_page() {
-    let content = 
+    let content = `
     <p class="wdqe333">Інормація</p>
     <ul class="dqfeffggg">
         <li>Інсталюються оболонки NM1 NM2</li>
@@ -146,18 +146,18 @@ function main_page() {
     <br>
     <button class="ew32fe1"><a href="/exit">Закрити інсталятор</a></button>
     <button onclick='dwn_page()' class="ew32fe"><a>Інсталювати</a></button>
-    ;
+    ;`
     document.getElementById("ddcbnxcew33333").innerHTML = content;
 }
 
 function end_page() {
-    let content = 
+    let content = `
     <p class="e332s">Завершино</p>
     <p class="edwe">Можете закрити інсталятор</p>
     <br>
     <button class="ew32fe1"><a href="/exit">Закрити інсталятор</a></button>
     ;
-
+`
     document.getElementById("ddcbnxcew33333").innerHTML = content;
 }
 
