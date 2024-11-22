@@ -8,13 +8,15 @@
   position: relative;
   width: 24em;
   margin: 0 auto;
-  border-right: 2px solid rgba(255, 255, 255, 0.75);
-  font-size: 30px;
+  border-right: 2px #81a6c7;
+  font-size: 50px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   transform: translateY(-50%);
-  top: 50%; }
+  top: 45%;
+  color: #81a6c7;
+  font-family: "Consolas", sans-serif !important; }
 
 .typewriter-animation {
   animation: typewriter 5s steps(50) 1s 1 normal both, blinkingCursor 500ms steps(50) infinite normal; }

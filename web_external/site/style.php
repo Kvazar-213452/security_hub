@@ -16,7 +16,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
             <p class="dq3233rrffff">Вага: 1 6.97 КБ</p>
             <p class="dq3233rrffff">Створив: Kvazar-213452</p>
             <br>
-            <a href="https://github.com/Kvazar-213452/security_hub/raw/refs/heads/main/web_external/data/main.css"><button>Завантажити</button></a>
+            <a download href="<?php echo $domen_name; ?>/static/css/main_jr.css"><button>Завантажити</button></a>
         </div>
     </div>
     <?php require 'page/footer.php'; ?>

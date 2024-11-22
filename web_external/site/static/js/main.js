@@ -170,7 +170,7 @@ function select_button(id) {
     });
 
     $("#" + mas_[id]).css({
-        "color": "#766aff",
+        "color": "#81a6c7",
         "text-decoration": "underline",
         "text-decoration-thickness": "2px",
         "text-underline-offset": "4px"
