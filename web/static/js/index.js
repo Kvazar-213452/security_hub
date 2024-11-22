@@ -34,3 +34,10 @@ $(document).on('keydown', function(event) {
 $(document).ready(function() {
     fetchLogs();
 });
+
+function render_main_start() {
+    $('.ump_textw').html(html_1);
+
+    page_iframe("/system", "btn2");
+    change_lang_now(1);
+}
