@@ -41,8 +41,8 @@ function write_os_data(response) {
     let text = `
         <div class="div_info_os">
             <p class="name_o">${lang_global === "uk" ? "Операційна система" : (lang_global === "en" ? "Operating System" : "")}</p>
-            <p class="desc_o">${jsonData['OS']['Name']}</p>
-            <p class="desc_o_1">${jsonData['OS']['Version']}</p>
+            <p class="desc_o">Name: ${jsonData['OS']['Name']}</p>
+            <p class="desc_o_1">Version: ${jsonData['OS']['Version']}</p>
             <div class="hr_div"></div>
         </div>
         <div class="div_info_os">
@@ -52,25 +52,25 @@ function write_os_data(response) {
         </div>
         <div class="div_info_os">
             <p class="name_o">${lang_global === "uk" ? "Диск" : (lang_global === "en" ? "Disk" : "")}</p>
-            <p class="desc_o">${jsonData['Disk']['FreeSpace']}</p>
-            <p class="desc_o_1">${jsonData['Disk']['TotalSpace']}</p>
+            <p class="desc_o">FreeSpace: ${jsonData['Disk']['FreeSpace']}</p>
+            <p class="desc_o_1">TotalSpace: ${jsonData['Disk']['TotalSpace']}</p>
             <div class="hr_div"></div>
         </div>
         <div class="div_info_os">
             <p class="name_o">${lang_global === "uk" ? "Память" : (lang_global === "en" ? "Memory" : "")}</p>
-            <p class="desc_o">${jsonData['Memory']['FreeMemory']}</p>
-            <p class="desc_o_1">${jsonData['Memory']['FreeVirtualMemory']}</p>
-            <p class="desc_o_2">${jsonData['Memory']['TotalMemory']}</p>
+            <p class="desc_o">FreeMemory: ${jsonData['Memory']['FreeMemory']}</p>
+            <p class="desc_o_1">FreeVirtualMemory: ${jsonData['Memory']['FreeVirtualMemory']}</p>
+            <p class="desc_o_2">TotalMemory: ${jsonData['Memory']['TotalMemory']}</p>
             <div class="hr_div"></div>
         </div>
         <div class="div_info_os">
             <p class="name_o">${lang_global === "uk" ? "Кількість процесорів" : (lang_global === "en" ? "Processor сount" : "")}</p>
-            <p class="desc_o">${jsonData['ProcessorCount']}</p>
+            <p class="desc_o">ProcessorCount: ${jsonData['ProcessorCount']}</p>
             <div class="hr_div"></div>
         </div>
         <div class="div_info_os">
             <p class="name_o">${lang_global === "uk" ? "Час роботи системи" : (lang_global === "en" ? "System uptime" : "")}</p>
-            <p class="desc_o">${jsonData['SystemUptime']['Days']}:${jsonData['SystemUptime']['Hours']}:${jsonData['SystemUptime']['Minutes']}:${jsonData['SystemUptime']['Seconds']}</p>
+            <p class="desc_o">time: ${jsonData['SystemUptime']['Days']}:${jsonData['SystemUptime']['Hours']}:${jsonData['SystemUptime']['Minutes']}:${jsonData['SystemUptime']['Seconds']}</p>
             <div class="hr_div"></div>
         </div>
     `;
