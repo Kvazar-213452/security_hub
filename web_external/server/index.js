@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const fs = require('fs-extra');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const PORT = 3000;
@@ -89,7 +90,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
     deleteFileAfterDelay(newFilePath, password);
 
-    res.send(["good"]);
+    res.send(`good`);
   });
 });
 
@@ -112,5 +113,6 @@ app.post('/search', (req, res) => {
 });
 
 app.listen(PORT, () => {
+  app.use(cors());
   console.log(`Сервер запущено на http://localhost:${PORT}`);
 });

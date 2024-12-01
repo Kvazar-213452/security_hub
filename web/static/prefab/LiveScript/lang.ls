@@ -89,6 +89,15 @@ lang_change_page = (lang) ->
     $('#vwf3c3fcew0823qe2k2').html("Install")
     $('#f2w311e23qqaaa').html("Select a file")
     $('#file_name').html("No file selected")
+
+    # server
+    $('.server_0312edcccc').html("Download")
+    $('#server_ddqd212dqwas').html("Select file");
+    $('.ve92191112edddd').html("Password:");
+    $('#server_dqi29f03f').html("File saving");
+    $('#server_dqi29f03f1').html("Backups can be useful when you need them");
+    $('#server_cpk2kcqep2w').html("File upload");
+    $('#server_cpk2kcqep2w1').html("Find file by password");
   else if lang is "uk"
     # wifi
     $('#lang_wefsdeeeeee').html("Вайфай менеджер")
@@ -178,3 +187,13 @@ lang_change_page = (lang) ->
     $('#vwf3c3fcew0823qe2k2').html("Встановити")
     $('#f2w311e23qqaaa').html("Обрати файл")
     $('#file_name').html("Файл не обрано")
+    
+    # server
+    $('.server_0312edcccc').html("Завантажити")
+    $('#server_ddqd212dqwas').html("Вибрати файл")
+    $('.ve92191112edddd').html("Пароль:")
+    $('#server_dqi29f03f').html("Збереження файлів")
+    $('#server_dqi29f03f1').html("Бекапи бувають корисними коли вони потрібні")
+    $('#server_cpk2kcqep2w').html("Завантаження файлу")
+    $('#server_cpk2kcqep2w1').html("Знайти файл за паролем")
+  

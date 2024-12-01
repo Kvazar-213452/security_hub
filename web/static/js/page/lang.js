@@ -75,7 +75,14 @@
       $('#vwf3c3fcew0823qe2k1').html("Style");
       $('#vwf3c3fcew0823qe2k2').html("Install");
       $('#f2w311e23qqaaa').html("Select a file");
-      return $('#file_name').html("No file selected");
+      $('#file_name').html("No file selected");
+      $('.server_0312edcccc').html("Download");
+      $('#server_ddqd212dqwas').html("Select file");
+      $('.ve92191112edddd').html("Password:");
+      $('#server_dqi29f03f').html("File saving");
+      $('#server_dqi29f03f1').html("Backups can be useful when you need them");
+      $('#server_cpk2kcqep2w').html("File upload");
+      return $('#server_cpk2kcqep2w1').html("Find file by password");
     } else if (lang === "uk") {
       $('#lang_wefsdeeeeee').html("Вайфай менеджер");
       $('#lang_nfefdfdvghyt').html("Отримайте більше інформації про ваш вайфай");
@@ -149,7 +156,14 @@
       $('#vwf3c3fcew0823qe2k1').html("Стиль");
       $('#vwf3c3fcew0823qe2k2').html("Встановити");
       $('#f2w311e23qqaaa').html("Обрати файл");
-      return $('#file_name').html("Файл не обрано");
+      $('#file_name').html("Файл не обрано");
+      $('.server_0312edcccc').html("Завантажити");
+      $('#server_ddqd212dqwas').html("Вибрати файл");
+      $('.ve92191112edddd').html("Пароль:");
+      $('#server_dqi29f03f').html("Збереження файлів");
+      $('#server_dqi29f03f1').html("Бекапи бувають корисними коли вони потрібні");
+      $('#server_cpk2kcqep2w').html("Завантаження файлу");
+      return $('#server_cpk2kcqep2w1').html("Знайти файл за паролем");
     }
   };
 
