@@ -63,7 +63,7 @@ const deleteFileAfterDelay = (filePath, password) => {
     const updatedDB = db.filter((entry) => entry.password !== password);
     writeDB(updatedDB);
     console.log(`Запис із паролем "${password}" видалено з db.json.`);
-  }, 10000);
+  }, 43200000);
 };
 
 app.get('/', (req, res) => {
@@ -89,11 +89,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
     deleteFileAfterDelay(newFilePath, password);
 
-    res.send(`
-      <h1>Файл успішно завантажено!</h1>
-      <p>Перейменований файл: ${newFileName}</p>
-      <a href="/">Повернутися назад</a>
-    `);
+    res.send(["good"]);
   });
 });
 

@@ -160,3 +160,21 @@ func Render_wifi_page(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
+
+func Render_server_page(w http.ResponseWriter, r *http.Request) {
+	func_all.AppendToLog("transition to /server")
+
+	tmpl, err := template.ParseFiles(
+		config_main.Frontend_folder + "/templates/server.html",
+	)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = tmpl.ExecuteTemplate(w, "server.html", nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}

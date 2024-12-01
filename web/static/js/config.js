@@ -31,6 +31,7 @@ let html_1 = `
         <div onclick="page_iframe('/antivirus', 'btn3')" id="btn3" class="button"><img src="/static/img/7.png"><p></p></div>
         <div onclick="page_iframe('/cleaning', 'btn4')" id="btn4" class="button"><img src="/static/img/8.png"><p></p></div>
         <div onclick="page_iframe('/encryption', 'btn5')" id="btn5" class="button"><img src="/static/img/11.png"><p></p></div>
+        <div onclick="page_iframe('/server', 'btn8')" id="btn8" class="button1"><img src="/static/img/13.png"><p></p></div>
         <div onclick="page_iframe('/settings', 'btn6')" id="btn6" class="button1"><img src="/static/img/3.png"><p></p></div>
         <br><br>
         <a href=""><div id="btn7" class="button1"><img src="/static/img/12.png"><p></p></div></a>

@@ -9,7 +9,8 @@
       $('#btn4 p').html("Cleanup");
       $('#btn5 p').html("Encryption");
       $('#btn6 p').html("Settings");
-      return $('#btn7 p').html("Reboot");
+      $('#btn7 p').html("Reboot");
+      return $('#btn8 p').html("Server");
     } else if (lang === "uk") {
       $('#btn1 p').html("Вайфай");
       $('#btn2 p').html("Система");
@@ -17,7 +18,8 @@
       $('#btn4 p').html("Очищення");
       $('#btn5 p').html("Шифрування");
       $('#btn6 p').html("Налаштування");
-      return $('#btn7 p').html("Перезавантажити");
+      $('#btn7 p').html("Перезавантажити");
+      return $('#btn8 p').html("Сервер");
     }
   };
 
