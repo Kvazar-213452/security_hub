@@ -10,7 +10,8 @@
       $('#btn5 p').html("Encryption");
       $('#btn6 p').html("Settings");
       $('#btn7 p').html("Reboot");
-      return $('#btn8 p').html("Server");
+      $('#btn8 p').html("Server");
+      return $('#btn9 p').html("Passwords");
     } else if (lang === "uk") {
       $('#btn1 p').html("Вайфай");
       $('#btn2 p').html("Система");
@@ -19,7 +20,8 @@
       $('#btn5 p').html("Шифрування");
       $('#btn6 p').html("Налаштування");
       $('#btn7 p').html("Перезавантажити");
-      return $('#btn8 p').html("Сервер");
+      $('#btn8 p').html("Сервер");
+      return $('#btn9 p').html("Паролі");
     }
   };
 

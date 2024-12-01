@@ -196,4 +196,10 @@ lang_change_page = (lang) ->
     $('#server_dqi29f03f1').html("Бекапи бувають корисними коли вони потрібні")
     $('#server_cpk2kcqep2w').html("Завантаження файлу")
     $('#server_cpk2kcqep2w1').html("Знайти файл за паролем")
+
+    # password
+    $('.pass_dq3dqwcesdcc').html("Генерація пароля && Додавання пароля")
+    $('.pass_dq3dqwcesdcc1').html("Завантажити")
+    $('.server_0312edcccc').html("Завантажити")
+    $('.server_0312edcccc').html("Завантажити")
   
