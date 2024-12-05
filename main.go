@@ -77,6 +77,8 @@ func main() {
 	http.HandleFunc("/style_change", page.Post_style_change)
 	http.HandleFunc("/get_style", main_com.Post_get_style)
 	http.HandleFunc("/install_style", main_com.Post_install_style)
+	http.HandleFunc("/server_upload", page.Post_server_upload)
+	http.HandleFunc("/server_search", page.Post_server_search)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)
