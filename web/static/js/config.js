@@ -4,7 +4,7 @@ let shell_NM = ['shell_NM', 'shell_NM1'];
 let dwdc21e12d = ['dwdc21e12d', 'dwdc21e12d1', 'dwdc21e12d2'];
 let frg45th9nd = ['frg45th9nd', 'frg45th9nd1', 'frg45th9nd2'];
 let setingss_vdwewe = ['setingss_vdwewe', 'setingss_vdwewe1'];
-let mmain_buuton = ['btn1', 'btn2', 'btn3', 'btn4', 'btn5', 'btn6', 'btn7', 'btn8', 'btn9'];
+let mmain_buuton = ['btn1', 'btn2', 'btn3', 'btn4', 'btn5', 'btn6', 'btn7', 'btn8', 'btn9', 'btn10'];
 let vvw2311323ferererg3g3g3 = ['vvw2311323ferererg3g3g3', 'vvw2311323ferererg3g3g31'];
 
 const unsafeProtocols = ["WEP", "WPA", "HTTP", "FTP", "Telnet", "RDP", "SNMP", "ICMP"];
@@ -33,6 +33,7 @@ let html_1 = `
         <div onclick="page_iframe('/encryption', 'btn5')" id="btn5" class="button"><img src="/static/img/11.png"><p></p></div>
         <div onclick="page_iframe('/server', 'btn8')" id="btn8" class="button1"><img src="/static/img/13.png"><p></p></div>
         <div onclick="page_iframe('/password', 'btn9')" id="btn9" class="button1"><img src="/static/img/14.png"><p></p></div>
+        <div onclick="page_iframe('/file_system', 'btn10')" id="btn10" class="button1"><img src="/static/img/15.png"><p></p></div>
         <div onclick="page_iframe('/settings', 'btn6')" id="btn6" class="button1"><img src="/static/img/3.png"><p></p></div>
         <br><br>
         <a href=""><div id="btn7" class="button1"><img src="/static/img/12.png"><p></p></div></a>

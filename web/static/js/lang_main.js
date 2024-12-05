@@ -11,7 +11,8 @@
       $('#btn6 p').html("Settings");
       $('#btn7 p').html("Reboot");
       $('#btn8 p').html("Server");
-      return $('#btn9 p').html("Passwords");
+      $('#btn9 p').html("Passwords");
+      return $('#btn10 p').html("File system");
     } else if (lang === "uk") {
       $('#btn1 p').html("Вайфай");
       $('#btn2 p').html("Система");
@@ -21,7 +22,8 @@
       $('#btn6 p').html("Налаштування");
       $('#btn7 p').html("Перезавантажити");
       $('#btn8 p').html("Сервер");
-      return $('#btn9 p').html("Паролі");
+      $('#btn9 p').html("Паролі");
+      return $('#btn10 p').html("Файлова система");
     }
   };
 

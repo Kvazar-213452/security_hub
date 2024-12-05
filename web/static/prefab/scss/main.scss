@@ -923,3 +923,40 @@
     background-color: $main_color;
     outline: none;
 }
+
+/* file_system page *//* file_system page *//* file_system page *//* file_system page *//* file_system page *//* file_system page */
+/* file_system page *//* file_system page *//* file_system page *//* file_system page *//* file_system page *//* file_system page */
+/* file_system page *//* file_system page *//* file_system page *//* file_system page *//* file_system page *//* file_system page */
+
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 80vh;
+    width: 80vw;
+}
+
+.file_system_div_select{
+    position: relative;
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding: 6px;
+    background-color: $bg_color3;
+    border-radius: 5px;
+
+    p {
+        position: relative;
+        float: left;
+        margin-right: 5px;
+    }
+}
+
+.file_system_del_div{
+    position: relative;
+    float: left;
+    padding: 2px;
+    background-color: $read;
+    border-radius: 5px;
+    color: #000000;
+    cursor: pointer;
+}

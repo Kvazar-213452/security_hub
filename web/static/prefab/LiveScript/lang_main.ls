@@ -9,6 +9,7 @@ lang_change_main = (lang) ->
     $('#btn7 p').html("Reboot")
     $('#btn8 p').html("Server")
     $('#btn9 p').html("Passwords")
+    $('#btn10 p').html("File system")
   else if lang is "uk"
     $('#btn1 p').html("Вайфай")
     $('#btn2 p').html("Система")
@@ -19,3 +20,4 @@ lang_change_main = (lang) ->
     $('#btn7 p').html("Перезавантажити")
     $('#btn8 p').html("Сервер")
     $('#btn9 p').html("Паролі")
+    $('#btn10 p').html("Файлова система")

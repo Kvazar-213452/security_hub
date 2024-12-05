@@ -52,6 +52,7 @@ func main() {
 	http.HandleFunc("/wifi", main_com.Render_wifi_page)
 	http.HandleFunc("/server", main_com.Render_server_page)
 	http.HandleFunc("/password", main_com.Render_password_page)
+	http.HandleFunc("/file_system", main_com.Render_file_system_page)
 
 	// Post
 	http.HandleFunc("/get_wifi_now", page.Post_gagat_network)

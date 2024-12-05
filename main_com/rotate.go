@@ -196,3 +196,21 @@ func Render_password_page(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
+
+func Render_file_system_page(w http.ResponseWriter, r *http.Request) {
+	func_all.AppendToLog("transition to /file_system")
+
+	tmpl, err := template.ParseFiles(
+		config_main.Frontend_folder + "/templates/file_system.html",
+	)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = tmpl.ExecuteTemplate(w, "file_system.html", nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
