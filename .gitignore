@@ -1,5 +1,7 @@
 web_external/installer/main.exe
-web_external/server/node_modules/
+
+web_external/server_data/node_modules/
+web_external/server_reg/config.json
 
 head.exe
 
