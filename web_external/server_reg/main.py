@@ -38,6 +38,10 @@ def send_email():
     result = send_text_email(message, subject, receiver)
     return jsonify({'status': 'success', 'message': result})
 
+@app.route('/version', methods=['POST'])
+def version():
+    return jsonify({'version': config_data["version"]})
+
 if __name__ == "__main__":
     CORS(app)
     app.run(debug=True)

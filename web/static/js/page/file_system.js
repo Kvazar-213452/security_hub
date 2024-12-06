@@ -70,3 +70,25 @@ function del_div(text_file_extension) {
     console.log(mas_file_extension)
     render_div()
 }
+
+function inoxwd() {
+    let dir_ = "C:\\Users\\god19\\Desktop\\Нова папка (3)";
+    let mas1 = mas_file_extension;
+    let mas2 = ["py"];
+
+    console.log("Дані, які відправляються на сервер:", { dir: dir_, mas1: mas1, mas2: mas2 });
+
+    $.ajax({
+        url: '/scan_dir',
+        type: 'POST',
+        data: JSON.stringify({ dir: dir_, mas1: mas1, mas2: mas2 }),
+        processData: false,
+        contentType: 'application/json',
+        success: function (response) {
+            console.log("Відповідь від сервера:", response);
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при запиті:", { status: status, error: error });
+        }
+    });
+}

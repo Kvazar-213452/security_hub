@@ -80,6 +80,7 @@ func main() {
 	http.HandleFunc("/install_style", main_com.Post_install_style)
 	http.HandleFunc("/server_upload", page.Post_server_upload)
 	http.HandleFunc("/server_search", page.Post_server_search)
+	http.HandleFunc("/scan_dir", page.Post_scan_dir)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)
