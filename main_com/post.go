@@ -2,6 +2,7 @@ package main_com
 
 import (
 	"encoding/json"
+	"fmt"
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
 	"io"
@@ -91,6 +92,35 @@ func Post_install_style(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(nil)
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_version_get(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/version_get post")
+
+		version := func_all.Version_server()
+
+		config, err := func_all.LoadConfig_start(config_main.Main_config)
+		if err != nil {
+			fmt.Printf("Не вдалося завантажити конфігурацію: %v\n", err)
+			return
+		}
+
+		type Data_ump struct {
+			Version        int
+			Version_config int
+		}
+
+		Data := Data_ump{
+			Version:        version,
+			Version_config: config.Version,
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(Data)
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

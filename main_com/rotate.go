@@ -214,3 +214,21 @@ func Render_file_system_page(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
+
+func Render_version_page(w http.ResponseWriter, r *http.Request) {
+	func_all.AppendToLog("transition to /version")
+
+	tmpl, err := template.ParseFiles(
+		config_main.Frontend_folder + "/templates/version.html",
+	)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = tmpl.ExecuteTemplate(w, "version.html", nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}

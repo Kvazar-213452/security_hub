@@ -2,6 +2,7 @@ package config
 
 // struct
 type Config_global struct {
+	Version       int    `json:"version"`
 	Visualization int    `json:"visualization"`
 	Log           int    `json:"log"`
 	Port          int    `json:"port"`
@@ -64,3 +65,6 @@ const Files_virustotal = "https://www.virustotal.com/api/v3/files/"
 // solver
 const Site_main = "https://spx-security-hub.wuaze.com/"
 const Starter_file = "data/starter.md"
+
+// server
+const Server_version = "http://127.0.0.1:5000/version"

@@ -35,7 +35,7 @@ func main() {
 
 	var cmd *exec.Cmd
 	if config.Visualization == 1 {
-		cmd = func_all.StartShellWeb(port, config.Shell)
+		cmd = func_all.StartShellWeb(port, config.Shell, config.Version)
 	}
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
@@ -53,6 +53,7 @@ func main() {
 	http.HandleFunc("/server", main_com.Render_server_page)
 	http.HandleFunc("/password", main_com.Render_password_page)
 	http.HandleFunc("/file_system", main_com.Render_file_system_page)
+	http.HandleFunc("/version", main_com.Render_version_page)
 
 	// Post
 	http.HandleFunc("/get_wifi_now", page.Post_gagat_network)
@@ -81,6 +82,7 @@ func main() {
 	http.HandleFunc("/server_upload", page.Post_server_upload)
 	http.HandleFunc("/server_search", page.Post_server_search)
 	http.HandleFunc("/scan_dir", page.Post_scan_dir)
+	http.HandleFunc("/version_get", main_com.Post_version_get)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)

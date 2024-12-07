@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	config_main "head/main_com/config"
+	"io/ioutil"
 	"net"
+	"net/http"
 	"os"
 	"os/exec"
 	"os/signal"
@@ -41,7 +43,9 @@ func FindFreePort() int {
 	return addr.Port
 }
 
-func StartShellWeb(port int, type_ int) *exec.Cmd {
+func StartShellWeb(port int, type_ int, version_ int) *exec.Cmd {
+	Version := Version_server()
+
 	originalDir, err := os.Getwd()
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
@@ -55,7 +59,12 @@ func StartShellWeb(port int, type_ int) *exec.Cmd {
 	if type_ == 0 {
 		os.Chdir("NM1")
 
-		htmlContent := fmt.Sprintf(`%s/main`, strconv.Itoa(port))
+		var htmlContent string
+		if Version != version_ {
+			htmlContent = fmt.Sprintf(`%s/version`, strconv.Itoa(port))
+		} else {
+			htmlContent = fmt.Sprintf(`%s/main`, strconv.Itoa(port))
+		}
 
 		args := []string{
 			config_main.Name,
@@ -68,7 +77,12 @@ func StartShellWeb(port int, type_ int) *exec.Cmd {
 	} else if type_ == 1 {
 		os.Chdir("NM2")
 
-		htmlContent := fmt.Sprintf(`%d/main`, port)
+		var htmlContent string
+		if Version != version_ {
+			htmlContent = fmt.Sprintf(`%s/version`, strconv.Itoa(port))
+		} else {
+			htmlContent = fmt.Sprintf(`%s/main`, strconv.Itoa(port))
+		}
 
 		var port_ int = FindFreePort()
 		portStr := strconv.Itoa(port_)
@@ -198,4 +212,31 @@ func Config_port(data string) {
 	defer file.Close()
 
 	file.WriteString(data)
+}
+
+func Version_server() int {
+	url := config_main.Server_version
+
+	resp, err := http.Post(url, "application/json", nil)
+	if err != nil {
+		fmt.Println("Помилка запиту:", err)
+		return 1
+	}
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println("Помилка читання відповіді:", err)
+		return 1
+	}
+
+	var response map[string]int
+	err = json.Unmarshal(body, &response)
+	if err != nil {
+		fmt.Println("Помилка обробки JSON:", err)
+		return 1
+	}
+
+	version := response["version"]
+	return version
 }
