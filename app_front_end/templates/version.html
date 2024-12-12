@@ -1,0 +1,16 @@
+<script>
+    $.ajax({
+        url: '/version_get',
+        type: 'POST',
+        data: null,
+        processData: false,
+        contentType: 'application/json',
+        success: function (response) {
+            console.log("Відповідь від сервера:", response);
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при запиті:", { status: status, error: error });
+        }
+    });
+</script>
+бу

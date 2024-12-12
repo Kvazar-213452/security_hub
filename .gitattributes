@@ -1,19 +1,19 @@
 * text=auto
 
-web_external/site/static/css/*.css linguist-documentation
-web_external/site/static/*.js linguist-documentation
+app_site/static/css/*.css linguist-documentation
+app_site/static/*.js linguist-documentation
 
 data/style/*.css linguist-documentation
 web_external/data/*.css linguist-documentation
 
-web_external/installer/lib/*.h linguist-documentation
-web_external/installer/lib/*.cc linguist-documentation
-web_external/installer/lib/*.i linguist-documentation
+app_installer/lib/*.h linguist-documentation
+app_installer/lib/*.cc linguist-documentation
+app_installer/lib/*.i linguist-documentation
  
-web/static/jquery.min.js linguist-documentation
-web/static/css/*.css linguist-documentation
+app_front_end/static/jquery.min.js linguist-documentation
+app_front_end/static/css/*.css linguist-documentation
 
-core_sorse/shell_web_NM1/webview.h linguist-documentation
+.sorse/core_sorse/shell_web_NM1/webview.h linguist-documentation
 
-web/static/js/page/lang.js linguist-documentation
-web/static/js/lang_main.js linguist-documentation
+app_front_end/static/js/page/lang.js linguist-documentation
+app_front_end/static/js/lang_main.js linguist-documentation

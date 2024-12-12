@@ -1,0 +1,51 @@
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+       <title>SPX</title>
+       <link rel="stylesheet" href="/static/css/main.css"/>
+       <link rel="stylesheet" href="/static/css/global.css"/>
+       <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+       <style id="style_dudqdc"></style>
+   </head>
+   <body>
+        <div class="main_div">
+            <br>
+            <p id="lang_wefsdeeeeee" class="name_page"></p>
+            <p id="lang_nfefdfdvghyt" class="description_page"></p>
+            <br>
+            <div class="wifi_sqd">
+                <div class="img_wifi"><div id="chart"></div></div>
+                <br>
+                <div class="div_wifi_info">
+                    <div class="padoge">
+                        <div id="info_wifi_div">
+                            <p id="lang_dqwedddcwww" class="ed3wed"></p>
+                            <div id="wifi_protection"></div>
+                            <br>
+                            <div id="fweetrfgcvweee"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wifi_all_div">
+                <div id="render_all_wifi" class="padoge"></div>
+            </div>
+        </div>
+   </body>
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/page/lang.js"></script>
+    <script src="/static/js/global.js"></script>
+    <script src="/static/js/page/wifi.js"></script>
+    <script src="/static/js/page/schedule.js"></script>
+    <script>
+        change_lang_now(0);
+        get_data_wifi_now();
+
+        get_data_wifi_all();
+        get_data_for_schedule();
+        
+        setInterval(get_data_wifi_all, 2500);
+        setInterval(get_data_for_schedule, 2500);
+    </script> 
+</html>

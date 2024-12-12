@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="eel.js"></script>
+    <link id="asddftgy" rel="icon" href="" type="image/x-icon">
+    <script type="text/javascript">
+        window.onbeforeunload = function () {
+            eel.quit();
+        };
+    </script>
+    <title>SPX</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: black; 
+        }
+        
+        iframe {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="fwesdws" src=""></iframe>
+</body>
+<script>
+    eel.port()(function(port) {
+        let iframe = document.getElementById('fwesdws');
+        iframe.src = 'http://127.0.0.1:' + port;
+    });
+
+    eel.icon_data()(function(icon_data) {
+        let link = document.getElementById('asddftgy');
+        link.href = 'data:image/x-icon;base64,' + icon_data;
+    });
+
+    eel.name()(function(name) {
+        document.title = name;
+    });
+</script>
+</html>

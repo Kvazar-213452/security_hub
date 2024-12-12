@@ -1,0 +1,57 @@
+@import 'config';
+
+@mixin menu_button($color, $top, $val) {
+    position: relative;
+    width: calc(100% - 40px);
+    height: 45px;
+    left: 20px;
+    transition: all .3s;
+    cursor: pointer;
+    color: $color;
+    opacity: 0.6;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+    p {
+        position: relative;
+        left: 35px;
+        font-size: 18px;
+        top: 12px;
+    }
+
+    &:hover {
+        background-color: $bg_color3;
+        opacity: 1;
+    }
+
+    img {
+        filter: invert($val);
+        height: 25px;
+        position: relative;
+        float: left;
+        left: 20px;
+        top: $top;
+    }
+}
+
+@mixin curveTwo($width, $height) {
+    border-radius: 50%;
+    position: absolute;
+    right: 0%;
+    transform: translate(50%, 50%);
+    bottom: 0;
+    width: $width;
+    height: $height;
+}
+
+@mixin button($color, $background, $font) {
+    border: none;
+    padding: 7px;
+    background-color: $background;
+    color: $color;
+    font-size: $font;
+    border-radius: 5px;
+    transition: all .3s;
+    border: solid 2px $null;
+    cursor: pointer;
+}
