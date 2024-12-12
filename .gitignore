@@ -1,8 +1,8 @@
 app_installer/main.exe
 
-web_external/server_reg/config.json
+server/register/config.json
 
-head.exe
+app_back_end/head.exe
 
-core_sorse/shell_web_NM2/build
-core_sorse/shell_web_NM2/dist
+.sorse/core_sorse/shell_web_NM2/build
+.sorse/core_sorse/shell_web_NM2/dist
