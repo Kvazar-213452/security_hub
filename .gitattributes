@@ -14,6 +14,3 @@ app_front_end/static/jquery.min.js linguist-documentation
 app_front_end/static/css/*.css linguist-documentation
 
 .sorse/core_sorse/shell_web_NM1/webview.h linguist-documentation
-
-app_front_end/static/js/page/lang.js linguist-documentation
-app_front_end/static/js/lang_main.js linguist-documentation
