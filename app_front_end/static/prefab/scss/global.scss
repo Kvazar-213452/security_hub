@@ -1,13 +1,9 @@
 @import 'config';
-
-@font-face {
-    font-family: 'MyCustomFont';
-    src: url('../Minecraft_1.1.ttf') format('truetype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-    background-color: $bg_color4;
-    font-family: 'MyCustomFont', sans-serif;
+    background-color: $bg_color;
+    font-family: "Roboto", sans-serif;
     color: $text_color;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -22,7 +18,7 @@ label{color: $white;}
 * {
     margin: 0;
     padding: 0;
-        font-family: 'MyCustomFont', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 a {
