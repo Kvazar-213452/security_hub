@@ -69,7 +69,6 @@
   background-color: #1c1d27;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   color: #fff;
-  border-radius: 5px;
   transition: opacity 1s ease, transform 1s ease;
   opacity: 0;
   transform: translateY(100%); }
@@ -86,7 +85,8 @@
   position: relative;
   margin-bottom: 15px;
   height: 40px;
-  width: calc(100% - 30px); }
+  width: calc(100% - 30px);
+  cursor: pointer; }
   .button img {
     height: 31px;
     filter: invert(80%);
@@ -139,7 +139,7 @@
 .div_system_info::-webkit-scrollbar-thumb,
 .imfowdwqdd::-webkit-scrollbar-thumb,
 .dqwdwec9923ed::-webkit-scrollbar-thumb {
-  background-color: #2b2b37; }
+  background-color: #1d1d1d; }
 
 .modal_rev_button_d {
   color: #ff5c5c; }
@@ -164,7 +164,6 @@
 /* index page */
 .ed3wed {
   color: #68ff9d;
-  font-weight: bold;
   position: relative;
   float: left;
   margin-right: 5px; }
@@ -177,7 +176,6 @@
   background-color: #252831;
   color: #fff;
   padding: 5px;
-  border-radius: 4px;
   font-size: 12px; }
 
 #chart {
@@ -209,15 +207,13 @@
   background-color: #181818;
   top: 15px;
   height: calc(100% - 520px);
-  overflow: auto;
-  border-radius: 5px; }
+  overflow: auto; }
 
 .img_wifi {
   position: relative;
   width: 100%;
   background-color: #181818;
   height: 340px;
-  border-radius: 5px;
   padding: 20px; }
 
 .wifi_all_div {
@@ -227,8 +223,7 @@
   width: 390px;
   left: -25px;
   height: calc(100% - 110px);
-  overflow-y: auto;
-  border-radius: 5px; }
+  overflow-y: auto; }
 
 .div_wifi_all {
   position: relative;
@@ -236,8 +231,7 @@
   margin-top: 20px;
   width: 100%;
   height: 35px;
-  background-color: #2b2b37;
-  border-radius: 5px; }
+  background-color: #1d1d1d; }
 
 .name_wifi_div_all {
   position: relative;
@@ -245,8 +239,7 @@
   color: #68ff9d;
   top: 8px;
   left: 10px;
-  float: left;
-  font-weight: bold; }
+  float: left; }
 
 .right_left_signal {
   position: relative;
@@ -289,13 +282,12 @@
   background-color: #68ff9d;
   color: #fff;
   padding: 7px;
-  border-radius: 5px;
   cursor: pointer;
   text-align: center;
   transition: background-color 0.3s ease; }
 
 .file-label:hover {
-  background-color: #2b2b37;
+  background-color: #1d1d1d;
   color: #68ff9d; }
 
 .file-name {
@@ -305,21 +297,19 @@
 
 .settings_main_tetx {
   font-size: 19px;
-  color: #68ff9d;
-  font-weight: bold; }
+  color: #68ff9d; }
 
 .settings_div {
   position: relative;
   margin-bottom: 20px;
   background-color: #181818;
   padding: 10px;
-  border-radius: 5px;
   width: calc(100% - 40px); }
 
 .button_settings {
   border: none;
   padding: 7px;
-  background-color: #2b2b37;
+  background-color: #1d1d1d;
   color: #fff;
   font-size: 15px;
   border-radius: 5px;
@@ -349,8 +339,7 @@
   color: #fff;
   padding: 7px;
   font-size: 15px;
-  background-color: #2b2b37;
-  border-radius: 5px; }
+  background-color: #1d1d1d; }
   .saert45trgf:focus {
     outline: none;
     box-shadow: none;
@@ -360,7 +349,7 @@
 .zxbnmewd1 {
   border: none;
   padding: 7px;
-  background-color: #2b2b37;
+  background-color: #1d1d1d;
   color: #fff;
   font-size: 15px;
   border-radius: 5px;
@@ -409,8 +398,7 @@
   position: relative;
   text-align: center;
   font-size: 30px;
-  color: #68ff9d;
-  font-weight: bold; }
+  color: #68ff9d; }
 
 /* system page */
 /* system page */
@@ -446,13 +434,11 @@
   position: relative;
   float: left;
   color: #fff;
-  font-size: 17px;
-  font-weight: bold; }
+  font-size: 17px; }
 
 .name_system {
   font-size: 18px;
-  color: #68ff9d;
-  font-weight: bold; }
+  color: #68ff9d; }
 
 .desc_o,
 .desc_o_1,
@@ -477,8 +463,7 @@
   background-color: #181818;
   width: calc(100% - 20px);
   height: 350px;
-  overflow-y: auto;
-  border-radius: 10px; }
+  overflow-y: auto; }
   .div_system_info span {
     position: relative;
     top: 20px;
@@ -490,14 +475,12 @@
   width: calc(100% - 20px);
   overflow-y: auto;
   overflow-x: hidden;
-  border-radius: 10px;
   margin-bottom: 20px; }
 
 .wefewfvgg4 {
   position: relative;
   float: left;
   font-size: 24px;
-  font-weight: bold;
   color: #68ff9d;
   margin-right: 100px; }
 
@@ -532,8 +515,7 @@
   border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
-  cursor: pointer;
-  font-weight: bold; }
+  cursor: pointer; }
 
 .toggle-btn {
   color: #fff;
@@ -553,7 +535,7 @@
 .dropdown-content {
   display: none;
   padding: 10px;
-  background-color: #2b2b37;
+  background-color: #1d1d1d;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   width: calc(100% - 30px);
   margin-top: 10px; }
@@ -601,18 +583,17 @@
 /* antivirus page */
 /* antivirus page */
 .ump_button1 {
-  background-color: #2b2b37; }
+  background-color: #1d1d1d; }
 
 .dqwwee333f {
   font-size: 34px; }
 
 .input_cmd {
   border: none;
-  border-radius: 5px;
   font-size: 16px;
   padding: 5px;
   color: #fff;
-  background-color: #2b2b37;
+  background-color: #1d1d1d;
   position: relative;
   top: 4px; }
   .input_cmd:focus {
@@ -629,7 +610,6 @@
   float: left;
   position: relative;
   margin-right: 20px;
-  font-weight: bold;
   font-size: 19px;
   z-index: 10000;
   transition: all .3s;
@@ -650,13 +630,11 @@
   padding: 15px;
   padding-left: 40px;
   padding-right: 40px;
-  font-weight: bold;
   color: #fff;
-  background-color: #2b2b37;
+  background-color: #1d1d1d;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   font-size: 20px;
   border: none;
-  border-radius: 5px;
   width: 600px;
   display: block;
   margin: 0 auto; }
@@ -677,7 +655,6 @@
   cursor: pointer;
   display: block;
   margin: 0 auto;
-  font-weight: bold;
   position: relative;
   left: -20px;
   transition: all .3s; }
@@ -689,7 +666,6 @@
   width: 100%;
   background-color: #181818;
   height: calc(100% - 350px);
-  border-radius: 10px;
   color: #fff; }
 
 .form {
@@ -748,7 +724,6 @@
   width: calc(100% - 30px);
   background-color: #181818;
   height: calc(100% - 200px);
-  border-radius: 10px;
   color: #fff; }
 
 .dfwefwefcvv22 {
@@ -763,13 +738,11 @@
 
 .fweufweffff {
   font-size: 17px;
-  font-weight: bold;
   color: #fff;
   border: none;
-  border-radius: 5px;
   border: solid 2px #ffffff00;
   transition: all .3s;
-  background-color: #2b2b37;
+  background-color: #1d1d1d;
   margin: 0 auto;
   display: block;
   padding: 7px;
@@ -782,8 +755,7 @@
 
 .deferghhhh777 {
   color: #68ff9d;
-  font-size: 17px;
-  font-weight: bold; }
+  font-size: 17px; }
 
 .dwedffvvvvv {
   color: #fff;
@@ -793,10 +765,8 @@
   position: relative;
   float: right;
   padding: 7px;
-  border-radius: 5px;
   cursor: pointer;
-  background-color: #2b2b37;
-  font-weight: bold;
+  background-color: #1d1d1d;
   transition: all .3s;
   border: solid 2px #ffffff00;
   color: #fff; }
@@ -808,12 +778,10 @@
   position: relative;
   float: left;
   border: none;
-  border-radius: 5px;
   padding: 7px;
-  font-weight: bold;
   font-size: 15.5px;
   border: solid 2px #ffffff00;
-  background-color: #2b2b37;
+  background-color: #1d1d1d;
   color: #fff;
   width: 73%; }
   .ddwdcvvvwwqsz:focus {
@@ -937,14 +905,12 @@
   text-align: center;
   line-height: 50px;
   font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px; }
+  cursor: pointer; }
   .file-input-button:hover {
-    background-color: #373745; }
+    background-color: #1d1d1d; }
 
 .ve92191112edddd {
   font-size: 18px;
-  font-weight: bold;
   margin-bottom: 5px;
   display: inline-block;
   color: #fff; }
@@ -952,11 +918,10 @@
 .ooo33ff3cv2122[type="text"] {
   border: none;
   padding: 6px;
-  border-radius: 5px;
   font-size: 16px;
   box-sizing: border-box;
   transition: border-color 0.3s ease;
-  background-color: #2b2b37;
+  background-color: #1d1d1d;
   color: #fff; }
 
 .ooo33ff3cv2122[type="text"]:focus {
@@ -964,16 +929,15 @@
   outline: none; }
 
 .dqw21fvvvv[type="submit"] {
-  background-color: #2b2b37;
+  background-color: #1d1d1d;
   color: white;
   border: none;
   padding: 6px;
   font-size: 16px;
-  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease; }
   .dqw21fvvvv[type="submit"]:hover {
-    background-color: #373745; }
+    background-color: #1d1d1d; }
 
 /* password page */
 /* password page */
@@ -1004,7 +968,6 @@
   border: 2px solid #68ff9d;
   width: 20px;
   height: 20px;
-  border-radius: 5px;
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease; }
@@ -1020,16 +983,14 @@
   left: 3px;
   width: 10px;
   height: 10px;
-  background-color: white;
-  border-radius: 2px; }
+  background-color: white; }
 
 .unixwqc {
   color: #fff;
   padding: 2px;
   font-size: 16px;
   border: none;
-  background-color: #373745;
-  border-radius: 5px;
+  background-color: #1d1d1d;
   transition: border 0.3s ease, background-color 0.3s ease; }
 
 .unixwqc:focus {
@@ -1066,8 +1027,7 @@
   margin-bottom: 10px;
   margin-right: 10px;
   padding: 6px;
-  background-color: #373745;
-  border-radius: 5px; }
+  background-color: #1d1d1d; }
   .file_system_div_select p {
     position: relative;
     float: left;
@@ -1078,6 +1038,5 @@
   float: left;
   padding: 2px;
   background-color: #ff5c5c;
-  border-radius: 5px;
   color: #000000;
   cursor: pointer; }

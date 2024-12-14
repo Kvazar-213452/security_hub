@@ -76,7 +76,6 @@
     background-color: #1c1d27;
     box-shadow: 0 4px 20px $null_bleck;
     color: $white;
-    border-radius: 5px;
     transition: opacity 1s ease, transform 1s ease;
     opacity: 0;
     transform: translateY(100%);
@@ -171,7 +170,7 @@
 
 .ed3wed{
     color: $main_color;
-    font-weight: bold;
+
     position: relative;
     float: left;
     margin-right: 5px;
@@ -186,7 +185,7 @@
     background-color: #252831;
     color: $white;
     padding: 5px;
-    border-radius: 4px;
+
     font-size: 12px;
 }
 
@@ -217,7 +216,6 @@
     top: 15px;
     height: calc(100% - 520px);
     overflow: auto;
-    border-radius: 5px;
 }
 
 .img_wifi {
@@ -225,7 +223,6 @@
     width: 100%;
     background-color: $bg_color1;
     height: 340px;
-    border-radius: 5px;
     padding: 20px;
 }
 
@@ -237,7 +234,6 @@
     left: -25px;
     height: calc(100% - 110px);
     overflow-y: auto;
-    border-radius: 5px;
 }
 
 .div_wifi_all{
@@ -247,7 +243,6 @@
     width: 100%;
     height: 35px;
     background-color: $bg_color2;
-    border-radius: 5px;
 }
 
 .name_wifi_div_all{
@@ -257,7 +252,7 @@
     top: 8px;
     left: 10px;
     float: left;
-    font-weight: bold;
+
 }
 
 .right_left_signal{
@@ -288,7 +283,6 @@
     background-color: $main_color;
     color: $white;
     padding: 7px;
-    border-radius: 5px;
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s ease;
@@ -308,7 +302,7 @@
 .settings_main_tetx{
     font-size: 19px;
     color: $main_color;
-    font-weight: bold;
+
 }
 
 .settings_div{
@@ -316,7 +310,6 @@
     margin-bottom: 20px;
     background-color: $bg_color1;
     padding: 10px;
-    border-radius: 5px;
     width: calc(100% - 40px);
 }
 
@@ -349,7 +342,6 @@
     padding: 7px;
     font-size: 15px;
     background-color: $bg_color2;
-    border-radius: 5px;
 
     &:focus {
         outline: none;
@@ -393,7 +385,7 @@
     text-align: center;
     font-size: 30px;
     color: $main_color;
-    font-weight: bold;
+
 }
 
 /* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
@@ -419,13 +411,13 @@
     float: left;
     color: $white;
     font-size: 17px;
-    font-weight: bold;
+
 }
 
 .name_system{
     font-size: 18px;
     color: $main_color;
-    font-weight: bold;
+
 }
 
 .desc_o,
@@ -448,7 +440,6 @@
     width: calc(100% - 20px);
     height: 350px;
     overflow-y: auto;
-    border-radius: 10px;
 
     span {
         position: relative;
@@ -463,7 +454,6 @@
     width: calc(100% - 20px);
     overflow-y: auto;
     overflow-x: hidden;
-    border-radius: 10px;
     margin-bottom: 20px;
 }
 
@@ -471,7 +461,7 @@
     position: relative;
     float: left;
     font-size: 24px;
-    font-weight: bold;
+
     color: $main_color;
     margin-right: 100px;
 }
@@ -487,7 +477,7 @@
 
 .deccc {
     @include button($main_color, $bg_color, 16px);
-    font-weight: bold;
+
 }
 
 .toggle-btn {
@@ -538,7 +528,6 @@
 
 .input_cmd {
     border: none;
-    border-radius: 5px;
     font-size: 16px;
     padding: 5px;
     color: $white;
@@ -563,7 +552,7 @@
     float: left;
     position: relative;
     margin-right: 20px;
-    font-weight: bold;
+
     font-size: 19px;
     z-index: 10000;
     transition: all .3s;
@@ -586,13 +575,12 @@
     padding: 15px;
     padding-left: 40px;
     padding-right: 40px;
-    font-weight: bold;
+
     color: $white;
     background-color: $bg_color2;
     box-shadow: 0 4px 20px $null_bleck;
     font-size: 20px;
     border: none;
-    border-radius: 5px;
     width: 600px;
     display: block;
     margin: 0 auto;
@@ -608,7 +596,7 @@
     @include button($white, $bg_color1, 18px);
     display: block;
     margin: 0 auto;
-    font-weight: bold;
+
     position: relative;
     left: -20px;
     transition: all .3s;
@@ -621,7 +609,6 @@
     width: 100%;
     background-color: $bg_color1;
     height: calc(100% - 350px);
-    border-radius: 10px;
     color: $white;
 }
 
@@ -677,7 +664,6 @@
     width: calc(100% - 30px);
     background-color: $bg_color1;
     height: calc(100% - 200px);
-    border-radius: 10px;
     color: $white;
 }
 
@@ -691,10 +677,9 @@
 
 .fweufweffff{
     font-size: 17px;
-    font-weight: bold;
+
     color: $white;
     border: none;
-    border-radius: 5px;
     border: solid 2px $null;
     transition: all .3s;
     background-color: $bg_color2;
@@ -714,7 +699,7 @@
 .deferghhhh777{
     color: $main_color;
     font-size: 17px;
-    font-weight: bold;
+
 }
 
 .dwedffvvvvv{
@@ -726,10 +711,9 @@
     position: relative;
     float: right;
     padding: 7px;
-    border-radius: 5px;
     cursor: pointer;
     background-color: $bg_color2;
-    font-weight: bold;
+
     transition: all .3s;
     border: solid 2px $null;
     color: $white;
@@ -744,9 +728,8 @@
     position: relative;
     float: left;
     border: none;
-    border-radius: 5px;
     padding: 7px;
-    font-weight: bold;
+
     font-size: 15.5px;
     border: solid 2px $null;
     background-color: $bg_color2;
@@ -840,14 +823,13 @@
     line-height: 50px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
 
     &:hover{background-color: $bg_color3;}
 }
 
 .ve92191112edddd {
     font-size: 18px;
-    font-weight: bold;
+
     margin-bottom: 5px;
     display: inline-block;
     color: $white;
@@ -856,7 +838,6 @@
 .ooo33ff3cv2122[type="text"] {
     border: none;
     padding: 6px;
-    border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
@@ -875,7 +856,6 @@
     border: none;
     padding: 6px;
     font-size: 16px;
-    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
@@ -898,7 +878,6 @@
     border: 2px solid $main_color;
     width: 20px;
     height: 20px;
-    border-radius: 5px;
     position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -917,7 +896,6 @@
     width: 10px;
     height: 10px;
     background-color: white;
-    border-radius: 2px;
 }
 
 .unixwqc{
@@ -926,7 +904,6 @@
     font-size: 16px;
     border: none;
     background-color: $bg_color3;
-    border-radius: 5px;
     transition: border 0.3s ease, background-color 0.3s ease;
 }
 
@@ -953,7 +930,6 @@
     margin-right: 10px;
     padding: 6px;
     background-color: $bg_color3;
-    border-radius: 5px;
 
     p {
         position: relative;
@@ -967,7 +943,6 @@
     float: left;
     padding: 2px;
     background-color: $read;
-    border-radius: 5px;
     color: #000000;
     cursor: pointer;
 }
