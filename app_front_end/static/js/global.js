@@ -32,11 +32,20 @@ function change_menu_antivirus(id) {
 
     for (let i = 0; i < frg45th9nd.length; i++) {
         $("#" + frg45th9nd[i]).hide();
-    }
+    } 
 
     $("#" + dwdc21e12d[id]).removeClass("beds12323r4feddfq1"); 
     $("#" + dwdc21e12d[id]).addClass("beds12323r4feddfq"); 
     $('#' + frg45th9nd[id]).show();
+}
+
+function change_menu_page(id_, id) {
+    for (let i = 0; i < mas_sonar[id_].length; i++) {
+        $("#" + mas_sonar[id_][i]).addClass("beds12323r4feddfq1");
+    }
+
+    $("#" + mas_sonar[id_][id]).removeClass("beds12323r4feddfq1"); 
+    $("#" + mas_sonar[id_][id]).addClass("beds12323r4feddfq"); 
 }
 
 function change_lang_now(type) {
@@ -102,4 +111,3 @@ function get_style() {
 }
 
 get_data_config();
-

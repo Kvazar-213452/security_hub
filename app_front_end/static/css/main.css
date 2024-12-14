@@ -69,7 +69,6 @@
   background-color: #1c1d27;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   color: #fff;
-  transition: opacity 1s ease, transform 1s ease;
   opacity: 0;
   transform: translateY(100%); }
 
@@ -144,42 +143,29 @@
 .modal_rev_button_d {
   color: #ff5c5c; }
 
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
-/* index page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
+/* wifi page */
 .ed3wed {
   color: #68ff9d;
   position: relative;
   float: left;
   margin-right: 5px; }
-
-.circle {
-  cursor: pointer;
-  transition: 0.2s stroke-width; }
-
-.tooltip {
-  background-color: #252831;
-  color: #fff;
-  padding: 5px;
-  font-size: 12px; }
-
-#chart {
-  height: 100%; }
 
 .padoge {
   padding: 20px; }
@@ -283,8 +269,7 @@
   color: #fff;
   padding: 7px;
   cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s ease; }
+  text-align: center; }
 
 .file-label:hover {
   background-color: #1d1d1d;
@@ -503,7 +488,6 @@
 /* cleaning page */
 /* cleaning page */
 .deccc {
-  transition: all .3s;
   margin-right: 10px; }
 
 .deccc {
@@ -519,8 +503,7 @@
 
 .toggle-btn {
   color: #fff;
-  cursor: pointer;
-  transition: all .3s; }
+  cursor: pointer; }
 
 .toggle-btn:hover {
   color: #68ff9d; }
@@ -561,8 +544,7 @@
   border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
-  cursor: pointer;
-  transition: all .3s; }
+  cursor: pointer; }
 
 /* antivirus page */
 /* antivirus page */
@@ -610,9 +592,7 @@
   float: left;
   position: relative;
   margin-right: 20px;
-  font-size: 19px;
   z-index: 10000;
-  transition: all .3s;
   cursor: pointer;
   color: #fff;
   text-decoration: none; }
@@ -656,8 +636,7 @@
   display: block;
   margin: 0 auto;
   position: relative;
-  left: -20px;
-  transition: all .3s; }
+  left: -20px; }
   .dwwccv7u3jf:hover {
     opacity: 0.6; }
 
@@ -709,8 +688,7 @@
   position: relative;
   top: -30px;
   float: left;
-  margin-right: 20px;
-  transition: all .3s; }
+  margin-right: 20px; }
   .wd32we4f:hover {
     opacity: 0.6; }
 
@@ -741,7 +719,6 @@
   color: #fff;
   border: none;
   border: solid 2px #ffffff00;
-  transition: all .3s;
   background-color: #1d1d1d;
   margin: 0 auto;
   display: block;
@@ -767,7 +744,6 @@
   padding: 7px;
   cursor: pointer;
   background-color: #1d1d1d;
-  transition: all .3s;
   border: solid 2px #ffffff00;
   color: #fff; }
   .thnnredf:hover {
@@ -799,8 +775,7 @@
   border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
-  cursor: pointer;
-  transition: all .3s; }
+  cursor: pointer; }
   .vbwe8b2_btn:hover {
     opacity: 0.6; }
 
@@ -850,8 +825,7 @@
   border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
-  cursor: pointer;
-  transition: all .3s; }
+  cursor: pointer; }
   .ewwdqszx4wefff:hover {
     opacity: 0.6; }
 
@@ -920,7 +894,6 @@
   padding: 6px;
   font-size: 16px;
   box-sizing: border-box;
-  transition: border-color 0.3s ease;
   background-color: #1d1d1d;
   color: #fff; }
 
@@ -934,8 +907,7 @@
   border: none;
   padding: 6px;
   font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease; }
+  cursor: pointer; }
   .dqw21fvvvv[type="submit"]:hover {
     background-color: #1d1d1d; }
 
@@ -969,8 +941,7 @@
   width: 20px;
   height: 20px;
   position: relative;
-  cursor: pointer;
-  transition: all 0.3s ease; }
+  cursor: pointer; }
 
 .unico_dqwcas[type="checkbox"]:checked {
   background-color: #68ff9d;
@@ -990,8 +961,7 @@
   padding: 2px;
   font-size: 16px;
   border: none;
-  background-color: #1d1d1d;
-  transition: border 0.3s ease, background-color 0.3s ease; }
+  background-color: #1d1d1d; }
 
 .unixwqc:focus {
   background-color: #68ff9d;

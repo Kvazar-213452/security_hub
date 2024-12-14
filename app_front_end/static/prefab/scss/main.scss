@@ -50,7 +50,6 @@
 }
 
 .vw92dy9qccde3212202{border-bottom: solid 2px $null;}
- 
 .vw92dy9qccde32122021{border-bottom: solid 2px $main_color;}
 
 #iframe{
@@ -76,7 +75,6 @@
     background-color: #1c1d27;
     box-shadow: 0 4px 20px $null_bleck;
     color: $white;
-    transition: opacity 1s ease, transform 1s ease;
     opacity: 0;
     transform: translateY(100%);
 }
@@ -164,32 +162,17 @@
 
 .modal_rev_button_d{color: $read;}
 
-/* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
-/* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
-/* index page *//* index page *//* index page *//* index page *//* index page *//* index page */
+/* wifi page *//* wifi page *//* wifi page *//* wifi page *//* wifi page *//* wifi page */
+/* wifi page *//* wifi page *//* wifi page *//* wifi page *//* wifi page *//* wifi page */
+/* wifi page *//* wifi page *//* wifi page *//* wifi page *//* wifi page *//* wifi page */
 
 .ed3wed{
     color: $main_color;
-
     position: relative;
     float: left;
     margin-right: 5px;
 }
 
-.circle {
-    cursor: pointer;
-    transition: 0.2s stroke-width;
-}
-
-.tooltip {
-    background-color: #252831;
-    color: $white;
-    padding: 5px;
-
-    font-size: 12px;
-}
-
-#chart {height: 100%;}
 .padoge{padding: 20px;}
 .border_active_grran{background-color: $bg_color;}
 
@@ -285,7 +268,6 @@
     padding: 7px;
     cursor: pointer;
     text-align: center;
-    transition: background-color 0.3s ease;
 }
 
 .file-label:hover {
@@ -302,7 +284,6 @@
 .settings_main_tetx{
     font-size: 19px;
     color: $main_color;
-
 }
 
 .settings_div{
@@ -385,7 +366,6 @@
     text-align: center;
     font-size: 30px;
     color: $main_color;
-
 }
 
 /* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
@@ -411,13 +391,11 @@
     float: left;
     color: $white;
     font-size: 17px;
-
 }
 
 .name_system{
     font-size: 18px;
     color: $main_color;
-
 }
 
 .desc_o,
@@ -461,7 +439,6 @@
     position: relative;
     float: left;
     font-size: 24px;
-
     color: $main_color;
     margin-right: 100px;
 }
@@ -471,19 +448,14 @@
 /* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page */
 
 .deccc{
-    transition: all .3s;
     margin-right: 10px
 }
 
-.deccc {
-    @include button($main_color, $bg_color, 16px);
-
-}
+.deccc {@include button($main_color, $bg_color, 16px);}
 
 .toggle-btn {
     color: $white;
     cursor: pointer;
-    transition: all .3s;
 }
 
 .toggle-btn:hover {color: $main_color;}
@@ -516,7 +488,6 @@
 .ump_button,
 .ump_button1 {
     @include button($white, $bg_color1, 15px);
-    transition: all .3s;
 }
 
 /* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page */
@@ -552,10 +523,7 @@
     float: left;
     position: relative;
     margin-right: 20px;
-
-    font-size: 19px;
     z-index: 10000;
-    transition: all .3s;
     cursor: pointer;
     color: $white;
     text-decoration: none;
@@ -575,7 +543,6 @@
     padding: 15px;
     padding-left: 40px;
     padding-right: 40px;
-
     color: $white;
     background-color: $bg_color2;
     box-shadow: 0 4px 20px $null_bleck;
@@ -596,10 +563,8 @@
     @include button($white, $bg_color1, 18px);
     display: block;
     margin: 0 auto;
-
     position: relative;
     left: -20px;
-    transition: all .3s;
 
     &:hover{opacity: 0.6;}
 }
@@ -648,7 +613,6 @@
     top: -30px;
     float: left;
     margin-right: 20px;
-    transition: all .3s;
 
     &:hover{opacity: 0.6;}
 }
@@ -677,11 +641,9 @@
 
 .fweufweffff{
     font-size: 17px;
-
     color: $white;
     border: none;
     border: solid 2px $null;
-    transition: all .3s;
     background-color: $bg_color2;
     margin: 0 auto;
     display: block;
@@ -713,8 +675,6 @@
     padding: 7px;
     cursor: pointer;
     background-color: $bg_color2;
-
-    transition: all .3s;
     border: solid 2px $null;
     color: $white;
 
@@ -729,7 +689,6 @@
     float: left;
     border: none;
     padding: 7px;
-
     font-size: 15.5px;
     border: solid 2px $null;
     background-color: $bg_color2;
@@ -746,7 +705,6 @@
 
 .vbwe8b2_btn{
     @include button($white, $read, 16px);
-    transition: all .3s;
 
     &:hover {opacity: 0.6;}
 }
@@ -779,7 +737,6 @@
 
 .ewwdqszx4wefff{
     @include button($white, $grean, 16px);
-    transition: all .3s;
 
     &:hover {opacity: 0.6;}
 }
@@ -829,7 +786,6 @@
 
 .ve92191112edddd {
     font-size: 18px;
-
     margin-bottom: 5px;
     display: inline-block;
     color: $white;
@@ -840,7 +796,6 @@
     padding: 6px;
     font-size: 16px;
     box-sizing: border-box;
-    transition: border-color 0.3s ease;
     background-color: $bg_color2;
     color: $white;
 }
@@ -857,7 +812,6 @@
     padding: 6px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 
     &:hover{background-color: $bg_color3;}
 }
@@ -880,7 +834,6 @@
     height: 20px;
     position: relative;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
 .unico_dqwcas[type="checkbox"]:checked {
@@ -904,7 +857,6 @@
     font-size: 16px;
     border: none;
     background-color: $bg_color3;
-    transition: border 0.3s ease, background-color 0.3s ease;
 }
 
 .unixwqc:focus {
