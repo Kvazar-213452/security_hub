@@ -1,13 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url("../Minecraft_1.1.ttf") format("truetype"); }
+
 body {
-  background-color: #181822;
-  font-family: "Roboto", sans-serif;
-  color: #ffffffa5;
+  background-color: #121212;
+  font-family: 'MyCustomFont', sans-serif;
+  color: #fff;
   overflow-y: hidden;
   overflow-x: hidden; }
 
 a {
-  color: #ffffffa5; }
+  color: #fff; }
 
 .white {
   color: #fff; }
@@ -24,10 +27,10 @@ label {
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif; }
+  font-family: 'MyCustomFont', sans-serif; }
 
 a {
-  color: #ffffffa5;
+  color: #fff;
   text-decoration: none; }
 
 .console {
@@ -37,7 +40,7 @@ a {
   bottom: 10px;
   right: 10px;
   width: calc(100% - 400px);
-  background-color: #22222e;
+  background-color: #181818;
   padding: 10px;
   z-index: 100;
   overflow-y: auto;
@@ -51,10 +54,10 @@ a {
 
 .description_page {
   font-size: 17px;
-  color: #ffffffa5; }
+  color: #fff; }
 
 .grean_1 {
-  color: #55c959; }
+  color: #68ff9d; }
 
 .read {
   color: #ff5c5c; }

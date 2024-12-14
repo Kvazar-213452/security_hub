@@ -1,25 +1,25 @@
 function lang_change_main(lang) {
   if (lang === "en") {
-    $('#bt11n1 p').html("Wi-Fi");
-    $('#bt11n2 p').html("System");
-    $('#bt11n3 p').html("Antivirus");
-    $('#bt11n4 p').html("Cleanup");
-    $('#bt11n5 p').html("Encryption");
-    $('#bt11n6 p').html("Settings");
-    $('#bt11n7 p').html("Reboot");
-    $('#bt11n8 p').html("Server");
-    $('#bt11n9 p').html("Passwords");
-    return $('#bt11n10 p').html("File system");
+    $('#btn1 p').html("Wi-Fi");
+    $('#btn2 p').html("System");
+    $('#btn3 p').html("Antivirus");
+    $('#btn4 p').html("Cleanup");
+    $('#btn5 p').html("Encryption");
+    $('#btn6 p').html("Settings");
+    $('#btn7 p').html("Reboot");
+    $('#btn8 p').html("Server");
+    $('#btn9 p').html("Passwords");
+    $('#btn10 p').html("File system");
   } else if (lang === "uk") {
-    $('#bt11n1 p').html("Вайфай");
-    $('#bt11n2 p').html("Система");
-    $('#bt11n3 p').html("Антивірус");
-    $('#bt11n4 p').html("Очищення");
-    $('#bt11n5 p').html("Шифрування");
-    $('#bt11n6 p').html("Налаштування");
-    $('#bt11n7 p').html("Перезавантажити");
-    $('#bt11n8 p').html("Сервер");
-    $('#bt11n9 p').html("Паролі");
-    return $('#bt11n10 p').html("Файлова система");
+    $('#btn1 p').html("Вайфай");
+    $('#btn2 p').html("Система");
+    $('#btn3 p').html("Антивірус");
+    $('#btn4 p').html("Очищення");
+    $('#btn5 p').html("Шифрування");
+    $('#btn6 p').html("Налаштування");
+    $('#btn7 p').html("Перезавантажити");
+    $('#btn8 p').html("Сервер");
+    $('#btn9 p').html("Паролі");
+    $('#btn10 p').html("Файлова система");
   }
 };

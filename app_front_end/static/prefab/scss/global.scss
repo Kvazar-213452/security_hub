@@ -1,15 +1,19 @@
 @import 'config';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('../Minecraft_1.1.ttf') format('truetype');
+}
 
 body {
     background-color: $bg_color;
-    font-family: "Roboto", sans-serif;
-    color: $text_color;
+    font-family: 'MyCustomFont', sans-serif;
+    color: $white;
     overflow-y: hidden;
     overflow-x: hidden;
 }
 
-a {color: $text_color;}
+a {color: $white;}
 .white {color: $white;}
 .sin {color: $null;}
 h2{color:$white}
@@ -18,11 +22,11 @@ label{color: $white;}
 * {
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif;
+        font-family: 'MyCustomFont', sans-serif;
 }
 
 a {
-    color: $text_color;
+    color: $white;
     text-decoration: none;
 }
 
@@ -49,7 +53,7 @@ a {
 
 .description_page{
     font-size: 17px;
-    color: $text_color;
+    color: $white;
 }
 
 .grean_1{color: $grean;}
