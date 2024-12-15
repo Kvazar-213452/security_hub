@@ -166,11 +166,29 @@
 /* wifi page *//* wifi page *//* wifi page *//* wifi page *//* wifi page *//* wifi page */
 /* wifi page *//* wifi page *//* wifi page *//* wifi page *//* wifi page *//* wifi page */
 
+.circle {
+    cursor: pointer;
+    transition: 0.2s stroke-width;
+}
+
+.tooltip {
+    background-color: #252831;
+    color: $white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+#chart {height: 100%;}
+
 .ed3wed{
     color: $main_color;
     position: relative;
     float: left;
     margin-right: 5px;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
 }
 
 .padoge{padding: 20px;}
@@ -403,6 +421,8 @@
     position: absolute;
     left: 25%;
     color: $white;
+
+    span {color: $main_color;}
 }
 
 .desc_o_1{left: 50%;}

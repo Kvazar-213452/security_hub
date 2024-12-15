@@ -93,7 +93,7 @@ function data_wifi_render_now(response) {
                 let text = `
                 <div class="div_info_os">
                     <p class="name_o">${formattedKey}</p>
-                    <p class="desc_o">N/A</p>
+                    <p class="desc_o"><span>=</span>   N/A</p>
                     <div class="hr_div"></div>
                 </div>
                 `;
@@ -103,7 +103,7 @@ function data_wifi_render_now(response) {
                 let text = `
                 <div class="div_info_os">
                     <p class="name_o">${formattedKey}</p>
-                    <p class="desc_o">${response[key]}</p>
+                    <p class="desc_o"><span>=</span>   ${response[key]}</p>
                     <div class="hr_div"></div>
                 </div>
                 `;

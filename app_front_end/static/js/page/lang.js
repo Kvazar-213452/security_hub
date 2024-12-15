@@ -1,8 +1,8 @@
 function lang_change_page(lang) {
   if (lang === "en") {
-    $('#lang_wefsdeeeeee').html("WIFI management");
+    $('#lang_wefsdeeeeee span').html("WIFI management");
     $('#lang_nfefdfdvghyt').html("Get more information about yours WIFI");
-    $('#lang_dqwedddcwww').html("Connection:");
+    $('#lang_dqwedddcwww').html("Connection =");
     $('#lang_system_wdeewds').html("Data os");
     $('#lang_system_fesrdfyyyyy').html("library data");
     $('#lang_system_wfr839wefsff').html("NetworkAdapters data");
@@ -79,11 +79,11 @@ function lang_change_page(lang) {
     $('#server_dqi29f03f').html("File saving");
     $('#server_dqi29f03f1').html("Backups can be useful when you need them");
     $('#server_cpk2kcqep2w').html("File upload");
-    return $('#server_cpk2kcqep2w1').html("Find file by password");
+    $('#server_cpk2kcqep2w1').html("Find file by password");
   } else if (lang === "uk") {
-    $('#lang_wefsdeeeeee').html("Вайфай менеджер");
+    $('#lang_wefsdeeeeee span').html("Вайфай менеджер");
     $('#lang_nfefdfdvghyt').html("Отримайте більше інформації про ваш вайфай");
-    $('#lang_dqwedddcwww').html("З'єднання:");
+    $('#lang_dqwedddcwww').html("З'єднання =");
     $('#lang_system_wdeewds').html("Дані операційної системи");
     $('#lang_system_fesrdfyyyyy').html("Дані бібліотек");
     $('#lang_system_wfr839wefsff').html("Дані мережевих адаптерів");
@@ -164,6 +164,6 @@ function lang_change_page(lang) {
     $('.pass_dq3dqwcesdcc').html("Генерація пароля && Додавання пароля");
     $('.pass_dq3dqwcesdcc1').html("Завантажити");
     $('.server_0312edcccc').html("Завантажити");
-    return $('.server_0312edcccc').html("Завантажити");
+    $('.server_0312edcccc').html("Завантажити");
   }
 };

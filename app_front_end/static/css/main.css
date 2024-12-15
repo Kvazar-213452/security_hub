@@ -161,11 +161,28 @@
 /* wifi page */
 /* wifi page */
 /* wifi page */
+.circle {
+  cursor: pointer;
+  transition: 0.2s stroke-width; }
+
+.tooltip {
+  background-color: #252831;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 12px; }
+
+#chart {
+  height: 100%; }
+
 .ed3wed {
   color: #68ff9d;
   position: relative;
   float: left;
-  margin-right: 5px; }
+  margin-right: 5px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px; }
 
 .padoge {
   padding: 20px; }
@@ -434,6 +451,11 @@
   position: absolute;
   left: 25%;
   color: #fff; }
+  .desc_o span,
+  .desc_o_1 span,
+  .desc_o_2 span,
+  .desc_o_3 span {
+    color: #68ff9d; }
 
 .desc_o_1 {
   left: 50%; }
