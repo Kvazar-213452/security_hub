@@ -230,17 +230,14 @@
 
 .name_wifi_div_all{
     position: relative;
-    font-size: 16px;
     color: $main_color;
     top: 8px;
     left: 10px;
     float: left;
-
 }
 
 .right_left_signal{
     position: relative;
-    font-size: 15px;
     color: $white;
     top: 9px;
     left: -10px;
@@ -282,7 +279,7 @@
 }
 
 .settings_main_tetx{
-    font-size: 19px;
+    font-size: 16px;
     color: $main_color;
 }
 
@@ -295,7 +292,7 @@
 }
 
 .button_settings{
-    @include button($white, $bg_color2, 15px);
+    @include button($white, $bg_color2, 13px);
     position: relative;
     float: left;
     margin-left: 10px;
@@ -314,14 +311,12 @@
     padding: 6px;
     background-color: $bg_color;
     color: $white;
-    font-size: 15px;
 }
 
 .saert45trgf{
     border: none;
     color: $white;
     padding: 7px;
-    font-size: 15px;
     background-color: $bg_color2;
 
     &:focus {
@@ -333,7 +328,7 @@
 
 .zxbnmewd,
 .zxbnmewd1{
-    @include button($white, $bg_color2, 15px);
+    @include button($white, $bg_color2, 13px);
     padding: 5px;
 
     &:hover{
@@ -372,6 +367,9 @@
 /* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
 /* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
 
+#ndwe8rfier{font-size: 14px;}
+#sifewfewx .div_wifi_all .name_wifi_div_all{color: $white !important;}
+
 .hr_div{
     position: absolute;
     width: 100%;
@@ -390,11 +388,11 @@
     position: relative;
     float: left;
     color: $white;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 .name_system{
-    font-size: 18px;
+    font-size: 16px;
     color: $main_color;
 }
 
@@ -405,7 +403,6 @@
     position: absolute;
     left: 25%;
     color: $white;
-    font-size: 16px;
 }
 
 .desc_o_1{left: 50%;}
@@ -438,7 +435,7 @@
 .wefewfvgg4{
     position: relative;
     float: left;
-    font-size: 24px;
+    font-size: 19px;
     color: $main_color;
     margin-right: 100px;
 }
@@ -447,11 +444,8 @@
 /* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page */
 /* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page *//* cleaning page */
 
-.deccc{
-    margin-right: 10px
-}
-
-.deccc {@include button($main_color, $bg_color, 16px);}
+.deccc{margin-right: 10px}
+.deccc {@include button($main_color, $bg_color3, 15px);}
 
 .toggle-btn {
     color: $white;
@@ -466,7 +460,7 @@
 .dropdown-content {
     display: none;
     padding: 10px;
-    background-color: $bg_color2;
+    background-color: $bg_color3;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     width: calc(100% - 30px);
     margin-top: 10px;
@@ -487,7 +481,7 @@
 
 .ump_button,
 .ump_button1 {
-    @include button($white, $bg_color1, 15px);
+    @include button($white, $bg_color1, 14px);
 }
 
 /* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page */
@@ -499,7 +493,6 @@
 
 .input_cmd {
     border: none;
-    font-size: 16px;
     padding: 5px;
     color: $white;
     background-color: $bg_color2;
@@ -666,7 +659,6 @@
 
 .dwedffvvvvv{
     color: $white;
-    font-size: 15px;
 }
 
 .thnnredf{
@@ -704,7 +696,7 @@
 }
 
 .vbwe8b2_btn{
-    @include button($white, $read, 16px);
+    @include button($white, $read, 14px);
 
     &:hover {opacity: 0.6;}
 }
@@ -778,7 +770,6 @@
     border: 2px solid $main_color;
     text-align: center;
     line-height: 50px;
-    font-size: 16px;
     cursor: pointer;
 
     &:hover{background-color: $bg_color3;}
@@ -794,7 +785,6 @@
 .ooo33ff3cv2122[type="text"] {
     border: none;
     padding: 6px;
-    font-size: 16px;
     box-sizing: border-box;
     background-color: $bg_color2;
     color: $white;
@@ -810,7 +800,6 @@
     color: white;
     border: none;
     padding: 6px;
-    font-size: 16px;
     cursor: pointer;
 
     &:hover{background-color: $bg_color3;}
@@ -854,7 +843,6 @@
 .unixwqc{
     color: $white;
     padding: 2px;
-    font-size: 16px;
     border: none;
     background-color: $bg_color3;
 }

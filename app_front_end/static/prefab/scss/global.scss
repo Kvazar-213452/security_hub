@@ -11,6 +11,7 @@ body {
     color: $white;
     overflow-y: hidden;
     overflow-x: hidden;
+    font-size: 15px;
 }
 
 a {color: $white;}
@@ -22,7 +23,7 @@ label{color: $white;}
 * {
     margin: 0;
     padding: 0;
-        font-family: 'MyCustomFont', sans-serif;
+    font-family: 'MyCustomFont', sans-serif;
 }
 
 a {
@@ -46,12 +47,12 @@ a {
 }
 
 .name_page{
-    font-size: 20px;
+    font-size: 18px;
     color: $white;
 }
 
 .description_page{
-    font-size: 17px;
+    font-size: 15px;
     color: $white;
 }
 

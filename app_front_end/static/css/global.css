@@ -7,7 +7,8 @@ body {
   font-family: 'MyCustomFont', sans-serif;
   color: #fff;
   overflow-y: hidden;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  font-size: 15px; }
 
 a {
   color: #fff; }
@@ -48,11 +49,11 @@ a {
   display: none; }
 
 .name_page {
-  font-size: 20px;
+  font-size: 18px;
   color: #fff; }
 
 .description_page {
-  font-size: 17px;
+  font-size: 15px;
   color: #fff; }
 
 .grean_1 {

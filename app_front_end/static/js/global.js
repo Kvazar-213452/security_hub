@@ -26,16 +26,10 @@ function message_window(content) {
 }
 
 function change_menu_antivirus(id) {
-    for (let i = 0; i < dwdc21e12d.length; i++) {
-        $("#" + dwdc21e12d[i]).addClass("beds12323r4feddfq1");
-    }
-
     for (let i = 0; i < frg45th9nd.length; i++) {
         $("#" + frg45th9nd[i]).hide();
     } 
 
-    $("#" + dwdc21e12d[id]).removeClass("beds12323r4feddfq1"); 
-    $("#" + dwdc21e12d[id]).addClass("beds12323r4feddfq"); 
     $('#' + frg45th9nd[id]).show();
 }
 

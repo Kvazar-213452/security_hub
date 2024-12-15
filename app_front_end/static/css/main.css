@@ -221,7 +221,6 @@
 
 .name_wifi_div_all {
   position: relative;
-  font-size: 16px;
   color: #68ff9d;
   top: 8px;
   left: 10px;
@@ -229,7 +228,6 @@
 
 .right_left_signal {
   position: relative;
-  font-size: 15px;
   color: #fff;
   top: 9px;
   left: -10px;
@@ -281,7 +279,7 @@
   font-style: italic; }
 
 .settings_main_tetx {
-  font-size: 19px;
+  font-size: 16px;
   color: #68ff9d; }
 
 .settings_div {
@@ -296,7 +294,7 @@
   padding: 7px;
   background-color: #1d1d1d;
   color: #fff;
-  font-size: 15px;
+  font-size: 13px;
   border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
@@ -316,14 +314,12 @@
   border: none;
   padding: 6px;
   background-color: #121212;
-  color: #fff;
-  font-size: 15px; }
+  color: #fff; }
 
 .saert45trgf {
   border: none;
   color: #fff;
   padding: 7px;
-  font-size: 15px;
   background-color: #1d1d1d; }
   .saert45trgf:focus {
     outline: none;
@@ -336,7 +332,7 @@
   padding: 7px;
   background-color: #1d1d1d;
   color: #fff;
-  font-size: 15px;
+  font-size: 13px;
   border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
@@ -403,6 +399,12 @@
 /* system page */
 /* system page */
 /* system page */
+#ndwe8rfier {
+  font-size: 14px; }
+
+#sifewfewx .div_wifi_all .name_wifi_div_all {
+  color: #fff !important; }
+
 .hr_div {
   position: absolute;
   width: 100%;
@@ -419,10 +421,10 @@
   position: relative;
   float: left;
   color: #fff;
-  font-size: 17px; }
+  font-size: 14px; }
 
 .name_system {
-  font-size: 18px;
+  font-size: 16px;
   color: #68ff9d; }
 
 .desc_o,
@@ -431,8 +433,7 @@
 .desc_o_3 {
   position: absolute;
   left: 25%;
-  color: #fff;
-  font-size: 16px; }
+  color: #fff; }
 
 .desc_o_1 {
   left: 50%; }
@@ -465,7 +466,7 @@
 .wefewfvgg4 {
   position: relative;
   float: left;
-  font-size: 24px;
+  font-size: 19px;
   color: #68ff9d;
   margin-right: 100px; }
 
@@ -493,9 +494,9 @@
 .deccc {
   border: none;
   padding: 7px;
-  background-color: #121212;
+  background-color: #232323;
   color: #68ff9d;
-  font-size: 16px;
+  font-size: 15px;
   border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
@@ -518,7 +519,7 @@
 .dropdown-content {
   display: none;
   padding: 10px;
-  background-color: #1d1d1d;
+  background-color: #232323;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   width: calc(100% - 30px);
   margin-top: 10px; }
@@ -540,7 +541,7 @@
   padding: 7px;
   background-color: #181818;
   color: #fff;
-  font-size: 15px;
+  font-size: 14px;
   border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
@@ -572,7 +573,6 @@
 
 .input_cmd {
   border: none;
-  font-size: 16px;
   padding: 5px;
   color: #fff;
   background-color: #1d1d1d;
@@ -735,8 +735,7 @@
   font-size: 17px; }
 
 .dwedffvvvvv {
-  color: #fff;
-  font-size: 15px; }
+  color: #fff; }
 
 .thnnredf {
   position: relative;
@@ -771,7 +770,7 @@
   padding: 7px;
   background-color: #ff5c5c;
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
@@ -878,10 +877,9 @@
   border: 2px solid #68ff9d;
   text-align: center;
   line-height: 50px;
-  font-size: 16px;
   cursor: pointer; }
   .file-input-button:hover {
-    background-color: #1d1d1d; }
+    background-color: #232323; }
 
 .ve92191112edddd {
   font-size: 18px;
@@ -892,7 +890,6 @@
 .ooo33ff3cv2122[type="text"] {
   border: none;
   padding: 6px;
-  font-size: 16px;
   box-sizing: border-box;
   background-color: #1d1d1d;
   color: #fff; }
@@ -906,10 +903,9 @@
   color: white;
   border: none;
   padding: 6px;
-  font-size: 16px;
   cursor: pointer; }
   .dqw21fvvvv[type="submit"]:hover {
-    background-color: #1d1d1d; }
+    background-color: #232323; }
 
 /* password page */
 /* password page */
@@ -959,9 +955,8 @@
 .unixwqc {
   color: #fff;
   padding: 2px;
-  font-size: 16px;
   border: none;
-  background-color: #1d1d1d; }
+  background-color: #232323; }
 
 .unixwqc:focus {
   background-color: #68ff9d;
@@ -997,7 +992,7 @@
   margin-bottom: 10px;
   margin-right: 10px;
   padding: 6px;
-  background-color: #1d1d1d; }
+  background-color: #232323; }
   .file_system_div_select p {
     position: relative;
     float: left;
