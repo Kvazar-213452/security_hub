@@ -7,8 +7,10 @@ import (
 	"head/main_com/func_all"
 	"io/ioutil"
 	"log"
+	"os"
 	"os/exec"
 	"strings"
+	"syscall"
 )
 
 type WifiInfo struct {
@@ -218,4 +220,64 @@ func Get_connected_SSID() string {
 		return network.SSIDs[0]
 	}
 	return ""
+}
+
+// get data packages_wifi
+// get data packages_wifi
+// get data packages_wifi
+// get data packages_wifi
+// get data packages_wifi
+
+type NetworkInterface struct {
+	Name            string `xml:"Name"`
+	Description     string `xml:"Description"`
+	Status          string `xml:"Status"`
+	BytesSent       int    `xml:"BytesSent"`
+	BytesReceived   int    `xml:"BytesReceived"`
+	PacketsSent     int    `xml:"PacketsSent"`
+	PacketsReceived int    `xml:"PacketsReceived"`
+}
+
+type NetworkInterfaces struct {
+	XMLName    xml.Name           `xml:"NetworkInterfaces"`
+	Interfaces []NetworkInterface `xml:"Interface"`
+}
+
+func Get_info_packages_wifi() {
+	cmd := exec.Command("./packages_wifi.exe")
+	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+
+	err := cmd.Run()
+	if err != nil {
+		fmt.Println("Помилка виконання packages_wifi.exe:", err)
+		return
+	}
+
+	filePath := "packages_wifi.xml"
+	xmlFile, err := os.Open(filePath)
+	if err != nil {
+		fmt.Println("Помилка відкриття файлу:", err)
+		return
+	}
+	defer xmlFile.Close()
+
+	byteValue, _ := ioutil.ReadAll(xmlFile)
+	var networkInterfaces NetworkInterfaces
+	err = xml.Unmarshal(byteValue, &networkInterfaces)
+	if err != nil {
+		fmt.Println("Помилка парсингу XML:", err)
+		return
+	}
+
+	fmt.Println("Інформація про мережеві інтерфейси:")
+	for _, iface := range networkInterfaces.Interfaces {
+		fmt.Printf("Назва: %s\n", iface.Name)
+		fmt.Printf("Опис: %s\n", iface.Description)
+		fmt.Printf("Статус: %s\n", iface.Status)
+		fmt.Printf("Передано байт: %d КБ\n", iface.BytesSent/1024)
+		fmt.Printf("Отримано байт: %d КБ\n", iface.BytesReceived/1024)
+		fmt.Printf("Передано пакетів: %d\n", iface.PacketsSent)
+		fmt.Printf("Отримано пакетів: %d\n", iface.PacketsReceived)
+		fmt.Println()
+	}
 }
