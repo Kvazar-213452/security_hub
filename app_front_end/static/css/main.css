@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .ump_textw {
   position: relative;
   height: 100%;
@@ -127,7 +128,8 @@
 .div_wifi_info::-webkit-scrollbar,
 .div_system_info::-webkit-scrollbar,
 .imfowdwqdd::-webkit-scrollbar,
-.dqwdwec9923ed::-webkit-scrollbar {
+.dqwdwec9923ed::-webkit-scrollbar,
+.extension_select::-webkit-scrollbar {
   width: 11px;
   background-color: #121212; }
 
@@ -137,7 +139,8 @@
 .div_wifi_info::-webkit-scrollbar-thumb,
 .div_system_info::-webkit-scrollbar-thumb,
 .imfowdwqdd::-webkit-scrollbar-thumb,
-.dqwdwec9923ed::-webkit-scrollbar-thumb {
+.dqwdwec9923ed::-webkit-scrollbar-thumb,
+.extension_select::-webkit-scrollbar-thumb {
   background-color: #1d1d1d; }
 
 .modal_rev_button_d {
@@ -169,7 +172,6 @@
   background-color: #252831;
   color: #fff;
   padding: 5px;
-  border-radius: 4px;
   font-size: 12px; }
 
 #chart {
@@ -312,7 +314,6 @@
   background-color: #1d1d1d;
   color: #fff;
   font-size: 13px;
-  border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
   cursor: pointer;
@@ -341,7 +342,15 @@
   .saert45trgf:focus {
     outline: none;
     box-shadow: none;
-    color: #68ff9d; }
+    color: #68ff9d;
+    /* Не змінюємо фон на фокусі */
+    background-color: #1d1d1d; }
+  .saert45trgf:hover {
+    outline: none;
+    box-shadow: none;
+    color: #68ff9d;
+    /* Не змінюємо фон на фокусі */
+    background-color: #1d1d1d; }
 
 .zxbnmewd,
 .zxbnmewd1 {
@@ -350,7 +359,6 @@
   background-color: #1d1d1d;
   color: #fff;
   font-size: 13px;
-  border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
   cursor: pointer;
@@ -416,6 +424,50 @@
 /* system page */
 /* system page */
 /* system page */
+.file_system_div_select {
+  font-size: 13px;
+  position: relative;
+  float: left;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 5px;
+  background-color: #232323; }
+  .file_system_div_select p {
+    position: relative;
+    float: left;
+    margin-right: 5px; }
+
+.file_system_del_div {
+  position: relative;
+  float: left;
+  padding: 2px;
+  background-color: #ff5c5c;
+  color: #000000;
+  cursor: pointer; }
+
+.extension_select {
+  position: relative;
+  height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.top_10_extension {
+  position: relative;
+  margin-bottom: 10px; }
+  .top_10_extension span1 {
+    color: #697ffe; }
+  .top_10_extension span2 {
+    color: #ff9c4c; }
+  .top_10_extension span3 {
+    color: #fff; }
+  .top_10_extension span1,
+  .top_10_extension span2,
+  .top_10_extension span3 {
+    margin-right: 10px; }
+
+.select_ext {
+  margin-bottom: 10px; }
+
 #ndwe8rfier {
   font-size: 14px; }
 
@@ -519,7 +571,6 @@
   background-color: #232323;
   color: #68ff9d;
   font-size: 15px;
-  border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
   cursor: pointer; }
@@ -570,7 +621,6 @@
   background-color: #181818;
   color: #fff;
   font-size: 14px;
-  border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
   cursor: pointer; }
@@ -657,7 +707,6 @@
   background-color: #181818;
   color: #fff;
   font-size: 18px;
-  border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
   cursor: pointer;
@@ -709,7 +758,6 @@
   background-color: #181818;
   color: #fff;
   font-size: 19px;
-  border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
   cursor: pointer;
@@ -799,7 +847,6 @@
   background-color: #ff5c5c;
   color: #000000;
   font-size: 14px;
-  border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
   cursor: pointer; }
@@ -849,7 +896,6 @@
   background-color: #68ff9d;
   color: #fff;
   font-size: 16px;
-  border-radius: 5px;
   transition: all .3s;
   border: solid 2px #ffffff00;
   cursor: pointer; }
@@ -989,47 +1035,3 @@
 .unixwqc:focus {
   background-color: #68ff9d;
   outline: none; }
-
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-/* file_system page */
-.chart-container {
-  position: relative;
-  margin: auto;
-  height: 80vh;
-  width: 80vw; }
-
-.file_system_div_select {
-  position: relative;
-  float: left;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  padding: 6px;
-  background-color: #232323; }
-  .file_system_div_select p {
-    position: relative;
-    float: left;
-    margin-right: 5px; }
-
-.file_system_del_div {
-  position: relative;
-  float: left;
-  padding: 2px;
-  background-color: #ff5c5c;
-  color: #000000;
-  cursor: pointer; }

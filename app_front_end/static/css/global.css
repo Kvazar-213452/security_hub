@@ -25,6 +25,9 @@ h2 {
 label {
   color: #fff; }
 
+.main_color {
+  color: #68ff9d; }
+
 * {
   margin: 0;
   padding: 0;
@@ -64,3 +67,12 @@ a {
 
 .read {
   color: #ff5c5c; }
+
+.no_select_o * {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none; }
+
+.fon_16 {
+  font-size: 18px; }

@@ -37,9 +37,16 @@ function change_menu_page(id_, id) {
     for (let i = 0; i < mas_sonar[id_].length; i++) {
         $("#" + mas_sonar[id_][i]).addClass("beds12323r4feddfq1");
     }
-
+    
     $("#" + mas_sonar[id_][id]).removeClass("beds12323r4feddfq1"); 
-    $("#" + mas_sonar[id_][id]).addClass("beds12323r4feddfq"); 
+    $("#" + mas_sonar[id_][id]).addClass("beds12323r4feddfq");
+
+    for (let i = 1; i < mas_sonar[id_].length; i++) {
+        $('#section_' + i).hide();
+    }
+
+    $('#section_' + (id + 1)).show();
+    console.log(id + 1)
 }
 
 function change_lang_now(type) {

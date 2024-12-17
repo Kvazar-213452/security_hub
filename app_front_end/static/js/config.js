@@ -8,8 +8,9 @@ let vvw2311323ferererg3g3g3 = ['vvw2311323ferererg3g3g3', 'vvw2311323ferererg3g3
 
 let mas_sonar = [
     ['dwdc21e12d', 'dwdc21e12d1', 'dwdc21e12d2'],
-    ['wifi_0jdccc']
-]
+    ['wifi_0jdccc'],
+    ['system_0jdccc', 'system_0jdccc1']
+];
 
 const unsafeProtocols = ["WEP", "WPA", "HTTP", "FTP", "Telnet", "RDP", "SNMP", "ICMP"];
 
@@ -26,7 +27,7 @@ let data_cleaning = {
 
 // html
 let html_1 = `
-<div class="menu">
+<div class="menu no_select_o">
     <div class="menu_logo"><img src="/static/img/9.png"><p>Security hub</p></div>
     <br><br>
     <div class="menu_div">
@@ -37,7 +38,6 @@ let html_1 = `
         <div onclick="page_iframe('/encryption', 'btn5')" id="btn5" class="button"><img src="/static/img/11.png"><p></p></div>
         <div onclick="page_iframe('/server', 'btn8')" id="btn8" class="button"><img src="/static/img/13.png"><p></p></div>
         <div onclick="page_iframe('/password', 'btn9')" id="btn9" class="button"><img src="/static/img/14.png"><p></p></div>
-        <div onclick="page_iframe('/file_system', 'btn10')" id="btn10" class="button"><img src="/static/img/15.png"><p></p></div>
         <div onclick="page_iframe('/settings', 'btn6')" id="btn6" class="button"><img src="/static/img/3.png"><p></p></div>
         <br><br>
         <a href=""><div id="btn7" class="button"><img src="/static/img/12.png"><p></p></div></a>

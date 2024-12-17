@@ -41,7 +41,7 @@ func Post_scan_dir(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		rootSize, unix := page_func.Run_scan_dir(request.Dir, request.Mas1, request.Mas2)
+		rootSize, unix := page_func.Run_scan_dir(request.Dir, request.Mas1)
 
 		Folder_info := folder_info{
 			Rootsize: rootSize,

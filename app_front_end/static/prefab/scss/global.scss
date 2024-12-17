@@ -19,6 +19,7 @@ a {color: $white;}
 .sin {color: $null;}
 h2{color:$white}
 label{color: $white;}
+.main_color{color: $main_color}
 
 * {
     margin: 0;
@@ -61,3 +62,12 @@ a {
 
 .grean_1{color: $grean;}
 .read{color: $read;}
+
+.no_select_o * {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.fon_16{font-size: 18px;}

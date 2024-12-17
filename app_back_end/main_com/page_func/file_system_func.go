@@ -14,7 +14,7 @@ type FolderInfo struct {
 	Size int64
 }
 
-func isValidFileExtension(filePath string, includeExtensions, excludeExtensions []string) bool {
+func isValidFileExtension(filePath string, includeExtensions []string) bool {
 	ext := strings.ToLower(filepath.Ext(filePath))
 
 	if len(includeExtensions) > 0 {
@@ -25,25 +25,17 @@ func isValidFileExtension(filePath string, includeExtensions, excludeExtensions 
 		}
 		return false
 	}
-
-	if len(excludeExtensions) > 0 {
-		for _, excludedExt := range excludeExtensions {
-			if ext == "."+strings.ToLower(excludedExt) {
-				return false
-			}
-		}
-	}
-
 	return true
 }
 
-func getFolderSize(path string, includeExtensions, excludeExtensions []string) (int64, error) {
+func getFolderSize(path string, includeExtensions []string) (int64, error) {
 	var totalSize int64
 	err := filepath.Walk(path, func(filePath string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
-		if !info.IsDir() && isValidFileExtension(filePath, includeExtensions, excludeExtensions) {
+
+		if !info.IsDir() && isValidFileExtension(filePath, includeExtensions) {
 			totalSize += info.Size()
 		}
 		return nil
@@ -51,10 +43,10 @@ func getFolderSize(path string, includeExtensions, excludeExtensions []string) (
 	return totalSize, err
 }
 
-func scanDirectory(root string, wg *sync.WaitGroup, ch chan<- FolderInfo, includeExtensions, excludeExtensions []string) {
+func scanDirectory(root string, wg *sync.WaitGroup, ch chan<- FolderInfo, includeExtensions []string) {
 	defer wg.Done()
 
-	size, err := getFolderSize(root, includeExtensions, excludeExtensions)
+	size, err := getFolderSize(root, includeExtensions)
 	if err != nil {
 		return
 	}
@@ -65,17 +57,13 @@ func scanDirectory(root string, wg *sync.WaitGroup, ch chan<- FolderInfo, includ
 	}
 }
 
-func Run_scan_dir(rootDir string, includeExtensions []string, excludeExtensions []string) (float64, [][]string) {
-
-	// Файли, які ми враховуємо
-	// Файли, які ми ігноруємо
-
+func Run_scan_dir(rootDir string, includeExtensions []string) (float64, [][]string) {
 	var folderSizes []FolderInfo
 
 	var wg sync.WaitGroup
 	ch := make(chan FolderInfo)
 
-	rootSize, _ := getFolderSize(rootDir, includeExtensions, excludeExtensions)
+	rootSize, _ := getFolderSize(rootDir, includeExtensions)
 
 	err := filepath.Walk(rootDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil || !info.IsDir() || path == rootDir {
@@ -83,7 +71,7 @@ func Run_scan_dir(rootDir string, includeExtensions []string, excludeExtensions 
 		}
 
 		wg.Add(1)
-		go scanDirectory(path, &wg, ch, includeExtensions, excludeExtensions)
+		go scanDirectory(path, &wg, ch, includeExtensions)
 		return nil
 	})
 
@@ -111,7 +99,6 @@ func Run_scan_dir(rootDir string, includeExtensions []string, excludeExtensions 
 		folder := folderSizes[i]
 		percentage := (float64(folder.Size) / float64(rootSize)) * 100
 		unix = append(unix, []string{folder.Path, fmt.Sprintf("%d", folder.Size), fmt.Sprintf("%.2f", percentage)})
-		fmt.Println(unix)
 	}
 
 	return float64(rootSize), unix

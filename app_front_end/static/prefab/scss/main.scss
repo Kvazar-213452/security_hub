@@ -147,7 +147,8 @@
 .div_wifi_info::-webkit-scrollbar,
 .div_system_info::-webkit-scrollbar,
 .imfowdwqdd::-webkit-scrollbar,
-.dqwdwec9923ed::-webkit-scrollbar{
+.dqwdwec9923ed::-webkit-scrollbar,
+.extension_select::-webkit-scrollbar{
   width: 11px;
   background-color: $bg_color; 
 }
@@ -158,7 +159,8 @@
 .div_wifi_info::-webkit-scrollbar-thumb,
 .div_system_info::-webkit-scrollbar-thumb,
 .imfowdwqdd::-webkit-scrollbar-thumb,
-.dqwdwec9923ed::-webkit-scrollbar-thumb{background-color: $bg_color2; }
+.dqwdwec9923ed::-webkit-scrollbar-thumb,
+.extension_select::-webkit-scrollbar-thumb{background-color: $bg_color2; }
 
 .modal_rev_button_d{color: $read;}
 
@@ -175,7 +177,6 @@
     background-color: #252831;
     color: $white;
     padding: 5px;
-    border-radius: 4px;
     font-size: 12px;
 }
 
@@ -331,7 +332,7 @@
     color: $white;
 }
 
-.saert45trgf{
+.saert45trgf {
     border: none;
     color: $white;
     padding: 7px;
@@ -341,8 +342,17 @@
         outline: none;
         box-shadow: none;
         color: $main_color;
+        background-color: $bg_color2;
+    }
+
+    &:hover {
+        outline: none;
+        box-shadow: none;
+        color: $main_color;
+        background-color: $bg_color2;
     }
 }
+
 
 .zxbnmewd,
 .zxbnmewd1{
@@ -385,6 +395,52 @@
 /* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
 /* system page *//* system page *//* system page *//* system page *//* system page *//* system page */
 
+.file_system_div_select{
+    font-size: 13px;
+    position: relative;
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    background-color: $bg_color3;
+
+    p {
+        position: relative;
+        float: left;
+        margin-right: 5px;
+    }
+}
+
+.file_system_del_div{
+    position: relative;
+    float: left;
+    padding: 2px;
+    background-color: $read;
+    color: #000000;
+    cursor: pointer;
+}
+
+.extension_select{
+    position: relative;
+    height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.top_10_extension{
+    position: relative;
+    margin-bottom: 10px;
+    
+    span1 {color: $blue;}
+    span2 {color: $orange;}
+    span3 {color: $white;}
+
+    span1,
+    span2,
+    span3 {margin-right: 10px;}
+}
+
+.select_ext{margin-bottom: 10px;}
 #ndwe8rfier{font-size: 14px;}
 #sifewfewx .div_wifi_all .name_wifi_div_all{color: $white !important;}
 
@@ -873,39 +929,4 @@
 .unixwqc:focus {
     background-color: $main_color;
     outline: none;
-}
-
-/* file_system page *//* file_system page *//* file_system page *//* file_system page *//* file_system page *//* file_system page */
-/* file_system page *//* file_system page *//* file_system page *//* file_system page *//* file_system page *//* file_system page */
-/* file_system page *//* file_system page *//* file_system page *//* file_system page *//* file_system page *//* file_system page */
-
-.chart-container {
-    position: relative;
-    margin: auto;
-    height: 80vh;
-    width: 80vw;
-}
-
-.file_system_div_select{
-    position: relative;
-    float: left;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    padding: 6px;
-    background-color: $bg_color3;
-
-    p {
-        position: relative;
-        float: left;
-        margin-right: 5px;
-    }
-}
-
-.file_system_del_div{
-    position: relative;
-    float: left;
-    padding: 2px;
-    background-color: $read;
-    color: #000000;
-    cursor: pointer;
 }
