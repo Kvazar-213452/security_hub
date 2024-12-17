@@ -1,6 +1,6 @@
 app_installer/main.exe
 
-server/register/config.json
+server/register_and_data/config.json
 
 app_back_end/head.exe
 
