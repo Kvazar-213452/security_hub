@@ -2,8 +2,14 @@ package main
 
 import (
 	"fmt"
+	"head/main_com"
 )
 
 func main() {
-	fmt.Printf("Не вдалося завершити shell_web.exe:")
+	version := main_com.Get_version()
+	version_conf := main_com.File_config_get_version()
+
+	if version == version_conf {
+		fmt.Println(version, version_conf)
+	}
 }

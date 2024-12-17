@@ -41,4 +41,22 @@ if ($let -eq 0) {
 
     python .sorse/other/del_ls_txt.py app_front_end/static/js/lang_main.js
     python .sorse/other/del_ls_txt.py app_front_end/static/js/page/lang.js
+} elseif ($let -eq 6) {
+    Push-Location
+    try {
+        cd auto_update
+        go build -ldflags="-H windowsgui"
+        .\head.exe
+    } finally {
+        Pop-Location
+    }
+} elseif ($let -eq 7) {
+    Push-Location
+    try {
+        cd auto_update
+        go build
+        .\head.exe
+    } finally {
+        Pop-Location
+    }
 }
