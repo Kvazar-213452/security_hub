@@ -27,7 +27,7 @@ let data_cleaning = {
 // html
 let html_1 = `
 <div class="menu">
-    <div class="menu_logo"><img src="/static/img/9.png"><p>Alter++</p></div>
+    <div class="menu_logo"><img src="/static/img/9.png"><p>Security hub</p></div>
     <br><br>
     <div class="menu_div">
         <div onclick="page_iframe('/wifi', 'btn1')" id="btn1" class="button"><img src="/static/img/4.png"><p></p></div>

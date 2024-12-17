@@ -13,6 +13,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
     <div class="w3fwe">
         <div class="style_dqw">
             <p class="dqd313qe3qdw22">white style</p>
+            <br>
             <p class="dq3233rrffff">Вага: 1 6.97 КБ</p>
             <p class="dq3233rrffff">Створив: Kvazar-213452</p>
             <br>

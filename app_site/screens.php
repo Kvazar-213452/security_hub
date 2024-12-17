@@ -11,12 +11,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
     <?php require 'page/menu.php'; ?>
     <br><br><br><br><br><br><br>
     <div class="rrggef">
+        <img class="dqwd23d3ff" src="<?php echo $domen_name; ?>/static/img/1.jpg">
         <img class="dqwd23d3ff" src="<?php echo $domen_name; ?>/static/img/2.jpg">
-        <img class="dqwd23d3ff" src="<?php echo $domen_name; ?>/static/img/7.jpg">
         <img class="dqwd23d3ff" src="<?php echo $domen_name; ?>/static/img/3.jpg">
         <img class="dqwd23d3ff" src="<?php echo $domen_name; ?>/static/img/4.jpg">
         <img class="dqwd23d3ff" src="<?php echo $domen_name; ?>/static/img/5.jpg">
-        <img class="dqwd23d3ff" src="<?php echo $domen_name; ?>/static/img/6.jpg">
     </div>
     <?php require 'page/footer.php'; ?>
     <br><br>

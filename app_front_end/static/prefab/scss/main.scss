@@ -719,7 +719,7 @@
 }
 
 .vbwe8b2_btn{
-    @include button($white, $read, 14px);
+    @include button($bleck, $read, 14px);
 
     &:hover {opacity: 0.6;}
 }
