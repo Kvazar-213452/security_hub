@@ -53,7 +53,7 @@ func Get_version() int {
 }
 
 func File_config_get_version() int {
-	file, err := os.Open("main_config.json")
+	file, err := os.Open(File_config_phat)
 	if err != nil {
 		log.Fatal("Error opening file:", err)
 	}

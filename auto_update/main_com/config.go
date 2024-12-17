@@ -1,3 +1,5 @@
 package main_com
 
-var Url = "http://localhost:5000/version"
+var server = "http://localhost:5000/"
+var Url = server + "version"
+var File_config_phat = "../data/main_config.json"

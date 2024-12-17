@@ -4,7 +4,7 @@ app_site/static/css/*.css linguist-documentation
 app_site/static/*.js linguist-documentation
 
 data/style/*.css linguist-documentation
-web_external/data/*.css linguist-documentation
+server/register_and_data/static/*.css linguist-documentation
 
 app_installer/lib/*.h linguist-documentation
 app_installer/lib/*.cc linguist-documentation
