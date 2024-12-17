@@ -499,6 +499,9 @@
     left: 18px;
 }
 
+.dqfeffggg li {list-style-type: square;}
+.dqfeffggg li::marker {color: $main_color; }
+
 .ump_button,
 .ump_button1 {
     @include button($white, $bg_color1, 14px);
@@ -726,8 +729,8 @@
 #we332dvc2{font-size: 19px;}
 .wefopq2e2e2ccc{color: $main_color;}
 .wefopq2e2e2ccc1{color: $white;}
-.weyiqwd22e3c{background-color: rgb(24, 24, 34);}
-.weyiqwd22e3c1{background-color: rgb(55, 55, 69);}
+.weyiqwd22e3c{background-color: $bg_color;}
+.weyiqwd22e3c1{background-color: $bg_color4;}
 
 .style_button{
     color: $main_color;

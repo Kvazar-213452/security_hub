@@ -47,3 +47,7 @@ let html_1 = `
 <div class="console"></div>
 <iframe id="iframe"></iframe>
 `;
+
+// cleanup
+let bg_color1 = "rgb(18, 18, 18)";
+let bg_color2 = "rgb(89, 89, 89)";

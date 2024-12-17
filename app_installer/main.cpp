@@ -29,6 +29,7 @@ void start_webview(int port) {
         exit(1);
     }
 }
+
 void monitor_webview() {
     while (!webview_closed.load()) {
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
