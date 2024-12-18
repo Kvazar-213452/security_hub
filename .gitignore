@@ -8,8 +8,6 @@ auto_update/head.exe
 .sorse/core_sorse/shell_web_NM2/build
 .sorse/core_sorse/shell_web_NM2/dist
 
-server/data_file/node_modules
-
 .sorse/sorse_lib/packages_wifi/obj
 .sorse/sorse_lib/packages_wifi/bin
 
