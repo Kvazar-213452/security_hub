@@ -14,3 +14,4 @@ server/data_file/node_modules
 .sorse/sorse_lib/packages_wifi/bin
 
 .sorse/sorse_lib/aes_encryption/target
+.sorse/core_sorse/shell_web_NM3/bin

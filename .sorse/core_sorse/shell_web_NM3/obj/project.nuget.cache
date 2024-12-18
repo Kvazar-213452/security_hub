@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "YuGRUv0sDMY=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\god19\\Desktop\\Нова папка (4)\\WebViewExample\\WebViewExample.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\god19\\.nuget\\packages\\microsoft.web.webview2\\1.0.2903.40\\microsoft.web.webview2.1.0.2903.40.nupkg.sha512"
+  ],
+  "logs": []
+}
