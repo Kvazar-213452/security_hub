@@ -19,6 +19,7 @@ type Config_global struct {
 var Main_config string = "../data/main_config.json"
 var Log_file string = "../data/main.log"
 var Library_folder string = "library"
+var Key_post = "3dp4g9DI8h7MzjVz"
 
 // core web
 var Core_web string = "./shell_web.exe"

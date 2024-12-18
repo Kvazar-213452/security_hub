@@ -83,6 +83,7 @@ func main() {
 	http.HandleFunc("/scan_dir", page.Post_scan_dir)
 	http.HandleFunc("/version_get", main_com.Post_version_get)
 	http.HandleFunc("/send_email", page.Post_send_email)
+	http.HandleFunc("/code_verefic", page.Post_code_verefic)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)
