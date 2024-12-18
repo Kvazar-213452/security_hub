@@ -101,8 +101,6 @@ func Post_version_get(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/version_get post")
 
-		version := func_all.Version_server()
-
 		config, err := func_all.LoadConfig_start(config_main.Main_config)
 		if err != nil {
 			fmt.Printf("Не вдалося завантажити конфігурацію: %v\n", err)
@@ -110,12 +108,10 @@ func Post_version_get(w http.ResponseWriter, r *http.Request) {
 		}
 
 		type Data_ump struct {
-			Version        int
 			Version_config int
 		}
 
 		Data := Data_ump{
-			Version:        version,
 			Version_config: config.Version,
 		}
 

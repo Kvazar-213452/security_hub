@@ -1,0 +1,25 @@
+use aes::Aes256;
+use block_modes::{BlockMode, Cbc};
+use block_modes::block_padding::Pkcs7;
+use hex::encode;
+use std::env;
+
+fn main() {
+    let key = b"3dp4g9DI8h7MzjVz3dp4g9DI8h7MzjVz";
+    let iv = b"1234567890abcdef";
+
+    let args: Vec<String> = env::args().collect();
+
+    if args.len() != 2 {
+        eprintln!("Usage: {} <text_to_encrypt>", args[0]);
+        return;
+    }
+
+    let plaintext = args[1].as_bytes();
+
+    let cipher = Cbc::<Aes256, Pkcs7>::new_from_slices(key, iv).unwrap();
+
+    let ciphertext = cipher.encrypt_vec(plaintext);
+
+    println!("Encrypted: {}", encode(&ciphertext));
+}

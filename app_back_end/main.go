@@ -52,7 +52,7 @@ func main() {
 	http.HandleFunc("/wifi", main_com.Render_wifi_page)
 	http.HandleFunc("/server", main_com.Render_server_page)
 	http.HandleFunc("/password", main_com.Render_password_page)
-	http.HandleFunc("/version", main_com.Render_version_page)
+	http.HandleFunc("/register", main_com.Render_register_page)
 
 	// Post
 	http.HandleFunc("/get_wifi_now", page.Post_gagat_network)
@@ -82,6 +82,7 @@ func main() {
 	http.HandleFunc("/server_search", page.Post_server_search)
 	http.HandleFunc("/scan_dir", page.Post_scan_dir)
 	http.HandleFunc("/version_get", main_com.Post_version_get)
+	http.HandleFunc("/send_email", page.Post_send_email)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
 	err = http.ListenAndServe(portStr, nil)

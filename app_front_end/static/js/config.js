@@ -38,6 +38,7 @@ let html_1 = `
         <div onclick="page_iframe('/encryption', 'btn5')" id="btn5" class="button"><img src="/static/img/11.png"><p></p></div>
         <div onclick="page_iframe('/server', 'btn8')" id="btn8" class="button"><img src="/static/img/13.png"><p></p></div>
         <div onclick="page_iframe('/password', 'btn9')" id="btn9" class="button"><img src="/static/img/14.png"><p></p></div>
+        <div onclick="page_iframe('/register', 'btn10')" id="btn10" class="button"><img src="/static/img/15.png"><p></p></div>
         <div onclick="page_iframe('/settings', 'btn6')" id="btn6" class="button"><img src="/static/img/3.png"><p></p></div>
         <br><br>
         <a href=""><div id="btn7" class="button"><img src="/static/img/12.png"><p></p></div></a>

@@ -4,9 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	config_main "head/main_com/config"
-	"io/ioutil"
 	"net"
-	"net/http"
 	"os"
 	"os/exec"
 	"os/signal"
@@ -201,31 +199,4 @@ func Config_port(data string) {
 	defer file.Close()
 
 	file.WriteString(data)
-}
-
-func Version_server() int {
-	url := config_main.Server_version
-
-	resp, err := http.Post(url, "application/json", nil)
-	if err != nil {
-		fmt.Println("Помилка запиту:", err)
-		return 1
-	}
-	defer resp.Body.Close()
-
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		fmt.Println("Помилка читання відповіді:", err)
-		return 1
-	}
-
-	var response map[string]int
-	err = json.Unmarshal(body, &response)
-	if err != nil {
-		fmt.Println("Помилка обробки JSON:", err)
-		return 1
-	}
-
-	version := response["version"]
-	return version
 }

@@ -197,11 +197,11 @@ func Render_password_page(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func Render_version_page(w http.ResponseWriter, r *http.Request) {
-	func_all.AppendToLog("transition to /version")
+func Render_register_page(w http.ResponseWriter, r *http.Request) {
+	func_all.AppendToLog("transition to /register")
 
 	tmpl, err := template.ParseFiles(
-		config_main.Frontend_folder + "/templates/version.html",
+		config_main.Frontend_folder + "/templates/register.html",
 	)
 
 	if err != nil {
@@ -209,7 +209,7 @@ func Render_version_page(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "version.html", nil)
+	err = tmpl.ExecuteTemplate(w, "register.html", nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}

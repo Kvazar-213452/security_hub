@@ -1,23 +1,20 @@
-@charset "UTF-8";
 .ump_textw {
   position: relative;
   height: 100%;
-  width: 100%;
-  background-color: #1c1d27; }
+  width: 100%; }
 
 .cursor {
   position: relative;
   width: 24em;
   margin: 0 auto;
   border-right: 2px #68ff9d;
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   transform: translateY(-50%);
   top: 45%;
-  color: #68ff9d;
-  font-family: "Consolas", sans-serif !important; }
+  color: #68ff9d; }
 
 .typewriter-animation {
   animation: typewriter 5s steps(50) 1s 1 normal both, blinkingCursor 500ms steps(50) infinite normal; }
@@ -343,13 +340,11 @@
     outline: none;
     box-shadow: none;
     color: #68ff9d;
-    /* Не змінюємо фон на фокусі */
     background-color: #1d1d1d; }
   .saert45trgf:hover {
     outline: none;
     box-shadow: none;
     color: #68ff9d;
-    /* Не змінюємо фон на фокусі */
     background-color: #1d1d1d; }
 
 .zxbnmewd,
@@ -1035,3 +1030,38 @@
 .unixwqc:focus {
   background-color: #68ff9d;
   outline: none; }
+
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+/* register page */
+.reg_div_main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60%;
+  width: 50%;
+  background-color: #181818; }
+
+.register_top_text {
+  position: relative;
+  text-align: center;
+  font-size: 20px; }
+
+.bottom {
+  margin-bottom: 10px; }

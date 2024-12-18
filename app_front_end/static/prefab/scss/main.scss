@@ -5,7 +5,6 @@
     position: relative;
     height: 100%;
     width: 100%;
-    background-color: #1c1d27;
 }
 
 .cursor{
@@ -13,14 +12,13 @@
     width: 24em;
     margin: 0 auto;
     border-right: 2px $main_color;
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     transform: translateY(-50%);    
     top: 45%;
     color: $main_color;
-    font-family: "Consolas", sans-serif !important; 
 }
 
 .typewriter-animation {
@@ -930,3 +928,25 @@
     background-color: $main_color;
     outline: none;
 }
+
+/* register page *//* register page *//* register page *//* register page *//* register page *//* register page */
+/* register page *//* register page *//* register page *//* register page *//* register page *//* register page */
+/* register page *//* register page *//* register page *//* register page *//* register page *//* register page */
+
+.reg_div_main{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 60%;
+    width: 50%;
+    background-color: $bg_color1;
+}
+
+.register_top_text{
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+}
+
+.bottom{margin-bottom: 10px;}
