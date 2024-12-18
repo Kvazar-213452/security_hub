@@ -59,6 +59,5 @@ def search_file():
 
     return 'Пароль не знайдено.', 404
 
-
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
