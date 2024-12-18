@@ -88,6 +88,7 @@
         "func_read_file.h": "c",
         "stdio.h": "c",
         "complex": "cpp",
-        "source_location": "cpp"
+        "source_location": "cpp",
+        "objbase.h": "c"
     }
 }
