@@ -22,7 +22,6 @@ function getConfig() {
             return response.json();
         })
         .then(data => {
-            console.log(data);
             let visualization_button = data['visualization'];
             let log = data['log'];
             let port = data['port'];
@@ -89,10 +88,6 @@ function change_shell(name, button) {
         data: JSON.stringify(dataToSend),
         success: function (response) {
 
-        },
-        error: function (xhr, status, error) {
-            console.log("Error: " + error);
-            console.log("Response text:", xhr.responseText);
         }
     });
 }
@@ -107,9 +102,6 @@ function input_settings_change(input, url) {
         data: JSON.stringify({ value: value }),
         success: function (response) {
             getConfig();
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -122,9 +114,6 @@ function button_settings_change(val, url) {
         data: JSON.stringify({ value: val }),
         success: function (response) {
             getConfig();
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -139,9 +128,6 @@ function change_lang_all(val) {
             getConfig();
             change_lang_now(0);
             window.parent.postMessage("lang_change", "*");
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -158,9 +144,6 @@ function open_site() {
             } else if (lang_global === "en") {
                 message_window('The site is open');
             }
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -193,9 +176,6 @@ function install_style() {
             } else if (lang_global === "en") {
                 message_window('Install');
             }
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }

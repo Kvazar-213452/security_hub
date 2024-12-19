@@ -40,10 +40,6 @@ function encryption_file_start() {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-        },
-        error: function (xhr, status, error) {
-            console.log("Error: " + error);
-            console.log("Response text:", xhr.responseText);
         }
     });
 }
@@ -150,10 +146,6 @@ function decipher_file() {
                 link.click();
                 document.body.removeChild(link);
             }
-        },
-        error: function (xhr, status, error) {
-            console.log("Error: " + error);
-            console.log("Response text:", xhr.responseText);
         }
     });
 }

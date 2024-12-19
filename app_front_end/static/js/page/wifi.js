@@ -5,12 +5,8 @@ function get_data_wifi_now() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function (response) {
-            console.log(response)
             data_wifi_render_now(response)
             checkUnsafeProtocols();
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -23,12 +19,8 @@ function get_data_wifi_all() {
         data: JSON.stringify(null),
         success: function (response) {
             get_network_now(function (ssid) {
-                console.log(response)
                 render_all_network_wifi(response, ssid);
             });
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -51,9 +43,6 @@ function get_data_for_schedule() {
             let data = `${hours}:${minutes}:${seconds}`;
 
             get_wifi_info_level(data, wifi_now)
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -74,9 +63,6 @@ function get_wifi_info_level(data, wifi_now) {
                 }
                 i++;
             }
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -173,9 +159,6 @@ function get_network_now(callback) {
             if (callback) {
                 callback(response['ssid']);
             }
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -189,9 +172,6 @@ function get_package_data() {
         data: JSON.stringify(null),
         success: function (response) {
             whrite_data_adapter(response)
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }

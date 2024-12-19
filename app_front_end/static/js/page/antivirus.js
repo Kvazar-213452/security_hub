@@ -15,10 +15,6 @@ function antivirus_web_start() {
         data: JSON.stringify(dataToSend),
         success: function (response) {
             antivirus_web_end(response)
-        },
-        error: function (xhr, status, error) {
-            console.log("Error: " + error);
-            console.log("Response text:", xhr.responseText);
         }
     });
 }
@@ -76,7 +72,6 @@ const fileUpload = () => {
     const $inputContainer = $('#upload-container');
     const $filesListContainer = $('#files-list-container');
     const $uploadButton = $('#upload-button');
-    const $uploadButton1 = $('#upload-button1');
     let fileList = [];
 
     $inputFile.on('click dragstart dragover', () => {
@@ -138,9 +133,6 @@ const fileUpload = () => {
                 $('#d13dqe021w34fwvqedddd').hide();
                 clean_div("f2ewds322r3345trg");
                 data_bekend_solver(response);
-            },
-            error: function (error) {
-                console.error('Помилка відправки:', error);
             }
         });
     });
@@ -162,9 +154,6 @@ function config_bg() {
             } else {
                 $("#bg_dqwderfd").css("background-color", "#373745");
             }
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -189,9 +178,6 @@ function new_val_gb_usb() {
             }
 
             config_bg();
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }

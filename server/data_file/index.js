@@ -59,13 +59,11 @@ const deleteFileAfterDelay = (filePath, password) => {
   setTimeout(() => {
     if (fs.existsSync(filePath)) {
       fs.unlinkSync(filePath);
-      console.log(`Файл ${filePath} видалено.`);
     }
 
     const db = readDB();
     const updatedDB = db.filter((entry) => entry.password !== password);
     writeDB(updatedDB);
-    console.log(`Запис із паролем "${password}" видалено з db.json.`);
   }, 43200000);
 };
 
@@ -82,8 +80,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
   fs.rename(req.file.path, newFilePath, (err) => {
     if (err) {
-      console.error('Помилка перейменування:', err);
-      return res.status(500).send('Виникла помилка при обробці файлу.');
+      return res.status(500).send('0.');
     }
 
     const db = readDB();
@@ -107,11 +104,11 @@ app.post('/search', (req, res) => {
     if (fs.existsSync(filePath)) {
       return res.send({file: filePath, name: foundEntry.fileName});
     } else {
-      return res.status(404).send('Файл не знайдено на сервері.');
+      return res.status(404).send('1');
     }
   }
 
-  res.status(404).send('Пароль не знайдено.');
+  res.status(404).send('0');
 });
 
 app.listen(PORT, () => {

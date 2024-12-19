@@ -46,7 +46,6 @@ function change_menu_page(id_, id) {
     }
 
     $('#section_' + (id + 1)).show();
-    console.log(id + 1)
 }
 
 function change_lang_now(type) {
@@ -63,9 +62,6 @@ function change_lang_now(type) {
             } else {
                 lang_change_main(lang_global);
             }
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -80,9 +76,6 @@ function get_data_config() {
             if (response['style'] === "main") {
                 get_style();
             }
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -104,9 +97,6 @@ function get_style() {
         success: function (response) {
            console.log(response)
            $('#style_dudqdc').html(response);
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }

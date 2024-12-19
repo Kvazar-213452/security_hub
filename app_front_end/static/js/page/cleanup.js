@@ -22,9 +22,6 @@ function cleanup() {
         data: JSON.stringify(data_cleaning),
         success: function (response) {
             message_window('Завершено');
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -42,4 +39,4 @@ $(".ump_button").click(function() {
         $(this).addClass("weyiqwd22e3c"); 
         data_cleaning[data] = 0;
     }
-}); 
+});

@@ -36,9 +36,6 @@ function send_data() {
         data: JSON.stringify(data),
         success: function (response) {
             $('.server_0312edcccc').html(div_1);
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -55,9 +52,6 @@ function send_code() {
         data: JSON.stringify(data),
         success: function (response) {
             $('.server_0312edcccc').html(div_1);
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }

@@ -6,9 +6,6 @@ function get_os_data() {
         data: JSON.stringify(null),
         success: function (response) {
             write_os_data(response)
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -21,9 +18,6 @@ function window_open() {
         data: JSON.stringify(null),
         success: function (response) {
             render_data_window_open(response);
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -35,8 +29,6 @@ function write_os_data(response) {
     $('#ddcbnxcew33333').html(null);
     $('#ndwe8rfier').html(null);
     $('#bfgtey65yt').html(null);
-
-    console.log(jsonData);
 
     let text = `
         <div class="div_info_os">
@@ -101,9 +93,7 @@ function render_data_window_open(response) {
     response = response['devices']
 
     for (let i = 0; i < response.length; i++) {
-        if (i + 1 === response.length) {
-            //pass
-        } else {
+        if (i + 1 !== response.length) {
             let text = `<div class="div_wifi_all">
             <p class="name_wifi_div_all">${response[i]}</p>
             </div>`;
@@ -120,9 +110,6 @@ function resource_info() {
         data: JSON.stringify(null),
         success: function (response) {
             resource_info_render_data(response);
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при відправці:", status, error);
         }
     });
 }
@@ -199,9 +186,6 @@ function inoxwd() {
         contentType: 'application/json',
         success: function (response) {
             render_top_10(response);
-        },
-        error: function (xhr, status, error) {
-            console.error("Помилка при запиті:", { status: status, error: error });
         }
     });
 }
