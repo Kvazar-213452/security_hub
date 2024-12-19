@@ -1,4 +1,5 @@
 <?php
+
 $domen_name = "http://localhost";
 
 $content = <<<EOD

@@ -89,6 +89,8 @@
         "stdio.h": "c",
         "complex": "cpp",
         "source_location": "cpp",
-        "objbase.h": "c"
+        "objbase.h": "c",
+        "iphlpapi.h": "c",
+        "shlobj.h": "c"
     }
 }
