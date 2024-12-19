@@ -25,18 +25,11 @@ func Post_config_global(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/config_global post")
 
-		config, err := page_func.LoadConfig()
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
+		config := page_func.LoadConfig()
 
 		w.Header().Set("Content-Type", "application/json")
-		jsonData, err := json.Marshal(config)
-		if err != nil {
-			http.Error(w, "не вдалося закодувати в JSON", http.StatusInternalServerError)
-			return
-		}
+		jsonData, _ := json.Marshal(config)
+
 		w.Write(jsonData)
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
@@ -49,10 +42,7 @@ func Post_config_change(w http.ResponseWriter, r *http.Request) {
 
 		var msg VisualizationMessage
 
-		if err := json.NewDecoder(r.Body).Decode(&msg); err != nil {
-			http.Error(w, "Не вдалося декодувати JSON: "+err.Error(), http.StatusBadRequest)
-			return
-		}
+		json.NewDecoder(r.Body).Decode(&msg)
 
 		page_func.UpdateVisualization(strconv.Itoa(msg.Message), "Visualization")
 

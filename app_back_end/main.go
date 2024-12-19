@@ -25,11 +25,7 @@ import (
 // ⠄⠄⠄⠄⠄⠈⠙⠑⣠⣤⣴⡖⠄⠿⣋⣉⣉⡁⠄⢾⣦⠄⠄⠄⠄⠄⠄⠄⠄
 
 func main() {
-	config, err := func_all.LoadConfig_start(config_main.Main_config)
-	if err != nil {
-		fmt.Printf("Не вдалося завантажити конфігурацію: %v\n", err)
-		return
-	}
+	config := func_all.LoadConfig_start(config_main.Main_config)
 
 	var port int
 	if config.Port == 0 {
@@ -90,18 +86,14 @@ func main() {
 	http.HandleFunc("/style_change", page.Post_style_change)
 	http.HandleFunc("/get_style", main_com.Post_get_style)
 	http.HandleFunc("/install_style", main_com.Post_install_style)
-	http.HandleFunc("/server_upload", page.Post_server_upload)
-	http.HandleFunc("/server_search", page.Post_server_search)
 	http.HandleFunc("/scan_dir", page.Post_scan_dir)
 	http.HandleFunc("/version_get", main_com.Post_version_get)
 	http.HandleFunc("/send_email", page.Post_send_email)
 	http.HandleFunc("/code_verefic", page.Post_code_verefic)
+	http.HandleFunc("/get_pacage_info", page.Post_get_pacage_info_wifi)
 
 	fmt.Printf("Сервер працює на порту %d\n", port)
-	err = http.ListenAndServe(portStr, nil)
-	if err != nil {
-		fmt.Printf("Помилка запуску сервера: %v\n", err)
-	}
+	http.ListenAndServe(portStr, nil)
 
 	if cmd != nil {
 		if err := cmd.Process.Kill(); err != nil {

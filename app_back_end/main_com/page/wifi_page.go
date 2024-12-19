@@ -2,6 +2,7 @@ package page
 
 import (
 	"encoding/json"
+	"fmt"
 	"head/main_com/func_all"
 	"head/main_com/page_func"
 	"net/http"
@@ -55,6 +56,23 @@ func Post_network_now(w http.ResponseWriter, r *http.Request) {
 		if err := json.NewEncoder(w).Encode(map[string]string{"ssid": ssid}); err != nil {
 			http.Error(w, "Помилка при кодуванні JSON", http.StatusInternalServerError)
 		}
+	} else {
+		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_get_pacage_info_wifi(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/get_pacage_info_wifi post")
+
+		jsonData, err := page_func.Get_info_packages_wifi()
+		if err != nil {
+			fmt.Println("Помилка:", err)
+			return
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(string(jsonData))
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

@@ -27,11 +27,7 @@ func Post_encryption_file(w http.ResponseWriter, r *http.Request) {
 		func_all.ClearDirectory("data/encryption")
 		func_all.ClearDirectory("web/static/data")
 
-		file, header, err := r.FormFile("file")
-		if err != nil {
-			http.Error(w, "Помилка при читанні файлу", http.StatusInternalServerError)
-			return
-		}
+		file, header, _ := r.FormFile("file")
 		defer file.Close()
 
 		savePath := "data/encryption"
@@ -39,19 +35,10 @@ func Post_encryption_file(w http.ResponseWriter, r *http.Request) {
 
 		filePath := filepath.Join(savePath, header.Filename)
 
-		dst, err := os.Create(filePath)
-		if err != nil {
-			http.Error(w, "Помилка при створенні файлу", http.StatusInternalServerError)
-			return
-		}
+		dst, _ := os.Create(filePath)
 		defer dst.Close()
 
-		_, err = io.Copy(dst, file)
-		if err != nil {
-			http.Error(w, "Помилка при збереженні файлу", http.StatusInternalServerError)
-			return
-		}
-
+		io.Copy(dst, file)
 		key := page_func.GenerateKey()
 
 		encryptedContent, err := page_func.EncryptFile(filename, key)
@@ -80,11 +67,7 @@ func Post_decipher_file(w http.ResponseWriter, r *http.Request) {
 		func_all.ClearDirectory("data/decipher")
 		func_all.ClearDirectory("web/static/data")
 
-		file, _, err := r.FormFile("file")
-		if err != nil {
-			http.Error(w, "Помилка при читанні файлу", http.StatusInternalServerError)
-			return
-		}
+		file, _, _ := r.FormFile("file")
 		defer file.Close()
 
 		savePath := "data/decipher"
@@ -92,20 +75,12 @@ func Post_decipher_file(w http.ResponseWriter, r *http.Request) {
 
 		filePath := filepath.Join(savePath, "main.enc")
 
-		dst, err := os.Create(filePath)
-		if err != nil {
-			http.Error(w, "Помилка при створенні файлу", http.StatusInternalServerError)
-			return
-		}
+		dst, _ := os.Create(filePath)
 		defer dst.Close()
 
-		_, err = io.Copy(dst, file)
-		if err != nil {
-			http.Error(w, "Помилка при збереженні файлу", http.StatusInternalServerError)
-			return
-		}
+		io.Copy(dst, file)
 
-		err = page_func.DecryptFile(filename, key)
+		err := page_func.DecryptFile(filename, key)
 		if err != nil {
 			fmt.Println("Помилка:", err)
 			w.Write([]byte("0"))

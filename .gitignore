@@ -2,6 +2,8 @@ app_installer/main.exe
 
 server/register_and_data/config.json
 
+server/data_file/node_modules
+
 app_back_end/head.exe
 auto_update/head.exe
 

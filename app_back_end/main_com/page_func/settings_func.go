@@ -9,110 +9,77 @@ import (
 	"strconv"
 )
 
-func LoadConfig() (*config_main.Config_global, error) {
-	file, err := os.Open(config_main.Main_config)
-	if err != nil {
-		return nil, fmt.Errorf("не вдалося відкрити файл: %w", err)
-	}
+func LoadConfig() *config_main.Config_global {
+	file, _ := os.Open(config_main.Main_config)
 	defer file.Close()
 
 	var config config_main.Config_global
-	if err := json.NewDecoder(file).Decode(&config); err != nil {
-		return nil, fmt.Errorf("не вдалося декодувати JSON: %w", err)
-	}
+	json.NewDecoder(file).Decode(&config)
 
-	return &config, nil
+	return &config
 }
 
-func UpdateVisualization(newVisualization string, key string) error {
-	file, err := os.Open(config_main.Main_config)
-	if err != nil {
-		return fmt.Errorf("не вдалося відкрити файл: %w", err)
-	}
+func UpdateVisualization(newVisualization string, key string) {
+	file, _ := os.Open(config_main.Main_config)
+
 	defer file.Close()
 
 	var config config_main.Config_global
 
-	if err := json.NewDecoder(file).Decode(&config); err != nil {
-		return fmt.Errorf("не вдалося декодувати JSON: %w", err)
-	}
+	json.NewDecoder(file).Decode(&config)
 
 	if key == "Visualization" {
-		newVis, err := strconv.Atoi(newVisualization)
-		if err != nil {
-			return fmt.Errorf("не вдалося перетворити visualization: %w", err)
-		}
+		newVis, _ := strconv.Atoi(newVisualization)
+
 		config.Visualization = newVis
 	}
 
-	outputFile, err := os.Create(config_main.Main_config)
-	if err != nil {
-		return fmt.Errorf("не вдалося створити файл для запису: %w", err)
-	}
+	outputFile, _ := os.Create(config_main.Main_config)
 	defer outputFile.Close()
 
-	if err := json.NewEncoder(outputFile).Encode(config); err != nil {
-		return fmt.Errorf("не вдалося закодувати JSON: %w", err)
-	}
-
-	return nil
+	json.NewEncoder(outputFile).Encode(config)
 }
 
-func LoadConfig1(filename string) (*config_main.Config_global, error) {
-	file, err := os.Open(filename)
-	if err != nil {
-		return nil, fmt.Errorf("не вдалося відкрити файл: %w", err)
-	}
+func LoadConfig1(filename string) *config_main.Config_global {
+	file, _ := os.Open(filename)
 	defer file.Close()
 
 	var config config_main.Config_global
 	decoder := json.NewDecoder(file)
-	if err := decoder.Decode(&config); err != nil {
-		return nil, fmt.Errorf("не вдалося розпарсити JSON: %w", err)
-	}
+	decoder.Decode(&config)
 
-	return &config, nil
+	return &config
 }
 
-func SaveConfig(filename string, config *config_main.Config_global) error {
-	data, err := json.MarshalIndent(config, "", "  ")
-	if err != nil {
-		return fmt.Errorf("не вдалося серіалізувати JSON: %w", err)
-	}
+func SaveConfig(filename string, config *config_main.Config_global) {
+	data, _ := json.MarshalIndent(config, "", "  ")
 
-	if err := ioutil.WriteFile(filename, data, 0644); err != nil {
-		return fmt.Errorf("не вдалося записати у файл: %w", err)
-	}
-
-	return nil
+	ioutil.WriteFile(filename, data, 0644)
 }
 
-func UpdateConfigKey(key, value string) error {
+func UpdateConfigKey(key, value string) {
 	filename := config_main.Main_config
 
-	config, err := LoadConfig1(filename)
-	if err != nil {
-		return err
-	}
+	config := LoadConfig1(filename)
 
 	switch key {
 	case "log":
-		config.Log, err = strconv.Atoi(value)
+		config.Log, _ = strconv.Atoi(value)
 	case "shell":
-		config.Shell, err = strconv.Atoi(value)
+		config.Shell, _ = strconv.Atoi(value)
 	case "port":
-		config.Port, err = strconv.Atoi(value)
+		config.Port, _ = strconv.Atoi(value)
 	case "lang":
 		config.Lang = value
 	case "style":
 		config.Style = value
 	case "antivirus_flash_drive":
-		config.Antivirus.Antivirus_flash_drive, err = strconv.Atoi(value)
+		config.Antivirus.Antivirus_flash_drive, _ = strconv.Atoi(value)
 	case "antivirus_flash_drive_cmd":
 		config.Antivirus.Antivirus_flash_drive_cmd = value
 	default:
-		return fmt.Errorf("невідомий ключ: %s", key)
+		fmt.Errorf("невідомий ключ: %s", key)
 	}
 
-	return SaveConfig(filename, config)
+	SaveConfig(filename, config)
 }

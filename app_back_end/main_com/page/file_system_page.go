@@ -22,22 +22,14 @@ func Post_scan_dir(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/scan_dir post")
 
-		body, err := io.ReadAll(r.Body)
-		if err != nil {
-			http.Error(w, "Неможливо прочитати тіло запиту", http.StatusInternalServerError)
-			return
-		}
+		body, _ := io.ReadAll(r.Body)
 
 		var request struct {
 			Dir  string   `json:"dir"`
 			Mas1 []string `json:"mas1"`
 			Mas2 []string `json:"mas2"`
 		}
-		err = json.Unmarshal(body, &request)
-		if err != nil {
-			http.Error(w, "Неправильний формат запиту", http.StatusBadRequest)
-			return
-		}
+		json.Unmarshal(body, &request)
 
 		rootSize, unix := page_func.Run_scan_dir(request.Dir, request.Mas1)
 

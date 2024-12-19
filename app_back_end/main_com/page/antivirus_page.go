@@ -30,20 +30,11 @@ type Data struct {
 
 func Post_antivirus_web(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		body, err := ioutil.ReadAll(r.Body)
-		if err != nil {
-			http.Error(w, "Не вдалося прочитати тіло запиту", http.StatusBadRequest)
-			return
-		}
+		body, _ := ioutil.ReadAll(r.Body)
 		defer r.Body.Close()
 
 		var requestData RequestData
-		err = json.Unmarshal(body, &requestData)
-		if err != nil || len(requestData.URL) == 0 {
-			http.Error(w, "Некоректний формат запиту", http.StatusBadRequest)
-			return
-		}
-
+		json.Unmarshal(body, &requestData)
 		url := requestData.URL[0]
 		data_good := page_func.CheckUrlInFile(url)
 
@@ -63,23 +54,14 @@ func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 
 		func_all.ClearDirectory(saveDir)
 
-		file, fileHeader, err := r.FormFile("file")
-		if err != nil {
-			http.Error(w, "Не вдалося отримати файл", http.StatusBadRequest)
-			return
-		}
+		file, fileHeader, _ := r.FormFile("file")
 		defer file.Close()
 
 		filePath := filepath.Join(saveDir, fileHeader.Filename)
-		destFile, err := os.Create(filePath)
-		if err != nil {
-			http.Error(w, "Не вдалося створити файл на сервері", http.StatusInternalServerError)
-			return
-		}
+		destFile, _ := os.Create(filePath)
 		defer destFile.Close()
 
 		io.Copy(destFile, file)
-
 		data_good := page_func.Scan_file_virus(filePath)
 
 		json.NewEncoder(w).Encode(data_good)

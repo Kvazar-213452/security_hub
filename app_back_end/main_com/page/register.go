@@ -5,7 +5,6 @@ import (
 	"head/main_com/page_func"
 	"io"
 	"io/ioutil"
-	"log"
 	"net/http"
 )
 
@@ -25,7 +24,7 @@ func Post_send_email(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		body, err := io.ReadAll(r.Body)
 		if err != nil {
-			http.Error(w, "Неможливо прочитати тіло запиту", http.StatusInternalServerError)
+			http.Error(w, "error", http.StatusInternalServerError)
 			return
 		}
 		defer r.Body.Close()
@@ -36,11 +35,7 @@ func Post_send_email(w http.ResponseWriter, r *http.Request) {
 			Password string `json:"password"`
 		}
 
-		err = json.Unmarshal(body, &request)
-		if err != nil {
-			http.Error(w, "Невірний формат даних", http.StatusBadRequest)
-			return
-		}
+		json.Unmarshal(body, &request)
 
 		code_ril := page_func.GenerateRandomDigits()
 
@@ -75,7 +70,7 @@ func Post_code_verefic(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		body, err := io.ReadAll(r.Body)
 		if err != nil {
-			http.Error(w, "Неможливо прочитати тіло запиту", http.StatusInternalServerError)
+			http.Error(w, "error", http.StatusInternalServerError)
 			return
 		}
 		defer r.Body.Close()
@@ -84,24 +79,14 @@ func Post_code_verefic(w http.ResponseWriter, r *http.Request) {
 			Code string `json:"code"`
 		}
 
-		err = json.Unmarshal(body, &request)
-		if err != nil {
-			http.Error(w, "Невірний формат даних", http.StatusBadRequest)
-			return
-		}
+		json.Unmarshal(body, &request)
 
 		filePath := "../data/user.json"
-		fileContent, err := ioutil.ReadFile(filePath)
-		if err != nil {
-			log.Fatalf("Помилка при читанні файлу: %v", err)
-		}
+		fileContent, _ := ioutil.ReadFile(filePath)
 
 		var user User
 
-		err = json.Unmarshal(fileContent, &user)
-		if err != nil {
-			log.Fatalf("Помилка при розборі JSON: %v", err)
-		}
+		json.Unmarshal(fileContent, &user)
 
 		code_ril := page_func.Decrypt_code_reg_save(user.Code)
 

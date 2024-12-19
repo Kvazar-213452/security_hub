@@ -34,27 +34,17 @@ type return_func_data_bac struct {
 }
 
 func calculateFileHash(filePath string) string {
-	file, err := os.Open(filePath)
-	if err != nil {
-		return ""
-	}
+	file, _ := os.Open(filePath)
 	defer file.Close()
 
 	hash := sha256.New()
-	_, err = io.Copy(hash, file)
-	if err != nil {
-		return ""
-	}
+	io.Copy(hash, file)
 
 	return hex.EncodeToString(hash.Sum(nil))
 }
 
 func uploadFileToVirusTotal(filePath string) string {
-	file, err := os.Open(filePath)
-	if err != nil {
-		fmt.Println("Не вдалося відкрити файл для завантаження:", err)
-		return ""
-	}
+	file, _ := os.Open(filePath)
 	defer file.Close()
 
 	body := &bytes.Buffer{}
@@ -65,25 +55,17 @@ func uploadFileToVirusTotal(filePath string) string {
 
 	writer.Close()
 
-	req, err := http.NewRequest("POST", "https://www.virustotal.com/api/v3/files", body)
-	if err != nil {
-		fmt.Println("Помилка створення запиту:", err)
-		return ""
-	}
+	req, _ := http.NewRequest("POST", "https://www.virustotal.com/api/v3/files", body)
 
 	req.Header.Add("x-apikey", config_main.ApiKey_virustotal)
 	req.Header.Set("Content-Type", writer.FormDataContentType())
 
 	client := &http.Client{}
-	resp, err := client.Do(req)
-	if err != nil {
-		fmt.Println("Помилка запиту:", err)
-		return ""
-	}
+	resp, _ := client.Do(req)
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		fmt.Printf("Помилка при завантаженні файлу: %d\n", resp.StatusCode)
+		fmt.Printf("error: %d\n", resp.StatusCode)
 		return ""
 	}
 
@@ -97,23 +79,15 @@ func uploadFileToVirusTotal(filePath string) string {
 
 func checkFileSecurityStatus(fileID string) (int, int) {
 	client := &http.Client{}
-	req, err := http.NewRequest("GET", "https://www.virustotal.com/api/v3/files/"+fileID, nil)
-	if err != nil {
-		fmt.Println("Помилка створення запиту:", err)
-		return 0, 0
-	}
+	req, _ := http.NewRequest("GET", "https://www.virustotal.com/api/v3/files/"+fileID, nil)
 
 	req.Header.Add("x-apikey", config_main.ApiKey_virustotal)
 
-	resp, err := client.Do(req)
-	if err != nil {
-		fmt.Println("Помилка запиту:", err)
-		return 0, 0
-	}
+	resp, _ := client.Do(req)
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		fmt.Printf("Помилка при отриманні результату аналізу: %d\n", resp.StatusCode)
+		fmt.Printf("error: %d\n", resp.StatusCode)
 		return 1, 0
 	}
 
@@ -134,15 +108,9 @@ func start_data_exe(file string) string {
 	cmd.Dir = workingDir
 
 	cmd.Start()
-
-	err := cmd.Wait()
-	if err != nil {
-		fmt.Println("Помилка при очікуванні завершення програми:", err)
-		return ""
-	}
+	cmd.Wait()
 
 	data, _ := ioutil.ReadFile(dataFilePath)
-
 	func_all.Clear_file(config_main.Global_phat + "\\" + config_main.Library_folder + "\\data\\" + config_main.File_data_exe)
 
 	return string(data)
@@ -156,9 +124,7 @@ func Scan_file_virus(nameFilePath string) return_func_data_bac {
 	req, _ := http.NewRequest("GET", config_main.Files_virustotal+hash, nil)
 
 	req.Header.Add("x-apikey", config_main.ApiKey_virustotal)
-
 	resp, _ := client.Do(req)
-
 	defer resp.Body.Close()
 
 	data_file := start_data_exe(nameFilePath)

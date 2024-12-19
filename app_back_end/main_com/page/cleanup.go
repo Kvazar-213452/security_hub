@@ -53,11 +53,7 @@ func Post_cleanup(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		var dataCleanup CleanupData
 
-		err := json.NewDecoder(r.Body).Decode(&dataCleanup)
-		if err != nil {
-			http.Error(w, "Невірний формат JSON", http.StatusBadRequest)
-			return
-		}
+		json.NewDecoder(r.Body).Decode(&dataCleanup)
 
 		if dataCleanup.Wifi == 1 {
 			page_func.Cleanup_wifi()

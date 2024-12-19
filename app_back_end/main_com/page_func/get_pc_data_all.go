@@ -7,7 +7,6 @@ import (
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
 	"io/ioutil"
-	"log"
 	"os/exec"
 	"regexp"
 	"strings"
@@ -73,19 +72,12 @@ func Get_data_os() string {
 
 	cmd.Run()
 
-	data, err := ioutil.ReadFile(dataFilePath)
-	if err != nil {
-		log.Fatalf("Не вдалося прочитати файл: %v\n", err)
-	}
+	data, _ := ioutil.ReadFile(dataFilePath)
 
 	var sysInfo SystemInfo
 	xml.Unmarshal(data, &sysInfo)
 
-	jsonData, err := json.MarshalIndent(sysInfo, "", "  ")
-	if err != nil {
-		log.Fatalf("Не вдалося конвертувати в JSON: %v", err)
-	}
-
+	jsonData, _ := json.MarshalIndent(sysInfo, "", "  ")
 	func_all.Clear_file(config_main.Global_phat + "\\" + config_main.Library_folder + "\\data\\" + config_main.File_2_exe_data)
 
 	return string(jsonData)

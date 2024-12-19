@@ -28,11 +28,7 @@ func Post_get_os_data(w http.ResponseWriter, r *http.Request) {
 		}
 
 		w.Header().Set("Content-Type", "application/json")
-		err := json.NewEncoder(w).Encode(osData)
-		if err != nil {
-			http.Error(w, "Помилка при формуванні JSON", http.StatusInternalServerError)
-			return
-		}
+		json.NewEncoder(w).Encode(osData)
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}
@@ -48,10 +44,7 @@ func Post_window_open(w http.ResponseWriter, r *http.Request) {
 		response := map[string][]string{"devices": devices}
 
 		w.Header().Set("Content-Type", "application/json")
-		if err := json.NewEncoder(w).Encode(response); err != nil {
-			http.Error(w, "Не вдалося кодувати JSON", http.StatusInternalServerError)
-			return
-		}
+		json.NewEncoder(w).Encode(response)
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}
@@ -67,10 +60,7 @@ func Post_resource_info(w http.ResponseWriter, r *http.Request) {
 		response := map[string][]string{"data": devices}
 
 		w.Header().Set("Content-Type", "application/json")
-		if err := json.NewEncoder(w).Encode(response); err != nil {
-			http.Error(w, "Не вдалося кодувати JSON", http.StatusInternalServerError)
-			return
-		}
+		json.NewEncoder(w).Encode(response)
 	} else {
 		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
 	}

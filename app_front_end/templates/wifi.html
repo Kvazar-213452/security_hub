@@ -16,6 +16,13 @@
                 <div onclick="change_menu_antivirus(0)" id="wifi_0jdccc" class="dwqdwcccc2">ggre333</div>
             </div>
             <br>
+            <div class="imfowdwqdd">
+                <div class="padoge">
+                    <p class="main_color fon_16"># Інформація про мережі</p>
+                    <br>
+                    <div id="wifi_data_packege"></div>
+                </div>
+            </div>
             <div class="wifi_sqd">
                 <div class="img_wifi">
                     <div id="chart"></div>
@@ -52,6 +59,7 @@
         get_data_for_schedule();
         
         setInterval(get_data_wifi_all, 2500);
-        setInterval(get_data_for_schedule, 2500);
+        setInterval(get_data_for_schedule, 1000);
+        setInterval(get_package_data, 1500);
     </script> 
 </html>

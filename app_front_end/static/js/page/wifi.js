@@ -179,3 +179,47 @@ function get_network_now(callback) {
         }
     });
 }
+
+
+function get_package_data() {
+    $.ajax({
+        url: "/get_pacage_info",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            whrite_data_adapter(response)
+        },
+        error: function (xhr, status, error) {
+            console.error("Помилка при відправці:", status, error);
+        }
+    });
+}
+
+function whrite_data_adapter(response) {
+    const jsonObject = JSON.parse(response);
+    $("#wifi_data_packege").html(null);
+
+    let data = jsonObject["Interfaces"];
+
+    for (let i = 0; i < data.length; i++) {
+        let tetx = `
+        <br><br><br>
+        ${data[i]["Name"]}
+        <br>
+        ${data[i]["Description"]}
+        <br>
+        ${data[i]["Status"]}
+        <br>
+        ${data[i]["BytesSent"]}
+        <br>
+        ${data[i]["BytesReceived"]}
+        <br>
+        ${data[i]["PacketsSent"]}
+        <br>
+        ${data[i]["PacketsReceived"]}
+        `;
+
+        $("#wifi_data_packege").append(tetx);
+    }
+}

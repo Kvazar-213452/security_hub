@@ -76,7 +76,7 @@ func Run_scan_dir(rootDir string, includeExtensions []string) (float64, [][]stri
 	})
 
 	if err != nil {
-		fmt.Println("Помилка при обході шляху", err)
+		fmt.Println("error", err)
 		return 0.0, nil
 	}
 

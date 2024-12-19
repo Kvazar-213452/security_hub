@@ -1,7 +1,6 @@
 package page_func
 
 import (
-	"fmt"
 	config_main "head/main_com/config"
 	"os/exec"
 	"syscall"
@@ -15,18 +14,10 @@ func Cleanup() {
 
 	cmd.Run()
 
-	cleanupDLL, err := syscall.LoadDLL(config_main.Cleanup_dll)
-	if err != nil {
-		fmt.Printf("Не вдалося завантажити DLL: %v\n", err)
-		return
-	}
+	cleanupDLL, _ := syscall.LoadDLL(config_main.Cleanup_dll)
 	defer cleanupDLL.Release()
 
-	cleanupProc, err := cleanupDLL.FindProc("cleanup")
-	if err != nil {
-		return
-	}
-
+	cleanupProc, _ := cleanupDLL.FindProc("cleanup")
 	cleanupProc.Call()
 }
 

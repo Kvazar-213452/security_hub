@@ -11,7 +11,6 @@ import (
 	config_main "head/main_com/config"
 	"io"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 	"os/exec"
@@ -31,15 +30,10 @@ type Config_reg struct {
 }
 
 func SendPostRequest_xxx(url string, data RequestData_xxx) {
-	jsonData, err := json.Marshal(data)
-	if err != nil {
-		log.Fatal("Error marshalling data:", err)
-	}
+	jsonData, _ := json.Marshal(data)
 
-	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonData))
-	if err != nil {
-		log.Fatal("Error sending POST request:", err)
-	}
+	resp, _ := http.Post(url, "application/json", bytes.NewBuffer(jsonData))
+
 	defer resp.Body.Close()
 
 	if resp.StatusCode == http.StatusOK {
@@ -51,10 +45,7 @@ func SendPostRequest_xxx(url string, data RequestData_xxx) {
 
 func GenerateRandomDigits() string {
 	randomBytes := make([]byte, 8)
-	_, err := rand.Read(randomBytes)
-	if err != nil {
-		log.Fatal("Error generating random bytes:", err)
-	}
+	rand.Read(randomBytes)
 
 	result := ""
 	for _, b := range randomBytes {
@@ -70,10 +61,7 @@ func Cripter_xxx(text string) string {
 
 	cmd := exec.Command(exePath, args...)
 
-	output, err := cmd.Output()
-	if err != nil {
-		log.Fatalf("Error executing command: %v", err)
-	}
+	output, _ := cmd.Output()
 
 	outputStr := string(output)
 
@@ -87,40 +75,22 @@ func Cripter_xxx(text string) string {
 }
 
 func Save_data_reg(config Config_reg) {
-	fileData, err := ioutil.ReadFile("../data/user.json")
-	if err != nil {
-		fmt.Println("Помилка при читанні файлу:", err)
-		return
-	}
+	fileData, _ := ioutil.ReadFile("../data/user.json")
 
 	var fullConfig Config_reg
-	err = json.Unmarshal(fileData, &fullConfig)
-	if err != nil {
-		fmt.Println("Помилка при розпарсуванні JSON:", err)
-		return
-	}
+	json.Unmarshal(fileData, &fullConfig)
 
 	fullConfig.Name = config.Name
 	fullConfig.Pasw = config.Pasw
 	fullConfig.Gmail = config.Gmail
 	fullConfig.Code = config.Code
 
-	file, err := os.Create("../data/user.json")
-	if err != nil {
-		fmt.Println("Помилка при створенні файлу:", err)
-		return
-	}
+	file, _ := os.Create("../data/user.json")
 	defer file.Close()
 
 	encoder := json.NewEncoder(file)
 	encoder.SetIndent("", "  ")
-	err = encoder.Encode(fullConfig)
-	if err != nil {
-		fmt.Println("Помилка при запису в файл:", err)
-		return
-	}
-
-	fmt.Println("Дані успішно записано в файл main_config.json")
+	encoder.Encode(fullConfig)
 }
 
 func Encrypt_code_reg_save(plainText string) string {

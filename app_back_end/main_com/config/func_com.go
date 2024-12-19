@@ -2,33 +2,23 @@ package config
 
 import (
 	"encoding/json"
-	"fmt"
 	"os"
 	"path/filepath"
 )
 
 func Get_phat_global() string {
-	exePath, err := os.Executable()
-	if err != nil {
-		fmt.Println("Error getting executable path:", err)
-		return ""
-	}
+	exePath, _ := os.Executable()
 
 	exeDir := filepath.Dir(exePath)
 	return exeDir
 }
 
 func Get_antivirus_flash_drive_cmd(filePath string) string {
-	file, err := os.Open(filePath)
-	if err != nil {
-		return ""
-	}
+	file, _ := os.Open(filePath)
 	defer file.Close()
 
 	var config Config_global
-	if err := json.NewDecoder(file).Decode(&config); err != nil {
-		return ""
-	}
+	json.NewDecoder(file).Decode(&config)
 
 	antivirus_flash_drive_cmd := config.Antivirus.Antivirus_flash_drive_cmd
 	if antivirus_flash_drive_cmd == "" {

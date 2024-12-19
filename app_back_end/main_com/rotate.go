@@ -20,10 +20,7 @@ func Render_index_page(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "index.html", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	tmpl.ExecuteTemplate(w, "index.html", nil)
 }
 
 func Render_about_page(w http.ResponseWriter, r *http.Request) {
@@ -38,10 +35,7 @@ func Render_about_page(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "about.html", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	tmpl.ExecuteTemplate(w, "about.html", nil)
 }
 
 func Render_settings_page(w http.ResponseWriter, r *http.Request) {
@@ -56,10 +50,7 @@ func Render_settings_page(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "settings.html", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	tmpl.ExecuteTemplate(w, "settings.html", nil)
 }
 
 func Render_system_page(w http.ResponseWriter, r *http.Request) {
@@ -74,10 +65,7 @@ func Render_system_page(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "system.html", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	tmpl.ExecuteTemplate(w, "system.html", nil)
 }
 
 func Get_off_app(w http.ResponseWriter, r *http.Request) {
@@ -98,10 +86,7 @@ func Render_cleaning(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "cleaning.html", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	tmpl.ExecuteTemplate(w, "cleaning.html", nil)
 }
 
 func Render_antivirus(w http.ResponseWriter, r *http.Request) {
@@ -119,10 +104,7 @@ func Render_antivirus(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "antivirus.html", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	tmpl.ExecuteTemplate(w, "antivirus.html", nil)
 }
 
 func Render_encryption(w http.ResponseWriter, r *http.Request) {
@@ -137,10 +119,7 @@ func Render_encryption(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "encryption.html", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	tmpl.ExecuteTemplate(w, "encryption.html", nil)
 }
 
 func Render_wifi_page(w http.ResponseWriter, r *http.Request) {
@@ -155,10 +134,7 @@ func Render_wifi_page(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "wifi.html", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	tmpl.ExecuteTemplate(w, "wifi.html", nil)
 }
 
 func Render_server_page(w http.ResponseWriter, r *http.Request) {
@@ -173,10 +149,7 @@ func Render_server_page(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "server.html", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	tmpl.ExecuteTemplate(w, "server.html", nil)
 }
 
 func Render_password_page(w http.ResponseWriter, r *http.Request) {
@@ -191,10 +164,7 @@ func Render_password_page(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "password.html", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	tmpl.ExecuteTemplate(w, "password.html", nil)
 }
 
 func Render_register_page(w http.ResponseWriter, r *http.Request) {
@@ -209,8 +179,5 @@ func Render_register_page(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.ExecuteTemplate(w, "register.html", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
+	tmpl.ExecuteTemplate(w, "register.html", nil)
 }

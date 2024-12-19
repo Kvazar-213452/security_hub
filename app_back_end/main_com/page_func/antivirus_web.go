@@ -3,7 +3,6 @@ package page_func
 import (
 	"encoding/base64"
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strings"
 	"time"
@@ -45,14 +44,8 @@ func checkDomain(domain string) (string, int) {
 	req, _ := http.NewRequest("GET", config_main.Url_domains_virustotal+domain, nil)
 
 	req.Header.Add("x-apikey", config_main.ApiKey_virustotal)
-
 	resp, _ := client.Do(req)
-
 	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		fmt.Printf("Помилка при запиті: %d\n", resp.StatusCode)
-	}
 
 	var result responseData
 	json.NewDecoder(resp.Body).Decode(&result)
@@ -98,14 +91,8 @@ func checkURL(url string) int {
 	req, _ := http.NewRequest("GET", config_main.ApiURL_virustotal+encodedURL, nil)
 
 	req.Header.Add("x-apikey", config_main.ApiKey_virustotal)
-
 	resp, _ := client.Do(req)
-
 	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		fmt.Printf("Помилка при запиті: %d\n", resp.StatusCode)
-	}
 
 	var result responseData_1
 	json.NewDecoder(resp.Body).Decode(&result)

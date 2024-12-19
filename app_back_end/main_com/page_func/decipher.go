@@ -13,33 +13,33 @@ import (
 func DecryptFile(filePath string, keyHex string) error {
 	key, err := hex.DecodeString(keyHex)
 	if err != nil {
-		return fmt.Errorf("помилка декодування ключа: %v", err)
+		return fmt.Errorf("error %v", err)
 	}
 
 	ciphertext, err := ioutil.ReadFile(filePath)
 	if err != nil {
-		return fmt.Errorf("помилка читання файлу: %v", err)
+		return fmt.Errorf("error %v", err)
 	}
 
 	block, err := aes.NewCipher(key)
 	if err != nil {
-		return fmt.Errorf("помилка створення блочного шифру: %v", err)
+		return fmt.Errorf("error %v", err)
 	}
 
 	aesGCM, err := cipher.NewGCM(block)
 	if err != nil {
-		return fmt.Errorf("помилка створення GCM: %v", err)
+		return fmt.Errorf("error %v", err)
 	}
 
 	if len(ciphertext) < aesGCM.NonceSize() {
-		return fmt.Errorf("недостатньо даних для nonce")
+		return fmt.Errorf("error")
 	}
 
 	nonce, ciphertext := ciphertext[:aesGCM.NonceSize()], ciphertext[aesGCM.NonceSize():]
 
 	plaintext, err := aesGCM.Open(nil, nonce, ciphertext, nil)
 	if err != nil {
-		return fmt.Errorf("помилка розшифрування: %v", err)
+		return fmt.Errorf("error %v", err)
 	}
 
 	outputFilePath := config_main.Frontend_folder + "/static/data/" + filepath.Base(filePath[:len(filePath)-4])
