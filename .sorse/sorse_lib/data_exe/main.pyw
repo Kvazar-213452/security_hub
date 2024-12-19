@@ -39,9 +39,9 @@ def analyze_exe(file_path):
         with open('data/data_exe.json', 'w', encoding='utf-8') as json_file:
             json.dump(analysis_data, json_file, ensure_ascii=False, indent=4)
 
-        print(f"Аналіз завершено. Результати збережено в 'data_exe.json'.")
+        print(f"error")
 
     except Exception as e:
-        print(f"Помилка під час аналізу файлу: {e}")
+        print(f"error {e}")
 
 analyze_exe(file)

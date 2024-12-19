@@ -1,56 +1,102 @@
-<html style="height: 100%"></html>
-   <head>
-       <meta charset="utf-8">
-       <title>SPX</title>
-       <link rel="stylesheet" href="/static/css/main.css"/>
-       <link rel="stylesheet" href="/static/css/global.css"/>
-       <style id="style_dudqdc"></style>
-   </head>
-   <body>
-        <div class="main_div">
-            <br>
-            <p id="server_dqi29f03f" class="name_page"></p>
-            <p id="server_dqi29f03f1" class="description_page"></p>
-            <br>
-            <div class="fewfedddd">
-                <div onclick="change_menu_antivirus(0)" id="wifi_0jdccc" class="dwqdwcccc2">ggre333</div>
-            </div>
-            <br>
-            <div class="imfowdwqdd">
-                <div class="padoge">
-                    <h2 id="server_cpk2kcqep2w"></h2>
-                    <div class="file-input-container">
-                        <input type="file" name="file" id="file" required>
-                        <label for="file" id="server_ddqd212dqwas" class="file-input-button"></label>
-                    </div>
-                    <label class="ve92191112edddd" for="password"></label>
-                    <input class="ooo33ff3cv2122" type="text" name="password" id="password" required>
-                    <br><br>
-                    <button class="dqw21fvvvv server_0312edcccc" type="submit" id="submit-btn"></button>
-                </div>
-            </div>
-            <br>
-            <div class="imfowdwqdd">
-                <div class="padoge">
-                    <h2 id="server_cpk2kcqep2w1"></h2>
-                    <br>
-                    <form id="searchForm">
-                        <label class="ve92191112edddd" for="searchPassword"></label>
-                        <input class="ooo33ff3cv2122" type="text" name="searchPassword" id="searchPassword" required><br><br>
-                        <button class="dqw21fvvvv server_0312edcccc" type="submit">Submit</button>
-                    </form>                      
-                </div>
-            </div>
-            <br>
-        </div>
-    </body>
-    <script src="/static/jquery.min.js"></script>
-    <script src="/static/js/config.js"></script>
-    <script src="/static/js/page/lang.js"></script>
-    <script src="/static/js/global.js"></script>
-    <script src="/static/js/page/server.js"></script>
-    <script>
-        change_lang_now(0);
-        change_menu_page(1, 0)
-    </script>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Файловий сервер</title>
+</head>
+<body>
+  <!-- Завантаження файлу -->
+  <div class="padoge">
+    <h2>Завантажити файл</h2>
+    <div class="file-input-container">
+      <input type="file" name="file" id="file" required>
+      <label for="file" class="file-input-button">Виберіть файл</label>
+    </div>
+    <label for="password">Пароль для доступу до файлу:</label>
+    <input type="text" name="password" id="password" required>
+    <br><br>
+    <button type="button" id="submit-btn">Завантажити</button>
+  </div>
+  <br>
+  <!-- Пошук файлу -->
+  <div class="padoge">
+    <h2>Пошук файлу за паролем</h2>
+    <label for="searchPassword">Пароль:</label>
+    <input type="text" name="searchPassword" id="searchPassword" required>
+    <br><br>
+    <button type="button" id="search-btn">Знайти файл</button>
+    <div id="searchResult"></div>
+  </div>
+
+  <!-- Скрипт -->
+  <script>
+    // Завантаження файлу
+    document.getElementById('submit-btn').addEventListener('click', function() {
+      const fileInput = document.getElementById('file');
+      const password = document.getElementById('password').value;
+      const file = fileInput.files[0];
+
+      if (!file || !password) {
+        alert('Будь ласка, виберіть файл і введіть пароль.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('password', password);
+
+      fetch('http://localhost:3000/upload', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        alert('Файл успішно завантажено');
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Сталася помилка при завантаженні файлу');
+      });
+    });
+
+    // Пошук файлу
+    document.getElementById('search-btn').addEventListener('click', function () {
+  const searchPassword = document.getElementById('searchPassword').value;
+
+  fetch('http://localhost:3000/search', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ searchPassword }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.file && data.name) {
+        // Конвертуємо base64 у Blob
+        const binaryData = atob(data.file);
+        const byteArray = new Uint8Array(binaryData.length);
+        for (let i = 0; i < binaryData.length; i++) {
+          byteArray[i] = binaryData.charCodeAt(i);
+        }
+        const blob = new Blob([byteArray]);
+
+        // Створюємо посилання для завантаження
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = data.name;
+        link.click();
+      } else {
+        document.getElementById('searchResult').innerText = 'Файл не знайдено.';
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      document.getElementById('searchResult').innerText =
+        'Сталася помилка при пошуку файлу.';
+    });
+});
+  </script>
+</body>
 </html>

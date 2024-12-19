@@ -8,8 +8,9 @@ let vvw2311323ferererg3g3g3 = ['vvw2311323ferererg3g3g3', 'vvw2311323ferererg3g3
 
 let mas_sonar = [
     ['dwdc21e12d', 'dwdc21e12d1', 'dwdc21e12d2'],
-    ['wifi_0jdccc'],
-    ['system_0jdccc', 'system_0jdccc1']
+    ['wifi_0jdccc', 'wifi_0jdccc1'],
+    ['system_0jdccc', 'system_0jdccc1'],
+    ['dwdc21e12dq', 'dwdc21e12dq1']
 ];
 
 const unsafeProtocols = ["WEP", "WPA", "HTTP", "FTP", "Telnet", "RDP", "SNMP", "ICMP"];

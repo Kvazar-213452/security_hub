@@ -13,34 +13,39 @@
             <p id="lang_nfefdfdvghyt" class="description_page"></p>
             <br>
             <div class="fewfedddd">
-                <div onclick="change_menu_antivirus(0)" id="wifi_0jdccc" class="dwqdwcccc2">ggre333</div>
+                <div onclick="change_menu_page(1, 0)" id="wifi_0jdccc" class="dwqdwcccc2">ggre333</div>
+                <div onclick="change_menu_page(1, 1)" id="wifi_0jdccc1" class="dwqdwcccc2">ggre333</div>
             </div>
             <br>
-            <div class="imfowdwqdd">
-                <div class="padoge">
-                    <p class="main_color fon_16"># Інформація про мережі</p>
-                    <br>
-                    <div id="wifi_data_packege"></div>
-                </div>
-            </div>
-            <div class="wifi_sqd">
-                <div class="img_wifi">
-                    <div id="chart"></div>
-                </div>
-                <br>
-                <div class="div_wifi_info">
+            <div id="section_2">
+                <div class="imfowdwqdd">
                     <div class="padoge">
-                        <div id="info_wifi_div">
-                            <p id="lang_dqwedddcwww" class="ed3wed"></p>
-                            <div id="wifi_protection"></div>
-                            <br>
-                            <div id="fweetrfgcvweee"></div>
-                        </div>
+                        <p class="main_color fon_16"># Інформація про мережі</p>
+                        <br>
+                        <div id="wifi_data_packege"></div>
                     </div>
                 </div>
             </div>
-            <div class="wifi_all_div">
-                <div id="render_all_wifi" class="padoge"></div>
+            <div id="section_1">
+                <div class="wifi_sqd">
+                    <div class="img_wifi">
+                        <div id="chart"></div>
+                    </div>
+                    <br>
+                    <div class="div_wifi_info">
+                        <div class="padoge">
+                            <div id="info_wifi_div">
+                                <p id="lang_dqwedddcwww" class="ed3wed"></p>
+                                <div id="wifi_protection"></div>
+                                <br>
+                                <div id="fweetrfgcvweee"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wifi_all_div">
+                    <div id="render_all_wifi" class="padoge"></div>
+                </div>
             </div>
         </div>
    </body>
@@ -53,13 +58,15 @@
     <script>
         change_lang_now(0);
         change_menu_page(1, 0)
-        get_data_wifi_now();
 
+        get_data_wifi_now();
+        
         get_data_wifi_all();
         get_data_for_schedule();
+        get_package_data();
         
         setInterval(get_data_wifi_all, 2500);
         setInterval(get_data_for_schedule, 1000);
-        setInterval(get_package_data, 1500);
+        setInterval(get_package_data, 1000);
     </script> 
 </html>

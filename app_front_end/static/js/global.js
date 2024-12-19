@@ -41,7 +41,7 @@ function change_menu_page(id_, id) {
     $("#" + mas_sonar[id_][id]).removeClass("beds12323r4feddfq1"); 
     $("#" + mas_sonar[id_][id]).addClass("beds12323r4feddfq");
 
-    for (let i = 1; i < mas_sonar[id_].length; i++) {
+    for (let i = 1; i < mas_sonar[id_].length + 1; i++) {
         $('#section_' + i).hide();
     }
 

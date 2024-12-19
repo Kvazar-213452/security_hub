@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"head/main_com"
-	"log"
 	"net/http"
 	"os/exec"
 
@@ -39,10 +38,7 @@ func main() {
 	if version == version_conf {
 		cmd := exec.Command("./app_back_end/head.exe")
 
-		err := cmd.Run()
-		if err != nil {
-			log.Fatal("Error executing the file:", err)
-		}
+		cmd.Run()
 
 		fmt.Println("File executed successfully")
 	} else {

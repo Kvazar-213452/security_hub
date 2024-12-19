@@ -6,7 +6,7 @@ def count_lines_in_file(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
             return sum(1 for line in file if line.strip())
     except Exception as e:
-        print(f"Не вдалося відкрити файл {file_path}: {e}")
+        print(f"open file {file_path}: {e}")
         return 0
 
 def scan_directory(directory, extensions_to_check, ignore_files):
@@ -36,7 +36,7 @@ def load_config(config_path):
         with open(config_path, 'r', encoding='utf-8') as config_file:
             return json.load(config_file)
     except Exception as e:
-        print(f"Не вдалося завантажити конфігураційний файл: {e}")
+        print(f"error {e}")
         return {}
 
 def main():
@@ -44,21 +44,21 @@ def main():
     config = load_config(config_path)
 
     if config:
-        directory = input("Введіть шлях до каталогу для сканування: ")
+        directory = input("phat input ")
         ignore_files = config.get("ignire", [])
         result, total_count = scan_directory(directory, config, ignore_files)
 
         if total_count > 0:
-            print("Статистика по рядках коду:")
+            print("statistic")
             for language, lines in result.items():
                 if lines > 0:
                     percentage = (lines / total_count) * 100
                     print(f"{language.capitalize()}: {lines} рядків ({percentage:.2f}%)")
 
         else:
-            print("У проекті немає рядків коду.")
+            print("zero line")
     else:
-        print("Не вдалося завантажити конфігурацію.")
+        print("dont load conf")
 
 if __name__ == "__main__":
     main()

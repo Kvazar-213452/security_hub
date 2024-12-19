@@ -15,29 +15,17 @@ type Config struct {
 }
 
 func Get_version() int {
-	req, err := http.NewRequest("POST", Url, bytes.NewBuffer([]byte{}))
-	if err != nil {
-		log.Fatal("Error creating request:", err)
-	}
+	req, _ := http.NewRequest("POST", Url, bytes.NewBuffer([]byte{}))
 
 	client := &http.Client{}
-	resp, err := client.Do(req)
-	if err != nil {
-		log.Fatal("Error sending request:", err)
-	}
+	resp, _ := client.Do(req)
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatal("Error reading response body:", err)
-	}
+	body, _ := ioutil.ReadAll(resp.Body)
 
 	var response map[string]interface{}
 
-	err = json.Unmarshal(body, &response)
-	if err != nil {
-		log.Fatal("Error decoding JSON:", err)
-	}
+	json.Unmarshal(body, &response)
 
 	versionStr, ok := response["version"].(string)
 	if !ok {
@@ -53,22 +41,13 @@ func Get_version() int {
 }
 
 func File_config_get_version() int {
-	file, err := os.Open(File_config_phat)
-	if err != nil {
-		log.Fatal("Error opening file:", err)
-	}
+	file, _ := os.Open(File_config_phat)
 	defer file.Close()
 
-	data, err := ioutil.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
+	data, _ := ioutil.ReadAll(file)
 
 	var config Config
-	err = json.Unmarshal(data, &config)
-	if err != nil {
-		log.Fatal("Error unmarshalling JSON:", err)
-	}
+	json.Unmarshal(data, &config)
 
 	return config.Version
 }

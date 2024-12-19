@@ -45,28 +45,4 @@ if ($let -eq 0) {
     } finally {
         Pop-Location
     }
-} elseif ($let -eq 5) {
-    lsc -o app_front_end/static/js/ app_front_end/static/prefab/LiveScript/lang_main.ls
-    lsc -o app_front_end/static/js/page/ app_front_end/static/prefab/LiveScript/lang.ls
-
-    python .sorse/other/del_ls_txt.py app_front_end/static/js/lang_main.js
-    python .sorse/other/del_ls_txt.py app_front_end/static/js/page/lang.js
-} elseif ($let -eq 6) {
-    Push-Location
-    try {
-        cd auto_update
-        go build -ldflags="-H windowsgui"
-        .\head.exe
-    } finally {
-        Pop-Location
-    }
-} elseif ($let -eq 7) {
-    Push-Location
-    try {
-        cd auto_update
-        go build
-        .\head.exe
-    } finally {
-        Pop-Location
-    }
 }

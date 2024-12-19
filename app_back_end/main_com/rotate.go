@@ -23,21 +23,6 @@ func Render_index_page(w http.ResponseWriter, r *http.Request) {
 	tmpl.ExecuteTemplate(w, "index.html", nil)
 }
 
-func Render_about_page(w http.ResponseWriter, r *http.Request) {
-	func_all.AppendToLog("transition to /about")
-
-	tmpl, err := template.ParseFiles(
-		config_main.Frontend_folder + "/templates/about.html",
-	)
-
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	tmpl.ExecuteTemplate(w, "about.html", nil)
-}
-
 func Render_settings_page(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /settings")
 

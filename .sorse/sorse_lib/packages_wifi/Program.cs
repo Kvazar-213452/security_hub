@@ -30,6 +30,6 @@ class Program {
         string filePath = "packages_wifi.xml";
         xmlDocument.Save(filePath);
 
-        Console.WriteLine($"Дані записано у файл {filePath}");
+        Console.WriteLine($"data {filePath}");
     }
 }

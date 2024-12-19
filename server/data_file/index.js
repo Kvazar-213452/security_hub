@@ -102,7 +102,11 @@ app.post('/search', (req, res) => {
   if (foundEntry) {
     const filePath = path.join(__dirname, 'static/file', foundEntry.fileName);
     if (fs.existsSync(filePath)) {
-      return res.send({file: filePath, name: foundEntry.fileName});
+      const fileContent = fs.readFileSync(filePath);
+      return res.send({
+        file: fileContent.toString('base64'),
+        name: foundEntry.fileName
+      });
     } else {
       return res.status(404).send('1');
     }

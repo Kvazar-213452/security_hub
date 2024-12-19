@@ -50,7 +50,6 @@ func main() {
 
 	// get
 	http.HandleFunc("/main", main_com.Render_index_page)
-	http.HandleFunc("/about", main_com.Render_about_page)
 	http.HandleFunc("/settings", main_com.Render_settings_page)
 	http.HandleFunc("/system", main_com.Render_system_page)
 	http.HandleFunc("/off_app", main_com.Get_off_app)
@@ -92,12 +91,12 @@ func main() {
 	http.HandleFunc("/code_verefic", page.Post_code_verefic)
 	http.HandleFunc("/get_pacage_info", page.Post_get_pacage_info_wifi)
 
-	fmt.Printf("Сервер працює на порту %d\n", port)
+	fmt.Printf("started %d\n", port)
 	http.ListenAndServe(portStr, nil)
 
 	if cmd != nil {
 		if err := cmd.Process.Kill(); err != nil {
-			fmt.Printf("Не вдалося завершити shell_web.exe: %v\n", err)
+			fmt.Printf("not shell_web.exe: %v\n", err)
 		}
 	}
 }
