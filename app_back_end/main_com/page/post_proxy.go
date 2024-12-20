@@ -3,6 +3,7 @@ package page
 import (
 	"bytes"
 	config_main "head/main_com/config"
+	"head/main_com/func_all"
 	"io"
 	"net/http"
 )
@@ -14,6 +15,8 @@ import (
 
 func Post_post_file(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_post_file post")
+
 		proxyReq, _ := http.NewRequest(http.MethodPost, config_main.Server_data_file_url+config_main.Server_data_file_url_upload, r.Body)
 
 		proxyReq.Header = r.Header
@@ -31,6 +34,8 @@ func Post_post_file(w http.ResponseWriter, r *http.Request) {
 
 func Post_search_server(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_search_server post")
+
 		body, _ := io.ReadAll(r.Body)
 
 		proxyReq, _ := http.NewRequest(http.MethodPost, config_main.Server_data_file_url+config_main.Server_data_file_url_search, bytes.NewReader(body))

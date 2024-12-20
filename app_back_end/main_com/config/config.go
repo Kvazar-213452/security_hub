@@ -91,3 +91,6 @@ const Server_data_file_url_upload = "upload"
 
 const Server_register_and_data_url = "http://127.0.0.1:5000/"
 const Server_register_and_data_url_send_email = "send_email"
+const Server_register_and_data_url_login = "login"
+const Server_register_and_data_url_version = "version"
+const Server_register_and_data_url_save_user = "save_user"

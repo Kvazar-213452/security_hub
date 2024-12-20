@@ -1,8 +1,10 @@
 package page
 
 import (
+	"bytes"
 	"encoding/json"
 	config_main "head/main_com/config"
+	"head/main_com/func_all"
 	"head/main_com/page_func"
 	"io"
 	"io/ioutil"
@@ -23,6 +25,7 @@ type User struct {
 
 func Post_send_email(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_send_email post")
 		body, err := io.ReadAll(r.Body)
 		if err != nil {
 			http.Error(w, "error", http.StatusInternalServerError)
@@ -70,6 +73,7 @@ func Post_send_email(w http.ResponseWriter, r *http.Request) {
 
 func Post_code_verefic(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_code_verefic post")
 		body, err := io.ReadAll(r.Body)
 		if err != nil {
 			http.Error(w, "error", http.StatusInternalServerError)
@@ -125,5 +129,26 @@ func Post_code_verefic(w http.ResponseWriter, r *http.Request) {
 		}
 	} else {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_login_acaunt(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_login_acaunt post")
+		var data map[string]interface{}
+		json.NewDecoder(r.Body).Decode(&data)
+
+		jsonData, _ := json.Marshal(data)
+
+		resp, _ := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_login, "application/json", bytes.NewBuffer(jsonData))
+		defer resp.Body.Close()
+
+		respBody, _ := ioutil.ReadAll(resp.Body)
+
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(resp.StatusCode)
+		w.Write(respBody)
+	} else {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 }

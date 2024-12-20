@@ -146,7 +146,7 @@ func Get_config_user() *Config_reg {
 func Send_user_data_server(config Config_reg) string {
 	jsonData, _ := json.Marshal(config)
 
-	resp, _ := http.Post("http://127.0.0.1:5000/save_user", "application/json", bytes.NewBuffer(jsonData))
+	resp, _ := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_save_user, "application/json", bytes.NewBuffer(jsonData))
 	defer resp.Body.Close()
 
 	body, _ := ioutil.ReadAll(resp.Body)

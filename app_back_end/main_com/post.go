@@ -143,7 +143,7 @@ func Post_version_get_server(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/Post_version_get_server post")
 
-		req, _ := http.NewRequest("POST", "http://localhost:5000/version", bytes.NewBuffer([]byte{}))
+		req, _ := http.NewRequest("POST", config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_version, bytes.NewBuffer([]byte{}))
 
 		client := &http.Client{}
 		resp, _ := client.Do(req)

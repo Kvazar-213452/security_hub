@@ -138,6 +138,28 @@ def add_key_pasw():
 
     except Exception as e:
         return jsonify({"message": "Помилка при обробці запиту", "error": str(e)}), 500
+    
+@app.route('/login', methods=['POST'])
+def login():
+    try:
+        user_data = request.get_json()
+        name = user_data.get("name")
+        password = user_data.get("password")
+
+        if not name:
+            return jsonify({"message": "Gmail не надано"}), 200
+
+        with open('db.json', 'r') as f:
+            db_data = json.load(f)
+
+        for entry in db_data:
+            if entry.get("name") == name and entry.get("pasw") == password:
+                return jsonify({"status": "1"}), 200
+
+        return jsonify({"status": "0"}), 200
+
+    except Exception as e:
+        return jsonify({"status": "0", "error": str(e)}), 200
 
 if __name__ == "__main__":
     CORS(app)
