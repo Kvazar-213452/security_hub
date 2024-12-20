@@ -92,6 +92,9 @@ func main() {
 	http.HandleFunc("/get_pacage_info", page.Post_get_pacage_info_wifi)
 	http.HandleFunc("/post_file_server", page.Post_post_file)
 	http.HandleFunc("/search_server", page.Post_search_server)
+	http.HandleFunc("/version_get_server", main_com.Post_version_get_server)
+	http.HandleFunc("/reg_status", main_com.Post_reg_status)
+	http.HandleFunc("/get_password", page.Post_get_password)
 
 	fmt.Printf("started %d\n", port)
 	http.ListenAndServe(portStr, nil)

@@ -23,10 +23,15 @@ type RequestData_xxx struct {
 }
 
 type Config_reg struct {
-	Name  string `json:"name"`
-	Pasw  string `json:"pasw"`
-	Gmail string `json:"gmail"`
-	Code  string `json:"code"`
+	Name   string `json:"name"`
+	Pasw   string `json:"pasw"`
+	Gmail  string `json:"gmail"`
+	Code   string `json:"code"`
+	Acsses string `json:"acsses"`
+}
+
+type ServerResponse struct {
+	Message string `json:"message"`
 }
 
 func SendPostRequest_xxx(url string, data RequestData_xxx) {
@@ -84,6 +89,7 @@ func Save_data_reg(config Config_reg) {
 	fullConfig.Pasw = config.Pasw
 	fullConfig.Gmail = config.Gmail
 	fullConfig.Code = config.Code
+	fullConfig.Acsses = config.Acsses
 
 	file, _ := os.Create(config_main.Data_user)
 	defer file.Close()
@@ -123,4 +129,30 @@ func Decrypt_code_reg_save(cipherText string) string {
 	stream.XORKeyStream(cipherBytes, cipherBytes)
 
 	return string(cipherBytes)
+}
+
+func Get_config_user() *Config_reg {
+	file, _ := os.Open("../data/user.json")
+	defer file.Close()
+
+	byteValue, _ := ioutil.ReadAll(file)
+
+	var config Config_reg
+	json.Unmarshal(byteValue, &config)
+
+	return &config
+}
+
+func Send_user_data_server(config Config_reg) string {
+	jsonData, _ := json.Marshal(config)
+
+	resp, _ := http.Post("http://127.0.0.1:5000/save_user", "application/json", bytes.NewBuffer(jsonData))
+	defer resp.Body.Close()
+
+	body, _ := ioutil.ReadAll(resp.Body)
+
+	var serverResponse ServerResponse
+	json.Unmarshal(body, &serverResponse)
+
+	return serverResponse.Message
 }

@@ -10,7 +10,8 @@ let mas_sonar = [
     ['dwdc21e12d', 'dwdc21e12d1', 'dwdc21e12d2'],
     ['wifi_0jdccc', 'wifi_0jdccc1'],
     ['system_0jdccc', 'system_0jdccc1'],
-    ['dwdc21e12dq', 'dwdc21e12dq1']
+    ['dwdc21e12dq', 'dwdc21e12dq1'],
+    ['settings_1_btn_page', 'settings_1_btn_page1']
 ];
 
 const unsafeProtocols = ["WEP", "WPA", "HTTP", "FTP", "Telnet", "RDP", "SNMP", "ICMP"];

@@ -32,10 +32,7 @@ func Get_version() int {
 		log.Fatal("Version is not a string")
 	}
 
-	version, err := strconv.Atoi(versionStr)
-	if err != nil {
-		log.Fatal("Error converting version to int:", err)
-	}
+	version, _ := strconv.Atoi(versionStr)
 
 	return version
 }

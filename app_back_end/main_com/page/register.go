@@ -52,10 +52,11 @@ func Post_send_email(w http.ResponseWriter, r *http.Request) {
 		page_func.SendPostRequest_xxx(url, data)
 
 		config := page_func.Config_reg{
-			Name:  request.Name,
-			Pasw:  request.Password,
-			Gmail: request.Gmail,
-			Code:  page_func.Encrypt_code_reg_save(code_ril),
+			Name:   request.Name,
+			Pasw:   request.Password,
+			Gmail:  request.Gmail,
+			Code:   page_func.Encrypt_code_reg_save(code_ril),
+			Acsses: "0",
 		}
 
 		page_func.Save_data_reg(config)
@@ -92,11 +93,36 @@ func Post_code_verefic(w http.ResponseWriter, r *http.Request) {
 		code_ril := page_func.Decrypt_code_reg_save(user.Code)
 
 		if request.Code == code_ril {
+			config := page_func.Get_config_user()
 
+			config1 := page_func.Config_reg{
+				Name:   config.Name,
+				Pasw:   config.Pasw,
+				Gmail:  config.Gmail,
+				Code:   config.Code,
+				Acsses: config.Acsses,
+			}
+
+			status := page_func.Send_user_data_server(config1)
+
+			if status == "1" {
+				config2 := page_func.Config_reg{
+					Name:   config.Name,
+					Pasw:   config.Pasw,
+					Gmail:  config.Gmail,
+					Code:   config.Code,
+					Acsses: "1",
+				}
+
+				page_func.Save_data_reg(config2)
+
+				w.Header().Set("Content-Type", "application/json")
+				json.NewEncoder(w).Encode("1")
+			} else {
+				w.Header().Set("Content-Type", "application/json")
+				json.NewEncoder(w).Encode("0")
+			}
 		}
-
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(nil)
 	} else {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}

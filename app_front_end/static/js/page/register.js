@@ -20,7 +20,7 @@ let div_2 = `
     <button class="zxbnmewd1" onclick="add_div()">Залогінитись</button>
 `;
 
-$('.server_0312edcccc').html(div_1);
+$('#sect_1').html(div_2);
 
 function send_data() {
     let data = {
@@ -35,7 +35,7 @@ function send_data() {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (response) {
-            $('.server_0312edcccc').html(div_1);
+            $('.server_0312edcccc').html(div_2);
         }
     });
 }
@@ -46,12 +46,13 @@ function send_code() {
     };
     
     $.ajax({
-        url: "/send_email",
+        url: "/code_verefic",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (response) {
-            $('.server_0312edcccc').html(div_1);
+            console.log(response)
+            $('.server_0312edcccc').html(div_2);
         }
     });
 }

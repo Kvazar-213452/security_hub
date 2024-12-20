@@ -1,14 +1,18 @@
 package main_com
 
 import (
+	"bytes"
 	"encoding/json"
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
+	"head/main_com/page_func"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 
 	"github.com/pkg/browser"
 )
@@ -46,6 +50,10 @@ import (
 // ⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⡉⠉⠉⠉⠀⠈⠉⠀⠀⠀
 // ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀
 // ⠀⠀⠀⠀⠀⠀⠀⠀⢰⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣷⠀⠀⠀⠀⠀⠀⠀⠀
+
+type Data_ump struct {
+	Version_config int
+}
 
 func Post_server_fet_log(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
@@ -120,12 +128,62 @@ func Post_version_get(w http.ResponseWriter, r *http.Request) {
 
 		config := func_all.LoadConfig_start(config_main.Main_config)
 
-		type Data_ump struct {
-			Version_config int
-		}
-
 		Data := Data_ump{
 			Version_config: config.Version,
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(Data)
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_version_get_server(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_version_get_server post")
+
+		req, _ := http.NewRequest("POST", "http://localhost:5000/version", bytes.NewBuffer([]byte{}))
+
+		client := &http.Client{}
+		resp, _ := client.Do(req)
+		defer resp.Body.Close()
+
+		body, _ := ioutil.ReadAll(resp.Body)
+
+		var response map[string]interface{}
+
+		json.Unmarshal(body, &response)
+
+		versionStr, ok := response["version"].(string)
+		if !ok {
+			log.Fatal("Version is not a string")
+		}
+
+		version, _ := strconv.Atoi(versionStr)
+
+		Data := Data_ump{
+			Version_config: version,
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(Data)
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_reg_status(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_reg_status post")
+
+		config := page_func.Get_config_user()
+
+		Data := page_func.Config_reg{
+			Name:   config.Name,
+			Pasw:   config.Pasw,
+			Gmail:  config.Gmail,
+			Acsses: "1",
 		}
 
 		w.Header().Set("Content-Type", "application/json")

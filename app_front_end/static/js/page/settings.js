@@ -191,3 +191,29 @@ $("#file_input_qfEASD").on("change", function () {
 
     $("#file_name").text(fileName);
 });
+
+function get_my_version() {
+    $.ajax({
+        url: '/version_get',
+        type: 'POST',
+        data: null,
+        processData: false,
+        contentType: 'application/json',
+        success: function (response) {
+            console.log("Відповідь від сервера:", response);
+        }
+    });
+}
+
+function get_server_version() {
+    $.ajax({
+        url: '/version_get_server',
+        type: 'POST',
+        data: null,
+        processData: false,
+        contentType: 'application/json',
+        success: function (response) {
+            console.log("Відповідь від сервера:", response);
+        }
+    });
+}

@@ -31,3 +31,15 @@ function generatePassword() {
 
     $('.passw_wqdsc span').html(password);
 }
+
+function get_status_reg() {
+    $.ajax({
+        url: "/get_password",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+           console.log(response)
+        }
+    });
+}
