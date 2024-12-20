@@ -43,7 +43,7 @@ func Post_antivirus_web(w http.ResponseWriter, r *http.Request) {
 
 		json.NewEncoder(w).Encode(data_good)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -66,7 +66,7 @@ func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 
 		json.NewEncoder(w).Encode(data_good)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -88,6 +88,6 @@ func Post_change_val_gb_usb(w http.ResponseWriter, r *http.Request) {
 
 		w.Write([]byte("1"))
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }

@@ -41,6 +41,6 @@ func Post_scan_dir(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(Folder_info)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }

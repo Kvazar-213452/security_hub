@@ -70,6 +70,6 @@ func Post_cleanup(w http.ResponseWriter, r *http.Request) {
 
 		w.Write(nil)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }

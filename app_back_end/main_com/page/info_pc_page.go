@@ -30,7 +30,7 @@ func Post_get_os_data(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(osData)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -46,7 +46,7 @@ func Post_window_open(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(response)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -62,6 +62,6 @@ func Post_resource_info(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(response)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }

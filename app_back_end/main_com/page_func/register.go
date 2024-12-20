@@ -75,7 +75,7 @@ func Cripter_xxx(text string) string {
 }
 
 func Save_data_reg(config Config_reg) {
-	fileData, _ := ioutil.ReadFile("../data/user.json")
+	fileData, _ := ioutil.ReadFile(config_main.Data_user)
 
 	var fullConfig Config_reg
 	json.Unmarshal(fileData, &fullConfig)
@@ -85,7 +85,7 @@ func Save_data_reg(config Config_reg) {
 	fullConfig.Gmail = config.Gmail
 	fullConfig.Code = config.Code
 
-	file, _ := os.Create("../data/user.json")
+	file, _ := os.Create(config_main.Data_user)
 	defer file.Close()
 
 	encoder := json.NewEncoder(file)

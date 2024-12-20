@@ -2,7 +2,6 @@ package page
 
 import (
 	"encoding/json"
-	"fmt"
 	"head/main_com/func_all"
 	"head/main_com/page_func"
 	"net/http"
@@ -26,7 +25,7 @@ func Post_gagat_network(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(wifiInfo)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error metod", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -42,7 +41,7 @@ func Post_wifi_network(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(networks)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error metod", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -57,7 +56,7 @@ func Post_network_now(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "Помилка при кодуванні JSON", http.StatusInternalServerError)
 		}
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error metod", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -65,15 +64,11 @@ func Post_get_pacage_info_wifi(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/get_pacage_info_wifi post")
 
-		jsonData, err := page_func.Get_info_packages_wifi()
-		if err != nil {
-			fmt.Println("Помилка:", err)
-			return
-		}
+		jsonData := page_func.Get_info_packages_wifi()
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(string(jsonData))
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error metod", http.StatusMethodNotAllowed)
 	}
 }

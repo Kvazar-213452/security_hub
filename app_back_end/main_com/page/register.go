@@ -2,6 +2,7 @@ package page
 
 import (
 	"encoding/json"
+	config_main "head/main_com/config"
 	"head/main_com/page_func"
 	"io"
 	"io/ioutil"
@@ -47,7 +48,7 @@ func Post_send_email(w http.ResponseWriter, r *http.Request) {
 			Code:     сode,
 		}
 
-		url := "http://127.0.0.1:5000/send_email"
+		url := config_main.Server_register_and_data_url + config_main.Server_register_and_data_url_send_email
 		page_func.SendPostRequest_xxx(url, data)
 
 		config := page_func.Config_reg{
@@ -62,7 +63,7 @@ func Post_send_email(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(nil)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -81,7 +82,7 @@ func Post_code_verefic(w http.ResponseWriter, r *http.Request) {
 
 		json.Unmarshal(body, &request)
 
-		filePath := "../data/user.json"
+		filePath := config_main.Data_user
 		fileContent, _ := ioutil.ReadFile(filePath)
 
 		var user User
@@ -97,6 +98,6 @@ func Post_code_verefic(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(nil)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }

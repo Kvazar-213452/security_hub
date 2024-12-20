@@ -53,7 +53,7 @@ func Post_encryption_file(w http.ResponseWriter, r *http.Request) {
 		keyHex := hex.EncodeToString(key)
 		w.Write([]byte(keyHex))
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -89,6 +89,6 @@ func Post_decipher_file(w http.ResponseWriter, r *http.Request) {
 
 		w.Write([]byte("1"))
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }

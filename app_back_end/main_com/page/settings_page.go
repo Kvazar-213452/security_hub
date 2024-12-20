@@ -32,7 +32,7 @@ func Post_config_global(w http.ResponseWriter, r *http.Request) {
 
 		w.Write(jsonData)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -50,7 +50,7 @@ func Post_config_change(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		w.Write(nil)
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -64,7 +64,7 @@ func Post_log_change(w http.ResponseWriter, r *http.Request) {
 
 		w.Write([]byte("1"))
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -78,7 +78,7 @@ func Post_port_change(w http.ResponseWriter, r *http.Request) {
 
 		w.Write([]byte("1"))
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -92,7 +92,7 @@ func Post_shell_change(w http.ResponseWriter, r *http.Request) {
 
 		w.Write([]byte("1"))
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -106,7 +106,7 @@ func Post_change_lang_settings(w http.ResponseWriter, r *http.Request) {
 
 		w.Write([]byte("1"))
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -124,6 +124,6 @@ func Post_style_change(w http.ResponseWriter, r *http.Request) {
 
 		w.Write([]byte("1"))
 	} else {
-		http.Error(w, "Непідтримуваний метод", http.StatusMethodNotAllowed)
+		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }

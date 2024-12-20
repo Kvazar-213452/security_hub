@@ -219,13 +219,14 @@ func Get_connected_SSID() string {
 	return ""
 }
 
-func Get_info_packages_wifi() ([]byte, error) {
-	cmd := exec.Command("library/packages_wifi.exe")
+func Get_info_packages_wifi() []byte {
+	cmd := exec.Command(config_main.Wifi_packege_data_exe)
+	cmd.Dir = config_main.Library_folder
 	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 
 	cmd.Run()
 
-	filePath := "library/packages_wifi.xml"
+	filePath := "./" + config_main.Library_folder + config_main.File_data_exe_wifi_packege
 	xmlFile, _ := os.Open(filePath)
 
 	defer xmlFile.Close()
@@ -237,5 +238,5 @@ func Get_info_packages_wifi() ([]byte, error) {
 	xml.Unmarshal(byteValue, &networkInterfaces)
 	jsonData, _ := json.MarshalIndent(networkInterfaces, "", "  ")
 
-	return jsonData, nil
+	return jsonData
 }

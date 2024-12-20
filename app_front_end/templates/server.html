@@ -19,7 +19,6 @@
     <button type="button" id="submit-btn">Завантажити</button>
   </div>
   <br>
-  <!-- Пошук файлу -->
   <div class="padoge">
     <h2>Пошук файлу за паролем</h2>
     <label for="searchPassword">Пароль:</label>
@@ -28,75 +27,10 @@
     <button type="button" id="search-btn">Знайти файл</button>
     <div id="searchResult"></div>
   </div>
-
-  <!-- Скрипт -->
-  <script>
-    // Завантаження файлу
-    document.getElementById('submit-btn').addEventListener('click', function() {
-      const fileInput = document.getElementById('file');
-      const password = document.getElementById('password').value;
-      const file = fileInput.files[0];
-
-      if (!file || !password) {
-        alert('Будь ласка, виберіть файл і введіть пароль.');
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('password', password);
-
-      fetch('http://localhost:3000/upload', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.text())
-      .then(data => {
-        alert('Файл успішно завантажено');
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('Сталася помилка при завантаженні файлу');
-      });
-    });
-
-    // Пошук файлу
-    document.getElementById('search-btn').addEventListener('click', function () {
-  const searchPassword = document.getElementById('searchPassword').value;
-
-  fetch('http://localhost:3000/search', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ searchPassword }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.file && data.name) {
-        // Конвертуємо base64 у Blob
-        const binaryData = atob(data.file);
-        const byteArray = new Uint8Array(binaryData.length);
-        for (let i = 0; i < binaryData.length; i++) {
-          byteArray[i] = binaryData.charCodeAt(i);
-        }
-        const blob = new Blob([byteArray]);
-
-        // Створюємо посилання для завантаження
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = data.name;
-        link.click();
-      } else {
-        document.getElementById('searchResult').innerText = 'Файл не знайдено.';
-      }
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      document.getElementById('searchResult').innerText =
-        'Сталася помилка при пошуку файлу.';
-    });
-});
-  </script>
+  <script src="/static/jquery.min.js"></script>
+  <script src="/static/js/config.js"></script>
+  <script src="/static/js/page/lang.js"></script>
+  <script src="/static/js/global.js"></script>
+  <script src="/static/js/page/server.js"></script>
 </body>
 </html>

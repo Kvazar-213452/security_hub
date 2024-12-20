@@ -22,9 +22,9 @@
     <Name>Беспроводная сеть</Name>
     <Description>Intel(R) Centrino(R) Advanced-N 6235</Description>
     <Status>Up</Status>
-    <BytesSent>2674429</BytesSent>
-    <BytesReceived>42297667</BytesReceived>
-    <PacketsSent>9186688</PacketsSent>
-    <PacketsReceived>35709522</PacketsReceived>
+    <BytesSent>478888</BytesSent>
+    <BytesReceived>4350295</BytesReceived>
+    <PacketsSent>1332038</PacketsSent>
+    <PacketsReceived>3669087</PacketsReceived>
   </Interface>
 </NetworkInterfaces>
