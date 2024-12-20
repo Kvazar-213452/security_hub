@@ -192,3 +192,41 @@ func Post_reg_status(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
+
+func Post_get_info_work_server_data_file(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_get_info_work_server_data_file post")
+
+		status := func_all.Check_server_Status(config_main.Server_data_file_url + config_main.Server_data_file_url_server_unix)
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(map[string]int{"status": status})
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_get_info_work_server_register(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_get_info_work_server_register post")
+		status := func_all.Check_server_Status(config_main.Server_register_and_data_url + config_main.Server_register_and_data_url_check)
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(map[string]int{"status": status})
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_log_out(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_log_out post")
+
+		func_all.Clear_file(config_main.Data_user)
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(nil)
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}

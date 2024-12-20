@@ -240,7 +240,7 @@
     padding: 20px;
 }
 
-.wifi_all_div{
+.wifi_all_div {
     position: relative;
     float: right;
     background-color: $bg_color1;
@@ -250,7 +250,7 @@
     overflow-y: auto;
 }
 
-.div_wifi_all{
+.div_wifi_all {
     position: relative;
     top: -20px;
     margin-top: 20px;
@@ -259,7 +259,7 @@
     background-color: $bg_color2;
 }
 
-.name_wifi_div_all{
+.name_wifi_div_all {
     position: relative;
     color: $main_color;
     top: 8px;
@@ -267,7 +267,7 @@
     float: left;
 }
 
-.right_left_signal{
+.right_left_signal {
     position: relative;
     color: $white;
     top: 9px;
@@ -278,6 +278,22 @@
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
 /* settings page *//* settings page *//* settings page *//* settings page *//* settings page *//* settings page */
+
+.img_setting {
+    position: relative;
+    width: 250px;
+}
+
+.iiiiqwdas {
+    background-color: $read !important;
+    color: $bleck !important;
+}
+
+#settings13qwas {
+    color: $main_color;
+
+    span {color: $white;}
+}
 
 .file-input-wrapper {
     display: flex;

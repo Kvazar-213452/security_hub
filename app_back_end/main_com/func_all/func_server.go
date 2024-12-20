@@ -4,9 +4,11 @@ import (
 	"encoding/json"
 	config_main "head/main_com/config"
 	"io/ioutil"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 )
 
 type LogContent struct {
@@ -44,4 +46,22 @@ func ClearDirectory(dir string) error {
 	}
 
 	return nil
+}
+
+func Check_server_Status(url string) int {
+	client := &http.Client{
+		Timeout: 5 * time.Second,
+	}
+
+	resp, err := client.Post(url, "application/json", nil)
+	if err != nil {
+		return 0
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode == http.StatusOK {
+		return 1
+	}
+
+	return 0
 }

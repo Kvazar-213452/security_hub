@@ -71,6 +71,10 @@ app.get('/', (req, res) => {
     res.send(`unix server`);
 });
 
+app.post('/server_unix', (req, res) => {
+    res.send(`1`);
+});
+
 app.post('/upload', upload.single('file'), (req, res) => {
   const password = req.body.password;
   const originalName = req.file.originalname;

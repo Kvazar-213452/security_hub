@@ -200,7 +200,7 @@ function get_my_version() {
         processData: false,
         contentType: 'application/json',
         success: function (response) {
-            console.log("Відповідь від сервера:", response);
+            $("#version_my_qwfesd").html(response['Version_config']);
         }
     });
 }
@@ -213,7 +213,86 @@ function get_server_version() {
         processData: false,
         contentType: 'application/json',
         success: function (response) {
-            console.log("Відповідь від сервера:", response);
+            $("#version_server_qwfesd").html(response['Version_config']);
+        }
+    });
+}
+
+function info_server() {
+    $.ajax({
+        url: '/get_info_work_server_register',
+        type: 'POST',
+        data: null,
+        processData: false,
+        contentType: 'application/json',
+        success: function (response) {
+            if (response['status'] == 1) {
+                $("#server_2").html("work");
+            } else {
+                $("#server_2").html("not work");
+            }
+        }
+    });
+
+    $.ajax({
+        url: '/get_info_work_server_data_file',
+        type: 'POST',
+        data: null,
+        processData: false,
+        contentType: 'application/json',
+        success: function (response) {
+            if (response['status'] == 1) {
+                $("#server_1").html("work");
+            } else {
+                $("#server_1").html("not work");
+            }
+        }
+    });
+}
+
+function get_status_reg_settings() {
+    $.ajax({
+        url: "/reg_status",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            reg_login = response['acsses']
+
+            if (reg_login == 1) {
+                $("#settings_1_btn_page2").hide();
+            }
+        }
+    });
+}
+
+function get_data_reg() {
+    $.ajax({
+        url: "/reg_status",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            let text = `
+            <p>name = <span>${response['name']}</span></p>
+            <p>pasw = <span>${response['pasw']}</span></p>
+            <p>gmail = <span>${response['gmail']}</span></p>
+            <p>acsses = <span>${response['acsses']}</span></p>
+            `;
+
+            $("#settings13qwas").html(text);
+        }
+    });
+}
+
+function log_out() {
+    $.ajax({
+        url: "/log_out",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            window.parent.postMessage("reload", "*");
         }
     });
 }

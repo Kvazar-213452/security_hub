@@ -282,6 +282,19 @@
 /* settings page */
 /* settings page */
 /* settings page */
+.img_setting {
+  position: relative;
+  width: 250px; }
+
+.iiiiqwdas {
+  background-color: #ff5c5c !important;
+  color: #000000 !important; }
+
+#settings13qwas {
+  color: #68ff9d; }
+  #settings13qwas span {
+    color: #fff; }
+
 .file-input-wrapper {
   display: flex;
   align-items: center;

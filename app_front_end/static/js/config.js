@@ -11,7 +11,7 @@ let mas_sonar = [
     ['wifi_0jdccc', 'wifi_0jdccc1'],
     ['system_0jdccc', 'system_0jdccc1'],
     ['dwdc21e12dq', 'dwdc21e12dq1'],
-    ['settings_1_btn_page', 'settings_1_btn_page1'],
+    ['settings_1_btn_page', 'settings_1_btn_page1', 'settings_1_btn_page2'],
     ['pasword_1_btn_page', 'pasword_1_btn_page1'],
     ['server_0jdccc']
 ];

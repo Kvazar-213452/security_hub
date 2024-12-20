@@ -87,6 +87,10 @@ def save_user():
 def version():
     return jsonify({'version': config_data["version"]})
 
+@app.route('/check', methods=['POST'])
+def check():
+    return jsonify({'version': None})
+
 @app.route('/get_password', methods=['POST'])
 def get_password():
     try:

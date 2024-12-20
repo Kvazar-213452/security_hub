@@ -13,7 +13,7 @@ function lang_change_page(lang) {
     $('#antivirus_vef093f').html("Be in information security");
     $('#dwdc21e12d').html("Check the site");
     $('#dwdc21e12d1').html("Check the file");
-    $('#dwdc21e12d2').html("On the background");
+    $('#dwdc21e12d2').html("On the background BETA");
     $('#antivirus_894534ffvvv').html("Check");
     $('#h3ruiwefer24f').html("Description");
     $('#fewrvw243rgefvcc').html("Background features are enabled automatically at startup");
@@ -102,7 +102,15 @@ function lang_change_page(lang) {
     $('#pasw_ok2f3web').html("Add password");
     $('#pasw_d3vnb4354').html("Send");
     $('#pasw_fwefc2dewsd span').html("Better passwords");
-    $('#pasw_dwqvnbb455').html("Better best password than better or better than best password");    
+    $('#pasw_dwqvnbb455').html("Better best password than better or better than best password");
+    $('#setting_e12rfwvsd').html("Installed version");
+    $('#settings_oio3fq').html("Available version");
+    $('#settings_q23fweds55').html("Send");
+    $('#settings_q23fweds551').html("The program uses the SPX template with its NM shell");
+    $('#settings_1_btn_page').html("Settings");
+    $('#settings_1_btn_page1').html("Info app");
+    $('#settings_1_btn_page2').html("Account");
+    $('#settings_3qecdstrh').html("Log out from the account");
   } else if (lang === "uk") {
     $('#lang_wefsdeeeeee span').html("Вайфай менеджер");
     $('#lang_nfefdfdvghyt').html("Отримайте більше інформації про ваш вайфай");
@@ -117,7 +125,7 @@ function lang_change_page(lang) {
     $('#antivirus_vef093f').html("Будьте в інформаційній безпеці");
     $('#dwdc21e12d').html("Перевірити сайт");
     $('#dwdc21e12d1').html("Перевірити файл");
-    $('#dwdc21e12d2').html("На фоні");
+    $('#dwdc21e12d2').html("На фоні BETA");
     $('#antivirus_894534ffvvv').html("Перевірити");
     $('#h3ruiwefer24f').html("Опис");
     $('#fewrvw243rgefvcc').html("Функції на фоні вмикаються автоматично при запуску");
@@ -210,6 +218,13 @@ function lang_change_page(lang) {
     $('#pasw_d3vnb4354').html("Відправити");
     $('#pasw_fwefc2dewsd span').html("Кращі паролі");
     $('#pasw_dwqvnbb455').html("Краще кращий пароль за кращий чи кращий за кращий пароль");
-
+    $('#setting_e12rfwvsd').html("Встановлена версія");
+    $('#settings_oio3fq').html("Доступна версія");
+    $('#settings_q23fweds55').html("Відправити");
+    $('#settings_q23fweds551').html("Програма використовує шаблон SPX з його shell NM");
+    $('#settings_1_btn_page').html("Налаштування");
+    $('#settings_1_btn_page1').html("Інформація про програму");
+    $('#settings_1_btn_page2').html("Обліковий запис");
+    $('#settings_3qecdstrh').html("Вийти з акаунта");
   }
 };

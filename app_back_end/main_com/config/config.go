@@ -89,6 +89,7 @@ const Starter_file = "../data/starter.md"
 const Server_data_file_url = "http://localhost:3000/"
 const Server_data_file_url_search = "search"
 const Server_data_file_url_upload = "upload"
+const Server_data_file_url_server_unix = "server_unix"
 
 // login and data
 const Server_register_and_data_url = "http://127.0.0.1:5000/"
@@ -99,3 +100,4 @@ const Server_register_and_data_url_save_user = "save_user"
 const Server_register_and_data_url_get_password = "get_password"
 const Server_register_and_data_url_add_key_pasw = "add_key_pasw"
 const Server_register_and_data_url_del_key_pasw = "del_key_pasw"
+const Server_register_and_data_url_check = "check"
