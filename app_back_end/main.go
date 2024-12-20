@@ -97,6 +97,7 @@ func main() {
 	http.HandleFunc("/get_password", page.Post_get_password)
 	http.HandleFunc("/add_key_pasw", page.Post_add_key_pasw)
 	http.HandleFunc("/login_acaunt", page.Post_login_acaunt)
+	http.HandleFunc("/del_key_pasw", page.Post_del_key_pasw)
 
 	fmt.Printf("started %d\n", port)
 	http.ListenAndServe(portStr, nil)

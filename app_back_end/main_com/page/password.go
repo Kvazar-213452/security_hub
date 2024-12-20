@@ -3,6 +3,7 @@ package page
 import (
 	"bytes"
 	"encoding/json"
+	config_main "head/main_com/config"
 	"head/main_com/func_all"
 	"head/main_com/page_func"
 	"io/ioutil"
@@ -29,6 +30,10 @@ type RequestData_dqwd1 struct {
 	Gmail string `json:"gmail"`
 }
 
+type RequestData5 struct {
+	Data string `json:"data"`
+}
+
 func Post_get_password(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/get_password post")
@@ -41,7 +46,7 @@ func Post_get_password(w http.ResponseWriter, r *http.Request) {
 
 		jsonData, _ := json.Marshal(data)
 
-		resp, _ := http.Post("http://127.0.0.1:5000/get_password", "application/json", bytes.NewBuffer(jsonData))
+		resp, _ := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_get_password, "application/json", bytes.NewBuffer(jsonData))
 		defer resp.Body.Close()
 
 		body, _ := ioutil.ReadAll(resp.Body)
@@ -74,7 +79,33 @@ func Post_add_key_pasw(w http.ResponseWriter, r *http.Request) {
 
 		jsonData, _ := json.Marshal(data1)
 
-		resp, _ := http.Post("http://127.0.0.1:5000/add_key_pasw", "application/json", bytes.NewBuffer(jsonData))
+		resp, _ := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_add_key_pasw, "application/json", bytes.NewBuffer(jsonData))
+		defer resp.Body.Close()
+
+		body, _ := ioutil.ReadAll(resp.Body)
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(string(body))
+	}
+}
+
+func Post_del_key_pasw(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/del_key_pasw post")
+
+		var requestData RequestData5
+		json.NewDecoder(r.Body).Decode(&requestData)
+
+		config := page_func.Get_config_user()
+
+		data1 := RequestData_dqwd{
+			Key:  config.Gmail,
+			Pasw: requestData.Data,
+		}
+
+		jsonData, _ := json.Marshal(data1)
+
+		resp, _ := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_del_key_pasw, "application/json", bytes.NewBuffer(jsonData))
 		defer resp.Body.Close()
 
 		body, _ := ioutil.ReadAll(resp.Body)

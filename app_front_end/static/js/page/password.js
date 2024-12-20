@@ -39,7 +39,8 @@ function get_status_reg() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function (response) {
-           console.log(response)
+            const parsedJson = JSON.parse(response);
+            render_key(parsedJson['key']);
         }
     });
 }
@@ -56,9 +57,37 @@ function add_key_pasw() {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (response) {
-           console.log(response)
+
         }
     });
 }
 
-get_status_reg()
+function render_key(data) {
+    $("#pasw_pkjnf2qewvsd").html(null);
+
+    for (let i = 0; i < data.length; i++) {
+        let text = `
+        <div class="div_pasw_user">
+            <p class="table_pasw">${data[i][0]}</p>
+            <p class="table_pasw1">${data[i][1]}</p>
+            <p onclick="del_key('${data[i][0]}')" class="table_pasw2">del</p>
+        </div>
+        `;
+
+        $("#pasw_pkjnf2qewvsd").append(text);
+    }
+}
+
+function del_key(data) {
+    $.ajax({
+        url: "/del_key_pasw",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: data}),
+        success: function (response) {
+            get_status_reg();
+        }
+    });
+}
+
+get_status_reg();

@@ -161,6 +161,21 @@
 /* wifi page */
 /* wifi page */
 /* wifi page */
+.info_adapter_unix {
+  position: relative;
+  margin-bottom: 10px;
+  width: 80%;
+  height: auto;
+  font-size: 14px;
+  padding: 15px;
+  background-color: #121212; }
+  .info_adapter_unix unix {
+    color: #ff9c4c; }
+  .info_adapter_unix span {
+    color: #fff; }
+  .info_adapter_unix p {
+    color: #68ff9d; }
+
 .circle {
   cursor: pointer;
   transition: 0.2s stroke-width; }
@@ -362,44 +377,6 @@
   .zxbnmewd1:hover {
     color: #68ff9d;
     opacity: 0.6; }
-
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-/* about page */
-.about_div {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #181818;
-  width: 70%;
-  height: 70%;
-  overflow-y: auto;
-  overflow-x: auto;
-  padding: 20px;
-  overflow-x: hidden;
-  overflow-y: auto; }
-
-.about_tetx_main {
-  position: relative;
-  text-align: center;
-  font-size: 30px;
-  color: #68ff9d; }
 
 /* system page */
 /* system page */
@@ -944,14 +921,16 @@
   background-color: #68ff9d;
   color: white;
   border: 2px solid #68ff9d;
+  color: #000000;
   text-align: center;
   line-height: 50px;
+  font-size: 14px;
   cursor: pointer; }
   .file-input-button:hover {
-    background-color: #232323; }
+    opacity: 0.8; }
 
 .ve92191112edddd {
-  font-size: 18px;
+  font-size: 15px;
   margin-bottom: 5px;
   display: inline-block;
   color: #fff; }
@@ -967,14 +946,14 @@
   border-color: #68ff9d;
   outline: none; }
 
-.dqw21fvvvv[type="submit"] {
+.dqw21fvvvv {
   background-color: #1d1d1d;
   color: white;
   border: none;
   padding: 6px;
   cursor: pointer; }
-  .dqw21fvvvv[type="submit"]:hover {
-    background-color: #232323; }
+  .dqw21fvvvv:hover {
+    opacity: 0.5; }
 
 /* password page */
 /* password page */
@@ -998,6 +977,30 @@
   color: #fff; }
   .passw_wqdsc span {
     color: #68ff9d; }
+
+.div_pasw_user {
+  position: relative;
+  margin-bottom: 10px;
+  background-color: #1d1d1d;
+  font-size: 15px;
+  padding: 5px;
+  height: 20px; }
+
+.table_pasw {
+  color: #68ff9d;
+  position: absolute; }
+
+.table_pasw1 {
+  position: absolute;
+  left: 30%; }
+
+.table_pasw2 {
+  position: absolute;
+  right: 1%;
+  color: #ff5c5c;
+  cursor: pointer; }
+  .table_pasw2:hover {
+    opacity: 0.8; }
 
 .unico_dqwcas[type="checkbox"] {
   appearance: none;

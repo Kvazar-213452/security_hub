@@ -8,7 +8,7 @@ let div_1 = `
     <input type="text" class="saert45trgf bottom" id="register_password" placeholder="Password">
     <br><br>
     <button class="zxbnmewd1" onclick="send_data()">Send data</button>
-    <button class="zxbnmewd1" onclick="add_div()">Залогінитись</button>
+    <button class="zxbnmewd1" onclick="login_page()">Залогінитись</button>
 `;
 
 let div_2 = `
@@ -17,7 +17,7 @@ let div_2 = `
     <input type="text" class="saert45trgf bottom" id="register_code" placeholder="Gimail">
     <br><br>
     <button class="zxbnmewd1" onclick="send_code()">Send data</button>
-    <button class="zxbnmewd1" onclick="add_div()">Залогінитись</button>
+    <button class="zxbnmewd1" onclick="login_page()">Залогінитись</button>
 `;
 
 let div_3 = `
@@ -28,10 +28,18 @@ let div_3 = `
     <input type="text" class="saert45trgf bottom" id="register_password" placeholder="Password">
     <br><br>
     <button class="zxbnmewd1" onclick="login()">Send data</button>
-    <button class="zxbnmewd1" onclick="add_div()">Залогінитись</button>
+    <button class="zxbnmewd1" onclick="reg_page()">Залогінитись</button>
 `;
 
-$('#sect_1').html(div_3);
+$('#sect_1').html(div_1);
+
+function login_page() {
+    $('#sect_1').html(div_3);
+}
+
+function reg_page() {
+    $('#sect_1').html(div_1);
+}
 
 function send_data() {
     let data = {
@@ -46,7 +54,7 @@ function send_data() {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (response) {
-            $('.server_0312edcccc').html(div_2);
+            $('#sect_1').html(div_2);
         }
     });
 }
@@ -62,8 +70,15 @@ function send_code() {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (response) {
-            console.log(response)
-            $('.server_0312edcccc').html(div_2);
+            if (response == 1) {
+                window.parent.postMessage("reload", "*");
+            } else {
+                if (lang_global === "uk") {
+                    message_window('Невірний пароль');
+                } else if (lang_global === "en") {
+                    message_window('Invalid password');
+                }
+            }
         }
     });
 }
@@ -80,7 +95,15 @@ function login() {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (response) {
-            console.log(response)
+            if (response == 1) {
+                window.parent.postMessage("reload", "*");
+            } else {
+                if (lang_global === "uk") {
+                    message_window('Невірний пароль');
+                } else if (lang_global === "en") {
+                    message_window('Invalid password');
+                }
+            }
         }
     });
 }

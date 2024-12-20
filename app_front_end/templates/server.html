@@ -1,35 +1,53 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Файловий сервер</title>
-</head>
+<html style="height: 100%"></html>
+   <head>
+       <meta charset="utf-8">
+       <title>SPX</title>
+       <link rel="stylesheet" href="/static/css/main.css"/>
+       <link rel="stylesheet" href="/static/css/global.css"/>
+       <style id="style_dudqdc"></style>
+   </head>
 <body>
-  <div class="padoge">
-    <h2>Завантажити файл</h2>
-    <div class="file-input-container">
-      <input type="file" name="file" id="file" required>
-      <label for="file" class="file-input-button">Виберіть файл</label>
+  <div class="main_div">
+    <br>
+    <p id="lang_system_vfd8723ed" class="name_page"># <span></span></p>
+    <p id="lang_system_verdfvcww" class="description_page"></p>
+    <br>
+    <div class="fewfedddd">
+        <div onclick="change_menu_page(6, 0)" id="server_0jdccc" class="dwqdwcccc2"></div>
     </div>
-    <label for="password">Пароль для доступу до файлу:</label>
-    <input type="text" name="password" id="password" required>
-    <br><br>
-    <button type="button" id="submit-btn">Завантажити</button>
+    <br>
+    <div class="imfowdwqdd">
+      <div class="padoge">
+        <h2 id="sever_pi913ofv"></h2>
+        <div class="file-input-container">
+            <input type="file" name="file" id="file" required>
+            <label for="file" id="server_ddqd212dqwas" class="file-input-button"></label>
+        </div>
+        <label class="ve92191112edddd" id="server_099kfvv" for="password"></label>
+        <input class="ooo33ff3cv2122" type="text" name="password" id="password" required>
+        <br><br>
+        <button class="dqw21fvvvv server_0312edcccc" type="button" id="submit-btn"></button>
+      </div>
+    </div>
+    <div class="imfowdwqdd">
+      <div class="padoge">
+      <h2 id="server_0ij2p3ve"></h2>
+      <br>
+      <label id="server_Pfj23wes" for="searchPassword"></label>
+      <input class="ooo33ff3cv2122" type="text" name="searchPassword" id="searchPassword" required>
+      <br><br>
+      <button class="dqw21fvvvv server_0312edcccc" type="button" id="search-btn"></button>
+    </div>
   </div>
-  <br>
-  <div class="padoge">
-    <h2>Пошук файлу за паролем</h2>
-    <label for="searchPassword">Пароль:</label>
-    <input type="text" name="searchPassword" id="searchPassword" required>
-    <br><br>
-    <button type="button" id="search-btn">Знайти файл</button>
-    <div id="searchResult"></div>
   </div>
   <script src="/static/jquery.min.js"></script>
   <script src="/static/js/config.js"></script>
   <script src="/static/js/page/lang.js"></script>
   <script src="/static/js/global.js"></script>
   <script src="/static/js/page/server.js"></script>
+  <script>
+    change_lang_now(0);
+    change_menu_page(6, 0)
+  </script>
 </body>
 </html>

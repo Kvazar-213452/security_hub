@@ -4,11 +4,29 @@ function page_iframe(url, btn) {
     button_hover(btn);
 }
 
+function get_status_reg() {
+    $.ajax({
+        url: "/reg_status",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            reg_login = response['acsses']
+
+            if (reg_login == 1) {
+                $("#btn10").hide();
+            }
+        }
+    });
+}
+
 $(window).on("message", function(event) {
     const receivedData = event.originalEvent.data;
 
     if (receivedData === "lang_change") {
         change_lang_now(1);
+    } else if (receivedData === "reload") {
+        location.reload();
     }
 });
 
@@ -40,4 +58,5 @@ function render_main_start() {
 
     page_iframe("/register", "btn1");
     change_lang_now(1);
+    get_status_reg();
 }

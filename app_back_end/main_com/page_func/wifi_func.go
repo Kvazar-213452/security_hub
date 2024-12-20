@@ -226,7 +226,7 @@ func Get_info_packages_wifi() []byte {
 
 	cmd.Run()
 
-	filePath := "./" + config_main.Library_folder + config_main.File_data_exe_wifi_packege
+	filePath := "./" + config_main.Library_folder + "/" + config_main.File_data_exe_wifi_packege
 	xmlFile, _ := os.Open(filePath)
 
 	defer xmlFile.Close()

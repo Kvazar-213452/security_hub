@@ -160,6 +160,38 @@ def login():
 
     except Exception as e:
         return jsonify({"status": "0", "error": str(e)}), 200
+    
+@app.route('/del_key_pasw', methods=['POST'])
+def del_key_pasw():
+    try:
+        print(request.get_json())
+        user_data = request.get_json()
+        gamil = user_data.get("key")
+        value = user_data.get("pasw")
+
+        if not gamil or not value:
+            return jsonify({"message": "Gmail або value не надано"}), 200
+
+        with open('db.json', 'r') as f:
+            db_data = json.load(f)
+
+        for entry in db_data:
+            if entry.get("gmail") == gamil:
+                key_data = entry.get("key", [])
+
+                key_data = [item for item in key_data if item[0] != value]
+
+                entry["key"] = key_data
+
+                with open('db.json', 'w') as f:
+                    json.dump(db_data, f, indent=4)
+
+                return jsonify({"status": "1"}), 200
+
+        return jsonify({"status": "0"}), 200
+
+    except Exception as e:
+        return jsonify({"status": "0"}), 500
 
 if __name__ == "__main__":
     CORS(app)

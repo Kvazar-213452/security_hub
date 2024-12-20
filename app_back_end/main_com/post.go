@@ -183,7 +183,7 @@ func Post_reg_status(w http.ResponseWriter, r *http.Request) {
 			Name:   config.Name,
 			Pasw:   config.Pasw,
 			Gmail:  config.Gmail,
-			Acsses: "1",
+			Acsses: config.Acsses,
 		}
 
 		w.Header().Set("Content-Type", "application/json")

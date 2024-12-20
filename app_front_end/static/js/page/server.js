@@ -4,7 +4,11 @@ $('#submit-btn').click(function () {
   const file = fileInput.files[0];
 
   if (!file || !password) {
-    alert('Будь ласка, виберіть файл і введіть пароль.');
+    if (lang_global === "uk") {
+      message_window('Заповніть всі поля'); 
+    } else if (lang_global === "en") {
+        message_window('Fill in all fields'); 
+    }
     return;
   }
 
@@ -19,12 +23,12 @@ $('#submit-btn').click(function () {
     processData: false,
     contentType: false,
     success: function () {
-      alert('Файл успішно завантажено');
-    },
-    error: function (xhr, status, error) {
-      console.error('Error:', error);
-      alert('Сталася помилка при завантаженні файлу');
-    },
+      if (lang_global === "uk") {
+        message_window('Файл успішно завантажено'); 
+      } else if (lang_global === "en") {
+          message_window('File uploaded successfully'); 
+      }
+    }
   });
 });
 
@@ -51,12 +55,12 @@ $('#search-btn').click(function () {
         link.download = data.name;
         link.click();
       } else {
-        $('#searchResult').text('Файл не знайдено.');
+        if (lang_global === "uk") {
+          message_window('Файл не знайдено'); 
+        } else if (lang_global === "en") {
+            message_window('File not found'); 
+        }
       }
-    },
-    error: function (xhr, status, error) {
-      console.error('Error:', error);
-      $('#searchResult').text('Сталася помилка при пошуку файлу.');
-    },
+    }
   });
 });

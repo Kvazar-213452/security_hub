@@ -12,7 +12,8 @@ let mas_sonar = [
     ['system_0jdccc', 'system_0jdccc1'],
     ['dwdc21e12dq', 'dwdc21e12dq1'],
     ['settings_1_btn_page', 'settings_1_btn_page1'],
-    ['pasword_1_btn_page', 'pasword_1_btn_page1']
+    ['pasword_1_btn_page', 'pasword_1_btn_page1'],
+    ['server_0jdccc']
 ];
 
 const unsafeProtocols = ["WEP", "WPA", "HTTP", "FTP", "Telnet", "RDP", "SNMP", "ICMP"];
@@ -20,6 +21,7 @@ const unsafeProtocols = ["WEP", "WPA", "HTTP", "FTP", "Telnet", "RDP", "SNMP", "
 let antivirus_flash_drive;
 let lang_global;
 let data_json_exe;
+let reg_login;
 
 let data_cleaning = {
     backup: 0,

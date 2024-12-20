@@ -163,7 +163,6 @@ function get_network_now(callback) {
     });
 }
 
-
 function get_package_data() {
     $.ajax({
         url: "/get_pacage_info",
@@ -184,20 +183,15 @@ function whrite_data_adapter(response) {
 
     for (let i = 0; i < data.length; i++) {
         let tetx = `
-        <br><br><br>
-        ${data[i]["Name"]}
-        <br>
-        ${data[i]["Description"]}
-        <br>
-        ${data[i]["Status"]}
-        <br>
-        ${data[i]["BytesSent"]}
-        <br>
-        ${data[i]["BytesReceived"]}
-        <br>
-        ${data[i]["PacketsSent"]}
-        <br>
-        ${data[i]["PacketsReceived"]}
+            <div class="info_adapter_unix">
+                <p><unix>Name = <span>${data[i]["Name"]}</span></unix></p>
+                <p>Description = <span>${data[i]["Description"]}</span></p>
+                <p>Status = <span>${data[i]["Status"]}</span></p>
+                <p>BytesSent = <span>${data[i]["BytesSent"]}</span></p>
+                <p>BytesReceived = <span>${data[i]["BytesReceived"]}</span></p>
+                <p>PacketsSent = <span>${data[i]["PacketsSent"]}</span></p>
+                <p>PacketsReceived = <span>${data[i]["PacketsReceived"]}</span></p>
+            </div>
         `;
 
         $("#wifi_data_packege").append(tetx);
