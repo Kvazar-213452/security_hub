@@ -19,6 +19,8 @@ def save_to_db(data):
     except (FileNotFoundError, json.JSONDecodeError):
         db_data = []
 
+    data['key'] = []
+
     if not is_data_exists(data, db_data):
         db_data.append(data)
 

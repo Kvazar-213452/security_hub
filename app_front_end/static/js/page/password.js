@@ -43,3 +43,22 @@ function get_status_reg() {
         }
     });
 }
+
+function add_key_pasw() {
+    let data = {
+        key: $('#password_d1qwasz').val(),
+        pasw: $('#password_d1qwasz1').val()
+    }
+
+    $.ajax({
+        url: "/add_key_pasw",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (response) {
+           console.log(response)
+        }
+    });
+}
+
+get_status_reg()

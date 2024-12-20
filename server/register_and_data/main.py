@@ -87,6 +87,58 @@ def save_user():
 def version():
     return jsonify({'version': config_data["version"]})
 
+@app.route('/get_password', methods=['POST'])
+def get_password():
+    try:
+        user_data = request.get_json()
+        gmail = user_data.get("gmail")
+
+        if not gmail:
+            return jsonify({"message": "Gmail не надано"}), 400
+
+        with open('db.json', 'r') as f:
+            db_data = json.load(f)
+
+        for entry in db_data:
+            if entry.get("gmail") == gmail:
+                return jsonify({"key": entry.get("key")}), 200
+
+        return jsonify({"message": "Користувача з таким gmail не знайдено"}), 404
+
+    except Exception as e:
+        return jsonify({"message": "Помилка при обробці запиту", "error": str(e)}), 500
+    
+@app.route('/add_key_pasw', methods=['POST'])
+def add_key_pasw():
+    try:
+        user_data = request.get_json()
+        gmail = user_data.get("gmail")
+        key = user_data.get("key")
+        pasw = user_data.get("pasw")
+
+        if not gmail:
+            return jsonify({"message": "Gmail не надано"}), 400
+
+        with open('db.json', 'r') as f:
+            db_data = json.load(f)
+
+        for entry in db_data:
+            if entry.get("gmail") == gmail:
+                if isinstance(entry.get("key"), list):
+                    entry["key"].append([key, pasw])
+                else:
+                    entry["key"] = [[key, pasw]]
+
+                with open('db.json', 'w') as f:
+                    json.dump(db_data, f, indent=4)
+
+                return jsonify({"message": "Дані успішно оновлені", "key": entry.get("key")}), 200
+
+        return jsonify({"message": "Користувача з таким gmail не знайдено"}), 404
+
+    except Exception as e:
+        return jsonify({"message": "Помилка при обробці запиту", "error": str(e)}), 500
+
 if __name__ == "__main__":
     CORS(app)
     app.run(debug=True)
