@@ -4,28 +4,10 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
-	config_main "head/main_com/config"
-	"head/main_com/func_all"
-	"io/ioutil"
+	"log"
 	"os/exec"
 	"regexp"
 	"strings"
-	"syscall"
-	"unsafe"
-
-	"golang.org/x/sys/windows"
-)
-
-var (
-	user32                   = windows.NewLazySystemDLL("user32.dll")
-	procEnumWindows          = user32.NewProc("EnumWindows")
-	procGetWindowTextW       = user32.NewProc("GetWindowTextW")
-	procGetWindowTextLengthW = user32.NewProc("GetWindowTextLengthW")
-
-	kernel32             = syscall.NewLazyDLL("kernel32.dll")
-	getSystemTimesProc   = kernel32.NewProc("GetSystemTimes")
-	psapi                = syscall.NewLazyDLL("psapi.dll")
-	getProcessMemoryInfo = psapi.NewProc("GetProcessMemoryInfo")
 )
 
 type SystemInfo struct {
@@ -63,26 +45,39 @@ type SystemInfo struct {
 }
 
 func Get_data_os() string {
-	exePath := config_main.System_info_exe
-	workingDir := config_main.Library_folder
-	dataFilePath := "./" + config_main.Library_folder + "/data/" + config_main.File_2_exe_data
+	// Виконання команд для збору інформації про систему
+	cmd := exec.Command("uname", "-a")
+	osInfo, err := cmd.Output()
+	if err != nil {
+		log.Fatalf("Error running uname: %v", err)
+	}
 
-	cmd := exec.Command(exePath)
-	cmd.Dir = workingDir
+	// Отримання інформації про пам'ять
+	cmd = exec.Command("free", "-b")
+	memInfo, err := cmd.Output()
+	if err != nil {
+		log.Fatalf("Error running free: %v", err)
+	}
 
-	cmd.Run()
+	// Отримання часу роботи системи
+	cmd = exec.Command("uptime", "-p")
+	uptimeInfo, err := cmd.Output()
+	if err != nil {
+		log.Fatalf("Error running uptime: %v", err)
+	}
 
-	data, _ := ioutil.ReadFile(dataFilePath)
+	// Створюємо структуровану інформацію для JSON
+	sysInfo := SystemInfo{}
+	sysInfo.OS.Name = string(osInfo)
+	sysInfo.Memory.FreeMemory = int64(memInfo[0]) // Замість цього, треба парсити результат команди
+	sysInfo.SystemUptime.Seconds = int(uptimeInfo[0])
 
-	var sysInfo SystemInfo
-	xml.Unmarshal(data, &sysInfo)
-
+	// Маршалимо в JSON
 	jsonData, _ := json.MarshalIndent(sysInfo, "", "  ")
-	func_all.Clear_file(config_main.Global_phat + "\\" + config_main.Library_folder + "\\data\\" + config_main.File_2_exe_data)
-
 	return string(jsonData)
 }
 
+// Функція для визначення, чи є програма у системі
 func isValidProgramWindow(title string) bool {
 	title = strings.TrimSpace(title)
 	if title == "" {
@@ -90,10 +85,7 @@ func isValidProgramWindow(title string) bool {
 	}
 
 	systemWords := []string{
-		"Default IME", "MSCTFIME UI", "Program Manager", "Task Host Window",
-		"DWM Notification Window", "Service", "Wnd", "Monitor", "Notification",
-		"Input", "Webview", "Tray", "Window", "Cmd.exe", "Flyout",
-		"Settings", "Indicator", "Host", "UxdService", "NvSvc", "Provider",
+		"System", "Task", "Window", "Notification",
 	}
 	for _, word := range systemWords {
 		if strings.Contains(title, word) {
@@ -101,102 +93,54 @@ func isValidProgramWindow(title string) bool {
 		}
 	}
 
-	systemRegex := regexp.MustCompile(`(?i)(window|helper|service|icon|notification|task|tray|cmd\.exe|\.exe)$`)
+	systemRegex := regexp.MustCompile(`(?i)(window|helper|service|icon|notification)$`)
 	return !systemRegex.MatchString(title)
 }
 
-func enumWindows(callback func(hwnd syscall.Handle) bool) {
-	cb := syscall.NewCallback(func(hwnd syscall.Handle, lparam uintptr) uintptr {
-		if callback(hwnd) {
-			return 1
-		}
-		return 0
-	})
-	procEnumWindows.Call(cb, 0)
-}
-
+// Збирання інформації про програми
 func App_open() string {
 	content := ""
-	windowTitles := make(map[string]bool)
-
-	enumWindows(func(hwnd syscall.Handle) bool {
-		length, _, _ := procGetWindowTextLengthW.Call(uintptr(hwnd))
-		if length > 0 {
-			buffer := make([]uint16, length+1)
-			procGetWindowTextW.Call(uintptr(hwnd), uintptr(unsafe.Pointer(&buffer[0])), uintptr(len(buffer)))
-			windowTitle := syscall.UTF16ToString(buffer)
-
-			if isValidProgramWindow(windowTitle) {
-				if _, exists := windowTitles[windowTitle]; !exists {
-					windowTitles[windowTitle] = true
-					content += windowTitle + "\n"
-				}
-			}
-		}
-		return true
-	})
-
-	return string(content)
-}
-
-type Filetime struct {
-	LowDateTime  uint32
-	HighDateTime uint32
-}
-
-//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now
-//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now
-//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now
-
-func getCPUUsage() string {
-	var idleTime, kernelTime, userTime Filetime
-
-	ret, _, err := getSystemTimesProc.Call(
-		uintptr(unsafe.Pointer(&idleTime)),
-		uintptr(unsafe.Pointer(&kernelTime)),
-		uintptr(unsafe.Pointer(&userTime)),
-	)
-	if ret == 0 {
-		return fmt.Sprintf("Failed to get system times: %v", err)
+	// Тут можна використати команду для перегляду відкритих вікон
+	cmd := exec.Command("wmctrl", "-l")
+	windowTitles, err := cmd.Output()
+	if err != nil {
+		log.Fatalf("Error running wmctrl: %v", err)
 	}
 
-	idle := uint64(idleTime.HighDateTime)<<32 | uint64(idleTime.LowDateTime)
-	kernel := uint64(kernelTime.HighDateTime)<<32 | uint64(kernelTime.LowDateTime)
-	user := uint64(userTime.HighDateTime)<<32 | uint64(userTime.LowDateTime)
+	// Парсимо вивід та перевіряємо
+	lines := strings.Split(string(windowTitles), "\n")
+	for _, line := range lines {
+		if isValidProgramWindow(line) {
+			content += line + "\n"
+		}
+	}
 
-	totalTime := kernel + user
-	cpuUsage := (1.0 - float64(idle)/float64(totalTime)) * 100.0
+	return content
+}
 
-	return fmt.Sprintf("%.2f%%", cpuUsage)
+func getCPUUsage() string {
+	cmd := exec.Command("top", "-bn1", "|", "grep", "\"Cpu(s)\"")
+	output, err := cmd.Output()
+	if err != nil {
+		log.Fatalf("Error getting CPU usage: %v", err)
+	}
+
+	// Парсимо інформацію про CPU з виводу команди top
+	usage := strings.Split(string(output), ",")[0]
+	return fmt.Sprintf("CPU Usage: %s", usage)
 }
 
 func getMemoryUsage() string {
-	var memCounters struct {
-		cb                         uint32
-		PageFaultCount             uint32
-		PeakWorkingSetSize         uintptr
-		WorkingSetSize             uintptr
-		QuotaPeakPagedPoolUsage    uintptr
-		QuotaPagedPoolUsage        uintptr
-		QuotaPeakNonPagedPoolUsage uintptr
-		QuotaNonPagedPoolUsage     uintptr
-		PagefileUsage              uintptr
-		PeakPagefileUsage          uintptr
+	cmd := exec.Command("free", "-m")
+	output, err := cmd.Output()
+	if err != nil {
+		log.Fatalf("Error getting memory usage: %v", err)
 	}
 
-	handle, _ := syscall.GetCurrentProcess()
-
-	ret, _, err := getProcessMemoryInfo.Call(
-		uintptr(handle),
-		uintptr(unsafe.Pointer(&memCounters)),
-		uintptr(unsafe.Sizeof(memCounters)),
-	)
-	if ret == 0 {
-		return fmt.Sprintf("Failed to get memory info: %v", err)
-	}
-
-	memoryUsageMB := float64(memCounters.WorkingSetSize) / (1024 * 1024)
-	return fmt.Sprintf("%.2f MB", memoryUsageMB)
+	// Аналізуємо вивід команди для отримання пам'яті
+	memInfo := strings.Split(string(output), "\n")[1]
+	memoryUsage := strings.Fields(memInfo)[2]
+	return fmt.Sprintf("Memory Usage: %s MB", memoryUsage)
 }
 
 func Get_all_data_now() string {

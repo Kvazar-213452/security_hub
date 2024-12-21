@@ -1,9 +1,7 @@
 package page_func
 
 import (
-	config_main "head/main_com/config"
 	"os/exec"
-	"syscall"
 )
 
 func Cleanup() {
@@ -14,11 +12,11 @@ func Cleanup() {
 
 	cmd.Run()
 
-	cleanupDLL, _ := syscall.LoadDLL(config_main.Cleanup_dll)
-	defer cleanupDLL.Release()
+	// cleanupDLL, _ := syscall.LoadDLL(config_main.Cleanup_dll)
+	// defer cleanupDLL.Release()
 
-	cleanupProc, _ := cleanupDLL.FindProc("cleanup")
-	cleanupProc.Call()
+	// cleanupProc, _ := cleanupDLL.FindProc("cleanup")
+	// cleanupProc.Call()
 }
 
 func Cleanup_wifi() {

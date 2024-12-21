@@ -7,10 +7,10 @@ import (
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
 	"io/ioutil"
+	"log"
 	"os"
 	"os/exec"
 	"strings"
-	"syscall"
 )
 
 type WifiInfo struct {
@@ -220,23 +220,42 @@ func Get_connected_SSID() string {
 }
 
 func Get_info_packages_wifi() []byte {
+	// Виконуємо команду без Windows-специфічних параметрів
 	cmd := exec.Command(config_main.Wifi_packege_data_exe)
 	cmd.Dir = config_main.Library_folder
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 
-	cmd.Run()
+	// Виконуємо команду і чекаємо на її завершення
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal("Error running command: ", err)
+	}
 
+	// Відкриваємо файл з даними, які ми хочемо обробити
 	filePath := "./" + config_main.Library_folder + "/" + config_main.File_data_exe_wifi_packege
-	xmlFile, _ := os.Open(filePath)
-
+	xmlFile, err := os.Open(filePath)
+	if err != nil {
+		log.Fatal("Error opening file: ", err)
+	}
 	defer xmlFile.Close()
 
-	byteValue, _ := ioutil.ReadAll(xmlFile)
+	// Читаємо всі байти з файлу
+	byteValue, err := ioutil.ReadAll(xmlFile)
+	if err != nil {
+		log.Fatal("Error reading file: ", err)
+	}
 
+	// Парсимо XML в структуру
 	var networkInterfaces NetworkInterfaces1
+	err = xml.Unmarshal(byteValue, &networkInterfaces)
+	if err != nil {
+		log.Fatal("Error unmarshaling XML: ", err)
+	}
 
-	xml.Unmarshal(byteValue, &networkInterfaces)
-	jsonData, _ := json.MarshalIndent(networkInterfaces, "", "  ")
+	// Перетворюємо в JSON і повертаємо результат
+	jsonData, err := json.MarshalIndent(networkInterfaces, "", "  ")
+	if err != nil {
+		log.Fatal("Error marshaling to JSON: ", err)
+	}
 
 	return jsonData
 }
