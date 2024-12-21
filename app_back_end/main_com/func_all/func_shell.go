@@ -78,7 +78,7 @@ func StartShellWeb(port int, type_ int, version_ int) *exec.Cmd {
 			htmlContent,
 		}
 
-		cmd = exec.Command(config_main.Core_web, args...)
+		cmd = exec.Command("Dwdqwwww", args...)
 	} else if type_ == 1 {
 		os.Chdir("NM2")
 

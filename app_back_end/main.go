@@ -89,7 +89,6 @@ func main() {
 	http.HandleFunc("/version_get", main_com.Post_version_get)
 	http.HandleFunc("/send_email", page.Post_send_email)
 	http.HandleFunc("/code_verefic", page.Post_code_verefic)
-	http.HandleFunc("/get_pacage_info", page.Post_get_pacage_info_wifi)
 	http.HandleFunc("/post_file_server", page.Post_post_file)
 	http.HandleFunc("/search_server", page.Post_search_server)
 	http.HandleFunc("/version_get_server", main_com.Post_version_get_server)

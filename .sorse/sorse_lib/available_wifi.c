@@ -1,76 +1,54 @@
 #include <stdio.h>
-#include <windows.h>
-#include <wlanapi.h>
-#include <objbase.h>
-#include <initguid.h>
+#include <stdlib.h>
+#include <string.h>
 
-#pragma comment(lib, "wlanapi.lib")
-#pragma comment(lib, "ole32.lib")
-
-int main() {
-    HANDLE hClient = NULL;
-    DWORD dwVersion = 0;
-    DWORD dwResult = 0;
-    
+void scan_wifi_networks() {
     FILE *file = fopen("data/available_wifi.xml", "w");
     if (file == NULL) {
         printf("Не вдалося відкрити файл для запису.\n");
-        return 1;
+        return;
     }
 
     fprintf(file, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
     fprintf(file, "<Networks>\n");
 
-    if (WlanOpenHandle(2, NULL, &dwVersion, &hClient) != ERROR_SUCCESS) {
-        fprintf(file, "Помилка при відкритті ручки до клієнта WLAN.\n");
+    // Run iwlist to get the list of available networks
+    FILE *fp = popen("sudo iwlist scanning", "r");
+    if (fp == NULL) {
+        fprintf(file, "Помилка при виконанні сканування мереж.\n");
         fclose(file);
-        return 1;
+        return;
     }
 
-    PWLAN_INTERFACE_INFO_LIST pIfList = NULL;
-    if (WlanEnumInterfaces(hClient, NULL, &pIfList) != ERROR_SUCCESS) {
-        fprintf(file, "Помилка при отриманні списку інтерфейсів.\n");
-        fclose(file);
-        return 1;
-    }
+    char line[256];
+    char ssid[256];
+    int signalQuality = 0;
 
-    for (DWORD i = 0; i < pIfList->dwNumberOfItems; i++) {
-        PWLAN_AVAILABLE_NETWORK_LIST pNetworkList = NULL;
-
-        if (WlanGetAvailableNetworkList(hClient, &pIfList->InterfaceInfo[i].InterfaceGuid, 0, NULL, &pNetworkList) != ERROR_SUCCESS) {
-            fprintf(file, "Помилка при отриманні списку доступних мереж.\n");
-            continue;
+    // Parse the output of iwlist
+    while (fgets(line, sizeof(line), fp) != NULL) {
+        if (strstr(line, "ESSID:") != NULL) {
+            // Extract SSID
+            sscanf(line, " ESSID:\"%[^\"]\"", ssid);
         }
+        if (strstr(line, "Signal level=") != NULL) {
+            // Extract signal strength
+            sscanf(line, " Signal level=%d", &signalQuality);
 
-        for (DWORD j = 0; j < pNetworkList->dwNumberOfItems; j++) {
-            WLAN_AVAILABLE_NETWORK network = pNetworkList->Network[j];
-
+            // Write the network info to the file
             fprintf(file, "  <Network>\n");
-            fprintf(file, "    <SSID>");
-            for (DWORD k = 0; k < network.dot11Ssid.uSSIDLength; k++) {
-                fprintf(file, "%c", network.dot11Ssid.ucSSID[k]);
-            }
-            fprintf(file, "</SSID>\n");
-
-            fprintf(file, "    <SignalQuality>%d</SignalQuality>\n", network.wlanSignalQuality);
+            fprintf(file, "    <SSID>%s</SSID>\n", ssid);
+            fprintf(file, "    <SignalQuality>%d</SignalQuality>\n", signalQuality);
             fprintf(file, "  </Network>\n");
         }
-
-        if (pNetworkList != NULL) {
-            WlanFreeMemory(pNetworkList);
-        }
     }
 
-    if (pIfList != NULL) {
-        WlanFreeMemory(pIfList);
-    }
-
-    if (hClient != NULL) {
-        WlanCloseHandle(hClient, NULL);
-    }
+    fclose(fp);
 
     fprintf(file, "</Networks>\n");
     fclose(file);
+}
 
+int main() {
+    scan_wifi_networks();
     return 0;
 }

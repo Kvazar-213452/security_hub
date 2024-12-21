@@ -59,16 +59,3 @@ func Post_network_now(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "error metod", http.StatusMethodNotAllowed)
 	}
 }
-
-func Post_get_pacage_info_wifi(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/get_pacage_info_wifi post")
-
-		jsonData := page_func.Get_info_packages_wifi()
-
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(string(jsonData))
-	} else {
-		http.Error(w, "error metod", http.StatusMethodNotAllowed)
-	}
-}

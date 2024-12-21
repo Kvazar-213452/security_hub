@@ -1,14 +1,11 @@
 package page_func
 
 import (
-	"encoding/json"
 	"encoding/xml"
 	"fmt"
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
 	"io/ioutil"
-	"log"
-	"os"
 	"os/exec"
 	"strings"
 )
@@ -64,108 +61,32 @@ type Networks struct {
 }
 
 func Get_Wifi_info() (*WifiInfo, error) {
-	ssid := Get_connected_SSID()
-
-	cmd := exec.Command("netsh", "wlan", "show", "profile", "name="+ssid, "key=clear")
-	output, _ := cmd.CombinedOutput()
+	// Використовуємо nmcli для отримання підключених мереж
+	cmd := exec.Command("nmcli", "-t", "-f", "SSID,SECURITY", "device", "wifi", "list")
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return nil, fmt.Errorf("не вдалося отримати інформацію про мережу: %v", err)
+	}
 
 	lines := strings.Split(string(output), "\n")
 	wifiInfo := &WifiInfo{}
 
+	// Проходимо по кожному рядку та перевіряємо наявність потрібних даних
 	for _, line := range lines {
-		if strings.Contains(line, "Profile") {
+		if strings.Contains(line, ":") {
 			parts := strings.Split(line, ":")
 			if len(parts) > 1 {
-				wifiInfo.ProfileName = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Version") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Version = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Type") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Type = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Control options") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.ControlOptions = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "SSID name") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.SSIDName = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Network type") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.NetworkType = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Radio type") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.RadioType = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Vendor extension") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.VendorExtension = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Authentication") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Authentication = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Cipher") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Ciphers = append(wifiInfo.Ciphers, strings.TrimSpace(parts[1]))
-			}
-		} else if strings.Contains(line, "Security key") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.SecurityKey = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Key Content") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.KeyContent = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Cost") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Cost = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Congested") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Congested = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Approaching Data Limit") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.ApproachingLimit = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Over Data Limit") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.OverLimit = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Roaming") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Roaming = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Cost Source") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.CostSource = strings.TrimSpace(parts[1])
+				if strings.Contains(parts[0], "SSID") {
+					wifiInfo.SSIDName = strings.TrimSpace(parts[1])
+				} else if strings.Contains(parts[0], "SECURITY") {
+					// Тут можна обробляти безпеку
+					wifiInfo.Authentication = strings.TrimSpace(parts[1])
+				}
 			}
 		}
 	}
 
+	// Перевірка на наявність SSIDName
 	if wifiInfo.SSIDName == "" {
 		return nil, fmt.Errorf("інформацію про Wi-Fi не знайдено")
 	}
@@ -217,45 +138,4 @@ func Get_connected_SSID() string {
 		return network.SSIDs[0]
 	}
 	return ""
-}
-
-func Get_info_packages_wifi() []byte {
-	// Виконуємо команду без Windows-специфічних параметрів
-	cmd := exec.Command(config_main.Wifi_packege_data_exe)
-	cmd.Dir = config_main.Library_folder
-
-	// Виконуємо команду і чекаємо на її завершення
-	err := cmd.Run()
-	if err != nil {
-		log.Fatal("Error running command: ", err)
-	}
-
-	// Відкриваємо файл з даними, які ми хочемо обробити
-	filePath := "./" + config_main.Library_folder + "/" + config_main.File_data_exe_wifi_packege
-	xmlFile, err := os.Open(filePath)
-	if err != nil {
-		log.Fatal("Error opening file: ", err)
-	}
-	defer xmlFile.Close()
-
-	// Читаємо всі байти з файлу
-	byteValue, err := ioutil.ReadAll(xmlFile)
-	if err != nil {
-		log.Fatal("Error reading file: ", err)
-	}
-
-	// Парсимо XML в структуру
-	var networkInterfaces NetworkInterfaces1
-	err = xml.Unmarshal(byteValue, &networkInterfaces)
-	if err != nil {
-		log.Fatal("Error unmarshaling XML: ", err)
-	}
-
-	// Перетворюємо в JSON і повертаємо результат
-	jsonData, err := json.MarshalIndent(networkInterfaces, "", "  ")
-	if err != nil {
-		log.Fatal("Error marshaling to JSON: ", err)
-	}
-
-	return jsonData
 }

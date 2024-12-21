@@ -5,55 +5,69 @@ import (
 )
 
 func Cleanup() {
-	exePath := "cleanup_script.bat"
-	workingDir := "library"
+	cleanup()
+}
 
-	cmd := exec.Command("powershell.exe", "Start-Process", exePath, "-WorkingDirectory", workingDir, "-Verb", "runAs")
-
+func runDiskCleanup() error {
+	cmd := exec.Command("sudo", "apt-get", "clean")
 	cmd.Run()
 
-	// cleanupDLL, _ := syscall.LoadDLL(config_main.Cleanup_dll)
-	// defer cleanupDLL.Release()
+	cmd = exec.Command("sudo", "apt-get", "autoremove", "--purge", "-y")
+	cmd.Run()
 
-	// cleanupProc, _ := cleanupDLL.FindProc("cleanup")
-	// cleanupProc.Call()
+	cmd = exec.Command("sudo", "rm", "-rf", "/tmp/*")
+	cmd.Run()
+
+	return nil
+}
+
+func emptyRecycleBin() int {
+	cmd := exec.Command("gio", "trash", "--empty")
+	cmd.Run()
+
+	return 1
+}
+
+func cleanup() {
+	emptyRecycleBin()
+	runDiskCleanup()
 }
 
 func Cleanup_wifi() {
-	exePath := "wifi.bat"
+	exePath := "wifi.sh"
 	workingDir := "library/cleanup"
 
-	cmd := exec.Command("cmd", "/C", "start", "/min", exePath)
+	cmd := exec.Command("bash", exePath)
 	cmd.Dir = workingDir
 
 	cmd.Run()
 }
 
 func Cleanup_backup() {
-	exePath := "backup.bat"
+	exePath := "backup.sh"
 	workingDir := "library/cleanup"
 
-	cmd := exec.Command("cmd", "/C", "start", "/min", exePath)
+	cmd := exec.Command("bash", exePath)
 	cmd.Dir = workingDir
 
 	cmd.Run()
 }
 
 func Cleanup_desktop() {
-	exePath := "desktop.bat"
+	exePath := "desktop.sh"
 	workingDir := "library/cleanup"
 
-	cmd := exec.Command("cmd", "/C", "start", "/min", exePath)
+	cmd := exec.Command("bash", exePath)
 	cmd.Dir = workingDir
 
 	cmd.Run()
 }
 
 func Cleanup_doskey() {
-	exePath := "doskey.bat"
+	exePath := "doskey.sh"
 	workingDir := "library/cleanup"
 
-	cmd := exec.Command("cmd", "/C", "start", "/min", exePath)
+	cmd := exec.Command("bash", exePath)
 	cmd.Dir = workingDir
 
 	cmd.Run()
