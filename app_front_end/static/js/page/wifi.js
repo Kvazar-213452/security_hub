@@ -56,6 +56,8 @@ function get_wifi_info_level(data, wifi_now) {
         success: function (response) {
             let i = 0
 
+            console.log(response)
+
             while (i < response.length) {
                 wifi_now = wifi_now.replace(/^"|"$/g, '');
                 if (wifi_now === response[i]['SSID']) {
@@ -124,6 +126,7 @@ function checkUnsafeProtocols() {
 }
 
 function render_all_network_wifi(response, ssid) {
+    console.log(response)
     $('#render_all_wifi').html(null);
 
     for (let i = 0; i < response.length; i++) {

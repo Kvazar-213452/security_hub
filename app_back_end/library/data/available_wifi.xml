@@ -16,8 +16,4 @@
     <SSID>TP-LINK_B138</SSID>
     <SignalQuality>0</SignalQuality>
   </Network>
-  <Network>
-    <SSID>TP-Link_3C28</SSID>
-    <SignalQuality>0</SignalQuality>
-  </Network>
 </Networks>

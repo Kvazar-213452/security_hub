@@ -2,6 +2,7 @@ package page
 
 import (
 	"encoding/json"
+	"fmt"
 	"head/main_com/func_all"
 	"head/main_com/page_func"
 	"net/http"
@@ -37,6 +38,9 @@ func Post_wifi_network(w http.ResponseWriter, r *http.Request) {
 			json.NewEncoder(w).Encode("error")
 			return
 		}
+
+		fmt.Println(networks)
+		fmt.Println("networks")
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(networks)

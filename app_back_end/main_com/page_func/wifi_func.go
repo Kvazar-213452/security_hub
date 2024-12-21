@@ -33,7 +33,7 @@ type WifiInfo struct {
 
 type WifiNetwork struct {
 	SSID   string `json:"ssid"`
-	Signal string `json:"signal"`
+	Signal int    `json:"signal"`
 }
 
 type NetworkInterfaces1 struct {
@@ -94,23 +94,40 @@ func Get_Wifi_info() (*WifiInfo, error) {
 	return wifiInfo, nil
 }
 
-func Get_available_Wifi_networks() ([]WifiNetwork_1, error) {
-	exePath := config_main.Available_wifi_exe
-	workingDir := config_main.Library_folder
-	dataFilePath := "./" + config_main.Library_folder + "/data/" + config_main.File_1_exe_data
+func Get_available_Wifi_networks() ([]WifiNetwork, error) {
+	// Run iwlist to scan networks on wlan0 (or your network interface)
+	cmd := exec.Command("sudo", "iwlist", "wlan0", "scan")
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return nil, fmt.Errorf("error running iwlist command: %v", err)
+	}
 
-	cmd := exec.Command(exePath)
-	cmd.Dir = workingDir
-	cmd.Run()
+	// Parse the output of the iwlist scan
+	var networks []WifiNetwork
+	var ssid string
+	var signalQuality int
 
-	data, _ := ioutil.ReadFile(dataFilePath)
+	lines := strings.Split(string(output), "\n")
+	for _, line := range lines {
+		if strings.Contains(line, "ESSID:") {
+			// Extract SSID
+			ssid = strings.Trim(strings.Split(line, ":")[1], "\"")
+		}
+		if strings.Contains(line, "Signal level=") {
+			// Extract signal strength
+			_, err := fmt.Sscanf(line, " Signal level=%d", &signalQuality)
+			if err == nil {
+				// Add the Wi-Fi network to the list
+				networks = append(networks, WifiNetwork{
+					SSID:   ssid,
+					Signal: signalQuality,
+				})
+			}
+		}
+	}
 
-	var networks Networks
-	xml.Unmarshal(data, &networks)
-
-	func_all.Clear_file(config_main.Global_phat + "\\" + config_main.Library_folder + "\\data\\" + config_main.File_1_exe_data)
-
-	return networks.Networks, nil
+	// Return the JSON data
+	return networks, nil
 }
 
 type Network struct {

@@ -60,43 +60,28 @@ func FindFreePort() int {
 	return addr.Port
 }
 
-func StartShellWeb(port int, type_ int, version_ int) *exec.Cmd {
+func StartShellWeb(port int, version_ int) *exec.Cmd {
 	originalDir, _ := os.Getwd()
 	os.Chdir("../core")
 
 	var cmd *exec.Cmd
 
-	if type_ == 0 {
-		os.Chdir("NM1")
+	os.Chdir("NM2")
 
-		htmlContent := fmt.Sprintf(`%s/main`, strconv.Itoa(port))
+	htmlContent := fmt.Sprintf(`%s/main`, strconv.Itoa(port))
 
-		args := []string{
-			config_main.Name,
-			config_main.Window_h,
-			config_main.Window_w,
-			htmlContent,
-		}
+	var port_ int = FindFreePort()
+	portStr := strconv.Itoa(port_)
 
-		cmd = exec.Command("Dwdqwwww", args...)
-	} else if type_ == 1 {
-		os.Chdir("NM2")
-
-		htmlContent := fmt.Sprintf(`%s/main`, strconv.Itoa(port))
-
-		var port_ int = FindFreePort()
-		portStr := strconv.Itoa(port_)
-
-		args := []string{
-			config_main.Window_w,
-			config_main.Window_h,
-			htmlContent,
-			config_main.Name,
-			portStr,
-		}
-
-		cmd = exec.Command(config_main.Core_web_NM2, args...)
+	args := []string{
+		config_main.Window_w,
+		config_main.Window_h,
+		htmlContent,
+		config_main.Name,
+		portStr,
 	}
+
+	cmd = exec.Command(config_main.Core_web_NM2, args...)
 
 	defer func() {
 		os.Chdir(originalDir)
