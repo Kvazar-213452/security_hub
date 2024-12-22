@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <NetworkInterfaces>
   <Interface>
-    <Name>Подключение по локальной сети* 1</Name>
+    <Name>Підключення через локальну мережу* 9</Name>
     <Description>Microsoft Wi-Fi Direct Virtual Adapter</Description>
     <Status>Down</Status>
     <BytesSent>0</BytesSent>
@@ -10,7 +10,7 @@
     <PacketsReceived>0</PacketsReceived>
   </Interface>
   <Interface>
-    <Name>Подключение по локальной сети* 2</Name>
+    <Name>Підключення через локальну мережу* 10</Name>
     <Description>Microsoft Wi-Fi Direct Virtual Adapter #2</Description>
     <Status>Down</Status>
     <BytesSent>0</BytesSent>
@@ -19,12 +19,12 @@
     <PacketsReceived>0</PacketsReceived>
   </Interface>
   <Interface>
-    <Name>Беспроводная сеть</Name>
-    <Description>Intel(R) Centrino(R) Advanced-N 6235</Description>
+    <Name>Wi-Fi 2</Name>
+    <Description>Realtek RTL8852BE WiFi 6 802.11ax PCIe Adapter</Description>
     <Status>Up</Status>
-    <BytesSent>796284</BytesSent>
-    <BytesReceived>11581616</BytesReceived>
-    <PacketsSent>2482113</PacketsSent>
-    <PacketsReceived>9753124</PacketsReceived>
+    <BytesSent>38074</BytesSent>
+    <BytesReceived>1710677</BytesReceived>
+    <PacketsSent>225317</PacketsSent>
+    <PacketsReceived>1298460</PacketsReceived>
   </Interface>
 </NetworkInterfaces>

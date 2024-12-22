@@ -9,29 +9,25 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
-	"strings"
 	"syscall"
 )
 
-type WifiInfo struct {
-	ProfileName      string   `json:"profile_name"`      // Ім'я профілю
-	Version          string   `json:"version"`           // Версія
-	Type             string   `json:"type"`              // Тип
-	ControlOptions   string   `json:"control_options"`   // Параметри контролю
-	SSIDName         string   `json:"ssid_name"`         // Ім'я SSID
-	NetworkType      string   `json:"network_type"`      // Тип мережі
-	RadioType        string   `json:"radio_type"`        // Тип радіо
-	VendorExtension  string   `json:"vendor_extension"`  // Вендорська розширення
-	Authentication   string   `json:"authentication"`    // Аутентифікація
-	Ciphers          []string `json:"ciphers"`           // Шифри
-	SecurityKey      string   `json:"security_key"`      // Ключ безпеки
-	KeyContent       string   `json:"key_content"`       // Зміст ключа
-	Cost             string   `json:"cost"`              // Вартість
-	Congested        string   `json:"congested"`         // Переповненість
-	ApproachingLimit string   `json:"approaching_limit"` // Підходження до ліміту даних
-	OverLimit        string   `json:"over_limit"`        // Перевищення ліміту даних
-	Roaming          string   `json:"roaming"`           // Роумінг
-	CostSource       string   `json:"cost_source"`       // Джерело вартості
+type WiFiData struct {
+	XMLName        xml.Name `xml:"WiFiData"`
+	Name           string   `xml:"Name"`
+	Description    string   `xml:"Description"`
+	GUID           string   `xml:"GUID"`
+	State          string   `xml:"State"`
+	SignalStrength string   `xml:"SignalStrength"`
+	RadioType      string   `xml:"RadioType"`
+	BSSID          string   `xml:"BSSID"`
+	Frequency      string   `xml:"Frequency"`
+	Channel        string   `xml:"Channel"`
+	SSID           string   `xml:"SSID"`
+	Authentication string   `xml:"Authentication"`
+	Cipher         string   `xml:"Cipher"`
+	ConnectionMode string   `xml:"ConnectionMode"`
+	ProfileType    string   `xml:"ProfileType"`
 }
 
 type WifiNetwork struct {
@@ -63,114 +59,25 @@ type Networks struct {
 	Networks []WifiNetwork_1 `xml:"Network"`
 }
 
-func Get_Wifi_info() (*WifiInfo, error) {
-	ssid := Get_connected_SSID()
+func Get_Wifi_info() (*WiFiData, error) {
+	exePath := "./MyConsoleApp.exe"
+	workingDir := "./library/get_netsh"
+	dataFilePath := "./library/get_netsh/" + "main.xml"
 
-	cmd := exec.Command("netsh", "wlan", "show", "profile", "name="+ssid, "key=clear")
-	output, _ := cmd.CombinedOutput()
+	cmd := exec.Command(exePath)
+	cmd.Dir = workingDir
+	cmd.Run()
 
-	lines := strings.Split(string(output), "\n")
-	wifiInfo := &WifiInfo{}
+	data, _ := ioutil.ReadFile(dataFilePath)
 
-	for _, line := range lines {
-		if strings.Contains(line, "Profile") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.ProfileName = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Version") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Version = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Type") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Type = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Control options") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.ControlOptions = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "SSID name") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.SSIDName = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Network type") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.NetworkType = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Radio type") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.RadioType = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Vendor extension") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.VendorExtension = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Authentication") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Authentication = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Cipher") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Ciphers = append(wifiInfo.Ciphers, strings.TrimSpace(parts[1]))
-			}
-		} else if strings.Contains(line, "Security key") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.SecurityKey = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Key Content") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.KeyContent = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Cost") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Cost = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Congested") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Congested = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Approaching Data Limit") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.ApproachingLimit = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Over Data Limit") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.OverLimit = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Roaming") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.Roaming = strings.TrimSpace(parts[1])
-			}
-		} else if strings.Contains(line, "Cost Source") {
-			parts := strings.Split(line, ":")
-			if len(parts) > 1 {
-				wifiInfo.CostSource = strings.TrimSpace(parts[1])
-			}
-		}
-	}
+	var wifiData WiFiData
+	xml.Unmarshal(data, &wifiData)
 
-	if wifiInfo.SSIDName == "" {
+	if wifiData.SSID == "" {
 		return nil, fmt.Errorf("інформацію про Wi-Fi не знайдено")
 	}
 
-	return wifiInfo, nil
+	return &wifiData, nil
 }
 
 func Get_available_Wifi_networks() ([]WifiNetwork_1, error) {

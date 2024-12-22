@@ -5,6 +5,7 @@ function get_data_wifi_now() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function (response) {
+            response.XMLName = "Null"
             data_wifi_render_now(response)
             checkUnsafeProtocols();
         }

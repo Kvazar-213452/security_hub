@@ -7,6 +7,9 @@ server/data_file/node_modules
 app_back_end/head.exe
 auto_update/head.exe
 
+.sorse/sorse_lib/get_netsh/bin
+.sorse/sorse_lib/get_netsh/obj
+
 .sorse/core_sorse/shell_web_NM2/build
 .sorse/core_sorse/shell_web_NM2/dist
 
