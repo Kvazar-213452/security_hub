@@ -66,7 +66,7 @@ function lang_change_page(lang) {
     $('#bv902u12222225555').html("Language Selection");
     $('#c093efw4fwc2322323rfvv').html("Port");
     $('#duw1291291e12fq').html("Open site");
-    $('#vwf3c3fcew0823qe2k').html("Usage of slots");
+    $('#vwf3c3fcew0823qe2k').html("Usage of style");
     $('#vvw2311323ferererg3g3g3').html("Use");
     $('#vvw2311323ferererg3g3g31').html("Do not use");
     $('#vwf3c3fcew0823qe2k1').html("Style");
@@ -186,7 +186,7 @@ function lang_change_page(lang) {
     $('#bv902u12222225555').html("Вибір мови");
     $('#c093efw4fwc2322323rfvv').html("Порт");
     $('#duw1291291e12fq').html("Відкрити сайт");
-    $('#vwf3c3fcew0823qe2k').html("Використання слотів");
+    $('#vwf3c3fcew0823qe2k').html("Використання стилів");
     $('#vvw2311323ferererg3g3g3').html("Використовувати");
     $('#vvw2311323ferererg3g3g31').html("Не використовувати");
     $('#vwf3c3fcew0823qe2k1').html("Стиль");

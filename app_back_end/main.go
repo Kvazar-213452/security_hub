@@ -43,12 +43,12 @@ func main() {
 
 	var cmd *exec.Cmd
 	if config.Visualization == 1 {
-		cmd = func_all.StartShellWeb(port, config.Shell, config.Version)
+		cmd = func_all.StartShellWeb(port, config.Shell)
 	}
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("../app_front_end/static"))))
 
-	// get
+	// Get
 	http.HandleFunc("/main", main_com.Render_index_page)
 	http.HandleFunc("/settings", main_com.Render_settings_page)
 	http.HandleFunc("/system", main_com.Render_system_page)

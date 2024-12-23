@@ -60,7 +60,7 @@ func FindFreePort() int {
 	return addr.Port
 }
 
-func StartShellWeb(port int, type_ int, version_ int) *exec.Cmd {
+func StartShellWeb(port int, type_ int) *exec.Cmd {
 	originalDir, _ := os.Getwd()
 	os.Chdir("../core")
 

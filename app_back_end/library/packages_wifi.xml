@@ -10,12 +10,21 @@
     <PacketsReceived>0</PacketsReceived>
   </Interface>
   <Interface>
+    <Name>Підключення через локальну мережу* 10</Name>
+    <Description>Microsoft Wi-Fi Direct Virtual Adapter #2</Description>
+    <Status>Down</Status>
+    <BytesSent>0</BytesSent>
+    <BytesReceived>0</BytesReceived>
+    <PacketsSent>0</PacketsSent>
+    <PacketsReceived>0</PacketsReceived>
+  </Interface>
+  <Interface>
     <Name>Wi-Fi 2</Name>
     <Description>Realtek RTL8852BE WiFi 6 802.11ax PCIe Adapter</Description>
     <Status>Up</Status>
-    <BytesSent>44558</BytesSent>
-    <BytesReceived>943090</BytesReceived>
-    <PacketsSent>184378</PacketsSent>
-    <PacketsReceived>793971</PacketsReceived>
+    <BytesSent>4995</BytesSent>
+    <BytesReceived>14515</BytesReceived>
+    <PacketsSent>10871</PacketsSent>
+    <PacketsReceived>18317</PacketsReceived>
   </Interface>
 </NetworkInterfaces>
