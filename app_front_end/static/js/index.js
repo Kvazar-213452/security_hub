@@ -56,7 +56,7 @@ $(document).ready(function() {
 function render_main_start() {
     $('.ump_textw').html(html_1);
 
-    page_iframe("/register", "btn1");
+    page_iframe("/wifi", "btn1");
     change_lang_now(1);
     get_status_reg();
 }

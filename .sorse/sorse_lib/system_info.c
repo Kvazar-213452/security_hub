@@ -44,8 +44,13 @@ void getSystemInfo() {
     if (GetVersionEx((OSVERSIONINFO*)&osvi)) {
         fprintf(file, "  <OS>\n");
         fprintf(file, "    <Name>");
+        
         if (osvi.dwMajorVersion == 10) {
-            fprintf(file, "Windows 10");
+            if (osvi.dwMinorVersion == 0 && osvi.dwBuildNumber >= 22000) {
+                fprintf(file, "Windows 11");
+            } else {
+                fprintf(file, "Windows 10");
+            }
         } else if (osvi.dwMajorVersion == 6) {
             if (osvi.dwMinorVersion == 3) {
                 fprintf(file, "Windows 8.1");

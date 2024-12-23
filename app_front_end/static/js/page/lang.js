@@ -111,6 +111,14 @@ function lang_change_page(lang) {
     $('#settings_1_btn_page1').html("Info app");
     $('#settings_1_btn_page2').html("Account");
     $('#settings_3qecdstrh').html("Log out from the account");
+    $('#register_f2qewds').html("Send data");
+    $('#register_rfrbbbb4').html("Log in");
+    $('#segister_Poif83g').html("Registration");
+    $('#register_o92ufff').html("Login");
+    $('#register_pfi02ifv').html("Register");
+    $('#register_pfj3fv').html("Fill in all fields to register");
+    $('#register_pwfew4fv').html("Insert the code you received on your Gmail into the input");
+    $('#register_pfj3fv1').html("Fill in all fields to log in");
   } else if (lang === "uk") {
     $('#lang_wefsdeeeeee span').html("Вайфай менеджер");
     $('#lang_nfefdfdvghyt').html("Отримайте більше інформації про ваш вайфай");
@@ -226,5 +234,13 @@ function lang_change_page(lang) {
     $('#settings_1_btn_page1').html("Інформація про програму");
     $('#settings_1_btn_page2').html("Обліковий запис");
     $('#settings_3qecdstrh').html("Вийти з акаунта");
+    $('#register_f2qewds').html("Надіслати дані");
+    $('#register_rfrbbbb4').html("Увійти");
+    $('#segister_Poif83g').html("Реєстрація");
+    $('#register_o92ufff').html("Вхід в систему");
+    $('#register_pfi02ifv').html("Зареєструватись");
+    $('#register_pfj3fv').html("Заповніть всі поля для реєстрації");
+    $('#register_pwfew4fv').html("Вставте в поле код, який прийшов на ваш Gmail");
+    $('#register_pfj3fv1').html("Заповніть всі поля для входу в систему");
   }
 };

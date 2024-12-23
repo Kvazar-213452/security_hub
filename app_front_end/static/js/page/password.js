@@ -90,4 +90,20 @@ function del_key(data) {
     });
 }
 
+function get_status_reg_hide_pasw() {
+    $.ajax({
+        url: "/reg_status",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            reg_login = response['acsses']
+
+            if (reg_login == 0) {
+                $("#pasword_1_btn_page1").hide();
+            }
+        }
+    });
+}
+
 get_status_reg();

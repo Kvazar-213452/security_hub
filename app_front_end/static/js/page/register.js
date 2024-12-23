@@ -1,5 +1,7 @@
 let div_1 = `
-    <p class="register_top_text main_color">Регестрація</p>
+    <p class="register_top_text main_color" id="segister_Poif83g"></p>
+    <br>
+    <p id="register_pfj3fv"></p>
     <br>
     <input type="text" class="saert45trgf bottom" id="register_name" placeholder="Name">
     <br>
@@ -7,38 +9,44 @@ let div_1 = `
     <br>
     <input type="text" class="saert45trgf bottom" id="register_password" placeholder="Password">
     <br><br>
-    <button class="zxbnmewd1" onclick="send_data()">Send data</button>
-    <button class="zxbnmewd1" onclick="login_page()">Залогінитись</button>
+    <button class="zxbnmewd1" onclick="send_data()" id="register_f2qewds"></button>
+    <button class="zxbnmewd1" onclick="login_page()" id="register_rfrbbbb4"></button>
 `;
 
 let div_2 = `
-    <p class="register_top_text main_color">Регестрація</p>
+    <p class="register_top_text main_color" id="segister_Poif83g"></p>
+    <br>
+    <p id="register_pwfew4fv"></p>
     <br>
     <input type="text" class="saert45trgf bottom" id="register_code" placeholder="Gimail">
     <br><br>
-    <button class="zxbnmewd1" onclick="send_code()">Send data</button>
-    <button class="zxbnmewd1" onclick="login_page()">Залогінитись</button>
+    <button class="zxbnmewd1" onclick="send_code()" id="register_f2qewds"></button>
+    <button class="zxbnmewd1" onclick="login_page()" id="register_rfrbbbb4"></button>
 `;
 
 let div_3 = `
-    <p class="register_top_text main_color">Регестрація</p>
+    <p class="register_top_text main_color" id="register_o92ufff"></p>
+    <br>
+    <p id="register_pfj3fv1"></p>
     <br>
     <input type="text" class="saert45trgf bottom" id="register_name" placeholder="Name">
     <br>
     <input type="text" class="saert45trgf bottom" id="register_password" placeholder="Password">
     <br><br>
-    <button class="zxbnmewd1" onclick="login()">Send data</button>
-    <button class="zxbnmewd1" onclick="reg_page()">Залогінитись</button>
+    <button class="zxbnmewd1" onclick="login()" id="register_f2qewds"></button>
+    <button class="zxbnmewd1" onclick="reg_page()" id="register_pfi02ifv"></button>
 `;
 
 $('#sect_1').html(div_1);
 
 function login_page() {
     $('#sect_1').html(div_3);
+    change_lang_now(0);
 }
 
 function reg_page() {
     $('#sect_1').html(div_1);
+    change_lang_now(0);
 }
 
 function send_data() {
