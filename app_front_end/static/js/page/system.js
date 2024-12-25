@@ -34,7 +34,6 @@ function write_os_data(response) {
         <div class="div_info_os">
             <p class="name_o">${lang_global === "uk" ? "Операційна система" : (lang_global === "en" ? "Operating System" : "")}</p>
             <p class="desc_o">Name: ${jsonData['OS']['Name']}</p>
-            <p class="desc_o_1">Version: ${jsonData['OS']['Version']}</p>
             <div class="hr_div"></div>
         </div>
         <div class="div_info_os">

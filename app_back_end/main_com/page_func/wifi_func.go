@@ -77,6 +77,8 @@ func Get_Wifi_info() (*WiFiData, error) {
 		return nil, fmt.Errorf("інформацію про Wi-Fi не знайдено")
 	}
 
+	func_all.Clear_file(config_main.Global_phat + "\\" + "library/get_netsh/" + "main.xml")
+
 	return &wifiData, nil
 }
 
@@ -144,6 +146,8 @@ func Get_info_packages_wifi() []byte {
 
 	xml.Unmarshal(byteValue, &networkInterfaces)
 	jsonData, _ := json.MarshalIndent(networkInterfaces, "", "  ")
+
+	func_all.Clear_file(config_main.Global_phat + "\\" + config_main.Library_folder + "/" + config_main.File_data_exe_wifi_packege)
 
 	return jsonData
 }
