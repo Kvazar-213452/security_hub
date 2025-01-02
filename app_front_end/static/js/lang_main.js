@@ -20,6 +20,6 @@ function lang_change_main(lang) {
     $('#btn7 p').html("Перезавантажити");
     $('#btn8 p').html("Сервер");
     $('#btn9 p').html("Паролі");
-    $('#btn10 p').html("Регестрація");
+    $('#btn10 p').html("Реєстрація");
   }
 };
