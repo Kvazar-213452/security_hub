@@ -13,21 +13,22 @@ import (
 )
 
 type WiFiData struct {
-	XMLName        xml.Name `xml:"WiFiData"`
-	Name           string   `xml:"Name"`
-	Description    string   `xml:"Description"`
-	GUID           string   `xml:"GUID"`
-	State          string   `xml:"State"`
-	SignalStrength string   `xml:"SignalStrength"`
-	RadioType      string   `xml:"RadioType"`
-	BSSID          string   `xml:"BSSID"`
-	Frequency      string   `xml:"Frequency"`
-	Channel        string   `xml:"Channel"`
-	SSID           string   `xml:"SSID"`
-	Authentication string   `xml:"Authentication"`
-	Cipher         string   `xml:"Cipher"`
-	ConnectionMode string   `xml:"ConnectionMode"`
-	ProfileType    string   `xml:"ProfileType"`
+	SSID                 string `xml:"SSID"`
+	Authentication       string `xml:"Authentication"`
+	Cipher               string `xml:"Cipher"`
+	Key                  string `xml:"Key"`
+	NetworkType          string `xml:"NetworkType"`
+	RadioType            string `xml:"RadioType"`
+	ConnectionMode       string `xml:"ConnectionMode"`
+	MACRandomization     string `xml:"MACRandomization"`
+	NetworkBroadcast     string `xml:"NetworkBroadcast"`
+	AutoSwitch           string `xml:"AutoSwitch"`
+	Cost                 string `xml:"Cost"`
+	Congested            string `xml:"Congested"`
+	ApproachingDataLimit string `xml:"ApproachingDataLimit"`
+	OverDataLimit        string `xml:"OverDataLimit"`
+	Roaming              string `xml:"Roaming"`
+	CostSource           string `xml:"CostSource"`
 }
 
 type WifiNetwork struct {
@@ -62,7 +63,7 @@ type Networks struct {
 func Get_Wifi_info() (*WiFiData, error) {
 	exePath := "./MyConsoleApp.exe"
 	workingDir := "./library/get_netsh"
-	dataFilePath := "./library/get_netsh/" + "main.xml"
+	dataFilePath := workingDir + "/main.xml"
 
 	cmd := exec.Command(exePath)
 	cmd.Dir = workingDir
@@ -74,7 +75,7 @@ func Get_Wifi_info() (*WiFiData, error) {
 	xml.Unmarshal(data, &wifiData)
 
 	if wifiData.SSID == "" {
-		return nil, fmt.Errorf("інформацію про Wi-Fi не знайдено")
+		return nil, fmt.Errorf("error")
 	}
 
 	func_all.Clear_file(config_main.Global_phat + "\\" + "library/get_netsh/" + "main.xml")
