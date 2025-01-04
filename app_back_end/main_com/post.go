@@ -90,7 +90,7 @@ func Post_get_style(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 
-		data, _ := ioutil.ReadFile("data/style/main.css")
+		data, _ := ioutil.ReadFile("../data/style/main.css")
 
 		decodedString := string(data)
 
