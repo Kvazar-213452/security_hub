@@ -15,6 +15,7 @@ function lang_change_page(lang) {
     $('#dwdc21e12d1').html("Check the file");
     $('#dwdc21e12d2').html("On the background BETA");
     $('#antivirus_894534ffvvv').html("Check");
+    $('#antivirus_894534ffvvv55555').html("Check");
     $('#h3ruiwefer24f').html("Description");
     $('#fewrvw243rgefvcc').html("Background features are enabled automatically at startup");
     $('#vbs612dwes655').html("Monitoring flash drives");
@@ -135,6 +136,7 @@ function lang_change_page(lang) {
     $('#dwdc21e12d1').html("Перевірити файл");
     $('#dwdc21e12d2').html("На фоні BETA");
     $('#antivirus_894534ffvvv').html("Перевірити");
+    $('#antivirus_894534ffvvv55555').html("Перевірити");
     $('#h3ruiwefer24f').html("Опис");
     $('#fewrvw243rgefvcc').html("Функції на фоні вмикаються автоматично при запуску");
     $('#vbs612dwes655').html("Моніторинг флешок");

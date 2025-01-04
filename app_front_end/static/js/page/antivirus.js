@@ -257,7 +257,7 @@ function download_json_data() {
 }
 
 function antivirus_bekend_scan_dir() {
-    let inputValue = $('#fredfwefefe444444v').val();
+    let inputValue = $('#fkwe9203f1d').val();
 
     $.ajax({
         url: '/antivirus_bekend_scan_dir',
@@ -265,7 +265,32 @@ function antivirus_bekend_scan_dir() {
         contentType: 'application/json',
         data: JSON.stringify({dir: inputValue}),
         success: function (response) {
-            console.log(response)
+            render_data_scan_dir(response);
         }
     });
+}
+
+function render_data_scan_dir(response) {
+    console.log(response)
+    console.log(response["checked_files"])
+
+    $("#hfweo23fwesd").html(null)
+
+    if (response["detected_viruses"].length === 0) {
+        if (lang_global === "uk") {
+            $("#hfweo23fwesd").append("Вірусів не знайдено")
+        } else if (lang_global === "en") {
+            $("#hfweo23fwesd").append("No viruses found")
+        }
+    } else {
+        if (lang_global === "uk") {
+            $("#hfweo23fwesd").append("Віруси знайдені")
+        } else if (lang_global === "en") {
+            $("#hfweo23fwesd").append("Viruses found")
+        }
+    }
+
+    for (let i = 0; i < response["total_exe_files"]; i++) {
+
+    }
 }
