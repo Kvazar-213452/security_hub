@@ -255,3 +255,17 @@ function download_json_data() {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 }
+
+function antivirus_bekend_scan_dir() {
+    let inputValue = $('#fredfwefefe444444v').val();
+
+    $.ajax({
+        url: '/antivirus_bekend_scan_dir',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({dir: inputValue}),
+        success: function (response) {
+            console.log(response)
+        }
+    });
+}

@@ -91,3 +91,57 @@ func Post_change_val_gb_usb(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
+
+func Post_antivirus_bekend_scan_dir(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_antivirus_bekend_scan_dir")
+
+		body, _ := io.ReadAll(r.Body)
+
+		var request struct {
+			Dir string `json:"dir"`
+		}
+		json.Unmarshal(body, &request)
+
+		exeFiles := page_func.ScanForExeFiles(request.Dir)
+
+		resultData := map[string]interface{}{
+			"total_exe_files":  len(exeFiles),
+			"checked_files":    []map[string]string{},
+			"detected_viruses": []map[string]string{},
+		}
+
+		for _, exeFile := range exeFiles {
+			fileHash := page_func.FileHash(exeFile)
+
+			result := page_func.CheckHashOnVirusTotal(fileHash)
+
+			checkedFile := map[string]string{
+				"path": exeFile,
+				"hash": fileHash,
+			}
+			resultData["checked_files"] = append(resultData["checked_files"].([]map[string]string), checkedFile)
+
+			if result != nil {
+				if data, ok := result["data"].(map[string]interface{}); ok {
+					if attributes, ok := data["attributes"].(map[string]interface{}); ok {
+						if lastAnalysisStats, ok := attributes["last_analysis_stats"].(map[string]interface{}); ok {
+							if malicious, ok := lastAnalysisStats["malicious"].(float64); ok && malicious > 0 {
+								detectedVirus := map[string]string{
+									"path": exeFile,
+									"hash": fileHash,
+								}
+								resultData["detected_viruses"] = append(resultData["detected_viruses"].([]map[string]string), detectedVirus)
+							}
+						}
+					}
+				}
+			}
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(resultData)
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}

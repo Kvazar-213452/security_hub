@@ -7,7 +7,7 @@ let mmain_buuton = ['btn1', 'btn2', 'btn3', 'btn4', 'btn5', 'btn6', 'btn7', 'btn
 let vvw2311323ferererg3g3g3 = ['vvw2311323ferererg3g3g3', 'vvw2311323ferererg3g3g31'];
 
 let mas_sonar = [
-    ['dwdc21e12d', 'dwdc21e12d1', 'dwdc21e12d2'],
+    ['dwdc21e12d', 'dwdc21e12d1', 'dwdc21e12d2', 'dwdc21e12d3'],
     ['wifi_0jdccc', 'wifi_0jdccc1'],
     ['system_0jdccc', 'system_0jdccc1'],
     ['dwdc21e12dq', 'dwdc21e12dq1'],
