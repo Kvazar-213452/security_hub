@@ -127,7 +127,8 @@
 .div_system_info::-webkit-scrollbar,
 .imfowdwqdd::-webkit-scrollbar,
 .dqwdwec9923ed::-webkit-scrollbar,
-.extension_select::-webkit-scrollbar {
+.extension_select::-webkit-scrollbar,
+.ump_u3fgbbb::-webkit-scrollbar {
   width: 11px;
   background-color: #121212; }
 
@@ -138,7 +139,8 @@
 .div_system_info::-webkit-scrollbar-thumb,
 .imfowdwqdd::-webkit-scrollbar-thumb,
 .dqwdwec9923ed::-webkit-scrollbar-thumb,
-.extension_select::-webkit-scrollbar-thumb {
+.extension_select::-webkit-scrollbar-thumb,
+.ump_u3fgbbb::-webkit-scrollbar-thumb {
   background-color: #1d1d1d; }
 
 .modal_rev_button_d {
@@ -631,7 +633,62 @@
 /* antivirus page */
 .scan_dir {
   font-size: 28px;
-  color: #68ff9d; }
+  color: #68ff9d;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px; }
+
+.scan_dirf {
+  font-size: 28px;
+  color: #ff5c5c;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px; }
+
+.dwdwffff24 {
+  position: relative;
+  width: 100%;
+  background-color: #181818;
+  height: calc(100% - 200px);
+  color: #fff; }
+
+.ump_u3fgbbb {
+  background-color: #121212;
+  width: 100%;
+  height: 140px;
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.div_pdq32fwesd {
+  margin-bottom: 15px; }
+
+.ooindq_dlffff {
+  font-size: 21px;
+  color: #fff; }
+
+.ooindq_dlffff_13 {
+  font-size: 21px;
+  color: #ff5c5c; }
+
+.iewfv2222c {
+  color: #ff9c4c;
+  font-size: 15px;
+  margin-bottom: 5px; }
+
+.iewfv2222c1 {
+  color: #fff;
+  font-size: 15px;
+  margin-bottom: 5px; }
+
+.po12ldqwecsdbgb {
+  border: none;
+  padding: 6px;
+  background-color: #181818;
+  cursor: pointer;
+  font-size: 14px;
+  color: #ff5c5c; }
+  .po12ldqwecsdbgb:hover {
+    opacity: .5; }
 
 .ump_button1 {
   background-color: #1d1d1d; }

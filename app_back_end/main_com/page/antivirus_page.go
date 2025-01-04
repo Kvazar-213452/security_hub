@@ -103,7 +103,7 @@ func Post_antivirus_bekend_scan_dir(w http.ResponseWriter, r *http.Request) {
 		}
 		json.Unmarshal(body, &request)
 
-		exeFiles := page_func.ScanForExeFiles(request.Dir)
+		exeFiles := page_func.Scan_exeFiles(request.Dir)
 
 		resultData := map[string]interface{}{
 			"total_exe_files":  len(exeFiles),
@@ -112,9 +112,9 @@ func Post_antivirus_bekend_scan_dir(w http.ResponseWriter, r *http.Request) {
 		}
 
 		for _, exeFile := range exeFiles {
-			fileHash := page_func.FileHash(exeFile)
+			fileHash := page_func.File_hash(exeFile)
 
-			result := page_func.CheckHashOnVirusTotal(fileHash)
+			result := page_func.Check_hash_VirusTotal(fileHash)
 
 			checkedFile := map[string]string{
 				"path": exeFile,
@@ -137,6 +137,30 @@ func Post_antivirus_bekend_scan_dir(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			}
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(resultData)
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_antivirus_bekend_del_file(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_antivirus_bekend_scan_dir")
+
+		body, _ := io.ReadAll(r.Body)
+
+		var request struct {
+			Path string `json:"path"`
+		}
+		json.Unmarshal(body, &request)
+
+		status := page_func.Delete_file(request.Path)
+
+		resultData := map[string]interface{}{
+			"status": status,
 		}
 
 		w.Header().Set("Content-Type", "application/json")

@@ -22,6 +22,7 @@ let antivirus_flash_drive;
 let lang_global;
 let data_json_exe;
 let reg_login;
+let scan_virus_file;
 
 let data_cleaning = {
     backup: 0,

@@ -146,7 +146,8 @@
 .div_system_info::-webkit-scrollbar,
 .imfowdwqdd::-webkit-scrollbar,
 .dqwdwec9923ed::-webkit-scrollbar,
-.extension_select::-webkit-scrollbar{
+.extension_select::-webkit-scrollbar,
+.ump_u3fgbbb::-webkit-scrollbar {
   width: 11px;
   background-color: $bg_color; 
 }
@@ -158,7 +159,8 @@
 .div_system_info::-webkit-scrollbar-thumb,
 .imfowdwqdd::-webkit-scrollbar-thumb,
 .dqwdwec9923ed::-webkit-scrollbar-thumb,
-.extension_select::-webkit-scrollbar-thumb{background-color: $bg_color2; }
+.extension_select::-webkit-scrollbar-thumb,
+.ump_u3fgbbb::-webkit-scrollbar-thumb{background-color: $bg_color2; }
 
 .modal_rev_button_d{color: $read;}
 
@@ -572,6 +574,64 @@
 .scan_dir {
     font-size: 28px;
     color: $main_color;
+    @include text_decoration();
+}
+
+.scan_dirf {
+    font-size: 28px;
+    color: $read;
+    @include text_decoration();
+}
+
+.dwdwffff24{
+    position: relative;
+    width: 100%;
+    background-color: $bg_color1;
+    height: calc(100% - 200px);
+    color: $white;
+}
+
+.ump_u3fgbbb {
+    background-color: $bg_color;
+    width: 100%;
+    height: 140px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.div_pdq32fwesd {margin-bottom: 15px;}
+
+.ooindq_dlffff {
+    font-size: 21px;
+    color: $white;
+}
+
+.ooindq_dlffff_13 {
+    font-size: 21px;
+    color: $read;
+}
+
+.iewfv2222c {
+    color: $orange;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.iewfv2222c1 {
+    color: $white;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.po12ldqwecsdbgb {
+    border: none;
+    padding: 6px;
+    background-color: $bg_color1;
+    cursor: pointer;
+    font-size: 14px;
+    color: $read;
+
+    &:hover{opacity: .5;}
 }
 
 .ump_button1{background-color: $bg_color2;}

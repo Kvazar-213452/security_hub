@@ -120,6 +120,7 @@ function lang_change_page(lang) {
     $('#register_pfj3fv').html("Fill in all fields to register");
     $('#register_pwfew4fv').html("Insert the code you received on your Gmail into the input");
     $('#register_pfj3fv1').html("Fill in all fields to log in");
+    $('#dwdc21e12d3').html("Path scanning");
   } else if (lang === "uk") {
     $('#lang_wefsdeeeeee span').html("Вайфай менеджер");
     $('#lang_nfefdfdvghyt').html("Отримайте більше інформації про ваш вайфай");
@@ -244,5 +245,6 @@ function lang_change_page(lang) {
     $('#register_pfj3fv').html("Заповніть всі поля для реєстрації");
     $('#register_pwfew4fv').html("Вставте в поле код, який прийшов на ваш Gmail");
     $('#register_pfj3fv1').html("Заповніть всі поля для входу в систему");
+    $('#dwdc21e12d3').html("Сканування шляху");
   }
 };

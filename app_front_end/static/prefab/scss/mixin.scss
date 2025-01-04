@@ -20,3 +20,9 @@
     border: solid 2px $null;
     cursor: pointer;
 }
+
+@mixin text_decoration($thickness: 2px, $offset: 4px) {
+    text-decoration: underline;
+    text-decoration-thickness: $thickness;
+    text-underline-offset: $offset;
+}

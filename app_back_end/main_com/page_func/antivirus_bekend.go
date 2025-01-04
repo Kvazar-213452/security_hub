@@ -166,7 +166,7 @@ func Scan_file_virus(nameFilePath string) return_func_data_bac {
 // scan dir// scan dir// scan dir// scan dir// scan dir
 // scan dir// scan dir// scan dir// scan dir// scan dir
 
-func FileHash(filePath string) string {
+func File_hash(filePath string) string {
 	file, _ := os.Open(filePath)
 	defer file.Close()
 
@@ -175,7 +175,7 @@ func FileHash(filePath string) string {
 	return hex.EncodeToString(hash.Sum(nil))
 }
 
-func CheckHashOnVirusTotal(fileHash string) map[string]interface{} {
+func Check_hash_VirusTotal(fileHash string) map[string]interface{} {
 	url := fmt.Sprintf("https://www.virustotal.com/api/v3/files/%s", fileHash)
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Set("x-apikey", config_main.ApiKey_virustotal)
@@ -195,7 +195,7 @@ func CheckHashOnVirusTotal(fileHash string) map[string]interface{} {
 	return result
 }
 
-func ScanForExeFiles(rootDir string) []string {
+func Scan_exeFiles(rootDir string) []string {
 	var exeFiles []string
 	filepath.Walk(rootDir, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() && strings.HasSuffix(strings.ToLower(info.Name()), ".exe") {
@@ -204,4 +204,14 @@ func ScanForExeFiles(rootDir string) []string {
 		return nil
 	})
 	return exeFiles
+}
+
+func Delete_file(filePath string) string {
+	filePath = strings.ReplaceAll(filePath, "\\", "/")
+
+	if err := os.Remove(filePath); err != nil {
+		return "0"
+	}
+
+	return "1"
 }
