@@ -258,7 +258,6 @@ function download_json_data() {
 
 function antivirus_bekend_scan_dir() {
     let inputValue = $('#fkwe9203f1d').val();
-    inputValue = "C:\\Users\\god19\\Desktop\\test"
 
     $.ajax({
         url: '/antivirus_bekend_scan_dir',
