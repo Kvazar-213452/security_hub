@@ -251,7 +251,7 @@ function info_server() {
 }
 
 function get_status_reg_settings() {
-    $.ajax({
+    $.ajax({ 
         url: "/reg_status",
         type: "POST",
         contentType: "application/json",
@@ -259,7 +259,7 @@ function get_status_reg_settings() {
         success: function (response) {
             reg_login = response['acsses']
 
-            if (reg_login == 1) {
+            if (reg_login == 0) {
                 $("#settings_1_btn_page2").hide();
             }
         }
