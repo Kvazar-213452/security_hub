@@ -117,7 +117,7 @@ function resource_info_render_data(response) {
     response = response['data'];
 
     $('#dwqwdwfcfff44').text(response[0] || 'N/A');
-    $('#rggwiovnewcee').text(response[1] || 'N/A');
+    // $('#rggwiovnewcee').text(response[1] || 'N/A');
 }
 
 

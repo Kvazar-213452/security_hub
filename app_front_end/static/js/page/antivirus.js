@@ -259,6 +259,14 @@ function download_json_data() {
 function antivirus_bekend_scan_dir() {
     let inputValue = $('#fkwe9203f1d').val();
 
+    $("#hfweo23fwesd").html(null);
+
+    if (lang_global === "uk") {
+        $("#hfweo23fwesd").append("<p class='scan_dir'>Сканування</p>");
+    } else if (lang_global === "en") {
+        $("#hfweo23fwesd").append("<p class='scan_dir'>Scanning</p>");
+    }
+
     $.ajax({
         url: '/antivirus_bekend_scan_dir',
         type: 'POST',
@@ -271,8 +279,6 @@ function antivirus_bekend_scan_dir() {
 }
 
 function render_data_scan_dir(response) {
-    console.log(response);
-
     $("#hfweo23fwesd").html(null);
 
     if (response["detected_viruses"].length === 0) {
