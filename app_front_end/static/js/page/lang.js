@@ -8,7 +8,7 @@ function lang_change_page(lang) {
     $('#lang_system_wfr839wefsff').html("NetworkAdapters data");
     $('#lang_system_v00qwdweee').html("Open programs");
     $('#lang_system_vfd8723ed span').html("System data");
-    $('#lang_system_verdfvcww').html("There is something interesting here");
+    $('#lang_system_verdfvcww').html("Learn something new");
     $('#antivirus_errfee2 span').html("Antivirus");
     $('#antivirus_vef093f').html("Be in information security");
     $('#dwdc21e12d').html("Check the site");
@@ -112,15 +112,16 @@ function lang_change_page(lang) {
     $('#settings_1_btn_page1').html("Info app");
     $('#settings_1_btn_page2').html("Account");
     $('#settings_3qecdstrh').html("Log out from the account");
-    $('.register_f2qewds_1d').html("Send data");
-    $('.register_rfrbbbb4_1d').html("Log in");
+    $('#register_f2qewds').html("Send data");
+    $('#register_rfrbbbb4').html("Log in");
     $('#segister_Poif83g').html("Registration");
     $('#register_o92ufff').html("Login");
-    $('.register_pfi02ifv_1d').html("Register");
+    $('#register_pfi02ifv').html("Register");
     $('#register_pfj3fv').html("Fill in all fields to register");
     $('#register_pwfew4fv').html("Insert the code you received on your Gmail into the input");
     $('#register_pfj3fv1').html("Fill in all fields to log in");
     $('#dwdc21e12d3').html("Path scanning");
+    $('#lang_server_verdfvcww').html("Secure file transfer over the network");
   } else if (lang === "uk") {
     $('#lang_wefsdeeeeee span').html("Вайфай менеджер");
     $('#lang_nfefdfdvghyt').html("Отримайте більше інформації про ваш вайфай");
@@ -130,7 +131,7 @@ function lang_change_page(lang) {
     $('#lang_system_wfr839wefsff').html("Дані мережевих адаптерів");
     $('#lang_system_v00qwdweee').html("Відкриті програми");
     $('#lang_system_vfd8723ed span').html("Системні дані");
-    $('#lang_system_verdfvcww').html("Тут є дещо цікаве можливо");
+    $('#lang_system_verdfvcww').html("Дізнаватись щось нове");
     $('#antivirus_errfee2 span').html("Антивірус");
     $('#antivirus_vef093f').html("Будьте в інформаційній безпеці");
     $('#dwdc21e12d').html("Перевірити сайт");
@@ -228,7 +229,7 @@ function lang_change_page(lang) {
     $('#pasw_ok2f3web').html("Додати пароль");
     $('#pasw_d3vnb4354').html("Відправити");
     $('#pasw_fwefc2dewsd span').html("Кращі паролі");
-    $('#pasw_dwqvnbb455').html("Краще кращий пароль за кращий чи кращий за кращий пароль");
+    $('#pasw_dwqvnbb455').html("Кращий пароль — це краще, ніж кращий за кращий пароль");
     $('#setting_e12rfwvsd').html("Встановлена версія");
     $('#settings_oio3fq').html("Доступна версія");
     $('#settings_q23fweds55').html("Відправити");
@@ -237,14 +238,15 @@ function lang_change_page(lang) {
     $('#settings_1_btn_page1').html("Інформація про програму");
     $('#settings_1_btn_page2').html("Обліковий запис");
     $('#settings_3qecdstrh').html("Вийти з акаунта");
-    $('.register_f2qewds_1d').html("Надіслати дані");
-    $('.register_rfrbbbb4_1d').html("Увійти");
+    $('#register_f2qewds').html("Надіслати дані");
+    $('#register_rfrbbbb4').html("Увійти");
     $('#segister_Poif83g').html("Реєстрація");
     $('#register_o92ufff').html("Вхід в систему");
-    $('.register_pfi02ifv_1d').html("Зареєструватись");
+    $('#register_pfi02ifv').html("Зареєструватись");
     $('#register_pfj3fv').html("Заповніть всі поля для реєстрації");
     $('#register_pwfew4fv').html("Вставте в поле код, який прийшов на ваш Gmail");
     $('#register_pfj3fv1').html("Заповніть всі поля для входу в систему");
     $('#dwdc21e12d3').html("Сканування шляху");
+    $('#lang_server_verdfvcww').html("Безпечна передача файлів через мережу");
   }
 };
