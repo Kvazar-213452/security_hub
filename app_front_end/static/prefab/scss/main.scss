@@ -883,6 +883,13 @@
 /* server page *//* server page *//* server page *//* server page *//* server page *//* server page */
 /* server page *//* server page *//* server page *//* server page *//* server page *//* server page */
 
+.server_count {
+    position: relative;
+    top: 5px;
+    font-size: 17px;
+    color: config.$main_color;
+}
+
 .file-input-container {
     position: relative;
     width: 200px;

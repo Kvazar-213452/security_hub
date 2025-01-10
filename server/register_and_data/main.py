@@ -3,7 +3,7 @@ from flask_cors import CORS
 import smtplib
 from email.mime.text import MIMEText
 import json
-from main_com.func import save_to_db, decript
+from main_com.func import save_to_db, decript, decrypt_file, encrypt_file
 
 app = Flask(__name__)
 
@@ -47,7 +47,11 @@ def send_email():
 @app.route('/save_user', methods=['POST'])
 def save_user():
     try:
+        decrypt_file()
+
         user_data = request.get_json()
+
+        encrypt_file()
 
         if save_to_db(user_data):
             return jsonify({"message": "1"}), 200
@@ -68,14 +72,18 @@ def check():
 @app.route('/get_password', methods=['POST'])
 def get_password():
     try:
+        decrypt_file()
+
         user_data = request.get_json()
         gmail = user_data.get("gmail")
 
         if not gmail:
             return jsonify({"message": "Gmail не надано"}), 400
 
-        with open('db.json', 'r') as f:
+        with open('db.cos', 'r') as f:
             db_data = json.load(f)
+
+        encrypt_file()
 
         for entry in db_data:
             if entry.get("gmail") == gmail:
@@ -89,6 +97,8 @@ def get_password():
 @app.route('/add_key_pasw', methods=['POST'])
 def add_key_pasw():
     try:
+        decrypt_file()
+
         user_data = request.get_json()
         gmail = user_data.get("gmail")
         key = user_data.get("key")
@@ -97,8 +107,10 @@ def add_key_pasw():
         if not gmail:
             return jsonify({"message": "Gmail не надано"}), 400
 
-        with open('db.json', 'r') as f:
+        with open('db.cos', 'r') as f:
             db_data = json.load(f)
+
+        encrypt_file()
 
         for entry in db_data:
             if entry.get("gmail") == gmail:
@@ -107,7 +119,7 @@ def add_key_pasw():
                 else:
                     entry["key"] = [[key, pasw]]
 
-                with open('db.json', 'w') as f:
+                with open('db.cos', 'w') as f:
                     json.dump(db_data, f, indent=4)
 
                 return jsonify({"message": "Дані успішно оновлені", "key": entry.get("key")}), 200
@@ -120,6 +132,8 @@ def add_key_pasw():
 @app.route('/login', methods=['POST'])
 def login():
     try:
+        decrypt_file()
+
         user_data = request.get_json()
         name = user_data.get("name")
         password = user_data.get("password")
@@ -127,8 +141,10 @@ def login():
         if not name:
             return jsonify({"message": "Gmail не надано"}), 200
 
-        with open('db.json', 'r') as f:
+        with open('db.cos', 'r') as f:
             db_data = json.load(f)
+
+        encrypt_file()
 
         for entry in db_data:
             if entry.get("name") == name and entry.get("pasw") == password:
@@ -149,6 +165,8 @@ def login():
 @app.route('/del_key_pasw', methods=['POST'])
 def del_key_pasw():
     try:
+        decrypt_file()
+        
         print(request.get_json())
         user_data = request.get_json()
         gamil = user_data.get("key")
@@ -157,8 +175,10 @@ def del_key_pasw():
         if not gamil or not value:
             return jsonify({"message": "Gmail або value не надано"}), 200
 
-        with open('db.json', 'r') as f:
+        with open('db.cos', 'r') as f:
             db_data = json.load(f)
+
+        encrypt_file()
 
         for entry in db_data:
             if entry.get("gmail") == gamil:
@@ -168,7 +188,7 @@ def del_key_pasw():
 
                 entry["key"] = key_data
 
-                with open('db.json', 'w') as f:
+                with open('db.cos', 'w') as f:
                     json.dump(db_data, f, indent=4)
 
                 return jsonify({"status": "1"}), 200

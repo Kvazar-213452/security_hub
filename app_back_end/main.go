@@ -103,6 +103,7 @@ func main() {
 	http.HandleFunc("/antivirus_bekend_scan_dir", page.Post_antivirus_bekend_scan_dir)
 	http.HandleFunc("/antivirus_bekend_del_file", page.Post_antivirus_bekend_del_file)
 	http.HandleFunc("/reg_file_unix", page.Post_reg_file_unix)
+	http.HandleFunc("/get_how_many", page.Post_get_how_many)
 
 	fmt.Printf("started %d\n", port)
 	http.ListenAndServe(portStr, nil)

@@ -121,6 +121,7 @@ function lang_change_page(lang) {
     $('#register_pfj3fv1').html("Fill in all fields to log in");
     $('#dwdc21e12d3').html("Path scanning");
     $('#lang_server_verdfvcww').html("Secure file transfer over the network");
+    $('#server_lang_werthrgjhfbvd').html("Number of downloaded files");
   } else if (lang === "uk") {
     $('#lang_wefsdeeeeee span').html("Вайфай менеджер");
     $('#lang_nfefdfdvghyt').html("Отримайте більше інформації про ваш вайфай");
@@ -246,5 +247,6 @@ function lang_change_page(lang) {
     $('#register_pfj3fv1').html("Заповніть всі поля для входу в систему");
     $('#dwdc21e12d3').html("Сканування шляху");
     $('#lang_server_verdfvcww').html("Безпечна передача файлів через мережу");
+    $('#server_lang_werthrgjhfbvd').html("Кількість завантажених файлів");
   }
 };

@@ -64,3 +64,15 @@ $('#search-btn').click(function () {
     }
   });
 });
+
+function get_how_many() {
+  $.ajax({
+    url: "/get_how_many",
+    type: "POST",
+    contentType: "application/json",
+    data: JSON.stringify(null),
+    success: function (response) {
+      $("#server_un23rfwgrgre").html(response["count"]);
+    }
+});
+}

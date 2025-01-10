@@ -565,14 +565,6 @@
   margin-bottom: 20px;
 }
 
-.wefewfvgg4 {
-  position: relative;
-  float: left;
-  font-size: 19px;
-  color: #68ff9d;
-  margin-right: 100px;
-}
-
 /* cleaning page */ /* cleaning page */ /* cleaning page */ /* cleaning page */ /* cleaning page */ /* cleaning page */
 /* cleaning page */ /* cleaning page */ /* cleaning page */ /* cleaning page */ /* cleaning page */ /* cleaning page */
 /* cleaning page */ /* cleaning page */ /* cleaning page */ /* cleaning page */ /* cleaning page */ /* cleaning page */
@@ -1043,6 +1035,13 @@
 /* server page */ /* server page */ /* server page */ /* server page */ /* server page */ /* server page */
 /* server page */ /* server page */ /* server page */ /* server page */ /* server page */ /* server page */
 /* server page */ /* server page */ /* server page */ /* server page */ /* server page */ /* server page */
+.server_count {
+  position: relative;
+  top: 5px;
+  font-size: 17px;
+  color: #68ff9d;
+}
+
 .file-input-container {
   position: relative;
   width: 200px;

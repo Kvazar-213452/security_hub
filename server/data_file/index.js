@@ -5,25 +5,12 @@ const fs = require('fs-extra');
 const path = require('path');
 const cors = require('cors');
 
+const { get_time, readDB, writeDB, deleteFileAfterDelay } = require('./main_com/func');
+
 const app = express();
 const PORT = 3000;
 
 app.use(cors());
-
-function get_time() {
-    const now = new Date();
-
-    now.setHours(now.getHours() + 1);
-  
-    const formattedTime = now.toLocaleTimeString('en-GB', {
-      hour12: false,
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-    });
-  
-    return formattedTime;
-};
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -44,31 +31,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('static'));
 
-const readDB = () => {
-  const dbPath = path.join(__dirname, 'db.json');
-  if (!fs.existsSync(dbPath)) return [];
-  return JSON.parse(fs.readFileSync(dbPath, 'utf8'));
-};
+app.post('/get_how_many', (req, res) => {
+  const dbPath = path.join(__dirname, 'db/db.json');
+  if (!fs.existsSync(dbPath)) {
+      return res.status(404).send('Database not found');
+  }
 
-const writeDB = (data) => {
-  const dbPath = path.join(__dirname, 'db.json');
-  fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), 'utf8');
-};
-
-const deleteFileAfterDelay = (filePath, password) => {
-  setTimeout(() => {
-    if (fs.existsSync(filePath)) {
-      fs.unlinkSync(filePath);
-    }
-
-    const db = readDB();
-    const updatedDB = db.filter((entry) => entry.password !== password);
-    writeDB(updatedDB);
-  }, 43200000);
-};
+  const dbData = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+  res.send({ count: dbData.length });
+});
 
 app.get('/', (req, res) => {
-    res.send(`unix server`);
+  res.send(`unix server`);
 });
 
 app.post('/server_unix', (req, res) => {
