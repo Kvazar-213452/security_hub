@@ -64,8 +64,8 @@ function send_code() {
 
 function login() {
     let data = {
-        name: $('#register_name').val(),
-        password: $('#register_password').val()
+        name: $('#login_name').val(),
+        password: $('#login_password').val()
     };
     
     $.ajax({
@@ -74,8 +74,8 @@ function login() {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (response) {
-            if (response == 1) {
-                window.parent.postMessage("reload", "*");
+            if (response['status'] == 1) {
+                login_acount(response);
             } else {
                 if (lang_global === "uk") {
                     message_window('Невірний пароль');
@@ -83,6 +83,18 @@ function login() {
                     message_window('Invalid password');
                 }
             }
+        }
+    });
+}
+
+function login_acount(response) {
+    $.ajax({
+        url: "/reg_file_unix",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(response),
+        success: function (response) {
+            window.parent.postMessage("reload", "*");
         }
     });
 }

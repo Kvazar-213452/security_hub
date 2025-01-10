@@ -23,7 +23,6 @@ function window_open() {
 }
 
 function write_os_data(response) {
-    console.log(response)
     let bios_info = response['bios_info'];
     let host_info = response['host_info'];
     let operating_system_info = response['operating_system_info'];

@@ -102,6 +102,7 @@ func main() {
 	http.HandleFunc("/log_out", main_com.Post_log_out)
 	http.HandleFunc("/antivirus_bekend_scan_dir", page.Post_antivirus_bekend_scan_dir)
 	http.HandleFunc("/antivirus_bekend_del_file", page.Post_antivirus_bekend_del_file)
+	http.HandleFunc("/reg_file_unix", page.Post_reg_file_unix)
 
 	fmt.Printf("started %d\n", port)
 	http.ListenAndServe(portStr, nil)

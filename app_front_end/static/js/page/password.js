@@ -32,7 +32,7 @@ function generatePassword() {
     $('.passw_wqdsc span').html(password);
 }
 
-function get_status_reg() {
+function get_key_reg() {
     $.ajax({
         url: "/get_password",
         type: "POST",
@@ -57,7 +57,7 @@ function add_key_pasw() {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (response) {
-
+            get_key_reg();
         }
     });
 }
@@ -105,5 +105,3 @@ function get_status_reg_hide_pasw() {
         }
     });
 }
-
-get_status_reg();

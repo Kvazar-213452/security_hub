@@ -132,7 +132,14 @@ def login():
 
         for entry in db_data:
             if entry.get("name") == name and entry.get("pasw") == password:
-                return jsonify({"status": "1"}), 200
+                return jsonify({
+                        "name": entry.get("name"),
+                        "pasw": entry.get("pasw"),
+                        "gmail": entry.get("gmail"),
+                        "code": "unix",
+                        "acsses": "1",
+                        "status": "1"
+                    }), 200
 
         return jsonify({"status": "0"}), 200
 

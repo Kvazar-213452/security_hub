@@ -152,3 +152,33 @@ func Post_login_acaunt(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 }
+
+func Post_reg_file_unix(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_reg_file_unix")
+
+		var data map[string]interface{}
+
+		json.NewDecoder(r.Body).Decode(&data)
+
+		name, _ := data["name"].(string)
+		pasw, _ := data["pasw"].(string)
+		gmail, _ := data["gmail"].(string)
+		code, _ := data["code"].(string)
+
+		config := page_func.Config_reg{
+			Name:   name,
+			Pasw:   pasw,
+			Gmail:  gmail,
+			Code:   code,
+			Acsses: "1",
+		}
+
+		page_func.Save_data_reg(config)
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(nil)
+	} else {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+	}
+}

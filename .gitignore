@@ -1,6 +1,6 @@
 app_installer/main.exe
 
-server/register_and_data/config.json
+# server/register_and_data/config.json
 
 server/data_file/node_modules
 
