@@ -39,7 +39,7 @@ def analyze_exe(file_path):
         with open('data/data_exe.json', 'w', encoding='utf-8') as json_file:
             json.dump(analysis_data, json_file, ensure_ascii=False, indent=4)
 
-        print(f"error")
+        print(f"good")
 
     except Exception as e:
         print(f"error {e}")

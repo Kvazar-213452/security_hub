@@ -1,0 +1,207 @@
+{
+  "file": "../data\\bekend\\3ew.exe",
+  "magic_number": "0x5a4d",
+  "file_type": 34404,
+  "creation_time": 1734946801,
+  "section_count": 20,
+  "sections": [
+    {
+      "section_name": ".text\u0000\u0000\u0000",
+      "section_size": 32768,
+      "section_virtual_address": "0x1000",
+      "section_characteristics": 1610612832
+    },
+    {
+      "section_name": ".data\u0000\u0000\u0000",
+      "section_size": 512,
+      "section_virtual_address": "0x9000",
+      "section_characteristics": 3221225536
+    },
+    {
+      "section_name": ".rdata\u0000\u0000",
+      "section_size": 6144,
+      "section_virtual_address": "0xa000",
+      "section_characteristics": 1073741888
+    },
+    {
+      "section_name": ".pdata\u0000\u0000",
+      "section_size": 1536,
+      "section_virtual_address": "0xc000",
+      "section_characteristics": 1073741888
+    },
+    {
+      "section_name": ".xdata\u0000\u0000",
+      "section_size": 1536,
+      "section_virtual_address": "0xd000",
+      "section_characteristics": 1073741888
+    },
+    {
+      "section_name": ".bss\u0000\u0000\u0000\u0000",
+      "section_size": 0,
+      "section_virtual_address": "0xe000",
+      "section_characteristics": 3221225600
+    },
+    {
+      "section_name": ".idata\u0000\u0000",
+      "section_size": 2560,
+      "section_virtual_address": "0xf000",
+      "section_characteristics": 3221225536
+    },
+    {
+      "section_name": ".CRT\u0000\u0000\u0000\u0000",
+      "section_size": 512,
+      "section_virtual_address": "0x10000",
+      "section_characteristics": 3221225536
+    },
+    {
+      "section_name": ".tls\u0000\u0000\u0000\u0000",
+      "section_size": 512,
+      "section_virtual_address": "0x11000",
+      "section_characteristics": 3221225536
+    },
+    {
+      "section_name": ".rsrc\u0000\u0000\u0000",
+      "section_size": 1536,
+      "section_virtual_address": "0x12000",
+      "section_characteristics": 1073741888
+    },
+    {
+      "section_name": ".reloc\u0000\u0000",
+      "section_size": 512,
+      "section_virtual_address": "0x13000",
+      "section_characteristics": 1107296320
+    },
+    {
+      "section_name": "/4\u0000\u0000\u0000\u0000\u0000\u0000",
+      "section_size": 2048,
+      "section_virtual_address": "0x14000",
+      "section_characteristics": 1107296320
+    },
+    {
+      "section_name": "/19\u0000\u0000\u0000\u0000\u0000",
+      "section_size": 74752,
+      "section_virtual_address": "0x15000",
+      "section_characteristics": 1107296320
+    },
+    {
+      "section_name": "/31\u0000\u0000\u0000\u0000\u0000",
+      "section_size": 13312,
+      "section_virtual_address": "0x28000",
+      "section_characteristics": 1107296320
+    },
+    {
+      "section_name": "/45\u0000\u0000\u0000\u0000\u0000",
+      "section_size": 29696,
+      "section_virtual_address": "0x2c000",
+      "section_characteristics": 1107296320
+    },
+    {
+      "section_name": "/57\u0000\u0000\u0000\u0000\u0000",
+      "section_size": 6144,
+      "section_virtual_address": "0x34000",
+      "section_characteristics": 1107296320
+    },
+    {
+      "section_name": "/70\u0000\u0000\u0000\u0000\u0000",
+      "section_size": 1024,
+      "section_virtual_address": "0x36000",
+      "section_characteristics": 1107296320
+    },
+    {
+      "section_name": "/81\u0000\u0000\u0000\u0000\u0000",
+      "section_size": 8704,
+      "section_virtual_address": "0x37000",
+      "section_characteristics": 1107296320
+    },
+    {
+      "section_name": "/97\u0000\u0000\u0000\u0000\u0000",
+      "section_size": 32768,
+      "section_virtual_address": "0x3a000",
+      "section_characteristics": 1107296320
+    },
+    {
+      "section_name": "/113\u0000\u0000\u0000\u0000",
+      "section_size": 1536,
+      "section_virtual_address": "0x42000",
+      "section_characteristics": 1107296320
+    }
+  ],
+  "imports": [
+    {
+      "library_name": "IPHLPAPI.DLL",
+      "functions": [
+        "GetAdaptersInfo"
+      ]
+    },
+    {
+      "library_name": "KERNEL32.dll",
+      "functions": [
+        "CloseHandle",
+        "DeleteCriticalSection",
+        "EnterCriticalSection",
+        "GetCurrentProcessId",
+        "GetDiskFreeSpaceExA",
+        "GetLastError",
+        "GetSystemInfo",
+        "GetTickCount64",
+        "GetVersionExA",
+        "GlobalMemoryStatusEx",
+        "InitializeCriticalSection",
+        "IsDBCSLeadByteEx",
+        "K32EnumProcessModules",
+        "K32GetModuleFileNameExA",
+        "LeaveCriticalSection",
+        "MultiByteToWideChar",
+        "OpenProcess",
+        "SetUnhandledExceptionFilter",
+        "Sleep",
+        "TlsGetValue",
+        "VirtualProtect",
+        "VirtualQuery",
+        "WideCharToMultiByte"
+      ]
+    },
+    {
+      "library_name": "msvcrt.dll",
+      "functions": [
+        "__C_specific_handler",
+        "___lc_codepage_func",
+        "___mb_cur_max_func",
+        "__getmainargs",
+        "__initenv",
+        "__iob_func",
+        "__set_app_type",
+        "__setusermatherr",
+        "_amsg_exit",
+        "_cexit",
+        "_commode",
+        "_errno",
+        "_fmode",
+        "_initterm",
+        "_lock",
+        "_unlock",
+        "abort",
+        "atexit",
+        "calloc",
+        "exit",
+        "fclose",
+        "fopen",
+        "fprintf",
+        "fputc",
+        "free",
+        "fwrite",
+        "localeconv",
+        "malloc",
+        "memcpy",
+        "memset",
+        "puts",
+        "signal",
+        "strerror",
+        "strlen",
+        "strncmp",
+        "vfprintf",
+        "wcslen"
+      ]
+    }
+  ]
+}

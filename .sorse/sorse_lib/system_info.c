@@ -10,7 +10,6 @@
 void getSystemInfo() {
     FILE *file = fopen("data/system_info.xml", "w");
     if (file == NULL) {
-        printf("Не вдалося відкрити файл для запису.\n");
         return;
     }
 

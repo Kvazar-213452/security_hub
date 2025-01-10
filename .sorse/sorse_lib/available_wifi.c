@@ -14,7 +14,6 @@ int main() {
     
     FILE *file = fopen("data/available_wifi.xml", "w");
     if (file == NULL) {
-        printf("Не вдалося відкрити файл для запису.\n");
         return 1;
     }
 
@@ -22,14 +21,12 @@ int main() {
     fprintf(file, "<Networks>\n");
 
     if (WlanOpenHandle(2, NULL, &dwVersion, &hClient) != ERROR_SUCCESS) {
-        fprintf(file, "Помилка при відкритті ручки до клієнта WLAN.\n");
         fclose(file);
         return 1;
     }
 
     PWLAN_INTERFACE_INFO_LIST pIfList = NULL;
     if (WlanEnumInterfaces(hClient, NULL, &pIfList) != ERROR_SUCCESS) {
-        fprintf(file, "Помилка при отриманні списку інтерфейсів.\n");
         fclose(file);
         return 1;
     }
@@ -38,7 +35,6 @@ int main() {
         PWLAN_AVAILABLE_NETWORK_LIST pNetworkList = NULL;
 
         if (WlanGetAvailableNetworkList(hClient, &pIfList->InterfaceInfo[i].InterfaceGuid, 0, NULL, &pNetworkList) != ERROR_SUCCESS) {
-            fprintf(file, "Помилка при отриманні списку доступних мереж.\n");
             continue;
         }
 

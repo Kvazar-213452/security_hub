@@ -26,7 +26,6 @@ void ListWifiNetworks() {
 
     FILE *file = fopen("data/get_ssid.xml", "w");
     if (file == NULL) {
-        fprintf(stderr, "Не вдалося відкрити файл для запису\n");
         return;
     }
 
@@ -35,14 +34,12 @@ void ListWifiNetworks() {
 
     dwResult = WlanOpenHandle(2, NULL, &dwResult, &hClient);
     if (dwResult != ERROR_SUCCESS) {
-        fprintf(stderr, "WlanOpenHandle failed with error: %u\n", dwResult);
         fclose(file);
         return;
     }
 
     dwResult = WlanEnumInterfaces(hClient, NULL, &pIfList);
     if (dwResult != ERROR_SUCCESS) {
-        fprintf(stderr, "WlanEnumInterfaces failed with error: %u\n", dwResult);
         WlanCloseHandle(hClient, NULL);
         fclose(file);
         return;
@@ -53,13 +50,11 @@ void ListWifiNetworks() {
 
         dwResult = WlanScan(hClient, &pIfInfo->InterfaceGuid, NULL, NULL, NULL);
         if (dwResult != ERROR_SUCCESS) {
-            fprintf(stderr, "WlanScan failed with error: %u\n", dwResult);
             continue;
         }
 
         dwResult = WlanGetAvailableNetworkList(hClient, &pIfInfo->InterfaceGuid, 0, NULL, &pBssList);
         if (dwResult != ERROR_SUCCESS) {
-            fprintf(stderr, "WlanGetAvailableNetworkList failed with error: %u\n", dwResult);
             continue;
         }
 
