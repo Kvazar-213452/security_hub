@@ -3,9 +3,8 @@ function lang_change_page(lang) {
     $('#lang_wefsdeeeeee span').html("WIFI management");
     $('#lang_nfefdfdvghyt').html("Get more information about yours WIFI");
     $('#lang_dqwedddcwww').html("Connection =");
-    $('#lang_system_wdeewds').html("Data os");
-    $('#lang_system_fesrdfyyyyy').html("library data");
-    $('#lang_system_wfr839wefsff').html("NetworkAdapters data");
+    $('#lang_system_wdeewds').html("Bios os");
+    $('#lang_system_wfr839wefsff').html("Host data");
     $('#lang_system_v00qwdweee').html("Open programs");
     $('#lang_system_vfd8723ed span').html("System data");
     $('#lang_system_verdfvcww').html("Learn something new");
@@ -98,7 +97,7 @@ function lang_change_page(lang) {
     $('#server_Pfj23wes').html("Password:");
     $('#server_0ij2p3ve').html("Search file by password");
     $('#server_0jdccc').html("Hidden files");
-    $('#sever_pi913ofv').html("Information");
+    $('#sever_pi913ofv').html("Uploading to the server");
     $('#systme_fqwfegwrehj1').html("Upload file");
     $('#pasw_ok2f3web').html("Add password");
     $('#pasw_d3vnb4354').html("Send");
@@ -126,9 +125,8 @@ function lang_change_page(lang) {
     $('#lang_wefsdeeeeee span').html("Вайфай менеджер");
     $('#lang_nfefdfdvghyt').html("Отримайте більше інформації про ваш вайфай");
     $('#lang_dqwedddcwww').html("З'єднання =");
-    $('#lang_system_wdeewds').html("Дані операційної системи");
-    $('#lang_system_fesrdfyyyyy').html("Дані бібліотек");
-    $('#lang_system_wfr839wefsff').html("Дані мережевих адаптерів");
+    $('#lang_system_wdeewds').html("Дані біоса");
+    $('#lang_system_wfr839wefsff').html("Дані хоста");
     $('#lang_system_v00qwdweee').html("Відкриті програми");
     $('#lang_system_vfd8723ed span').html("Системні дані");
     $('#lang_system_verdfvcww').html("Дізнаватись щось нове");
@@ -224,7 +222,7 @@ function lang_change_page(lang) {
     $('#server_Pfj23wes').html("Пароль:");
     $('#server_0ij2p3ve').html("Пошук файлу за паролем");
     $('#server_0jdccc').html("Приховані файли");
-    $('#sever_pi913ofv').html("Інформація");
+    $('#sever_pi913ofv').html("Завантаження на сервер");
     $('#systme_fqwfegwrehj1').html("Завантажити файл");
     $('#pasw_ok2f3web').html("Додати пароль");
     $('#pasw_d3vnb4354').html("Відправити");

@@ -59,14 +59,12 @@ var Stop_antivirus_flash_drive = make(chan bool)
 // exe lib
 var Available_wifi_exe string = "./available_wifi.exe"
 var Get_ssid_exe string = "./get_ssid.exe"
-var System_info_exe string = "./system_info.exe"
 var Antivirus_data_exe string = "./data_exe.exe"
 var Wifi_packege_data_exe string = "./packages_wifi.exe"
 
 // exe lib data
 var File_exe_data string = "get_ssid.xml"
 var File_1_exe_data string = "available_wifi.xml"
-var File_2_exe_data string = "system_info.xml"
 var File_data_exe string = "data_exe.json"
 var File_data_exe_wifi_packege string = "packages_wifi.xml"
 

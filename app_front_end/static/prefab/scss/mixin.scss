@@ -17,7 +17,7 @@
     color: $color;
     font-size: $font;
     transition: all .3s;
-    border: solid 2px $null;
+    border: solid 2px config.$null;
     cursor: pointer;
 }
 

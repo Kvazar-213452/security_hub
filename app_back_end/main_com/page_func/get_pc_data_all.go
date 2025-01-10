@@ -1,18 +1,15 @@
 package page_func
 
 import (
-	"encoding/json"
-	"encoding/xml"
 	"fmt"
-	config_main "head/main_com/config"
-	"head/main_com/func_all"
-	"io/ioutil"
-	"os/exec"
 	"regexp"
+	"runtime"
 	"strings"
 	"syscall"
 	"unsafe"
 
+	"github.com/shirou/gopsutil/host"
+	"github.com/yusufpapurcu/wmi"
 	"golang.org/x/sys/windows"
 )
 
@@ -28,62 +25,78 @@ var (
 	getProcessMemoryInfo = psapi.NewProc("GetProcessMemoryInfo")
 )
 
-type SystemInfo struct {
-	XMLName        xml.Name `xml:"SystemInfo"`
-	Architecture   string   `xml:"Architecture"`
-	ProcessorCount int      `xml:"ProcessorCount"`
-	OS             struct {
-		Name    string `xml:"Name"`
-		Version string `xml:"Version"`
-	} `xml:"OS"`
-	Memory struct {
-		FreeMemory        int64 `xml:"FreeMemory"`
-		TotalMemory       int64 `xml:"TotalMemory"`
-		FreeVirtualMemory int64 `xml:"FreeVirtualMemory"`
-	} `xml:"Memory"`
-	SystemUptime struct {
-		Days    int `xml:"Days"`
-		Hours   int `xml:"Hours"`
-		Minutes int `xml:"Minutes"`
-		Seconds int `xml:"Seconds"`
-	} `xml:"SystemUptime"`
-	Disk struct {
-		FreeSpace  int64 `xml:"FreeSpace"`
-		TotalSpace int64 `xml:"TotalSpace"`
-	} `xml:"Disk"`
-	NetworkAdapters struct {
-		Adapters []struct {
-			Description string `xml:"Description"`
-			IPAddress   string `xml:"IPAddress"`
-		} `xml:"Adapter"`
-	} `xml:"NetworkAdapters"`
-	LoadedLibraries struct {
-		Libraries []string `xml:"Library"`
-	} `xml:"LoadedLibraries"`
+type Win32_BIOS struct {
+	Manufacturer string `json:"manufacturer"`
+	Name         string `json:"name"`
+	Version      string `json:"version"`
+	ReleaseDate  string `json:"release_date"`
+	SerialNumber string `json:"serial_number"`
 }
 
-func Get_data_os() string {
-	exePath := config_main.System_info_exe
-	workingDir := config_main.Library_folder
-	dataFilePath := "./" + config_main.Library_folder + "/data/" + config_main.File_2_exe_data
+type Win32_OperatingSystem struct {
+	Caption        string `json:"caption"`
+	Version        string `json:"version"`
+	BuildNumber    string `json:"build_number"`
+	OSArchitecture string `json:"os_architecture"`
+	SerialNumber   string `json:"serial_number"`
+	Manufacturer   string `json:"manufacturer"`
+	InstallDate    string `json:"install_date"`
+	LastBootUpTime string `json:"last_boot_up_time"`
+}
 
-	cmd := exec.Command(exePath)
-	cmd.Dir = workingDir
+type SystemInfo struct {
+	OS              string                  `json:"os"`
+	Architecture    string                  `json:"architecture"`
+	NumCPU          int                     `json:"num_cpu"`
+	HostInfo        *hostInfo               `json:"host_info"`
+	BIOSInfo        []Win32_BIOS            `json:"bios_info"`
+	OperatingSystem []Win32_OperatingSystem `json:"operating_system_info"`
+}
 
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+type hostInfo struct {
+	Hostname        string `json:"hostname"`
+	Platform        string `json:"platform"`
+	PlatformVersion string `json:"platform_version"`
+	PlatformFamily  string `json:"platform_family"`
+	KernelArch      string `json:"kernel_arch"`
+	Uptime          uint64 `json:"uptime"`
+}
 
-	cmd.Run()
+func Get_data_os() (*SystemInfo, error) {
+	systemInfo := &SystemInfo{
+		OS:           runtime.GOOS,
+		Architecture: runtime.GOARCH,
+		NumCPU:       runtime.NumCPU(),
+	}
 
-	data, _ := ioutil.ReadFile(dataFilePath)
+	// Отримання інформації про хост
+	info, _ := host.Info()
+	systemInfo.HostInfo = &hostInfo{
+		Hostname:        info.Hostname,
+		Platform:        info.Platform,
+		PlatformVersion: info.PlatformVersion,
+		PlatformFamily:  info.PlatformFamily,
+		KernelArch:      info.KernelArch,
+		Uptime:          info.Uptime,
+	}
 
-	var sysInfo SystemInfo
-	xml.Unmarshal(data, &sysInfo)
+	// Отримання інформації про BIOS
+	var bios []Win32_BIOS
+	err := wmi.Query("SELECT Manufacturer, Name, Version, ReleaseDate, SerialNumber FROM Win32_BIOS", &bios)
+	if err != nil {
+		return nil, fmt.Errorf("Error getting BIOS information: %v", err)
+	}
+	systemInfo.BIOSInfo = bios
 
-	jsonData, _ := json.MarshalIndent(sysInfo, "", "  ")
+	// Отримання інформації про операційну систему
+	var osInfo []Win32_OperatingSystem
+	err = wmi.Query("SELECT Caption, Version, BuildNumber, OSArchitecture, SerialNumber, Manufacturer, InstallDate, LastBootUpTime FROM Win32_OperatingSystem", &osInfo)
+	if err != nil {
+		return nil, fmt.Errorf("Error getting OS information: %v", err)
+	}
+	systemInfo.OperatingSystem = osInfo
 
-	func_all.Clear_file(config_main.Global_phat + "\\" + config_main.Library_folder + "\\data\\" + config_main.File_2_exe_data)
-
-	return string(jsonData)
+	return systemInfo, nil
 }
 
 func isValidProgramWindow(title string) bool {
@@ -145,66 +158,4 @@ func App_open() string {
 type Filetime struct {
 	LowDateTime  uint32
 	HighDateTime uint32
-}
-
-//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now
-//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now
-//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now//data_now
-
-func getCPUUsage() string {
-	var idleTime, kernelTime, userTime Filetime
-
-	ret, _, err := getSystemTimesProc.Call(
-		uintptr(unsafe.Pointer(&idleTime)),
-		uintptr(unsafe.Pointer(&kernelTime)),
-		uintptr(unsafe.Pointer(&userTime)),
-	)
-	if ret == 0 {
-		return fmt.Sprintf("Failed to get system times: %v", err)
-	}
-
-	idle := uint64(idleTime.HighDateTime)<<32 | uint64(idleTime.LowDateTime)
-	kernel := uint64(kernelTime.HighDateTime)<<32 | uint64(kernelTime.LowDateTime)
-	user := uint64(userTime.HighDateTime)<<32 | uint64(userTime.LowDateTime)
-
-	totalTime := kernel + user
-	cpuUsage := (1.0 - float64(idle)/float64(totalTime)) * 100.0
-
-	return fmt.Sprintf("%.2f%%", cpuUsage)
-}
-
-func getMemoryUsage() string {
-	var memCounters struct {
-		cb                         uint32
-		PageFaultCount             uint32
-		PeakWorkingSetSize         uintptr
-		WorkingSetSize             uintptr
-		QuotaPeakPagedPoolUsage    uintptr
-		QuotaPagedPoolUsage        uintptr
-		QuotaPeakNonPagedPoolUsage uintptr
-		QuotaNonPagedPoolUsage     uintptr
-		PagefileUsage              uintptr
-		PeakPagefileUsage          uintptr
-	}
-
-	handle, _ := syscall.GetCurrentProcess()
-
-	ret, _, err := getProcessMemoryInfo.Call(
-		uintptr(handle),
-		uintptr(unsafe.Pointer(&memCounters)),
-		uintptr(unsafe.Sizeof(memCounters)),
-	)
-	if ret == 0 {
-		return fmt.Sprintf("Failed to get memory info: %v", err)
-	}
-
-	memoryUsageMB := float64(memCounters.WorkingSetSize) / (1024 * 1024)
-	return fmt.Sprintf("%.2f MB", memoryUsageMB)
-}
-
-func Get_all_data_now() string {
-	cpuInfo := getCPUUsage()
-	memoryInfo := getMemoryUsage()
-
-	return fmt.Sprintf("%s\n%s", cpuInfo, memoryInfo)
 }

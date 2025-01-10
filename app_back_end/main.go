@@ -70,7 +70,6 @@ func main() {
 	http.HandleFunc("/visualization", page.Post_config_change)
 	http.HandleFunc("/get_os_data", page.Post_get_os_data)
 	http.HandleFunc("/window_open", page.Post_window_open)
-	http.HandleFunc("/resource_info", page.Post_resource_info)
 	http.HandleFunc("/cleanup", page.Post_cleanup)
 	http.HandleFunc("/antivirus_web", page.Post_antivirus_web)
 	http.HandleFunc("/antivirus_bekend", page.Post_antivirus_bekend)
