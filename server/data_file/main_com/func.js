@@ -16,13 +16,13 @@ function get_time() {
 }
 
 const readDB = () => {
-  const dbPath = path.join(__dirname, 'db/db.json');
+  const dbPath = path.join(__dirname, '../db.json');
   if (!fs.existsSync(dbPath)) return [];
   return JSON.parse(fs.readFileSync(dbPath, 'utf8'));
 };
 
 const writeDB = (data) => {
-  const dbPath = path.join(__dirname, 'db/db.json');
+  const dbPath = path.join(__dirname, '../db.json');
   fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), 'utf8');
 };
 

@@ -12,6 +12,11 @@ const PORT = 3000;
 
 app.use(cors());
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use('/unix_aset', express.static(path.join(__dirname, 'unix_aset')));
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const uploadPath = path.join(__dirname, 'static/file');
@@ -31,18 +36,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('static'));
 
+app.get('/', (req, res) => {
+  res.send(`unix server`);
+});
+
+app.get('/main', (req, res) => {
+  res.render('index');
+});
+
 app.post('/get_how_many', (req, res) => {
-  const dbPath = path.join(__dirname, 'db/db.json');
+  const dbPath = path.join(__dirname, './db.json');
   if (!fs.existsSync(dbPath)) {
       return res.status(404).send('Database not found');
   }
 
   const dbData = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
   res.send({ count: dbData.length });
-});
-
-app.get('/', (req, res) => {
-  res.send(`unix server`);
 });
 
 app.post('/server_unix', (req, res) => {
