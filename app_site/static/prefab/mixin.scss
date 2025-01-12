@@ -1,4 +1,4 @@
-@import 'config';
+@use 'config';
 
 @mixin sinsid($left, $float) {
     position: relative;
@@ -8,7 +8,7 @@
     word-wrap: break-word;
     overflow: hidden;
     font-size: 22px;
-    color: $text_color;
+    color: config.$text_color;
     left: $left;
 }
 

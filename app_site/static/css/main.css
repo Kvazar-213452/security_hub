@@ -1,23 +1,27 @@
 @font-face {
-  font-family: 'MyCustomFont';
-  src: url("http://localhost/static/Minecraft_1.1.ttf") format("truetype"); }
-
+  font-family: "MyCustomFont";
+  src: url("http://localhost/static/Minecraft_1.1.ttf") format("truetype");
+}
 body {
   background-color: #181822;
-  font-family: 'MyCustomFont', sans-serif;
-  color: #ffffffd4; }
+  font-family: "MyCustomFont", sans-serif;
+  color: rgba(255, 255, 255, 0.831372549);
+}
 
 a {
-  color: #ffffffd4; }
+  color: rgba(255, 255, 255, 0.831372549);
+}
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'MyCustomFont', sans-serif; }
+  font-family: "MyCustomFont", sans-serif;
+}
 
 a {
-  color: #ffffffd4;
-  text-decoration: none; }
+  color: rgba(255, 255, 255, 0.831372549);
+  text-decoration: none;
+}
 
 .menu {
   position: fixed;
@@ -28,25 +32,29 @@ a {
   transform: translateX(-50%);
   background-color: #22222e;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  z-index: 1000000000000; }
+  z-index: 1000000000000;
+}
 
 .efw42f {
   position: relative;
   float: left;
   margin-right: 20px;
   font-size: 16px;
-  color: #ffffffd4;
+  color: rgba(255, 255, 255, 0.831372549);
   left: 20px;
   top: 14px;
-  cursor: pointer; }
-  .efw42f:hover {
-    color: #68ff9d; }
+  cursor: pointer;
+}
+.efw42f:hover {
+  color: #68ff9d;
+}
 
 .w3fwe {
   width: calc(100% - 400px);
   position: relative;
   display: block;
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
 .dwqs322v {
   position: relative;
@@ -56,36 +64,43 @@ a {
   word-wrap: break-word;
   overflow: hidden;
   font-size: 20px;
-  color: #ffffffd4; }
+  color: rgba(255, 255, 255, 0.831372549);
+}
 
 .dq3dcccc {
   font-size: 22px;
-  color: #68ff9d; }
+  color: #68ff9d;
+}
 
 .cover1212 {
   display: inline-block;
   height: 310px;
   width: 310px;
-  border-radius: 8px; }
+  border-radius: 8px;
+}
 
 .atvImg {
   border-radius: 8px;
   transform-style: preserve-3d;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 
 .atvImg img {
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(14, 21, 47, 0.25); }
+  box-shadow: 0 2px 8px rgba(14, 21, 47, 0.25);
+}
 
 .atvImg-container {
   position: relative;
   width: 100%;
   height: 100%;
   border-radius: 8px;
-  transition: all 0.2s ease-out; }
+  transition: all 0.2s ease-out;
+}
 
 .atvImg-container.over .atvImg-shadow {
-  box-shadow: 0 45px 100px rgba(14, 21, 47, 0.4), 0 16px 40px rgba(14, 21, 47, 0.4); }
+  box-shadow: 0 45px 100px rgba(14, 21, 47, 0.4), 0 16px 40px rgba(14, 21, 47, 0.4);
+}
 
 .atvImg-layers {
   position: relative;
@@ -93,7 +108,8 @@ a {
   height: 100%;
   border-radius: 8px;
   overflow: hidden;
-  transform-style: preserve-3d; }
+  transform-style: preserve-3d;
+}
 
 .atvImg-rendered-layer {
   position: absolute;
@@ -107,7 +123,8 @@ a {
   background-size: cover;
   transition: all 0.1s ease-out;
   overflow: hidden;
-  border-radius: 8px; }
+  border-radius: 8px;
+}
 
 .atvImg-shadow {
   position: absolute;
@@ -116,7 +133,8 @@ a {
   width: 90%;
   height: 90%;
   transition: all 0.2s ease-out;
-  box-shadow: 0 8px 30px rgba(14, 21, 47, 0.6); }
+  box-shadow: 0 8px 30px rgba(14, 21, 47, 0.6);
+}
 
 .atvImg-shine {
   position: absolute;
@@ -124,38 +142,44 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 8px; }
+  border-radius: 8px;
+}
 
 .dqwwqdcccc {
   position: relative;
   float: right;
-  left: -140px; }
+  left: -140px;
+}
 
 .rrggef {
   position: relative;
   clear: both;
   width: calc(100% - 400px);
   display: block;
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
 .dqd2323 {
   position: relative;
   width: 100%;
   height: 2px;
-  background-color: #ffffff54; }
+  background-color: rgba(255, 255, 255, 0.3294117647);
+}
 
 .dqwd23d3ff {
   position: relative;
   float: left;
   margin-bottom: 40px;
   margin-left: 20px;
-  width: 75%; }
+  width: 80%;
+}
 
 .fwf32rggg {
   display: inline-block;
   height: 300px;
   width: 300px;
-  border-radius: 8px; }
+  border-radius: 8px;
+}
 
 .d3232f4ff {
   border: none;
@@ -166,20 +190,25 @@ a {
   background-color: #22222e;
   float: left;
   margin-right: 40px;
-  border: solid 2px #ffffff00; }
-  .d3232f4ff:hover {
-    border: solid 2px #68ff9d; }
+  border: solid 2px rgba(255, 255, 255, 0);
+}
+.d3232f4ff:hover {
+  border: solid 2px #68ff9d;
+}
 
 .dewd3ef {
-  color: #68ff9d; }
+  color: #68ff9d;
+}
 
 .dwwd3d4 {
   color: #68ff9d;
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-underline-offset: 4px; }
-  .dwwd3d4:hover {
-    opacity: 0.5; }
+  text-underline-offset: 4px;
+}
+.dwwd3d4:hover {
+  opacity: 0.5;
+}
 
 .dwqs322v1 {
   position: relative;
@@ -189,12 +218,14 @@ a {
   word-wrap: break-word;
   overflow: hidden;
   font-size: 22px;
-  color: #ffffffd4;
-  left: -140px; }
+  color: rgba(255, 255, 255, 0.831372549);
+  left: -140px;
+}
 
 .dqwwqdcccc1 {
   position: relative;
-  float: left; }
+  float: left;
+}
 
 .bfievfdwere {
   position: relative;
@@ -202,23 +233,28 @@ a {
   height: 500px;
   background-color: #22222e;
   overflow-y: auto;
-  overflow-x: none; }
+  overflow-x: none;
+}
 
 .wedwffcsd {
-  padding: 20px; }
+  padding: 20px;
+}
 
 .cwd23103100c {
   width: 100%;
   position: relative;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+}
 
 .e46fetgr {
   color: #68ff9d;
-  font-size: 19px; }
+  font-size: 19px;
+}
 
 .dqw32wert54eg {
   color: #fff;
-  font-size: 17px; }
+  font-size: 17px;
+}
 
 #myInput {
   border: none;
@@ -226,10 +262,12 @@ a {
   font-size: 15px;
   color: #fff;
   background-color: #22222e;
-  margin-bottom: 10px; }
-  #myInput:focus {
-    outline: none;
-    color: #68ff9d; }
+  margin-bottom: 10px;
+}
+#myInput:focus {
+  outline: none;
+  color: #68ff9d;
+}
 
 #myTextarea {
   border: none;
@@ -238,10 +276,12 @@ a {
   color: #fff;
   background-color: #22222e;
   width: 400px;
-  height: 150px; }
-  #myTextarea:focus {
-    outline: none;
-    color: #68ff9d; }
+  height: 150px;
+}
+#myTextarea:focus {
+  outline: none;
+  color: #68ff9d;
+}
 
 #sendButton {
   border: none;
@@ -249,39 +289,106 @@ a {
   font-size: 16px;
   color: #fff;
   background-color: #22222e;
-  border: solid 2px #ffffff00;
-  cursor: pointer; }
-  #sendButton:hover {
-    border: solid 2px #68ff9d;
-    color: #68ff9d; }
-  #sendButton:focus {
-    outline: none; }
+  border: solid 2px rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+#sendButton:hover {
+  border: solid 2px #68ff9d;
+  color: #68ff9d;
+}
+#sendButton:focus {
+  outline: none;
+}
 
 .style_dqw {
   position: relative;
   margin-bottom: 15px;
   margin-right: 15px;
   padding: 7px;
-  background-color: #22222e; }
-  .style_dqw button {
-    border: none;
-    border: solid 2px #ffffff00;
-    background-color: #181822;
-    color: #fff;
-    padding: 5px;
-    font-size: 15px;
-    cursor: pointer; }
-    .style_dqw button:hover {
-      color: #68ff9d;
-      border: solid 2px #68ff9d; }
+  background-color: #22222e;
+}
+.style_dqw button {
+  border: none;
+  border: solid 2px rgba(255, 255, 255, 0);
+  background-color: #181822;
+  color: #fff;
+  padding: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.style_dqw button:hover {
+  color: #68ff9d;
+  border: solid 2px #68ff9d;
+}
 
 .dq3233rrffff {
   color: #fff;
-  font-size: 15px; }
+  font-size: 15px;
+}
 
 .dqd313qe3qdw22 {
   font-size: 18px;
   color: #68ff9d;
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-underline-offset: 4px; }
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 1270px) {
+  .menu {
+    width: 95%;
+  }
+  .w3fwe {
+    width: 95%;
+  }
+  .rrggef {
+    width: 95%;
+  }
+  .dqwwqdcccc {
+    left: -80px;
+  }
+  .dwqs322v1 {
+    left: -80px;
+  }
+}
+@media (max-width: 795.2px) {
+  .dwqs322v,
+  .dwqs322v1 {
+    margin-bottom: 20px;
+  }
+  .dqwwqdcccc {
+    float: left;
+    left: 0px;
+  }
+  .dwqs322v1 {
+    left: 0px;
+    float: left;
+  }
+}
+@media (max-width: 600px) {
+  .menu {
+    height: 100px;
+  }
+  .efw42f {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .dwqs322v {
+    width: 350px;
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 400px) {
+  #myTextarea {
+    width: 300px;
+  }
+}
+@media (max-width: 350px) {
+  .dwqs322v {
+    width: 250px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

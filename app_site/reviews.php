@@ -16,9 +16,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
     </div>
     <br><br>
     <div>
-        <input type="text" id="myInput" placeholder="Ведіть імя">
+        <input type="text" id="myInput" placeholder="Name">
         <br>
-        <textarea id="myTextarea" placeholder="Ведіть повідмлення"></textarea>
+        <textarea id="myTextarea" placeholder="Message"></textarea>
         <br><br>
         <button id="sendButton">Send Data</button>
     </div>

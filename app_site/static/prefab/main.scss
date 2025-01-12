@@ -1,5 +1,5 @@
-@import 'config';
-@import 'mixin';
+@use 'config';
+@use 'mixin';
 
 @font-face {
     font-family: 'MyCustomFont';
@@ -7,12 +7,12 @@
 }
 
 body {
-    background-color: $bg_color3;
+    background-color: config.$bg_color3;
     font-family: 'MyCustomFont', sans-serif;
-    color: $text_color;
+    color: config.$text_color;
 }
 
-a {color: $text_color;}
+a {color: config.$text_color;}
 
 * {
     margin: 0;
@@ -21,7 +21,7 @@ a {color: $text_color;}
 }
 
 a {
-    color: $text_color;
+    color: config.$text_color;
     text-decoration: none;
 }
 
@@ -32,8 +32,8 @@ a {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: $bg_color4;
-    box-shadow: 0 4px 20px $null_bleck;
+    background-color: config.$bg_color4;
+    box-shadow: 0 4px 20px config.$null_bleck;
     z-index: 1000000000000;
 }
 
@@ -42,12 +42,12 @@ a {
     float: left;
     margin-right: 20px;
     font-size: 16px;
-    color: $text_color;
+    color: config.$text_color;
     left: 20px;
     top: 14px;
     cursor: pointer;
 
-    &:hover{color: $violet;}
+    &:hover{color: config.$violet;}
 }
 
 .w3fwe{
@@ -70,7 +70,7 @@ a {
 
 .dq3dcccc{
     font-size: 22px;
-    color: $violet;
+    color: config.$violet;
 }
 
 .cover1212 {
@@ -162,7 +162,7 @@ a {
     position: relative;
     width: 100%;
     height: 2px;
-    background-color: $ump;
+    background-color: config.$ump;
 }
 
 .dqwd23d3ff{
@@ -184,21 +184,21 @@ a {
     border: none;
     padding: 10px;
     font-size: 19px;
-    color: $violet;
+    color: config.$violet;
     cursor: pointer;
-    background-color: $bg_color4;
+    background-color: config.$bg_color4;
     float: left;
     margin-right: 40px;
-    border: solid 2px $null;
+    border: solid 2px config.$null;
 
-    &:hover{border: solid 2px $violet;}
+    &:hover{border: solid 2px config.$violet;}
 }
 
-.dewd3ef{color: $violet;}
+.dewd3ef{color: config.$violet;}
 
 .dwwd3d4{
-    color: $violet;
-    @include text_decoration();
+    color: config.$violet;
+    @include mixin.text_decoration();
 
     &:hover {opacity: 0.5;}
 }
@@ -224,7 +224,7 @@ a {
     position: relative;
     width: 100%;
     height: 500px;
-    background-color: $bg_color4;
+    background-color: config.$bg_color4;
     overflow-y: auto;
     overflow-x: none;
 }
@@ -238,7 +238,7 @@ a {
 }
 
 .e46fetgr{
-    color: $violet;
+    color: config.$violet;
     font-size: 19px;
 }
 
@@ -252,12 +252,12 @@ a {
     padding: 6px;
     font-size: 15px;
     color: #fff;
-    background-color: $bg_color4;
+    background-color: config.$bg_color4;
     margin-bottom: 10px;
 
     &:focus {
         outline: none;
-        color: $violet;
+        color: config.$violet;
     }
 }
 
@@ -266,13 +266,13 @@ a {
     padding: 6px;
     font-size: 16px;
     color: #fff;
-    background-color: $bg_color4;
+    background-color: config.$bg_color4;
     width: 400px;
     height: 150px;
 
     &:focus {
         outline: none;
-        color: $violet;
+        color: config.$violet;
     }
 }
 
@@ -281,13 +281,13 @@ a {
     padding: 7px;
     font-size: 16px;
     color: #fff;
-    background-color: $bg_color4;
-    border: solid 2px $null;
+    background-color: config.$bg_color4;
+    border: solid 2px config.$null;
     cursor: pointer;
 
     &:hover {
-        border: solid 2px $violet;
-        color: $violet;
+        border: solid 2px config.$violet;
+        color: config.$violet;
     }
 
     &:focus {outline: none;}
@@ -298,12 +298,12 @@ a {
     margin-bottom: 15px;
     margin-right: 15px;
     padding: 7px;
-    background-color: $bg_color4;
+    background-color: config.$bg_color4;
 
     button {
         border: none;
-        border: solid 2px $null;
-        background-color: $bg_color3;
+        border: solid 2px config.$null;
+        background-color: config.$bg_color3;
         color: #fff;
 
         padding: 5px;
@@ -312,8 +312,8 @@ a {
 
 
         &:hover {
-            color: $violet;
-            border: solid 2px $violet;
+            color: config.$violet;
+            border: solid 2px config.$violet;
         }
     }
 }
@@ -325,6 +325,52 @@ a {
 
 .dqd313qe3qdw22{
     font-size: 18px;
-    color: $violet;
-    @include text_decoration();
+    color: config.$violet;
+    @include mixin.text_decoration();
+}
+
+@media (max-width: 1270px) {
+    .menu {width: 95%;}
+    .w3fwe{width: 95%}
+    .rrggef {width: 95%;}
+    .dqwwqdcccc{left: -80px;}
+    .dwqs322v1{left: -80px;}
+}
+
+@media (max-width: 795.2px) {
+    .dwqs322v,
+    .dwqs322v1 {margin-bottom: 20px;}
+
+    .dqwwqdcccc {
+        float: left;
+        left: 0px;
+    }
+
+    .dwqs322v1 {
+        left: 0px;
+        float: left;
+    }
+}
+
+@media (max-width: 600px) {
+    .menu {height: 100px;}
+    .efw42f {margin-bottom: 10px;}
+}
+
+@media (max-width: 480px) {
+    .dwqs322v {
+        width: 350px;
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    #myTextarea {width: 300px;}
+}
+
+@media (max-width: 350px) {
+    .dwqs322v {
+        width: 250px;
+    }
 }
