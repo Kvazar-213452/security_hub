@@ -57,7 +57,7 @@ type Data_ump struct {
 
 func Post_server_fet_log(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/get_logs post")
+		func_all.AppendToLog("/Post_server_fet_log post")
 
 		jsonData := func_all.LoadLogFile()
 
@@ -70,11 +70,26 @@ func Post_server_fet_log(w http.ResponseWriter, r *http.Request) {
 
 func Post_Browser_site_app(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/get_logs post")
+		func_all.AppendToLog("/Post_Browser_site_app post")
 
 		func_all.AppendToLog("transition to /Browser_site_app")
 
 		url := config_main.Site_main
+		browser.OpenURL(url)
+
+		w.Write(nil)
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_Browser_site_server(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_Browser_site_server post")
+
+		func_all.AppendToLog("transition to /Browser_site_app")
+
+		url := config_main.Site_server
 		browser.OpenURL(url)
 
 		w.Write(nil)

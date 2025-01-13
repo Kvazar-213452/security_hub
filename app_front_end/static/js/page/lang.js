@@ -7,7 +7,7 @@ function lang_change_page(lang) {
     $('#lang_system_wfr839wefsff').html("Host data");
     $('#lang_system_v00qwdweee').html("Open programs");
     $('#lang_system_vfd8723ed span').html("System data");
-    $('#lang_system_verdfvcww').html("Learn something new");
+    $('#lang_system_verdfvcww').html("Get more bios and host information");
     $('#antivirus_errfee2 span').html("Antivirus");
     $('#antivirus_vef093f').html("Be in information security");
     $('#dwdc21e12d').html("Check the site");
@@ -102,7 +102,7 @@ function lang_change_page(lang) {
     $('#pasw_ok2f3web').html("Add password");
     $('#pasw_d3vnb4354').html("Send");
     $('#pasw_fwefc2dewsd span').html("Better passwords");
-    $('#pasw_dwqvnbb455').html("Better best password than better or better than best password");
+    $('#pasw_dwqvnbb455').html("Generation of passwords with subsequent storage in an encrypted database");
     $('#setting_e12rfwvsd').html("Installed version");
     $('#settings_oio3fq').html("Available version");
     $('#settings_q23fweds55').html("Send");
@@ -130,7 +130,7 @@ function lang_change_page(lang) {
     $('#lang_system_wfr839wefsff').html("Дані хоста");
     $('#lang_system_v00qwdweee').html("Відкриті програми");
     $('#lang_system_vfd8723ed span').html("Системні дані");
-    $('#lang_system_verdfvcww').html("Дізнаватись щось нове");
+    $('#lang_system_verdfvcww').html("Отримайте більше інформації про bios та host");
     $('#antivirus_errfee2 span').html("Антивірус");
     $('#antivirus_vef093f').html("Будьте в інформаційній безпеці");
     $('#dwdc21e12d').html("Перевірити сайт");
@@ -228,7 +228,7 @@ function lang_change_page(lang) {
     $('#pasw_ok2f3web').html("Додати пароль");
     $('#pasw_d3vnb4354').html("Відправити");
     $('#pasw_fwefc2dewsd span').html("Кращі паролі");
-    $('#pasw_dwqvnbb455').html("Кращий пароль — це краще, ніж кращий за кращий пароль");
+    $('#pasw_dwqvnbb455').html("Генерація паролів з подальшим зберіганням в зашифрованій базі даних");
     $('#setting_e12rfwvsd').html("Встановлена версія");
     $('#settings_oio3fq').html("Доступна версія");
     $('#settings_q23fweds55').html("Відправити");

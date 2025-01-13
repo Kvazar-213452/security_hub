@@ -76,3 +76,19 @@ function get_how_many() {
     }
 });
 }
+
+function open_site_server() {
+  $.ajax({
+      url: "/browser_site_server",
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify(null),
+      success: function (response) {
+          if (lang_global === "uk") {
+              message_window('Сайт відкрито');
+          } else if (lang_global === "en") {
+              message_window('The site is open');
+          }
+      }
+  });
+}

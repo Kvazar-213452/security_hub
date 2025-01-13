@@ -80,6 +80,7 @@ const Files_virustotal = "https://www.virustotal.com/api/v3/files/"
 
 // solver
 const Site_main = "https://spx-security-hub.wuaze.com/"
+const Site_server = "http://localhost:3000/main"
 const Starter_file = "../data/starter.md"
 
 // server
