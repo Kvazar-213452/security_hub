@@ -19,20 +19,11 @@ type OSData struct {
 
 func Post_get_os_data(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		data, err := page_func.Get_data_os()
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
+		data, _ := page_func.Get_data_os()
 
-		// Встановлюємо Content-Type як JSON
 		w.Header().Set("Content-Type", "application/json")
 
-		// Серіалізуємо структуру в JSON та відправляємо відповідь
-		err = json.NewEncoder(w).Encode(data)
-		if err != nil {
-			http.Error(w, "Error encoding JSON", http.StatusInternalServerError)
-		}
+		json.NewEncoder(w).Encode(data)
 	} else {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}

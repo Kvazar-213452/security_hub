@@ -1,252 +1,252 @@
-function lang_change_page(lang) {
-  if (lang === "en") {
-    $('#lang_wefsdeeeeee span').html("WIFI management");
-    $('#lang_nfefdfdvghyt').html("Get more information about yours WIFI");
-    $('#lang_dqwedddcwww').html("Connection =");
-    $('#lang_system_wdeewds').html("Bios os");
-    $('#lang_system_wfr839wefsff').html("Host data");
-    $('#lang_system_v00qwdweee').html("Open programs");
-    $('#lang_system_vfd8723ed span').html("System data");
-    $('#lang_system_verdfvcww').html("Get more bios and host information");
-    $('#antivirus_errfee2 span').html("Antivirus");
-    $('#antivirus_vef093f').html("Be in information security");
-    $('#dwdc21e12d').html("Check the site");
-    $('#dwdc21e12d1').html("Check the file");
-    $('#dwdc21e12d2').html("On the background BETA");
-    $('#antivirus_894534ffvvv').html("Check");
-    $('#antivirus_894534ffvvv55555').html("Check");
-    $('#h3ruiwefer24f').html("Description");
-    $('#fewrvw243rgefvcc').html("Background features are enabled automatically at startup");
-    $('#vbs612dwes655').html("Monitoring flash drives");
-    $('#vb92354gu04ttg').html("This setting activates the USB media monitoring function, which notifies users when new flash drives are connected. After enabling this function, the program constantly scans available USB media and reports each new device that is connected.");
-    $('#bbv612ee3dwe').html("Set the cmd command that will be launched after connecting the USB drive");
-    $('#bg_dqwderfd').html("Turn on");
-    $('#upload-button').html("Quick check");
-    $('#upload-button1').html("Detailed check");
-    $('#vc728i32000 span').html("Cleaning pc");
-    $('#bvh9iuweddd').html("Unfortunately, the script does not clean the System32 folder. Sorry");
-    $('#bx66210doddddw').html("Cleaning information");
-    $('#bo9ho2_0dddd').html("Clearing DNS and ARP tables");
-    $('#d_odw2983fff').html("File system logs");
-    $('#b8cq82d3333').html("Deleting the history of open paths");
-    $('#vc972odwe9').html("Clearing the internet cache");
-    $('#b89bdq9822222').html("Deleting specific files");
-    $('#bc92idw092222d').html("Deleting temporary files, cache and logs");
-    $('#vwer43erfdfcff').html("Additional settings");
-    $('#bvpuwe033230_233').html("Remove Windows backup copies");
-    $('#v21qp9wd000222s').html('The "Remove Windows backup copies" setting deletes saved system backups that were created for restoring Windows in case of failure or data loss. Backups may include system images (system backups), restore points, as well as automatic file archives.');
-    $('.cbq98222fz233').html("Install");
-    $('#cbwq982fff45t5').html("Delete all Wi-Fi profiles");
-    $('#cbqw278d436666').html('The "Delete all Wi-Fi profiles" setting will remove saved wireless network profiles that your device has connected to.');
-    $('#bv89qwdasdwededddd').html("Delete remote desktop connection settings.");
-    $('#vb0928923ee3ddd').html('The "Delete remote desktop connection settings" setting deletes saved configurations and connection history for remote desktops.');
-    $('#bviubiwdd3333r').html("Restart the doskey command processor");
-    $('#bciu292ed45675663').html("The \"Restart doskey command processor\" setting refreshes the doskey command processor.\n<br><br>\nRestarting doskey clears the command history and resets all defined macros. This can be useful for resetting the command line environment to its default state.");
-    $('#bf0qwp32r4t5651222').html("Clean the computer");
-    $('#bnoewfcc_i033e span').html("Encryption File");
-    $('#bvoif2032991367').html("Don't lose the keys");
-    $('.brbtedfe4443').html("Encrypt File");
-    $('.brbtedfe44431').html("Decrypt File");
-    $('.vb0f0234456465').html("Send");
-    $('#ev23weswe232f223e span').html("Settings");
-    $('#fwe34357554ttr').html("Customize everything to your liking");
-    $('#bv92021dqdskx').html("Shell");
-    $('#visualization1').html("Use SPX");
-    $('#visualization2').html("Use your own browser");
-    $('#bc0wjcw_o').html("For Developers");
-    $('#bc921328dhaaaa').html('To open Logs, press the "]" key on your keyboard');
-    $('#bc929d20221111').html('Logs reload when you press the "]" key on your keyboard');
-    $('#vcwdwqd77777777').html("Close Program");
-    $('#nc000092731').html("Logging");
-    $('#vsgretdbgc1').html("Yes");
-    $('#vsgretdbgc2').html("No");
-    $('.zxbnmewd').html("Install");
-    $('#bv09209092922').html("If you set the value to 0, the port will be selected automatically");
-    $('#nv99121222221').html("Shell Selection");
-    $('#bv902u12222225555').html("Language Selection");
-    $('#c093efw4fwc2322323rfvv').html("Port");
-    $('#duw1291291e12fq').html("Open site");
-    $('#vwf3c3fcew0823qe2k').html("Usage of style");
-    $('#vvw2311323ferererg3g3g3').html("Use");
-    $('#vvw2311323ferererg3g3g31').html("Do not use");
-    $('#vwf3c3fcew0823qe2k1').html("Style");
-    $('#vwf3c3fcew0823qe2k2').html("Install");
-    $('#f2w311e23qqaaa').html("Select a file");
-    $('#file_name').html("No file selected");
-    $('.ve92191112edddd').html("Password:");
-    $('#wifi_0jdccc').html("Wifi info");
-    $('#wifi_0jdccc1').html("Package");
-    $('#system_0jdccc').html("System info");
-    $('#system_0jdccc1').html("File system");
-    $('#system_fqfewvsfdwq').html("Scan settings");
-    $('#system_0dqdwas').html("Extension select:");
-    $('#system_dqqdwas444').html("Send");
-    $('#systme_pj2eqdwa35tg').html("Send data");
-    $('#systme_fqwfegwrehj1').html("Information");
-    $('#pasword_1_btn_page').html("Generation");
-    $('#pasword_1_btn_page1').html("Cloud passwords");
-    $('#pasw_deqfwre').html("Password generation");
-    $('#pasw_pou823rd').html("Password Length:");
-    $('#pasw_o218dqafghh').html("Include Uppercase Letters:");
-    $('#pasw_dq323fh9vvv').html("Include Numbers:");
-    $('#pasw_o290rf323f').html("Include Special Characters:");
-    $('#pasw_dkq30f3q23r unix').html("Generated password:");
-    $('#pasw_p00o1edcc').html("Generate Password");
-    $('#server_ddqd212dqwas').html("Select file");
-    $('#server_099kfvv').html("Password to access the file:");
-    $('#server_Pfj23wes').html("Password:");
-    $('#server_0ij2p3ve').html("Search file by password");
-    $('#server_0jdccc').html("Hidden files");
-    $('#sever_pi913ofv').html("Uploading to the server");
-    $('#systme_fqwfegwrehj1').html("Upload file");
-    $('#pasw_ok2f3web').html("Add password");
-    $('#pasw_d3vnb4354').html("Send");
-    $('#pasw_fwefc2dewsd span').html("Better passwords");
-    $('#pasw_dwqvnbb455').html("Generation of passwords with subsequent storage in an encrypted database");
-    $('#setting_e12rfwvsd').html("Installed version");
-    $('#settings_oio3fq').html("Available version");
-    $('#settings_q23fweds55').html("Send");
-    $('#settings_q23fweds551').html("The program uses the SPX template with its NM shell");
-    $('#settings_1_btn_page').html("Settings");
-    $('#settings_1_btn_page1').html("Info app");
-    $('#settings_1_btn_page2').html("Account");
-    $('#settings_3qecdstrh').html("Log out from the account");
-    $('.register_f2qewds').html("Send data");
-    $('.register_rfrbbbb4').html("Log in");
-    $('#segister_Poif83g').html("Registration");
-    $('#register_o92ufff').html("Login");
-    $('.register_pfi02ifv').html("Register");
-    $('#register_pfj3fv').html("Fill in all fields to register");
-    $('#register_pwfew4fv').html("Insert the code you received on your Gmail into the input");
-    $('#register_pfj3fv1').html("Fill in all fields to log in");
-    $('#dwdc21e12d3').html("Path scanning");
-    $('#lang_server_verdfvcww').html("Secure file transfer over the network");
-    $('#server_lang_werthrgjhfbvd').html("Number of downloaded files");
-  } else if (lang === "uk") {
-    $('#lang_wefsdeeeeee span').html("Вайфай менеджер");
-    $('#lang_nfefdfdvghyt').html("Отримайте більше інформації про ваш вайфай");
-    $('#lang_dqwedddcwww').html("З'єднання =");
-    $('#lang_system_wdeewds').html("Дані біоса");
-    $('#lang_system_wfr839wefsff').html("Дані хоста");
-    $('#lang_system_v00qwdweee').html("Відкриті програми");
-    $('#lang_system_vfd8723ed span').html("Системні дані");
-    $('#lang_system_verdfvcww').html("Отримайте більше інформації про bios та host");
-    $('#antivirus_errfee2 span').html("Антивірус");
-    $('#antivirus_vef093f').html("Будьте в інформаційній безпеці");
-    $('#dwdc21e12d').html("Перевірити сайт");
-    $('#dwdc21e12d1').html("Перевірити файл");
-    $('#dwdc21e12d2').html("На фоні BETA");
-    $('#antivirus_894534ffvvv').html("Перевірити");
-    $('#antivirus_894534ffvvv55555').html("Перевірити");
-    $('#h3ruiwefer24f').html("Опис");
-    $('#fewrvw243rgefvcc').html("Функції на фоні вмикаються автоматично при запуску");
-    $('#vbs612dwes655').html("Моніторинг флешок");
-    $('#vb92354gu04ttg').html("Це налаштування активує функцію моніторингу USB-носіїв, яка попереджає користувача при підключенні нових флешок. Після ввімкнення цієї функції програма постійно сканує доступні USB-носії і повідомляє про кожен новий пристрій, що підключається.");
-    $('#bbv612ee3dwe').html("Встановити cmd команду яка буде запускатись після підключення USB-носія");
-    $('#bg_dqwderfd').html("Увімкнути");
-    $('#upload-button').html("Швидка перевірка");
-    $('#upload-button1').html("Детальна перевірка");
-    $('#vc728i32000 span').html("Очищення ПК");
-    $('#bvh9iuweddd').html("На жаль скрипт не очищує папку System32. Вибачте");
-    $('#bx66210doddddw').html("Інформація очистки");
-    $('#bo9ho2_0dddd').html("Очищення DNS та ARP-таблиць");
-    $('#d_odw2983fff').html("Журнали файлової системи");
-    $('#b8cq82d3333').html("Видалення історії відкритих шляхів");
-    $('#vc972odwe9').html("Очищення кешу інтернету");
-    $('#b89bdq9822222').html("Видалення конкретних файлів");
-    $('#bc92idw092222d').html("Видалення тимчасових файлів, кешів та логів");
-    $('#vwer43erfdfcff').html("Додаткові налаштування");
-    $('#bvpuwe033230_233').html("Видалити резервні копії Windows");
-    $('#v21qp9wd000222s').html('Налаштування "Видалити резервні копії Windows" видаляє збережені копії системи, створені для відновлення Windows у разі збоїв або втрати даних. Резервні копії можуть включати зображення системи (резервні копії системи), точки відновлення, а також автоматичні архіви файлів.');
-    $('.cbq98222fz233').html("Встановити");
-    $('#cbwq982fff45t5').html("Видалити всі профілі Wi-Fi");
-    $('#cbqw278d436666').html('Налаштування "Видалити всі профілі Wi-Fi" видалить збережені профілі бездротових мереж, до яких ваше пристрій підключалось.');
-    $('#bv89qwdasdwededddd').html("Видалити налаштування підключення до віддаленого робочого столу.");
-    $('#vb0928923ee3ddd').html('Налаштування "Видалити налаштування підключення до віддаленого робочого столу" видаляє збережені конфігурації та історію підключень до віддалених робочих столів.');
-    $('#bviubiwdd3333r').html("Перезавантажити процесор команд doskey");
-    $('#bciu292ed45675663').html("Налаштування \"Перезавантажити процесор команд doskey\" оновлює процесор команд doskey.\n<br><br>\nПерезавантаження doskey очищає історію команд і скидає всі визначені макроси. Це може бути корисно для скидання середовища командного рядка до його початкового стану.");
-    $('#bf0qwp32r4t5651222').html("Очищення комп'ютера");
-    $('#bnoewfcc_i033e span').html("Шифрування файлу");
-    $('#bvoif2032991367').html("Не втратьте ключі");
-    $('.brbtedfe4443').html("Зашифрувати файл");
-    $('.brbtedfe44431').html("Розшифрувати файл");
-    $('.vb0f0234456465').html("Відправити");
-    $('#ev23weswe232f223e span').html("Налаштування");
-    $('#fwe34357554ttr').html("Налаштуйте все під себе");
-    $('#bv92021dqdskx').html("Оболонка");
-    $('#visualization1').html("Використовувати SPX");
-    $('#visualization2').html("Використовувати свій браузер");
-    $('#bc0wjcw_o').html("Для розробників");
-    $('#bc921328dhaaaa').html('Для відкриття журналів натискайте клавішу "]" на вашій клавіатурі');
-    $('#bc929d20221111').html('Журнали оновлюються при натисканні "]" на вашій клавіатурі');
-    $('#vcwdwqd77777777').html("Закрити програму");
-    $('#nc000092731').html("Журналювання");
-    $('#vsgretdbgc1').html("Так");
-    $('#vsgretdbgc2').html("Ні");
-    $('.zxbnmewd').html("Встановити");
-    $('#bv09209092922').html("Якщо ви встановите значення 0, порт буде обраний автоматично");
-    $('#nv99121222221').html("Вибір оболонки");
-    $('#bv902u12222225555').html("Вибір мови");
-    $('#c093efw4fwc2322323rfvv').html("Порт");
-    $('#duw1291291e12fq').html("Відкрити сайт");
-    $('#vwf3c3fcew0823qe2k').html("Використання стилів");
-    $('#vvw2311323ferererg3g3g3').html("Використовувати");
-    $('#vvw2311323ferererg3g3g31').html("Не використовувати");
-    $('#vwf3c3fcew0823qe2k1').html("Стиль");
-    $('#vwf3c3fcew0823qe2k2').html("Встановити");
-    $('#f2w311e23qqaaa').html("Обрати файл");
-    $('#file_name').html("Файл не обрано");
-    $('.ve92191112edddd').html("Пароль:");
-    $('.pass_dq3dqwcesdcc').html("Генерація пароля && Додавання пароля");
-    $('.pass_dq3dqwcesdcc1').html("Завантажити");
-    $('.server_0312edcccc').html("Завантажити");
-    $('#wifi_0jdccc').html("Інформація");
-    $('#wifi_0jdccc1').html("Пакети");
-    $('#system_0jdccc').html("Системна інформація");
-    $('#system_0jdccc1').html("Файлова система");
-    $('#system_fqfewvsfdwq').html("Налаштування сканування");
-    $('#system_0dqdwas').html("Вибір розширення:");
-    $('#system_dqqdwas444').html("Відправити");
-    $('#systme_pj2eqdwa35tg').html("Відправити дані");
-    $('#systme_fqwfegwrehj1').html("Інформація");
-    $('#pasword_1_btn_page').html("Генерація");
-    $('#pasword_1_btn_page1').html("Хмарні паролі");
-    $('#pasw_deqfwre').html("Генерація пароля");
-    $('#pasw_pou823rd').html("Довжина пароля:");
-    $('#pasw_o218dqafghh').html("Включити великі літери:");
-    $('#pasw_dq323fh9vvv').html("Включити цифри:");
-    $('#pasw_o290rf323f').html("Включити спеціальні символи:");
-    $('#pasw_dkq30f3q23r unix').html("Згенерований пароль:");
-    $('#pasw_p00o1edcc').html("Згенерувати пароль");
-    $('#server_ddqd212dqwas').html("Виберіть файл");
-    $('#server_099kfvv').html("Пароль для доступу до файлу:");
-    $('#server_Pfj23wes').html("Пароль:");
-    $('#server_0ij2p3ve').html("Пошук файлу за паролем");
-    $('#server_0jdccc').html("Приховані файли");
-    $('#sever_pi913ofv').html("Завантаження на сервер");
-    $('#systme_fqwfegwrehj1').html("Завантажити файл");
-    $('#pasw_ok2f3web').html("Додати пароль");
-    $('#pasw_d3vnb4354').html("Відправити");
-    $('#pasw_fwefc2dewsd span').html("Кращі паролі");
-    $('#pasw_dwqvnbb455').html("Генерація паролів з подальшим зберіганням в зашифрованій базі даних");
-    $('#setting_e12rfwvsd').html("Встановлена версія");
-    $('#settings_oio3fq').html("Доступна версія");
-    $('#settings_q23fweds55').html("Відправити");
-    $('#settings_q23fweds551').html("Програма використовує шаблон SPX з його shell NM");
-    $('#settings_1_btn_page').html("Налаштування");
-    $('#settings_1_btn_page1').html("Інформація про програму");
-    $('#settings_1_btn_page2').html("Обліковий запис");
-    $('#settings_3qecdstrh').html("Вийти з акаунта");
-    $('.register_f2qewds').html("Надіслати дані");
-    $('.register_rfrbbbb4').html("Увійти");
-    $('#segister_Poif83g').html("Реєстрація");
-    $('#register_o92ufff').html("Вхід в систему");
-    $('.register_pfi02ifv').html("Зареєструватись");
-    $('#register_pfj3fv').html("Заповніть всі поля для реєстрації");
-    $('#register_pwfew4fv').html("Вставте в поле код, який прийшов на ваш Gmail");
-    $('#register_pfj3fv1').html("Заповніть всі поля для входу в систему");
-    $('#dwdc21e12d3').html("Сканування шляху");
-    $('#lang_server_verdfvcww').html("Безпечна передача файлів через мережу");
-    $('#server_lang_werthrgjhfbvd').html("Кількість завантажених файлів");
-  }
+let mas_lang = {
+  "en": [
+    ['#lang_wefsdeeeeee span', 'WIFI management'],
+    ['#lang_nfefdfdvghyt', 'Get more information about yours WIFI'],
+    ['#lang_dqwedddcwww', 'Connection ='],
+    ['#lang_system_wdeewds', 'Bios os'],
+    ['#lang_system_wfr839wefsff', 'Host data'],
+    ['#lang_system_v00qwdweee', 'Open programs'],
+    ['#lang_system_vfd8723ed span', 'System data'],
+    ['#lang_system_verdfvcww', 'Get more bios and host information'],
+    ['#antivirus_errfee2 span', 'Antivirus'],
+    ['#antivirus_vef093f', 'Be in information security'],
+    ['#dwdc21e12d', 'Check the site'],
+    ['#dwdc21e12d1', 'Check the file'],
+    ['#dwdc21e12d2', 'On the background BETA'],
+    ['#antivirus_894534ffvvv', 'Check'],
+    ['#antivirus_894534ffvvv55555', 'Check'],
+    ['#h3ruiwefer24f', 'Description'],
+    ['#fewrvw243rgefvcc', 'Background features are enabled automatically at startup'],
+    ['#vbs612dwes655', 'Monitoring flash drives'],
+    ['#vb92354gu04ttg', 'This setting activates the USB media monitoring function, which notifies users when new flash drives are connected. After enabling this function, the program constantly scans available USB media and reports each new device that is connected.'],
+    ['#bbv612ee3dwe', 'Set the cmd command that will be launched after connecting the USB drive'],
+    ['#bg_dqwderfd', 'Turn on'],
+    ['#upload-button', 'Quick check'],
+    ['#upload-button1', 'Detailed check'],
+    ['#vc728i32000 span', 'Cleaning pc'],
+    ['#bvh9iuweddd', 'Unfortunately, the script does not clean the System32 folder. Sorry'],
+    ['#bx66210doddddw', 'Cleaning information'],
+    ['#bo9ho2_0dddd', 'Clearing DNS and ARP tables'],
+    ['#d_odw2983fff', 'File system logs'],
+    ['#b8cq82d3333', 'Deleting the history of open paths'],
+    ['#vc972odwe9', 'Clearing the internet cache'],
+    ['#b89bdq9822222', 'Deleting specific files'],
+    ['#bc92idw092222d', 'Deleting temporary files, cache and logs'],
+    ['#vwer43erfdfcff', 'Additional settings'],
+    ['#bvpuwe033230_233', 'Remove Windows backup copies'],
+    ['#v21qp9wd000222s', 'The "Remove Windows backup copies" setting deletes saved system backups that were created for restoring Windows in case of failure or data loss. Backups may include system images (system backups), restore points, as well as automatic file archives.'],
+    ['.cbq98222fz233', 'Install'],
+    ['#cbwq982fff45t5', 'Delete all Wi-Fi profiles'],
+    ['#cbqw278d436666', 'The "Delete all Wi-Fi profiles" setting will remove saved wireless network profiles that your device has connected to.'],
+    ['#bv89qwdasdwededddd', 'Delete remote desktop connection settings.'],
+    ['#vb0928923ee3ddd', 'The "Delete remote desktop connection settings" setting deletes saved configurations and connection history for remote desktops.'],
+    ['#bviubiwdd3333r', 'Restart the doskey command processor'],
+    ['#bciu292ed45675663', 'The "Restart doskey command processor" setting refreshes the doskey command processor.\n<br><br>\nRestarting doskey clears the command history and resets all defined macros. This can be useful for resetting the command line environment to its default state.'],
+    ['#bf0qwp32r4t5651222', 'Clean the computer'],
+    ['#bnoewfcc_i033e span', 'Encryption File'],
+    ['#bvoif2032991367', "Don't lose the keys"],
+    ['.brbtedfe4443', 'Encrypt File'],
+    ['.brbtedfe44431', 'Decrypt File'],
+    ['.vb0f0234456465', 'Send'],
+    ['#ev23weswe232f223e span', 'Settings'],
+    ['#fwe34357554ttr', 'Customize everything to your liking'],
+    ['#bv92021dqdskx', 'Shell'],
+    ['#visualization1', 'Use SPX'],
+    ['#visualization2', 'Use your own browser'],
+    ['#bc0wjcw_o', 'For Developers'],
+    ['#bc921328dhaaaa', 'To open Logs, press the "]" key on your keyboard'],
+    ['#bc929d20221111', 'Logs reload when you press the "]" key on your keyboard'],
+    ['#vcwdwqd77777777', 'Close Program'],
+    ['#nc000092731', 'Logging'],
+    ['#vsgretdbgc1', 'Yes'],
+    ['#vsgretdbgc2', 'No'],
+    ['.zxbnmewd', 'Install'],
+    ['#bv09209092922', 'If you set the value to 0, the port will be selected automatically'],
+    ['#nv99121222221', 'Shell Selection'],
+    ['#bv902u12222225555', 'Language Selection'],
+    ['#c093efw4fwc2322323rfvv', 'Port'],
+    ['#duw1291291e12fq', 'Open site'],
+    ['#vwf3c3fcew0823qe2k', 'Usage of style'],
+    ['#vvw2311323ferererg3g3g3', 'Use'],
+    ['#vvw2311323ferererg3g3g31', 'Do not use'],
+    ['#vwf3c3fcew0823qe2k1', 'Style'],
+    ['#vwf3c3fcew0823qe2k2', 'Install'],
+    ['#f2w311e23qqaaa', 'Select a file'],
+    ['#file_name', 'No file selected'],
+    ['.ve92191112edddd', 'Password:'],
+    ['#wifi_0jdccc', 'Wifi info'],
+    ['#wifi_0jdccc1', 'Package'],
+    ['#system_0jdccc', 'System info'],
+    ['#system_0jdccc1', 'File system'],
+    ['#system_fqfewvsfdwq', 'Scan settings'],
+    ['#system_0dqdwas', 'Extension select:'],
+    ['#system_dqqdwas444', 'Send'],
+    ['#systme_pj2eqdwa35tg', 'Send data'],
+    ['#systme_fqwfegwrehj1', 'Information'],
+    ['#pasword_1_btn_page', 'Generation'],
+    ['#pasword_1_btn_page1', 'Cloud passwords'],
+    ['#pasw_deqfwre', 'Password generation'],
+    ['#pasw_pou823rd', 'Password Length:'],
+    ['#pasw_o218dqafghh', 'Include Uppercase Letters:'],
+    ['#pasw_dq323fh9vvv', 'Include Numbers:'],
+    ['#pasw_o290rf323f', 'Include Special Characters:'],
+    ['#pasw_dkq30f3q23r unix', 'Generated password:'],
+    ['#pasw_p00o1edcc', 'Generate Password'],
+    ['#server_ddqd212dqwas', 'Select file'],
+    ['#server_099kfvv', 'Password to access the file:'],
+    ['#server_Pfj23wes', 'Password:'],
+    ['#server_0ij2p3ve', 'Search file by password'],
+    ['#server_0jdccc', 'Hidden files'],
+    ['#sever_pi913ofv', 'Uploading to the server'],
+    ['#systme_fqwfegwrehj1', 'Upload file'],
+    ['#pasw_ok2f3web', 'Add password'],
+    ['#pasw_d3vnb4354', 'Send'],
+    ['#pasw_fwefc2dewsd span', 'Better passwords'],
+    ['#pasw_dwqvnbb455', 'Generation of passwords with subsequent storage in an encrypted database'],
+    ['#setting_e12rfwvsd', 'Installed version'],
+    ['#settings_oio3fq', 'Available version'],
+    ['#settings_q23fweds55', 'Send'],
+    ['#settings_q23fweds551', 'The program uses the SPX template with its NM shell'],
+    ['#settings_1_btn_page', 'Settings'],
+    ['#settings_1_btn_page1', 'Info app'],
+    ['#settings_1_btn_page2', 'Account'],
+    ['#settings_3qecdstrh', 'Log out from the account'],
+    ['.register_f2qewds', 'Send data'],
+    ['.register_rfrbbbb4', 'Log in'],
+    ['#segister_wqv23q2333', 'To access the program, please log in to your account.']
+  ],
+
+  "uk": [
+    ['#lang_wefsdeeeeee span', 'Вайфай менеджер'],
+    ['#lang_nfefdfdvghyt', 'Отримайте більше інформації про ваш вайфай'],
+    ['#lang_dqwedddcwww', "З'єднання ="],
+    ['#lang_system_wdeewds', 'Дані біоса'],
+    ['#lang_system_wfr839wefsff', 'Дані хоста'],
+    ['#lang_system_v00qwdweee', 'Відкриті програми'],
+    ['#lang_system_vfd8723ed span', 'Системні дані'],
+    ['#lang_system_verdfvcww', 'Отримайте більше інформації про bios та host'],
+    ['#antivirus_errfee2 span', 'Антивірус'],
+    ['#antivirus_vef093f', 'Будьте в інформаційній безпеці'],
+    ['#dwdc21e12d', 'Перевірити сайт'],
+    ['#dwdc21e12d1', 'Перевірити файл'],
+    ['#dwdc21e12d2', 'На фоні BETA'],
+    ['#antivirus_894534ffvvv', 'Перевірити'],
+    ['#antivirus_894534ffvvv55555', 'Перевірити'],
+    ['#h3ruiwefer24f', 'Опис'],
+    ['#fewrvw243rgefvcc', 'Функції на фоні вмикаються автоматично при запуску'],
+    ['#vbs612dwes655', 'Моніторинг флешок'],
+    ['#vb92354gu04ttg', 'Це налаштування активує функцію моніторингу USB-носіїв, яка попереджає користувача при підключенні нових флешок. Після ввімкнення цієї функції програма постійно сканує доступні USB-носії і повідомляє про кожен новий пристрій, що підключається.'],
+    ['#bbv612ee3dwe', 'Встановити cmd команду, яка буде запускатись після підключення USB-носія'],
+    ['#bg_dqwderfd', 'Увімкнути'],
+    ['#upload-button', 'Швидка перевірка'],
+    ['#upload-button1', 'Детальна перевірка'],
+    ['#vc728i32000 span', 'Очищення ПК'],
+    ['#bvh9iuweddd', 'На жаль, скрипт не очищує папку System32. Вибачте'],
+    ['#bx66210doddddw', 'Інформація очистки'],
+    ['#bo9ho2_0dddd', 'Очищення DNS та ARP-таблиць'],
+    ['#d_odw2983fff', 'Журнали файлової системи'],
+    ['#b8cq82d3333', 'Видалення історії відкритих шляхів'],
+    ['#vc972odwe9', 'Очищення кешу інтернету'],
+    ['#b89bdq9822222', 'Видалення конкретних файлів'],
+    ['#bc92idw092222d', 'Видалення тимчасових файлів, кешів та логів'],
+    ['#vwer43erfdfcff', 'Додаткові налаштування'],
+    ['#bvpuwe033230_233', 'Видалити резервні копії Windows'],
+    ['#v21qp9wd000222s', 'Налаштування "Видалити резервні копії Windows" видаляє збережені копії системи, створені для відновлення Windows у разі збоїв або втрати даних. Резервні копії можуть включати зображення системи (резервні копії системи), точки відновлення, а також автоматичні архіви файлів.'],
+    ['.cbq98222fz233', 'Встановити'],
+    ['#cbwq982fff45t5', 'Видалити всі профілі Wi-Fi'],
+    ['#cbqw278d436666', 'Налаштування "Видалити всі профілі Wi-Fi" видалить збережені профілі бездротових мереж, до яких ваше пристрій підключалось.'],
+    ['#bv89qwdasdwededddd', 'Видалити налаштування підключення до віддаленого робочого столу.'],
+    ['#vb0928923ee3ddd', 'Налаштування "Видалити налаштування підключення до віддаленого робочого столу" видаляє збережені конфігурації та історію підключень до віддалених робочих столів.'],
+    ['#bviubiwdd3333r', 'Перезавантажити процесор команд doskey'],
+    ['#bciu292ed45675663', 'Налаштування "Перезавантажити процесор команд doskey" оновлює процесор команд doskey.\n<br><br>\nПерезавантаження doskey очищає історію команд і скидає всі визначені макроси. Це може бути корисно для скидання середовища командного рядка до його початкового стану.'],
+    ['#bf0qwp32r4t5651222', 'Очищення комп\'ютера'],
+    ['#bnoewfcc_i033e span', 'Шифрування файлу'],
+    ['#bvoif2032991367', 'Не втратьте ключі'],
+    ['.brbtedfe4443', 'Зашифрувати файл'],
+    ['.brbtedfe44431', 'Розшифрувати файл'],
+    ['.vb0f0234456465', 'Відправити'],
+    ['#ev23weswe232f223e span', 'Налаштування'],
+    ['#fwe34357554ttr', 'Налаштуйте все під себе'],
+    ['#bv92021dqdskx', 'Оболонка'],
+    ['#visualization1', 'Використовувати SPX'],
+    ['#visualization2', 'Використовувати свій браузер'],
+    ['#bc0wjcw_o', 'Для розробників'],
+    ['#bc921328dhaaaa', 'Для відкриття журналів натискайте клавішу "]" на вашій клавіатурі'],
+    ['#bc929d20221111', 'Журнали оновлюються при натисканні "]" на вашій клавіатурі'],
+    ['#vcwdwqd77777777', 'Закрити програму'],
+    ['#nc000092731', 'Журналювання'],
+    ['#vsgretdbgc1', 'Так'],
+    ['#vsgretdbgc2', 'Ні'],
+    ['.zxbnmewd', 'Встановити'],
+    ['#bv09209092922', 'Якщо ви встановите значення 0, порт буде обраний автоматично'],
+    ['#nv99121222221', 'Вибір оболонки'],
+    ['#bv902u12222225555', 'Вибір мови'],
+    ['#c093efw4fwc2322323rfvv', 'Порт'],
+    ['#duw1291291e12fq', 'Відкрити сайт'],
+    ['#vwf3c3fcew0823qe2k', 'Використання стилів'],
+    ['#vvw2311323ferererg3g3g3', 'Використовувати'],
+    ['#vvw2311323ferererg3g3g31', 'Не використовувати'],
+    ['#vwf3c3fcew0823qe2k1', 'Стиль'],
+    ['#vwf3c3fcew0823qe2k2', 'Встановити'],
+    ['#f2w311e23qqaaa', 'Обрати файл'],
+    ['#file_name', 'Файл не обрано'],
+    ['.ve92191112edddd', 'Пароль:'],
+    ['.pass_dq3dqwcesdcc', 'Генерація пароля && Додавання пароля'],
+    ['.pass_dq3dqwcesdcc1', 'Завантажити'],
+    ['.server_0312edcccc', 'Завантажити'],
+    ['#wifi_0jdccc', 'Інформація'],
+    ['#wifi_0jdccc1', 'Пакети'],
+    ['#system_0jdccc', 'Системна інформація'],
+    ['#system_0jdccc1', 'Файлова система'],
+    ['#system_fqfewvsfdwq', 'Налаштування сканування'],
+    ['#system_0dqdwas', 'Вибір розширення:'],
+    ['#system_dqqdwas444', 'Відправити'],
+    ['#systme_pj2eqdwa35tg', 'Відправити дані'],
+    ['#systme_fqwfegwrehj1', 'Інформація'],
+    ['#pasword_1_btn_page', 'Генерація'],
+    ['#pasword_1_btn_page1', 'Хмарні паролі'],
+    ['#pasw_deqfwre', 'Генерація пароля'],
+    ['#pasw_pou823rd', 'Довжина пароля:'],
+    ['#pasw_o218dqafghh', 'Включити великі літери:'],
+    ['#pasw_dq323fh9vvv', 'Включити цифри:'],
+    ['#pasw_o290rf323f', 'Включити спеціальні символи:'],
+    ['#pasw_dkq30f3q23r unix', 'Згенерований пароль:'],
+    ['#pasw_p00o1edcc', 'Згенерувати пароль'],
+    ['#server_ddqd212dqwas', 'Виберіть файл'],
+    ['#server_099kfvv', 'Пароль для доступу до файлу:'],
+    ['#server_Pfj23wes', 'Пароль:'],
+    ['#server_0ij2p3ve', 'Пошук файлу за паролем'],
+    ['#server_0jdccc', 'Приховані файли'],
+    ['#sever_pi913ofv', 'Завантаження на сервер'],
+    ['#systme_fqwfegwrehj1', 'Завантажити файл'],
+    ['#pasw_ok2f3web', 'Додати пароль'],
+    ['#pasw_d3vnb4354', 'Відправити'],
+    ['#pasw_fwefc2dewsd span', 'Кращі паролі'],
+    ['#pasw_dwqvnbb455', 'Генерація паролів з подальшим зберіганням в зашифрованій базі даних'],
+    ['#setting_e12rfwvsd', 'Встановлена версія'],
+    ['#settings_oio3fq', 'Доступна версія'],
+    ['#settings_q23fweds55', 'Відправити'],
+    ['#settings_q23fweds551', 'Програма використовує шаблон SPX з його shell NM'],
+    ['#settings_1_btn_page', 'Налаштування'],
+    ['#settings_1_btn_page1', 'Інформація про програму'],
+    ['#settings_1_btn_page2', 'Обліковий запис'],
+    ['#settings_3qecdstrh', 'Вийти з акаунта'],
+    ['.register_f2qewds', 'Надіслати дані'],
+    ['.register_rfrbbbb4', 'Увійти'],
+    ['#segister_Poif83g', 'Реєстрація'],
+    ['#register_o92ufff', 'Вхід в систему'],
+    ['.register_pfi02ifv', 'Зареєструватись'],
+    ['#register_pfj3fv', 'Заповніть всі поля для реєстрації'],
+    ['#register_pwfew4fv', 'Вставте в поле код, який прийшов на ваш Gmail'],
+    ['#register_pfj3fv1', 'Заповніть всі поля для входу в систему'],
+    ['#dwdc21e12d3', 'Сканування шляху'],
+    ['#lang_server_verdfvcww', 'Безпечна передача файлів через мережу'],
+    ['#server_lang_werthrgjhfbvd', 'Кількість завантажених файлів']
+  ]
 };
+
+function lang_change_page(lang) {
+  for (let i = 0; i < mas_lang[lang].length; i++) {
+    $(mas_lang[lang][i][0]).html(mas_lang[lang][i][1]);
+  }
+}

@@ -103,5 +103,5 @@ app.post('/search', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Сервер запущено на http://localhost:${PORT}`);
+  console.log(`start http://localhost:${PORT}`);
 });

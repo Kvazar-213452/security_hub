@@ -1,7 +1,6 @@
 package page_func
 
 import (
-	"fmt"
 	"regexp"
 	"runtime"
 	"strings"
@@ -69,7 +68,6 @@ func Get_data_os() (*SystemInfo, error) {
 		NumCPU:       runtime.NumCPU(),
 	}
 
-	// Отримання інформації про хост
 	info, _ := host.Info()
 	systemInfo.HostInfo = &hostInfo{
 		Hostname:        info.Hostname,
@@ -80,20 +78,12 @@ func Get_data_os() (*SystemInfo, error) {
 		Uptime:          info.Uptime,
 	}
 
-	// Отримання інформації про BIOS
 	var bios []Win32_BIOS
-	err := wmi.Query("SELECT Manufacturer, Name, Version, ReleaseDate, SerialNumber FROM Win32_BIOS", &bios)
-	if err != nil {
-		return nil, fmt.Errorf("Error getting BIOS information: %v", err)
-	}
+	wmi.Query("SELECT Manufacturer, Name, Version, ReleaseDate, SerialNumber FROM Win32_BIOS", &bios)
 	systemInfo.BIOSInfo = bios
 
-	// Отримання інформації про операційну систему
 	var osInfo []Win32_OperatingSystem
-	err = wmi.Query("SELECT Caption, Version, BuildNumber, OSArchitecture, SerialNumber, Manufacturer, InstallDate, LastBootUpTime FROM Win32_OperatingSystem", &osInfo)
-	if err != nil {
-		return nil, fmt.Errorf("Error getting OS information: %v", err)
-	}
+	wmi.Query("SELECT Caption, Version, BuildNumber, OSArchitecture, SerialNumber, Manufacturer, InstallDate, LastBootUpTime FROM Win32_OperatingSystem", &osInfo)
 	systemInfo.OperatingSystem = osInfo
 
 	return systemInfo, nil
