@@ -58,3 +58,7 @@ let html_1 = `
 // cleanup
 let bg_color1 = "rgb(18, 18, 18)";
 let bg_color2 = "rgb(89, 89, 89)";
+
+// schedule
+let main_color = "#68ff9d";
+let text_color = "#ffffffd4";

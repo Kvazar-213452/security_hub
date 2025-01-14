@@ -10,7 +10,7 @@ def main():
         thread1 = threading.Thread(target=run_process, args=("python main.py", "server/register_and_data"))
         thread1.start()
 
-        thread2 = threading.Thread(target=run_process, args=("npm start", "server/data_file"))
+        thread2 = threading.Thread(target=run_process, args=("npm i && npm start", "server/data_file"))
         thread2.start()
 
         thread3 = threading.Thread(target=run_process, args=("go build && start head", "app_back_end"))

@@ -43,7 +43,7 @@ class Chart {
       createChartLine() {
           const $chartLine = this.createSvgElement('path');
           this.setAttributes($chartLine, {
-          stroke: '#68ff9d',
+          stroke: main_color,
           'stroke-width': this.chartLineStrokeWidth,
           fill: 'none',
           });
@@ -79,14 +79,14 @@ class Chart {
               y1: currentY,
               y2: currentY,
               'stroke-width': 0.5,
-              stroke: '#68ff9d',
+              stroke: main_color,
           });
       
           const $text = this.createSvgElement('text');
           this.setAttributes($text, {
               x: this.maxWidth - this.horizontalPadding,
               y: currentY,
-              fill: '#ffffffd4',
+              fill: text_color,
           });
           $text.append(Math.round(tickValue));
       
@@ -102,8 +102,8 @@ class Chart {
               r: this.circleRadius,
               cx: x,
               cy: y,
-              fill: '#68ff9d',
-              stroke: '#68ff9d',
+              fill: main_color,
+              stroke: main_color,
           });
           $circle.dataset.text = `${el.z}, ${el.y}`;
           $circle.classList.add('circle');
@@ -160,7 +160,7 @@ class Chart {
           this.setAttributes($legendXText, {
               x: currentX,
               y: this.maxHeight - 5,
-              fill: '#ffffffd4',
+              fill: text_color,
           });
           $legendXText.append(el.x);
       
