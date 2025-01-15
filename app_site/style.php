@@ -19,6 +19,14 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
             <br>
             <a download href="<?php echo $domen_name; ?>/static/css/main_jr.css"><button>Завантажити</button></a>
         </div>
+        <div class="style_dqw">
+            <p class="dqd313qe3qdw22">old style</p>
+            <br>
+            <p class="dq3233rrffff">Вага: 1 12.64 КБ</p>
+            <p class="dq3233rrffff">Створив: Kvazar-213452</p>
+            <br>
+            <a download href="<?php echo $domen_name; ?>/static/css/style_old.css"><button>Завантажити</button></a>
+        </div>
     </div>
     <?php require 'page/footer.php'; ?>
     <br><br>
