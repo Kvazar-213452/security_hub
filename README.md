@@ -8,4 +8,4 @@ https://spx-security-hub.wuaze.com/page/main?i=1
 0 - false
 
 img
-![Alt text](1.jpg)
+![Alt text](1.png)

@@ -110,8 +110,6 @@ def add_key_pasw():
         with open('db.cos', 'r') as f:
             db_data = json.load(f)
 
-        encrypt_file()
-
         for entry in db_data:
             if entry.get("gmail") == gmail:
                 if isinstance(entry.get("key"), list):
@@ -121,6 +119,8 @@ def add_key_pasw():
 
                 with open('db.cos', 'w') as f:
                     json.dump(db_data, f, indent=4)
+
+                encrypt_file()
 
                 return jsonify({"message": "Дані успішно оновлені", "key": entry.get("key")}), 200
 
@@ -178,8 +178,6 @@ def del_key_pasw():
         with open('db.cos', 'r') as f:
             db_data = json.load(f)
 
-        encrypt_file()
-
         for entry in db_data:
             if entry.get("gmail") == gamil:
                 key_data = entry.get("key", [])
@@ -190,6 +188,8 @@ def del_key_pasw():
 
                 with open('db.cos', 'w') as f:
                     json.dump(db_data, f, indent=4)
+                
+                encrypt_file()
 
                 return jsonify({"status": "1"}), 200
 

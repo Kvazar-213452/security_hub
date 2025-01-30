@@ -4,12 +4,11 @@
 }
 
 :root {
-    --bg_1: #181822;
-    --bg_2: #22222e;
-    --bg_3: #2d2d3d;
-    --bg_4: #22222e;
+    --bg_1: #181818;
+    --bg_2: #121212;
+    --bg_3: #232323;
     --bg_5: #595959;
-    --bg_6: #252831;
+    --bg_6: #1d1d1d;
 
     --text_color: #fff;
     --main_color: #68ff9d;
@@ -17,7 +16,7 @@
     --orange: #ff9c4c;
     --blue: #697ffe;
 }
-
+ 
 body {
     background-color: var(--bg_2);
     font-family: 'MyCustomFont', sans-serif;
@@ -58,7 +57,7 @@ a {color: var(--text_color);}
 .vw92dy9qccde32122021 {border-bottom: solid 2px var(--main_color);}
 
 .animatedBlock {
-    background-color: var(--bg_4);
+    background-color: var(--bg_2);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     color: var(--text_color);
 }
@@ -142,7 +141,6 @@ a {color: var(--text_color);}
 .button_settings {
     background-color: var(--bg_3);
     color: var(--text_color);
-    border: solid 2px rgba(255, 255, 255, 0);
 }
 
 .button_settings_one {
@@ -179,7 +177,7 @@ a {color: var(--text_color);}
 /* system page */ /* system page */ /* system page */ /* system page */ /* system page */ /* system page */
 /* system page */ /* system page */ /* system page */ /* system page */ /* system page */ /* system page */
 
-.file_system_div_select {background-color: var(--bg_4);}
+.file_system_div_select {background-color: var(--bg_2);}
 
 .file_system_del_div {
     background-color: var(--red);
@@ -213,7 +211,7 @@ a {color: var(--text_color);}
 /* cleaning page */ /* cleaning page */ /* cleaning page */ /* cleaning page */ /* cleaning page */ /* cleaning page */
 
 .deccc {
-    background-color: var(--bg_4);
+    background-color: var(--bg_2);
     color: var(--main_color);
     border: solid 2px rgba(255, 255, 255, 0);
 }
@@ -222,7 +220,7 @@ a {color: var(--text_color);}
 .toggle-btn:hover {color: var(--main_color);}
 
 .dropdown-content {
-    background-color: var(--bg_4);
+    background-color: var(--bg_2);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -420,7 +418,7 @@ a {color: var(--text_color);}
 
 .unixwqc {
     color: var(--text_color);
-    background-color: var(--bg_4);
+    background-color: var(--bg_2);
 }
 
 .unixwqc:focus {background-color: var(--main_color);}

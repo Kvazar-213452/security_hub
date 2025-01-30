@@ -6,7 +6,8 @@ import (
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
 	"head/main_com/page_func"
-	"io/ioutil"
+	"io"
+	"log"
 	"net/http"
 )
 
@@ -44,17 +45,32 @@ func Post_get_password(w http.ResponseWriter, r *http.Request) {
 			Gmail: config.Gmail,
 		}
 
-		jsonData, _ := json.Marshal(data)
+		jsonData, err := json.Marshal(data)
+		if err != nil {
+			log.Println("Error JSON:", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
 
-		resp, _ := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_get_password, "application/json", bytes.NewBuffer(jsonData))
+		resp, err := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_get_password, "application/json", bytes.NewBuffer(jsonData))
+		if err != nil {
+			log.Println("Error", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
 		defer resp.Body.Close()
 
-		body, _ := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			log.Println("Error:", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(string(body))
 	} else {
-		http.Error(w, "error", http.StatusMethodNotAllowed)
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -65,7 +81,8 @@ func Post_add_key_pasw(w http.ResponseWriter, r *http.Request) {
 		var data RequestData_dqwd
 		err := json.NewDecoder(r.Body).Decode(&data)
 		if err != nil {
-			http.Error(w, "Помилка при обробці JSON", http.StatusBadRequest)
+			log.Println("Error decoding JSON:", err)
+			http.Error(w, "Invalid JSON", http.StatusBadRequest)
 			return
 		}
 
@@ -77,15 +94,32 @@ func Post_add_key_pasw(w http.ResponseWriter, r *http.Request) {
 			Gmail: config.Gmail,
 		}
 
-		jsonData, _ := json.Marshal(data1)
+		jsonData, err := json.Marshal(data1)
+		if err != nil {
+			log.Println("Error JSON:", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
 
-		resp, _ := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_add_key_pasw, "application/json", bytes.NewBuffer(jsonData))
+		resp, err := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_add_key_pasw, "application/json", bytes.NewBuffer(jsonData))
+		if err != nil {
+			log.Println("Error", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
 		defer resp.Body.Close()
 
-		body, _ := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			log.Println("Error:", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(string(body))
+	} else {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -94,7 +128,12 @@ func Post_del_key_pasw(w http.ResponseWriter, r *http.Request) {
 		func_all.AppendToLog("/del_key_pasw post")
 
 		var requestData RequestData5
-		json.NewDecoder(r.Body).Decode(&requestData)
+		err := json.NewDecoder(r.Body).Decode(&requestData)
+		if err != nil {
+			log.Println("Error decoding JSON:", err)
+			http.Error(w, "Invalid JSON", http.StatusBadRequest)
+			return
+		}
 
 		config := page_func.Get_config_user()
 
@@ -103,14 +142,31 @@ func Post_del_key_pasw(w http.ResponseWriter, r *http.Request) {
 			Pasw: requestData.Data,
 		}
 
-		jsonData, _ := json.Marshal(data1)
+		jsonData, err := json.Marshal(data1)
+		if err != nil {
+			log.Println("Error JSON:", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
 
-		resp, _ := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_del_key_pasw, "application/json", bytes.NewBuffer(jsonData))
+		resp, err := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_del_key_pasw, "application/json", bytes.NewBuffer(jsonData))
+		if err != nil {
+			log.Println("Error", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
 		defer resp.Body.Close()
 
-		body, _ := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			log.Println("Error:", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(string(body))
+	} else {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 }

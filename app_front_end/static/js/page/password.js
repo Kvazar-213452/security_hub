@@ -39,6 +39,7 @@ function get_key_reg() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function (response) {
+            console.log(response)
             const parsedJson = JSON.parse(response);
             render_key(parsedJson['key']);
         }
@@ -85,7 +86,7 @@ function del_key(data) {
         contentType: "application/json",
         data: JSON.stringify({data: data}),
         success: function (response) {
-            get_status_reg();
+            get_key_reg();
         }
     });
 }
