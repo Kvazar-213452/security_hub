@@ -412,13 +412,23 @@ function get_resurse() {
 }
 
 function render_resurse(response) {
-    $("#proc_div").html(null);
-
     let roundedCpu = response["total_cpu"].toFixed(2);
     let total_memory = response["total_memory"].toFixed(2);
     
     $("#total_cpu").html(roundedCpu);
     $("#total_memory").html(total_memory);
+
+    let text_1 = `
+        <div class="info_proc_u">
+            <p class="iii1">Name</p>
+            <p class="iii2">Pid</p>
+            <p class="iii3">CPU</p>
+            <p class="iii4">Memory</p>
+            <br>
+        </div>
+    `;
+
+    $("#proc_div").html(text_1);
 
     for (let i = 0; i < response["processes"].length; i++) {
         let cpu = response["processes"][i]["cpu"].toFixed(2);
@@ -429,7 +439,7 @@ function render_resurse(response) {
                 <p class="iii1">${response["processes"][i]["name"]}</p>
                 <p class="iii2">${response["processes"][i]["pid"]}</p>
                 <p class="iii3">${cpu}</p>
-                <p class="iii4">${memory}}</p>
+                <p class="iii4">${memory}</p>
                 <br>
             </div>
         `;

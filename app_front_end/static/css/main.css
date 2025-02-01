@@ -671,6 +671,14 @@
   padding: 7px;
 }
 
+.info_proc_u {
+  position: relative;
+  margin-bottom: 10px;
+  width: calc(100% - 10px);
+  background-color: #2d2d3d;
+  padding: 7px;
+}
+
 .iii1 {
   position: absolute;
   color: #68ff9d;
