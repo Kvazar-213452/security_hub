@@ -169,3 +169,20 @@ func Post_antivirus_bekend_del_file(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
+
+func Post_antivirus_resurse(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_antivirus_resurse")
+
+		data := page_func.Get_process_info()
+
+		resultData := map[string]interface{}{
+			"status": data,
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(resultData)
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}

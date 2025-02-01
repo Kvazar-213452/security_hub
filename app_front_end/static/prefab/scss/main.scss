@@ -563,6 +563,53 @@
 /* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page */
 /* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page *//* antivirus page */
 
+.resurse_div {
+    position: relative;
+    width: 100%;
+    background-color: config.$bg_color1;
+}
+
+.item_resurse_div {
+    position: relative;
+    float: left;
+    margin-right: 10px;
+    color: config.$main_color;
+    font-size: 17px;
+
+    span {color: config.$white;}
+}
+
+.info_proc {
+    position: relative;
+    margin-bottom: 10px;
+    width: calc(100% - 10px);
+    background-color: config.$bg_color;
+    padding: 7px;
+}
+
+.iii1 {
+    position: absolute;
+    color: config.$main_color;
+}
+
+.iii2 {
+    position: absolute;
+    left: 30%;
+    color: config.$blue;
+}
+
+.iii3 {
+    position: absolute;
+    left: 60%;
+    color: config.$orange;
+}
+
+.iii4 {
+    position: absolute;
+    left: 80%;
+    color: config.$read;
+}
+
 .scan_dir {
     font-size: 28px;
     color: config.$main_color;

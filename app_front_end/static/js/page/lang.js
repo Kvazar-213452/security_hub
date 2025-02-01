@@ -124,7 +124,8 @@ let mas_lang = {
     ['#register_pfj3fv1', 'Fill in all the fields for logging in'],
     ['#dwdc21e12d3', 'Scan Path'],
     ['#lang_server_verdfvcww', 'Secure file transfer over the network'],
-    ['#server_lang_werthrgjhfbvd', 'Number of uploaded files']
+    ['#server_lang_werthrgjhfbvd', 'Number of uploaded files'],
+    ['#dwdc21e12d4', "Resource"]
   ],
 
   "uk": [
@@ -252,7 +253,8 @@ let mas_lang = {
     ['#register_pfj3fv1', 'Заповніть всі поля для входу в систему'],
     ['#dwdc21e12d3', 'Сканування шляху'],
     ['#lang_server_verdfvcww', 'Безпечна передача файлів через мережу'],
-    ['#server_lang_werthrgjhfbvd', 'Кількість завантажених файлів']
+    ['#server_lang_werthrgjhfbvd', 'Кількість завантажених файлів'],
+    ['#dwdc21e12d4', "Ресурси"]
   ]
 };
 

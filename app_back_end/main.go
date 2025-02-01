@@ -105,6 +105,7 @@ func main() {
 	http.HandleFunc("/reg_file_unix", page.Post_reg_file_unix)
 	http.HandleFunc("/get_how_many", page.Post_get_how_many)
 	http.HandleFunc("/browser_site_server", main_com.Post_Browser_site_server)
+	http.HandleFunc("/antivirus_resurse", page.Post_antivirus_resurse)
 
 	fmt.Printf("started %d\n", port)
 	http.ListenAndServe(portStr, nil)

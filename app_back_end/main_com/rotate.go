@@ -81,6 +81,7 @@ func Render_antivirus(w http.ResponseWriter, r *http.Request) {
 		config_main.Frontend_folder+"/templates/html/antivirus/site.html",
 		config_main.Frontend_folder+"/templates/html/antivirus/file.html",
 		config_main.Frontend_folder+"/templates/html/antivirus/background.html",
+		config_main.Frontend_folder+"/templates/html/antivirus/resource.html",
 		config_main.Frontend_folder+"/templates/antivirus.html",
 	)
 
