@@ -1,3 +1,5 @@
+// app_front_end/static/js/page/cleanup.js
+
 $(".toggle-btn").click(function() {
     let nextDropdown = $(this).next(".dropdown-content");
     
@@ -13,7 +15,11 @@ $(".toggle-btn").click(function() {
 });
 
 function cleanup() {
-    message_window("Очищення комп'ютера");
+    if (lang_global === "uk") {
+        message_window("Очищення комп'ютера");
+    } else if (lang_global === "en") {
+        message_window("Clean pc start");           
+    }
 
     $.ajax({
         url: "/cleanup",
@@ -21,7 +27,11 @@ function cleanup() {
         contentType: "application/json",
         data: JSON.stringify(data_cleaning),
         success: function (response) {
-            message_window('Завершено');
+            if (lang_global === "uk") {
+                message_window('Завершено');
+            } else if (lang_global === "en") {
+                message_window('Done');      
+            }
         }
     });
 }

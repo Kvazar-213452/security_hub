@@ -1,3 +1,5 @@
+// app_front_end/static/js/page/lang.js
+
 let mas_lang = {
   "en": [
     ['#lang_wefsdeeeeee span', 'Wi-Fi Manager'],

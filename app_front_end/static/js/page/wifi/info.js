@@ -1,3 +1,5 @@
+// app_front_end/static/js/page/wifi/info.js
+
 function get_data_wifi_now() {
     $.ajax({
         url: "/get_wifi_now",
@@ -161,39 +163,4 @@ function get_network_now(callback) {
             }
         }
     });
-}
-
-function get_package_data() {
-    $.ajax({
-        url: "/get_pacage_info",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(null),
-        success: function (response) {
-            whrite_data_adapter(response)
-        }
-    });
-}
-
-function whrite_data_adapter(response) {
-    const jsonObject = JSON.parse(response);
-    $("#wifi_data_packege").html(null);
-
-    let data = jsonObject["Interfaces"];
-
-    for (let i = 0; i < data.length; i++) {
-        let tetx = `
-            <div class="info_adapter_unix">
-                <p><unix>Name = <span>${data[i]["Name"]}</span></unix></p>
-                <p>Description = <span>${data[i]["Description"]}</span></p>
-                <p>Status = <span>${data[i]["Status"]}</span></p>
-                <p>BytesSent = <span>${data[i]["BytesSent"]}</span></p>
-                <p>BytesReceived = <span>${data[i]["BytesReceived"]}</span></p>
-                <p>PacketsSent = <span>${data[i]["PacketsSent"]}</span></p>
-                <p>PacketsReceived = <span>${data[i]["PacketsReceived"]}</span></p>
-            </div>
-        `;
-
-        $("#wifi_data_packege").append(tetx);
-    }
 }

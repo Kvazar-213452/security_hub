@@ -1,3 +1,5 @@
+// app_front_end/static/js/page/server.js
+
 $('#submit-btn').click(function () {
   const fileInput = $('#file')[0];
   const password = $('#password').val();

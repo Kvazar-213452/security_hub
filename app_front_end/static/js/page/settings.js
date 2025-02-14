@@ -1,3 +1,5 @@
+// app_front_end/static/js/page/settings.js
+
 function button_active(name, mas) {
     mas.forEach(function (item) {
         $("#" + item).addClass("none_style_button"); 

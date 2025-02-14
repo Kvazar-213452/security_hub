@@ -1,3 +1,5 @@
+// app_front_end/static/js/page/register.js
+
 function change_module(id) {
     $('#module_1').hide();
     $('#module_3').hide();
