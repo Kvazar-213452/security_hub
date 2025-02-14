@@ -4,19 +4,21 @@
 }
 
 :root {
-    --bg_1: #181818;
-    --bg_2: #121212;
-    --bg_3: #232323;
-    --bg_5: #595959;
-    --bg_6: #1d1d1d;
+    --bg_1: #cccccc;
+    --bg_2: #aaaaaa;
+    --bg_3: #d5d5d5;
+    --bg_5: #dedede;
+    --bg_6: #c1c1c1;
 
-    --text_color: #fff;
+    --text_color: #000000;
     --main_color: #68ff9d;
     --red: #ff5c5c;
     --orange: #ff9c4c;
     --blue: #697ffe;
 }
- 
+
+.button img {filter: invert(20%) !important;}
+
 body {
     background-color: var(--bg_2);
     font-family: 'MyCustomFont', sans-serif;

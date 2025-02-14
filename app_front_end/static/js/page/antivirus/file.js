@@ -7,6 +7,7 @@ class FileUpload {
         this.$inputContainer = $('#upload-container');
         this.$filesListContainer = $('#files-list-container');
         this.$uploadButton = $('#upload-button');
+        this.data_json_exe = null;
 
         this.bindEvents();
     }
@@ -123,7 +124,7 @@ class FileUpload {
     }
 
     handleExeFile(data) {
-        let data_json_exe = JSON.parse(data);
+        data_json_exe = JSON.parse(data);
 
         if (data_json_exe === "") {
             this.displayExeError();
@@ -181,18 +182,18 @@ class FileUpload {
             $('#we332dvc1').html('Completed with an error, please wait a few minutes for your file to be processed and the request will be repeated');
         }
     }
-}
 
-function download_json_data() {
-    const jsonData = JSON.stringify(data_json_exe, null, 2); 
-    const blob = new Blob([jsonData], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-
-    a.href = url;
-    a.download = "data.json";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    download_json_data() {
+        const jsonData = JSON.stringify(data_json_exe, null, 2); 
+        const blob = new Blob([jsonData], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+    
+        a.href = url;
+        a.download = "data.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
 }

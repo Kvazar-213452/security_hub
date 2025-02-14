@@ -124,7 +124,7 @@ func Post_install_style(w http.ResponseWriter, r *http.Request) {
 		file, _, _ := r.FormFile("file")
 		defer file.Close()
 
-		savePath := filepath.Join("data", "style", "main.css")
+		savePath := filepath.Join("../data", "style", "main.css")
 
 		outFile, _ := os.Create(savePath)
 		defer outFile.Close()

@@ -5,8 +5,6 @@ from email.mime.text import MIMEText
 import json
 from main_com.func import save_to_db, decript, decrypt_file, encrypt_file
 
-# server/register_and_data/main.py
-
 app = Flask(__name__)
 
 with open("config.json", "r") as file:
@@ -53,9 +51,8 @@ def save_user():
 
         user_data = request.get_json()
 
-        encrypt_file()
-
         if save_to_db(user_data):
+            encrypt_file()
             return jsonify({"message": "1"}), 200
         else:
             return jsonify({"message": "0"}), 200
