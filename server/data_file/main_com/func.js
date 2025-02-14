@@ -1,6 +1,8 @@
 const fs = require('fs-extra');
 const path = require('path');
 
+// server/data_file/main_com/func.js
+
 function get_time() {
   const now = new Date();
   now.setHours(now.getHours() + 1);

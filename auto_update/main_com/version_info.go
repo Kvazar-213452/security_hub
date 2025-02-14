@@ -10,6 +10,8 @@ import (
 	"strconv"
 )
 
+// auto_update/main_com/version_info.go
+
 type Config struct {
 	Version int `json:"version"`
 }

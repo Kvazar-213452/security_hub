@@ -1,3 +1,5 @@
+// app_front_end/static/js/index.js
+
 function page_iframe(url, btn) {
     $("#iframe").attr("src", url);
 

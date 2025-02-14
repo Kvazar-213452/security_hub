@@ -1,3 +1,5 @@
+// app_front_end/static/js/config.js
+
 let visualization_mas = ['visualization1', 'visualization2'];
 let vsgretdbgc = ['vsgretdbgc1', 'vsgretdbgc2'];
 let shell_NM = ['shell_NM', 'shell_NM1'];
@@ -56,7 +58,7 @@ let html_1 = `
 `;
 
 // cleanup
-let bg_color1 = "rgb(34, 34, 46)";
+let bg_color1 = "rgb(24, 24, 34)";
 let bg_color2 = "rgb(89, 89, 89)";
 
 // schedule

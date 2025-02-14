@@ -1,3 +1,5 @@
+// app_front_end/static/js/lang_main.js
+
 function lang_change_main(lang) {
   if (lang === "en") {
     $('#btn1 p').html("Wi-Fi");

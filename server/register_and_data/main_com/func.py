@@ -3,6 +3,8 @@ import binascii
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 
+# server/register_and_data/main_com/func.py
+
 key = b"3dp4g9DI8h7MzjVz3dp4g9DI8h7MzjVz"
 iv = b"1234567890abcdef"
 

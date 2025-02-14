@@ -5,6 +5,8 @@ from email.mime.text import MIMEText
 import json
 from main_com.func import save_to_db, decript, decrypt_file, encrypt_file
 
+# server/register_and_data/main.py
+
 app = Flask(__name__)
 
 with open("config.json", "r") as file:

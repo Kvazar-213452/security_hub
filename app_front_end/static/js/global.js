@@ -1,3 +1,5 @@
+// app_front_end/static/js/global.js
+
 function button_hover(name) {
     for (let i = 0; i < mmain_buuton.length; i++) {
         $("#" + mmain_buuton[i]).removeClass("vw92dy9qccde32122021"); 
