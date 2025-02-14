@@ -3,6 +3,8 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Xml.Linq;
 
+// .sorse/sorse_lib/packages_wifi/Program.cs
+
 class Program {
     static void Main() {
         var xmlDocument = new XElement("NetworkInterfaces");

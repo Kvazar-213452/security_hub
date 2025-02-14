@@ -4,6 +4,8 @@ use block_modes::block_padding::Pkcs7;
 use hex::encode;
 use std::env;
 
+// .sorse/sorse_lib/aes_encryption/src/main.rs
+
 fn main() {
     let key = b"3dp4g9DI8h7MzjVz3dp4g9DI8h7MzjVz";
     let iv = b"1234567890abcdef";

@@ -1,3 +1,5 @@
+# .sorse/sorse_lib/data_exe/main.pyw
+
 import pefile
 import json
 import sys

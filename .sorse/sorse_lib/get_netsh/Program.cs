@@ -4,6 +4,8 @@ using System.IO;
 using System.Xml;
 using System.Text.RegularExpressions;
 
+// .sorse/sorse_lib/get_netsh/Program.cs
+
 class Program {
     static void Main() {
         string ssid = GetActiveSSID();
