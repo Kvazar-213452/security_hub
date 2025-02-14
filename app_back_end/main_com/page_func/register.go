@@ -17,6 +17,8 @@ import (
 	"strings"
 )
 
+// app_back_end/main_com/page_func/register.go
+
 type RequestData_xxx struct {
 	Receiver string `json:"receiver"`
 	Code     string `json:"code"`

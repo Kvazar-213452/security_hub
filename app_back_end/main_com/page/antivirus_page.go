@@ -6,6 +6,7 @@ import (
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
 	"head/main_com/page_func"
+	"head/main_com/page_func/antivirus"
 	"head/main_com/page_func/background"
 	"io"
 	"io/ioutil"
@@ -13,6 +14,8 @@ import (
 	"os"
 	"path/filepath"
 )
+
+// app_back_end/main_com/page/antivirus_page.go
 
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
@@ -36,7 +39,7 @@ func Post_antivirus_web(w http.ResponseWriter, r *http.Request) {
 		var requestData RequestData
 		json.Unmarshal(body, &requestData)
 		url := requestData.URL[0]
-		data_good := page_func.CheckUrlInFile(url)
+		data_good := antivirus.CheckUrlInFile(url)
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
@@ -62,7 +65,7 @@ func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 		defer destFile.Close()
 
 		io.Copy(destFile, file)
-		data_good := page_func.Scan_file_virus(filePath)
+		data_good := antivirus.Scan_file_virus(filePath)
 
 		json.NewEncoder(w).Encode(data_good)
 	} else {
@@ -103,7 +106,7 @@ func Post_antivirus_bekend_scan_dir(w http.ResponseWriter, r *http.Request) {
 		}
 		json.Unmarshal(body, &request)
 
-		exeFiles := page_func.Scan_exeFiles(request.Dir)
+		exeFiles := antivirus.Scan_exeFiles(request.Dir)
 
 		resultData := map[string]interface{}{
 			"total_exe_files":  len(exeFiles),
@@ -112,9 +115,9 @@ func Post_antivirus_bekend_scan_dir(w http.ResponseWriter, r *http.Request) {
 		}
 
 		for _, exeFile := range exeFiles {
-			fileHash := page_func.File_hash(exeFile)
+			fileHash := antivirus.File_hash(exeFile)
 
-			result := page_func.Check_hash_VirusTotal(fileHash)
+			result := antivirus.Check_hash_VirusTotal(fileHash)
 
 			checkedFile := map[string]string{
 				"path": exeFile,
@@ -157,7 +160,7 @@ func Post_antivirus_bekend_del_file(w http.ResponseWriter, r *http.Request) {
 		}
 		json.Unmarshal(body, &request)
 
-		status := page_func.Delete_file(request.Path)
+		status := antivirus.Delete_file(request.Path)
 
 		resultData := map[string]interface{}{
 			"status": status,
@@ -174,7 +177,7 @@ func Post_antivirus_resurse(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/Post_antivirus_resurse")
 
-		data := page_func.Get_process_info()
+		data := antivirus.Get_process_info()
 
 		resultData := map[string]interface{}{
 			"status": data,

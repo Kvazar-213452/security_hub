@@ -1,4 +1,4 @@
-package page_func
+package encryption
 
 import (
 	"crypto/aes"
@@ -7,6 +7,8 @@ import (
 	"io"
 	"io/ioutil"
 )
+
+// app_back_end/main_com/page_func/encryption/encryption.go
 
 func GenerateKey() []byte {
 	key := make([]byte, 32)

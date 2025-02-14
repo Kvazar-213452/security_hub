@@ -1,4 +1,4 @@
-package page_func
+package antivirus
 
 import (
 	"encoding/json"
@@ -8,6 +8,8 @@ import (
 	"github.com/shirou/gopsutil/net"
 	"github.com/shirou/gopsutil/process"
 )
+
+// app_back_end/main_com/page_func/antivirus/resource.go
 
 type ProcessInfo struct {
 	Name    string  `json:"name"`

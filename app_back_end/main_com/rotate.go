@@ -8,6 +8,8 @@ import (
 	"os"
 )
 
+// app_back_end/main_com/rotate.go
+
 func Render_index_page(w http.ResponseWriter, r *http.Request) {
 	func_all.AppendToLog("transition to /index")
 

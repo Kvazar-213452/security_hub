@@ -3,9 +3,11 @@ package page
 import (
 	"encoding/json"
 	"head/main_com/func_all"
-	"head/main_com/page_func"
+	"head/main_com/page_func/wifi"
 	"net/http"
 )
+
+// app_back_end/main_com/page/wifi_page.go
 
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
@@ -16,7 +18,7 @@ func Post_gagat_network(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/get_wifi_now post")
 
-		wifiInfo, err := page_func.Get_Wifi_info()
+		wifiInfo, err := wifi.Get_Wifi_info()
 		if err != nil {
 			http.Error(w, "Помилка отримання інформації про Wi-Fi", http.StatusInternalServerError)
 			return
@@ -32,7 +34,7 @@ func Post_gagat_network(w http.ResponseWriter, r *http.Request) {
 func Post_wifi_network(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/get_wifi post")
-		networks, err := page_func.Get_available_Wifi_networks()
+		networks, err := wifi.Get_available_Wifi_networks()
 		if err != nil {
 			json.NewEncoder(w).Encode("error")
 			return
@@ -49,7 +51,7 @@ func Post_network_now(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/network_now post")
 
-		ssid := page_func.Get_connected_SSID()
+		ssid := wifi.Get_connected_SSID()
 
 		w.Header().Set("Content-Type", "application/json")
 		if err := json.NewEncoder(w).Encode(map[string]string{"ssid": ssid}); err != nil {
@@ -64,7 +66,7 @@ func Post_get_pacage_info_wifi(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/get_pacage_info_wifi post")
 
-		jsonData := page_func.Get_info_packages_wifi()
+		jsonData := wifi.Get_info_packages_wifi()
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(string(jsonData))

@@ -36,13 +36,9 @@
                 <br>
                 <input class="dvwe5tgg" id="fkwe9203f1d" placeholder="Path" type="text">
                 <br>
-                <button onclick="window.backend.antivirus_bekend_scan_dir()" id="antivirus_894534ffvvv55555" class="dwwccv7u3jf">Перевірити</button>
+                <button onclick="antivirus_bekend_scan_dir()" id="antivirus_894534ffvvv55555" class="dwwccv7u3jf">Перевірити</button>
                 <br><br>
-                <div class="dwdwffff24">
-                    <div id="hfweo23fwesd" class="padoge">
-                        
-                    </div>
-                </div>
+                <div class="dwdwffff24"><div id="hfweo23fwesd" class="padoge"></div></div>
             </div>
             <div id="section_5">
                 {{template "resource.html" .}}
@@ -63,7 +59,6 @@
     change_lang_now(0);
 
     window.artivirusweb = new ArtivirusWeb(lang_global);
-    window.backend = new Backend(lang_global);
     new FileUpload();
     let resurse = new Resurse();
 

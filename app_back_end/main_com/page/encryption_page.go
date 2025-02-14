@@ -5,12 +5,14 @@ import (
 	"fmt"
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
-	"head/main_com/page_func"
+	"head/main_com/page_func/encryption"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
 )
+
+// app_back_end/main_com/page/encryption_page.go
 
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
@@ -39,9 +41,9 @@ func Post_encryption_file(w http.ResponseWriter, r *http.Request) {
 		defer dst.Close()
 
 		io.Copy(dst, file)
-		key := page_func.GenerateKey()
+		key := encryption.GenerateKey()
 
-		encryptedContent, err := page_func.EncryptFile(filename, key)
+		encryptedContent, err := encryption.EncryptFile(filename, key)
 		if err != nil {
 			w.Write([]byte("0"))
 			return
@@ -80,7 +82,7 @@ func Post_decipher_file(w http.ResponseWriter, r *http.Request) {
 
 		io.Copy(dst, file)
 
-		err := page_func.DecryptFile(filename, key)
+		err := encryption.DecryptFile(filename, key)
 		if err != nil {
 			fmt.Println("Помилка:", err)
 			w.Write([]byte("0"))

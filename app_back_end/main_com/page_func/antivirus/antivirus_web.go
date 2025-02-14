@@ -1,4 +1,4 @@
-package page_func
+package antivirus
 
 import (
 	"encoding/base64"
@@ -9,6 +9,8 @@ import (
 
 	config_main "head/main_com/config"
 )
+
+// app_back_end/main_com/page_func/antivirus/antivirus_web.go
 
 type return_func_data struct {
 	DNS string `json:"dns"`

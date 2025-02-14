@@ -8,6 +8,8 @@ import (
 	"time"
 )
 
+// app_back_end/main_com/page_func/background/antivirus_flash_drive.go
+
 func Stop_antivirus_flash_drive_func() {
 	config_main.Stop_antivirus_flash_drive <- true
 }

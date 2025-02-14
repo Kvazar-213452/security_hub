@@ -14,6 +14,8 @@ package config
 // ⣿⣿⠋⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿
 // ⣿⠏⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡯⢸⣿
 
+// app_back_end/main_com/config/config.go
+
 // struct
 type Config_global struct {
 	Version       int    `json:"version"`

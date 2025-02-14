@@ -11,6 +11,8 @@ import (
 	"time"
 )
 
+// app_back_end/main_com/func_all/func_server.go
+
 type LogContent struct {
 	Log string `json:"log"`
 }

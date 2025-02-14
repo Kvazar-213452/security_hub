@@ -1,4 +1,4 @@
-package page_func
+package encryption
 
 import (
 	"crypto/aes"
@@ -9,6 +9,8 @@ import (
 	"io/ioutil"
 	"path/filepath"
 )
+
+// app_back_end/main_com/page_func/encryption/decipher.go
 
 func DecryptFile(filePath string, keyHex string) error {
 	key, _ := hex.DecodeString(keyHex)

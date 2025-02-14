@@ -6,6 +6,8 @@ import (
 	"syscall"
 )
 
+// app_back_end/main_com/page_func/cleanup_func.go
+
 func Cleanup() {
 	exePath := "cleanup_script.bat"
 	workingDir := "library"

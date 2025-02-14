@@ -9,6 +9,8 @@ import (
 	"strconv"
 )
 
+// app_back_end/main_com/page_func/settings_func.go
+
 func LoadConfig() *config_main.Config_global {
 	file, _ := os.Open(config_main.Main_config)
 	defer file.Close()

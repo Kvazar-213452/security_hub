@@ -1,6 +1,11 @@
 // app_front_end/static/js/page/antivirus/resurse.js
 
 class Resurse {
+    constructor() {
+        this.get_resurse = this.get_resurse.bind(this);
+        this.render_resurse = this.render_resurse.bind(this);
+    }
+
     get_resurse() {
         $.ajax({
             url: '/antivirus_resurse',
@@ -8,13 +13,13 @@ class Resurse {
             data: null,
             processData: false,
             contentType: false,
-            success: function (response) {
+            success: (response) => {
                 let arr = JSON.parse(response.status);
-                render_resurse(arr);
+                this.render_resurse(arr);
             }
         });
     }
-    
+
     render_resurse(response) {
         let roundedCpu = response["total_cpu"].toFixed(2);
         let total_memory = response["total_memory"].toFixed(2);

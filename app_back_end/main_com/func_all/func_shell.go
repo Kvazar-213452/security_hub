@@ -15,6 +15,8 @@ import (
 	"unsafe"
 )
 
+// app_back_end/main_com/func_all/func_shell.go
+
 func LoadConfig_start(filename string) config_main.Config_global {
 	file, _ := os.Open(filename)
 	defer file.Close()
