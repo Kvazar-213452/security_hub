@@ -159,3 +159,21 @@ func Config_port(data string) {
 
 	file.WriteString(data)
 }
+
+func RestartScript() error {
+	exe, err := os.Executable()
+	if err != nil {
+		return fmt.Errorf("error: %w", err)
+	}
+
+	cmd := exec.Command(exe)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	if err := cmd.Start(); err != nil {
+		return fmt.Errorf("error: %w", err)
+	}
+
+	os.Exit(0)
+	return nil
+}

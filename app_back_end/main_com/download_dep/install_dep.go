@@ -4,6 +4,7 @@ import (
 	"archive/zip"
 	"fmt"
 	config_main "head/main_com/config"
+	"head/main_com/func_all"
 	"io"
 	"net/http"
 	"os"
@@ -30,21 +31,23 @@ func Start() {
 	}
 
 	fmt.Println("File downloaded and unzipped successfully!")
-
-	filePath := "../data/start.md"
-
-	file, err := os.Create(filePath)
+	err = deleteFile("app_back_end.zip")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
-		return
+		fmt.Println("error ", err)
 	}
-	defer file.Close()
 
-	_, err = file.WriteString("1")
-	if err != nil {
-		fmt.Println("Error writing to file:", err)
-		return
+	if err := func_all.RestartScript(); err != nil {
+		fmt.Println("error", err)
 	}
+}
+
+func deleteFile(filePath string) error {
+	err := os.Remove(filePath)
+	if err != nil {
+		return err
+	}
+	fmt.Println("good ", filePath)
+	return nil
 }
 
 func downloadFile(filepath string, url string) error {

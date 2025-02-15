@@ -8,8 +8,8 @@ import (
 	"head/main_com/func_all"
 	"head/main_com/page"
 	"head/main_com/page_func/background"
-	"io/ioutil"
 	"net/http"
+	"os"
 	"os/exec"
 	"strconv"
 )
@@ -38,8 +38,6 @@ func main() {
 		port = config.Port
 	}
 
-	data, _ := ioutil.ReadFile("../data/start.md")
-
 	if config.Antivirus.Antivirus_flash_drive == 1 {
 		go background.MonitorFlashDrives(config_main.Stop_antivirus_flash_drive, config_main.Antivirus_flash_drive_cmd)
 	}
@@ -47,8 +45,11 @@ func main() {
 	portStr := ":" + strconv.Itoa(port)
 	func_all.Config_port(strconv.Itoa(port))
 
-	if string(data) == "0" {
+	if _, err := os.Stat("../data"); os.IsNotExist(err) {
+		fmt.Println("install")
 		download_dep.Start()
+	} else {
+		fmt.Println("ok")
 	}
 
 	var cmd *exec.Cmd
