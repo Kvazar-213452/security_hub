@@ -3,80 +3,42 @@
 #include <string>
 #include <Windows.h>
 #include <shlobj.h>
-#include <minizip/unzip.h>
-#include <zlib.h>
-#include <bzlib.h>
+#include <sstream>
+#include <fstream>
+#include <cstdlib>
+
+namespace fs = std::filesystem;
 
 typedef const char* (*UnzipFunc)(const char*, const char*);
 
-void unzip(const std::string& zipFilePath, const std::string& destDir, const size_t bufferSize) {
-    unzFile zipfile = unzOpen(zipFilePath.c_str());
-    if (!zipfile) {
-        std::cerr << "error opne zip " << zipFilePath << std::endl;
-        return;
-    }
+void runCommandInBackground(const char* command) {
+    std::system(command);
+}
 
-    std::filesystem::create_directories(destDir);
+bool fileExists(const std::string& filePath) {
+    return fs::exists(filePath);
+}
 
-    char filename[256];
-    unz_global_info globalInfo;
-    if (unzGetGlobalInfo(zipfile, &globalInfo) != UNZ_OK) {
-        std::cerr << "error zip" << std::endl;
-        unzClose(zipfile);
-        return;
-    }
-
-    for (uLong i = 0; i < globalInfo.number_entry; ++i) {
-        if (unzGetCurrentFileInfo(zipfile, nullptr, filename, sizeof(filename), nullptr, 0, nullptr, 0) != UNZ_OK) {
-            std::cerr << "error file" << std::endl;
-            break;
+void copyFileToDirectory(const std::string& sourceFile, const std::string& targetDir) {
+    try {
+        if (!fileExists(sourceFile)) {
+            std::cerr << "File " << sourceFile << " does not exist!" << std::endl;
+            return;
         }
 
-        std::string outputPath = destDir + "\\" + filename;
-
-        if (filename[strlen(filename) - 1] == '/') {
-            std::filesystem::create_directories(outputPath);
-        } else {
-            std::filesystem::create_directories(std::filesystem::path(outputPath).parent_path());
-
-            if (unzOpenCurrentFile(zipfile) != UNZ_OK) {
-                std::cerr << "error in ZIP: " << filename << std::endl;
-                break;
-            }
-
-            FILE* outFile = fopen(outputPath.c_str(), "wb");
-            if (!outFile) {
-                std::cerr << "error " << outputPath << std::endl;
-                unzCloseCurrentFile(zipfile);
-                break;
-            }
-
-            char buffer[bufferSize];
-            int bytesRead;
-            while ((bytesRead = unzReadCurrentFile(zipfile, buffer, sizeof(buffer))) > 0) {
-                if (fwrite(buffer, sizeof(char), bytesRead, outFile) != bytesRead) {
-                    std::cerr << "error text file " << outputPath << std::endl;
-                    fclose(outFile);
-                    unzCloseCurrentFile(zipfile);
-                    return;
-                }
-            }
-
-            if (bytesRead < 0) {
-                std::cerr << "error read ZIP: " << filename << std::endl;
-            }
-
-            fclose(outFile);
-            unzCloseCurrentFile(zipfile);
+        if (!fs::exists(targetDir)) {
+            fs::create_directories(targetDir);
+            std::cout << "Directory created: " << targetDir << std::endl;
         }
 
-        if ((i + 1) < globalInfo.number_entry) {
-            unzGoToNextFile(zipfile);
-        }
+        std::string targetFile = targetDir + "\\head.exe";
+
+        fs::copy(sourceFile, targetFile, fs::copy_options::overwrite_existing);
+        std::cout << "File copied to: " << targetFile << std::endl;
     }
-
-    unzClose(zipfile);
-    std::cout << "end  " << destDir << std::endl;
+    catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
 }
 
 const IID IID_IShellLinkW = {0x000214F9, 0x0000, 0x0000, {0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46}};
@@ -99,23 +61,4 @@ void CreateShortcut(const std::wstring& shortcutPath, const std::wstring& target
     }
 
     CoUninitialize();
-}
-
-void runCommandInBackground(const char* command) {
-    STARTUPINFO si;
-    PROCESS_INFORMATION pi;
-    ZeroMemory(&si, sizeof(si));
-    si.cb = sizeof(si);
-    si.dwFlags |= STARTF_USESHOWWINDOW;
-    si.wShowWindow = SW_HIDE;
-
-    ZeroMemory(&pi, sizeof(pi));
-
-    if (!CreateProcess(NULL, const_cast<char*>(command), NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, NULL, &si, &pi)) {
-        std::cerr << "error command" << std::endl;
-        return;
-    }
-
-    CloseHandle(pi.hProcess);
-    CloseHandle(pi.hThread);
 }

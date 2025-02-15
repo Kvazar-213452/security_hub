@@ -3,7 +3,7 @@
 
 #include <string>
 
-void unzip(const std::string& zipFilePath, const std::string& destDir, const size_t bufferSize);
+void copyFileToDirectory(const std::string& sourceFile, const std::string& targetDir);
 void CreateShortcut(const std::wstring& shortcutPath, const std::wstring& targetPath, const std::wstring& workingDir);
 void runCommandInBackground(const char* command);
 
