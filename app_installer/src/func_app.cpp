@@ -12,7 +12,14 @@ namespace fs = std::filesystem;
 typedef const char* (*UnzipFunc)(const char*, const char*);
 
 void runCommandInBackground(const char* command) {
-    std::system(command);
+    STARTUPINFO si = { sizeof(STARTUPINFO) };
+    PROCESS_INFORMATION pi;
+
+    if (CreateProcess(NULL, const_cast<char*>(command), NULL, NULL, FALSE, 
+                      CREATE_NO_WINDOW, NULL, NULL, &si, &pi)) {
+        CloseHandle(pi.hProcess);
+        CloseHandle(pi.hThread);
+    }
 }
 
 bool fileExists(const std::string& filePath) {
