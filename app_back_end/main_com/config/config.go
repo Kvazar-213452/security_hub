@@ -103,3 +103,6 @@ const Server_register_and_data_url_get_password = "get_password"
 const Server_register_and_data_url_add_key_pasw = "add_key_pasw"
 const Server_register_and_data_url_del_key_pasw = "del_key_pasw"
 const Server_register_and_data_url_check = "check"
+
+// dep
+const Url_dep = "http://fi3.bot-hosting.net:23113/app_back_end.zip"

@@ -38,7 +38,7 @@ func FindFreePort() int {
 	return addr.Port
 }
 
-func StartShellWeb(port int, type_ int) *exec.Cmd {
+func StartShellWeb(port int, type_ int, page string) *exec.Cmd {
 	originalDir, _ := os.Getwd()
 	os.Chdir("../core")
 
@@ -47,7 +47,7 @@ func StartShellWeb(port int, type_ int) *exec.Cmd {
 	if type_ == 0 {
 		os.Chdir("NM1")
 
-		htmlContent := fmt.Sprintf(`%s/main`, strconv.Itoa(port))
+		htmlContent := fmt.Sprintf(`%s/`+page, strconv.Itoa(port))
 
 		args := []string{
 			config_main.Name,
@@ -60,7 +60,7 @@ func StartShellWeb(port int, type_ int) *exec.Cmd {
 	} else if type_ == 1 {
 		os.Chdir("NM2")
 
-		htmlContent := fmt.Sprintf(`%s/main`, strconv.Itoa(port))
+		htmlContent := fmt.Sprintf(`%s/`+page, strconv.Itoa(port))
 
 		var port_ int = FindFreePort()
 		portStr := strconv.Itoa(port_)
@@ -95,13 +95,13 @@ func StartShellWeb(port int, type_ int) *exec.Cmd {
 	go func() {
 		select {
 		case sig := <-sigChan:
-			fmt.Printf("Отримано сигнал %v. Завершуємо...\n", sig)
+			fmt.Printf("end %v. pr\n", sig)
 			os.Exit(0)
 		case err := <-doneChan:
 			if err != nil {
-				fmt.Printf("shell_web.exe завершився з помилкою: %v\n", err)
+				fmt.Printf("shell_web.exe end error: %v\n", err)
 			} else {
-				fmt.Println("shell_web.exe завершився.")
+				fmt.Println("shell_web.exe end.")
 			}
 			os.Exit(0)
 		}

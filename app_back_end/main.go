@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"head/main_com"
 	config_main "head/main_com/config"
+	"head/main_com/download_dep"
 	"head/main_com/func_all"
 	"head/main_com/page"
 	"head/main_com/page_func/background"
+	"io/ioutil"
 	"net/http"
 	"os/exec"
 	"strconv"
@@ -36,6 +38,8 @@ func main() {
 		port = config.Port
 	}
 
+	data, _ := ioutil.ReadFile("../data/start.md")
+
 	if config.Antivirus.Antivirus_flash_drive == 1 {
 		go background.MonitorFlashDrives(config_main.Stop_antivirus_flash_drive, config_main.Antivirus_flash_drive_cmd)
 	}
@@ -43,9 +47,13 @@ func main() {
 	portStr := ":" + strconv.Itoa(port)
 	func_all.Config_port(strconv.Itoa(port))
 
+	if string(data) == "0" {
+		download_dep.Start()
+	}
+
 	var cmd *exec.Cmd
 	if config.Visualization == 1 {
-		cmd = func_all.StartShellWeb(port, config.Shell)
+		cmd = func_all.StartShellWeb(port, config.Shell, "main")
 	}
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("../app_front_end/static"))))
