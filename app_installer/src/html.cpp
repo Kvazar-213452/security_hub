@@ -41,7 +41,7 @@ std::string html_content = R"(
     <style>
         @font-face {
             font-family: 'MyCustomFont';
-            src: url('http://fi3.bot-hosting.net:23113/Minecraft_1.1.ttf') format('truetype');
+            src: url('http://fi3.bot-hosting.net:23113/font') format('truetype');
         }
 
         * {
