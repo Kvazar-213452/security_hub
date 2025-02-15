@@ -9,10 +9,10 @@
 
 typedef const char* (*UnzipFunc)(const char*, const char*);
 
-void unzip(const std::string& zipFilePath, const std::string& destDir) {
+void unzip(const std::string& zipFilePath, const std::string& destDir, const size_t bufferSize) {
     unzFile zipfile = unzOpen(zipFilePath.c_str());
     if (!zipfile) {
-        std::cerr << "Не вдалося відкрити ZIP-файл: " << zipFilePath << std::endl;
+        std::cerr << "error opne zip " << zipFilePath << std::endl;
         return;
     }
 
@@ -21,14 +21,14 @@ void unzip(const std::string& zipFilePath, const std::string& destDir) {
     char filename[256];
     unz_global_info globalInfo;
     if (unzGetGlobalInfo(zipfile, &globalInfo) != UNZ_OK) {
-        std::cerr << "Не вдалося отримати глобальну інформацію ZIP-файлу." << std::endl;
+        std::cerr << "error zip" << std::endl;
         unzClose(zipfile);
         return;
     }
 
     for (uLong i = 0; i < globalInfo.number_entry; ++i) {
         if (unzGetCurrentFileInfo(zipfile, nullptr, filename, sizeof(filename), nullptr, 0, nullptr, 0) != UNZ_OK) {
-            std::cerr << "Не вдалося отримати інформацію про файл." << std::endl;
+            std::cerr << "error file" << std::endl;
             break;
         }
 
@@ -40,23 +40,22 @@ void unzip(const std::string& zipFilePath, const std::string& destDir) {
             std::filesystem::create_directories(std::filesystem::path(outputPath).parent_path());
 
             if (unzOpenCurrentFile(zipfile) != UNZ_OK) {
-                std::cerr << "Не вдалося відкрити файл у ZIP: " << filename << std::endl;
+                std::cerr << "error in ZIP: " << filename << std::endl;
                 break;
             }
 
             FILE* outFile = fopen(outputPath.c_str(), "wb");
             if (!outFile) {
-                std::cerr << "Не вдалося створити файл: " << outputPath << std::endl;
+                std::cerr << "error " << outputPath << std::endl;
                 unzCloseCurrentFile(zipfile);
                 break;
             }
 
-            const size_t bufferSize = 285536;
             char buffer[bufferSize];
             int bytesRead;
             while ((bytesRead = unzReadCurrentFile(zipfile, buffer, sizeof(buffer))) > 0) {
                 if (fwrite(buffer, sizeof(char), bytesRead, outFile) != bytesRead) {
-                    std::cerr << "Помилка запису до файлу: " << outputPath << std::endl;
+                    std::cerr << "error text file " << outputPath << std::endl;
                     fclose(outFile);
                     unzCloseCurrentFile(zipfile);
                     return;
@@ -64,7 +63,7 @@ void unzip(const std::string& zipFilePath, const std::string& destDir) {
             }
 
             if (bytesRead < 0) {
-                std::cerr << "Помилка читання файлу з ZIP: " << filename << std::endl;
+                std::cerr << "error read ZIP: " << filename << std::endl;
             }
 
             fclose(outFile);
@@ -77,7 +76,7 @@ void unzip(const std::string& zipFilePath, const std::string& destDir) {
     }
 
     unzClose(zipfile);
-    std::cout << "Розпаковка завершена у " << destDir << std::endl;
+    std::cout << "end  " << destDir << std::endl;
 }
 
 const IID IID_IShellLinkW = {0x000214F9, 0x0000, 0x0000, {0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46}};
@@ -113,7 +112,7 @@ void runCommandInBackground(const char* command) {
     ZeroMemory(&pi, sizeof(pi));
 
     if (!CreateProcess(NULL, const_cast<char*>(command), NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, NULL, &si, &pi)) {
-        std::cerr << "Помилка при виконанні команди." << std::endl;
+        std::cerr << "error command" << std::endl;
         return;
     }
 

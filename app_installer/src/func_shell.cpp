@@ -36,13 +36,13 @@ std::string generate_html_content(int port) {
 int FindFreePort() {
     WSADATA wsaData;
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-        std::cerr << "Помилка ініціалізації WinSock" << std::endl;
+        std::cerr << "error" << std::endl;
         return 0;
     }
 
     SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (sock == INVALID_SOCKET) {
-        std::cerr << "Помилка створення сокета" << std::endl;
+        std::cerr << "error" << std::endl;
         WSACleanup();
         return 0;
     }
@@ -53,7 +53,7 @@ int FindFreePort() {
     addr.sin_port = htons(0);
 
     if (bind(sock, (sockaddr*)&addr, sizeof(addr)) == SOCKET_ERROR) {
-        std::cerr << "Помилка прив'язки сокета" << std::endl;
+        std::cerr << "error" << std::endl;
         closesocket(sock);
         WSACleanup();
         return 0;
@@ -61,7 +61,7 @@ int FindFreePort() {
 
     int addrLen = sizeof(addr);
     if (getsockname(sock, (sockaddr*)&addr, &addrLen) == SOCKET_ERROR) {
-        std::cerr << "Помилка отримання інформації про сокет" << std::endl;
+        std::cerr << "error" << std::endl;
         closesocket(sock);
         WSACleanup();
         return 0;
@@ -79,11 +79,11 @@ void deleteFile(const std::string& filePath) {
     try {
         if (std::filesystem::exists(filePath)) {
             std::filesystem::remove(filePath);
-            std::cout << "Файл '" << filePath << "' було успішно видалено." << std::endl;
+            std::cout << "File '" << filePath << "' delete" << std::endl;
         } else {
-            std::cout << "Файл '" << filePath << "' не знайдено." << std::endl;
+            std::cout << "File '" << filePath << "' not delete" << std::endl;
         }
     } catch (const std::filesystem::filesystem_error& e) {
-        std::cerr << "Помилка: " << e.what() << std::endl;
+        std::cerr << "error: " << e.what() << std::endl;
     }
 }

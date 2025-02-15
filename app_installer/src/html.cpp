@@ -38,11 +38,10 @@ std::string html_content = R"(
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Installer Security Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'MyCustomFont';
-            src: url('http://127.0.0.1:5000/static/Minecraft_1.1.ttf') format('truetype');
+            src: url('http://fi3.bot-hosting.net:23113/Minecraft_1.1.ttf') format('truetype');
         }
 
         * {
@@ -123,7 +122,7 @@ std::string html_content = R"(
 </head>
 <body>
     <h2>Інсталятор Security Hub</h2>
-    <img class="imfe" src="http://127.0.0.1:5000/static/9.png">
+    <img class="imfe" src="http://fi3.bot-hosting.net:23113/9.png">
     <br><br><br>
     <p class="dest">Опубліковано 09.11.2024</p>
     <p class="dest">Версія 3</p>
