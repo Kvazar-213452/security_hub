@@ -55,6 +55,7 @@ def save_user():
             encrypt_file()
             return jsonify({"message": "1"}), 200
         else:
+            encrypt_file()
             return jsonify({"message": "0"}), 200
 
     except Exception as e:

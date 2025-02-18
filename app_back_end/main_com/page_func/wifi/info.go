@@ -15,7 +15,6 @@ type WiFiData struct {
 	SSID                 string `xml:"SSID"`
 	Authentication       string `xml:"Authentication"`
 	Cipher               string `xml:"Cipher"`
-	Key                  string `xml:"Key"`
 	NetworkType          string `xml:"NetworkType"`
 	RadioType            string `xml:"RadioType"`
 	ConnectionMode       string `xml:"ConnectionMode"`

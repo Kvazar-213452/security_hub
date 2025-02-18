@@ -39,7 +39,6 @@ class Program {
         AddElement(root, "SSID", ssid);
         AddElement(root, "Authentication", GetWiFiDetail(output, "Authentication"));
         AddElement(root, "Cipher", GetWiFiDetail(output, "Cipher"));
-        AddElement(root, "Key", GetWiFiDetail(output, "Key Content"));
         AddElement(root, "NetworkType", GetWiFiDetail(output, "Network type"));
         AddElement(root, "RadioType", GetWiFiDetail(output, "Radio type"));
         AddElement(root, "ConnectionMode", GetWiFiDetail(output, "Connection mode"));

@@ -1,15 +1,13 @@
 // app_front_end/static/js/page/antivirus/web.js
 
 class ArtivirusWeb {
-    constructor(lang) {
-        this.lang_global = lang;
-    }
+
 
     antivirus_web_start() {
         let inputValue = $('#fkwe9203f').val();
         const dataToSend = { url_site: [inputValue] };
     
-        $('#dwdefw4f4').html(this.lang_global === "uk" ? 'Перевірка.....' : 'Audit.....');
+        $('#dwdefw4f4').html(lang_global === "uk" ? 'Перевірка.....' : 'Audit.....');
     
         $.ajax({
             url: '/antivirus_web',
@@ -25,9 +23,9 @@ class ArtivirusWeb {
     
         clean_div("dq13892r2323233313");
     
-        $('#dwdefw4f4').text(this.lang_global === "uk" ? 'Завершено' : 'Completed');
+        $('#dwdefw4f4').text(lang_global === "uk" ? 'Завершено' : 'Completed');
     
-        if (this.lang_global === "uk") {
+        if (lang_global === "uk") {
             $('#we31f3qecsdx13rv1').prepend("SSL сертифікат: ");
             $('#we31f3qecsdx13rv').prepend("Загрози: ");
             $('#we31f3qecsdx13rv2').prepend("DNS зміни: ");
