@@ -1,11 +1,221 @@
+<!-- auto_update/html_tmp_update/index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SPX</title>
+    <style>
+        :root {
+            --orange: #ff9c4c;
+            --read: #ff5c5c;
+            --blue: #697ffe;
+            --main_color: #68ff9d;
+            --white: #fff;
+            --grean: #68ff9d;
+            --bleck: #000000;
+            --white_u: #ffffff98;
+
+            --bg_color: #22222e;
+            --bg_color1: #181822;
+            --bg_color2: #252831;
+            --bg_color3: #2d2d3d;
+            --bg_color4: #595959;
+
+            --colgroup: rgb(24, 24, 34);
+
+            --null: #ffffff00;
+            --null-bleck: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'MyCustomFont', sans-serif;
+            font-weight: normal !important;
+        }
+
+        @font-face {
+            font-family: 'MyCustomFont';
+            src: url('http://localhost:5000/static/Minecraft_1.1.ttf') format('truetype');
+        }
+
+        body {
+            background-color: var(--bg_color);
+            font-family: 'MyCustomFont', sans-serif;
+            color: var(--white);
+            overflow-y: hidden;
+            overflow-x: hidden;
+            font-size: 15px;
+        }
+
+        .ump_textw{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .main {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 250px;
+            width: 600px;
+            background-color: var(--bg_color1);
+            display: none;
+            padding: 15px;
+        }
+
+        .cursor{
+            position: relative;
+            width: 24em;
+            margin: 0 auto;
+            border-right: 2px var(--main_color);
+            font-size: 40px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            transform: translateY(-50%);    
+            top: 45%;
+            color: var(--main_color);
+        }
+
+        .typewriter-animation {
+            animation: 
+                typewriter 5s steps(50) 1s 1 normal both, 
+                blinkingCursor 500ms steps(50) infinite normal;
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blinkingCursor{
+            from { border-right-color: rgba(255,255,255,.75); }
+            to { border-right-color: transparent; }
+        }
+
+        h2 {
+            position: relative;
+            text-align: center;
+            color: var(--main_color);
+            font-size: 30px;
+        }
+
+        h3 {
+            position: relative;
+            text-align: center;
+            color: var(--white_u);
+        }
+
+        .data_1 {
+            background-color: var(--bg_color);
+            padding: 15px;
+            position: relative;
+        }
+
+        .span{color: var(--main_color);}
+
+        a {
+            color: var(--white);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a:hover {opacity: .7;}
+
+        button {
+            position: relative;
+            float: right;
+            padding: 8px;
+            border: none;
+            background-color: var(--bg_color2);
+            color: var(--main_color);
+            cursor: pointer;
+            font-size: 16.5px;
+            margin-left: 20px;
+        }
+
+        .ki {color: var(--read) !important;}
+    </style>
 </head>
 <body>
-    dddd
+    <div class="ump_textw">
+        <p class="cursor typewriter-animation">Security hub</p>
+    </div>
+    <div class="main">
+        <h2>Security hub</h2>
+        <h3>Updating the version of the program</h3>
+        <br>
+        <div class="data_1">
+            <p>Current version = <span class="span" id="ver_c"></span></p>
+            <p>New version = <span class="span" id="ver_v"></span></p>
+            <br>
+            <p>Description of changes = <a class="span" id="url_desc" href=""></a></p>
+        </div>
+        <br>
+        <button onclick="close1111()" class="ki">Close</button>
+        <button>Update</button>
+    </div>
 </body>
+<script src="http://localhost:5000/static/jquery.min.js"></script>
+<script>
+    setTimeout(() => {
+        $('.ump_textw').css({"display": "none"});
+        $('.main').css({"display": "block"});
+
+        data_render();
+    }, 30);
+
+    function data_render() {
+        $.ajax({
+            url: "/current_ver",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(null),
+            success: function (response) {
+                $('#ver_c').html(response);
+            }
+        });
+
+        $.ajax({
+            url: "/server_ver",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(null),
+            success: function (response) {
+                $('#ver_v').html(response);
+            }
+        });
+
+        $.ajax({
+            url: "/url_desc",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(null),
+            success: function (response) {
+                $('#url_desc').attr('href', response);
+                $('#url_desc').html(response);
+            }
+        });
+    }
+
+    function close1111() {
+        $.ajax({
+            url: "/close",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(null),
+            success: function (response) {
+                
+            }
+        });
+    }
+</script>
 </html>

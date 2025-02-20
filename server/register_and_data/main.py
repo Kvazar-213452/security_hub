@@ -65,6 +65,10 @@ def version():
 def check():
     return jsonify({'version': None})
 
+@app.route('/get_desc_url', methods=['POST'])
+def get_desc_url():
+    return "https://classroom.google.com/h"
+
 @app.route('/get_password', methods=['POST'])
 def get_password():
     try:
