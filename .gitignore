@@ -20,3 +20,5 @@ auto_update/head.exe
 
 .sorse/sorse_lib/aes_encryption/target
 .sorse/core_sorse/shell_web_NM3/bin
+
+.sorse/core_sorse/shell_web_NM3/target
