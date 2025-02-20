@@ -19,7 +19,7 @@ import (
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 
 type RequestData_o1 struct {
-	Gmail string `json:"gmail"`
+	Name string `json:"name"`
 }
 
 type RequestData_dqwd struct {
@@ -28,9 +28,9 @@ type RequestData_dqwd struct {
 }
 
 type RequestData_dqwd1 struct {
-	Key   string `json:"key"`
-	Pasw  string `json:"pasw"`
-	Gmail string `json:"gmail"`
+	Key  string `json:"key"`
+	Pasw string `json:"pasw"`
+	Name string `json:"name"`
 }
 
 type RequestData5 struct {
@@ -44,7 +44,7 @@ func Post_get_password(w http.ResponseWriter, r *http.Request) {
 		config := page_func.Get_config_user()
 
 		data := RequestData_o1{
-			Gmail: config.Gmail,
+			Name: config.Name,
 		}
 
 		jsonData, err := json.Marshal(data)
@@ -91,9 +91,9 @@ func Post_add_key_pasw(w http.ResponseWriter, r *http.Request) {
 		config := page_func.Get_config_user()
 
 		data1 := RequestData_dqwd1{
-			Key:   data.Key,
-			Pasw:  data.Pasw,
-			Gmail: config.Gmail,
+			Key:  data.Key,
+			Pasw: data.Pasw,
+			Name: config.Name,
 		}
 
 		jsonData, err := json.Marshal(data1)
@@ -140,7 +140,7 @@ func Post_del_key_pasw(w http.ResponseWriter, r *http.Request) {
 		config := page_func.Get_config_user()
 
 		data1 := RequestData_dqwd{
-			Key:  config.Gmail,
+			Key:  config.Name,
 			Pasw: requestData.Data,
 		}
 

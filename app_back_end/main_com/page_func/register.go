@@ -134,13 +134,25 @@ func Decrypt_code_reg_save(cipherText string) string {
 }
 
 func Get_config_user() *Config_reg {
-	file, _ := os.Open("../data/user.json")
+	file, err := os.Open("../data/user.json")
+	if err != nil {
+		fmt.Println("error read file user.json:", err)
+		return nil
+	}
 	defer file.Close()
 
-	byteValue, _ := ioutil.ReadAll(file)
+	byteValue, err := ioutil.ReadAll(file)
+	if err != nil {
+		fmt.Println("error read file user.json:", err)
+		return nil
+	}
 
 	var config Config_reg
-	json.Unmarshal(byteValue, &config)
+	err = json.Unmarshal(byteValue, &config)
+	if err != nil {
+		fmt.Println("erorr JSON:", err)
+		return nil
+	}
 
 	return &config
 }

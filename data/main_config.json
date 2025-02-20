@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "visualization": 1,
+  "visualization": 0,
   "log": 0,
   "port": 4000,
   "shell": 1,

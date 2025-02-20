@@ -3,7 +3,7 @@ from flask_cors import CORS
 import smtplib
 from email.mime.text import MIMEText
 import json
-from main_com.func import save_to_db, decript, decrypt_file, encrypt_file
+from main_com.func import save_to_db, decript
 
 app = Flask(__name__)
 
@@ -47,19 +47,15 @@ def send_email():
 @app.route('/save_user', methods=['POST'])
 def save_user():
     try:
-        decrypt_file()
-
         user_data = request.get_json()
 
         if save_to_db(user_data):
-            encrypt_file()
             return jsonify({"message": "1"}), 200
         else:
-            encrypt_file()
             return jsonify({"message": "0"}), 200
 
     except Exception as e:
-        return jsonify({"message": "Помилка при збереженні даних", "error": str(e)}), 500
+        return jsonify({"message": "error", "error": str(e)}), 500
 
 @app.route('/version', methods=['POST'])
 def version():
@@ -72,79 +68,67 @@ def check():
 @app.route('/get_password', methods=['POST'])
 def get_password():
     try:
-        decrypt_file()
-
         user_data = request.get_json()
-        gmail = user_data.get("gmail")
+        name = user_data.get("name")
 
-        if not gmail:
-            return jsonify({"message": "Gmail не надано"}), 400
+        if not name:
+            return jsonify({"message": "not val"}), 400
 
-        with open('db.cos', 'r') as f:
+        with open('db.json', 'r') as f:
             db_data = json.load(f)
 
-        encrypt_file()
-
         for entry in db_data:
-            if entry.get("gmail") == gmail:
+            if entry.get("name") == name:
                 return jsonify({"key": entry.get("key")}), 200
 
-        return jsonify({"message": "Користувача з таким gmail не знайдено"}), 404
+        return jsonify({"message": "name_error"}), 404
 
     except Exception as e:
-        return jsonify({"message": "Помилка при обробці запиту", "error": str(e)}), 500
+        return jsonify({"message": "error", "error": str(e)}), 500
     
 @app.route('/add_key_pasw', methods=['POST'])
 def add_key_pasw():
     try:
-        decrypt_file()
-
         user_data = request.get_json()
-        gmail = user_data.get("gmail")
+        name = user_data.get("name")
         key = user_data.get("key")
         pasw = user_data.get("pasw")
 
-        if not gmail:
-            return jsonify({"message": "Gmail не надано"}), 400
+        if not name:
+            return jsonify({"message": "name not found"}), 400
 
-        with open('db.cos', 'r') as f:
+        with open('db.json', 'r') as f:
             db_data = json.load(f)
 
         for entry in db_data:
-            if entry.get("gmail") == gmail:
+            if entry.get("name") == name:
                 if isinstance(entry.get("key"), list):
                     entry["key"].append([key, pasw])
                 else:
                     entry["key"] = [[key, pasw]]
 
-                with open('db.cos', 'w') as f:
+                with open('db.json', 'w') as f:
                     json.dump(db_data, f, indent=4)
 
-                encrypt_file()
+                return jsonify({"message": "updata", "key": entry.get("key")}), 200
 
-                return jsonify({"message": "Дані успішно оновлені", "key": entry.get("key")}), 200
-
-        return jsonify({"message": "Користувача з таким gmail не знайдено"}), 404
+        return jsonify({"message": "error not found user"}), 404
 
     except Exception as e:
-        return jsonify({"message": "Помилка при обробці запиту", "error": str(e)}), 500
+        return jsonify({"message": "error", "error": str(e)}), 500
     
 @app.route('/login', methods=['POST'])
 def login():
     try:
-        decrypt_file()
-
         user_data = request.get_json()
         name = user_data.get("name")
         password = user_data.get("password")
 
         if not name:
-            return jsonify({"message": "Gmail не надано"}), 200
+            return jsonify({"message": "not found Gmail"}), 200
 
-        with open('db.cos', 'r') as f:
+        with open('db.json', 'r') as f:
             db_data = json.load(f)
-
-        encrypt_file()
 
         for entry in db_data:
             if entry.get("name") == name and entry.get("pasw") == password:
@@ -165,31 +149,26 @@ def login():
 @app.route('/del_key_pasw', methods=['POST'])
 def del_key_pasw():
     try:
-        decrypt_file()
-        
-        print(request.get_json())
         user_data = request.get_json()
-        gamil = user_data.get("key")
+        name = user_data.get("key")
         value = user_data.get("pasw")
 
-        if not gamil or not value:
-            return jsonify({"message": "Gmail або value не надано"}), 200
+        if not name or not value:
+            return jsonify({"message": "not val"}), 200
 
-        with open('db.cos', 'r') as f:
+        with open('db.json', 'r') as f:
             db_data = json.load(f)
 
         for entry in db_data:
-            if entry.get("gmail") == gamil:
+            if entry.get("gmail") == name:
                 key_data = entry.get("key", [])
 
                 key_data = [item for item in key_data if item[0] != value]
 
                 entry["key"] = key_data
 
-                with open('db.cos', 'w') as f:
+                with open('db.json', 'w') as f:
                     json.dump(db_data, f, indent=4)
-                
-                encrypt_file()
 
                 return jsonify({"status": "1"}), 200
 

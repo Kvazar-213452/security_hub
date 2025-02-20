@@ -15,4 +15,4 @@ input_file = 'icon.ico'
 output_file = 'main.txt'
 
 convert_to_base64(input_file, output_file)
-print(f"Файл {input_file} успішно перетворено в Base64 і записано в {output_file}.")
+print(f"file {input_file} in base Base64 {output_file}.")

@@ -13,12 +13,8 @@ def main():
         thread2 = threading.Thread(target=run_process, args=("npm i && npm start", "server/data_file"))
         thread2.start()
 
-        thread3 = threading.Thread(target=run_process, args=("go build && start head", "app_back_end"))
-        thread3.start()
-
         thread1.join()
         thread2.join()
-        thread3.join()
 
     finally:
         os.chdir(os.getcwd())
