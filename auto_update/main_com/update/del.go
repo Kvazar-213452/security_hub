@@ -7,6 +7,8 @@ import (
 	"path/filepath"
 )
 
+// auto_update/main_com/update/del.go
+
 func DeleteFolders() error {
 	dir := "../"
 

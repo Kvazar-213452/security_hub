@@ -8,7 +8,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"os/exec"
 	"strconv"
 )
 
@@ -71,24 +70,8 @@ func Post_close(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println("start head.exe...")
-
-	cmd := exec.Command("../app_back_end/head.exe")
-	cmd.Dir = "../app_back_end"
-
-	err := cmd.Start()
-	if err != nil {
-		http.Error(w, "Error starting head.exe: "+err.Error(), http.StatusInternalServerError)
-		fmt.Println("Помилка запуску head.exe:", err)
-		return
-	}
-
-	w.Write([]byte("null"))
-	fmt.Println("head.exe запущено, сервер закривається...")
-
-	go func() {
-		os.Exit(0)
-	}()
+	fmt.Println("End")
+	os.Exit(0)
 }
 
 func Post_updata_app(w http.ResponseWriter, r *http.Request) {

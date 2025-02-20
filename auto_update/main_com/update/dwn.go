@@ -10,6 +10,8 @@ import (
 	"path/filepath"
 )
 
+// auto_update/main_com/update/dwn.go
+
 func DownloadAndExtract() error {
 	downloadPath := "../app_back_end.zip"
 	extractPath := "../"

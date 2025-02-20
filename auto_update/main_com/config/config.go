@@ -1,6 +1,6 @@
 package config
 
-// auto_update/main_com/config.go
+// auto_update/main_com/config/config.go
 
 var Server = "http://localhost:5000/"
 var Url = Server + "version"
