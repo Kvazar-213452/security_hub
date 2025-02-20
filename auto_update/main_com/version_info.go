@@ -3,6 +3,7 @@ package main_com
 import (
 	"bytes"
 	"encoding/json"
+	"head/main_com/config"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -17,7 +18,7 @@ type Config struct {
 }
 
 func Get_version() int {
-	req, _ := http.NewRequest("POST", Url, bytes.NewBuffer([]byte{}))
+	req, _ := http.NewRequest("POST", config.Url, bytes.NewBuffer([]byte{}))
 
 	client := &http.Client{}
 	resp, _ := client.Do(req)
@@ -40,7 +41,7 @@ func Get_version() int {
 }
 
 func File_config_get_version() int {
-	file, _ := os.Open(File_config_phat)
+	file, _ := os.Open(config.File_config_phat)
 	defer file.Close()
 
 	data, _ := ioutil.ReadAll(file)

@@ -51,6 +51,7 @@ func main() {
 		http.HandleFunc("/server_ver", main_com.Post_get_server_ver)
 		http.HandleFunc("/url_desc", main_com.Post_get_url_desc)
 		http.HandleFunc("/close", main_com.Post_close)
+		http.HandleFunc("/updata_app", main_com.Post_updata_app)
 
 		url := fmt.Sprintf("http://localhost:%d/index.html", port)
 		browser.OpenURL(url)

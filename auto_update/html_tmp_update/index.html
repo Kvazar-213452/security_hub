@@ -142,7 +142,27 @@
             margin-left: 20px;
         }
 
-        .ki {color: var(--read) !important;}
+        .ki,
+        .ki_1 {color: var(--read) !important;}
+
+        .ki_1 {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+        }
+
+        .anin,
+        .end_ok,
+        .end_ok1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--main_color);
+            font-size: 34px;
+        }
+
+        .end_ok1 {font-size: 23px;}
     </style>
 </head>
 <body>
@@ -160,8 +180,8 @@
             <p>Description of changes = <a class="span" id="url_desc" href=""></a></p>
         </div>
         <br>
-        <button onclick="close1111()" class="ki">Close</button>
-        <button>Update</button>
+        <button onclick="undqw()" class="ki">Close</button>
+        <button onclick="updata_app()">Update</button>
     </div>
 </body>
 <script src="http://localhost:5000/static/jquery.min.js"></script>
@@ -206,16 +226,49 @@
         });
     }
 
-    function close1111() {
+    function undqw() {
         $.ajax({
             url: "/close",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(null),
             success: function (response) {
-                
+                // pass
             }
         });
+    }
+
+    function updata_app() {
+        animat()
+
+        $.ajax({
+            url: "/updata_app",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(null),
+            success: function(response) {
+                if (response == 1) {
+                    $(".main").html("<p class='end_ok1 span'>Successfully updated<p>");
+                    $(".main").append("<button onclick='undqw()' class='ki_1'>Close</button>");
+                } else {
+                    $(".main").html("<p class='end_ok ki'>ERROR updated<p>");
+                }
+            },
+            error: function() {
+                console.log("Error in request");
+            }
+        });
+    }
+
+    function animat() {
+        $(".main").html("<p class='anin'><p>");
+        let texts = ["Load", "Load.", "Load..", "Load...", "Load..", "Load."];
+        let index = 0;
+
+        setInterval(() => {
+            $(".anin").text(texts[index]);
+            index = (index + 1) % texts.length;
+        }, 1000);
     }
 </script>
 </html>

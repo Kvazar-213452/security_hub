@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"head/main_com/update"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -65,20 +66,41 @@ func Post_get_url_desc(w http.ResponseWriter, r *http.Request) {
 }
 
 func Post_close(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodPost {
-		cmd := exec.Command("../app_back_end/head.exe")
-		cmd.Dir = "../app_back_end"
+	if r.Method != http.MethodPost {
+		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+		return
+	}
 
-		err := cmd.Start()
-		if err != nil {
-			http.Error(w, "Error starting head.exe: "+err.Error(), http.StatusInternalServerError)
-			return
-		}
+	fmt.Println("start head.exe...")
 
-		w.Write([]byte("null"))
+	cmd := exec.Command("../app_back_end/head.exe")
+	cmd.Dir = "../app_back_end"
 
-		fmt.Println("Server and process will now exit...")
+	err := cmd.Start()
+	if err != nil {
+		http.Error(w, "Error starting head.exe: "+err.Error(), http.StatusInternalServerError)
+		fmt.Println("Помилка запуску head.exe:", err)
+		return
+	}
+
+	w.Write([]byte("null"))
+	fmt.Println("head.exe запущено, сервер закривається...")
+
+	go func() {
 		os.Exit(0)
+	}()
+}
+
+func Post_updata_app(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		update.DeleteFolders()
+
+		err := update.DownloadAndExtract()
+		if err != nil {
+			w.Write([]byte("0"))
+		} else {
+			w.Write([]byte("1"))
+		}
 	} else {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 	}
