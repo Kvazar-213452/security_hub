@@ -117,6 +117,9 @@ func main() {
 	http.HandleFunc("/get_how_many", page.Post_get_how_many)
 	http.HandleFunc("/browser_site_server", main_com.Post_Browser_site_server)
 	http.HandleFunc("/antivirus_resurse", page.Post_antivirus_resurse)
+	http.HandleFunc("/updata_app", page.Post_updata_app)
+	http.HandleFunc("/accses_updata", page.Post_accses_updata)
+	http.HandleFunc("/restert", main_com.Post_restart)
 
 	fmt.Printf("started %d\n", port)
 	http.ListenAndServe(portStr, nil)

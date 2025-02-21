@@ -1,7 +1,6 @@
 package main_com
 
 import (
-	"bytes"
 	"encoding/json"
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
@@ -12,7 +11,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"strconv"
 
 	"github.com/pkg/browser"
 )
@@ -157,36 +155,24 @@ func Post_version_get(w http.ResponseWriter, r *http.Request) {
 }
 
 func Post_version_get_server(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/Post_version_get_server post")
-
-		req, _ := http.NewRequest("POST", config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_version, bytes.NewBuffer([]byte{}))
-
-		client := &http.Client{}
-		resp, _ := client.Do(req)
-		defer resp.Body.Close()
-
-		body, _ := ioutil.ReadAll(resp.Body)
-
-		var response map[string]interface{}
-
-		json.Unmarshal(body, &response)
-
-		versionStr, ok := response["version"].(string)
-		if !ok {
-			log.Fatal("Version is not a string")
-		}
-
-		version, _ := strconv.Atoi(versionStr)
-
-		Data := Data_ump{
-			Version_config: version,
-		}
-
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(Data)
-	} else {
+	if r.Method != http.MethodPost {
+		log.Println("ERROR: Invalid request method:", r.Method)
 		http.Error(w, "error", http.StatusMethodNotAllowed)
+		return
+	}
+
+	func_all.AppendToLog("/Post_version_get_server post")
+
+	version := func_all.Get_server_version()
+
+	Data := Data_ump{
+		Version_config: version,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	if err := json.NewEncoder(w).Encode(Data); err != nil {
+		log.Println("ERROR: Failed to encode response:")
+		http.Error(w, "failed to encode response", http.StatusInternalServerError)
 	}
 }
 
@@ -240,6 +226,19 @@ func Post_log_out(w http.ResponseWriter, r *http.Request) {
 		func_all.AppendToLog("/Post_log_out post")
 
 		func_all.Clear_file(config_main.Data_user)
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(nil)
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_restart(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_restart post")
+
+		func_all.RestartScript()
 
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(nil)

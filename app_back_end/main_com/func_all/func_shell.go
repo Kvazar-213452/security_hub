@@ -177,3 +177,22 @@ func RestartScript() error {
 	os.Exit(0)
 	return nil
 }
+
+func Updata_app() {
+	fmt.Println("start head.exe...")
+
+	cmd := exec.Command("../auto_update/head.exe")
+	cmd.Dir = "../auto_update"
+
+	err := cmd.Start()
+	if err != nil {
+		fmt.Println("error head.exe:", err)
+		return
+	}
+
+	fmt.Println("head.exe end app")
+
+	go func() {
+		os.Exit(0)
+	}()
+}

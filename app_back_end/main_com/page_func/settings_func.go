@@ -80,7 +80,7 @@ func UpdateConfigKey(key, value string) {
 	case "antivirus_flash_drive_cmd":
 		config.Antivirus.Antivirus_flash_drive_cmd = value
 	default:
-		fmt.Errorf("невідомий ключ: %s", key)
+		fmt.Errorf("error key: %s", key)
 	}
 
 	SaveConfig(filename, config)

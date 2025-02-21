@@ -298,3 +298,41 @@ function log_out() {
         }
     });
 }
+
+function updata_app() {
+    $.ajax({
+        url: "/updata_app",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            window.parent.postMessage("reload", "*");
+        }
+    });
+}
+
+function accses_updata() {
+    $.ajax({
+        url: "/accses_updata",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            if (response == 0) {
+                $("#updata_b").css({"display": "none"})
+            } 
+        }
+    });
+}
+
+function restert() {
+    $.ajax({
+        url: "/restert",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            window.parent.postMessage("reload", "*");
+        }
+    });
+}

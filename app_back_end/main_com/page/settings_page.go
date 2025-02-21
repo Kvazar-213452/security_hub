@@ -2,6 +2,7 @@ package page
 
 import (
 	"encoding/json"
+	config_main "head/main_com/config"
 	"head/main_com/func_all"
 	"head/main_com/page_func"
 	"net/http"
@@ -125,6 +126,35 @@ func Post_style_change(w http.ResponseWriter, r *http.Request) {
 		}
 
 		w.Write([]byte("1"))
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_updata_app(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_updata_app post")
+
+		func_all.Updata_app()
+
+		w.Write([]byte("1"))
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_accses_updata(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_accses_updata post")
+
+		config := func_all.LoadConfig_start(config_main.Main_config)
+		version := func_all.Get_server_version()
+
+		if version > config.Version {
+			w.Write([]byte("1"))
+		} else {
+			w.Write([]byte("0"))
+		}
 	} else {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}

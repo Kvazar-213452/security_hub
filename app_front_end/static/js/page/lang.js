@@ -127,7 +127,10 @@ let mas_lang = {
     ['#dwdc21e12d3', 'Scan Path'],
     ['#lang_server_verdfvcww', 'Secure file transfer over the network'],
     ['#server_lang_werthrgjhfbvd', 'Number of uploaded files'],
-    ['#dwdc21e12d4', "Resource"]
+    ['#dwdc21e12d4', "Resource"],
+    ['#updata_b', "Update the program"],
+    ['#idnfvvvvvv331d', "Restart the program with back end"],
+    ['#restart_app_2d', "Restart"]
   ],
 
   "uk": [
@@ -256,7 +259,10 @@ let mas_lang = {
     ['#dwdc21e12d3', 'Сканування шляху'],
     ['#lang_server_verdfvcww', 'Безпечна передача файлів через мережу'],
     ['#server_lang_werthrgjhfbvd', 'Кількість завантажених файлів'],
-    ['#dwdc21e12d4', "Ресурси"]
+    ['#dwdc21e12d4', "Ресурси"],
+    ['#updata_b', "Оновити програму"],
+    ['#idnfvvvvvv331d', "Перезапустити програму з back end"],
+    ['#restart_app_2d', "Перезапустити"]
   ]
 };
 
