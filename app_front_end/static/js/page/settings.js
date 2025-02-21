@@ -49,8 +49,10 @@ function getConfig() {
 
             if (shell === 0) {
                 button_active('shell_NM', shell_NM);
-            } else {
+            } else if (shell === 1) {
                 button_active('shell_NM1', shell_NM);
+            } else {
+                button_active('shell_NM2', shell_NM);
             }
 
             if (lang === "en") {

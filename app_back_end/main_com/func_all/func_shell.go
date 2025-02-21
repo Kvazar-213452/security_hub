@@ -74,6 +74,15 @@ func StartShellWeb(port int, type_ int, page string) *exec.Cmd {
 		}
 
 		cmd = exec.Command(config_main.Core_web_NM2, args...)
+	} else if type_ == 2 {
+		os.Chdir("NM3")
+		htmlContent := fmt.Sprintf(`%s/`+page, strconv.Itoa(port))
+
+		cmd = exec.Command("java",
+			"--module-path", "lib/javafx-sdk-17.0.14/lib",
+			"--add-modules", "javafx.controls,javafx.web",
+			"-jar", "target/webview-project-1.0-SNAPSHOT.jar",
+			"http://localhost:"+htmlContent)
 	}
 
 	defer func() {

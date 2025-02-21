@@ -129,7 +129,7 @@ let mas_lang = {
     ['#server_lang_werthrgjhfbvd', 'Number of uploaded files'],
     ['#dwdc21e12d4', "Resource"],
     ['#updata_b', "Update the program"],
-    ['#idnfvvvvvv331d', "Restart the program with back end"],
+    ['#idnfvvvvvv331d', "Restart the program with back end BETA"],
     ['#restart_app_2d', "Restart"]
   ],
 
@@ -261,7 +261,7 @@ let mas_lang = {
     ['#server_lang_werthrgjhfbvd', 'Кількість завантажених файлів'],
     ['#dwdc21e12d4', "Ресурси"],
     ['#updata_b', "Оновити програму"],
-    ['#idnfvvvvvv331d', "Перезапустити програму з back end"],
+    ['#idnfvvvvvv331d', "Перезапустити програму з back end BETA"],
     ['#restart_app_2d', "Перезапустити"]
   ]
 };
