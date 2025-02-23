@@ -130,7 +130,11 @@ let mas_lang = {
     ['#dwdc21e12d4', "Resource"],
     ['#updata_b', "Update the program"],
     ['#idnfvvvvvv331d', "Restart the program with back end BETA"],
-    ['#restart_app_2d', "Restart"]
+    ['#restart_app_2d', "Restart"],
+    ["#hrf23rffwevvv", "Cache Deletion"],
+    ["#del_buttton_s", "Delete"],
+    ["#iirjr3246yyu7", "NM Installation"],
+    ["#r234t567uthgfbvc", "NM Deletion"]
   ],
 
   "uk": [
@@ -262,7 +266,11 @@ let mas_lang = {
     ['#dwdc21e12d4', "Ресурси"],
     ['#updata_b', "Оновити програму"],
     ['#idnfvvvvvv331d', "Перезапустити програму з back end BETA"],
-    ['#restart_app_2d', "Перезапустити"]
+    ['#restart_app_2d', "Перезапустити"],
+    ['#hrf23rffwevvv', "Видалення кешу"],
+    ['#del_buttton_s', "Видалити"],
+    ['#iirjr3246yyu7', "Інсталяція NM"],
+    ['#r234t567uthgfbvc', "Видалення NM"]
   ]
 };
 

@@ -103,4 +103,50 @@ function get_style() {
     });
 }
 
+class TypingEffect {
+    constructor(elementId, revealSpeed = 50, finalDelay = 50) {
+        this.element = document.getElementById(elementId);
+        this.targetText = this.element.textContent.trim();
+        this.element.textContent = ""; // Очистка тексту перед початком анімації
+        this.revealSpeed = revealSpeed;
+        this.finalDelay = finalDelay;
+        this.randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+        this.currentText = Array(this.targetText.length).fill(" ");
+        this.revealedIndexes = [];
+    }
+
+    getRandomChar() {
+        return this.randomChars[Math.floor(Math.random() * this.randomChars.length)];
+    }
+
+    updateText() {
+        let newText = "";
+        for (let i = 0; i < this.targetText.length; i++) {
+            if (this.revealedIndexes.includes(i)) {
+                newText += this.targetText[i];
+            } else {
+                newText += this.getRandomChar();
+            }
+        }
+        this.element.textContent = newText;
+    }
+
+    revealNextChar() {
+        if (this.revealedIndexes.length < this.targetText.length) {
+            let index;
+            do {
+                index = Math.floor(Math.random() * this.targetText.length);
+            } while (this.revealedIndexes.includes(index));
+
+            this.revealedIndexes.push(index);
+            setTimeout(() => this.revealNextChar(), this.finalDelay);
+        }
+    }
+
+    startAnimation() {
+        setInterval(() => this.updateText(), this.revealSpeed);
+        setTimeout(() => this.revealNextChar(), 500);
+    }
+}
+
 get_data_config();

@@ -347,6 +347,14 @@ function get_info_installed() {
         data: JSON.stringify(null),
         success: function (response) {
             $("#instale_nm").html(null);
+
+            if (response[0] == 0) {
+                if (lang_global === "uk") {
+                    $("#instale_nm").append("<p id='df23rf4gvbbbbbb'>Все встановлено</p>");
+                } else if (lang_global === "en") {
+                    $("#instale_nm").append("<p id='df23rf4gvbbbbbb'>Everything is installed</p>");
+                }
+            }
             
             for (let i = 0; i < response[0].length; i++) {
                 let text = `
@@ -404,7 +412,6 @@ function check_NM() {
             $("#shell_NM1").css({"display": "none"});
             $("#shell_NM2").css({"display": "none"});
 
-
             for (let i = 0; i < response[1].length; i++) {
                 if (response[1][i] == "NM1") {
                     $("#shell_NM").css({"display": "block"});
@@ -425,8 +432,15 @@ function render_uninstall_NM() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function (response) {
-            console.log(response)
             $("#uninstale_nm").html(null);
+            
+            if (response[0] == 0) {
+                if (lang_global === "uk") {
+                    $("#instale_nm").append("<p id='df23rf4gvbbbbbb'>Нічого не встановлено</p>");
+                } else if (lang_global === "en") {
+                    $("#instale_nm").append("<p id='df23rf4gvbbbbbb'>Nothing installed</p>");
+                }
+            }
 
             for (let i = 0; i < response[1].length; i++) {
                 let text = `
@@ -434,6 +448,22 @@ function render_uninstall_NM() {
                 `;
 
                 $("#uninstale_nm").append(text);
+            }
+        }
+    });
+}
+
+function del_temp() {
+    $.ajax({
+        url: "/del_temp",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            if (lang_global === "uk") {
+                message_window('Кеш видалено');
+            } else if (lang_global === "en") {
+                message_window('Cache deleted');
             }
         }
     });

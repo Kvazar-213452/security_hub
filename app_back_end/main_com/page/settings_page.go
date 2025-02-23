@@ -244,3 +244,14 @@ func Post_uninstall_module(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
+
+func Post_del_temp(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_del_temp")
+		func_all.Del_temp()
+
+		w.Write([]byte("0"))
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
