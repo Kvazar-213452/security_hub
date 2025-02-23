@@ -69,6 +69,18 @@ a {
   color: #fff;
 }
 
+.bg_main {
+  background-color: #68ff9d;
+  border: solid 0px !important;
+  color: #000000;
+}
+
+.bg_main_del {
+  background-color: #ff5c5c;
+  border: solid 0px !important;
+  color: #000000;
+}
+
 .description_page {
   font-size: 15px;
   color: #fff;

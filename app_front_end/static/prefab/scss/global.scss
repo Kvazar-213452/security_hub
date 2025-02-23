@@ -56,6 +56,18 @@ a {
     span {color: config.$white;}
 }
 
+.bg_main {
+    background-color: config.$main_color;
+    border: solid 0px !important;
+    color: config.$bleck;
+}
+
+.bg_main_del {
+    background-color: config.$read;
+    border: solid 0px !important;
+    color: config.$bleck;
+}
+
 .description_page{
     font-size: 15px;
     color: config.$white;

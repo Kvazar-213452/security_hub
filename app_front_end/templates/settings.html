@@ -94,6 +94,18 @@
                 <button onclick="restert()" id="restart_app_2d" class="button_settings"></button>
                 <br><br>
             </div>
+            <div class="settings_div">
+                <p class="settings_main_tetx">Інсталяція NM</p>
+                <br>
+                <div id="instale_nm"></div>
+                <br><br>
+            </div>
+            <div class="settings_div">
+                <p class="settings_main_tetx">Видалення NM</p>
+                <br>
+                <div id="uninstale_nm"></div>
+                <br><br>
+            </div>
         </div>
         <div id="section_2">
             <div class="imfowdwqdd">
@@ -143,5 +155,9 @@
     get_data_reg();
     get_status_reg_settings();
     accses_updata();
+    get_info_installed();
+    render_uninstall_NM();
+
+    check_NM();
 </script>
 </html>

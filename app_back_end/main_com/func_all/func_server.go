@@ -8,8 +8,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
-	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -39,19 +37,6 @@ func RemoveNewlines(s string) string {
 
 func splitLines(content string) []string {
 	return strings.Split(strings.TrimSpace(content), "\n")
-}
-
-func ClearDirectory(dir string) error {
-	files, _ := ioutil.ReadDir(dir)
-
-	for _, file := range files {
-		err := os.Remove(filepath.Join(dir, file.Name()))
-		if err != nil {
-			return err
-		}
-	}
-
-	return nil
 }
 
 func Check_server_Status(url string) int {

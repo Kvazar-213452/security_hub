@@ -338,3 +338,103 @@ function restert() {
         }
     });
 }
+
+function get_info_installed() {
+    $.ajax({
+        url: "/info_module_nm",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            $("#instale_nm").html(null);
+            
+            for (let i = 0; i < response[0].length; i++) {
+                let text = `
+                    <button onclick="install_module(0, '${response[0][i]}')" class="button_settings bg_main">${response[0][i]}</button>
+                `;
+
+                $("#instale_nm").append(text);
+            }
+        }
+    });
+}
+
+function install_module(type, module_) {
+    let data = {"module": module_};
+
+    if (type === 0) {
+        $.ajax({
+            url: "/install_module",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response) {
+                console.log(response)
+                updata_module_info();
+            }
+        });
+    } else if (type === 1) {
+        $.ajax({
+            url: "/uninstall_module",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response) {
+                console.log(response)
+                updata_module_info();
+            }
+        });
+    }
+}
+
+function updata_module_info() {
+    get_info_installed();
+    check_NM();
+    render_uninstall_NM();
+}
+
+function check_NM() {
+    $.ajax({
+        url: "/info_module_nm",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            $("#shell_NM").css({"display": "none"});
+            $("#shell_NM1").css({"display": "none"});
+            $("#shell_NM2").css({"display": "none"});
+
+
+            for (let i = 0; i < response[1].length; i++) {
+                if (response[1][i] == "NM1") {
+                    $("#shell_NM").css({"display": "block"});
+                } else if (response[1][i] == "NM2") {
+                    $("#shell_NM1").css({"display": "block"});
+                } else if (response[1][i] == "NM3") {
+                    $("#shell_NM2").css({"display": "block"});
+                }
+            }
+        }
+    });
+}
+
+function render_uninstall_NM() {
+    $.ajax({
+        url: "/info_module_nm",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            console.log(response)
+            $("#uninstale_nm").html(null);
+
+            for (let i = 0; i < response[1].length; i++) {
+                let text = `
+                    <button onclick="install_module(1, '${response[1][i]}')" class="button_settings bg_main_del">${response[1][i]}</button>
+                `;
+
+                $("#uninstale_nm").append(text);
+            }
+        }
+    });
+}

@@ -120,6 +120,9 @@ func main() {
 	http.HandleFunc("/updata_app", page.Post_updata_app)
 	http.HandleFunc("/accses_updata", page.Post_accses_updata)
 	http.HandleFunc("/restert", main_com.Post_restart)
+	http.HandleFunc("/info_module_nm", page.Post_info_module_nm)
+	http.HandleFunc("/install_module", page.Post_install_module)
+	http.HandleFunc("/uninstall_module", page.Post_uninstall_module)
 
 	fmt.Printf("started %d\n", port)
 	http.ListenAndServe(portStr, nil)

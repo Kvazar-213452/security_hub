@@ -5,7 +5,9 @@ import (
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
 	"head/main_com/page_func"
+	"io/ioutil"
 	"net/http"
+	"os"
 	"strconv"
 )
 
@@ -22,6 +24,10 @@ type VisualizationMessage struct {
 
 var data struct {
 	Value string `json:"value"`
+}
+
+type ModuleData struct {
+	Module string `json:"module"`
 }
 
 func Post_config_global(w http.ResponseWriter, r *http.Request) {
@@ -154,6 +160,85 @@ func Post_accses_updata(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("1"))
 		} else {
 			w.Write([]byte("0"))
+		}
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_info_module_nm(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_info_module_nm")
+
+		file, err := os.Open("../data/module_config.json")
+		if err != nil {
+			http.Error(w, "Error opening file", http.StatusInternalServerError)
+			return
+		}
+		defer file.Close()
+
+		fileData, err := ioutil.ReadAll(file)
+		if err != nil {
+			http.Error(w, "Error reading file", http.StatusInternalServerError)
+			return
+		}
+
+		var data interface{}
+		err = json.Unmarshal(fileData, &data)
+		if err != nil {
+			http.Error(w, "Error decoding JSON", http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(data)
+
+	} else {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_install_module(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_install_module")
+
+		var data ModuleData
+		err := json.NewDecoder(r.Body).Decode(&data)
+		if err != nil {
+			http.Error(w, "Invalid JSON", http.StatusBadRequest)
+			return
+		}
+
+		val := page_func.Install_NM(data.Module)
+
+		if val == 0 {
+			w.Write([]byte("0"))
+		} else {
+			w.Write([]byte("1"))
+		}
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_uninstall_module(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_install_module")
+
+		var data ModuleData
+		err := json.NewDecoder(r.Body).Decode(&data)
+		if err != nil {
+			http.Error(w, "Invalid JSON", http.StatusBadRequest)
+			return
+		}
+
+		val := page_func.Uninstall_NM(data.Module)
+
+		if val == 0 {
+			w.Write([]byte("0"))
+		} else {
+			w.Write([]byte("1"))
 		}
 	} else {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
