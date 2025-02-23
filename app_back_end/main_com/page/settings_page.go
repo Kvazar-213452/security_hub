@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
-	"head/main_com/page_func"
+	"head/main_com/page_func/settings"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -34,7 +34,7 @@ func Post_config_global(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/config_global post")
 
-		config := page_func.LoadConfig()
+		config := settings.LoadConfig()
 
 		w.Header().Set("Content-Type", "application/json")
 		jsonData, _ := json.Marshal(config)
@@ -53,7 +53,7 @@ func Post_config_change(w http.ResponseWriter, r *http.Request) {
 
 		json.NewDecoder(r.Body).Decode(&msg)
 
-		page_func.UpdateVisualization(strconv.Itoa(msg.Message), "Visualization")
+		settings.UpdateVisualization(strconv.Itoa(msg.Message), "Visualization")
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
@@ -69,7 +69,7 @@ func Post_log_change(w http.ResponseWriter, r *http.Request) {
 
 		json.NewDecoder(r.Body).Decode(&data)
 
-		page_func.UpdateConfigKey("log", data.Value)
+		settings.UpdateConfigKey("log", data.Value)
 
 		w.Write([]byte("1"))
 	} else {
@@ -83,7 +83,7 @@ func Post_port_change(w http.ResponseWriter, r *http.Request) {
 
 		json.NewDecoder(r.Body).Decode(&data)
 
-		page_func.UpdateConfigKey("port", data.Value)
+		settings.UpdateConfigKey("port", data.Value)
 
 		w.Write([]byte("1"))
 	} else {
@@ -97,7 +97,7 @@ func Post_shell_change(w http.ResponseWriter, r *http.Request) {
 
 		json.NewDecoder(r.Body).Decode(&data)
 
-		page_func.UpdateConfigKey("shell", data.Value)
+		settings.UpdateConfigKey("shell", data.Value)
 
 		w.Write([]byte("1"))
 	} else {
@@ -111,7 +111,7 @@ func Post_change_lang_settings(w http.ResponseWriter, r *http.Request) {
 
 		json.NewDecoder(r.Body).Decode(&data)
 
-		page_func.UpdateConfigKey("lang", data.Value)
+		settings.UpdateConfigKey("lang", data.Value)
 
 		w.Write([]byte("1"))
 	} else {
@@ -126,9 +126,9 @@ func Post_style_change(w http.ResponseWriter, r *http.Request) {
 		json.NewDecoder(r.Body).Decode(&data)
 
 		if data.Value == "1" {
-			page_func.UpdateConfigKey("style", "main")
+			settings.UpdateConfigKey("style", "main")
 		} else {
-			page_func.UpdateConfigKey("style", "null")
+			settings.UpdateConfigKey("style", "null")
 		}
 
 		w.Write([]byte("1"))
@@ -210,7 +210,7 @@ func Post_install_module(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		val := page_func.Install_NM(data.Module)
+		val := settings.Install_NM(data.Module)
 
 		if val == 0 {
 			w.Write([]byte("0"))
@@ -233,7 +233,7 @@ func Post_uninstall_module(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		val := page_func.Uninstall_NM(data.Module)
+		val := settings.Uninstall_NM(data.Module)
 
 		if val == 0 {
 			w.Write([]byte("0"))
