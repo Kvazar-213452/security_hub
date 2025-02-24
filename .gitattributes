@@ -18,3 +18,4 @@ app_front_end/static/css/*.css linguist-documentation
 .sorse/main linguist-documentation
 .sorse/other/main_clean.bat linguist-documentation
 .sorse/other/original_cliner.bat linguist-documentation
+data/style/main.css linguist-documentation
