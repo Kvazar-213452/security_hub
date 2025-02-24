@@ -6,6 +6,8 @@ import javafx.scene.web.WebView;
 import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
 
+// .sorse/core_sorse/shell_web_NM3/src/main/java/com/example/Main.java
+
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {

@@ -4,14 +4,15 @@ import (
 	"encoding/json"
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
-	"head/main_com/page_func/settings"
+	"head/main_com/page_func"
+	"head/main_com/page_func/model"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"strconv"
 )
 
-// app_back_end/main_com/page/settings_page.go
+// app_back_end/main_com/page/model_page.go
 
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
@@ -34,7 +35,7 @@ func Post_config_global(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		func_all.AppendToLog("/config_global post")
 
-		config := settings.LoadConfig()
+		config := page_func.LoadConfig()
 
 		w.Header().Set("Content-Type", "application/json")
 		jsonData, _ := json.Marshal(config)
@@ -53,7 +54,7 @@ func Post_config_change(w http.ResponseWriter, r *http.Request) {
 
 		json.NewDecoder(r.Body).Decode(&msg)
 
-		settings.UpdateVisualization(strconv.Itoa(msg.Message), "Visualization")
+		page_func.UpdateVisualization(strconv.Itoa(msg.Message), "Visualization")
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
@@ -69,7 +70,7 @@ func Post_log_change(w http.ResponseWriter, r *http.Request) {
 
 		json.NewDecoder(r.Body).Decode(&data)
 
-		settings.UpdateConfigKey("log", data.Value)
+		page_func.UpdateConfigKey("log", data.Value)
 
 		w.Write([]byte("1"))
 	} else {
@@ -83,7 +84,7 @@ func Post_port_change(w http.ResponseWriter, r *http.Request) {
 
 		json.NewDecoder(r.Body).Decode(&data)
 
-		settings.UpdateConfigKey("port", data.Value)
+		page_func.UpdateConfigKey("port", data.Value)
 
 		w.Write([]byte("1"))
 	} else {
@@ -97,7 +98,7 @@ func Post_shell_change(w http.ResponseWriter, r *http.Request) {
 
 		json.NewDecoder(r.Body).Decode(&data)
 
-		settings.UpdateConfigKey("shell", data.Value)
+		page_func.UpdateConfigKey("shell", data.Value)
 
 		w.Write([]byte("1"))
 	} else {
@@ -105,13 +106,13 @@ func Post_shell_change(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func Post_change_lang_settings(w http.ResponseWriter, r *http.Request) {
+func Post_change_lang_model(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/change_lang_settings post")
+		func_all.AppendToLog("/change_lang_model post")
 
 		json.NewDecoder(r.Body).Decode(&data)
 
-		settings.UpdateConfigKey("lang", data.Value)
+		page_func.UpdateConfigKey("lang", data.Value)
 
 		w.Write([]byte("1"))
 	} else {
@@ -126,9 +127,9 @@ func Post_style_change(w http.ResponseWriter, r *http.Request) {
 		json.NewDecoder(r.Body).Decode(&data)
 
 		if data.Value == "1" {
-			settings.UpdateConfigKey("style", "main")
+			page_func.UpdateConfigKey("style", "main")
 		} else {
-			settings.UpdateConfigKey("style", "null")
+			page_func.UpdateConfigKey("style", "null")
 		}
 
 		w.Write([]byte("1"))
@@ -210,7 +211,7 @@ func Post_install_module(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		val := settings.Install_NM(data.Module)
+		val := model.Install_NM(data.Module)
 
 		if val == 0 {
 			w.Write([]byte("0"))
@@ -233,7 +234,7 @@ func Post_uninstall_module(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		val := settings.Uninstall_NM(data.Module)
+		val := model.Uninstall_NM(data.Module)
 
 		if val == 0 {
 			w.Write([]byte("0"))
@@ -251,6 +252,20 @@ func Post_del_temp(w http.ResponseWriter, r *http.Request) {
 		func_all.Del_temp()
 
 		w.Write([]byte("0"))
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_change_lang_settings(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/change_lang_settings post")
+
+		json.NewDecoder(r.Body).Decode(&data)
+
+		page_func.UpdateConfigKey("lang", data.Value)
+
+		w.Write([]byte("1"))
 	} else {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
