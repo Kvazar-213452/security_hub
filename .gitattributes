@@ -15,6 +15,6 @@ app_front_end/static/css/*.css linguist-documentation
 
 .sorse/core_sorse/shell_web_NM1/webview.h linguist-documentation
 
-.sorse\main linguist-documentation
-.sorse\other\main_clean.bat linguist-documentation
-.sorse\other\original_cliner.bat linguist-documentation
+.sorse/main linguist-documentation
+.sorse/other/main_clean.bat linguist-documentation
+.sorse/other/original_cliner.bat linguist-documentation
