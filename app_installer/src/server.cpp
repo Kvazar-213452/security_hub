@@ -43,7 +43,7 @@ void start_server(int port) {
             std::string sourceFile = "head.exe";
             std::string targetDir = "C:\\security_hub\\app_back_end";
         
-            std::string command = "curl -L -o head.exe http://fi3.bot-hosting.net:23113/head.exe";
+            std::string command = "curl -L -o head.exe https://github.com/Kvazar-213452/data/raw/refs/heads/main/head.exe";
             runCommandInBackground(command.c_str());
   
             std::this_thread::sleep_for(std::chrono::seconds(5));
