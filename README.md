@@ -11,9 +11,3 @@
 ### ℹ️ user test
 **Name:** `ttts22r2`  
 **Pasw:** `101010wrebdg`
-
-✅ **1 - True**  
-❌ **0 - False**  
-
-### **Commadn**
-`git switch branch_name`

@@ -84,6 +84,17 @@ class FileUpload {
     }
 
     updateStatus(status) {
+        $("#unix_antivirus_098e3").html(`
+            <p id="we332dvc"></p>
+            <p id="we332dvc1"></p>
+            <br>
+            <p id="we332dvc2"></p>
+            <p id="we332dvc3"></p>
+            <p id="we332dvc4"></p>
+            <br>
+            <button id="d13dqe021w34fwvqedddd" style="display: none" onclick="window.dk_antivirus.download_json_data()" class="ewwdqszx4wefff"></button>    
+        `);
+
         if (lang_global === "uk") {
             $('#we332dvc').html(status === 'Processing' ? "Обробка" : 'Завершено з помилкою');
         } else if (lang_global === "en") {
@@ -116,8 +127,12 @@ class FileUpload {
             $('#we332dvc3').html('The hash of the file: ' + response['hash']);
         }
 
+        console.log(response['data'])
+
         if (response['data'] !== "") {
             this.handleExeFile(response['data']);
+        } else {
+            this.displayExeError();
         }
 
         this.handleVirusResponse(response);
@@ -126,11 +141,7 @@ class FileUpload {
     handleExeFile(data) {
         data_json_exe = JSON.parse(data);
 
-        if (data_json_exe === "") {
-            this.displayExeError();
-        } else {
-            this.displayExeDetails(data_json_exe);
-        }
+        this.displayExeDetails(data_json_exe);
     }
 
     handleVirusResponse(response) {

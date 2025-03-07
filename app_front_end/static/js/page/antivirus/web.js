@@ -1,13 +1,20 @@
 // app_front_end/static/js/page/antivirus/web.js
 
 class ArtivirusWeb {
-
-
     antivirus_web_start() {
         let inputValue = $('#fkwe9203f').val();
         const dataToSend = { url_site: [inputValue] };
+
+        $("#unix_o99ef").html(`
+            <p id="dwdefw4f4" class="dqwwee333f"></p>
+            <p id="we31f3qecsdx13rv" class="ge4resdx"><span class="grean_1" id="ewfsdt4w43tgfd321"></span><span class="read" id="ewfsdt4w43tgfd3211"></span></p>
+            <p id="we31f3qecsdx13rv1" class="ge4resdx"><span id="dwdefw4f4ewqe"></span></p>
+            <p id="we31f3qecsdx13rv2" class="ge4resdx"><span id="qefwfvd244ttff"></span></p>
+        `);
+
     
         $('#dwdefw4f4').html(lang_global === "uk" ? 'Перевірка.....' : 'Audit.....');
+
     
         $.ajax({
             url: '/antivirus_web',
@@ -23,7 +30,7 @@ class ArtivirusWeb {
     
         clean_div("dq13892r2323233313");
     
-        $('#dwdefw4f4').text(lang_global === "uk" ? 'Завершено' : 'Completed');
+        $('#dwdefw4f4').html(lang_global === "uk" ? 'Завершено' : 'Completed');
     
         if (lang_global === "uk") {
             $('#we31f3qecsdx13rv1').prepend("SSL сертифікат: ");

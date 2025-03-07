@@ -6,6 +6,7 @@ import (
 	"head/main_com/func_all"
 	"head/main_com/page_func"
 	"head/main_com/page_func/model"
+	"head/main_com/page_func/settings"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -266,6 +267,18 @@ func Post_change_lang_settings(w http.ResponseWriter, r *http.Request) {
 		page_func.UpdateConfigKey("lang", data.Value)
 
 		w.Write([]byte("1"))
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_get_temp_info(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		func_all.AppendToLog("/Post_get_temp_info post")
+
+		val := settings.Get_info()
+
+		w.Write([]byte(val))
 	} else {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}

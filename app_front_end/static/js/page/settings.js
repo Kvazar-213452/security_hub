@@ -460,11 +460,26 @@ function del_temp() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function (response) {
+            get_temp_info();
+
             if (lang_global === "uk") {
                 message_window('Кеш видалено');
             } else if (lang_global === "en") {
                 message_window('Cache deleted');
             }
+        }
+    });
+}
+
+function get_temp_info() {
+    $.ajax({
+        url: "/get_temp_info",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            $("#ihnion32dfw444").text("\0" + response);
+
         }
     });
 }

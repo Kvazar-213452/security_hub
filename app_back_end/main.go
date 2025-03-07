@@ -124,6 +124,7 @@ func main() {
 	http.HandleFunc("/install_module", page.Post_install_module)
 	http.HandleFunc("/uninstall_module", page.Post_uninstall_module)
 	http.HandleFunc("/del_temp", page.Post_del_temp)
+	http.HandleFunc("/get_temp_info", page.Post_get_temp_info)
 
 	fmt.Printf("started %d\n", port)
 	http.ListenAndServe(portStr, nil)
