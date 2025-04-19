@@ -52,9 +52,9 @@ func main() {
 		fmt.Println("ok")
 	}
 
-	var cmd *exec.Cmd
+	var Cmd_shell *exec.Cmd
 	if config.Visualization == 1 {
-		cmd = func_all.StartShellWeb(port, config.Shell, "main")
+		Cmd_shell = func_all.StartShellWeb(port, config.Shell, "main")
 	}
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("../app_front_end/static"))))
@@ -119,7 +119,6 @@ func main() {
 	http.HandleFunc("/antivirus_resurse", page.Post_antivirus_resurse)
 	http.HandleFunc("/updata_app", page.Post_updata_app)
 	http.HandleFunc("/accses_updata", page.Post_accses_updata)
-	http.HandleFunc("/restert", main_com.Post_restart)
 	http.HandleFunc("/info_module_nm", page.Post_info_module_nm)
 	http.HandleFunc("/install_module", page.Post_install_module)
 	http.HandleFunc("/uninstall_module", page.Post_uninstall_module)
@@ -129,8 +128,8 @@ func main() {
 	fmt.Printf("started %d\n", port)
 	http.ListenAndServe(portStr, nil)
 
-	if cmd != nil {
-		if err := cmd.Process.Kill(); err != nil {
+	if Cmd_shell != nil {
+		if err := Cmd_shell.Process.Kill(); err != nil {
 			fmt.Printf("not shell_web.exe: %v\n", err)
 		}
 	}

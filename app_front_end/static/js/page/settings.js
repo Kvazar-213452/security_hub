@@ -327,18 +327,6 @@ function accses_updata() {
     });
 }
 
-function restert() {
-    $.ajax({
-        url: "/restert",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(null),
-        success: function (response) {
-            window.parent.postMessage("reload", "*");
-        }
-    });
-}
-
 function get_info_installed() {
     $.ajax({
         url: "/info_module_nm",

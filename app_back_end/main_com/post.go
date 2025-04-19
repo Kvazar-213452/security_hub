@@ -233,16 +233,3 @@ func Post_log_out(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
 }
-
-func Post_restart(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/Post_restart post")
-
-		func_all.RestartScript()
-
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(nil)
-	} else {
-		http.Error(w, "error", http.StatusMethodNotAllowed)
-	}
-}
