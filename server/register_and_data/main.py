@@ -164,7 +164,7 @@ def del_key_pasw():
             db_data = json.load(f)
 
         for entry in db_data:
-            if entry.get("gmail") == name:
+            if entry.get("name") == name:
                 key_data = entry.get("key", [])
 
                 key_data = [item for item in key_data if item[0] != value]
