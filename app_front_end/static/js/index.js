@@ -62,3 +62,9 @@ function render_main_start() {
     change_lang_now(1);
     get_status_reg();
 }
+
+window.addEventListener("message", function(event) {
+    if (event.data === "console") {
+        console_open();
+    }
+});

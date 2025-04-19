@@ -1,7 +1,5 @@
 app_installer/main.exe
 
-# server/register_and_data/config.json
-
 server/register_and_data/main_com/__pycache__
 
 server/data_file/node_modules
