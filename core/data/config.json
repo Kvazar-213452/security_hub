@@ -1,0 +1,9 @@
+{
+    "version": 9,
+    "log": true,
+    "debug": true,
+    "port": 4000,
+    "shell": 1,
+    "lang": "uk",
+    "style": "null"
+}

@@ -4,7 +4,7 @@ server/register_and_data/main_com/__pycache__
 
 server/data_file/node_modules
 
-app_back_end/head.exe
+core/main.exe
 auto_update/head.exe
 
 .sorse/sorse_lib/get_netsh/bin

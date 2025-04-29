@@ -1,0 +1,153 @@
+/* core/web/static/css/main.css */
+
+.ump_textw {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.cursor {
+  position: relative;
+  width: 24em;
+  margin: 0 auto;
+  border-right: 2px #68ff9d;
+  font-size: 40px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+  top: 45%;
+  color: #68ff9d;
+}
+
+.menu {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  background-color: #181822;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 100000;
+}
+
+.vw92dy9qccde3212202 {
+  border-bottom: solid 2px rgba(255, 255, 255, 0);
+}
+
+.vw92dy9qccde32122021 {
+  border-bottom: solid 2px #68ff9d;
+}
+
+#iframe {
+  position: absolute;
+  left: 250px;
+  width: calc(100% - 250px);
+  height: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+.menu_div {
+  position: relative;
+  top: 15px;
+  left: 15px;
+}
+
+.animatedBlock {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  padding: 20px;
+  background-color: #2d2d3d;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.animatedBlock.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animatedBlock.hide {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.button {
+  position: relative;
+  margin-bottom: 15px;
+  height: 40px;
+  width: calc(100% - 30px);
+  cursor: pointer;
+}
+.button img {
+  height: 31px;
+  filter: invert(80%);
+  position: relative;
+  float: left;
+}
+.button p {
+  position: relative;
+  left: 15px;
+  top: 7px;
+}
+
+.menu_logo {
+  position: relative;
+  margin-bottom: 15px;
+  left: 17px;
+  top: 17px;
+}
+.menu_logo img {
+  height: 31px;
+  filter: invert(0%);
+  position: relative;
+  float: left;
+}
+.menu_logo p {
+  position: relative;
+  left: 15px;
+  top: 7px;
+}
+
+.main_div {
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 100%;
+  position: relative;
+  left: 15px;
+  width: calc(100% - 50px);
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.console::-webkit-scrollbar,
+.main_div::-webkit-scrollbar,
+.about_div::-webkit-scrollbar,
+.div_wifi_info::-webkit-scrollbar,
+.div_system_info::-webkit-scrollbar,
+.imfowdwqdd::-webkit-scrollbar,
+.dqwdwec9923ed::-webkit-scrollbar,
+.extension_select::-webkit-scrollbar,
+.ump_u3fgbbb::-webkit-scrollbar {
+  width: 11px;
+  background-color: #22222e;
+}
+
+.console::-webkit-scrollbar-thumb,
+.main_div::-webkit-scrollbar-thumb,
+.about_div::-webkit-scrollbar-thumb,
+.div_wifi_info::-webkit-scrollbar-thumb,
+.div_system_info::-webkit-scrollbar-thumb,
+.imfowdwqdd::-webkit-scrollbar-thumb,
+.dqwdwec9923ed::-webkit-scrollbar-thumb,
+.extension_select::-webkit-scrollbar-thumb,
+.ump_u3fgbbb::-webkit-scrollbar-thumb {
+  background-color: #252831;
+}
+
+.modal_rev_button_d {
+  color: #ff5c5c;
+}
