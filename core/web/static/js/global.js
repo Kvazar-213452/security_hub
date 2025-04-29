@@ -50,24 +50,6 @@ function change_menu_page(id_, id) {
     $('#section_' + (id + 1)).show();
 }
 
-function change_lang_now(type) {
-    $.ajax({
-        url: "/config_global",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(null),
-        success: function (response) {
-            lang_global = response['lang'];
-
-            if (type === 0) {
-                lang_change_page(lang_global);
-            } else {
-                lang_change_main(lang_global);
-            }
-        }
-    });
-}
-
 function get_data_config() {
     $.ajax({
         url: "/config_global",

@@ -25,11 +25,33 @@ void Routes::setup_routes(httplib::Server& svr, const std::string& base_dir) {
         }
     });
 
-    svr.Post("/api/get_module", [](const httplib::Request& req, httplib::Response& res) {
+    // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api 
+    // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api 
+    // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api 
+
+    svr.Post("/api/get_json_file", [](const httplib::Request& req, httplib::Response& res) {
         nlohmann::json request = nlohmann::json::parse(req.body);
         nlohmann::json response;
         
         ApiHandler::get_json_file(request, response);
+        
+        res.set_content(response.dump(), "application/json");
+    });
+
+    svr.Post("/api/get_file", [](const httplib::Request& req, httplib::Response& res) {
+        nlohmann::json request = nlohmann::json::parse(req.body);
+        nlohmann::json response;
+        
+        ApiHandler::get_file(request, response);
+        
+        res.set_content(response.dump(), "application/json");
+    });
+
+    svr.Post("/api/get_module_for_render", [](const httplib::Request& req, httplib::Response& res) {
+        nlohmann::json request = nlohmann::json::parse(req.body);
+        nlohmann::json response;
+        
+        ApiHandler::get_module_for_render(request, response);
         
         res.set_content(response.dump(), "application/json");
     });
