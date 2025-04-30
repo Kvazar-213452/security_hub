@@ -1,5 +1,4 @@
-#ifndef ROUTES_H
-#define ROUTES_H
+#pragma once
 
 #include <string>
 
@@ -10,5 +9,3 @@ namespace httplib {
 namespace Routes {
     void setup_routes(httplib::Server& svr, const std::string& base_dir);
 }
-
-#endif

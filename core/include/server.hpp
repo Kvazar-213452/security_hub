@@ -1,8 +1,5 @@
-#ifndef SERVER_H
-#define SERVER_H
+#pragma once
 
 #include <string>
 
 extern void start_server(int port);
- 
-#endif

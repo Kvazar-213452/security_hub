@@ -2,6 +2,7 @@
 #include "../include/func_core.hpp"
 #include <nlohmann/json.hpp>
 #include <iostream>
+#include <string>
 
 using json = nlohmann::json;
 
@@ -14,10 +15,6 @@ void ApiHandler::get_json_file(const json& request, json& response) {
 void ApiHandler::get_file(const json& request, json& response) {
     response["val"] = read_file(request["data"]);
 }
-
-#include <nlohmann/json.hpp>
-#include <fstream>
-#include <string>
 
 void ApiHandler::get_module_for_render(const json& request, json& response) {
     std::string module_name = request["data"].get<std::string>();

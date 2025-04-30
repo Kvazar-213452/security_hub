@@ -1,5 +1,4 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+#pragma once
 
 #include <nlohmann/json.hpp>
 #include <string>
@@ -21,7 +20,6 @@ public:
     
     bool has(const std::string& key) const;
     
-    // Явні інстанціювання для основних типів
     int getInt(const std::string& key) const;
     bool getBool(const std::string& key) const;
     std::string getString(const std::string& key) const;
@@ -29,4 +27,11 @@ public:
 
 extern bool debug;
 
-#endif // CONFIG_H
+// shell_NM
+extern std::string name_app;
+extern std::string x_scale;
+extern std::string y_scale;
+
+extern std::string NM1_phat;
+extern std::string NM2_phat;
+extern std::string NM3_phat;

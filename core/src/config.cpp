@@ -7,6 +7,15 @@
 
 bool debug = true;
 
+// shell_NM
+std::string name_app = "security_hub";
+std::string x_scale = "1000";
+std::string y_scale = "800";
+
+std::string NM1_phat = "../shell_NM/NM1/shell_web.exe";
+std::string NM2_phat = "../shell_NM/NM2/main.exe";
+std::string NM3_phat = "../shell_NM/NM1/shell_web.exe";
+
 Config::Config() {
     try {
         std::ifstream config_file(config_path);

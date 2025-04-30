@@ -1,5 +1,4 @@
-#ifndef STATIC_HANDLER_H
-#define STATIC_HANDLER_H
+#pragma once
 
 #include <string>
 
@@ -13,5 +12,3 @@ namespace StaticHandler {
     std::string get_mime_type(const std::string& path);
     void setup_static_routes(httplib::Server& svr, const std::string& base_dir);
 }
-
-#endif
