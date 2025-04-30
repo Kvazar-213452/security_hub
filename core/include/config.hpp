@@ -34,4 +34,3 @@ extern std::string y_scale;
 
 extern std::string NM1_phat;
 extern std::string NM2_phat;
-extern std::string NM3_phat;

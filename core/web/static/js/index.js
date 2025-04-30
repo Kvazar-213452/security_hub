@@ -1,4 +1,4 @@
-// app_front_end/static/js/index.js
+// core\web\static\js\index.js
 
 function page_iframe(name, btn) {
     $.ajax({
@@ -47,7 +47,10 @@ function get_module() {
 }
 
 function render_module(response) {
-    for (let i = 0; i < response["val"]["module_uinstall"].length; i++) {
+    let total = response["val"]["module_uinstall"].length;
+    let completed = 0;
+
+    for (let i = 0; i < total; i++) {
         let name = response["val"]["module_uinstall"][i];
 
         $.ajax({
@@ -61,27 +64,27 @@ function render_module(response) {
                     <img src="data:image/png;base64,${response["icon"]}"><p></p>
                     </div>
                 `;
-
                 $(".menu_div").prepend(text);
+
                 db_lang.push([`btn${i}`, response["data"]["lang"]]);
-            }
-        });
-    }
+                completed++;
 
-    if (response["val"]["module_uinstall"].length <= 1) {
-        // lang
-        $.ajax({
-            url: "/api/get_json_file",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({data: "data/config.json"}),
-            success: function (response) {
-                let type = response["val"]["lang"];
+                if (completed === total) {
+                    $.ajax({
+                        url: "/api/get_json_file",
+                        type: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify({data: "data/config.json"}),
+                        success: function (response) {
+                            let type = response["val"]["lang"];
 
-                $("#relon p").html(lang_db[type]["relon"]);
+                            $("#relon p").html(lang_db[type]["relon"]);
 
-                for (let i = 0; i < db_lang.length; i++) {
-                    $(`#${db_lang[i][0]} p`).html(db_lang[i][1][type]);
+                            for (let i = 0; i < db_lang.length; i++) {
+                                $(`#${db_lang[i][0]} p`).html(db_lang[i][1][type]);
+                            }
+                        }
+                    });
                 }
             }
         });

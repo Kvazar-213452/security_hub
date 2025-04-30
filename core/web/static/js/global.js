@@ -1,4 +1,4 @@
-// app_front_end/static/js/global.js
+// core/web/static/js/global.js
 
 function button_hover(name) {
     for (let i = 0; i < mmain_buuton.length; i++) {
@@ -52,35 +52,26 @@ function change_menu_page(id_, id) {
 
 function get_data_config() {
     $.ajax({
-        url: "/config_global",
+        url: "/api/get_json_file",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify(null),
+        data: JSON.stringify({data: "data/config.json"}),
         success: function (response) {
-            if (response['style'] === "main") {
+            if (response["val"]['style'] === true) {
                 get_style();
             }
         }
     });
 }
 
-function clean_div(name) {
-    $('#' + name).find('*').contents().filter(function () {
-        return this.nodeType === Node.TEXT_NODE;
-    }).each(function () {
-        this.nodeValue = '';
-    });
-}
-
 function get_style() {
     $.ajax({
-        url: "/get_style",
+        url: "/api/get_file",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify(null),
+        data: JSON.stringify({data: "data/main.css"}),
         success: function (response) {
-           console.log(response)
-           $('#style_dudqdc').html(response);
+           $('#style_dudqdc').html(response["val"]);
         }
     });
 }
@@ -89,7 +80,7 @@ class TypingEffect {
     constructor(elementId, revealSpeed = 50, finalDelay = 50) {
         this.element = document.getElementById(elementId);
         this.targetText = this.element.textContent.trim();
-        this.element.textContent = ""; // Очистка тексту перед початком анімації
+        this.element.textContent = "";
         this.revealSpeed = revealSpeed;
         this.finalDelay = finalDelay;
         this.randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";

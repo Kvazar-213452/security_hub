@@ -14,7 +14,6 @@ std::string y_scale = "800";
 
 std::string NM1_phat = "../shell_NM/NM1/shell_web.exe";
 std::string NM2_phat = "../shell_NM/NM2/main.exe";
-std::string NM3_phat = "../shell_NM/NM1/shell_web.exe";
 
 Config::Config() {
     try {

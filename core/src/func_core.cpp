@@ -6,7 +6,6 @@
 #include <fstream>
 #include <vector>
 #include <stdexcept>
-#include <fstream>
 #include <system_error>
 #include <filesystem>
 
@@ -127,4 +126,27 @@ std::string base64_encode(const std::string &input) {
     }
 
     return encoded;
+}
+
+
+void write_starter_md(const std::string& content, const std::string& filePath = "starter.md") {
+    if (fs::exists(filePath)) {
+        if (!fs::is_regular_file(filePath)) {
+            return;
+        }
+    }
+
+    std::ofstream file(filePath, std::ios::trunc);
+    
+    if (!file) {
+        return;
+    }
+    
+    file << content;
+
+    file.close();
+    
+    if (file.fail()) {
+        return;
+    }
 }

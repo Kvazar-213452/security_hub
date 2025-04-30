@@ -3,7 +3,7 @@
     "log": true,
     "debug": true,
     "port": 4000,
-    "shell": 3,
+    "shell": 0,
     "lang": "uk",
-    "style": "null"
+    "style": false
 }

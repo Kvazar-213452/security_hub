@@ -28,7 +28,7 @@ void run_NM3(int port) {
         cmdLine.data(),
         NULL,
         NULL,
-        FALSE
+        FALSE,
         CREATE_NEW_CONSOLE,
         NULL,
         "../shell_NM/NM3",

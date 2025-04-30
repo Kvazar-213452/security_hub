@@ -29,12 +29,10 @@ int main() {
             shellWebThread = std::thread([&]() {run_NM3(port);});
         }
     } else {
-
+        write_starter_md("http://localhost:" + std::to_string(port) + "/");
     }
 
-    std::thread serverThread([&]() {
-        start_server(port);
-    });
+    std::thread serverThread([&]() {start_server(port);});
 
     if (shell > 0 && (shell == 1 || shell == 2)) {
         shellWebThread.detach();

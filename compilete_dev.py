@@ -12,8 +12,8 @@ if let == "0":
     os.system("git push")
 
 elif let == "1":
-    os.system("sass app_front_end/static/prefab/scss/main.scss app_front_end/static/css/main.css")
-    os.system("sass app_front_end/static/prefab/scss/global.scss app_front_end/static/css/global.css")
+    os.system("sass core/web/static/prefab/scss/main.scss core/web/static/css/main.css")
+    os.system("sass core/web/static/prefab/scss/global.scss core/web/static/css/global.css")
 
 elif let == "2":
     try:
