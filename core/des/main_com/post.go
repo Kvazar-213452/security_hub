@@ -15,6 +15,8 @@ import (
 	"github.com/pkg/browser"
 )
 
+// core/des/main_com/post.go
+
 type Data_ump struct {
 	Version_config int
 }

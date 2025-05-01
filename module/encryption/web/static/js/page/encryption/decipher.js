@@ -1,4 +1,4 @@
-// app_front_end/static/js/page/encryption/decipher.js
+// module/encryption/web/static/js/page/encryption/decipher.js
 
 class FileDecryption {
     constructor() {

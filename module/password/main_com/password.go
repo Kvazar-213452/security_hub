@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 )
 
-// app_back_end/main_com/page/password.go
+// module/password/main_com/password.go
 
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post

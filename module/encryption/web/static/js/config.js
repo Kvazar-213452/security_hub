@@ -1,4 +1,4 @@
-// app_front_end/static/js/config.js
+// module/encryption/web/static/js/config.js
 
 let frg45th9nd = ['frg45th9nd', 'frg45th9nd1', 'frg45th9nd2'];
 

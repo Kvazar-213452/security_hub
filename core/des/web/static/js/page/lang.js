@@ -64,7 +64,14 @@ let mas_lang = {
     ["#u32f2ho33ffff", "Install modules"],
     ["#u32f2ho33ffff1", "Remove modules"],
     ["#modla_install_32ffff", "Data processing"],
-    ["#reload_model", "Reload modules"]
+    ["#reload_model", "Reload modules"],
+    ["#modla_install_32ffff32131", "Module Information"],
+    ["#hrf29r32fvvvvvw2ed12", "Module information can be found at the URL:"],
+    ["#vv390gh3ggg", "Close"],
+    ["#i2332fn23", "Download"],
+    ["#modla_install_32f23dd2", "Delete Confirmation"],
+    ["#vv390gh3ggg1", "Close"],
+    ["#i2332fn231", "Delete"]
   ],
 
   "uk": [
@@ -130,7 +137,14 @@ let mas_lang = {
     ["#u32f2ho33ffff", "Встановлені модулі"],
     ["#u32f2ho33ffff1", "Видалити модулі"],
     ["#modla_install_32ffff", "Обробка даних"],
-    ["#reload_model", "Перезавантажити модулі"]
+    ["#reload_model", "Перезавантажити модулі"],
+    ["#modla_install_32ffff32131", "Інформація модуля"],
+    ["#hrf29r32fvvvvvw2ed12", "Інформацію модуля можна знайти по url:"],
+    ["#vv390gh3ggg", "Закрити"],
+    ["#i2332fn23", "Завантажити"],
+    ["#modla_install_32f23dd2", "Підтвердження видалення"],
+    ["#vv390gh3ggg1", "Закрити"],
+    ["#i2332fn231", "Видалити"]
   ]
 };
 

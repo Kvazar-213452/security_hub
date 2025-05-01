@@ -11,7 +11,7 @@ import (
 	"path/filepath"
 )
 
-// app_back_end/main_com/page_func/settings/model.go
+// core/des/main_com/model/model_NM.go
 
 func remove_key_array(index int, keyToRemove string) int {
 	filePath := "../data/module_config.json"

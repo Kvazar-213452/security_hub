@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-// app_back_end/main_com/rotate.go
+// module/encryption/main_com/rotate.go
 
 func Render_encryption(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles(

@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-// app_back_end/main_com/func_all/func_shell.go
+// module/encryption/main_com/func_all/func_shell.go
 
 func Clear_file(filePath string) {
 	file, _ := os.OpenFile(filePath, os.O_TRUNC|os.O_WRONLY, 0644)

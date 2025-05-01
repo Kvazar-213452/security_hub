@@ -1,4 +1,4 @@
-// app_front_end/static/js/page/encryption/encryption.js
+// module/encryption/web/static/js/page/encryption/encryption.js
 
 class FileEncryption {
     constructor() {

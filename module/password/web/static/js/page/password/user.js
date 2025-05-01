@@ -1,3 +1,5 @@
+// module/password/web/static/js/page/password/user.js
+
 class PasswordManager {
     constructor() {
         this.passwordInput = $('#password_d1qwasz');

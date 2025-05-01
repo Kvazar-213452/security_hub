@@ -1,4 +1,4 @@
-// app_front_end/static/js/page/lang.js
+// module/password/web/static/js/page/lang.js
 
 let mas_lang = {
   "en": [

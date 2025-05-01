@@ -12,6 +12,8 @@ import (
 	"path/filepath"
 )
 
+// module/encryption/main_com/encryption/encryption_aec-CTR.go
+
 func EncryptFileAES_CTR(filename string, key []byte) ([]byte, error) {
 	plaintext, err := ioutil.ReadFile(filename)
 	if err != nil {

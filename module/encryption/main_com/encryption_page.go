@@ -14,7 +14,7 @@ import (
 	"path/filepath"
 )
 
-// app_back_end/main_com/page/encryption_page.go
+// module/encryption/main_com/encryption_page.go
 
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post

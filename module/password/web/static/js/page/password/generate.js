@@ -1,4 +1,4 @@
-// app_front_end/static/js/page/password/generate.js
+// module/password/web/static/js/page/password/generate.js
 
 function generatePassword() {
     const length = $('#passwordLength').val();

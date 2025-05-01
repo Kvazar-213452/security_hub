@@ -12,7 +12,7 @@ import (
 	"path/filepath"
 )
 
-// app_back_end/main_com/page_func/encryption/encryption.go
+// module/encryption/main_com/encryption/encryption_AES-GCM.go
 
 func GenerateKey() []byte {
 	key := make([]byte, 32)

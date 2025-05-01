@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-// app_back_end/main_com/rotate.go
+// module/password/main_com/rotate.go
 
 func Render_password_page(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles(

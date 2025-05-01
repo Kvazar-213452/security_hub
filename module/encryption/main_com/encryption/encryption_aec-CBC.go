@@ -12,6 +12,8 @@ import (
 	"path/filepath"
 )
 
+// module/encryption/main_com/encryption/encryption_aec-CBC.go
+
 func EncryptFileAES_CBC(filename string, key []byte) ([]byte, error) {
 	plaintext, err := ioutil.ReadFile(filename)
 	if err != nil {

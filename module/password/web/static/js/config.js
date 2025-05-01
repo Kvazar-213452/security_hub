@@ -1,4 +1,4 @@
-// app_front_end/static/js/config.js
+// module/password/web/static/js/config.js
 
 let visualization_mas = ['visualization1', 'visualization2'];
 let vsgretdbgc = ['vsgretdbgc1', 'vsgretdbgc2'];

@@ -14,7 +14,7 @@ package config
 // ⣿⣿⠋⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿
 // ⣿⠏⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡯⢸⣿
 
-// app_back_end/main_com/config/config.go
+// module/password/main_com/config/config.go
 
 // data
 var Main_config string = "../data/main_config.json"

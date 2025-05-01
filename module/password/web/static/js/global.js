@@ -1,4 +1,4 @@
-// app_front_end/static/js/global.js
+// module/password/web/static/js/global.js
 
 function message_window(content) {
     const $block = $('<div class="animatedBlock hide"></div>').text(content);

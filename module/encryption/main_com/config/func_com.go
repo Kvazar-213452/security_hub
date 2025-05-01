@@ -1,6 +1,6 @@
 package config
 
-// app_back_end/main_com/config/func_com.go
+// module/encryption/main_com/config/func_com.go
 
 import (
 	"os"

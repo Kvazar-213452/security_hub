@@ -9,6 +9,8 @@ import (
 	"time"
 )
 
+// core/des/main_com/post_module.go
+
 func Post_install_model_app(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		body, err := io.ReadAll(r.Body)

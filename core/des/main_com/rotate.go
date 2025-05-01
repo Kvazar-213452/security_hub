@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-// app_back_end/main_com/rotate.go
+// core/des/main_com/rotate.go
 
 func Render_settings_page(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles(

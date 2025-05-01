@@ -12,6 +12,8 @@ import (
 	"golang.org/x/crypto/chacha20poly1305"
 )
 
+// module/encryption/main_com/encryption/encryption_ChaCha20-Poly1305.go
+
 func EncryptFileChaCha20(filename string, key []byte) ([]byte, error) {
 	plaintext, err := ioutil.ReadFile(filename)
 	if err != nil {

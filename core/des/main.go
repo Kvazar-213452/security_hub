@@ -16,6 +16,8 @@ import (
 	"time"
 )
 
+// core/des/main.go
+
 var cleanupDone = make(chan struct{})
 var cmd *exec.Cmd
 

@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 )
 
-// app_back_end/main_com/func_all/func_del.go
+// module/encryption/main_com/func_all/func_del.go
 
 func Remove_file(filePath string) int {
 	err := os.Remove(filePath)

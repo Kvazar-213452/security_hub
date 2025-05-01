@@ -13,6 +13,8 @@ import (
 	"golang.org/x/crypto/twofish"
 )
 
+// module/encryption/main_com/encryption/encryption_twofish.go
+
 func EncryptFileTwofish(filename string, key []byte) ([]byte, error) {
 	plaintext, err := ioutil.ReadFile(filename)
 	if err != nil {
