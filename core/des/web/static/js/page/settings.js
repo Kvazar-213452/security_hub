@@ -481,6 +481,14 @@ function get_all_render_module() {
 
                 $("#div_install_module").append(text);
             }
+
+            for (let i = 0; i < obj["module_uinstall"].length; i++) {
+                let text = `
+                <button onclick="uinstall_module_app('${obj["module_uinstall"][i]}')">${obj["module_uinstall"][i]}</button>
+                `;
+
+                $("#div_uinstall_module").append(text);
+            }
         }
     });
 }
@@ -488,6 +496,18 @@ function get_all_render_module() {
 function install_module_app(name) {
     $.ajax({
         url: "/install_module_app",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: name}),
+        success: function (response) {
+        console.log(response)
+        }
+    });
+}
+
+function uinstall_module_app(name) {
+    $.ajax({
+        url: "/uinstall_module_app",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({data: name}),

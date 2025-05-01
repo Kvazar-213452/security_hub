@@ -142,22 +142,18 @@ type ModuleConfig struct {
 }
 
 func MoveModuleToUninstall(name string) error {
-	// Шлях до файлу module.json (можна змінити за потребою)
 	filePath := "../data/config_module.json"
 
-	// Читаємо вміст файлу
 	fileData, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		return fmt.Errorf("помилка читання файлу: %v", err)
 	}
 
-	// Розпарсимо JSON
 	var config ModuleConfig
 	if err := json.Unmarshal(fileData, &config); err != nil {
 		return fmt.Errorf("помилка парсингу JSON: %v", err)
 	}
 
-	// Шукаємо модуль у module_install
 	found := false
 	newInstall := make([]string, 0)
 	for _, module := range config.Install {
@@ -172,7 +168,6 @@ func MoveModuleToUninstall(name string) error {
 		return fmt.Errorf("модуль '%s' не знайдено у module_install", name)
 	}
 
-	// Додаємо модуль до module_uinstall, якщо його там ще немає
 	alreadyInUninstall := false
 	for _, module := range config.Uninstall {
 		if module == name {
@@ -185,16 +180,13 @@ func MoveModuleToUninstall(name string) error {
 		config.Uninstall = append(config.Uninstall, name)
 	}
 
-	// Оновлюємо список встановлених модулів
 	config.Install = newInstall
 
-	// Конвертуємо назад у JSON
 	updatedData, err := json.MarshalIndent(config, "", "    ")
 	if err != nil {
 		return fmt.Errorf("помилка перетворення у JSON: %v", err)
 	}
 
-	// Записуємо оновлений файл
 	if err := ioutil.WriteFile(filePath, updatedData, 0644); err != nil {
 		return fmt.Errorf("помилка запису файлу: %v", err)
 	}

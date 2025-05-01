@@ -1,13 +1,13 @@
 {
     "module_install": [
-        "encryption",
+        "encryption"
+    ],
+    "module_uinstall": [
+        "server",
+        "password",
         "wifi",
         "antivirus",
         "cleaning",
         "system"
-    ],
-    "module_uinstall": [
-        "server",
-        "password"
     ]
 }

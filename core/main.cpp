@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
 
     std::thread serverThread([&]() {start_server(port);});
 
-    if (shell > 0 && (shell == 1 || shell == 2)) {
+    if (visualization == 1) {
         shellWebThread.detach();
     }
     serverThread.detach();

@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -29,6 +30,28 @@ func LoadLogFile() []byte {
 	jsonData, _ := json.Marshal(logContent)
 
 	return jsonData
+}
+
+type Config struct {
+	Port int `json:"port"`
+}
+
+func PrintPortFromConfig() int {
+	file, err := os.Open("../data/config.json")
+	if err != nil {
+		fmt.Println("Помилка відкриття файлу:", err)
+		return 0
+	}
+	defer file.Close()
+
+	var config Config
+	err = json.NewDecoder(file).Decode(&config)
+	if err != nil {
+		fmt.Println("Помилка декодування JSON:", err)
+		return 0
+	}
+
+	return config.Port
 }
 
 func RemoveNewlines(s string) string {

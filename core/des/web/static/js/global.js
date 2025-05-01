@@ -91,4 +91,3 @@ function get_style() {
 }
 
 get_data_config();
-

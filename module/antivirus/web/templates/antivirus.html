@@ -1,0 +1,76 @@
+<!-- app_front_end/templates/antivirus.html -->
+
+<html style="height: 100%"></html>
+<head>
+    <meta charset="utf-8">
+    <title>SPX</title>
+    <link rel="stylesheet" href="/static/css/main.css"/>
+    <link rel="stylesheet" href="/static/css/global.css"/>
+    <style id="style_dudqdc"></style>
+</head>
+<body>
+    <div class="main_div">
+        <br>
+        <p id="antivirus_errfee2" class="name_page"># <span></span></p>
+        <p id="antivirus_vef093f" class="description_page"></p>
+        <br>
+        <div class="fewfedddd"> 
+            <div onclick="change_menu_page(0, 0)" id="dwdc21e12d" class="dwqdwcccc2"></div>
+            <div onclick="change_menu_page(0, 1)" id="dwdc21e12d1" class="dwqdwcccc2"></div>
+            <div onclick="change_menu_page(0, 2)" id="dwdc21e12d2" class="dwqdwcccc2"></div>
+            <div onclick="change_menu_page(0, 3)" id="dwdc21e12d3" class="dwqdwcccc2"></div>
+            <div onclick="change_menu_page(0, 4)" id="dwdc21e12d4" class="dwqdwcccc2"></div>
+        </div>
+        <br>
+        <div class="dqwdwec9923ed">
+            <div id="section_1">
+                {{template "site.html" .}}
+            </div>
+            <div id="section_2">
+                {{template "file.html" .}}
+            </div>
+            <div id="section_3">
+                {{template "background.html" .}}
+            </div>
+            <div id="section_4">
+                <br>
+                <input class="dvwe5tgg" id="fkwe9203f1d" placeholder="Path" type="text">
+                <br>
+                <button onclick="antivirus_bekend_scan_dir()" id="antivirus_894534ffvvv55555" class="dwwccv7u3jf">Перевірити</button>
+                <br><br>
+                <div class="dwdwffff24"><div id="hfweo23fwesd" class="padoge"></div></div>
+            </div>
+            <div id="section_5">
+                {{template "resource.html" .}}
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/static/jquery.min.js"></script>
+<script src="/static/js/config.js"></script>
+<script src="/static/js/page/lang.js"></script>
+<script src="/static/js/global.js"></script>
+<script src="/static/js/page/antivirus/web.js"></script>
+<script src="/static/js/page/antivirus/file.js"></script>
+<script src="/static/js/page/antivirus/resurse.js"></script>
+<script src="/static/js/page/antivirus/backend.js"></script>
+<script src="/static/js/page/antivirus/background.js"></script>
+<script>
+    change_lang_now();
+
+    window.artivirusweb = new ArtivirusWeb();
+    window.dk_antivirus = new FileUpload();
+    let resurse = new Resurse();
+
+    change_menu_antivirus(0)
+    change_menu_page(0, 0)
+    
+    $('#dqdcew336g').hide();
+    $('#d13dqe021w34fwvqedddd').hide();
+
+    config_bg();
+    resurse.get_resurse();
+
+    setInterval(resurse.get_resurse, 2000);
+</script>
+</html>

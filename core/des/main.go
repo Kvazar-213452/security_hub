@@ -20,7 +20,6 @@ var cleanupDone = make(chan struct{})
 var cmd *exec.Cmd
 
 func cleanup() {
-	// Завершуємо процес ядра, якщо він запущений
 	if cmd != nil && cmd.Process != nil {
 		cmd.Process.Kill()
 	}
@@ -29,12 +28,20 @@ func cleanup() {
 	close(cleanupDone)
 }
 
-func startCore(port int) error {
+func startCore() error {
+	var port int
+	port_config := func_all.PrintPortFromConfig()
+
+	if port_config > 0 {
+		port = port_config
+	} else {
+		port = func_all.FindFreePort()
+	}
+
 	cmd = exec.Command("./main.exe", strconv.Itoa(port))
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
-	// Встановлюємо робочу директорію там, де є data/config.json
 	cmd.Dir = "../"
 
 	if err := cmd.Start(); err != nil {
@@ -67,16 +74,14 @@ func main() {
 
 	defer cleanup()
 
-	// Запускаємо ядро на порту 4432
-	if err := startCore(4432); err != nil {
+	if err := startCore(); err != nil {
 		fmt.Printf("Помилка: %v\n", err)
 		os.Exit(1)
 	}
 
-	// Даємо час ядру ініціалізуватися
-	time.Sleep(1 * time.Second)
-
 	var port int = func_all.FindFreePort()
+
+	time.Sleep(1 * time.Second)
 
 	err := module.RunModules(
 		"../data/config_module.json",
@@ -92,7 +97,6 @@ func main() {
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 
-	// Додаємо ваші обробники маршрутів...
 	http.HandleFunc("/register", main_com.Render_register_page)
 	http.HandleFunc("/settings", main_com.Render_settings_page)
 	http.HandleFunc("/off_app", main_com.Get_off_app)
@@ -125,10 +129,10 @@ func main() {
 	http.HandleFunc("/log_out", main_com.Post_log_out)
 	http.HandleFunc("/login_acaunt", register.Post_login_acaunt)
 	http.HandleFunc("/install_module_app", main_com.Post_install_model_app)
+	http.HandleFunc("/uinstall_module_app", main_com.Post_uinstall_model_app)
 
 	fmt.Println("Сервер запущено на http://localhost" + portStr)
 	if err := http.ListenAndServe(portStr, nil); err != nil {
-		fmt.Printf("Помилка HTTP сервера: %v\n", err)
 		os.Exit(1)
 	}
 }

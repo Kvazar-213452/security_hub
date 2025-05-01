@@ -85,6 +85,8 @@ function render_module(response) {
                             for (let i = 0; i < db_lang.length; i++) {
                                 $(`#${db_lang[i][0]} p`).html(db_lang[i][1][type]);
                             }
+
+                            module_integrated("settings", "btn12");
                         }
                     });
                 }

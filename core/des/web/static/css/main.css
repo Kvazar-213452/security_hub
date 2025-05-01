@@ -278,6 +278,10 @@
 /* settings page */ /* settings page */ /* settings page */ /* settings page */ /* settings page */ /* settings page */
 /* settings page */ /* settings page */ /* settings page */ /* settings page */ /* settings page */ /* settings page */
 
+#div_uinstall_module button {
+  color: #ff5c5c !important;
+}
+
 .div_uf2432gggg { 
   position: relative;
   background-color: #22222e;
