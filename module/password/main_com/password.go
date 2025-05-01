@@ -3,11 +3,14 @@ package main_com
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	config_main "head/main_com/config"
-	"head/main_com/func_all"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
+	"path/filepath"
 )
 
 // app_back_end/main_com/page/password.go
@@ -38,8 +41,6 @@ type RequestData5 struct {
 
 func Post_get_password(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/get_password post")
-
 		config := Get_config_user()
 
 		data := RequestData_o1{
@@ -77,8 +78,6 @@ func Post_get_password(w http.ResponseWriter, r *http.Request) {
 
 func Post_add_key_pasw(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/add_key_pasw post")
-
 		var data RequestData_dqwd
 		err := json.NewDecoder(r.Body).Decode(&data)
 		if err != nil {
@@ -126,8 +125,6 @@ func Post_add_key_pasw(w http.ResponseWriter, r *http.Request) {
 
 func Post_del_key_pasw(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/del_key_pasw post")
-
 		var requestData RequestData5
 		err := json.NewDecoder(r.Body).Decode(&requestData)
 		if err != nil {
@@ -170,4 +167,32 @@ func Post_del_key_pasw(w http.ResponseWriter, r *http.Request) {
 	} else {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
+}
+
+func Get_file(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Error reading request body: %v", err), http.StatusBadRequest)
+		return
+	}
+
+	var requestData map[string]interface{}
+	json.Unmarshal(body, &requestData)
+
+	filePath := filepath.Join(requestData["data"].(string))
+
+	content, err := os.ReadFile(filePath)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Error reading file: %v", err), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	w.WriteHeader(http.StatusOK)
+	w.Write(content)
 }

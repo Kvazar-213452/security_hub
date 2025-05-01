@@ -1,4 +1,4 @@
-// app_front_end/static/js/global.js
+// module/system/web/static/js/global.js
 
 function button_hover(name) {
     for (let i = 0; i < mmain_buuton.length; i++) {
@@ -51,16 +51,43 @@ function change_menu_page(id_, id) {
 }
 
 
-function get_data_config() {
+function change_lang_now() {
     $.ajax({
-        url: "/config_global",
+        url: "/get_file",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify(null),
+        data: JSON.stringify({data: "../../core/data/config.json"}),
         success: function (response) {
-            if (response['style'] === "main") {
+            let obj = JSON.parse(response);
+            lang_change_page(obj["lang"]);
+        }
+    });
+}
+
+function get_data_config() {
+    $.ajax({
+        url: "/get_file",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: "../../core/data/config.json"}),
+        success: function (response) {
+            let obj = JSON.parse(response);
+
+            if (obj['style'] === true) {
                 get_style();
             }
+        }
+    });
+}
+
+function get_style() {
+    $.ajax({
+        url: "/get_file",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: "../../core/data/main.css"}),
+        success: function (response) {
+           $('#style_dudqdc').html(response);
         }
     });
 }
@@ -71,65 +98,6 @@ function clean_div(name) {
     }).each(function () {
         this.nodeValue = '';
     });
-}
-
-function get_style() {
-    $.ajax({
-        url: "/get_style",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(null),
-        success: function (response) {
-           console.log(response)
-           $('#style_dudqdc').html(response);
-        }
-    });
-}
-
-class TypingEffect {
-    constructor(elementId, revealSpeed = 50, finalDelay = 50) {
-        this.element = document.getElementById(elementId);
-        this.targetText = this.element.textContent.trim();
-        this.element.textContent = ""; // Очистка тексту перед початком анімації
-        this.revealSpeed = revealSpeed;
-        this.finalDelay = finalDelay;
-        this.randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
-        this.currentText = Array(this.targetText.length).fill(" ");
-        this.revealedIndexes = [];
-    }
-
-    getRandomChar() {
-        return this.randomChars[Math.floor(Math.random() * this.randomChars.length)];
-    }
-
-    updateText() {
-        let newText = "";
-        for (let i = 0; i < this.targetText.length; i++) {
-            if (this.revealedIndexes.includes(i)) {
-                newText += this.targetText[i];
-            } else {
-                newText += this.getRandomChar();
-            }
-        }
-        this.element.textContent = newText;
-    }
-
-    revealNextChar() {
-        if (this.revealedIndexes.length < this.targetText.length) {
-            let index;
-            do {
-                index = Math.floor(Math.random() * this.targetText.length);
-            } while (this.revealedIndexes.includes(index));
-
-            this.revealedIndexes.push(index);
-            setTimeout(() => this.revealNextChar(), this.finalDelay);
-        }
-    }
-
-    startAnimation() {
-        setInterval(() => this.updateText(), this.revealSpeed);
-        setTimeout(() => this.revealNextChar(), 500);
-    }
 }
 
 get_data_config();

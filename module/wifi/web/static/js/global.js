@@ -1,14 +1,4 @@
-// app_front_end/static/js/global.js
-
-function button_hover(name) {
-    for (let i = 0; i < mmain_buuton.length; i++) {
-        $("#" + mmain_buuton[i]).removeClass("vw92dy9qccde32122021"); 
-        $("#" + mmain_buuton[i]).addClass("vw92dy9qccde3212202"); 
-    }
-
-    $("#" + name).removeClass("vw92dy9qccde3212202"); 
-    $("#" + name).addClass("vw92dy9qccde32122021"); 
-}
+// module/wifi/web/static/js/global.js
 
 function message_window(content) {
     const $block = $('<div class="animatedBlock hide"></div>').text(content);
@@ -27,14 +17,6 @@ function message_window(content) {
     }, 3000);
 }
 
-function change_menu_antivirus(id) {
-    for (let i = 0; i < frg45th9nd.length; i++) {
-        $("#" + frg45th9nd[i]).hide();
-    } 
-
-    $('#' + frg45th9nd[id]).show();
-}
-
 function change_menu_page(id_, id) {
     for (let i = 0; i < mas_sonar[id_].length; i++) {
         $("#" + mas_sonar[id_][i]).addClass("beds12323r4feddfq1");
@@ -51,88 +33,44 @@ function change_menu_page(id_, id) {
 }
 
 function change_lang_now() {
-    lang_change_page("en")
+    $.ajax({
+        url: "/get_file",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: "../../core/data/config.json"}),
+        success: function (response) {
+            let obj = JSON.parse(response);
+            lang_change_page(obj["lang"]);
+        }
+    });
 }
 
 function get_data_config() {
     $.ajax({
-        url: "/config_global",
+        url: "/get_file",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify(null),
+        data: JSON.stringify({data: "../../core/data/config.json"}),
         success: function (response) {
-            if (response['style'] === "main") {
+            let obj = JSON.parse(response);
+
+            if (obj['style'] === true) {
                 get_style();
             }
         }
     });
 }
 
-function clean_div(name) {
-    $('#' + name).find('*').contents().filter(function () {
-        return this.nodeType === Node.TEXT_NODE;
-    }).each(function () {
-        this.nodeValue = '';
-    });
-}
-
 function get_style() {
     $.ajax({
-        url: "/get_style",
+        url: "/get_file",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify(null),
+        data: JSON.stringify({data: "../../core/data/main.css"}),
         success: function (response) {
-           console.log(response)
            $('#style_dudqdc').html(response);
         }
     });
-}
-
-class TypingEffect {
-    constructor(elementId, revealSpeed = 50, finalDelay = 50) {
-        this.element = document.getElementById(elementId);
-        this.targetText = this.element.textContent.trim();
-        this.element.textContent = ""; // Очистка тексту перед початком анімації
-        this.revealSpeed = revealSpeed;
-        this.finalDelay = finalDelay;
-        this.randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
-        this.currentText = Array(this.targetText.length).fill(" ");
-        this.revealedIndexes = [];
-    }
-
-    getRandomChar() {
-        return this.randomChars[Math.floor(Math.random() * this.randomChars.length)];
-    }
-
-    updateText() {
-        let newText = "";
-        for (let i = 0; i < this.targetText.length; i++) {
-            if (this.revealedIndexes.includes(i)) {
-                newText += this.targetText[i];
-            } else {
-                newText += this.getRandomChar();
-            }
-        }
-        this.element.textContent = newText;
-    }
-
-    revealNextChar() {
-        if (this.revealedIndexes.length < this.targetText.length) {
-            let index;
-            do {
-                index = Math.floor(Math.random() * this.targetText.length);
-            } while (this.revealedIndexes.includes(index));
-
-            this.revealedIndexes.push(index);
-            setTimeout(() => this.revealNextChar(), this.finalDelay);
-        }
-    }
-
-    startAnimation() {
-        setInterval(() => this.updateText(), this.revealSpeed);
-        setTimeout(() => this.revealNextChar(), 500);
-    }
 }
 
 get_data_config();

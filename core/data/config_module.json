@@ -3,6 +3,9 @@
 
     ],
     "module_uinstall": [
-        "wifi"
+        "wifi",
+        "antivirus",
+        "cleaning",
+        "system"
     ]
 }

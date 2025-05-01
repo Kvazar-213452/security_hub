@@ -2,12 +2,17 @@ package main_com
 
 import (
 	"encoding/json"
-	"head/main_com/func_all"
+	"fmt"
 	"head/main_com/system"
 	"io"
+	"io/ioutil"
 	"net/http"
+	"os"
+	"path/filepath"
 	"strings"
 )
+
+// module/system/main_com/system.go
 
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
@@ -32,8 +37,6 @@ func Post_get_os_data(w http.ResponseWriter, r *http.Request) {
 
 func Post_window_open(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("usb info")
-
 		info := system.App_open()
 		cleanedInfo := strings.ReplaceAll(info, "\r", "")
 		devices := strings.Split(cleanedInfo, "\n")
@@ -44,6 +47,34 @@ func Post_window_open(w http.ResponseWriter, r *http.Request) {
 	} else {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
+}
+
+func Get_file(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Error reading request body: %v", err), http.StatusBadRequest)
+		return
+	}
+
+	var requestData map[string]interface{}
+	json.Unmarshal(body, &requestData)
+
+	filePath := filepath.Join(requestData["data"].(string))
+
+	content, err := os.ReadFile(filePath)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Error reading file: %v", err), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	w.WriteHeader(http.StatusOK)
+	w.Write(content)
 }
 
 // scan_dir // scan_dir // scan_dir // scan_dir // scan_dir // scan_dir
@@ -57,8 +88,6 @@ type folder_info struct {
 
 func Post_scan_dir(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/scan_dir post")
-
 		body, _ := io.ReadAll(r.Body)
 
 		var request struct {

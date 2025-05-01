@@ -2,11 +2,15 @@ package main_com
 
 import (
 	"encoding/json"
+	"fmt"
 	"head/main_com/wifi"
+	"io/ioutil"
 	"net/http"
+	"os"
+	"path/filepath"
 )
 
-// app_back_end/main_com/page/wifi_page.go
+// module/wifi/main_com/wifi_page.go
 
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
@@ -66,4 +70,32 @@ func Post_get_pacage_info_wifi(w http.ResponseWriter, r *http.Request) {
 	} else {
 		http.Error(w, "error metod", http.StatusMethodNotAllowed)
 	}
+}
+
+func Get_file(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Error reading request body: %v", err), http.StatusBadRequest)
+		return
+	}
+
+	var requestData map[string]interface{}
+	json.Unmarshal(body, &requestData)
+
+	filePath := filepath.Join(requestData["data"].(string))
+
+	content, err := os.ReadFile(filePath)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Error reading file: %v", err), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	w.WriteHeader(http.StatusOK)
+	w.Write(content)
 }

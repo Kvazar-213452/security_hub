@@ -1,4 +1,4 @@
-// app_front_end/static/js/page/cleanup.js
+// module/cleaning/web/static/js/page/cleanup.js
 
 $(".toggle-btn").click(function() {
     let nextDropdown = $(this).next(".dropdown-content");

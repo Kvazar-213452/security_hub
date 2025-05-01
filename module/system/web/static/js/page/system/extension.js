@@ -1,4 +1,4 @@
-// app_front_end/static/js/page/system/extension.js
+// module/system/web/static/js/page/system/extension.js
 
 let mas_file_extension = [];
 

@@ -1,4 +1,4 @@
-// app_front_end/static/js/page/schedule.js
+// module/wifi/web/static/js/page/schedule.js
 
 class Chart {
     createSvgElement(tagName) {

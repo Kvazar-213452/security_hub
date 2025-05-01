@@ -2,6 +2,7 @@ package main_com
 
 import (
 	"encoding/json"
+	"fmt"
 	"head/main_com/antivirus"
 	"head/main_com/func_all"
 	"io"
@@ -71,8 +72,6 @@ func Post_antivirus_bekend(w http.ResponseWriter, r *http.Request) {
 
 func Post_antivirus_bekend_scan_dir(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/Post_antivirus_bekend_scan_dir")
-
 		body, _ := io.ReadAll(r.Body)
 
 		var request struct {
@@ -125,8 +124,6 @@ func Post_antivirus_bekend_scan_dir(w http.ResponseWriter, r *http.Request) {
 
 func Post_antivirus_bekend_del_file(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/Post_antivirus_bekend_scan_dir")
-
 		body, _ := io.ReadAll(r.Body)
 
 		var request struct {
@@ -149,8 +146,6 @@ func Post_antivirus_bekend_del_file(w http.ResponseWriter, r *http.Request) {
 
 func Post_antivirus_resurse(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/Post_antivirus_resurse")
-
 		data := antivirus.Get_process_info()
 
 		resultData := map[string]interface{}{
@@ -162,4 +157,32 @@ func Post_antivirus_resurse(w http.ResponseWriter, r *http.Request) {
 	} else {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}
+}
+
+func Get_file(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Error reading request body: %v", err), http.StatusBadRequest)
+		return
+	}
+
+	var requestData map[string]interface{}
+	json.Unmarshal(body, &requestData)
+
+	filePath := filepath.Join(requestData["data"].(string))
+
+	content, err := os.ReadFile(filePath)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Error reading file: %v", err), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	w.WriteHeader(http.StatusOK)
+	w.Write(content)
 }

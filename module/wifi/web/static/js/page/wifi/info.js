@@ -1,4 +1,4 @@
-// app_front_end/static/js/page/wifi/info.js
+// module/wifi/web/static/js/page/wifi/info.js
 
 function get_data_wifi_now() {
     $.ajax({

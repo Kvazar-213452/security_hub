@@ -12,7 +12,7 @@ import (
 	"golang.org/x/sys/windows"
 )
 
-// app_back_end/main_com/page_func/system/info.go
+// module/system/main_com/system/info.go
 
 var (
 	user32                   = windows.NewLazySystemDLL("user32.dll")

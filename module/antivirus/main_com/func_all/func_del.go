@@ -38,12 +38,3 @@ func Remove_folder(folderPath string) int {
 
 	return 1
 }
-
-func Del_temp() {
-	ClearDirectory("../data/temp")
-	ClearDirectory("../data/encryption")
-	ClearDirectory("data/bekend")
-	ClearDirectory("data/decipher")
-	ClearDirectory("data/encryption")
-	ClearDirectory("../app_front_end/static/data")
-}

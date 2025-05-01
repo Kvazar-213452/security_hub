@@ -9,7 +9,7 @@ import (
 	"sync"
 )
 
-// app_back_end/main_com/page_func/system/scan_phat.go
+// module/system/main_com/system/scan_phat.go
 
 type FolderInfo struct {
 	Path string

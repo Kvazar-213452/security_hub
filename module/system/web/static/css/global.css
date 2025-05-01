@@ -1,7 +1,10 @@
+/* module/system/web/static/css/global.css */
+
 @font-face {
   font-family: "MyCustomFont";
   src: url("../Minecraft_1.1.ttf") format("truetype");
 }
+
 body {
   background-color: #22222e;
   font-family: "MyCustomFont", sans-serif;

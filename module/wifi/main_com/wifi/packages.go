@@ -11,7 +11,7 @@ import (
 	"syscall"
 )
 
-// app_back_end/main_com/page_func/wifi/packages.go
+// module/wifi/main_com/wifi/packages.go
 
 func Get_info_packages_wifi() []byte {
 	cmd := exec.Command(config_main.Wifi_packege_data_exe)

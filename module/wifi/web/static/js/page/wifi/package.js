@@ -1,4 +1,4 @@
-// app_front_end/static/js/page/wifi/package.js
+// module/wifi/web/static/js/page/wifi/package.js
 
 class PackageData {
     constructor() {
@@ -12,7 +12,6 @@ class PackageData {
             contentType: "application/json",
             data: JSON.stringify(null),
             success: (response) => {
-                // Стрілочна функція автоматично прив'язує `this` до екземпляра класу
                 this.writeDataAdapter(response);
             }
         });

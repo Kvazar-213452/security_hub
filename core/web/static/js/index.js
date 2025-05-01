@@ -79,6 +79,8 @@ function render_module(response) {
                             let type = response["val"]["lang"];
 
                             $("#relon p").html(lang_db[type]["relon"]);
+                            $("#btn12 p").html(lang_db[type]["btn12"]);
+                            $("#btn11 p").html(lang_db[type]["btn11"]);
 
                             for (let i = 0; i < db_lang.length; i++) {
                                 $(`#${db_lang[i][0]} p`).html(db_lang[i][1][type]);
@@ -124,4 +126,18 @@ function render_main_start() {
     $('.ump_textw').html(html_1);
 
     get_module();
+}
+
+function module_integrated(name, btn) {
+    $.ajax({
+        url: "/api/get_file",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: `des/starter.md`}),
+        success: function (response) {
+            $("#iframe").attr("src", response["val"] + name);
+
+            button_hover(btn);
+        }
+    });
 }

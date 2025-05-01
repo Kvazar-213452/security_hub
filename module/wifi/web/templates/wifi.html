@@ -1,4 +1,4 @@
-<!-- app_front_end/templates/wifi.html -->
+<!-- module/wifi/web/templates/wifi.html -->
 
 <html style="height: 100%">
 <head>
@@ -15,8 +15,8 @@
         <p id="lang_nfefdfdvghyt" class="description_page"></p>
         <br>
         <div class="fewfedddd">
-            <div onclick="change_menu_page(1, 0)" id="wifi_0jdccc" class="dwqdwcccc2"></div>
-            <div onclick="change_menu_page(1, 1)" id="wifi_0jdccc1" class="dwqdwcccc2"></div>
+            <div onclick="change_menu_page(0, 0)" id="wifi_0jdccc" class="dwqdwcccc2"></div>
+            <div onclick="change_menu_page(0, 1)" id="wifi_0jdccc1" class="dwqdwcccc2"></div>
         </div>
         <br>
         <div id="section_2">
@@ -51,17 +51,14 @@
 </body>
 <script src="/static/jquery.min.js"></script>
 <script src="/static/js/config.js"></script>
-<script src="/static/js/frame_controler.js"></script>
 <script src="/static/js/page/lang.js"></script>
 <script src="/static/js/global.js"></script>
 <script src="/static/js/page/wifi/info.js"></script>
 <script src="/static/js/page/wifi/package.js"></script>
 <script src="/static/js/page/schedule.js"></script>
 <script>
-    change_lang_now(0);
-    change_menu_page(1, 0)
-
-
+    change_lang_now();
+    change_menu_page(0, 0)
 
     const packageData = new PackageData();
     packageData.getPackageData();

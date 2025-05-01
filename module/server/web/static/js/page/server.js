@@ -1,4 +1,4 @@
-// app_front_end/static/js/page/server.js
+// module/server/web/static/js/page/server.js
 
 $('#submit-btn').click(function () {
   const fileInput = $('#file')[0];

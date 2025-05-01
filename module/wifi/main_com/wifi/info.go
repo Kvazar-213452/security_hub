@@ -9,7 +9,7 @@ import (
 	"os/exec"
 )
 
-// app_back_end/main_com/page_func/wifi/info.go
+// module/wifi/main_com/wifi/info.go
 
 type WiFiData struct {
 	SSID                 string `xml:"SSID"`

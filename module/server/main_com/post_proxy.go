@@ -3,14 +3,17 @@ package main_com
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	config_main "head/main_com/config"
-	"head/main_com/func_all"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
+	"path/filepath"
 )
 
-// app_back_end/main_com/page/post_proxy.go
+// module/server/main_com/post_proxy.go
 
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
 //post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post//post
@@ -19,8 +22,6 @@ import (
 
 func Post_post_file(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/Post_post_file post")
-
 		proxyReq, err := http.NewRequest(http.MethodPost, config_main.Server_data_file_url+config_main.Server_data_file_url_upload, r.Body)
 		if err != nil {
 			log.Println("Error", err)
@@ -48,8 +49,6 @@ func Post_post_file(w http.ResponseWriter, r *http.Request) {
 
 func Post_search_server(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/Post_search_server post")
-
 		body, err := io.ReadAll(r.Body)
 		if err != nil {
 			log.Println("Error reading request body:", err)
@@ -94,8 +93,6 @@ func Post_search_server(w http.ResponseWriter, r *http.Request) {
 
 func Post_get_how_many(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		func_all.AppendToLog("/Post_get_how_many post")
-
 		proxyReq, err := http.NewRequest(http.MethodPost, config_main.Server_data_file_url+config_main.Server_data_file_url_get_how_many, nil)
 		if err != nil {
 			log.Println("Error", err)
@@ -134,4 +131,34 @@ func Post_get_how_many(w http.ResponseWriter, r *http.Request) {
 	} else {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
+}
+
+// beck func
+
+func Get_file(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Error reading request body: %v", err), http.StatusBadRequest)
+		return
+	}
+
+	var requestData map[string]interface{}
+	json.Unmarshal(body, &requestData)
+
+	filePath := filepath.Join(requestData["data"].(string))
+
+	content, err := os.ReadFile(filePath)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("Error reading file: %v", err), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	w.WriteHeader(http.StatusOK)
+	w.Write(content)
 }
