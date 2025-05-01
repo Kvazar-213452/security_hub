@@ -130,6 +130,8 @@ func main() {
 	http.HandleFunc("/login_acaunt", register.Post_login_acaunt)
 	http.HandleFunc("/install_module_app", main_com.Post_install_model_app)
 	http.HandleFunc("/uinstall_module_app", main_com.Post_uinstall_model_app)
+	http.HandleFunc("/reload_model", main_com.Rost_reload_model)
+	http.HandleFunc("/url_site_open", main_com.Rost_open_url)
 
 	fmt.Println("Сервер запущено на http://localhost" + portStr)
 	if err := http.ListenAndServe(portStr, nil); err != nil {

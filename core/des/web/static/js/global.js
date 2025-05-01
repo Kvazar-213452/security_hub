@@ -1,5 +1,13 @@
 // app_front_end/static/js/global.js
 
+function clos(name) {
+    $('#' + name).hide(); 
+}
+
+function openModal(name) {
+    $('#' + name).show(); 
+}
+
 function message_window(content) {
     const $block = $('<div class="animatedBlock hide"></div>').text(content);
     $('body').append($block);
@@ -86,6 +94,18 @@ function get_style() {
         success: function (response) {
            console.log(response)
            $('#style_dudqdc').html(response);
+        }
+    });
+}
+
+function open_url() {
+    $.ajax({
+        url: "/url_site_open",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: url_site}),
+        success: function (response) {
+            // pass
         }
     });
 }

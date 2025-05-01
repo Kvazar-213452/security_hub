@@ -128,6 +128,7 @@
                     <br>
                     <div class="div_uf2432gggg" id="div_uinstall_module"></div>
                     <br><br>
+                    <button onclick="reload_model()" id="reload_model" class="button_settings"></button>
                     <button onclick="updata_app()" id="updata_b" class="button_settings"></button>
                     <br><br>
                 </div>
@@ -145,6 +146,45 @@
             </div>
         </div>
         <br><br><br><br>
+        <!-- modal -->
+        <div id="modal1"> 
+            <div id="modal-content">
+                <p class="load_title" id="modla_install_32ffff"></p>
+                <div class="load_animat_div">
+                    <div class="div_animation"></div>
+                    <div class="div_animation1"></div>
+                    <div class="div_animation2"></div>
+                    <div class="div_animation3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal2"> 
+            <div id="modal-content1">
+                <p class="load_title" id="modla_install_32ffff32131">Інформація модуля</p>
+                <br>
+                <p>Інформацію модуля можна знайти по url:</p>
+                <p id="url_site_doc" class="url_site" onclick="open_url()"></p>
+                <div class="d23rrf3wecccc_d33">
+                    <button onclick="clos('modal2')" class="install_dwfe3" id="vv390gh3ggg">Закрити</button>
+                    <button onclick="install_module_func()" class="install_dwfe3" id="i2332fn23">Завантажити</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="modal3"> 
+            <div id="modal-content1">
+                <p class="load_title" id="modla_install_32f23dd2">Підтвердження видалення</p>
+                <br>
+                <br>
+                <br>
+                <p id="url_site_doc1" class="url_site" onclick="open_url()"></p>
+                <div class="d23rrf3wecccc_d33">
+                    <button onclick="clos('modal3')" class="install_dwfe3" id="vv390gh3ggg1">Закрити</button>
+                    <button onclick="uinstall_module_func()" class="install_dwfe3" id="i2332fn231">Видалити</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="/static/jquery.min.js"></script>
@@ -168,5 +208,21 @@
     // render_uninstall_NM();
 
     // check_NM();
+
+    const divs = [
+      document.querySelector('.div_animation'),
+      document.querySelector('.div_animation1'),
+      document.querySelector('.div_animation2'),
+      document.querySelector('.div_animation3'),
+    ];
+
+    let current = 0;
+    setInterval(() => {
+        if (animation) {
+            divs.forEach(div => div.style.backgroundColor = '#181822');
+            divs[current].style.backgroundColor = '#68ff9d';
+            current = (current + 1) % divs.length;
+        }
+    }, 1000);
 </script>
 </html>

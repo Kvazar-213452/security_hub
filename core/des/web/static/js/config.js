@@ -14,3 +14,10 @@ let mas_sonar = [
 
 let reg_login;
 let lang_global;
+let animation = false;
+let url_site;
+let module_select;
+
+let url_module = {
+    "system": "https://dash.infinityfree.com/login"
+};

@@ -494,25 +494,69 @@ function get_all_render_module() {
 }
 
 function install_module_app(name) {
+    openModal("modal2");
+    $("#url_site_doc").html(url_module[name]);
+    module_select = name;
+    url_site = url_module[name];
+}
+
+function install_module_func() {
+    openModal("modal1");
+    animation = true;
+
     $.ajax({
         url: "/install_module_app",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({data: name}),
+        data: JSON.stringify({data: module_select}),
         success: function (response) {
-        console.log(response)
+            setTimeout(function () {
+                clos("modal1");
+                animation = false;
+            }, 2000);
         }
     });
 }
 
 function uinstall_module_app(name) {
+    openModal("modal3");
+    $("#url_site_doc1").html(url_module[name]);
+    module_select = name;
+    url_site = url_module[name];
+}
+
+function uinstall_module_app_func() {
+    openModal("modal1");
+    animation = true;
+
     $.ajax({
         url: "/uinstall_module_app",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({data: name}),
+        data: JSON.stringify({data: module_select}),
         success: function (response) {
-        console.log(response)
+            setTimeout(function () {
+                clos("modal1");
+                animation = false;
+            }, 2000);
+        }
+    });
+}
+
+function reload_model() {
+    openModal("modal1");
+    animation = true;
+
+    $.ajax({
+        url: "/reload_model",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(null),
+        success: function (response) {
+            setTimeout(function () {
+                clos("modal1");
+                animation = false;
+            }, 4000);
         }
     });
 }
