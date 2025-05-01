@@ -23,7 +23,7 @@ func main() {
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 
-	http.HandleFunc("/main", main_com.Render_password_page)
+	http.HandleFunc("/", main_com.Render_password_page)
 
 	http.HandleFunc("/get_password", main_com.Post_get_password)
 	http.HandleFunc("/add_key_pasw", main_com.Post_add_key_pasw)

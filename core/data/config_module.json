@@ -6,6 +6,8 @@
         "wifi",
         "antivirus",
         "cleaning",
-        "system"
+        "system",
+        "server",
+        "encryption"
     ]
 }
