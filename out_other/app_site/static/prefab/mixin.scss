@@ -1,0 +1,19 @@
+@use 'config';
+
+@mixin sinsid($left, $float) {
+    position: relative;
+    float: $float;
+    width: 430px;
+    height: auto;
+    word-wrap: break-word;
+    overflow: hidden;
+    font-size: 22px;
+    color: config.$text_color;
+    left: $left;
+}
+
+@mixin text_decoration($thickness: 2px, $offset: 4px) {
+    text-decoration: underline;
+    text-decoration-thickness: $thickness;
+    text-underline-offset: $offset;
+}

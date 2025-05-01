@@ -1,21 +1,22 @@
 * text=auto
 
-app_site/static/css/*.css linguist-documentation
-app_site/static/*.js linguist-documentation
+out_other/app_site/static/css/*.css linguist-documentation
+out_other/app_site/static/*.js linguist-documentation
 
-data/style/*.css linguist-documentation
-server/register_and_data/static/*.css linguist-documentation
+out_other/server/register_and_data/static/*.css linguist-documentation
 
-app_installer/lib/*.h linguist-documentation
-app_installer/lib/*.cc linguist-documentation
-app_installer/lib/*.i linguist-documentation
+out_other/app_installer/lib/*.h linguist-documentation
+out_other/app_installer/lib/*.cc linguist-documentation
+out_other/app_installer/lib/*.i linguist-documentation
  
-app_front_end/static/jquery.min.js linguist-documentation
-app_front_end/static/css/*.css linguist-documentation
+core/web/static/css/*.css linguist-documentation
 
 .sorse/core_sorse/shell_web_NM1/webview.h linguist-documentation
 
 .sorse/main linguist-documentation
 .sorse/other/main_clean.bat linguist-documentation
 .sorse/other/original_cliner.bat linguist-documentation
-data/style/main.css linguist-documentation
+core/data/main.css linguist-documentation
+
+core/lib/httplib.cc linguist-documentation
+core/lib/httplib.h linguist-documentation

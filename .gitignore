@@ -1,8 +1,8 @@
 app_installer/main.exe
 
-server/register_and_data/main_com/__pycache__
+out_other/server/register_and_data/main_com/__pycache__
 
-server/data_file/node_modules
+out_other/server/data_file/node_modules
 
 core/main.exe
 auto_update/head.exe
@@ -23,4 +23,4 @@ auto_update/head.exe
 
 .production
 
-server/register_and_data/static/NM3.zip
+out_other/server/register_and_data/static/NM3.zip

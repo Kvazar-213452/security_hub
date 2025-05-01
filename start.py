@@ -9,10 +9,10 @@ def run_process(command, cwd):
 
 def main():
     try:
-        thread1 = threading.Thread(target=run_process, args=("python main.py", "server/register_and_data"))
+        thread1 = threading.Thread(target=run_process, args=("python main.py", "out_other/server/register_and_data"))
         thread1.start()
 
-        thread2 = threading.Thread(target=run_process, args=("npm i && npm start", "server/data_file"))
+        thread2 = threading.Thread(target=run_process, args=("npm i && npm start", "out_other/server/data_file"))
         thread2.start()
 
         thread1.join()

@@ -1,0 +1,134 @@
+:root {
+    --bg_1: #121212;
+    --bg_2: #181818;
+    --bg_3: #232323;
+    --main_color: #68ff9d;
+}
+
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('Minecraft_1.1.ttf') format('truetype');
+}
+
+body {
+    background-color: var(--bg_1);
+    font-family: 'MyCustomFont', sans-serif;
+    color: white;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    font-size: 15px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'MyCustomFont', sans-serif;
+}
+
+input:focus,
+button:focus {outline: none;}
+
+/* main style */
+/* main style */
+/* main style */
+
+.main_div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background-color: var(--bg_2);
+    height: 450px;
+}
+
+.main_text {
+    position: relative;
+    text-align: center;
+    font-size: 25px;
+    color: var(--main_color);
+    margin-bottom: 5px;
+}
+
+.pading {padding: 15px;}
+
+.text_main {
+    position: relative;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+}
+
+.main_main_div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.input {
+    border: none;
+    background-color: var(--bg_1);
+    color: white;
+    padding: 7px;
+    font-size: 15px;
+    width: 300px;
+    margin-bottom: 5px;
+}
+
+.button {
+    border: none;
+    cursor: pointer;
+    padding: 7px;
+    font-size: 14px;
+    color: white;
+    background-color: var(--bg_1);
+}
+
+.button:hover {opacity: .5;}
+
+.text {
+    color: #ffffffc3;
+    font-size: 13.5px;
+}
+
+.main_color {color: var(--main_color);}
+
+.typewriter-animation {
+    animation: 
+        typewriter 5s steps(50) 1s 1 normal both, 
+        blinkingCursor 500ms steps(50) infinite normal;
+}
+
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blinkingCursor{
+    from { border-right-color: rgba(255,255,255,.75); }
+    to { border-right-color: transparent; }
+}
+
+.animatedBlock {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    padding: 20px;
+    background-color: var(--bg_3);
+    box-shadow: 0 4px 20px #00000000;
+    color: white;
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+.animatedBlock.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animatedBlock.hide {
+    opacity: 0;
+    transform: translateY(100%);
+}

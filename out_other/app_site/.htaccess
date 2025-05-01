@@ -1,0 +1,33 @@
+RewriteEngine On
+
+<FilesMatch "\.(jpg|jpeg|png|gif|css|js|ico|html)$">
+    Header unset Cache-Control
+    Header unset Pragma
+    Header unset Expires
+</FilesMatch>
+
+
+#style css url
+RewriteRule ^style/main$ static/css/main.css [L]
+
+
+#script js url
+RewriteRule ^js/main$ static/js/main.js [L]
+RewriteRule ^js/massage$ static/js/massage.js [L]
+
+
+#lib url
+RewriteRule ^lib/js/jquery$ static/jquery-3.6.4.min.js [L]
+
+#server
+RewriteRule ^server/save_data$ script/save_data.php [L]
+RewriteRule ^db$ script/db.json [L]
+
+
+#page html url
+RewriteRule ^page/main$ index.php [L]
+RewriteRule ^page/screens$ screens.php [L]
+RewriteRule ^page/dwn$ download.php [L]
+RewriteRule ^page/reviews$ reviews.php [L]
+RewriteRule ^page/style$ style.php [L]
+RewriteRule ^page/account$ account.php [L]
