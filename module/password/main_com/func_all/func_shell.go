@@ -18,5 +18,5 @@ func Config_port(data string) {
 	file, _ := os.OpenFile(config_main.Starter_file, +os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
 	defer file.Close()
 
-	file.WriteString("http://localhost:" + data + "/main")
+	file.WriteString("http://localhost:" + data + "/")
 }

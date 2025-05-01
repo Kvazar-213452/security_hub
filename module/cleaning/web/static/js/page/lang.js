@@ -6,6 +6,7 @@ let mas_lang = {
     ['#bvh9iuweddd', 'Unfortunately, the script does not clean the System32 folder. Sorry'],
     ['#bx66210doddddw', 'Cleanup Information'],
     ['#bo9ho2_0dddd', 'Clear DNS and ARP tables'],
+    ['#wifi_0jdccc', 'Information'],
     ['#d_odw2983fff', 'File System Logs'],
     ['#b8cq82d3333', 'Remove Open Path History'],
     ['#vc972odwe9', 'Clear Internet Cache'],
@@ -26,6 +27,7 @@ let mas_lang = {
 
   "uk": [
     ['#vc728i32000 span', 'Очищення ПК'],
+    ['#wifi_0jdccc', 'Інформація'],
     ['#bvh9iuweddd', 'На жаль, скрипт не очищує папку System32. Вибачте'],
     ['#bx66210doddddw', 'Інформація очистки'],
     ['#bo9ho2_0dddd', 'Очищення DNS та ARP-таблиць'],

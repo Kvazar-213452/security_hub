@@ -11,3 +11,6 @@ let data_cleaning = {
     doskey: 0
 };
 
+// cleanup
+let bg_color1 = "rgb(24, 24, 34)";
+let bg_color2 = "rgb(89, 89, 89)";

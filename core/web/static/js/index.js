@@ -20,15 +20,15 @@ $(document).ready(function() {
 
 function get_status_reg() {
     $.ajax({
-        url: "/reg_status",
+        url: "/api/get_json_file",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify(null),
+        data: JSON.stringify({data: "data/user.json"}),
         success: function (response) {
-            reg_login = response['acsses']
+            let reg_login = response["val"]["acsses"];
 
             if (reg_login == 1) {
-                $("#btn10").hide();
+                $("#btn11").hide();
             }
         }
     });
@@ -126,6 +126,7 @@ function render_main_start() {
     $('.ump_textw').html(html_1);
 
     get_module();
+    get_status_reg();
 }
 
 function module_integrated(name, btn) {

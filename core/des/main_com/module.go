@@ -20,6 +20,13 @@ type Result struct {
 }
 
 func RunModules(configPath, resultPath string) error {
+	// Get and store the original working directory
+	originalDir, err := os.Getwd()
+	if err != nil {
+		return fmt.Errorf("помилка отримання поточної директорії: %v", err)
+	}
+	defer os.Chdir(originalDir) // Ensure we return to original directory
+
 	configFile, err := os.ReadFile(configPath)
 	if err != nil {
 		return fmt.Errorf("помилка читання файлу: %v", err)
@@ -37,6 +44,8 @@ func RunModules(configPath, resultPath string) error {
 
 	var wg sync.WaitGroup
 	var mutex sync.Mutex
+	var firstError error
+	var errorMutex sync.Mutex
 
 	for _, module := range config.ModuleUninstall {
 		wg.Add(1)
@@ -46,18 +55,16 @@ func RunModules(configPath, resultPath string) error {
 			moduleDir := filepath.Join("..", "..", "module", module)
 			exePath := filepath.Join(moduleDir, "head.exe")
 
-			originalDir, err := os.Getwd()
+			// Change to module directory
+			err := os.Chdir(moduleDir)
 			if err != nil {
-				fmt.Printf("Помилка отримання поточної директорії: %v\n", err)
+				errorMutex.Lock()
+				if firstError == nil {
+					firstError = fmt.Errorf("помилка зміни директорії для %s: %v", module, err)
+				}
+				errorMutex.Unlock()
 				return
 			}
-
-			err = os.Chdir(moduleDir)
-			if err != nil {
-				fmt.Printf("Помилка зміни директорії для %s: %v\n", module, err)
-				return
-			}
-			defer os.Chdir(originalDir)
 
 			port := func_all.FindFreePort()
 
@@ -65,7 +72,11 @@ func RunModules(configPath, resultPath string) error {
 			cmd.Dir = moduleDir
 			err = cmd.Start()
 			if err != nil {
-				fmt.Printf("Помилка запуску %s: %v\n", exePath, err)
+				errorMutex.Lock()
+				if firstError == nil {
+					firstError = fmt.Errorf("помилка запуску %s: %v", exePath, err)
+				}
+				errorMutex.Unlock()
 				return
 			}
 
@@ -75,10 +86,16 @@ func RunModules(configPath, resultPath string) error {
 			mutex.Lock()
 			result.Data[module] = port
 			mutex.Unlock()
+
+			os.Chdir(originalDir)
 		}(module)
 	}
 
 	wg.Wait()
+
+	if firstError != nil {
+		return firstError
+	}
 
 	output, err := json.MarshalIndent(result, "", "  ")
 	if err != nil {

@@ -14,23 +14,24 @@ int main() {
 
     std::thread shellWebThread;
     int shell = config.get<int>("shell");
+    int visualization = config.get<int>("visualization");
     int port = config.get<int>("port");
 
     if (port == 0) {
         port = FindFreePort();
     }
 
-    if (shell > 0) {
-        if (shell == 1) {
+    if (visualization == 1) {
+        if (shell == 0) {
             shellWebThread = std::thread([&]() {run_NM1(port);});
-        } else if (shell == 2) {
+        } else if (shell == 1) {
             shellWebThread = std::thread([&]() {run_NM2(port);});
-        } else if (shell == 3) {
+        } else if (shell == 2) {
             shellWebThread = std::thread([&]() {run_NM3(port);});
         }
-    } else {
-        write_starter_md("http://localhost:" + std::to_string(port) + "/");
     }
+
+    write_starter_md("http://localhost:" + std::to_string(port) + "/");
 
     std::thread serverThread([&]() {start_server(port);});
 

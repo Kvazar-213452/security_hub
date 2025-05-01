@@ -1,15 +1,5 @@
 // app_front_end/static/js/global.js
 
-function button_hover(name) {
-    for (let i = 0; i < mmain_buuton.length; i++) {
-        $("#" + mmain_buuton[i]).removeClass("vw92dy9qccde32122021"); 
-        $("#" + mmain_buuton[i]).addClass("vw92dy9qccde3212202"); 
-    }
-
-    $("#" + name).removeClass("vw92dy9qccde3212202"); 
-    $("#" + name).addClass("vw92dy9qccde32122021"); 
-}
-
 function message_window(content) {
     const $block = $('<div class="animatedBlock hide"></div>').text(content);
     $('body').append($block);
@@ -51,7 +41,6 @@ function change_menu_page(id_, id) {
 }
 
 function change_lang_now() {
-    console.log("ddddd")
     $.ajax({
         url: "/get_file",
         type: "POST",
@@ -59,7 +48,8 @@ function change_lang_now() {
         data: JSON.stringify({"data": "../data/config.json"}),
         success: function (response) {
             let obj = JSON.parse(response);
-
+            lang_global = obj["lang"];
+            
             lang_change_page(obj["lang"]);
         }
     });
@@ -100,50 +90,5 @@ function get_style() {
     });
 }
 
-class TypingEffect {
-    constructor(elementId, revealSpeed = 50, finalDelay = 50) {
-        this.element = document.getElementById(elementId);
-        this.targetText = this.element.textContent.trim();
-        this.element.textContent = ""; // Очистка тексту перед початком анімації
-        this.revealSpeed = revealSpeed;
-        this.finalDelay = finalDelay;
-        this.randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
-        this.currentText = Array(this.targetText.length).fill(" ");
-        this.revealedIndexes = [];
-    }
-
-    getRandomChar() {
-        return this.randomChars[Math.floor(Math.random() * this.randomChars.length)];
-    }
-
-    updateText() {
-        let newText = "";
-        for (let i = 0; i < this.targetText.length; i++) {
-            if (this.revealedIndexes.includes(i)) {
-                newText += this.targetText[i];
-            } else {
-                newText += this.getRandomChar();
-            }
-        }
-        this.element.textContent = newText;
-    }
-
-    revealNextChar() {
-        if (this.revealedIndexes.length < this.targetText.length) {
-            let index;
-            do {
-                index = Math.floor(Math.random() * this.targetText.length);
-            } while (this.revealedIndexes.includes(index));
-
-            this.revealedIndexes.push(index);
-            setTimeout(() => this.revealNextChar(), this.finalDelay);
-        }
-    }
-
-    startAnimation() {
-        setInterval(() => this.updateText(), this.revealSpeed);
-        setTimeout(() => this.revealNextChar(), 500);
-    }
-}
-
 get_data_config();
+

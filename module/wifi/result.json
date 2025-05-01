@@ -1,0 +1,11 @@
+{
+  "module_uinstall": {
+    "antivirus": 52131,
+    "cleaning": 52130,
+    "encryption": 52133,
+    "password": 52128,
+    "server": 52129,
+    "system": 52134,
+    "wifi": 52132
+  }
+}

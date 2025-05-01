@@ -28,7 +28,7 @@ function send_data() {
         gmail: $('#register_gmail').val(),
         password: $('#register_password').val()
     };
-    
+
     $.ajax({
         url: "/send_email",
         type: "POST",

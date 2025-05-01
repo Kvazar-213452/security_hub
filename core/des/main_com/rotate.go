@@ -4,6 +4,7 @@ import (
 	config_main "head/main_com/config"
 	"html/template"
 	"net/http"
+	"os"
 )
 
 // app_back_end/main_com/rotate.go
@@ -32,4 +33,8 @@ func Render_register_page(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tmpl.ExecuteTemplate(w, "register.html", nil)
+}
+
+func Get_off_app(w http.ResponseWriter, r *http.Request) {
+	os.Exit(0)
 }

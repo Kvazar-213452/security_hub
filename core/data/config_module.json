@@ -8,6 +8,7 @@
         "cleaning",
         "system",
         "server",
-        "encryption"
+        "encryption",
+        "password"
     ]
 }

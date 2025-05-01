@@ -130,8 +130,7 @@ function change_lang_all(val) {
         data: JSON.stringify({ value: val }),
         success: function (response) {
             getConfig();
-            change_lang_now(0);
-            window.parent.postMessage("lang_change", "*");
+            window.parent.postMessage("reload", "*");
         }
     });
 }
@@ -250,41 +249,6 @@ function info_server() {
             } else {
                 $("#server_1").html("not work");
             }
-        }
-    });
-}
-
-function get_status_reg_settings() {
-    $.ajax({ 
-        url: "/reg_status",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(null),
-        success: function (response) {
-            reg_login = response['acsses']
-
-            if (reg_login == 0) {
-                $("#settings_1_btn_page2").hide();
-            }
-        }
-    });
-}
-
-function get_data_reg() {
-    $.ajax({
-        url: "/reg_status",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(null),
-        success: function (response) {
-            let text = `
-            <p>name = <span>${response['name']}</span></p>
-            <p>pasw = <span>${response['pasw']}</span></p>
-            <p>gmail = <span>${response['gmail']}</span></p>
-            <p>acsses = <span>${response['acsses']}</span></p>
-            `;
-
-            $("#settings13qwas").html(text);
         }
     });
 }
@@ -448,8 +412,6 @@ function del_temp() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function (response) {
-            get_temp_info();
-
             if (lang_global === "uk") {
                 message_window('Кеш видалено');
             } else if (lang_global === "en") {
@@ -459,15 +421,47 @@ function del_temp() {
     });
 }
 
-function get_temp_info() {
+function get_status_reg_settings() {
     $.ajax({
-        url: "/get_temp_info",
+        url: "/get_file",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify(null),
+        data: JSON.stringify({data: "../data/user.json"}),
         success: function (response) {
-            $("#ihnion32dfw444").text("\0" + response);
+            if (response == "") {
+                $("#settings_1_btn_page2").hide();
+            } else {
+                let obj = JSON.parse(response);
+                reg_login = obj["acsses"];
+            }
 
+            if (reg_login == 0) {
+                $("#settings_1_btn_page2").hide();
+            }
         }
     });
 }
+
+function get_data_reg() {
+    $.ajax({
+        url: "/get_file",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: "../data/user.json"}),
+        success: function (response) {
+            if (response != "") {
+                let obj = JSON.parse(response);
+
+                let text = `
+                <p>name = <span>${obj['name']}</span></p>
+                <p>pasw = <span>${obj['pasw']}</span></p>
+                <p>gmail = <span>${obj['gmail']}</span></p>
+                <p>acsses = <span>${obj['acsses']}</span></p>
+                `;
+    
+                $("#settings13qwas").html(text);
+            }
+        }
+    });
+}
+

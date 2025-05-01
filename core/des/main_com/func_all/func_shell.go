@@ -1,12 +1,25 @@
 package func_all
 
 import (
+	"encoding/json"
+	"fmt"
 	config_main "head/main_com/config"
 	"net"
 	"os"
+	"os/exec"
 )
 
 // app_back_end/main_com/func_all/func_shell.go
+
+func LoadConfig_start(filename string) config_main.Config_global {
+	file, _ := os.Open(filename)
+	defer file.Close()
+
+	var config config_main.Config_global
+	json.NewDecoder(file).Decode(&config)
+
+	return config
+}
 
 func FindFreePort() int {
 	listener, err := net.Listen("tcp", "localhost:0")
@@ -31,4 +44,23 @@ func Starter(data string) {
 	defer file.Close()
 
 	file.WriteString("http://localhost:" + data + "/")
+}
+
+func Updata_app() {
+	fmt.Println("start head.exe...")
+
+	cmd := exec.Command("../auto_update/head.exe")
+	cmd.Dir = "../auto_update"
+
+	err := cmd.Start()
+	if err != nil {
+		fmt.Println("error head.exe:", err)
+		return
+	}
+
+	fmt.Println("head.exe end app")
+
+	go func() {
+		os.Exit(0)
+	}()
 }
