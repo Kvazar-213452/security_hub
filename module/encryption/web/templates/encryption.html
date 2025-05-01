@@ -28,13 +28,15 @@
                 <button onclick="fileEncryption.startEncryption()" class="fweufweffff vb0f0234456465"></button>
                 <div class="dwdwffff22 padoge">
                     <div id="errewfffee"></div>
-                    <br><br>
+                    <br>
+                    <p class="algoritmics"></p>
+                    <br>
                     <div>
-                        <button onclick="type_cript('ChaCha20-Poly1305')" class="chose_cript">ChaCha20-Poly1305</button>
-                        <button onclick="type_cript('AES-GCM')" class="chose_cript">AES-GCM</button>
-                        <button onclick="type_cript('Twofish')" class="chose_cript">Twofish</button>
-                        <button onclick="type_cript('AES-CBC')" class="chose_cript">AES-CBC</button>
-                        <button onclick="type_cript('AES-CTR')" class="chose_cript">AES-CTR</button>
+                        <button id="algoritmics_cript_1" onclick="type_cript('ChaCha20-Poly1305', 'algoritmics_cript_1')" class="chose_cript">ChaCha20-Poly1305</button>
+                        <button id="algoritmics_cript_2" onclick="type_cript('AES-GCM', 'algoritmics_cript_2')" class="chose_cript">AES-GCM</button>
+                        <button id="algoritmics_cript_3" onclick="type_cript('Twofish', 'algoritmics_cript_3')" class="chose_cript">Twofish</button>
+                        <button id="algoritmics_cript_4" onclick="type_cript('AES-CBC', 'algoritmics_cript_4')" class="chose_cript">AES-CBC</button>
+                        <button id="algoritmics_cript_5" onclick="type_cript('AES-CTR', 'algoritmics_cript_5')" class="chose_cript">AES-CTR</button>
                     </div>
                 </div>
             </div>
@@ -49,13 +51,15 @@
                 </form>
                 <div class="dwdwffff22 padoge">
                     <div id="bbbnsqee343"></div>
-                    <br><br>
+                    <br>
+                    <p class="algoritmics"></p>
+                    <br>
                     <div>
-                        <button onclick="type_dec_func('ChaCha20-Poly1305')" class="chose_cript">ChaCha20-Poly1305</button>
-                        <button onclick="type_dec_func('AES-GCM')" class="chose_cript">AES-GCM</button>
-                        <button onclick="type_dec_func('Twofish')" class="chose_cript">Twofish</button>
-                        <button onclick="type_dec_func('AES-CBC')" class="chose_cript">AES-CBC</button>
-                        <button onclick="type_dec_func('AES-CTR')" class="chose_cript">AES-CTR</button>
+                        <button id="algoritmics_decript_1" onclick="type_dec_func('ChaCha20-Poly1305', 'algoritmics_decript_1')" class="chose_cript">ChaCha20-Poly1305</button>
+                        <button id="algoritmics_decript_2" onclick="type_dec_func('AES-GCM', 'algoritmics_decript_2')" class="chose_cript">AES-GCM</button>
+                        <button id="algoritmics_decript_3" onclick="type_dec_func('Twofish', 'algoritmics_decript_3')" class="chose_cript">Twofish</button>
+                        <button id="algoritmics_decript_4" onclick="type_dec_func('AES-CBC', 'algoritmics_decript_4')" class="chose_cript">AES-CBC</button>
+                        <button id="algoritmics_decript_5" onclick="type_dec_func('AES-CTR', 'algoritmics_decript_5')" class="chose_cript">AES-CTR</button>
                     </div>
                 </div>
             </div>
@@ -78,6 +82,8 @@
 
     $('#dqdcew336g').hide(); 
     change_lang_now();
-    change_menu_page(0, 0)
+    change_menu_page(0, 0);
+    type_cript('ChaCha20-Poly1305', 'algoritmics_cript_1');
+    type_dec_func('ChaCha20-Poly1305', 'algoritmics_decript_1');
 </script>
 </html> 

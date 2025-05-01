@@ -1254,13 +1254,22 @@
 
 .chose_cript {
   border: none;
-  background-color: #22222e;
   padding: 5px;
   margin-bottom: 10px;
   margin-right: 10px;
   font-size: 14px;
-  color: #fff;
   cursor: pointer;
+  background-color: #22222e;
+}
+
+.chose_cript_no_select {
+  color: #fff;
+  border: solid 2px #00000000;
+}
+
+.chose_cript_select {
+  border: solid 2px #68ff9d !important;
+  color: #68ff9d !important;
 }
 
 .chose_cript:hover {opacity: .5;}

@@ -9,3 +9,4 @@ let mas_sonar = [
 let lang_global;
 let type;
 let type_dec;
+let algoritm = 5;

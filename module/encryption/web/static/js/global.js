@@ -99,12 +99,28 @@ function clean_div(name) {
     });
 }
 
-function type_cript(type1) {
+function type_cript(type1, btn) {
     type = type1;
+
+    for (let i = 1; i < algoritm + 1; i++) {
+        $("#" + "algoritmics_cript_" + i).removeClass("chose_cript_select"); 
+        $("#" + "algoritmics_cript_" + i).addClass("chose_cript_no_select"); 
+    }
+
+    $("#" + btn).removeClass("chose_cript_no_select"); 
+    $("#" + btn).addClass("chose_cript_select"); 
 }
 
-function type_dec_func(type2) {
+function type_dec_func(type2, btn) {
     type_dec = type2;
+
+    for (let i = 1; i < algoritm + 1; i++) {
+        $("#" + "algoritmics_decript_" + i).removeClass("chose_cript_select"); 
+        $("#" + "algoritmics_decript_" + i).addClass("chose_cript_no_select"); 
+    }
+
+    $("#" + btn).removeClass("chose_cript_no_select"); 
+    $("#" + btn).addClass("chose_cript_select"); 
 }
 
 get_data_config();

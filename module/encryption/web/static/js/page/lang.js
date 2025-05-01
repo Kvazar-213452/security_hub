@@ -6,7 +6,8 @@ let mas_lang = {
     ['#bvoif2032991367', 'Don’t lose your keys'],
     ['.brbtedfe4443', 'Encrypt File'],
     ['.brbtedfe44431', 'Decrypt File'],
-    ['.vb0f0234456465', 'Send']
+    ['.vb0f0234456465', 'Send'],
+    [".algoritmics", "Encryption algorithms"]
   ],
 
   "uk": [
@@ -14,7 +15,8 @@ let mas_lang = {
     ['#bvoif2032991367', 'Не втратьте ключі'],
     ['.brbtedfe4443', 'Зашифрувати файл'],
     ['.brbtedfe44431', 'Розшифрувати файл'],
-    ['.vb0f0234456465', 'Відправити']
+    ['.vb0f0234456465', 'Відправити'],
+    [".algoritmics", "Алгоритми шифрування"]
   ]
 };
 
