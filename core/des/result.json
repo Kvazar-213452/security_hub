@@ -1,32 +1,28 @@
 {
   "module_uinstall": {
     "antivirus": {
-      "pid": 12828,
-      "port": 51294
+      "pid": 2404,
+      "port": 58930
     },
     "cleaning": {
-      "pid": 424,
-      "port": 51295
-    },
-    "encryption": {
-      "pid": 5528,
-      "port": 51297
+      "pid": 9424,
+      "port": 58932
     },
     "password": {
-      "pid": 6640,
-      "port": 51293
+      "pid": 10428,
+      "port": 58927
     },
     "server": {
-      "pid": 3236,
-      "port": 51299
+      "pid": 17256,
+      "port": 58928
     },
     "system": {
-      "pid": 8156,
-      "port": 51298
+      "pid": 15280,
+      "port": 58929
     },
     "wifi": {
-      "pid": 2012,
-      "port": 51296
+      "pid": 9552,
+      "port": 58931
     }
   }
 }

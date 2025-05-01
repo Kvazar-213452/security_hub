@@ -29,6 +29,9 @@ func main() {
 
 	// post
 	http.HandleFunc("/search_server", main_com.Post_search_server)
+	http.HandleFunc("/post_file_server", main_com.Post_post_file)
+	http.HandleFunc("/get_how_many", main_com.Post_get_how_many)
+	http.HandleFunc("/browser_site_server", main_com.Post_Browser_site_server)
 	http.HandleFunc("/get_file", main_com.Get_file)
 
 	fmt.Println("Сервер запущено на http://localhost" + portStr)

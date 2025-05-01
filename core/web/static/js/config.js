@@ -7,13 +7,13 @@ let mmain_buuton = ['btn0', 'btn1', 'btn2', 'btn3', 'btn4', 'btn5', 'btn6', 'btn
 let lang_db = {
     "uk": {
         "relon": "Перезавантажити",
-        "btn11": "Реєстарція",
+        "btn11": "Реєстрація",
         "btn12": "Налаштування"
     },
     "en": {
         "relon": "Reboot",
-        "btn11": "register",
-        "btn12": "settings"
+        "btn11": "Register",
+        "btn12": "Settings"
     }
 }
 

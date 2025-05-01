@@ -4,6 +4,8 @@ import (
 	config_main "head/main_com/config"
 	"html/template"
 	"net/http"
+
+	"github.com/pkg/browser"
 )
 
 // module/server/main_com/rotate.go
@@ -19,4 +21,15 @@ func Render_server_page(w http.ResponseWriter, r *http.Request) {
 	}
 
 	tmpl.ExecuteTemplate(w, "server.html", nil)
+}
+
+func Post_Browser_site_server(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		url := config_main.Site_server
+		browser.OpenURL(url)
+
+		w.Write(nil)
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
 }

@@ -1,0 +1,83 @@
+<!-- app_front_end/templates/encryption.html -->
+
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <title>SPX</title>
+    <link rel="stylesheet" href="/static/css/main.css"/>
+    <link rel="stylesheet" href="/static/css/global.css"/>
+    <style id="style_dudqdc"></style>
+</head>
+<body>
+    <div class="main_div">
+        <br>
+        <p id="bnoewfcc_i033e" class="name_page"># <span></span></p>
+        <p id="bvoif2032991367" class="description_page"></p>
+        <br>
+        <div class="fewfedddd">
+            <div onclick="change_menu_page(0, 0)" id="dwdc21e12dq" class="dwqdwcccc2 brbtedfe4443"></div>
+            <div onclick="change_menu_page(0, 1)" id="dwdc21e12dq1" class="dwqdwcccc2 brbtedfe44431"></div>
+        </div>
+        <br>
+        <div id="section_1">
+            <div class="padoge">
+                <form class="form">
+                    <label class="form__container" id="upload-container">Select or drop a file<input class="form__file" id="file_dwqdw" type="file" multiple="multiple"/></label>
+                    <div id="files-list-container"></div>
+                </form>
+                <button onclick="fileEncryption.startEncryption()" class="fweufweffff vb0f0234456465"></button>
+                <div class="dwdwffff22 padoge">
+                    <div id="errewfffee"></div>
+                    <br><br>
+                    <div>
+                        <button onclick="type_cript('ChaCha20-Poly1305')" class="chose_cript">ChaCha20-Poly1305</button>
+                        <button onclick="type_cript('AES-GCM')" class="chose_cript">AES-GCM</button>
+                        <button onclick="type_cript('Twofish')" class="chose_cript">Twofish</button>
+                        <button onclick="type_cript('AES-CBC')" class="chose_cript">AES-CBC</button>
+                        <button onclick="type_cript('AES-CTR')" class="chose_cript">AES-CTR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="section_2">
+            <div class="padoge">
+                <form class="form">
+                    <label class="form__container" id="upload-container">Select or drop a file<input class="form__file" id="file_dwqdw1" type="file" multiple="multiple"/></label>
+                    <div id="files-list-container"></div>
+                    <input id="cwwzevbnnn" class="ddwdcvvvwwqsz" type="text">
+                    <div onclick="fileDecryption.start()" class="thnnredf vb0f0234456465"></div>
+                </form>
+                <div class="dwdwffff22 padoge">
+                    <div id="bbbnsqee343"></div>
+                    <br><br>
+                    <div>
+                        <button onclick="type_dec_func('ChaCha20-Poly1305')" class="chose_cript">ChaCha20-Poly1305</button>
+                        <button onclick="type_dec_func('AES-GCM')" class="chose_cript">AES-GCM</button>
+                        <button onclick="type_dec_func('Twofish')" class="chose_cript">Twofish</button>
+                        <button onclick="type_dec_func('AES-CBC')" class="chose_cript">AES-CBC</button>
+                        <button onclick="type_dec_func('AES-CTR')" class="chose_cript">AES-CTR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/static/jquery.min.js"></script>
+<script src="/static/js/config.js"></script>
+<script src="/static/js/page/lang.js"></script>
+<script src="/static/js/global.js"></script>
+<script src="/static/js/page/encryption/decipher.js"></script>
+<script src="/static/js/page/encryption/encryption.js"></script>
+<script>
+    change_menu_antivirus(0, "dwdc21e12d");
+
+    const fileDecryption = new FileDecryption();
+    const fileEncryption = new FileEncryption();
+    fileDecryption.init();
+    fileEncryption.init();
+
+    $('#dqdcew336g').hide(); 
+    change_lang_now();
+    change_menu_page(0, 0)
+</script>
+</html> 

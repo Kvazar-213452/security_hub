@@ -28,3 +28,5 @@ const Server_data_file_url_search = "search"
 const Server_data_file_url_upload = "upload"
 const Server_data_file_url_get_how_many = "get_how_many"
 const Server_data_file_url_server_unix = "server_unix"
+
+const Site_server = "http://localhost:3000/main"

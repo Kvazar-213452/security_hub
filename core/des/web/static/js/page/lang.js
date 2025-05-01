@@ -132,7 +132,9 @@ let mas_lang = {
     ["#hrf23rffwevvv", "Cache Deletion"],
     ["#del_buttton_s", "Delete"],
     ["#iirjr3246yyu7", "NM Installation"],
-    ["#r234t567uthgfbvc", "NM Deletion"]
+    ["#r234t567uthgfbvc", "NM Deletion"],
+    ["#u32f2ho33ffff", "Install modules"],
+    ["#u32f2ho33ffff1", "Remove modules"]
   ],
 
   "uk": [
@@ -266,7 +268,9 @@ let mas_lang = {
     ['#hrf23rffwevvv', "Видалення кешу"],
     ['#del_buttton_s', "Видалити"],
     ['#iirjr3246yyu7', "Інсталяція NM"],
-    ['#r234t567uthgfbvc', "Видалення NM"]
+    ['#r234t567uthgfbvc', "Видалення NM"],
+    ["#u32f2ho33ffff", "Встановлені модулі"],
+    ["#u32f2ho33ffff1", "Видалити модулі"]
   ]
 };
 
