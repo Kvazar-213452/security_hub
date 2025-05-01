@@ -277,6 +277,29 @@
 /* settings page */ /* settings page */ /* settings page */ /* settings page */ /* settings page */ /* settings page */
 /* settings page */ /* settings page */ /* settings page */ /* settings page */ /* settings page */ /* settings page */
 /* settings page */ /* settings page */ /* settings page */ /* settings page */ /* settings page */ /* settings page */
+
+.div_uf2432gggg { 
+  position: relative;
+  background-color: #22222e;
+  padding: 10px;
+  display: inline-block;
+  width: calc(100% - 40px);
+}
+
+.div_uf2432gggg button {
+  position: relative;
+  background-color: #1e1e29;
+  padding: 7px;
+  font-size: 15px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: none;
+  color: #68ff9d;
+  cursor: pointer;
+}
+
+.div_uf2432gggg button:hover {opacity:  .5;}
+
 #hrf23rffwevvv {
   position: relative;
   float: left;

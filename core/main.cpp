@@ -1,6 +1,9 @@
 #include <iostream>
 #include <thread>
 #include <atomic>
+#include <windows.h>
+#include <string>
+#include <filesystem>
 #include "include/config.hpp"
 #include "include/server.hpp"
 #include "include/func_core.hpp"
@@ -9,17 +12,26 @@
 extern std::atomic<bool> g_shellWebRunning;
 extern std::atomic<bool> g_serverRunning;
 
-int main() {
+int main(int argc, char* argv[]) {
     Config config;
+    
+    int port = 0;
+    if (argc > 1) {
+        try {
+            port = std::stoi(argv[1]);
+            if (port < 1 || port > 65535) {
+                std::cerr << "Помилка: Порт повинен бути в діапазоні 1-65535" << std::endl;
+                return 1;
+            }
+        } catch (const std::exception& e) {
+            std::cerr << "Помилка: Невірний формат порту. Використовуйте число." << std::endl;
+            return 1;
+        }
+    }
 
     std::thread shellWebThread;
     int shell = config.get<int>("shell");
     int visualization = config.get<int>("visualization");
-    int port = config.get<int>("port");
-
-    if (port == 0) {
-        port = FindFreePort();
-    }
 
     if (visualization == 1) {
         if (shell == 0) {

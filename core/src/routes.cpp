@@ -15,16 +15,6 @@ void Routes::setup_routes(httplib::Server& svr, const std::string& base_dir) {
         }
     });
 
-    svr.Get("/none_module", [base_dir](const httplib::Request&, httplib::Response& res) {
-        std::string html_content = StaticHandler::read_file_content(base_dir + "/none_module.html");
-        if (html_content.empty()) {
-            res.status = 500;
-            res.set_content("Error: Could not read index.html", "text/plain");
-        } else {
-            res.set_content(html_content, "text/html");
-        }
-    });
-
     // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api 
     // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api 
     // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api // api 

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	config_main "head/main_com/config"
 	"head/main_com/func_all"
+	"head/main_com/module"
 	"io"
 	"io/ioutil"
 	"log"
@@ -141,6 +142,41 @@ func Post_install_style(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(nil)
+	} else {
+		http.Error(w, "error", http.StatusMethodNotAllowed)
+	}
+}
+
+func Post_install_model_app(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		body, err := io.ReadAll(r.Body)
+		if err != nil {
+			http.Error(w, "error", http.StatusInternalServerError)
+			return
+		}
+		defer r.Body.Close()
+
+		var request struct {
+			Data string `json:"Data"`
+		}
+
+		err = json.Unmarshal(body, &request)
+		if err != nil {
+			http.Error(w, "bad request", http.StatusBadRequest)
+			return
+		}
+
+		err = module.Install_module(request.Data)
+		var request_front int
+		if err != nil {
+			request_front = 0
+		} else {
+			request_front = 1
+			module.MoveModuleToUninstall(request.Data)
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(request_front)
 	} else {
 		http.Error(w, "error", http.StatusMethodNotAllowed)
 	}

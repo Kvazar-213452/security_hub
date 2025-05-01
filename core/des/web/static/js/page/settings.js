@@ -465,3 +465,34 @@ function get_data_reg() {
     });
 }
 
+function get_all_render_module() {
+    $.ajax({
+        url: "/get_file",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: "../data/config_module.json"}),
+        success: function (response) {
+            let obj = JSON.parse(response);
+            
+            for (let i = 0; i < obj["module_install"].length; i++) {
+                let text = `
+                <button onclick="install_module_app('${obj["module_install"][i]}')">${obj["module_install"][i]}</button>
+                `;
+
+                $("#div_install_module").append(text);
+            }
+        }
+    });
+}
+
+function install_module_app(name) {
+    $.ajax({
+        url: "/install_module_app",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: name}),
+        success: function (response) {
+        console.log(response)
+        }
+    });
+}

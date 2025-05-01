@@ -4,21 +4,81 @@ import (
 	"fmt"
 	"head/main_com"
 	"head/main_com/func_all"
+	"head/main_com/module"
+	"head/main_com/page/register"
+	"head/main_com/page/settings"
 	"net/http"
 	"os"
+	"os/exec"
+	"os/signal"
 	"strconv"
+	"syscall"
+	"time"
 )
 
-func main() {
-	var port int
+var cleanupDone = make(chan struct{})
+var cmd *exec.Cmd
 
-	if p, err := strconv.Atoi(os.Args[1]); err == nil {
-		port = p
-	} else {
+func cleanup() {
+	// Завершуємо процес ядра, якщо він запущений
+	if cmd != nil && cmd.Process != nil {
+		cmd.Process.Kill()
+	}
+
+	module.KillAllModules()
+	close(cleanupDone)
+}
+
+func startCore(port int) error {
+	cmd = exec.Command("./main.exe", strconv.Itoa(port))
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	// Встановлюємо робочу директорію там, де є data/config.json
+	cmd.Dir = "../"
+
+	if err := cmd.Start(); err != nil {
+		return fmt.Errorf("помилка запуску ядра: %v", err)
+	}
+
+	go func() {
+		err := cmd.Wait()
+		if err != nil {
+			fmt.Printf("Ядро завершило роботу з помилкою: %v\n", err)
+		} else {
+			fmt.Println("Ядро успішно завершило роботу")
+		}
+		cleanup()
+		os.Exit(0)
+	}()
+
+	return nil
+}
+
+func main() {
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
+
+	go func() {
+		<-sigChan
+		cleanup()
+		os.Exit(0)
+	}()
+
+	defer cleanup()
+
+	// Запускаємо ядро на порту 4432
+	if err := startCore(4432); err != nil {
+		fmt.Printf("Помилка: %v\n", err)
 		os.Exit(1)
 	}
 
-	err := main_com.RunModules(
+	// Даємо час ядру ініціалізуватися
+	time.Sleep(1 * time.Second)
+
+	var port int = func_all.FindFreePort()
+
+	err := module.RunModules(
 		"../data/config_module.json",
 		"result.json",
 	)
@@ -32,6 +92,7 @@ func main() {
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 
+	// Додаємо ваші обробники маршрутів...
 	http.HandleFunc("/register", main_com.Render_register_page)
 	http.HandleFunc("/settings", main_com.Render_settings_page)
 	http.HandleFunc("/off_app", main_com.Get_off_app)
@@ -39,30 +100,35 @@ func main() {
 	// post
 	http.HandleFunc("/browser_site_app", main_com.Post_Browser_site_app)
 	http.HandleFunc("/get_file", main_com.Get_file)
-	http.HandleFunc("/config_global", main_com.Post_config_global)
-	http.HandleFunc("/visualization", main_com.Post_config_change)
-	http.HandleFunc("/log_change", main_com.Post_log_change)
-	http.HandleFunc("/port_change", main_com.Post_port_change)
-	http.HandleFunc("/shell_change", main_com.Post_shell_change)
-	http.HandleFunc("/change_lang_settings", main_com.Post_change_lang_settings)
-	http.HandleFunc("/style_change", main_com.Post_style_change)
-	http.HandleFunc("/send_email", main_com.Post_send_email)
-	http.HandleFunc("/code_verefic", main_com.Post_code_verefic)
-	http.HandleFunc("/reg_file_unix", main_com.Post_reg_file_unix)
-	http.HandleFunc("/updata_app", main_com.Post_updata_app)
-	http.HandleFunc("/accses_updata", main_com.Post_accses_updata)
-	http.HandleFunc("/info_module_nm", main_com.Post_info_module_nm)
-	http.HandleFunc("/install_module", main_com.Post_install_module)
-	http.HandleFunc("/uninstall_module", main_com.Post_uninstall_module)
+	http.HandleFunc("/config_global", settings.Post_config_global)
+	http.HandleFunc("/visualization", settings.Post_config_change)
+	http.HandleFunc("/log_change", settings.Post_log_change)
+	http.HandleFunc("/port_change", settings.Post_port_change)
+	http.HandleFunc("/shell_change", settings.Post_shell_change)
+	http.HandleFunc("/change_lang_settings", settings.Post_change_lang_settings)
+	http.HandleFunc("/style_change", settings.Post_style_change)
+	http.HandleFunc("/send_email", register.Post_send_email)
+	http.HandleFunc("/code_verefic", register.Post_code_verefic)
+	http.HandleFunc("/reg_file_unix", register.Post_reg_file_unix)
+	http.HandleFunc("/updata_app", settings.Post_updata_app)
+	http.HandleFunc("/accses_updata", settings.Post_accses_updata)
+	http.HandleFunc("/info_module_nm", settings.Post_info_module_nm)
+	http.HandleFunc("/install_module", settings.Post_install_module)
+	http.HandleFunc("/uninstall_module", settings.Post_uninstall_module)
 	http.HandleFunc("/install_style", main_com.Post_install_style)
-	http.HandleFunc("/del_temp", main_com.Post_del_temp)
-	http.HandleFunc("/get_temp_info", main_com.Post_get_temp_info)
+	http.HandleFunc("/del_temp", settings.Post_del_temp)
+	http.HandleFunc("/get_temp_info", settings.Post_get_temp_info)
 	http.HandleFunc("/version_get_server", main_com.Post_version_get_server)
 	http.HandleFunc("/version_get", main_com.Post_version_get)
 	http.HandleFunc("/get_info_work_server_register", main_com.Post_get_info_work_server_register)
 	http.HandleFunc("/get_info_work_server_data_file", main_com.Post_get_info_work_server_data_file)
 	http.HandleFunc("/log_out", main_com.Post_log_out)
+	http.HandleFunc("/login_acaunt", register.Post_login_acaunt)
+	http.HandleFunc("/install_module_app", main_com.Post_install_model_app)
 
 	fmt.Println("Сервер запущено на http://localhost" + portStr)
-	http.ListenAndServe(portStr, nil)
+	if err := http.ListenAndServe(portStr, nil); err != nil {
+		fmt.Printf("Помилка HTTP сервера: %v\n", err)
+		os.Exit(1)
+	}
 }

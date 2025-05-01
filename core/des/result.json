@@ -1,11 +1,12 @@
 {
   "module_uinstall": {
-    "antivirus": 54501,
-    "cleaning": 54499,
-    "encryption": 54505,
-    "password": 54502,
-    "server": 54500,
-    "system": 54504,
-    "wifi": 54503
+    "password": {
+      "pid": 2636,
+      "port": 50333
+    },
+    "server": {
+      "pid": 14988,
+      "port": 50334
+    }
   }
 }
