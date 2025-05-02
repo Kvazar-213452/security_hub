@@ -15,11 +15,8 @@ $(".toggle-btn").click(function() {
 });
 
 function cleanup() {
-    if (lang_global === "uk") {
-        message_window("Очищення комп'ютера");
-    } else if (lang_global === "en") {
-        message_window("Clean pc start");           
-    }
+    openModal("modal1");
+    animation = true;
 
     $.ajax({
         url: "/cleanup",
@@ -27,16 +24,21 @@ function cleanup() {
         contentType: "application/json",
         data: JSON.stringify(data_cleaning),
         success: function (response) {
-            if (lang_global === "uk") {
-                message_window('Завершено');
-            } else if (lang_global === "en") {
-                message_window('Done');      
-            }
+            setTimeout(function () {
+                clos("modal1");
+                animation = false;
+            }, 2000);
         }
     });
 }
 
 $(".ump_button").click(function() {
+    if (lang_global === "uk") {
+        message_window("Оброблено");
+    } else if (lang_global === "en") {
+        message_window("Processed");           
+    }
+
     let data = $(this).data("data");
     let currentColor = $(this).css("background-color");
 

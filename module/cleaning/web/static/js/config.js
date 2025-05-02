@@ -1,5 +1,8 @@
 // module/cleaning/web/static/js/config.js
 
+let lang_global;
+let animation = false;
+
 let mas_sonar = [
     ['wifi_0jdccc', 'wifi_0jdccc1']
 ];

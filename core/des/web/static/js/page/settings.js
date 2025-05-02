@@ -489,8 +489,41 @@ function get_all_render_module() {
 
                 $("#div_uinstall_module").append(text);
             }
+
+            get_render_module_satrt_now();
         }
     });
+}
+
+function get_render_module_satrt_now() {
+    $.ajax({
+        url: "/get_file",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: "result.json"}),
+        success: function (response) {
+            let obj = JSON.parse(response);
+            const keys = Object.keys(obj["module_uinstall"]);
+            
+            for (let i = 0; i < keys.length; i++) {
+                let text = `
+                <button 
+                onclick="info_start_modele_now('${obj["module_uinstall"][keys[i]]["pid"]}', '${obj["module_uinstall"][keys[i]]["port"]}', '${keys[i]}')">
+                ${keys[i]}</button>
+                `;
+
+                $("#div_start_now_module").append(text);
+            }
+        }
+    });
+}
+
+function info_start_modele_now(pid, port, name) {
+    openModal("modal4");
+
+    $("#fk2f224444_32r").html(pid);
+    $("#fk2f224444_32r1").html(port);
+    $("#fk2f224444_32r2").html(name);
 }
 
 function install_module_app(name) {

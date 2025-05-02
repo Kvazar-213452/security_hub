@@ -1,5 +1,13 @@
 // module/cleaning/web/static/js/global.js
 
+function clos(name) {
+    $('#' + name).hide(); 
+}
+
+function openModal(name) {
+    $('#' + name).show(); 
+}
+
 function message_window(content) {
     const $block = $('<div class="animatedBlock hide"></div>').text(content);
     $('body').append($block);
@@ -40,6 +48,8 @@ function change_lang_now() {
         data: JSON.stringify({data: "../../core/data/config.json"}),
         success: function (response) {
             let obj = JSON.parse(response);
+            lang_global = obj["lang"];
+            
             lang_change_page(obj["lang"]);
         }
     });

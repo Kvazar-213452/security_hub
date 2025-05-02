@@ -48,6 +48,8 @@ function change_lang_now() {
         data: JSON.stringify({data: "../../core/data/config.json"}),
         success: function (response) {
             let obj = JSON.parse(response);
+            lang_global = obj["lang"];
+            
             lang_change_page(obj["lang"]);
         }
     });
@@ -96,12 +98,10 @@ function get_status_reg_settings() {
         contentType: "application/json",
         data: JSON.stringify({data: "../../core/data/user.json"}),
         success: function (response) {
-            if (response == "") {
-                $("#pasword_1_btn_page1").hide();
-            }
+            let obj = JSON.parse(response);
 
-            if (reg_login == 0) {
-                $("#settings_1_btn_page2").hide();
+            if (response == "" || obj["acsses"] == "0" || reg_login == 0) {
+                $("#pasword_1_btn_page1").hide();
             }
         }
     });

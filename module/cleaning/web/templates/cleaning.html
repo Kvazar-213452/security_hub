@@ -71,6 +71,20 @@
                 <div class="hr_div1"></div>     
             </div>
         </div>
+
+        <!-- modal -->
+
+        <div id="modal1"> 
+            <div id="modal-content">
+                <p class="load_title" id="modla_install_32ffff"></p>
+                <div class="load_animat_div">
+                    <div class="div_animation"></div>
+                    <div class="div_animation1"></div>
+                    <div class="div_animation2"></div>
+                    <div class="div_animation3"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="/static/jquery.min.js"></script>
@@ -79,7 +93,23 @@
 <script src="/static/js/global.js"></script>
 <script src="/static/js/page/cleanup.js"></script>
 <script>
-    change_lang_now()
-    change_menu_page(0, 0)
+    change_lang_now();
+    change_menu_page(0, 0);
+
+    const divs = [
+      document.querySelector('.div_animation'),
+      document.querySelector('.div_animation1'),
+      document.querySelector('.div_animation2'),
+      document.querySelector('.div_animation3'),
+    ];
+
+    let current = 0;
+    setInterval(() => {
+        if (animation) {
+            divs.forEach(div => div.style.backgroundColor = '#181822');
+            divs[current].style.backgroundColor = '#68ff9d';
+            current = (current + 1) % divs.length;
+        }
+    }, 1000);
 </script>
 </html>

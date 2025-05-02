@@ -22,7 +22,8 @@ let mas_lang = {
     ['#vb0928923ee3ddd', 'The "Remove Remote Desktop Connection settings" deletes saved configurations and connection history for remote desktops.'],
     ['#bviubiwdd3333r', 'Restart DOSKEY Command Processor'],
     ['#bciu292ed45675663', 'The "Restart DOSKEY Command Processor" setting updates the DOSKEY command processor.\n<br><br>\nRestarting DOSKEY clears the command history and resets all defined macros. This can be useful for resetting the command line environment to its initial state.'],
-    ['#bf0qwp32r4t5651222', 'Clean Computer']
+    ['#bf0qwp32r4t5651222', 'Clean Computer'],
+    ["#modla_install_32ffff", "Data processing"]
   ],
 
   "uk": [
@@ -46,7 +47,8 @@ let mas_lang = {
     ['#vb0928923ee3ddd', 'Налаштування "Видалити налаштування підключення до віддаленого робочого столу" видаляє збережені конфігурації та історію підключень до віддалених робочих столів.'],
     ['#bviubiwdd3333r', 'Перезавантажити процесор команд doskey'],
     ['#bciu292ed45675663', 'Налаштування "Перезавантажити процесор команд doskey" оновлює процесор команд doskey.\n<br><br>\nПерезавантаження doskey очищає історію команд і скидає всі визначені макроси. Це може бути корисно для скидання середовища командного рядка до його початкового стану.'],
-    ['#bf0qwp32r4t5651222', 'Очищення комп\'ютера']
+    ['#bf0qwp32r4t5651222', 'Очищення комп\'ютера'],
+    ["#modla_install_32ffff", "Data processing"]
   ]
 };
 
