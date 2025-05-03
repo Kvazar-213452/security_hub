@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"head/main_com/antivirus"
 	"head/main_com/func_all"
+	"head/main_com/script"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -185,4 +186,27 @@ func Get_file(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 	w.WriteHeader(http.StatusOK)
 	w.Write(content)
+}
+
+// bg
+
+func Flash_run(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	flash_status := script.Read_json_config()
+	if flash_status {
+		script.Off_flash()
+	}
+
+	err := script.Contrary_val_flash()
+	if err != nil {
+		fmt.Printf("error: %v\n", err)
+	}
+
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	w.WriteHeader(http.StatusOK)
+	w.Write(nil)
 }

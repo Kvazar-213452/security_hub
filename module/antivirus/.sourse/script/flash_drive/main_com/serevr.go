@@ -28,7 +28,22 @@ func StartServer(port int) {
 
 	http.HandleFunc("/del_file", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" {
+			body, err := io.ReadAll(r.Body)
+			if err != nil {
+				http.Error(w, fmt.Sprintf("Error body: %v", err), http.StatusBadRequest)
+				return
+			}
 
+			var requestData map[string]interface{}
+			if err := json.Unmarshal(body, &requestData); err != nil {
+				http.Error(w, fmt.Sprintf("Error JSON: %v", err), http.StatusBadRequest)
+				return
+			}
+
+			os.Remove(requestData["data"].(string))
+
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode("ss")
 		} else {
 			http.Error(w, "error", http.StatusMethodNotAllowed)
 		}

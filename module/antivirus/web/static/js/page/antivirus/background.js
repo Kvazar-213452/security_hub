@@ -1,34 +1,24 @@
-// app_front_end/static/js/page/antivirus/background.js
-
-function config_bg() {
+function config_flash() {
     $.ajax({
-        url: "/config_global",
+        url: "/get_file",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify(null),
+        data: JSON.stringify({data: "data/bg_script.json"}),
         success: function (response) {
-            antivirus_flash_drive = response['antivirus']['antivirus_flash_drive'];
+            let obj = JSON.parse(response);
 
-            $("#bg_input").val(response['antivirus']['antivirus_flash_drive_cmd']);
-
-            if (antivirus_flash_drive === 0) {
-                $("#bg_dqwderfd").css("background-color", "#181822");
+            if (obj["flash_drive"]) {
+                $("#bg_dqwderfd").css("background-color", "#68ff9d");
             } else {
-                $("#bg_dqwderfd").css("background-color", "#373745");
+                $("#bg_dqwderfd").css("background-color", "#252831");
             }
         }
     });
 }
 
-function new_val_gb_usb() {
-    if (antivirus_flash_drive === 0) {
-        antivirus_flash_drive = 1;
-    } else {
-        antivirus_flash_drive = 0;
-    }
-
+function flash_run() {
     $.ajax({
-        url: "/change_val_gb_usb",
+        url: "/flash_run",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({data: antivirus_flash_drive, data1: $("#bg_input").val()}),
@@ -39,7 +29,7 @@ function new_val_gb_usb() {
                 message_window('The value is set');
             }
 
-            config_bg();
+            config_flash();
         }
     });
 }

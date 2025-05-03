@@ -110,7 +110,6 @@ func MonitorUSB(port int) {
 
 		for _, d := range currentDrives {
 			if findDrive(newList, d.Letter) == -1 {
-				func_all.WriteServerInfo_flash("")
 				fmt.Printf("[-] Disabled: %c: — \"%s\"\n", d.Letter, d.Label)
 			}
 		}

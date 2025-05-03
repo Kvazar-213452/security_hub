@@ -14,10 +14,10 @@ let mas_lang = {
     ['#h3ruiwefer24f', 'Description'],
     ['#fewrvw243rgefvcc', 'Features in the background are automatically activated at startup'],
     ['#vbs612dwes655', 'USB Flash Drive Monitoring'],
-    ['#vb92354gu04ttg', 'This setting enables the USB monitoring feature, which notifies the user when new flash drives are connected. Once enabled, the program constantly scans for available USB devices and alerts on each new connection.'],
-    ['#bbv612ee3dwe', 'Set the cmd command that will run after connecting a USB drive'],
-    ['#bg_dqwderfd', 'Enable'],
-    ['#upload-button', 'Quick Check']
+    ['#vb92354gu04ttg', 'This setting activates the USB media monitoring feature, which warns the user when new flash drives are plugged in. After enabling this feature, the program constantly scans available USB media and reports on infected files.'],
+    ['#bg_dqwderfd', 'Set'],
+    ['#upload-button', 'Quick Check'],
+    ["#vb92354gu04ttg1", "After setting the value, you must restart the module to start monitoring."]
   ],
 
   "uk": [
@@ -33,10 +33,10 @@ let mas_lang = {
     ['#h3ruiwefer24f', 'Опис'],
     ['#fewrvw243rgefvcc', 'Функції на фоні вмикаються автоматично при запуску'],
     ['#vbs612dwes655', 'Моніторинг флешок'],
-    ['#vb92354gu04ttg', 'Це налаштування активує функцію моніторингу USB-носіїв, яка попереджає користувача при підключенні нових флешок. Після ввімкнення цієї функції програма постійно сканує доступні USB-носії і повідомляє про кожен новий пристрій, що підключається.'],
-    ['#bbv612ee3dwe', 'Встановити cmd команду, яка буде запускатись після підключення USB-носія'],
-    ['#bg_dqwderfd', 'Увімкнути'],
-    ['#upload-button', 'Швидка перевірка']
+    ['#vb92354gu04ttg', 'Це налаштування активує функцію моніторингу USB-носіїв, яка попереджає користувача при підключенні нових флешок. Після ввімкнення цієї функції програма постійно сканує доступні USB-носії і повідомляє про заражені файли.'],
+    ['#bg_dqwderfd', 'Встановити'],
+    ['#upload-button', 'Швидка перевірка'],
+    ["#vb92354gu04ttg1", "Після встановлення значення необхідно перезапустити модуль, щоб почати моніторинг."]
   ]
 };
 
