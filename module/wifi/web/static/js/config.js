@@ -1,6 +1,7 @@
 // module/wifi/web/static/js/config.js
 
 let lang_global;
+let animation = false;
 
 const unsafeProtocols = ["WEP", "WPA", "HTTP", "FTP", "Telnet", "RDP", "SNMP", "ICMP"];
 

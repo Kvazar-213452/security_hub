@@ -3,6 +3,7 @@ package main_com
 import (
 	"encoding/json"
 	"fmt"
+	"head/main_com/speed_count"
 	"head/main_com/wifi"
 	"io/ioutil"
 	"net/http"
@@ -98,4 +99,21 @@ func Get_file(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 	w.WriteHeader(http.StatusOK)
 	w.Write(content)
+}
+
+func Get_speed(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	downloadSpeed, uploadSpeed := speed_count.Start_speed_count()
+
+	speeds := []string{
+		fmt.Sprintf("%.2f", downloadSpeed),
+		fmt.Sprintf("%.2f", uploadSpeed),
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(speeds)
 }

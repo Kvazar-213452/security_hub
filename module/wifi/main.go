@@ -31,6 +31,7 @@ func main() {
 	http.HandleFunc("/get_pacage_info", main_com.Post_get_pacage_info_wifi)
 	http.HandleFunc("/network_now", main_com.Post_network_now)
 	http.HandleFunc("/get_file", main_com.Get_file)
+	http.HandleFunc("/get_speed", main_com.Get_speed)
 
 	fmt.Println("Сервер запущено на http://localhost" + portStr)
 	err := http.ListenAndServe(portStr, nil)

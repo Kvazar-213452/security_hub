@@ -25,6 +25,17 @@
                     <div id="wifi_data_packege"></div>
                 </div>
             </div>
+            <div class="imfowdwqdd">
+                <div class="padoge">
+                    <p id="f0o32o4200cwl"></p>
+                    <br>
+                    <p>downloadSpeed = <span id="f32p32fvbvve"></span> <span>Mb</span></p>
+                    <p>uploadSpeed = <span id="fpf2op3nvnvnnv"></span> <span>Mb</span></p>
+                    <br>
+                    <button onclick="speed_test()" id="fwjfp2f243_cwvrt" class="button_settings"></button>
+                    <br><br>
+                </div>
+            </div>
         </div>
         <div id="section_1">
             <div class="wifi_sqd">
@@ -47,6 +58,20 @@
                 <div id="render_all_wifi" class="padoge"></div>
             </div>
         </div>
+
+        <!-- modal -->
+
+        <div id="modal1"> 
+            <div id="modal-content">
+                <p class="load_title" id="modla_install_32ffff"></p>
+                <div class="load_animat_div">
+                    <div class="div_animation"></div>
+                    <div class="div_animation1"></div>
+                    <div class="div_animation2"></div>
+                    <div class="div_animation3"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="/static/jquery.min.js"></script>
@@ -55,6 +80,7 @@
 <script src="/static/js/global.js"></script>
 <script src="/static/js/page/wifi/info.js"></script>
 <script src="/static/js/page/wifi/package.js"></script>
+<script src="/static/js/page/wifi/des.js"></script>
 <script src="/static/js/page/schedule.js"></script>
 <script>
     change_lang_now();
@@ -71,5 +97,21 @@
     setInterval(get_data_wifi_all, 2500);
     setInterval(get_data_for_schedule, 1000);
     setInterval(() => packageData.getPackageData(), 1000);
+
+    const divs = [
+      document.querySelector('.div_animation'),
+      document.querySelector('.div_animation1'),
+      document.querySelector('.div_animation2'),
+      document.querySelector('.div_animation3'),
+    ];
+
+    let current = 0;
+    setInterval(() => {
+        if (animation) {
+            divs.forEach(div => div.style.backgroundColor = '#181822');
+            divs[current].style.backgroundColor = '#68ff9d';
+            current = (current + 1) % divs.length;
+        }
+    }, 1000);
 </script> 
 </html>

@@ -6,7 +6,10 @@ let mas_lang = {
     ['#lang_nfefdfdvghyt', 'Get more information about your Wi-Fi'],
     ['#lang_dqwedddcwww', "Connection ="],
     ['#wifi_0jdccc', 'Information'],
-    ['#wifi_0jdccc1', 'Packets']
+    ['#wifi_0jdccc1', 'Packets'],
+    ["#f0o32o4200cwl", "Speed test"],
+    ["#fwjfp2f243_cwvrt", "Speed test"],
+    ["#modla_install_32ffff", "Data processing"]
   ],
 
   "uk": [
@@ -14,7 +17,10 @@ let mas_lang = {
     ['#lang_nfefdfdvghyt', 'Отримайте більше інформації про ваш вайфай'],
     ['#lang_dqwedddcwww', "З'єднання ="],
     ['#wifi_0jdccc', 'Інформація'],
-    ['#wifi_0jdccc1', 'Пакети']
+    ['#wifi_0jdccc1', 'Пакети'],
+    ["#f0o32o4200cwl", "Тест швидкості"],
+    ["#fwjfp2f243_cwvrt", "Тест швидкості"],
+    ["#modla_install_32ffff", "Обробка даних"]
   ]
 };
 
