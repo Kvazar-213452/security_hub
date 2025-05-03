@@ -24,3 +24,15 @@ auto_update/head.exe
 .production
 
 out_other/server/register_and_data/static/NM3.zip
+
+core/des/starter.md
+
+module/antivirus/starter.md
+module/cleaning/starter.md
+module/encryption/starter.md
+module/password/starter.md
+module/server/starter.md
+module/system/starter.md
+module/wifi/starter.md
+
+core/des/head.exe
