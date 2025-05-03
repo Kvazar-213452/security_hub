@@ -1,0 +1,46 @@
+<html style="height: 100%"></html>
+<head>
+    <meta charset="utf-8">
+    <title>SPX</title>
+    <link rel="stylesheet" href="/static/main.css"/>
+    <style id="style_dudqdc"></style>
+</head>
+<body>
+    <div class="main_div">
+        <div class="lod3br32fvvvv2_3">
+            <p class="load_title" id="modla_install_32ffff"></p>
+            <div class="load_animat_div">
+                <div class="div_animation"></div>
+                <div class="div_animation1"></div>
+                <div class="div_animation2"></div>
+                <div class="div_animation3"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/static/jquery.min.js"></script>
+<script src="/static/lang.js"></script>
+<script src="/static/index.js"></script>
+<script>
+    get_data_config();
+    change_lang_now();
+
+    const divs = [
+      document.querySelector('.div_animation'),
+      document.querySelector('.div_animation1'),
+      document.querySelector('.div_animation2'),
+      document.querySelector('.div_animation3'),
+    ];
+
+    let current = 0;
+    setInterval(() => {
+        if (animation) {
+            divs.forEach(div => div.style.backgroundColor = '#181822');
+            divs[current].style.backgroundColor = '#68ff9d';
+            current = (current + 1) % divs.length;
+        }
+    }, 1000);
+
+    scan_flash();
+</script>
+</html>

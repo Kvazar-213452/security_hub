@@ -30,3 +30,17 @@ func WriteServerInfo(portStr string) {
 		fmt.Printf("error: %v\n", err)
 	}
 }
+
+func WriteServerInfo_flash(name string) {
+	file, err := os.OpenFile("flash.md", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
+	if err != nil {
+		fmt.Printf("error: %v\n", err)
+		return
+	}
+	defer file.Close()
+
+	_, err = file.WriteString(name + ":")
+	if err != nil {
+		fmt.Printf("error: %v\n", err)
+	}
+}

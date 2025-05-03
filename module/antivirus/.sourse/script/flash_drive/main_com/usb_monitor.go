@@ -2,6 +2,7 @@ package main_com
 
 import (
 	"encoding/json"
+	"flash_drive/main_com/func_all"
 	"fmt"
 	"os"
 	"os/exec"
@@ -102,12 +103,14 @@ func MonitorUSB(port int) {
 		for _, d := range newList {
 			if findDrive(currentDrives, d.Letter) == -1 {
 				fmt.Printf("[+] Connected: %c: — \"%s\"\n", d.Letter, d.Label)
+				func_all.WriteServerInfo_flash(string(d.Letter))
 				checkAndRunShell(portStr)
 			}
 		}
 
 		for _, d := range currentDrives {
 			if findDrive(newList, d.Letter) == -1 {
+				func_all.WriteServerInfo_flash("")
 				fmt.Printf("[-] Disabled: %c: — \"%s\"\n", d.Letter, d.Label)
 			}
 		}
@@ -146,6 +149,17 @@ func checkAndRunShell(portStr string) {
 }
 
 func runShellWeb(baseDir string, portStr string) {
+	startDir, err := os.Getwd()
+	if err != nil {
+		return
+	}
+
+	defer func() {
+		if err := os.Chdir(startDir); err != nil {
+			fmt.Printf("error folder: %v\n", err)
+		}
+	}()
+
 	nm1Path := filepath.Join(baseDir, "..", "..", "..", "..", "shell_NM", "NM1")
 	nm1Path = filepath.Clean(nm1Path)
 
@@ -154,14 +168,13 @@ func runShellWeb(baseDir string, portStr string) {
 	}
 
 	args := []string{
-		"dddd",
-		"434",
-		"555",
+		"Security hub",
+		"500",
+		"600",
 		fmt.Sprintf("%s/scan", portStr),
 	}
 
 	cmd := exec.Command("./shell_web.exe", args...)
-
 	cmd.SysProcAttr = &syscall.SysProcAttr{
 		CreationFlags: syscall.CREATE_NEW_PROCESS_GROUP,
 	}
