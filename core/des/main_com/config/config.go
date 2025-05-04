@@ -62,4 +62,4 @@ const Server_register_and_data_url_del_key_pasw string = "del_key_pasw"
 const Server_register_and_data_url_check string = "check"
 
 // dep
-const Url_dep string = "http://fi3.bot-hosting.net:23113/app_back_end.zip"
+const Url_dep string = "https://github.com/Kvazar-213452/data/raw/refs/heads/main/dwn_dep.zip"

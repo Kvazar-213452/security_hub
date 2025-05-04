@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"head/main_com"
 	"head/main_com/core"
+	"head/main_com/download_dep"
 	"head/main_com/func_all"
 	"head/main_com/module"
 	"head/main_com/page/register"
@@ -53,6 +54,13 @@ func startCore() error {
 }
 
 func main() {
+	if _, err := os.Stat("../data"); os.IsNotExist(err) {
+		fmt.Println("ins")
+		download_dep.Start()
+	} else {
+		fmt.Println("ok")
+	}
+
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
 

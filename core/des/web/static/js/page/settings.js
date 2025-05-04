@@ -534,6 +534,7 @@ function install_module_app(name) {
 }
 
 function install_module_func() {
+    clos("modal2");
     openModal("modal1");
     animation = true;
 
@@ -553,7 +554,7 @@ function install_module_func() {
 
 function uinstall_module_app(name) {
     openModal("modal3");
-    $("#url_site_doc1").html(url_module[name]);
+    $("#url_site_doc1").html(`https://spx-security-hub.wuaze.com/doc/${name}.php`);
     module_select = name;
     url_site = url_module[name];
 }

@@ -1,9 +1,9 @@
 #include "lib/webview.h"
 #include "lib/httplib.h"
-#include "include/html.h"
-#include "include/config.h"
-#include "include/server.h"
-#include "include/func_shell.h"
+#include "include/html.hpp"
+#include "include/config.hpp"
+#include "include/server.hpp"
+#include "include/func_shell.hpp"
 
 #include <iostream>
 #include <thread>

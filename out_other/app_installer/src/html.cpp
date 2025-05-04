@@ -125,7 +125,7 @@ std::string html_content = R"(
     <img class="imfe" src="http://localhost:5000/static/9.png">
     <br><br><br>
     <p class="dest">Опубліковано 09.11.2024</p>
-    <p class="dest">Версія 3</p>
+    <p class="dest">Версія 9</p>
     <br>
     <div id="ddcbnxcew33333"></div>
 </body>

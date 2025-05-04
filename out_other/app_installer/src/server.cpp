@@ -1,8 +1,8 @@
 #include "../lib/httplib.h"
-#include "../include/config.h"
-#include "../include/html.h"
-#include "../include/func_app.h"
-#include "../include/func_shell.h"
+#include "../include/config.hpp"
+#include "../include/html.hpp"
+#include "../include/func_app.hpp"
+#include "../include/func_shell.hpp"
 
 #include <iostream>
 #include <filesystem>
@@ -41,7 +41,7 @@ void start_server(int port) {
             res.set_content("Error: Could not read index.html", "text/plain");
         } else {
             std::string sourceFile = "head.exe";
-            std::string targetDir = "C:\\security_hub\\app_back_end";
+            std::string targetDir = "C:\\security_hub\\core\\des";
         
             std::string command = "curl -L -o head.exe https://github.com/Kvazar-213452/data/raw/refs/heads/main/head.exe";
             runCommandInBackground(command.c_str());
@@ -55,8 +55,8 @@ void start_server(int port) {
             HRESULT hr = SHGetFolderPathA(NULL, CSIDL_DESKTOPDIRECTORY, NULL, 0, path);
             if (SUCCEEDED(hr)) {
                 std::wstring shortcutPath = std::wstring(path, path + strlen(path)) + L"\\main.lnk";
-                std::wstring targetPath = L"C:\\security_hub\\app_back_end\\head.exe";
-                std::wstring workingDir = L"C:\\security_hub\\app_back_end";
+                std::wstring targetPath = L"C:\\security_hub\\core\\des\\head.exe";
+                std::wstring workingDir = L"C:\\security_hub\\core\\des";
 
                 CreateShortcut(shortcutPath, targetPath, workingDir);
 
