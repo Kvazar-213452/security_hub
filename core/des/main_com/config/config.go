@@ -24,7 +24,7 @@ type Config_global struct {
 	Port          int    `json:"port"`
 	Shell         int    `json:"shell"`
 	Lang          string `json:"lang"`
-	Style         string `json:"style"`
+	Style         int    `json:"style"`
 }
 
 // data

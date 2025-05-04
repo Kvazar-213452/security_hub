@@ -1,8 +1,3 @@
-@font-face {
-    font-family: 'MyCustomFont';
-    src: url("../Minecraft_1.1.ttf") format("truetype"); 
-}
-
 :root {
     --bg_1: #cccccc;
     --bg_2: #aaaaaa;

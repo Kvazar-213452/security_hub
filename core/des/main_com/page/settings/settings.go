@@ -74,7 +74,7 @@ func UpdateConfigKey(key, value string) {
 	case "lang":
 		config.Lang = value
 	case "style":
-		config.Style = value
+		config.Style, _ = strconv.Atoi(value)
 	default:
 		fmt.Print("error key: %s", key)
 	}

@@ -64,7 +64,7 @@ function get_data_config() {
         success: function (response) {
             let obj = JSON.parse(response);
 
-            if (obj['style'] === true) {
+            if (obj['style']) {
                 get_style();
             }
         }

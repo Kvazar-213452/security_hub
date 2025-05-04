@@ -57,7 +57,7 @@ function get_data_config() {
         contentType: "application/json",
         data: JSON.stringify({data: "data/config.json"}),
         success: function (response) {
-            if (response["val"]['style'] === true) {
+            if (response["val"]['style']) {
                 get_style();
             }
         }

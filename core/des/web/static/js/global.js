@@ -70,7 +70,7 @@ function get_data_config() {
         contentType: "application/json",
         data: JSON.stringify(null),
         success: function (response) {
-            if (response['style'] === "main") {
+            if (response['style']) {
                 get_style();
             }
         }
@@ -87,12 +87,11 @@ function clean_div(name) {
 
 function get_style() {
     $.ajax({
-        url: "/get_style",
+        url: "/get_file",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify(null),
+        data: JSON.stringify({data: "../data/main.css"}),
         success: function (response) {
-           console.log(response)
            $('#style_dudqdc').html(response);
         }
     });
