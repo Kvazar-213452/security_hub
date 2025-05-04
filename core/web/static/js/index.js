@@ -106,10 +106,16 @@ $(window).on("message", function(event) {
 });
 
 function fetchLogs() {
-    $.post('/get_logs', function (data) {
-        const logsArray = data.log.split('\n');
+    $.ajax({
+        url: "/api/get_file",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({data: "data/main.log"}),
+        success: function (response) {
+            const logsArray = response["val"].split('\n');
 
-        $('.console').html(logsArray.join('<br>'));
+            $('.console').html(logsArray.join('<br>'));
+        }
     });
 }
 
