@@ -111,9 +111,9 @@ func Post_style_change(w http.ResponseWriter, r *http.Request) {
 		json.NewDecoder(r.Body).Decode(&data)
 
 		if data.Value == "1" {
-			UpdateConfigKey("style", "main")
+			UpdateConfigKey("style", "1")
 		} else {
-			UpdateConfigKey("style", "null")
+			UpdateConfigKey("style", "0")
 		}
 
 		w.Write([]byte("1"))

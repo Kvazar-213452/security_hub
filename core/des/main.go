@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"head/main_com"
+	"head/main_com/core"
 	"head/main_com/func_all"
 	"head/main_com/module"
 	"head/main_com/page/register"
@@ -18,18 +19,6 @@ import (
 
 // core/des/main.go
 
-var cleanupDone = make(chan struct{})
-var cmd *exec.Cmd
-
-func cleanup() {
-	if cmd != nil && cmd.Process != nil {
-		cmd.Process.Kill()
-	}
-
-	module.KillAllModules()
-	close(cleanupDone)
-}
-
 func startCore() error {
 	var port int
 	port_config := func_all.PrintPortFromConfig()
@@ -40,24 +29,23 @@ func startCore() error {
 		port = func_all.FindFreePort()
 	}
 
-	cmd = exec.Command("./main.exe", strconv.Itoa(port))
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
+	core.Cmd = exec.Command("./main.exe", strconv.Itoa(port))
+	core.Cmd.Stdout = os.Stdout
+	core.Cmd.Stderr = os.Stderr
+	core.Cmd.Dir = "../"
 
-	cmd.Dir = "../"
-
-	if err := cmd.Start(); err != nil {
+	if err := core.Cmd.Start(); err != nil {
 		return fmt.Errorf("помилка запуску ядра: %v", err)
 	}
 
 	go func() {
-		err := cmd.Wait()
+		err := core.Cmd.Wait()
 		if err != nil {
-			fmt.Printf("Ядро завершило роботу з помилкою: %v\n", err)
+			fmt.Printf("Ядро завершилось з помилкою: %v\n", err)
 		} else {
-			fmt.Println("Ядро успішно завершило роботу")
+			fmt.Println("Ядро завершилось успішно")
 		}
-		cleanup()
+		core.Cleanup()
 		os.Exit(0)
 	}()
 
@@ -70,11 +58,11 @@ func main() {
 
 	go func() {
 		<-sigChan
-		cleanup()
+		core.Cleanup()
 		os.Exit(0)
 	}()
 
-	defer cleanup()
+	defer core.Cleanup()
 
 	if err := startCore(); err != nil {
 		fmt.Printf("Помилка: %v\n", err)

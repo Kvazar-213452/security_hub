@@ -1,6 +1,7 @@
 package main_com
 
 import (
+	"bytes"
 	"crypto/aes"
 	"crypto/cipher"
 	"encoding/hex"
@@ -8,8 +9,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"os/exec"
-	"strings"
 )
 
 // module/password/main_com/register.go
@@ -22,23 +21,22 @@ type Config_reg struct {
 	Acsses string `json:"acsses"`
 }
 
-func Cripter_xxx(text string) string {
-	exePath := "library/aes_encryption.exe"
-	args := []string{text}
+func Cripter_xxx(plainText string) string {
+	key := []byte("3dp4g9DI8h7MzjVz3dp4g9DI8h7MzjVz")
+	iv := []byte("1234567890abcdef")
 
-	cmd := exec.Command(exePath, args...)
-
-	output, _ := cmd.Output()
-
-	outputStr := string(output)
-
-	if strings.HasPrefix(outputStr, "Encrypted:") {
-		encryptedText := strings.TrimPrefix(outputStr, "Encrypted: ")
-		encryptedText = strings.ReplaceAll(encryptedText, " ", "")
-		return encryptedText
-	} else {
+	block, err := aes.NewCipher(key)
+	if err != nil {
 		return ""
 	}
+
+	paddedText := pkcs7Pad([]byte(plainText), aes.BlockSize)
+	ciphertext := make([]byte, len(paddedText))
+
+	mode := cipher.NewCBCEncrypter(block, iv)
+	mode.CryptBlocks(ciphertext, paddedText)
+
+	return hex.EncodeToString(ciphertext)
 }
 
 func Get_config_user() *Config_reg {
@@ -113,4 +111,10 @@ func pkcs7Unpad(data []byte) ([]byte, error) {
 	}
 
 	return data[:len(data)-padLength], nil
+}
+
+func pkcs7Pad(data []byte, blockSize int) []byte {
+	padding := blockSize - len(data)%blockSize
+	padtext := bytes.Repeat([]byte{byte(padding)}, padding)
+	return append(data, padtext...)
 }

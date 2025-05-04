@@ -61,7 +61,7 @@ function getConfig() {
                 button_active('setingss_vdwewe1', setingss_vdwewe);
             }
 
-            if (style === "main") {
+            if (style === 1) {
                 button_active('vvw2311323ferererg3g3g3', vvw2311323ferererg3g3g3);
             } else {
                 button_active('vvw2311323ferererg3g3g31', vvw2311323ferererg3g3g3);

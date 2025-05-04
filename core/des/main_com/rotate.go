@@ -2,6 +2,7 @@ package main_com
 
 import (
 	config_main "head/main_com/config"
+	"head/main_com/core"
 	"html/template"
 	"net/http"
 	"os"
@@ -36,5 +37,6 @@ func Render_register_page(w http.ResponseWriter, r *http.Request) {
 }
 
 func Get_off_app(w http.ResponseWriter, r *http.Request) {
+	core.Cleanup()
 	os.Exit(0)
 }
