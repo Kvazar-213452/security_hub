@@ -39,7 +39,6 @@ type Config struct {
 func PrintPortFromConfig() int {
 	file, err := os.Open("../data/config.json")
 	if err != nil {
-		fmt.Println("Помилка відкриття файлу:", err)
 		return 0
 	}
 	defer file.Close()
@@ -47,7 +46,7 @@ func PrintPortFromConfig() int {
 	var config Config
 	err = json.NewDecoder(file).Decode(&config)
 	if err != nil {
-		fmt.Println("Помилка декодування JSON:", err)
+		fmt.Println("error JSON:", err)
 		return 0
 	}
 

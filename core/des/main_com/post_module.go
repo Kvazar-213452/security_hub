@@ -34,6 +34,7 @@ func Post_install_model_app(w http.ResponseWriter, r *http.Request) {
 		var request_front int
 		if err != nil {
 			request_front = 0
+			module.MoveModuleToUninstall(request.Data)
 		} else {
 			request_front = 1
 			module.MoveModuleToUninstall(request.Data)
@@ -69,6 +70,7 @@ func Post_uinstall_model_app(w http.ResponseWriter, r *http.Request) {
 		var request_front int
 		if err != nil {
 			request_front = 0
+			module.MoveModuleToInstall(request.Data)
 		} else {
 			request_front = 1
 			module.MoveModuleToInstall(request.Data)

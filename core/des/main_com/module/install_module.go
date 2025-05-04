@@ -9,129 +9,71 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"strings"
-	"time"
 )
 
 func Install_module(name string) error {
-	url := fmt.Sprintf("https://github.com/Kvazar-213452/data/raw/refs/heads/main/%s.zip", name)
-	targetDir := filepath.Join("..", "..", "module", name)
-	tempZipPath := filepath.Join(targetDir, "temp.zip")
+	tempDir := "../data/temp"
 
-	defer func() {
-		retryRemove(tempZipPath, 3, 100*time.Millisecond)
-	}()
-
-	if err := os.RemoveAll(targetDir); err != nil {
-		return fmt.Errorf("failed to remove existing directory: %v", err)
+	err := os.RemoveAll(tempDir)
+	if err != nil {
+		return fmt.Errorf("error del: %v", err)
 	}
 
-	if err := os.MkdirAll(targetDir, 0755); err != nil {
-		return fmt.Errorf("failed to create target directory: %v", err)
+	err = os.MkdirAll(tempDir, 0755)
+	if err != nil {
+		return fmt.Errorf("erro create temp: %v", err)
 	}
+
+	url := "https://github.com/Kvazar-213452/data/raw/refs/heads/main/" + name + ".zip"
+	zipPath := filepath.Join(tempDir, name+".zip")
 
 	resp, err := http.Get(url)
 	if err != nil {
-		return fmt.Errorf("failed to download zip file: %v", err)
+		return fmt.Errorf("error dwn: %v", err)
 	}
 	defer resp.Body.Close()
 
-	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("failed to download zip file: status %d", resp.StatusCode)
-	}
-
-	out, err := os.Create(tempZipPath)
+	out, err := os.Create(zipPath)
 	if err != nil {
-		return fmt.Errorf("failed to create temp zip file: %v", err)
+		return fmt.Errorf("error zip zip: %v", err)
 	}
+	defer out.Close()
 
-	if _, err = io.Copy(out, resp.Body); err != nil {
-		out.Close()
-		return fmt.Errorf("failed to save zip file: %v", err)
-	}
+	io.Copy(out, resp.Body)
 
-	if err := out.Close(); err != nil {
-		return fmt.Errorf("failed to close temp zip file: %v", err)
-	}
+	dest := "../../module/" + name
+	os.MkdirAll(dest, 0755)
 
-	if err := extractZip(tempZipPath, targetDir); err != nil {
-		return fmt.Errorf("failed to extract zip file: %v", err)
-	}
+	zipReader, _ := zip.OpenReader(zipPath)
 
-	if err := retryRemove(tempZipPath, 3, 100*time.Millisecond); err != nil {
-		return fmt.Errorf("failed to remove temp zip file after retries: %v", err)
-	}
+	defer zipReader.Close()
 
-	return nil
-}
+	for _, file := range zipReader.File {
+		fPath := filepath.Join(dest, file.Name)
 
-func retryRemove(path string, attempts int, delay time.Duration) error {
-	var err error
-	for i := 0; i < attempts; i++ {
-		err = os.Remove(path)
-		if err == nil {
-			return nil
-		}
-		if os.IsNotExist(err) {
-			return nil
-		}
-		time.Sleep(delay)
-	}
-	return fmt.Errorf("after %d attempts, last error: %v", attempts, err)
-}
-
-func extractZip(zipPath, targetDir string) error {
-	r, err := zip.OpenReader(zipPath)
-	if err != nil {
-		return err
-	}
-	defer r.Close()
-
-	targetDir = filepath.Clean(targetDir) + string(filepath.Separator)
-
-	for _, f := range r.File {
-		fpath := filepath.Join(targetDir, f.Name)
-
-		if !strings.HasPrefix(filepath.Clean(fpath), targetDir) {
-			return fmt.Errorf("illegal file path: %s", fpath)
-		}
-
-		if f.FileInfo().IsDir() {
-			if err := os.MkdirAll(fpath, f.Mode()); err != nil {
-				return fmt.Errorf("failed to create directory %s: %v", fpath, err)
-			}
+		if file.FileInfo().IsDir() {
+			os.MkdirAll(fPath, os.ModePerm)
 			continue
 		}
 
-		if err := os.MkdirAll(filepath.Dir(fpath), 0755); err != nil {
-			return fmt.Errorf("failed to create parent directories for %s: %v", fpath, err)
+		if err := os.MkdirAll(filepath.Dir(fPath), os.ModePerm); err != nil {
+			return fmt.Errorf("error make folder: %v", err)
 		}
 
-		outFile, err := os.OpenFile(fpath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, f.Mode())
+		dstFile, _ := os.OpenFile(fPath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, file.Mode())
+		fileInArchive, _ := file.Open()
+
+		_, err = io.Copy(dstFile, fileInArchive)
+
+		dstFile.Close()
+		fileInArchive.Close()
+
 		if err != nil {
-			return fmt.Errorf("failed to create file %s: %v", fpath, err)
-		}
-
-		rc, err := f.Open()
-		if err != nil {
-			outFile.Close()
-			return fmt.Errorf("failed to open zip entry %s: %v", f.Name, err)
-		}
-
-		if _, err = io.Copy(outFile, rc); err != nil {
-			outFile.Close()
-			rc.Close()
-			return fmt.Errorf("failed to extract file %s: %v", fpath, err)
-		}
-
-		if err := outFile.Close(); err != nil {
-			rc.Close()
-			return fmt.Errorf("failed to close extracted file %s: %v", fpath, err)
-		}
-		if err := rc.Close(); err != nil {
-			return fmt.Errorf("failed to close zip entry %s: %v", f.Name, err)
+			return fmt.Errorf("error copying: %v", err)
 		}
 	}
+
+	os.Remove(zipPath)
 
 	return nil
 }
@@ -146,12 +88,12 @@ func MoveModuleToUninstall(name string) error {
 
 	fileData, err := ioutil.ReadFile(filePath)
 	if err != nil {
-		return fmt.Errorf("помилка читання файлу: %v", err)
+		return fmt.Errorf("error read: %v", err)
 	}
 
 	var config ModuleConfig
 	if err := json.Unmarshal(fileData, &config); err != nil {
-		return fmt.Errorf("помилка парсингу JSON: %v", err)
+		return fmt.Errorf("error JSON: %v", err)
 	}
 
 	found := false
@@ -165,7 +107,7 @@ func MoveModuleToUninstall(name string) error {
 	}
 
 	if !found {
-		return fmt.Errorf("модуль '%s' не знайдено у module_install", name)
+		return fmt.Errorf("none '%s' in module_install", name)
 	}
 
 	alreadyInUninstall := false
@@ -184,11 +126,11 @@ func MoveModuleToUninstall(name string) error {
 
 	updatedData, err := json.MarshalIndent(config, "", "    ")
 	if err != nil {
-		return fmt.Errorf("помилка перетворення у JSON: %v", err)
+		return fmt.Errorf("error JSON: %v", err)
 	}
 
 	if err := ioutil.WriteFile(filePath, updatedData, 0644); err != nil {
-		return fmt.Errorf("помилка запису файлу: %v", err)
+		return fmt.Errorf("error file: %v", err)
 	}
 
 	return nil

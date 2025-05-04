@@ -38,35 +38,35 @@ func EncryptFileChaCha20(filename string, key []byte) ([]byte, error) {
 func DecryptFileChaCha20(filePath string, keyHex string) error {
 	key, err := hex.DecodeString(keyHex)
 	if err != nil {
-		return fmt.Errorf("неправильний HEX ключ: %v", err)
+		return fmt.Errorf("error HEX key: %v", err)
 	}
 
 	ciphertext, err := ioutil.ReadFile(filePath)
 	if err != nil {
-		return fmt.Errorf("помилка читання файлу: %v", err)
+		return fmt.Errorf("error read: %v", err)
 	}
 
 	aead, err := chacha20poly1305.New(key)
 	if err != nil {
-		return fmt.Errorf("помилка створення ChaCha20: %v", err)
+		return fmt.Errorf("error ChaCha20: %v", err)
 	}
 
 	if len(ciphertext) < chacha20poly1305.NonceSize {
-		return fmt.Errorf("занадто короткий cipher текст")
+		return fmt.Errorf("error short cipher")
 	}
 
 	nonce, ciphertext := ciphertext[:chacha20poly1305.NonceSize], ciphertext[chacha20poly1305.NonceSize:]
 
 	plaintext, err := aead.Open(nil, nonce, ciphertext, nil)
 	if err != nil {
-		return fmt.Errorf("помилка дешифрування: %v", err)
+		return fmt.Errorf("error: %v", err)
 	}
 
 	outputFilePath := config_main.Frontend_folder + "/static/data/" + filepath.Base(filePath[:len(filePath)-4])
 
 	err = ioutil.WriteFile(outputFilePath, plaintext, 0644)
 	if err != nil {
-		return fmt.Errorf("помилка запису файлу: %v", err)
+		return fmt.Errorf("error: %v", err)
 	}
 
 	return nil

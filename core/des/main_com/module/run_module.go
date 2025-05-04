@@ -33,19 +33,19 @@ var (
 func RunModules(configPath, resultPath string) error {
 	originalDir, err := os.Getwd()
 	if err != nil {
-		return fmt.Errorf("помилка отримання поточної директорії: %v", err)
+		return fmt.Errorf("errro directory: %v", err)
 	}
 	defer os.Chdir(originalDir)
 
 	configFile, err := os.ReadFile(configPath)
 	if err != nil {
-		return fmt.Errorf("помилка читання файлу: %v", err)
+		return fmt.Errorf("error read: %v", err)
 	}
 
 	var config Config
 	err = json.Unmarshal(configFile, &config)
 	if err != nil {
-		return fmt.Errorf("помилка парсингу JSON: %v", err)
+		return fmt.Errorf("error JSON: %v", err)
 	}
 
 	result := Result{
@@ -69,7 +69,7 @@ func RunModules(configPath, resultPath string) error {
 			if err != nil {
 				errorMutex.Lock()
 				if firstError == nil {
-					firstError = fmt.Errorf("помилка зміни директорії для %s: %v", module, err)
+					firstError = fmt.Errorf("error directory %s: %v", module, err)
 				}
 				errorMutex.Unlock()
 				return
@@ -83,13 +83,13 @@ func RunModules(configPath, resultPath string) error {
 			if err != nil {
 				errorMutex.Lock()
 				if firstError == nil {
-					firstError = fmt.Errorf("помилка запуску %s: %v", exePath, err)
+					firstError = fmt.Errorf("error run %s: %v", exePath, err)
 				}
 				errorMutex.Unlock()
 				return
 			}
 
-			fmt.Printf("Запущено модуль %s (PID: %d) на порту %d\n",
+			fmt.Printf("start module %s (PID: %d) на порту %d\n",
 				module, cmd.Process.Pid, port)
 
 			mutex.Lock()
@@ -98,7 +98,6 @@ func RunModules(configPath, resultPath string) error {
 				Port: port,
 			}
 
-			// Зберігаємо інформацію про запущені модулі
 			modulesMutex.Lock()
 			runningModules[module] = ModuleInfo{
 				PID:  cmd.Process.Pid,
@@ -120,19 +119,17 @@ func RunModules(configPath, resultPath string) error {
 
 	output, err := json.MarshalIndent(result, "", "  ")
 	if err != nil {
-		return fmt.Errorf("помилка створення JSON: %v", err)
+		return fmt.Errorf("error make JSON: %v", err)
 	}
 
 	err = os.WriteFile(resultPath, output, 0644)
 	if err != nil {
-		return fmt.Errorf("помилка запису у файл: %v", err)
+		return fmt.Errorf("error in file: %v", err)
 	}
 
-	fmt.Printf("Операція завершена. Результати збережено у %s\n", resultPath)
 	return nil
 }
 
-// KillAllModules завершує всі запущені процеси модулів
 func KillAllModules() {
 	modulesMutex.Lock()
 	defer modulesMutex.Unlock()
@@ -140,25 +137,22 @@ func KillAllModules() {
 	for module, info := range runningModules {
 		process, err := os.FindProcess(info.PID)
 		if err != nil {
-			fmt.Printf("Помилка пошуку процесу %s (PID: %d): %v\n", module, info.PID, err)
+			fmt.Printf("none module %s (PID: %d): %v\n", module, info.PID, err)
 			continue
 		}
 
-		// Надсилаємо сигнал SIGTERM для коректного завершення
 		err = process.Signal(syscall.SIGTERM)
 		if err != nil {
-			fmt.Printf("Помилка завершення процесу %s (PID: %d): %v\n", module, info.PID, err)
+			fmt.Printf("error end %s (PID: %d): %v\n", module, info.PID, err)
 
-			// Якщо SIGTERM не спрацював, використовуємо SIGKILL
 			err = process.Kill()
 			if err != nil {
-				fmt.Printf("Не вдалося примусово завершити процес %s (PID: %d): %v\n", module, info.PID, err)
+				fmt.Printf("error end %s (PID: %d): %v\n", module, info.PID, err)
 			}
 		} else {
-			fmt.Printf("Процес %s (PID: %d) успішно завершено\n", module, info.PID)
+			fmt.Printf("module %s (PID: %d) end\n", module, info.PID)
 		}
 	}
 
-	// Очищаємо мапу запущених модулів
 	runningModules = make(map[string]ModuleInfo)
 }

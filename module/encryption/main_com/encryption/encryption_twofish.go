@@ -43,40 +43,40 @@ func EncryptFileTwofish(filename string, key []byte) ([]byte, error) {
 func DecryptFileTwofish(filePath string, keyHex string) error {
 	key, err := hex.DecodeString(keyHex)
 	if err != nil {
-		return fmt.Errorf("помилка декодування ключа: %v", err)
+		return fmt.Errorf("erro key: %v", err)
 	}
 
 	ciphertext, err := ioutil.ReadFile(filePath)
 	if err != nil {
-		return fmt.Errorf("помилка відкриття файлу: %v", err)
+		return fmt.Errorf("error: %v", err)
 	}
 
 	block, err := twofish.NewCipher(key)
 	if err != nil {
-		return fmt.Errorf("помилка створення шифратора: %v", err)
+		return fmt.Errorf("error %v", err)
 	}
 
 	gcm, err := cipher.NewGCM(block)
 	if err != nil {
-		return fmt.Errorf("помилка створення GCM: %v", err)
+		return fmt.Errorf("error GCM: %v", err)
 	}
 
 	if len(ciphertext) < gcm.NonceSize() {
-		return fmt.Errorf("дані занадто короткі для nonce")
+		return fmt.Errorf("error nonce")
 	}
 
 	nonce, ciphertext := ciphertext[:gcm.NonceSize()], ciphertext[gcm.NonceSize():]
 
 	plaintext, err := gcm.Open(nil, nonce, ciphertext, nil)
 	if err != nil {
-		return fmt.Errorf("помилка дешифрування: %v", err)
+		return fmt.Errorf("error: %v", err)
 	}
 
 	outputFilePath := config_main.Frontend_folder + "/static/data/" + filepath.Base(filePath[:len(filePath)-4])
 
 	err = ioutil.WriteFile(outputFilePath, plaintext, 0644)
 	if err != nil {
-		return fmt.Errorf("помилка запису файлу: %v", err)
+		return fmt.Errorf("error in file: %v", err)
 	}
 
 	return nil

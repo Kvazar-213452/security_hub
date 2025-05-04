@@ -17,14 +17,14 @@ import (
 func Run_flash() {
 	workingDir, err := os.Getwd()
 	if err != nil {
-		fmt.Printf("Помилка отримання робочої директорії: %v\n", err)
+		fmt.Printf("error directory: %v\n", err)
 		return
 	}
 
 	starterPath := filepath.Join("script", "flash_drive", "starter.md")
 	data, err := ioutil.ReadFile(starterPath)
 	if err != nil {
-		fmt.Printf("Помилка читання %s: %v\n", starterPath, err)
+		fmt.Printf("error dead %s: %v\n", starterPath, err)
 		return
 	}
 

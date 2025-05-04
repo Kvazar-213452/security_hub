@@ -44,7 +44,7 @@ func UninstallModule(name string) error {
 
 	modulePath := filepath.Join("..", "..", "module", name)
 	cleanPath := filepath.Clean(modulePath)
-	if !strings.HasPrefix(cleanPath, filepath.Join("..", "..", "module")) {
+	if !strings.HasPrefix(cleanPath, filepath.Join("..", "..", "module", name)) {
 		return fmt.Errorf("invalid module path: potential directory traversal attack")
 	}
 

@@ -41,23 +41,23 @@ func EncryptFileAES_CTR(filename string, key []byte) ([]byte, error) {
 func DecryptFileAES_CTR(filePath string, keyHex string) error {
 	key, err := hex.DecodeString(keyHex)
 	if err != nil {
-		return fmt.Errorf("помилка декодування ключа: %v", err)
+		return fmt.Errorf("error key: %v", err)
 	}
 
 	ciphertext, err := ioutil.ReadFile(filePath)
 	if err != nil {
-		return fmt.Errorf("помилка відкриття файлу: %v", err)
+		return fmt.Errorf("error opne file: %v", err)
 	}
 
 	if len(ciphertext) < aes.BlockSize {
-		return fmt.Errorf("дані занадто короткі для IV")
+		return fmt.Errorf("error IV")
 	}
 
 	iv, ciphertext := ciphertext[:aes.BlockSize], ciphertext[aes.BlockSize:]
 
 	block, err := aes.NewCipher(key)
 	if err != nil {
-		return fmt.Errorf("помилка створення шифратора: %v", err)
+		return fmt.Errorf("error: %v", err)
 	}
 
 	stream := cipher.NewCTR(block, iv)
@@ -68,7 +68,7 @@ func DecryptFileAES_CTR(filePath string, keyHex string) error {
 	outputFilePath := config_main.Frontend_folder + "/static/data/" + filepath.Base(filePath[:len(filePath)-4]) // Заміни на потрібний шлях
 	err = ioutil.WriteFile(outputFilePath, plaintext, 0644)
 	if err != nil {
-		return fmt.Errorf("помилка запису файлу: %v", err)
+		return fmt.Errorf("error in file: %v", err)
 	}
 
 	return nil

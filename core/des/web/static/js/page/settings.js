@@ -528,9 +528,9 @@ function info_start_modele_now(pid, port, name) {
 
 function install_module_app(name) {
     openModal("modal2");
-    $("#url_site_doc").html(url_module[name]);
+    $("#url_site_doc").html(`https://spx-security-hub.wuaze.com/doc/${name}.php`);
     module_select = name;
-    url_site = url_module[name];
+    url_site = `https://spx-security-hub.wuaze.com/doc/${name}.php`;
 }
 
 function install_module_func() {
@@ -556,10 +556,11 @@ function uinstall_module_app(name) {
     openModal("modal3");
     $("#url_site_doc1").html(`https://spx-security-hub.wuaze.com/doc/${name}.php`);
     module_select = name;
-    url_site = url_module[name];
+    url_site = `https://spx-security-hub.wuaze.com/doc/${name}.php`;
 }
 
 function uinstall_module_app_func() {
+    clos("modal3");
     openModal("modal1");
     animation = true;
 
@@ -569,6 +570,7 @@ function uinstall_module_app_func() {
         contentType: "application/json",
         data: JSON.stringify({data: module_select}),
         success: function (response) {
+            console.log(response)
             setTimeout(function () {
                 clos("modal1");
                 animation = false;
