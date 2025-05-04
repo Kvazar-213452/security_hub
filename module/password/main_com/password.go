@@ -43,18 +43,11 @@ func Post_get_password(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		config := Get_config_user()
 
-		data := RequestData_o1{
-			Name: config.Name,
-		}
+		cript_text := Cripter_xxx(config.Name)
+		data1 := map[string]string{"name": cript_text}
+		jsonPayload, _ := json.Marshal(data1)
 
-		jsonData, err := json.Marshal(data)
-		if err != nil {
-			log.Println("Error JSON:", err)
-			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-			return
-		}
-
-		resp, err := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_get_password, "application/json", bytes.NewBuffer(jsonData))
+		resp, err := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_get_password, "application/json", bytes.NewBuffer(jsonPayload))
 		if err != nil {
 			log.Println("Error", err)
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
@@ -69,8 +62,19 @@ func Post_get_password(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+		var result struct {
+			Data string `json:"data"`
+		}
+
+		if err := json.Unmarshal(body, &result); err != nil {
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
+
+		content := Decrypter_AES256(result.Data)
+
 		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(string(body))
+		json.NewEncoder(w).Encode(content)
 	} else {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
@@ -101,7 +105,11 @@ func Post_add_key_pasw(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		resp, err := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_add_key_pasw, "application/json", bytes.NewBuffer(jsonData))
+		cript_text := Cripter_xxx(string(jsonData))
+		data12 := map[string]string{"data": cript_text}
+		jsonPayload, _ := json.Marshal(data12)
+
+		resp, err := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_add_key_pasw, "application/json", bytes.NewBuffer(jsonPayload))
 		if err != nil {
 			log.Println("Error", err)
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
@@ -147,7 +155,11 @@ func Post_del_key_pasw(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		resp, err := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_del_key_pasw, "application/json", bytes.NewBuffer(jsonData))
+		cript_text := Cripter_xxx(string(jsonData))
+		data12 := map[string]string{"data": cript_text}
+		jsonPayload, _ := json.Marshal(data12)
+
+		resp, err := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_del_key_pasw, "application/json", bytes.NewBuffer(jsonPayload))
 		if err != nil {
 			log.Println("Error", err)
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)

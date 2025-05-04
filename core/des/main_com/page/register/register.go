@@ -6,6 +6,7 @@ import (
 	"crypto/cipher"
 	"crypto/rand"
 	"encoding/base64"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	config_main "head/main_com/config"
@@ -159,8 +160,16 @@ func Get_config_user() *Config_reg {
 
 func Send_user_data_server(config Config_reg) string {
 	jsonData, _ := json.Marshal(config)
+	cript_text := Cripter_xxx(string(jsonData))
+	data := map[string]string{"data": cript_text}
+	jsonPayload, _ := json.Marshal(data)
 
-	resp, _ := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_save_user, "application/json", bytes.NewBuffer(jsonData))
+	resp, _ := http.Post(
+		config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_save_user,
+		"application/json",
+		bytes.NewBuffer(jsonPayload),
+	)
+
 	defer resp.Body.Close()
 
 	body, _ := ioutil.ReadAll(resp.Body)
@@ -169,4 +178,54 @@ func Send_user_data_server(config Config_reg) string {
 	json.Unmarshal(body, &serverResponse)
 
 	return serverResponse.Message
+}
+
+func Decrypter_AES256(encryptedHex string) string {
+	key := []byte("3dp4g9DI8h7MzjVz3dp4g9DI8h7MzjVz")
+	iv := []byte("1234567890abcdef")
+
+	ciphertext, err := hex.DecodeString(encryptedHex)
+	if err != nil {
+		return ""
+	}
+
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		return ""
+	}
+
+	if len(ciphertext) < aes.BlockSize {
+		return ""
+	}
+
+	mode := cipher.NewCBCDecrypter(block, iv)
+
+	plaintext := make([]byte, len(ciphertext))
+	mode.CryptBlocks(plaintext, ciphertext)
+
+	plaintext, err = pkcs7Unpad(plaintext)
+	if err != nil {
+		return ""
+	}
+
+	return string(plaintext)
+}
+
+func pkcs7Unpad(data []byte) ([]byte, error) {
+	if len(data) == 0 {
+		return nil, fmt.Errorf("pkcs7: empty data")
+	}
+
+	padLength := int(data[len(data)-1])
+	if padLength > len(data) {
+		return nil, fmt.Errorf("pkcs7: invalid padding")
+	}
+
+	for i := len(data) - padLength; i < len(data); i++ {
+		if int(data[i]) != padLength {
+			return nil, fmt.Errorf("pkcs7: invalid padding")
+		}
+	}
+
+	return data[:len(data)-padLength], nil
 }

@@ -6,6 +6,7 @@ import (
 	config_main "head/main_com/config"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 )
 
@@ -141,14 +142,33 @@ func Post_login_acaunt(w http.ResponseWriter, r *http.Request) {
 
 		jsonData, _ := json.Marshal(data)
 
-		resp, _ := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_login, "application/json", bytes.NewBuffer(jsonData))
+		cript_text := Cripter_xxx(string(jsonData))
+		data12 := map[string]string{"data": cript_text}
+		jsonPayload, _ := json.Marshal(data12)
+
+		resp, _ := http.Post(config_main.Server_register_and_data_url+config_main.Server_register_and_data_url_login, "application/json", bytes.NewBuffer(jsonPayload))
 		defer resp.Body.Close()
 
-		respBody, _ := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			log.Println("Error:", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
+
+		var result struct {
+			Data string `json:"data"`
+		}
+
+		if err := json.Unmarshal(body, &result); err != nil {
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
+
+		content := Decrypter_AES256(result.Data)
 
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(resp.StatusCode)
-		w.Write(respBody)
+		json.NewEncoder(w).Encode(content)
 	} else {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}

@@ -76,6 +76,8 @@ function login() {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (response) {
+            response = JSON.parse(response);
+
             if (response['status'] == 1) {
                 login_acount(response);
             } else {

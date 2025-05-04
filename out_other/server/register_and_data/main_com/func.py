@@ -44,3 +44,10 @@ def decript(text):
     plaintext = unpad(cipher.decrypt(ciphertext), AES.block_size)
 
     return plaintext.decode()
+
+def encrypt(text: str) -> str:
+    data = text.encode('utf-8')
+    cipher = AES.new(key, AES.MODE_CBC, iv)
+    ciphertext = cipher.encrypt(pad(data, AES.block_size))
+    
+    return binascii.hexlify(ciphertext).decode('utf-8')

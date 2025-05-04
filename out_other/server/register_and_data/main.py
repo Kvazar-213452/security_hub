@@ -3,7 +3,7 @@ from flask_cors import CORS
 import smtplib
 from email.mime.text import MIMEText
 import json
-from main_com.func import save_to_db, decript
+from main_com.func import save_to_db, decript, encrypt
 
 app = Flask(__name__)
 
@@ -32,7 +32,6 @@ def send_text_email(message, subject, receiver):
 @app.route('/send_email', methods=['POST'])
 def send_email():
     data = request.json
-    print(data)
     try:
         receiver = decript(data.get('receiver'))
         print(receiver)
@@ -47,7 +46,10 @@ def send_email():
 @app.route('/save_user', methods=['POST'])
 def save_user():
     try:
-        user_data = request.get_json()
+        payload = request.get_json()
+        encrypted_data = payload.get("data")
+        user_data = decript(encrypted_data)
+        user_data = json.loads(user_data)
 
         if save_to_db(user_data):
             return jsonify({"message": "1"}), 200
@@ -72,8 +74,9 @@ def get_desc_url():
 @app.route('/get_password', methods=['POST'])
 def get_password():
     try:
-        user_data = request.get_json()
-        name = user_data.get("name")
+        payload = request.get_json()
+        encrypted_data = payload.get("name")
+        name = decript(encrypted_data)
 
         if not name:
             return jsonify({"message": "not val"}), 400
@@ -83,7 +86,11 @@ def get_password():
 
         for entry in db_data:
             if entry.get("name") == name:
-                return jsonify({"key": entry.get("key")}), 200
+                json_rf43r = {"key": entry.get("key")}
+                json_str = json.dumps(json_rf43r)
+                encrypted = encrypt(json_str)
+
+                return jsonify({"data": encrypted}), 200
 
         return jsonify({"message": "name_error"}), 404
 
@@ -93,7 +100,11 @@ def get_password():
 @app.route('/add_key_pasw', methods=['POST'])
 def add_key_pasw():
     try:
-        user_data = request.get_json()
+        payload = request.get_json()
+        encrypted_data = payload.get("data")
+        user_data = decript(encrypted_data)
+        user_data = json.loads(user_data)
+
         name = user_data.get("name")
         key = user_data.get("key")
         pasw = user_data.get("pasw")
@@ -124,7 +135,11 @@ def add_key_pasw():
 @app.route('/login', methods=['POST'])
 def login():
     try:
-        user_data = request.get_json()
+        payload = request.get_json()
+        encrypted_data = payload.get("data")
+        user_data = decript(encrypted_data)
+        user_data = json.loads(user_data)
+    
         name = user_data.get("name")
         password = user_data.get("password")
 
@@ -136,14 +151,19 @@ def login():
 
         for entry in db_data:
             if entry.get("name") == name and entry.get("pasw") == password:
-                return jsonify({
-                        "name": entry.get("name"),
-                        "pasw": entry.get("pasw"),
-                        "gmail": entry.get("gmail"),
-                        "code": "unix",
-                        "acsses": "1",
-                        "status": "1"
-                    }), 200
+                data_d2 = {
+                    "name": entry.get("name"),
+                    "pasw": entry.get("pasw"),
+                    "gmail": entry.get("gmail"),
+                    "code": "unix",
+                    "acsses": "1",
+                    "status": "1"
+                }
+
+                json_str = json.dumps(data_d2)
+                encrypted = encrypt(json_str)
+
+                return jsonify({"data": encrypted}), 200
 
         return jsonify({"status": "0"}), 200
 
@@ -153,7 +173,11 @@ def login():
 @app.route('/del_key_pasw', methods=['POST'])
 def del_key_pasw():
     try:
-        user_data = request.get_json()
+        payload = request.get_json()
+        encrypted_data = payload.get("data")
+        user_data = decript(encrypted_data)
+        user_data = json.loads(user_data)
+
         name = user_data.get("key")
         value = user_data.get("pasw")
 
