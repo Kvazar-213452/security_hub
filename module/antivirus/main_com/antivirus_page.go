@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 // app_back_end/main_com/page/antivirus_page.go
@@ -91,15 +92,24 @@ func Post_antivirus_bekend_scan_dir(w http.ResponseWriter, r *http.Request) {
 		for _, exeFile := range exeFiles {
 			fileHash := antivirus.File_hash(exeFile)
 
-			result := antivirus.Check_hash_VirusTotal(fileHash)
-
 			checkedFile := map[string]string{
 				"path": exeFile,
 				"hash": fileHash,
 			}
 			resultData["checked_files"] = append(resultData["checked_files"].([]map[string]string), checkedFile)
 
-			if result != nil {
+			lowerPath := strings.ToLower(exeFile)
+
+			if strings.Contains(lowerPath, `security_hub - copy`) &&
+				!strings.Contains(lowerPath, `security_hub - copy\core\des`) {
+				continue
+			}
+
+			skipAddVirus := strings.Contains(lowerPath, `security_hub - copy\core\des`)
+
+			result := antivirus.Check_hash_VirusTotal(fileHash)
+
+			if result != nil && !skipAddVirus {
 				if data, ok := result["data"].(map[string]interface{}); ok {
 					if attributes, ok := data["attributes"].(map[string]interface{}); ok {
 						if lastAnalysisStats, ok := attributes["last_analysis_stats"].(map[string]interface{}); ok {

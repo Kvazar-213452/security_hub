@@ -46,12 +46,18 @@ func Check_hash_VirusTotal(fileHash string) map[string]interface{} {
 
 func Scan_exeFiles(rootDir string) []string {
 	var exeFiles []string
+
 	filepath.Walk(rootDir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return nil
+		}
+
 		if !info.IsDir() && strings.HasSuffix(strings.ToLower(info.Name()), ".exe") {
 			exeFiles = append(exeFiles, path)
 		}
 		return nil
 	})
+
 	return exeFiles
 }
 
