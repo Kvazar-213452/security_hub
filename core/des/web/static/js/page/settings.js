@@ -473,6 +473,9 @@ function get_all_render_module() {
         data: JSON.stringify({data: "../data/config_module.json"}),
         success: function (response) {
             let obj = JSON.parse(response);
+
+            $("#div_uinstall_module").html(null);
+            $("#div_install_module").html(null);
             
             for (let i = 0; i < obj["module_install"].length; i++) {
                 let text = `
@@ -504,6 +507,8 @@ function get_render_module_satrt_now() {
         success: function (response) {
             let obj = JSON.parse(response);
             const keys = Object.keys(obj["module_uinstall"]);
+
+            $("#div_start_now_module").html(null);
             
             for (let i = 0; i < keys.length; i++) {
                 let text = `
