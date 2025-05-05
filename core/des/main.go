@@ -16,35 +16,28 @@ import (
 	"strconv"
 	"syscall"
 	"time"
+
+	"github.com/pkg/browser"
 )
 
 // core/des/main.go
 
-func startCore() error {
-	var port int
-	port_config := func_all.PrintPortFromConfig()
-
-	if port_config > 0 {
-		port = port_config
-	} else {
-		port = func_all.FindFreePort()
-	}
-
+func startCore(port int) error {
 	core.Cmd = exec.Command("./main.exe", strconv.Itoa(port))
 	core.Cmd.Stdout = os.Stdout
 	core.Cmd.Stderr = os.Stderr
 	core.Cmd.Dir = "../"
 
 	if err := core.Cmd.Start(); err != nil {
-		return fmt.Errorf("помилка запуску ядра: %v", err)
+		return fmt.Errorf("error run core: %v", err)
 	}
 
 	go func() {
 		err := core.Cmd.Wait()
 		if err != nil {
-			fmt.Printf("Ядро завершилось з помилкою: %v\n", err)
+			fmt.Printf("core end error: %v\n", err)
 		} else {
-			fmt.Println("Ядро завершилось успішно")
+			fmt.Println("core good end")
 		}
 		core.Cleanup()
 		os.Exit(0)
@@ -72,8 +65,17 @@ func main() {
 
 	defer core.Cleanup()
 
-	if err := startCore(); err != nil {
-		fmt.Printf("Помилка: %v\n", err)
+	var port1 int
+	port_config := func_all.PrintPortFromConfig()
+
+	if port_config > 0 {
+		port1 = port_config
+	} else {
+		port1 = func_all.FindFreePort()
+	}
+
+	if err := startCore(port1); err != nil {
+		fmt.Printf("error: %v\n", err)
 		os.Exit(1)
 	}
 
@@ -86,7 +88,7 @@ func main() {
 		"result.json",
 	)
 	if err != nil {
-		fmt.Printf("Помилка: %v\n", err)
+		fmt.Printf("error: %v\n", err)
 		os.Exit(1)
 	}
 
@@ -131,8 +133,27 @@ func main() {
 	http.HandleFunc("/reload_model", main_com.Rost_reload_model)
 	http.HandleFunc("/url_site_open", main_com.Rost_open_url)
 
-	fmt.Println("Сервер запущено на http://localhost" + portStr)
-	if err := http.ListenAndServe(portStr, nil); err != nil {
-		os.Exit(1)
+	portStr1 := ":" + strconv.Itoa(port1)
+
+	server := &http.Server{Addr: portStr}
+
+	go func() {
+		fmt.Println("server run on", "http://localhost"+portStr)
+		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			fmt.Println("error run server:", err)
+			os.Exit(1)
+		}
+	}()
+
+	time.Sleep(500 * time.Millisecond)
+
+	visual := func_all.Visual_сonfig()
+	if visual == 0 {
+		err := browser.OpenURL("http://localhost" + portStr1)
+		if err != nil {
+			fmt.Println("error open browser:", err)
+		}
 	}
+
+	select {}
 }

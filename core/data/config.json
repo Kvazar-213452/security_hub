@@ -1,9 +1,1 @@
-{
-  "version": 9,
-  "visualization": 0,
-  "log": 0,
-  "port": 4000,
-  "shell": 0,
-  "lang": "uk",
-  "style": 0
-}
+{"version":9,"visualization":0,"log":0,"port":4000,"shell":0,"lang":"uk","style":0}

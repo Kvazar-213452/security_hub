@@ -41,7 +41,7 @@ std::string html_content = R"(
     <style>
         @font-face {
             font-family: 'MyCustomFont';
-            src: url('http://localhost:5000/static/Minecraft_1.1.ttf') format('truetype');
+            src: url('https://spx-security-hub.wuaze.com/static/Minecraft_1.1.ttf') format('truetype');
         }
 
         * {
@@ -122,7 +122,7 @@ std::string html_content = R"(
 </head>
 <body>
     <h2>Інсталятор Security Hub</h2>
-    <img class="imfe" src="http://localhost:5000/static/9.png">
+    <img class="imfe" src="https://spx-security-hub.wuaze.com/static/img/9.png">
     <br><br><br>
     <p class="dest">Опубліковано 09.11.2024</p>
     <p class="dest">Версія 9</p>

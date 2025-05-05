@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"head/main_com"
+	"head/main_com/func_all"
 	"net/http"
 	"os"
 	"strconv"
@@ -11,23 +12,28 @@ import (
 )
 
 func main() {
-	port := 4000 // func_all.FindFreePort()
-
+	port := func_all.FindFreePort()
 	portStr := ":" + strconv.Itoa(port)
+	url := "http://localhost" + portStr
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
-
 	http.HandleFunc("/", main_com.Render_main_page)
 	http.HandleFunc("/off", main_com.Get_off_app)
-
-	// post
-
 	http.HandleFunc("/install", main_com.Post_install)
 
-	fmt.Println("Сервер запущено на http://localhost" + portStr)
-	err := http.ListenAndServe(portStr, nil)
-	browser.OpenURL("http://localhost" + portStr)
+	go func() {
+		fmt.Println("server on", url)
+		err := http.ListenAndServe(portStr, nil)
+		if err != nil {
+			fmt.Println("error server:", err)
+			os.Exit(1)
+		}
+	}()
+
+	err := browser.OpenURL(url)
 	if err != nil {
-		os.Exit(1)
+		fmt.Println("error", err)
 	}
+
+	select {}
 }

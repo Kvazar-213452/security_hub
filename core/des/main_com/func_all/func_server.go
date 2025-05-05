@@ -36,6 +36,10 @@ type Config struct {
 	Port int `json:"port"`
 }
 
+type Config1 struct {
+	Visual int `json:"visualization"`
+}
+
 func PrintPortFromConfig() int {
 	file, err := os.Open("../data/config.json")
 	if err != nil {
@@ -51,6 +55,23 @@ func PrintPortFromConfig() int {
 	}
 
 	return config.Port
+}
+
+func Visual_сonfig() int {
+	file, err := os.Open("../data/config.json")
+	if err != nil {
+		return 0
+	}
+	defer file.Close()
+
+	var config Config1
+	err = json.NewDecoder(file).Decode(&config)
+	if err != nil {
+		fmt.Println("error JSON:", err)
+		return 0
+	}
+
+	return config.Visual
 }
 
 func RemoveNewlines(s string) string {
