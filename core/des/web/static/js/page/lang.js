@@ -72,7 +72,8 @@ let mas_lang = {
     ["#modla_install_32f23dd2", "Delete Confirmation"],
     ["#i2332fn231", "Delete"],
     ["#u32f2ho33ffff1233", "Loaded modules"],
-    ["#modal_infod232f3vvv", "Module information"]
+    ["#modal_infod232f3vvv", "Module information"],
+    ["#df434f343_FD3443", "After manipulating modules, you need to restart the modules and shell"]
   ],
 
   "uk": [
@@ -146,7 +147,8 @@ let mas_lang = {
     ["#modla_install_32f23dd2", "Підтвердження видалення"],
     ["#i2332fn231", "Видалити"],
     ["#u32f2ho33ffff1233", "Завантажені модулі"],
-    ["#modal_infod232f3vvv", "Інформація модуля"]
+    ["#modal_infod232f3vvv", "Інформація модуля"],
+    ["#df434f343_FD3443", "Після маніпуляціями з модулями треба перезапустити модулі та shell"]
   ]
 };
 

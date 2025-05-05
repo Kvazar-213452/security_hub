@@ -546,6 +546,8 @@ function install_module_func() {
         success: function (response) {
             setTimeout(function () {
                 clos("modal1");
+                get_all_render_module();
+                
                 animation = false;
             }, 2000);
         }
@@ -570,9 +572,10 @@ function uinstall_module_app_func() {
         contentType: "application/json",
         data: JSON.stringify({data: module_select}),
         success: function (response) {
-            console.log(response)
             setTimeout(function () {
                 clos("modal1");
+                get_all_render_module();
+
                 animation = false;
             }, 2000);
         }

@@ -1,0 +1,14 @@
+<?php
+$filename = "data/count_zip.txt";
+
+if (!file_exists($filename)) {
+    file_put_contents($filename, "0");
+}
+
+$count = (int)file_get_contents($filename);
+$count++;
+file_put_contents($filename, $count);
+
+header("Location: https://github.com/Kvazar-213452/data/raw/refs/heads/main/main_full.zip");
+exit;
+?>

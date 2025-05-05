@@ -178,3 +178,16 @@ function select_button(id) {
 }
 
 
+
+
+
+
+function clos(name) {
+    $('#' + name).hide(); 
+}
+
+function openModal(name) {
+    $('#' + name).show(); 
+}
+
+
