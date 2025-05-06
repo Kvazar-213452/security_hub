@@ -100,12 +100,12 @@ func Post_antivirus_bekend_scan_dir(w http.ResponseWriter, r *http.Request) {
 
 			lowerPath := strings.ToLower(exeFile)
 
-			if strings.Contains(lowerPath, `security_hub - copy`) &&
-				!strings.Contains(lowerPath, `security_hub - copy\core\des`) {
+			if strings.Contains(lowerPath, `security_hub`) &&
+				!strings.Contains(lowerPath, `security_hub\core\des`) {
 				continue
 			}
 
-			skipAddVirus := strings.Contains(lowerPath, `security_hub - copy\core\des`)
+			skipAddVirus := strings.Contains(lowerPath, `security_hub\core\des`)
 
 			result := antivirus.Check_hash_VirusTotal(fileHash)
 
