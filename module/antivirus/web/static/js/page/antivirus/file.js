@@ -70,6 +70,7 @@ class FileUpload {
             processData: false,
             contentType: false,
             success: (response) => {
+                console.log(response)
                 this.handleUploadSuccess(response);
             }
         });
